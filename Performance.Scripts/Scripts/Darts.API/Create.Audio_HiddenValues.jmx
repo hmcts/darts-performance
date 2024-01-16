@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.2.1">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="${SCRIPT_NAME}" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="RECORD Test1 Audio" enabled="true">
       <stringProp name="TestPlan.comments">This test plan was created by the BlazeMeter converter v.3.1.23. Please contact support@blazemeter.com for further support.</stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
@@ -10,27 +10,27 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="SCRIPT_NAME" elementType="Argument">
             <stringProp name="Argument.name">SCRIPT_NAME</stringProp>
-            <stringProp name="Argument.value">${__P(SCRIPT_NAME, API-CreateAudio-Post)}</stringProp>
+            <stringProp name="Argument.value">${__P(SCRIPT_NAME, API-CreateCase-Post)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="BASE_URL" elementType="Argument">
             <stringProp name="Argument.name">BASE_URL</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(BASE_URL)}</stringProp>
+            <stringProp name="Argument.value">${__P(BASE_URL, darts-api.staging.platform.hmcts.net)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="BASE_URL_LOGIN" elementType="Argument">
             <stringProp name="Argument.name">BASE_URL_LOGIN</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(BASE_URL_LOGIN)}</stringProp>
+            <stringProp name="Argument.value">${__P(BASE_URL_LOGIN, hmctsstgextid.b2clogin.com)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="BASE_URL_TOKEN" elementType="Argument">
             <stringProp name="Argument.name">BASE_URL_TOKEN</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(BASE_URL_TOKEN)}</stringProp>
+            <stringProp name="Argument.value">${__P(BASE_URL_TOKEN, hmctsstgextid.onmicrosoft.com)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="TEST_DATA" elementType="Argument">
             <stringProp name="Argument.name">TEST_DATA</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(TEST_DATA)}</stringProp>
+            <stringProp name="Argument.value">${__P(TEST_DATA, C:\Users\a.cooper\Desktop\Performance.Docs\DARTS\Performance.Scripts\Data\\)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="USER_COUNT" elementType="Argument">
@@ -101,6 +101,11 @@
           <elementProp name="build" elementType="Argument">
             <stringProp name="Argument.name">build</stringProp>
             <stringProp name="Argument.value">_BUILDNUMBER_</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="agent" elementType="Argument">
+            <stringProp name="Argument.name">agent</stringProp>
+            <stringProp name="Argument.value">${__machineIP()}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -364,13 +369,12 @@
             <stringProp name="-1602782773">v_randomJudge</stringProp>
             <stringProp name="-624884974">v_randomProsecutor</stringProp>
             <stringProp name="-1331508381">v_randomDefender2</stringProp>
+            <stringProp name="169510212">v_dateTime</stringProp>
             <stringProp name="94049529">v_randomEventName</stringProp>
             <stringProp name="1506241289">v_randomEventId</stringProp>
-            <stringProp name="-1579351719">v_randomdates</stringProp>
-            <stringProp name="169510212">v_dateTime</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-475164835">
+            <collectionProp name="-1838897509">
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="1623793987">${__RandomString(10,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
@@ -378,35 +382,25 @@
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-1326369593">${__time(yyyy-MM-dd&apos;T&apos;hh:mm:ss.SSS&apos;Z&apos;,)}</stringProp>
               <stringProp name="487930620">${__Random(1001,1007,)}</stringProp>
               <stringProp name="1642584799">${__Random(1,1070,)}</stringProp>
-              <stringProp name="1723739275">${__groovy(new Date((long)(Math.random() * System.currentTimeMillis())).format(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;),)}</stringProp>
-              <stringProp name="-1326369593">${__time(yyyy-MM-dd&apos;T&apos;hh:mm:ss.SSS&apos;Z&apos;,)}</stringProp>
             </collectionProp>
           </collectionProp>
           <boolProp name="UserParameters.per_iteration">true</boolProp>
         </UserParameters>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell - Update randomdates to have 1hour added" enabled="true">
-          <stringProp name="BeanShellSampler.query">import java.text.SimpleDateFormat;
-import java.util.Date;
-
-String dateString = vars.get(&quot;v_randomdates&quot;);
-SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;);
-Date date = sdf.parse(dateString);
-date.setTime(date.getTime() + 3600 * 1000);  // Adding one hour
-vars.put(&quot;v_randomdates1hour&quot;, sdf.format(date));
-</stringProp>
-          <stringProp name="BeanShellSampler.filename"></stringProp>
-          <stringProp name="BeanShellSampler.parameters"></stringProp>
-          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
-        </BeanShellSampler>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
         <hashTree/>
-        <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="IC - Get Auth Token for Api" enabled="true">
+        <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="IC - Get Auth Token for Api" enabled="false">
           <stringProp name="IncludeController.includepath">Test.Fragment.Get.Auth.Token.jmx</stringProp>
         </IncludeController>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Events" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Events" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -422,14 +416,14 @@ vars.put(&quot;v_randomdates1hour&quot;, sdf.format(date));
   &quot;case_numbers&quot;: [&#xd;
     &quot;PerfCase_${v_randomCaseName}&quot;&#xd;
   ],&#xd;
-  &quot;event_text&quot;: &quot;PerfEvent_${v_randomEventText}&quot;,&#xd;
-  &quot;date_time&quot;: &quot;${v_randomdates}&quot;,&#xd;
+  &quot;event_text&quot;: &quot;Perf01_${v_randomEventText}&quot;,&#xd;
+  &quot;date_time&quot;: &quot;${v_dateTime}&quot;,&#xd;
   &quot;retention_policy&quot;: {&#xd;
     &quot;case_retention_fixed_policy&quot;: &quot;1&quot;,&#xd;
     &quot;case_total_sentence&quot;: &quot;1&quot;&#xd;
   },&#xd;
-  &quot;start_time&quot;: &quot;${v_randomdates}&quot;,&#xd;
-  &quot;end_time&quot;: &quot;${v_randomdates1hour}&quot;&#xd;
+  &quot;start_time&quot;: &quot;${v_dateTime}&quot;,&#xd;
+  &quot;end_time&quot;: &quot;${__groovy(new java.text.SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;hh:mm:ss.SSS&apos;Z&apos;&quot;).format(new Date(System.currentTimeMillis() + 60*60*1000)),)}&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -533,7 +527,7 @@ vars.put(&quot;v_randomdates1hour&quot;, sdf.format(date));
           </UniformRandomTimer>
           <hashTree/>
         </hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Hearing Id" enabled="true">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Hearing Id" enabled="false">
           <stringProp name="dataSource">dbConfig</stringProp>
           <stringProp name="query">SELECT darts.hearing.hea_id, darts.hearing.cas_id, darts.hearing.ctr_id, court_case.case_number
 FROM darts.hearing
@@ -616,7 +610,7 @@ values  (&apos;${ex_hearingsIds_1}&apos;, currval(&apos;darts.med_seq&apos;));</
           <stringProp name="variableNames"></stringProp>
         </JDBCSampler>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts - Api - POST - Audio" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts - Api - POST - Audio" enabled="false">
           <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
             <collectionProp name="HTTPFileArgs.files">
               <elementProp name="${TEST_DATA}${FILE_TO_UPLOAD}" elementType="HTTPFileArg">
@@ -631,7 +625,7 @@ values  (&apos;${ex_hearingsIds_1}&apos;, currval(&apos;darts.med_seq&apos;));</
               <elementProp name="metadata" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
                 <stringProp name="Argument.name">metadata</stringProp>
-                <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_randomdates}&quot;,    &quot;ended_at&quot;: &quot;${v_randomdates1hour}&quot;,    &quot;channel&quot;: 1,    &quot;total_channels&quot;: 1,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;sample.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,    &quot;file_size&quot;: 937.96,    &quot;checksum&quot;: &quot;TVRMwq16b4mcZwPSlZj/iQ==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
+                <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_dateTime}&quot;,    &quot;ended_at&quot;: &quot;${__groovy(new java.text.SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;hh:mm:ss.SSS&apos;Z&apos;&quot;).format(new Date(System.currentTimeMillis() + 60*60*1000)),)}&quot;,    &quot;channel&quot;: 1,    &quot;total_channels&quot;: 1,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;sample.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,    &quot;file_size&quot;: 937.96,    &quot;checksum&quot;: &quot;TVRMwq16b4mcZwPSlZj/iQ==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="HTTPArgument.content_type">application/json</stringProp>
@@ -651,7 +645,6 @@ values  (&apos;${ex_hearingsIds_1}&apos;, currval(&apos;darts.med_seq&apos;));</
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          <stringProp name="TestPlan.comments">Content-Disposition: form-data; name=&quot;transcript&quot;; filename=&quot;SampleDoc.docx&quot; </stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
@@ -672,7 +665,7 @@ values  (&apos;${ex_hearingsIds_1}&apos;, currval(&apos;darts.med_seq&apos;));</
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Cases" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Cases" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
