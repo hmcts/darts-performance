@@ -37,12 +37,7 @@
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">0</stringProp>
-            </ConstantTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts-Portal - auth - login" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -61,12 +56,7 @@
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">3900</stringProp>
-            </ConstantTimer>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="B2C_1_darts_externaluser_signin - oauth2/v2.0 - authorize" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -157,8 +147,8 @@
             </HeaderManager>
             <hashTree/>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">330.40000000000003</stringProp>
-              <stringProp name="ConstantTimer.delay">660.8000000000001</stringProp>
+              <stringProp name="RandomTimer.range">1500</stringProp>
+              <stringProp name="ConstantTimer.delay">1500</stringProp>
             </UniformRandomTimer>
             <hashTree/>
             <BoundaryExtractor guiclass="BoundaryExtractorGui" testclass="BoundaryExtractor" testname="Get State Properties Token" enabled="true">
@@ -276,11 +266,6 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
-            <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">27.200000000000003</stringProp>
-              <stringProp name="ConstantTimer.delay">54.400000000000006</stringProp>
-            </UniformRandomTimer>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="B2C_1_darts_externaluser_signin - client - perftrace - Old" enabled="false">
@@ -495,11 +480,6 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">381.20000000000005</stringProp>
-              <stringProp name="ConstantTimer.delay">762.4000000000001</stringProp>
-            </UniformRandomTimer>
-            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="B2C_1_darts_externaluser_signin - SelfAsserted" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -632,11 +612,6 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
-            <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">2000</stringProp>
-              <stringProp name="ConstantTimer.delay">2000</stringProp>
-            </UniformRandomTimer>
             <hashTree/>
             <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Error Message" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">ex_errorMessage</stringProp>
@@ -783,11 +758,6 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
-            <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">403.6</stringProp>
-              <stringProp name="ConstantTimer.delay">807.2</stringProp>
-            </UniformRandomTimer>
             <hashTree/>
             <BoundaryExtractor guiclass="BoundaryExtractorGui" testclass="BoundaryExtractor" testname="Get Code Token" enabled="true">
               <stringProp name="BoundaryExtractor.useHeaders">false</stringProp>
@@ -1651,11 +1621,6 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">190.4</stringProp>
-              <stringProp name="ConstantTimer.delay">380.8</stringProp>
-            </UniformRandomTimer>
-            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts-Portal" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -1749,11 +1714,6 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">102.0</stringProp>
-              <stringProp name="ConstantTimer.delay">204.0</stringProp>
-            </UniformRandomTimer>
-            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts-Portal - app - config" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -1830,11 +1790,6 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
-            <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">3157.6000000000004</stringProp>
-              <stringProp name="ConstantTimer.delay">6315.200000000001</stringProp>
-            </UniformRandomTimer>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts-Portal - auth - is-authenticated" enabled="true">
@@ -1929,11 +1884,6 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">0.8</stringProp>
-              <stringProp name="ConstantTimer.delay">1.6</stringProp>
-            </UniformRandomTimer>
-            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts-Portal - user - profile" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -2019,10 +1969,11 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">43.2</stringProp>
-              <stringProp name="ConstantTimer.delay">86.4</stringProp>
-            </UniformRandomTimer>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Get User Id" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">ex_getUserId</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.userId</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            </JSONPostProcessor>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts-Portal - api - courthouses" enabled="true">
@@ -2108,11 +2059,6 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
-            <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">38.800000000000004</stringProp>
-              <stringProp name="ConstantTimer.delay">77.60000000000001</stringProp>
-            </UniformRandomTimer>
             <hashTree/>
             <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Get CourtHouse Name" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">ex_getCourtHouseName</stringProp>
