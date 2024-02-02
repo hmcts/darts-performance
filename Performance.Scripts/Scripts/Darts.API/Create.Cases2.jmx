@@ -897,7 +897,7 @@ LIMIT 1</stringProp>
               </RegexExtractor>
               <hashTree/>
             </hashTree>
-            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Hearing Id" enabled="false">
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Hearing Id" enabled="true">
               <stringProp name="dataSource">dbConfig</stringProp>
               <stringProp name="query">SELECT darts.hearing.hea_id, darts.hearing.cas_id, darts.hearing.ctr_id, court_case.case_number
 FROM darts.hearing
@@ -1098,7 +1098,7 @@ ORDER BY hea_id ASC</stringProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - GET - Admin - Users - Search" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - GET - Admin - Users - Search" enabled="false">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -1206,10 +1206,9 @@ ORDER BY hea_id ASC</stringProp>
             </JSONPostProcessor>
             <hashTree/>
           </hashTree>
-          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop - Create Random Amount of Audio for Hearing" enabled="true">
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop - Create Random Amount of Audio for Hearing" enabled="false">
             <boolProp name="LoopController.continue_forever">true</boolProp>
-            <stringProp name="LoopController.loops">1</stringProp>
-            <stringProp name="TestPlan.comments">${v_randomNumberForAudio}</stringProp>
+            <stringProp name="LoopController.loops">${v_randomNumberForAudio}</stringProp>
           </LoopController>
           <hashTree>
             <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
@@ -1262,7 +1261,7 @@ vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
               <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
             </BeanShellSampler>
             <hashTree/>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction - Create Audio for Transcription" enabled="true">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction - Create Audio for Transcription" enabled="false">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
               <boolProp name="TransactionController.parent">false</boolProp>
             </TransactionController>

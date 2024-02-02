@@ -73,6 +73,26 @@
             <stringProp name="Argument.value">${__machineIP()}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="FILE_TO_UPLOAD1" elementType="Argument">
+            <stringProp name="Argument.name">FILE_TO_UPLOAD1</stringProp>
+            <stringProp name="Argument.value">${__P(FILE_TO_UPLOAD, sample.mp2)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="FILE_TO_UPLOAD2" elementType="Argument">
+            <stringProp name="Argument.name">FILE_TO_UPLOAD2</stringProp>
+            <stringProp name="Argument.value">${__P(FILE_TO_UPLOAD, 02h.mp2)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="FILE_TO_UPLOAD3" elementType="Argument">
+            <stringProp name="Argument.name">FILE_TO_UPLOAD3</stringProp>
+            <stringProp name="Argument.value">${__P(FILE_TO_UPLOAD, 12h.mp2)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="FILE_TO_UPLOAD4" elementType="Argument">
+            <stringProp name="Argument.name">FILE_TO_UPLOAD4</stringProp>
+            <stringProp name="Argument.value">${__P(FILE_TO_UPLOAD, 24h.mp2)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
@@ -285,20 +305,35 @@
             <stringProp name="-57070940">ex_startDate</stringProp>
             <stringProp name="231298973">ex_endDate</stringProp>
             <stringProp name="-1256707392">ex_randomString</stringProp>
+            <stringProp name="-1719713977">ex_randomAudio</stringProp>
+            <stringProp name="-1771525685">ex_randomAudio2</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="566304533">
+            <collectionProp name="848777200">
               <stringProp name="-1788839298">${__timeShift(dd/MM/yyyy,,,,)}</stringProp>
               <stringProp name="-1429437465">${__timeShift(dd/MM/yyyy,,P7D,,)}</stringProp>
               <stringProp name="-1638586559">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)} </stringProp>
+              <stringProp name="-772163718">${__RandomFromMultipleVars(FILE_TO_UPLOAD1|FILE_TO_UPLOAD2|FILE_TO_UPLOAD3|FILE_TO_UPLOAD4)}</stringProp>
+              <stringProp name="458473703">${__chooseRandom(${FILE_TO_UPLOAD1},${FILE_TO_UPLOAD2},${FILE_TO_UPLOAD3},${FILE_TO_UPLOAD4})}</stringProp>
             </collectionProp>
           </collectionProp>
           <boolProp name="UserParameters.per_iteration">false</boolProp>
         </UserParameters>
         <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
         <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="IC - Log into Darts Portal" enabled="true">
           <stringProp name="IncludeController.includepath">Test.Fragment.Login.Portal.jmx</stringProp>
         </IncludeController>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Controller" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
         <hashTree/>
         <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="IC - Logout of Darts Portal" enabled="true">
           <stringProp name="IncludeController.includepath">Test.Fragment.Logout.Portal.jmx</stringProp>

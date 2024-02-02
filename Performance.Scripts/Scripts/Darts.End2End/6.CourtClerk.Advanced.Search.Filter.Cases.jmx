@@ -414,8 +414,8 @@
             </HeaderManager>
             <hashTree/>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">0.0</stringProp>
-              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              <stringProp name="RandomTimer.range">1500</stringProp>
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
@@ -510,11 +510,6 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">0.0</stringProp>
-              <stringProp name="ConstantTimer.delay">0.0</stringProp>
-            </UniformRandomTimer>
-            <hashTree/>
             <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Get Case Details" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">ex_courtHouseName;ex_getDefendantName;ex_getCourtRoomName;ex_getJudgesName</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.[*].courthouse;$.[*].defendants.[*];$.[*].hearings.[*].courtroom;$.[*].judges</stringProp>
@@ -522,6 +517,11 @@
               <stringProp name="JSONPostProcessor.defaultValues">NOT_DEFINED;NOT_DEFINED;NOT_DEFINED;NOT_DEFINED;</stringProp>
               <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
             </JSONPostProcessor>
+            <hashTree/>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">1500</stringProp>
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+            </UniformRandomTimer>
             <hashTree/>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Search for Cases with Date, Judges and Defendants" enabled="true">
@@ -655,8 +655,8 @@
               </HeaderManager>
               <hashTree/>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="RandomTimer.range">0.0</stringProp>
-                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+                <stringProp name="RandomTimer.range">1500</stringProp>
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
               </UniformRandomTimer>
               <hashTree/>
             </hashTree>
@@ -780,8 +780,8 @@
               </HeaderManager>
               <hashTree/>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="RandomTimer.range">9750.800000000001</stringProp>
-                <stringProp name="ConstantTimer.delay">19501.600000000002</stringProp>
+                <stringProp name="RandomTimer.range">1500</stringProp>
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
               </UniformRandomTimer>
               <hashTree/>
             </hashTree>
@@ -884,8 +884,8 @@
             </HeaderManager>
             <hashTree/>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">0.0</stringProp>
-              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              <stringProp name="RandomTimer.range">1500</stringProp>
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
@@ -980,11 +980,6 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">0.0</stringProp>
-              <stringProp name="ConstantTimer.delay">0.0</stringProp>
-            </UniformRandomTimer>
-            <hashTree/>
             <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Get Case Details" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">ex_courtHouseName;ex_getDefendantName;ex_getCourtRoomName;ex_getJudgesName</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.[*].courthouse;$.[*].defendants.[*];$.[*].hearings.[*].courtroom;$.[*].judges</stringProp>
@@ -992,6 +987,11 @@
               <stringProp name="JSONPostProcessor.defaultValues">NOT_DEFINED;NOT_DEFINED;NOT_DEFINED;NOT_DEFINED;</stringProp>
               <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
             </JSONPostProcessor>
+            <hashTree/>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">1500</stringProp>
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+            </UniformRandomTimer>
             <hashTree/>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Search for Cases with Date, Judges and Defendants" enabled="true">
@@ -1125,8 +1125,8 @@
               </HeaderManager>
               <hashTree/>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="RandomTimer.range">0.0</stringProp>
-                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+                <stringProp name="RandomTimer.range">1500</stringProp>
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
               </UniformRandomTimer>
               <hashTree/>
             </hashTree>
@@ -1250,8 +1250,8 @@
               </HeaderManager>
               <hashTree/>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="RandomTimer.range">9750.800000000001</stringProp>
-                <stringProp name="ConstantTimer.delay">19501.600000000002</stringProp>
+                <stringProp name="RandomTimer.range">1500</stringProp>
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
               </UniformRandomTimer>
               <hashTree/>
             </hashTree>
@@ -1354,8 +1354,8 @@
             </HeaderManager>
             <hashTree/>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">0.0</stringProp>
-              <stringProp name="ConstantTimer.delay">0.0</stringProp>
+              <stringProp name="RandomTimer.range">1500</stringProp>
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
@@ -1450,11 +1450,6 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="RandomTimer.range">0.0</stringProp>
-              <stringProp name="ConstantTimer.delay">0.0</stringProp>
-            </UniformRandomTimer>
-            <hashTree/>
             <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Get Case Details" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">ex_courtHouseName;ex_getDefendantName;ex_getCourtRoomName;ex_getJudgesName</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.[*].courthouse;$.[*].defendants.[*];$.[*].hearings.[*].courtroom;$.[*].judges</stringProp>
@@ -1462,6 +1457,11 @@
               <stringProp name="JSONPostProcessor.defaultValues">NOT_DEFINED;NOT_DEFINED;NOT_DEFINED;NOT_DEFINED;</stringProp>
               <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
             </JSONPostProcessor>
+            <hashTree/>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+              <stringProp name="RandomTimer.range">1500</stringProp>
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+            </UniformRandomTimer>
             <hashTree/>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Search for Cases with Date, Judges and Defendants" enabled="true">
@@ -1595,8 +1595,8 @@
               </HeaderManager>
               <hashTree/>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="RandomTimer.range">0.0</stringProp>
-                <stringProp name="ConstantTimer.delay">0.0</stringProp>
+                <stringProp name="RandomTimer.range">1500</stringProp>
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
               </UniformRandomTimer>
               <hashTree/>
             </hashTree>
@@ -1720,8 +1720,8 @@
               </HeaderManager>
               <hashTree/>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="RandomTimer.range">9750.800000000001</stringProp>
-                <stringProp name="ConstantTimer.delay">19501.600000000002</stringProp>
+                <stringProp name="RandomTimer.range">1500</stringProp>
+                <stringProp name="ConstantTimer.delay">1000</stringProp>
               </UniformRandomTimer>
               <hashTree/>
             </hashTree>

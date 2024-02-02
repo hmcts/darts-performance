@@ -48,6 +48,16 @@
             <stringProp name="Argument.value">${__P(USER_ITERATIONS, 1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="USERNAME" elementType="Argument">
+            <stringProp name="Argument.name">USERNAME</stringProp>
+            <stringProp name="Argument.value">${__P(USERNAME, 207065f3-7aec-4a16-b955-d241d5597427@hmctsstgextid.onmicrosoft.com)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PASSWORD" elementType="Argument">
+            <stringProp name="Argument.name">PASSWORD</stringProp>
+            <stringProp name="Argument.value">${__P(PASSWORD, PerfTester01)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="TENANT_ID" elementType="Argument">
             <stringProp name="Argument.name">TENANT_ID</stringProp>
             <stringProp name="Argument.value">${__GetSecret(TENANT_ID)}</stringProp>
@@ -66,11 +76,6 @@
           <elementProp name="SCOPE" elementType="Argument">
             <stringProp name="Argument.name">SCOPE</stringProp>
             <stringProp name="Argument.value">${__GetSecret(SCOPE)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="USERNAME" elementType="Argument">
-            <stringProp name="Argument.name">USERNAME</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(USERNAME)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="PASSWORD" elementType="Argument">

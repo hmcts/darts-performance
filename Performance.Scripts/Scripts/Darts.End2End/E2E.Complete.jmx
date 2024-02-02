@@ -8,9 +8,24 @@
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
-          <elementProp name="SCRIPT_NAME" elementType="Argument">
-            <stringProp name="Argument.name">SCRIPT_NAME</stringProp>
-            <stringProp name="Argument.value">${__P(SCRIPT_NAME, RequestAudio)}</stringProp>
+          <elementProp name="SCRIPT_NAME_1" elementType="Argument">
+            <stringProp name="Argument.name">SCRIPT_NAME_1</stringProp>
+            <stringProp name="Argument.value">${__P(SCRIPT_NAME_1, CourtClerk.Request.Download.Audio)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SCRIPT_NAME_2" elementType="Argument">
+            <stringProp name="Argument.name">SCRIPT_NAME_2</stringProp>
+            <stringProp name="Argument.value">${__P(SCRIPT_NAME_2, Transcirber.Transcriptions.Attach.File.And.Complete)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SCRIPT_NAME_3" elementType="Argument">
+            <stringProp name="Argument.name">SCRIPT_NAME_3</stringProp>
+            <stringProp name="Argument.value">${__P(SCRIPT_NAME_3, Transcriber.Downloads.Audio)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SCRIPT_NAME_4" elementType="Argument">
+            <stringProp name="Argument.name">SCRIPT_NAME_4</stringProp>
+            <stringProp name="Argument.value">${__P(SCRIPT_NAME_4, CourtClerk.Advanced.Search.Filter.Cases)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="BASE_URL" elementType="Argument">
@@ -31,21 +46,6 @@
           <elementProp name="TEST_DATA" elementType="Argument">
             <stringProp name="Argument.name">TEST_DATA</stringProp>
             <stringProp name="Argument.value">${__GetSecret(TEST_DATA)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="USER_COUNT" elementType="Argument">
-            <stringProp name="Argument.name">USER_COUNT</stringProp>
-            <stringProp name="Argument.value">${__P(USER_COUNT, 1)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="USER_RAMP_TIME" elementType="Argument">
-            <stringProp name="Argument.name">USER_RAMP_TIME</stringProp>
-            <stringProp name="Argument.value">${__P(USER_RAMP_TIME, 1)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="USER_ITERATIONS" elementType="Argument">
-            <stringProp name="Argument.name">USER_ITERATIONS</stringProp>
-            <stringProp name="Argument.value">${__P(USER_ITERATIONS, 1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="CLIENT_ID" elementType="Argument">
@@ -71,6 +71,66 @@
           <elementProp name="agent" elementType="Argument">
             <stringProp name="Argument.name">agent</stringProp>
             <stringProp name="Argument.value">${__machineIP()}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_COUNT_1" elementType="Argument">
+            <stringProp name="Argument.name">USER_COUNT_1</stringProp>
+            <stringProp name="Argument.value">${__P(USER_COUNT_1, 1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_RAMP_TIME_1" elementType="Argument">
+            <stringProp name="Argument.name">USER_RAMP_TIME_1</stringProp>
+            <stringProp name="Argument.value">${__P(USER_RAMP_TIME_1, 1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_ITERATIONS_1" elementType="Argument">
+            <stringProp name="Argument.name">USER_ITERATIONS_1</stringProp>
+            <stringProp name="Argument.value">${__P(USER_ITERATIONS_1, 1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_COUNT_2" elementType="Argument">
+            <stringProp name="Argument.name">USER_COUNT_2</stringProp>
+            <stringProp name="Argument.value">${__P(USER_COUNT_1, 2)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_RAMP_TIME_2" elementType="Argument">
+            <stringProp name="Argument.name">USER_RAMP_TIME_2</stringProp>
+            <stringProp name="Argument.value">${__P(USER_RAMP_TIME_2, 1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_ITERATIONS_2" elementType="Argument">
+            <stringProp name="Argument.name">USER_ITERATIONS_2</stringProp>
+            <stringProp name="Argument.value">${__P(USER_ITERATIONS_2, 1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_COUNT_3" elementType="Argument">
+            <stringProp name="Argument.name">USER_COUNT_3</stringProp>
+            <stringProp name="Argument.value">${__P(USER_COUNT_3, 3)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_RAMP_TIME_3" elementType="Argument">
+            <stringProp name="Argument.name">USER_RAMP_TIME_3</stringProp>
+            <stringProp name="Argument.value">${__P(USER_RAMP_TIME_3, 1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_ITERATIONS_3" elementType="Argument">
+            <stringProp name="Argument.name">USER_ITERATIONS_3</stringProp>
+            <stringProp name="Argument.value">${__P(USER_ITERATIONS_3, 1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_COUNT_4" elementType="Argument">
+            <stringProp name="Argument.name">USER_COUNT_4</stringProp>
+            <stringProp name="Argument.value">${__P(USER_COUNT_4, 4)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_RAMP_TIME_4" elementType="Argument">
+            <stringProp name="Argument.name">USER_RAMP_TIME_4</stringProp>
+            <stringProp name="Argument.value">${__P(USER_RAMP_TIME_4, 1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_ITERATIONS_4" elementType="Argument">
+            <stringProp name="Argument.name">USER_ITERATIONS_4</stringProp>
+            <stringProp name="Argument.value">${__P(USER_ITERATIONS_4, 1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -295,17 +355,17 @@
         <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">${USER_ITERATIONS}</stringProp>
+          <stringProp name="LoopController.loops">${USER_ITERATIONS_1}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${USER_COUNT}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${USER_RAMP_TIME}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${USER_COUNT_1}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${USER_RAMP_TIME_1}</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration">0</stringProp>
         <stringProp name="ThreadGroup.delay">0</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
       </ThreadGroup>
       <hashTree>
-        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Date Parameters" enabled="true">
+        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Date Parameters" enabled="false">
           <collectionProp name="UserParameters.names">
             <stringProp name="-910588249">v_startDate</stringProp>
             <stringProp name="-2075731872">v_endDate</stringProp>
@@ -323,11 +383,11 @@
           <boolProp name="UserParameters.per_iteration">false</boolProp>
         </UserParameters>
         <hashTree/>
-        <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="IC - Log into Darts Portal" enabled="true">
+        <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="IC - Log into Darts Portal" enabled="false">
           <stringProp name="IncludeController.includepath">Test.Fragment.Login.Portal.jmx</stringProp>
         </IncludeController>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Search for Cases" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Search for Cases" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -453,7 +513,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Select Case" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Select Case" enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -1308,7 +1368,7 @@
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Request Audio Download " enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Request Audio Download " enabled="false">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
@@ -1599,9 +1659,78 @@
             </hashTree>
           </hashTree>
         </hashTree>
-        <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="IC - Logout of Darts Portal" enabled="true">
+        <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="IC - Logout of Darts Portal" enabled="false">
           <stringProp name="IncludeController.includepath">Test.Fragment.Logout.Portal.jmx</stringProp>
         </IncludeController>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler 1" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - ${SCRIPT_NAME}" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${USER_ITERATIONS_2}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${USER_COUNT_2}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${USER_RAMP_TIME_2}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler 2" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - ${SCRIPT_NAME}" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${USER_ITERATIONS_3}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${USER_COUNT_3}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${USER_RAMP_TIME_3}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler 3" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - ${SCRIPT_NAME}" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${USER_ITERATIONS_4}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${USER_COUNT_4}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${USER_RAMP_TIME_4}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler 4" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
         <hashTree/>
       </hashTree>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
