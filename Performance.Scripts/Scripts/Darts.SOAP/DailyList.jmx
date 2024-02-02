@@ -10,12 +10,12 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="SCRIPT_NAME" elementType="Argument">
             <stringProp name="Argument.name">SCRIPT_NAME</stringProp>
-            <stringProp name="Argument.value">${__P(SCRIPT_NAME, API-CreateEvent-Post)}</stringProp>
+            <stringProp name="Argument.value">${__P(SCRIPT_NAME, API-CreateTranscriptions-Post)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="BASE_URL" elementType="Argument">
             <stringProp name="Argument.name">BASE_URL</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(BASE_URL)}</stringProp>
+            <stringProp name="Argument.value">${__P(BASE_URL, darts.staging.apps.hmcts.net)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="BASE_URL_LOGIN" elementType="Argument">
@@ -48,39 +48,14 @@
             <stringProp name="Argument.value">${__P(USER_ITERATIONS, 1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="TENANT_ID" elementType="Argument">
-            <stringProp name="Argument.name">TENANT_ID</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(TENANT_ID)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="CLIENT_ID" elementType="Argument">
             <stringProp name="Argument.name">CLIENT_ID</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(CLIENT_ID)}</stringProp>
+            <stringProp name="Argument.value">${__GetSecret(AzureAdB2CClientId)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="CLIENT_SECRET" elementType="Argument">
-            <stringProp name="Argument.name">CLIENT_SECRET</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(CLIENT_SECRET)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="SCOPE" elementType="Argument">
-            <stringProp name="Argument.name">SCOPE</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(SCOPE)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="USERNAME" elementType="Argument">
-            <stringProp name="Argument.name">USERNAME</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(USERNAME)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="PASSWORD" elementType="Argument">
-            <stringProp name="Argument.name">PASSWORD</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(PASSWORD)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="GRANT_TYPE" elementType="Argument">
-            <stringProp name="Argument.name">GRANT_TYPE</stringProp>
-            <stringProp name="Argument.value">${__GetSecret(GRANT_TYPE)}</stringProp>
+          <elementProp name="FILE_TO_UPLOAD" elementType="Argument">
+            <stringProp name="Argument.name">FILE_TO_UPLOAD</stringProp>
+            <stringProp name="Argument.value">${__P(FILE_TO_UPLOAD, sample.mp2)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="project" elementType="Argument">
@@ -237,23 +212,10 @@
         </collectionProp>
       </com.github.johrstrom.listener.PrometheusListener>
       <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV - Users" enabled="false">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV - Users" enabled="true">
         <stringProp name="delimiter">,</stringProp>
         <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="filename">${TEST_DATA}users_${__machineIP}.csv</stringProp>
-        <boolProp name="ignoreFirstLine">false</boolProp>
-        <boolProp name="quotedData">true</boolProp>
-        <boolProp name="recycle">true</boolProp>
-        <stringProp name="shareMode">shareMode.all</stringProp>
-        <boolProp name="stopThread">true</boolProp>
-        <stringProp name="variableNames"></stringProp>
-        <stringProp name="TestPlan.comments">${TEST_DATA}users_${__machineIP}.csv</stringProp>
-      </CSVDataSet>
-      <hashTree/>
-      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV - CourtRoomAndCourtHouses.csv" enabled="false">
-        <stringProp name="delimiter">,</stringProp>
-        <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="filename">${TEST_DATA}CourtRoomAndCourtHouses.csv</stringProp>
+        <stringProp name="filename">${TEST_DATA}Users.csv</stringProp>
         <boolProp name="ignoreFirstLine">false</boolProp>
         <boolProp name="quotedData">true</boolProp>
         <boolProp name="recycle">true</boolProp>
@@ -282,6 +244,8 @@
         <stringProp name="HTTPSampler.contentEncoding"></stringProp>
         <stringProp name="HTTPSampler.path"></stringProp>
         <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.proxyHost">127.0.0.1</stringProp>
+        <stringProp name="HTTPSampler.proxyPort">8888</stringProp>
         <stringProp name="HTTPSampler.connect_timeout"></stringProp>
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
       </ConfigTestElement>
@@ -325,64 +289,52 @@
       <hashTree>
         <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="Date Parameters" enabled="true">
           <collectionProp name="UserParameters.names">
-            <stringProp name="880792024">ex_randomEventText</stringProp>
-            <stringProp name="1711090890">ex_randomCaseName</stringProp>
-            <stringProp name="-303223437">ex_randomString3</stringProp>
-            <stringProp name="-303223436">ex_randomString4</stringProp>
-            <stringProp name="169510212">v_dateTime</stringProp>
-            <stringProp name="94049529">v_randomEventName</stringProp>
-            <stringProp name="1506241289">v_randomEventId</stringProp>
-            <stringProp name="-1579351719">v_randomdates</stringProp>
+            <stringProp name="-910588249">v_startDate</stringProp>
+            <stringProp name="-2075731872">v_endDate</stringProp>
+            <stringProp name="2110499805">v_randomString</stringProp>
+            <stringProp name="-825433146">v_tick</stringProp>
+            <stringProp name="-461825005">v_randomComment</stringProp>
+            <stringProp name="556416467">v_boundary</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-2126889136">
+            <collectionProp name="1646434830">
+              <stringProp name="-1788839298">${__timeShift(dd/MM/yyyy,,,,)}</stringProp>
+              <stringProp name="-1429437465">${__timeShift(dd/MM/yyyy,,P7D,,)}</stringProp>
               <stringProp name="-1638586559">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)} </stringProp>
-              <stringProp name="-1638586559">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)} </stringProp>
-              <stringProp name="-1638586559">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)} </stringProp>
-              <stringProp name="-1638586559">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)} </stringProp>
-              <stringProp name="-1326369593">${__time(yyyy-MM-dd&apos;T&apos;hh:mm:ss.SSS&apos;Z&apos;,)}</stringProp>
-              <stringProp name="487930620">${__Random(1001,1007,)}</stringProp>
-              <stringProp name="1642584799">${__Random(1,1070,)}</stringProp>
-              <stringProp name="1723739275">${__groovy(new Date((long)(Math.random() * System.currentTimeMillis())).format(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;),)}</stringProp>
+              <stringProp name="2074225080">${__RandomString(13,123456789,)}</stringProp>
+              <stringProp name="-1201993923">${__RandomString(10,abcdefghijklmnopqrstuvwxyz,)} </stringProp>
+              <stringProp name="1230490064">----=_Part_${__RandomString(2, 0123456789)}_${__time(,)}_${__RandomString(13,abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789)}</stringProp>
             </collectionProp>
           </collectionProp>
-          <boolProp name="UserParameters.per_iteration">true</boolProp>
+          <boolProp name="UserParameters.per_iteration">false</boolProp>
         </UserParameters>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell - Update randomdates For Audio" enabled="true">
-          <stringProp name="BeanShellSampler.query">import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">import org.apache.commons.io.FileUtils;
 
-// Get the original random date
-String originalDate = vars.get(&quot;v_randomdates&quot;);
+// Path to your audio file
+String filePath = &quot;${TEST_DATA}${FILE_TO_UPLOAD1mb}&quot;;
 
-// Format and save it as audiodates
-SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;);
-Date date = sdf.parse(originalDate);
+try {
+    // Read the audio file into a byte array
+    byte[] fileData = FileUtils.readFileToByteArray(new File(filePath));
 
-// Create a Calendar instance and set it to the original date
-Calendar calendar = Calendar.getInstance();
-calendar.setTime(date);
+    // Convert the byte array to a binary string
+    StringBuilder binaryStringBuilder = new StringBuilder();
+    for (byte b : fileData) {
+        binaryStringBuilder.append(String.format(&quot;%8s&quot;, Integer.toBinaryString(b &amp; 0xFF)).replace(&apos; &apos;, &apos;0&apos;));
+    }
 
-// Generate a random time within a day (24 hours)
-Random random = new Random();
-int randomHour = random.nextInt(24);
-int randomMinute = random.nextInt(60);
-int randomSecond = random.nextInt(60);
+    // Print or use the binary string as needed
+    log.info(&quot;Binary representation of the audio file:\n&quot; + binaryStringBuilder.toString());
 
-// Set the random time on the existing date
-calendar.set(Calendar.HOUR_OF_DAY, randomHour);
-calendar.set(Calendar.MINUTE, randomMinute);
-calendar.set(Calendar.SECOND, randomSecond);
+    // You can now use the binary string in your test logic
 
-// Save the formatted date with the random time as audiodates
-vars.put(&quot;v_audiodates&quot;, sdf.format(calendar.getTime()));
-
-// Add one hour and save it as audiodates1hour
-calendar.add(Calendar.HOUR, 1);
-vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
+} catch (Exception e) {
+    log.error(&quot;Error reading or converting the audio file: &quot; + e.getMessage());
+    e.printStackTrace();
+    // Handle the error as needed
+}
 </stringProp>
           <stringProp name="BeanShellSampler.filename"></stringProp>
           <stringProp name="BeanShellSampler.parameters"></stringProp>
@@ -395,90 +347,46 @@ vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
           <boolProp name="displaySystemProperties">false</boolProp>
         </DebugSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell - Update randomdates For Audio" enabled="true">
-          <stringProp name="BeanShellSampler.query">import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
-
-// Get the original random date
-String originalDate = vars.get(&quot;v_randomdates&quot;);
-
-// Format and save it as audiodates
-SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;);
-Date date = sdf.parse(originalDate);
-
-// Create a Calendar instance and set it to the original date
-Calendar calendar = Calendar.getInstance();
-calendar.setTime(date);
-
-// Generate a random time within a day (24 hours)
-Random random = new Random();
-int randomHour = random.nextInt(24);
-int randomMinute = random.nextInt(60);
-int randomSecond = random.nextInt(60);
-
-// Set the random time on the existing date
-calendar.set(Calendar.HOUR_OF_DAY, randomHour);
-calendar.set(Calendar.MINUTE, randomMinute);
-calendar.set(Calendar.SECOND, randomSecond);
-
-// Save the formatted date with the random time as audiodates
-vars.put(&quot;v_audiodates&quot;, sdf.format(calendar.getTime()));
-
-// Add one hour and save it as audiodates1hour
-calendar.add(Calendar.HOUR, 1);
-vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
-</stringProp>
-          <stringProp name="BeanShellSampler.filename"></stringProp>
-          <stringProp name="BeanShellSampler.parameters"></stringProp>
-          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
-        </BeanShellSampler>
-        <hashTree/>
-        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
-          <boolProp name="displayJMeterProperties">false</boolProp>
-          <boolProp name="displayJMeterVariables">true</boolProp>
-          <boolProp name="displaySystemProperties">false</boolProp>
-        </DebugSampler>
-        <hashTree/>
-        <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="IC - Get Auth Token for Api" enabled="true">
-          <stringProp name="IncludeController.includepath">Test.Fragment.Get.Auth.Token.jmx</stringProp>
-        </IncludeController>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Events" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://darts-gateway.staging.platform.hmcts.net/service/darts/DARTSService - Original" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-  &quot;message_id&quot;: &quot;667&quot;,&#xd;
-  &quot;type&quot;: &quot;1000&quot;,&#xd;
-  &quot;sub_type&quot;: &quot;${v_randomEventName}&quot;,&#xd;
-  &quot;event_id&quot;: &quot;668&quot;,&#xd;
-  &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,&#xd;
-  &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,&#xd;
-  &quot;case_numbers&quot;: [&#xd;
-    &quot;PerfCase_${ex_randomCaseName}&quot;&#xd;
-  ],&#xd;
-  &quot;event_text&quot;: &quot;Perf01_${ex_randomEventText}&quot;,&#xd;
-  &quot;date_time&quot;: &quot;${v_dateTime}&quot;,&#xd;
-  &quot;retention_policy&quot;: {&#xd;
-    &quot;case_retention_fixed_policy&quot;: &quot;1&quot;,&#xd;
-    &quot;case_total_sentence&quot;: &quot;1&quot;&#xd;
-  },&#xd;
-  &quot;start_time&quot;: &quot;${v_dateTime}&quot;,&#xd;
-  &quot;end_time&quot;: &quot;${__groovy(new java.text.SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;hh:mm:ss.SSS&apos;Z&apos;&quot;).format(new Date(System.currentTimeMillis() + 60*60*1000)),)}&quot;&#xd;
-}</stringProp>
+                <stringProp name="Argument.value">${v_boundary}&#xd;
+Content-Type: application/xop+xml; charset=UTF-8; type=&quot;text/xml&quot;&#xd;
+Content-Transfer-Encoding: 8bit&#xd;
+Content-ID: &lt;rootpart@soapui.org&gt;&#xd;
+&#xd;
+&lt;s:Envelope xmlns:s=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:com=&quot;http://com.synapps.mojdarts.service.com&quot; xmlns:core=&quot;http://core.datamodel.fs.documentum.emc.com/&quot; xmlns:prop=&quot;http://properties.core.datamodel.fs.documentum.emc.com/&quot; xmlns:con=&quot;http://content.core.datamodel.fs.documentum.emc.com/&quot;&gt;&#xd;
+   &lt;s:Header&gt;&#xd;
+      &lt;ServiceContext token=&quot;temporary/127.0.0.1-1694086218480-789961425&quot; xmlns=&quot;http://context.core.datamodel.fs.documentum.emc.com/&quot;&gt;&#xd;
+         &lt;Identities xsi:type=&quot;RepositoryIdentity&quot; userName=&quot;xhibit_user&quot; password=&quot;Password@1&quot; repositoryName=&quot;moj_darts&quot; domain=&quot;&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;/&gt;&#xd;
+         &lt;RuntimeProperties/&gt;&#xd;
+      &lt;/ServiceContext&gt;&#xd;
+   &lt;/s:Header&gt;&#xd;
+   &lt;s:Body&gt;&#xd;
+      &lt;com:addAudio&gt;&#xd;
+&#xd;
+         &lt;document&gt;&amp;lt;audio&amp;gt;&amp;lt;start Y=&quot;2023&quot; M=&quot;9&quot; D=&quot;7&quot; H=&quot;11&quot; MIN=&quot;26&quot; S=&quot;51&quot; /&amp;gt;&amp;lt;end Y=&quot;2023&quot; M=&quot;9&quot; D=&quot;7&quot; H=&quot;11&quot; MIN=&quot;29&quot; S=&quot;49&quot; /&amp;gt;&amp;lt;channel&amp;gt;1&amp;lt;/channel&amp;gt;&amp;lt;max_channels&amp;gt;4&amp;lt;/max_channels&amp;gt;&amp;lt;mediaformat&amp;gt;mpeg2&amp;lt;/mediaformat&amp;gt;&amp;lt;mediafile&amp;gt;0001.a00&amp;lt;/mediafile&amp;gt;&amp;lt;courthouse&amp;gt;SWANSEA&amp;lt;/courthouse&amp;gt;&amp;lt;courtroom&amp;gt;32&amp;lt;/courtroom&amp;gt;&amp;lt;case_numbers&amp;gt;&amp;lt;case_number&amp;gt;T20230294&amp;lt;/case_number&amp;gt;&amp;lt;case_number&amp;gt;U20230907-112949&amp;lt;/case_number&amp;gt;&amp;lt;/case_numbers&amp;gt;&amp;lt;/audio&amp;gt;&lt;/document&gt;&#xd;
+      &lt;/com:addAudio&gt;&#xd;
+   &lt;/s:Body&gt;&#xd;
+&lt;/s:Envelope&gt;&#xd;
+${v_boundary}&#xd;
+Content-Type: application/octet-stream&#xd;
+Content-Transfer-Encoding: binary&#xd;
+Content-ID: &lt;sample6.mp2&gt;&#xd;
+Content-Disposition: attachment; name=&quot;sample6.mp2&quot;&#xd;
+</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+          <stringProp name="HTTPSampler.domain">darts-gateway.staging.platform.hmcts.net</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">events</stringProp>
+          <stringProp name="HTTPSampler.path">service/darts/DARTSService</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -491,77 +399,37 @@ vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
         <hashTree>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
-              <elementProp name="Host" elementType="Header">
-                <stringProp name="Header.name">Host</stringProp>
-                <stringProp name="Header.value">${BASE_URL}</stringProp>
-              </elementProp>
-              <elementProp name="Connection" elementType="Header">
-                <stringProp name="Header.name">Connection</stringProp>
-                <stringProp name="Header.value">keep-alive</stringProp>
-              </elementProp>
-              <elementProp name="Content-Length" elementType="Header">
-                <stringProp name="Header.name">Content-Length</stringProp>
-                <stringProp name="Header.value">453</stringProp>
-              </elementProp>
-              <elementProp name="sec-ch-ua" elementType="Header">
-                <stringProp name="Header.name">sec-ch-ua</stringProp>
-                <stringProp name="Header.value">&quot;Google Chrome&quot;;v=&quot;119&quot;, &quot;Chromium&quot;;v=&quot;119&quot;, &quot;Not?A_Brand&quot;;v=&quot;24&quot;</stringProp>
-              </elementProp>
-              <elementProp name="sec-ch-ua-mobile" elementType="Header">
-                <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
-                <stringProp name="Header.value">?0</stringProp>
-              </elementProp>
-              <elementProp name="Authorization" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${ex_accessToken}</stringProp>
-              </elementProp>
-              <elementProp name="User-Agent" elementType="Header">
-                <stringProp name="Header.name">User-Agent</stringProp>
-                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36</stringProp>
-              </elementProp>
-              <elementProp name="x-dtpc" elementType="Header">
-                <stringProp name="Header.name">x-dtpc</stringProp>
-                <stringProp name="Header.value">2$251157096_623h23vLOOCWVUADSUJAKHUHHPSHFCAPEFKIGUQ-0e0</stringProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip,deflate</stringProp>
               </elementProp>
               <elementProp name="Content-Type" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
+                <stringProp name="Header.value">multipart/related; type=&quot;application/xop+xml&quot;; start=&quot;&lt;rootpart@soapui.org&gt;&quot;; start-info=&quot;text/xml&quot;;boundary=&quot;${v_boundary}&quot;;</stringProp>
               </elementProp>
-              <elementProp name="accept" elementType="Header">
-                <stringProp name="Header.name">accept</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
+              <elementProp name="SOAPAction" elementType="Header">
+                <stringProp name="Header.name">SOAPAction</stringProp>
+                <stringProp name="Header.value">&quot;&quot;</stringProp>
               </elementProp>
-              <elementProp name="sec-ch-ua-platform" elementType="Header">
-                <stringProp name="Header.name">sec-ch-ua-platform</stringProp>
-                <stringProp name="Header.value">&quot;Windows&quot;</stringProp>
+              <elementProp name="MIME-Version" elementType="Header">
+                <stringProp name="Header.name">MIME-Version</stringProp>
+                <stringProp name="Header.value">1.0</stringProp>
               </elementProp>
-              <elementProp name="Origin" elementType="Header">
-                <stringProp name="Header.name">Origin</stringProp>
-                <stringProp name="Header.value">https://${BASE_URL}</stringProp>
+              <elementProp name="Content-Length" elementType="Header">
+                <stringProp name="Header.name">Content-Length</stringProp>
+                <stringProp name="Header.value">5856160</stringProp>
               </elementProp>
-              <elementProp name="Sec-Fetch-Site" elementType="Header">
-                <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                <stringProp name="Header.value">same-origin</stringProp>
+              <elementProp name="Host" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">darts-gateway.staging.platform.hmcts.net</stringProp>
               </elementProp>
-              <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                <stringProp name="Header.value">cors</stringProp>
+              <elementProp name="Connection" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
               </elementProp>
-              <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                <stringProp name="Header.value">empty</stringProp>
-              </elementProp>
-              <elementProp name="Referer" elementType="Header">
-                <stringProp name="Header.name">Referer</stringProp>
-                <stringProp name="Header.value">https://${BASE_URL}/swagger-ui/index.html</stringProp>
-              </elementProp>
-              <elementProp name="Accept-Encoding" elementType="Header">
-                <stringProp name="Header.name">Accept-Encoding</stringProp>
-                <stringProp name="Header.value">gzip, deflate, br</stringProp>
-              </elementProp>
-              <elementProp name="Accept-Language" elementType="Header">
-                <stringProp name="Header.name">Accept-Language</stringProp>
-                <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Apache-HttpClient/4.5.5 (Java/16.0.2)</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -572,40 +440,46 @@ vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
           </UniformRandomTimer>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Events" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://darts-gateway.staging.platform.hmcts.net/service/darts/DARTSService - Original" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-  &quot;message_id&quot;: &quot;667&quot;,&#xd;
-  &quot;type&quot;: &quot;30500&quot;,&#xd;
-  &quot;sub_type&quot;: &quot;&quot;,&#xd;
-  &quot;event_id&quot;: &quot;668&quot;,&#xd;
-  &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,&#xd;
-  &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,&#xd;
-  &quot;case_numbers&quot;: [&#xd;
-    &quot;PerfCase_fpqofsmkdl&quot;&#xd;
-  ],&#xd;
-  &quot;event_text&quot;: &quot;PerfEvent_wdsta_1&quot;,&#xd;
-  &quot;date_time&quot;: &quot;1976-09-20T06:07:48.447Z&quot;,&#xd;
-  &quot;retention_policy&quot;: {&#xd;
-    &quot;case_retention_fixed_policy&quot;: &quot;DARTS Not Guilty Policy&quot;,&#xd;
-    &quot;case_total_sentence&quot;: &quot;&quot;&#xd;
-  },&#xd;
-  &quot;start_time&quot;: &quot;1976-09-20T06:07:48.447Z&quot;,&#xd;
-  &quot;end_time&quot;: &quot;1976-09-20T07:07:48.447Z&quot;&#xd;
-}</stringProp>
+                <stringProp name="Argument.value">${v_boundary}&#xd;
+Content-Type: application/xop+xml; charset=UTF-8; type=&quot;text/xml&quot;&#xd;
+Content-Transfer-Encoding: 8bit&#xd;
+Content-ID: &lt;rootpart@soapui.org&gt;&#xd;
+&#xd;
+&lt;s:Envelope xmlns:s=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:com=&quot;http://com.synapps.mojdarts.service.com&quot; xmlns:core=&quot;http://core.datamodel.fs.documentum.emc.com/&quot; xmlns:prop=&quot;http://properties.core.datamodel.fs.documentum.emc.com/&quot; xmlns:con=&quot;http://content.core.datamodel.fs.documentum.emc.com/&quot;&gt;&#xd;
+   &lt;s:Header&gt;&#xd;
+      &lt;ServiceContext token=&quot;temporary/127.0.0.1-1694086218480-789961425&quot; xmlns=&quot;http://context.core.datamodel.fs.documentum.emc.com/&quot;&gt;&#xd;
+         &lt;Identities xsi:type=&quot;RepositoryIdentity&quot; userName=&quot;xhibit_user&quot; password=&quot;Password@1&quot; repositoryName=&quot;moj_darts&quot; domain=&quot;&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;/&gt;&#xd;
+         &lt;RuntimeProperties/&gt;&#xd;
+      &lt;/ServiceContext&gt;&#xd;
+   &lt;/s:Header&gt;&#xd;
+   &lt;s:Body&gt;&#xd;
+      &lt;com:addAudio&gt;&#xd;
+         &lt;document&gt;&amp;lt;audio&amp;gt;&amp;lt;start Y=&quot;2023&quot; M=&quot;9&quot; D=&quot;7&quot; H=&quot;11&quot; MIN=&quot;26&quot; S=&quot;51&quot; /&amp;gt;&amp;lt;end Y=&quot;2023&quot; M=&quot;9&quot; D=&quot;7&quot; H=&quot;11&quot; MIN=&quot;29&quot; S=&quot;49&quot; /&amp;gt;&amp;lt;channel&amp;gt;1&amp;lt;/channel&amp;gt;&amp;lt;max_channels&amp;gt;4&amp;lt;/max_channels&amp;gt;&amp;lt;mediaformat&amp;gt;mpeg2&amp;lt;/mediaformat&amp;gt;&amp;lt;mediafile&amp;gt;AshleyC101.mp2&amp;lt;/mediafile&amp;gt;&amp;lt;courthouse&amp;gt;SWANSEA&amp;lt;/courthouse&amp;gt;&amp;lt;courtroom&amp;gt;32&amp;lt;/courtroom&amp;gt;&amp;lt;case_numbers&amp;gt;&amp;lt;case_number&amp;gt;T20230294&amp;lt;/case_number&amp;gt;&amp;lt;case_number&amp;gt;U20230907-112949&amp;lt;/case_number&amp;gt;&amp;lt;/case_numbers&amp;gt;&amp;lt;/audio&amp;gt;&lt;/document&gt;&#xd;
+      &lt;/com:addAudio&gt;&#xd;
+   &lt;/s:Body&gt;&#xd;
+&lt;/s:Envelope&gt;&#xd;
+${v_boundary}&#xd;
+Content-Type: application/octet-stream&#xd;
+Content-Transfer-Encoding: binary&#xd;
+Content-ID: &lt;AshleyC101.mp2&gt;&#xd;
+Content-Disposition: attachment; name=&quot;AshleyC101.mp2&quot;&#xd;
+&#xd;
+0110100001100101011011000110110001101111001000000111011101101111011100100110110001100100</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+          <stringProp name="HTTPSampler.domain">darts-gateway.staging.platform.hmcts.net</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">events</stringProp>
+          <stringProp name="HTTPSampler.path">service/darts/DARTSService</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -618,77 +492,117 @@ vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
         <hashTree>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
-              <elementProp name="Host" elementType="Header">
-                <stringProp name="Header.name">Host</stringProp>
-                <stringProp name="Header.value">${BASE_URL}</stringProp>
-              </elementProp>
-              <elementProp name="Connection" elementType="Header">
-                <stringProp name="Header.name">Connection</stringProp>
-                <stringProp name="Header.value">keep-alive</stringProp>
-              </elementProp>
-              <elementProp name="Content-Length" elementType="Header">
-                <stringProp name="Header.name">Content-Length</stringProp>
-                <stringProp name="Header.value">453</stringProp>
-              </elementProp>
-              <elementProp name="sec-ch-ua" elementType="Header">
-                <stringProp name="Header.name">sec-ch-ua</stringProp>
-                <stringProp name="Header.value">&quot;Google Chrome&quot;;v=&quot;119&quot;, &quot;Chromium&quot;;v=&quot;119&quot;, &quot;Not?A_Brand&quot;;v=&quot;24&quot;</stringProp>
-              </elementProp>
-              <elementProp name="sec-ch-ua-mobile" elementType="Header">
-                <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
-                <stringProp name="Header.value">?0</stringProp>
-              </elementProp>
-              <elementProp name="Authorization" elementType="Header">
-                <stringProp name="Header.name">Authorization</stringProp>
-                <stringProp name="Header.value">Bearer ${ex_accessToken}</stringProp>
-              </elementProp>
-              <elementProp name="User-Agent" elementType="Header">
-                <stringProp name="Header.name">User-Agent</stringProp>
-                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36</stringProp>
-              </elementProp>
-              <elementProp name="x-dtpc" elementType="Header">
-                <stringProp name="Header.name">x-dtpc</stringProp>
-                <stringProp name="Header.value">2$251157096_623h23vLOOCWVUADSUJAKHUHHPSHFCAPEFKIGUQ-0e0</stringProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip,deflate</stringProp>
               </elementProp>
               <elementProp name="Content-Type" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
+                <stringProp name="Header.value">multipart/related; type=&quot;application/xop+xml&quot;; start=&quot;&lt;rootpart@soapui.org&gt;&quot;; start-info=&quot;text/xml&quot;;boundary=&quot;${v_boundary}&quot;;</stringProp>
               </elementProp>
-              <elementProp name="accept" elementType="Header">
-                <stringProp name="Header.name">accept</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
+              <elementProp name="SOAPAction" elementType="Header">
+                <stringProp name="Header.name">SOAPAction</stringProp>
+                <stringProp name="Header.value">&quot;&quot;</stringProp>
               </elementProp>
-              <elementProp name="sec-ch-ua-platform" elementType="Header">
-                <stringProp name="Header.name">sec-ch-ua-platform</stringProp>
-                <stringProp name="Header.value">&quot;Windows&quot;</stringProp>
+              <elementProp name="MIME-Version" elementType="Header">
+                <stringProp name="Header.name">MIME-Version</stringProp>
+                <stringProp name="Header.value">1.0</stringProp>
               </elementProp>
-              <elementProp name="Origin" elementType="Header">
-                <stringProp name="Header.name">Origin</stringProp>
-                <stringProp name="Header.value">https://${BASE_URL}</stringProp>
+              <elementProp name="Content-Length" elementType="Header">
+                <stringProp name="Header.name">Content-Length</stringProp>
+                <stringProp name="Header.value">5856160</stringProp>
               </elementProp>
-              <elementProp name="Sec-Fetch-Site" elementType="Header">
-                <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                <stringProp name="Header.value">same-origin</stringProp>
+              <elementProp name="Host" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">darts-gateway.staging.platform.hmcts.net</stringProp>
               </elementProp>
-              <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                <stringProp name="Header.value">cors</stringProp>
+              <elementProp name="Connection" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
               </elementProp>
-              <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                <stringProp name="Header.value">empty</stringProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Apache-HttpClient/4.5.5 (Java/16.0.2)</stringProp>
               </elementProp>
-              <elementProp name="Referer" elementType="Header">
-                <stringProp name="Header.name">Referer</stringProp>
-                <stringProp name="Header.value">https://${BASE_URL}/swagger-ui/index.html</stringProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">0.0</stringProp>
+            <stringProp name="ConstantTimer.delay">0.0</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://darts-gateway.staging.platform.hmcts.net/service/darts/runtime/ContextRegistryService" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;s:Envelope xmlns:s=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
+   &lt;s:Header&gt;&#xd;
+      &lt;ServiceContext token=&quot;temporary/127.0.0.1-1694086218480-789961425&quot; xmlns=&quot;http://context.core.datamodel.fs.documentum.emc.com/&quot;&gt;&#xd;
+         &lt;Identities xsi:type=&quot;RepositoryIdentity&quot; userName=&quot;xhibit_user&quot; password=&quot;Password@1&quot; repositoryName=&quot;moj_darts&quot; domain=&quot;&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;/&gt;&#xd;
+         &lt;RuntimeProperties/&gt;&#xd;
+      &lt;/ServiceContext&gt;&#xd;
+   &lt;/s:Header&gt;&#xd;
+   &lt;s:Body&gt;&#xd;
+      &lt;ns5:addDocument xmlns:ns5=&quot;http://com.synapps.mojdarts.service.com&quot;&gt;&#xd;
+         &lt;messageId&gt;18418&lt;/messageId&gt;&#xd;
+         &lt;type&gt;DL&lt;/type&gt;&#xd;
+         &lt;subType&gt;DL&lt;/subType&gt;&#xd;
+         &lt;document&gt;&lt;![CDATA[&lt;cs:DailyList xmlns:cs=&quot;http://www.courtservice.gov.uk/schemas/courtservice&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.courtservice.gov.uk/schemas/courtservice DailyList-v5-2.xsd&quot; xmlns:apd=&quot;http://www.govtalk.gov.uk/people/AddressAndPersonalDetails&quot;&gt;&lt;cs:DocumentID&gt;&lt;cs:DocumentName&gt;DL 18/02/10 FINAL v1&lt;/cs:DocumentName&gt;&lt;cs:UniqueID&gt;CSDDL000000000576147&lt;/cs:UniqueID&gt;&lt;cs:DocumentType&gt;DL&lt;/cs:DocumentType&gt;&lt;cs:TimeStamp&gt;2010-02-18T11:13:23.030&lt;/cs:TimeStamp&gt;&lt;cs:Version&gt;1.0&lt;/cs:Version&gt;&lt;cs:SecurityClassification&gt;NPM&lt;/cs:SecurityClassification&gt;&lt;cs:SellByDate&gt;2010-12-15&lt;/cs:SellByDate&gt;&lt;cs:XSLstylesheetURL&gt;http://www.courtservice.gov.uk/transforms/courtservice/dailyListHtml.xsl&lt;/cs:XSLstylesheetURL&gt;&lt;/cs:DocumentID&gt;&lt;cs:ListHeader&gt;&lt;cs:ListCategory&gt;Criminal&lt;/cs:ListCategory&gt;&lt;cs:StartDate&gt;2010-02-18&lt;/cs:StartDate&gt;&lt;cs:EndDate&gt;2010-02-18&lt;/cs:EndDate&gt;&lt;cs:Version&gt;FINAL v1&lt;/cs:Version&gt;&lt;cs:CRESTprintRef&gt;MCD/112585&lt;/cs:CRESTprintRef&gt;&lt;cs:PublishedTime&gt;2010-02-17T16:16:50&lt;/cs:PublishedTime&gt;&lt;cs:CRESTlistID&gt;12298&lt;/cs:CRESTlistID&gt;&lt;/cs:ListHeader&gt;&lt;cs:CrownCourt&gt;&lt;cs:CourtHouseType&gt;Crown Court&lt;/cs:CourtHouseType&gt;&lt;cs:CourtHouseCode CourtHouseShortName=&quot;SNARE&quot;&gt;453&lt;/cs:CourtHouseCode&gt;&lt;cs:CourtHouseName&gt;Bristol&lt;/cs:CourtHouseName&gt;&lt;cs:CourtHouseAddress&gt;&lt;apd:Line&gt;THE CROWN COURT AT Bristol&lt;/apd:Line&gt;&lt;apd:Line&gt;75 HOLLYBUSH HILL&lt;/apd:Line&gt;&lt;apd:Line&gt;Bristol, LONDON&lt;/apd:Line&gt;&lt;apd:PostCode&gt;E11 1QW&lt;/apd:PostCode&gt;&lt;/cs:CourtHouseAddress&gt;&lt;cs:CourtHouseDX&gt;DX 98240 WANSTEAD 2&lt;/cs:CourtHouseDX&gt;&lt;cs:CourtHouseTelephone&gt;02085300000&lt;/cs:CourtHouseTelephone&gt;&lt;cs:CourtHouseFax&gt;02085300072&lt;/cs:CourtHouseFax&gt;&lt;/cs:CrownCourt&gt;&lt;cs:CourtLists&gt;&lt;cs:CourtList&gt;&lt;cs:CourtHouse&gt;&lt;cs:CourtHouseType&gt;Crown Court&lt;/cs:CourtHouseType&gt;&lt;cs:CourtHouseCode&gt;453&lt;/cs:CourtHouseCode&gt;&lt;cs:CourtHouseName&gt;Bristol&lt;/cs:CourtHouseName&gt;&lt;/cs:CourtHouse&gt;&lt;cs:Sittings&gt;&lt;cs:Sitting&gt;&lt;cs:CourtRoomNumber&gt;1AB&lt;/cs:CourtRoomNumber&gt;&lt;cs:SittingSequenceNo&gt;1&lt;/cs:SittingSequenceNo&gt;&lt;cs:SittingAt&gt;10:00:00&lt;/cs:SittingAt&gt;&lt;cs:SittingPriority&gt;T&lt;/cs:SittingPriority&gt;&lt;cs:Judiciary&gt;&lt;cs:Judge&gt;&lt;apd:CitizenNameSurname&gt;N&amp;#47;A&lt;/apd:CitizenNameSurname&gt;&lt;apd:CitizenNameRequestedName&gt;N&amp;#47;A&lt;/apd:CitizenNameRequestedName&gt;&lt;cs:CRESTjudgeID&gt;0&lt;/cs:CRESTjudgeID&gt;&lt;/cs:Judge&gt;&lt;/cs:Judiciary&gt;&lt;cs:Hearings&gt;&lt;cs:Hearing&gt;&lt;cs:HearingSequenceNumber&gt;1&lt;/cs:HearingSequenceNumber&gt;&lt;cs:HearingDetails HearingType=&quot;TRL&quot;&gt;&lt;cs:HearingDescription&gt;For Trial&lt;/cs:HearingDescription&gt;&lt;cs:HearingDate&gt;2010-02-18&lt;/cs:HearingDate&gt;&lt;/cs:HearingDetails&gt;&lt;cs:CRESThearingID&gt;1&lt;/cs:CRESThearingID&gt;&lt;cs:TimeMarkingNote&gt;10:00 AM&lt;/cs:TimeMarkingNote&gt;&lt;cs:CaseNumber&gt;T20107001&lt;/cs:CaseNumber&gt;&lt;cs:Prosecution ProsecutingAuthority=&quot;Crown Prosecution Service&quot;&gt;&lt;cs:ProsecutingReference&gt;CPS&lt;/cs:ProsecutingReference&gt;&lt;cs:ProsecutingOrganisation&gt;&lt;cs:OrganisationName&gt;Crown Prosecution Service&lt;/cs:OrganisationName&gt;&lt;/cs:ProsecutingOrganisation&gt;&lt;/cs:Prosecution&gt;&lt;cs:CommittingCourt&gt;&lt;cs:CourtHouseType&gt;Magistrates Court&lt;/cs:CourtHouseType&gt;&lt;cs:CourtHouseCode CourtHouseShortName=&quot;BAM&quot;&gt;2725&lt;/cs:CourtHouseCode&gt;&lt;cs:CourtHouseName&gt;BARNET MAGISTRATES COURT&lt;/cs:CourtHouseName&gt;&lt;cs:CourtHouseAddress&gt;&lt;apd:Line&gt;7C HIGH STREET&lt;/apd:Line&gt;&lt;apd:Line&gt;-&lt;/apd:Line&gt;&lt;apd:Line&gt;BARNET&lt;/apd:Line&gt;&lt;apd:PostCode&gt;EN5 5UE&lt;/apd:PostCode&gt;&lt;/cs:CourtHouseAddress&gt;&lt;cs:CourtHouseDX&gt;DX 8626 BARNET&lt;/cs:CourtHouseDX&gt;&lt;cs:CourtHouseTelephone&gt;02084419042&lt;/cs:CourtHouseTelephone&gt;&lt;/cs:CommittingCourt&gt;&lt;cs:Defendants&gt;&lt;cs:Defendant&gt;&lt;cs:PersonalDetails&gt;&lt;cs:Name&gt;&lt;apd:CitizenNameForename&gt;Franz&lt;/apd:CitizenNameForename&gt;&lt;apd:CitizenNameSurname&gt;KAFKA&lt;/apd:CitizenNameSurname&gt;&lt;/cs:Name&gt;&lt;cs:IsMasked&gt;no&lt;/cs:IsMasked&gt;&lt;cs:DateOfBirth&gt;&lt;apd:BirthDate&gt;1962-06-12&lt;/apd:BirthDate&gt;&lt;apd:VerifiedBy&gt;not verified&lt;/apd:VerifiedBy&gt;&lt;/cs:DateOfBirth&gt;&lt;cs:Sex&gt;male&lt;/cs:Sex&gt;&lt;cs:Address&gt;&lt;apd:Line&gt;ADDRESS LINE 1&lt;/apd:Line&gt;&lt;apd:Line&gt;ADDRESS LINE 2&lt;/apd:Line&gt;&lt;apd:Line&gt;ADDRESS LINE 3&lt;/apd:Line&gt;&lt;apd:Line&gt;ADDRESS LINE 4&lt;/apd:Line&gt;&lt;apd:Line&gt;SOMETOWN, SOMECOUNTY&lt;/apd:Line&gt;&lt;apd:PostCode&gt;GU12 7RT&lt;/apd:PostCode&gt;&lt;/cs:Address&gt;&lt;/cs:PersonalDetails&gt;&lt;cs:ASNs&gt;&lt;cs:ASN&gt;0723XH1000000262665K&lt;/cs:ASN&gt;&lt;/cs:ASNs&gt;&lt;cs:CRESTdefendantID&gt;29161&lt;/cs:CRESTdefendantID&gt;&lt;cs:PNCnumber&gt;20123456789L&lt;/cs:PNCnumber&gt;&lt;cs:URN&gt;62AA1010646&lt;/cs:URN&gt;&lt;cs:CustodyStatus&gt;In custody&lt;/cs:CustodyStatus&gt;&lt;/cs:Defendant&gt;&lt;/cs:Defendants&gt;&lt;/cs:Hearing&gt;&lt;/cs:Hearings&gt;&lt;/cs:Sitting&gt;&lt;/cs:Sittings&gt;&lt;/cs:CourtList&gt;&lt;/cs:CourtLists&gt;&lt;/cs:DailyList&gt;]]&gt;&lt;/document&gt;&#xd;
+      &lt;/ns5:addDocument&gt;&#xd;
+   &lt;/s:Body&gt;&#xd;
+&lt;/s:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">darts-gateway.staging.platform.hmcts.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">service/darts/runtime/ContextRegistryService</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
               <elementProp name="Accept-Encoding" elementType="Header">
                 <stringProp name="Header.name">Accept-Encoding</stringProp>
-                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                <stringProp name="Header.value">gzip,deflate</stringProp>
               </elementProp>
-              <elementProp name="Accept-Language" elementType="Header">
-                <stringProp name="Header.name">Accept-Language</stringProp>
-                <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">text/xml;charset=UTF-8</stringProp>
+              </elementProp>
+              <elementProp name="SOAPAction" elementType="Header">
+                <stringProp name="Header.name">SOAPAction</stringProp>
+                <stringProp name="Header.value">&quot;&quot;</stringProp>
+              </elementProp>
+              <elementProp name="Content-Length" elementType="Header">
+                <stringProp name="Header.name">Content-Length</stringProp>
+                <stringProp name="Header.value">5082</stringProp>
+              </elementProp>
+              <elementProp name="Host" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">darts-gateway.staging.platform.hmcts.net</stringProp>
+              </elementProp>
+              <elementProp name="Connection" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Apache-HttpClient/4.5.5 (Java/16.0.2)</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>

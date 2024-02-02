@@ -45,7 +45,7 @@
           </elementProp>
           <elementProp name="USER_ITERATIONS" elementType="Argument">
             <stringProp name="Argument.name">USER_ITERATIONS</stringProp>
-            <stringProp name="Argument.value">${__P(USER_ITERATIONS, 5)}</stringProp>
+            <stringProp name="Argument.value">${__P(USER_ITERATIONS, 1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="TENANT_ID" elementType="Argument">
@@ -484,7 +484,7 @@
           </UniformRandomTimer>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Cases" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Cases" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">

@@ -103,6 +103,11 @@
             <stringProp name="Argument.value">_BUILDNUMBER_</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="FILE_TO_UPLOAD336mb" elementType="Argument">
+            <stringProp name="Argument.name">FILE_TO_UPLOAD336mb</stringProp>
+            <stringProp name="Argument.value">${__P(FILE_TO_UPLOAD, 24h.mp2)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
@@ -295,6 +300,8 @@
         <stringProp name="HTTPSampler.contentEncoding"></stringProp>
         <stringProp name="HTTPSampler.path"></stringProp>
         <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.proxyHost">127.0.0.1</stringProp>
+        <stringProp name="HTTPSampler.proxyPort">8888</stringProp>
         <stringProp name="HTTPSampler.connect_timeout"></stringProp>
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
       </ConfigTestElement>
@@ -652,6 +659,61 @@ values  (&apos;${ex_hearingsIds_1}&apos;, currval(&apos;darts.med_seq&apos;));</
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="TestPlan.comments">Content-Disposition: form-data; name=&quot;transcript&quot;; filename=&quot;SampleDoc.docx&quot; </stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Authorization" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${ex_accessToken}</stringProp>
+              </elementProp>
+              <elementProp name="x-dtpc" elementType="Header">
+                <stringProp name="Header.name">x-dtpc</stringProp>
+                <stringProp name="Header.value">4$261474838_978h17vTCFUIAKFURHHRNPPCOHSKQRRHRBMNCRU-0e0</stringProp>
+              </elementProp>
+              <elementProp name="accept" elementType="Header">
+                <stringProp name="Header.name">accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts - Api - POST - Audio - Created ${audioCounter} - 336mb" enabled="false">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="${TEST_DATA}${FILE_TO_UPLOAD336mb}" elementType="HTTPFileArg">
+                <stringProp name="File.path">${TEST_DATA}${FILE_TO_UPLOAD336mb}</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">audio/mpeg</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="metadata" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">metadata</stringProp>
+                <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_audiodates}&quot;,    &quot;ended_at&quot;: &quot;${v_audiodates1hour}&quot;,    &quot;channel&quot;: ${audioCounter},    &quot;total_channels&quot;: 4,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;24h.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,    &quot;file_size&quot;: 335,919,    &quot;checksum&quot;: &quot;TVRMwq16b4mcZwPSlZj/iQ==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="HTTPArgument.content_type">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">audios</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
