@@ -73,6 +73,21 @@
             <stringProp name="Argument.value">${__P(USERNAME, darts_global_test_user)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="USERNAME2" elementType="Argument">
+            <stringProp name="Argument.name">USERNAME2</stringProp>
+            <stringProp name="Argument.value">${__P(USERNAME2, darts.transcriber@hmcts.net)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USERNAME3" elementType="Argument">
+            <stringProp name="Argument.name">USERNAME3</stringProp>
+            <stringProp name="Argument.value">${__P(USERNAME3, PerfTranscirber01)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PASSWORD3" elementType="Argument">
+            <stringProp name="Argument.name">PASSWORD3</stringProp>
+            <stringProp name="Argument.value">${__P(PASSWORD3, PerfTester@01)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="PASSWORD" elementType="Argument">
             <stringProp name="Argument.name">PASSWORD</stringProp>
             <stringProp name="Argument.value">${__GetSecret(PASSWORD)}</stringProp>
@@ -336,6 +351,232 @@
         <boolProp name="CacheManager.controlledByThread">false</boolProp>
       </CacheManager>
       <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - test1" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="B2C_1_ropc_darts_signin/oauth2/v2.0/token" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">grant_type=${GRANT_TYPE}&amp;client_id=${CLIENT_ID}&amp;client_secret=${CLIENT_SECRET}&amp;scope=${SCOPE}&amp;username=${USERNAME}&amp;password=${PASSWORD}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.domain">${BASE_URL_LOGIN}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${BASE_URL_TOKEN}/B2C_1_ropc_darts_signin/oauth2/v2.0/token</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+              <elementProp name="Cache-Control" elementType="Header">
+                <stringProp name="Header.name">Cache-Control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+              <elementProp name="Host" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${BASE_URL_LOGIN}</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Connection" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="Content-Length" elementType="Header">
+                <stringProp name="Header.name">Content-Length</stringProp>
+                <stringProp name="Header.value">277</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Get Access Token" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">ex_accessToken</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.access_token</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="B2C_1_ropc_darts_signin/oauth2/v2.0/token" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">grant_type=${GRANT_TYPE}&amp;client_id=${CLIENT_ID}&amp;client_secret=${CLIENT_SECRET}&amp;scope=${SCOPE}&amp;username=${USERNAME2}&amp;password=${PASSWORD}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${BASE_URL_LOGIN}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${BASE_URL_TOKEN}/B2C_1_ropc_darts_signin/oauth2/v2.0/token</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+              <elementProp name="Cache-Control" elementType="Header">
+                <stringProp name="Header.name">Cache-Control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+              <elementProp name="Host" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${BASE_URL_LOGIN}</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Connection" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="Content-Length" elementType="Header">
+                <stringProp name="Header.name">Content-Length</stringProp>
+                <stringProp name="Header.value">277</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Get Access Token Trans" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">ex_accessTokenTrans</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.access_token</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+          <collectionProp name="UserParameters.names">
+            <stringProp name="94232475">v_randomEventText</stringProp>
+            <stringProp name="-1564979469">v_randomFileName</stringProp>
+            <stringProp name="-342927303">v_randomTranscriptionComment</stringProp>
+            <stringProp name="1000984567">v_randomString4</stringProp>
+            <stringProp name="169510212">v_dateTime</stringProp>
+            <stringProp name="94049529">v_randomEventName</stringProp>
+            <stringProp name="1506241289">v_randomEventId</stringProp>
+            <stringProp name="-808133977">v_randomCaseName</stringProp>
+            <stringProp name="-181499217">v_randomDefender</stringProp>
+            <stringProp name="-1602782773">v_randomJudge</stringProp>
+            <stringProp name="-624884974">v_randomProsecutor</stringProp>
+            <stringProp name="-1331508381">v_randomDefender2</stringProp>
+            <stringProp name="1791439238">v_randomNumberForEvent</stringProp>
+            <stringProp name="-628525754">audioCounter</stringProp>
+            <stringProp name="1921384329">v_randomNumberRetention</stringProp>
+            <stringProp name="-1471382400">v_randomNumberEventId</stringProp>
+          </collectionProp>
+          <collectionProp name="UserParameters.thread_values">
+            <collectionProp name="-1831882289">
+              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-1326369593">${__time(yyyy-MM-dd&apos;T&apos;hh:mm:ss.SSS&apos;Z&apos;,)}</stringProp>
+              <stringProp name="487930620">${__Random(1001,1007,)}</stringProp>
+              <stringProp name="1642584799">${__Random(1,1070,)}</stringProp>
+              <stringProp name="1623793987">${__RandomString(10,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="1512311384">${__Random(1,10,)}</stringProp>
+              <stringProp name="49">1</stringProp>
+              <stringProp name="-1198056235">${__Random(1,4,)}</stringProp>
+              <stringProp name="1636120152">${__Random(1,1000,)}</stringProp>
+            </collectionProp>
+          </collectionProp>
+          <boolProp name="UserParameters.per_iteration">true</boolProp>
+        </UserParameters>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - ${SCRIPT_NAME}" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
@@ -386,11 +627,13 @@
             <stringProp name="1791439238">v_randomNumberForEvent</stringProp>
             <stringProp name="-628525754">audioCounter</stringProp>
             <stringProp name="1921384329">v_randomNumberRetention</stringProp>
-            <stringProp name="0"></stringProp>
+            <stringProp name="-1471382400">v_randomNumberEventId</stringProp>
+            <stringProp name="-2035168919">ex_accessToken</stringProp>
+            <stringProp name="-1241140545">ex_accessTokenTrans</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="15352089">
-              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+            <collectionProp name="774971196">
+              <stringProp name="-917173624">${__RandomString(15,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
@@ -398,14 +641,16 @@
               <stringProp name="487930620">${__Random(1001,1007,)}</stringProp>
               <stringProp name="1642584799">${__Random(1,1070,)}</stringProp>
               <stringProp name="-917173624">${__RandomString(15,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
-              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
-              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
-              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
-              <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-917173624">${__RandomString(15,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-917173624">${__RandomString(15,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-917173624">${__RandomString(15,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
+              <stringProp name="-917173624">${__RandomString(15,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="1512311384">${__Random(1,10,)}</stringProp>
               <stringProp name="49">1</stringProp>
               <stringProp name="-1198056235">${__Random(1,4,)}</stringProp>
-              <stringProp name="0"></stringProp>
+              <stringProp name="1636120152">${__Random(1,1000,)}</stringProp>
+              <stringProp name="-1922340740">eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJpZHAiOiJMb2NhbEFjY291bnQiLCJvaWQiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJzdWIiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJnaXZlbl9uYW1lIjoiRGFydHMgR2xvYmFsIiwiZmFtaWx5X25hbWUiOiJUZXN0IFVzZXIiLCJ0ZnAiOiJCMkNfMV9yb3BjX2RhcnRzX3NpZ25pbiIsInNjcCI6IkZ1bmN0aW9uYWwuVGVzdCIsImF6cCI6Ijg1MTE4ZWUyLTY1NDQtNDE4MC1hMTZlLTk5NjE1MzY1ZjIwOSIsInZlciI6IjEuMCIsImlhdCI6MTcwNzQ5NjIyMSwiYXVkIjoiODUxMThlZTItNjU0NC00MTgwLWExNmUtOTk2MTUzNjVmMjA5IiwiZXhwIjoxNzA3NDk5ODIxLCJpc3MiOiJodHRwczovL2htY3Rzc3RnZXh0aWQuYjJjbG9naW4uY29tLzhiMTg1ZjhiLTY2NWQtNGJiMy1hZjRhLWFiN2VlNjFiOTMzNC92Mi4wLyIsIm5iZiI6MTcwNzQ5NjIyMX0.TQN701aY18yjL2RPCC3EvpIFnb6XDoD2TCsk1ci6hQy0ulhk3pxil0DJXKn0InTr5-x4-l_ckINJxeatR47YVVAFe4D_Xsv_Qrq2hkgSP6ZuhkH1qaFMx6mOatgi9idWybpH3yZbb1ao7R9A8kTCp2crLKNHmaCPFqeoduWYm7zF1LSuow1iZVS2-SGmoWxY0ujKn1E6uio0rioMB_ZPtipTYIL2udpU594vClYR8zgs3WOECKWGlfMpch1fvT5Ba0pveDrfQP2Sv_WfX0VGlbeh-juTdnVvZuNt6Ia1AXKxoZ3zwuxeFI-s9fEbIIx-BX2aDv1AB_ohFSaWBg7XGQ</stringProp>
+              <stringProp name="1719767436">eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJpZHAiOiJMb2NhbEFjY291bnQiLCJvaWQiOiI4ZmIwMDRmMy00NzRiLTQ4MzItYjk1YS03YzRiNjhjZTJjNmQiLCJzdWIiOiI4ZmIwMDRmMy00NzRiLTQ4MzItYjk1YS03YzRiNjhjZTJjNmQiLCJnaXZlbl9uYW1lIjoiRGFydHMiLCJmYW1pbHlfbmFtZSI6IlRyYW5zY3JpYmVyIiwiZW1haWxzIjpbImRhcnRzLnRyYW5zY3JpYmVyQGhtY3RzLm5ldCJdLCJ0ZnAiOiJCMkNfMV9yb3BjX2RhcnRzX3NpZ25pbiIsInNjcCI6IkZ1bmN0aW9uYWwuVGVzdCIsImF6cCI6Ijg1MTE4ZWUyLTY1NDQtNDE4MC1hMTZlLTk5NjE1MzY1ZjIwOSIsInZlciI6IjEuMCIsImlhdCI6MTcwNzQ5NjIyMSwiYXVkIjoiODUxMThlZTItNjU0NC00MTgwLWExNmUtOTk2MTUzNjVmMjA5IiwiZXhwIjoxNzA3NDk5ODIxLCJpc3MiOiJodHRwczovL2htY3Rzc3RnZXh0aWQuYjJjbG9naW4uY29tLzhiMTg1ZjhiLTY2NWQtNGJiMy1hZjRhLWFiN2VlNjFiOTMzNC92Mi4wLyIsIm5iZiI6MTcwNzQ5NjIyMX0.e2dvgmPJzWvIsNVD_iwSfmoPQ3SMJariP3LNTdAAD2oPmELsfNqwDsGE1RETROuhoHACk_duzpdA2AYpVr8AK0Hz2cIsPMc4WCbGxQ3PndXLu6OwmrkCPlxQdPOX3AL1xLyf3-neKWJmSlKmhCG6qCbjiHrYFykCMxawQWllJvboq0rBwUgd7QB7WQDLGJDh79oQdRUpATr3V-O8t6QslLFdCdVoy6ZaDPAW8aVrWEFniAKPDaBnZYi5_7-Vo6BqRMKQ9mToUB-NiToy6c8QgjG6Fou_PMMVW1i0qNYfAzHIy6ysEZeIW88nOX6cwJ1xCXySvswwaTSrbO1k9LlLmw</stringProp>
             </collectionProp>
           </collectionProp>
           <boolProp name="UserParameters.per_iteration">true</boolProp>
@@ -417,6 +662,15 @@
           <stringProp name="TestPlan.comments">${v_randomNumberForEvent}</stringProp>
         </LoopController>
         <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">5001</stringProp>
+            <stringProp name="CounterConfig.end"></stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">medIdCounter</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
           <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
             <stringProp name="CounterConfig.start">1</stringProp>
             <stringProp name="CounterConfig.end"></stringProp>
@@ -432,71 +686,18 @@
               <stringProp name="-1579351719">v_randomdates</stringProp>
               <stringProp name="1787714242">v_randomNumberForAudio</stringProp>
               <stringProp name="-804253826">v_randomNumberForTranscription</stringProp>
+              <stringProp name="-1471382400">v_randomNumberEventId</stringProp>
             </collectionProp>
             <collectionProp name="UserParameters.thread_values">
-              <collectionProp name="-356811438">
+              <collectionProp name="418988914">
                 <stringProp name="1723739275">${__groovy(new Date((long)(Math.random() * System.currentTimeMillis())).format(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;),)}</stringProp>
                 <stringProp name="-1198056235">${__Random(1,4,)}</stringProp>
                 <stringProp name="1512311384">${__Random(1,10,)}</stringProp>
+                <stringProp name="1636120152">${__Random(1,1000,)}</stringProp>
               </collectionProp>
             </collectionProp>
             <boolProp name="UserParameters.per_iteration">true</boolProp>
           </UserParameters>
-          <hashTree/>
-          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell - Update randomdates to have 1hour added" enabled="false">
-            <stringProp name="BeanShellSampler.query">import java.text.SimpleDateFormat;
-import java.util.Date;
-
-String dateString = vars.get(&quot;v_randomdates&quot;);
-SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;);
-Date date = sdf.parse(dateString);
-date.setTime(date.getTime() + 3600 * 1000);  // Adding one hour
-vars.put(&quot;v_randomdates1hour&quot;, sdf.format(date));
-</stringProp>
-            <stringProp name="BeanShellSampler.filename"></stringProp>
-            <stringProp name="BeanShellSampler.parameters"></stringProp>
-            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
-          </BeanShellSampler>
-          <hashTree/>
-          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell - Update randomdates For Audio" enabled="false">
-            <stringProp name="BeanShellSampler.query">import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
-
-// Get the original random date
-String originalDate = vars.get(&quot;v_randomdates&quot;);
-
-// Format and save it as audiodates
-SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;);
-Date date = sdf.parse(originalDate);
-
-// Create a Calendar instance and set it to the original date
-Calendar calendar = Calendar.getInstance();
-calendar.setTime(date);
-
-// Generate a random time within a day (24 hours)
-Random random = new Random();
-int randomHour = random.nextInt(24);
-int randomMinute = random.nextInt(60);
-int randomSecond = random.nextInt(60);
-
-// Set the random time on the existing date
-calendar.set(Calendar.HOUR_OF_DAY, randomHour);
-calendar.set(Calendar.MINUTE, randomMinute);
-calendar.set(Calendar.SECOND, randomSecond);
-
-// Save the formatted date with the random time as audiodates
-vars.put(&quot;v_audiodates&quot;, sdf.format(calendar.getTime()));
-
-// Add one hour and save it as audiodates1hour
-calendar.add(Calendar.HOUR, 1);
-vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
-</stringProp>
-            <stringProp name="BeanShellSampler.filename"></stringProp>
-            <stringProp name="BeanShellSampler.parameters"></stringProp>
-            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
-          </BeanShellSampler>
           <hashTree/>
           <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell - Update randomdates For Audio" enabled="true">
             <stringProp name="BeanShellSampler.query">import java.text.SimpleDateFormat;
@@ -543,30 +744,6 @@ vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
           <hashTree>
-            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor - Update User to Use Event POST" enabled="false">
-              <stringProp name="cacheKey">true</stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="script">// Get the current value of the USERNAME parameter
-String currentUsername = vars.get(&quot;USERNAME&quot;);
-
-// Check if the USERNAME parameter is not null and equals &quot;darts_global_test_user&quot;
-if (&quot;darts.transcriber@hmcts.net&quot;.equals(currentUsername)) {
-    // Update the USERNAME parameter to &quot;dartstestuser&quot;
-    vars.put(&quot;USERNAME&quot;, &quot;darts_global_test_user&quot;);
-
-    // Log the update
-    log.info(&quot;USERNAME parameter needs to start as darts_global_test_user for loop creation of Events, Audio and Transcriptions. New value: &quot; + vars.get(&quot;USERNAME&quot;));
-} else {
-    // Log a message if the USERNAME parameter is not &quot;test1&quot;
-    log.info(&quot;USERNAME parameter is not darts_global_test_user. No update performed. Current value: &quot; + currentUsername);
-}
-
-// Return true to indicate successful execution
-</stringProp>
-              <stringProp name="scriptLanguage">groovy</stringProp>
-            </JSR223PreProcessor>
-            <hashTree/>
             <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor - Update User to Use Event POST" enabled="true">
               <stringProp name="cacheKey">true</stringProp>
               <stringProp name="filename"></stringProp>
@@ -587,10 +764,6 @@ String currentUsername = vars.get(&quot;USERNAME&quot;);
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PreProcessor>
             <hashTree/>
-            <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="IC - Get Auth Token for Api" enabled="true">
-              <stringProp name="IncludeController.includepath">Test.Fragment.Get.Auth.Token.jmx</stringProp>
-            </IncludeController>
-            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Events - Created ${eventsCounter}" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -599,10 +772,10 @@ String currentUsername = vars.get(&quot;USERNAME&quot;);
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
   &quot;message_id&quot;: &quot;667&quot;,&#xd;
-  &quot;type&quot;: &quot;2917&quot;,&#xd;
-  &quot;sub_type&quot;: &quot;3979&quot;,&#xd;
-  &quot;event_id&quot;: &quot;72&quot;,&#xd;
-  &quot;courthouse&quot;: &quot;PerfCourtHouse04&quot;,&#xd;
+  &quot;type&quot;: &quot;1000&quot;,&#xd;
+  &quot;sub_type&quot;: &quot;${v_randomEventName}&quot;,&#xd;
+  &quot;event_id&quot;: &quot;${medIdCounter}&quot;,&#xd;
+  &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,&#xd;
   &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,&#xd;
   &quot;case_numbers&quot;: [&#xd;
     &quot;PerfCase_${v_randomCaseName}&quot;&#xd;
@@ -718,142 +891,9 @@ String currentUsername = vars.get(&quot;USERNAME&quot;);
               </UniformRandomTimer>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Events - Created ${eventsCounter}" enabled="false">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&#xd;
-  &quot;message_id&quot;: &quot;667&quot;,&#xd;
-  &quot;type&quot;: &quot;1000&quot;,&#xd;
-  &quot;sub_type&quot;: &quot;${v_randomEventName}&quot;,&#xd;
-  &quot;event_id&quot;: &quot;668&quot;,&#xd;
-  &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,&#xd;
-  &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,&#xd;
-  &quot;case_numbers&quot;: [&#xd;
-    &quot;PerfCase_${v_randomCaseName}&quot;&#xd;
-  ],&#xd;
-  &quot;event_text&quot;: &quot;PerfEvent_${v_randomEventText}_${eventsCounter}&quot;,&#xd;
-  &quot;date_time&quot;: &quot;${v_audiodates}&quot;,&#xd;
-  &quot;retention_policy&quot;: {&#xd;
-    &quot;case_retention_fixed_policy&quot;: &quot;1&quot;,&#xd;
-    &quot;case_total_sentence&quot;: &quot;1&quot;&#xd;
-  },&#xd;
-  &quot;start_time&quot;: &quot;${v_audiodates}&quot;,&#xd;
-  &quot;end_time&quot;: &quot;${v_audiodates1hour}&quot;&#xd;
-}</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.protocol">https</stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">events</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="Host" elementType="Header">
-                    <stringProp name="Header.name">Host</stringProp>
-                    <stringProp name="Header.value">${BASE_URL}</stringProp>
-                  </elementProp>
-                  <elementProp name="Connection" elementType="Header">
-                    <stringProp name="Header.name">Connection</stringProp>
-                    <stringProp name="Header.value">keep-alive</stringProp>
-                  </elementProp>
-                  <elementProp name="Content-Length" elementType="Header">
-                    <stringProp name="Header.name">Content-Length</stringProp>
-                    <stringProp name="Header.value">453</stringProp>
-                  </elementProp>
-                  <elementProp name="sec-ch-ua" elementType="Header">
-                    <stringProp name="Header.name">sec-ch-ua</stringProp>
-                    <stringProp name="Header.value">&quot;Google Chrome&quot;;v=&quot;119&quot;, &quot;Chromium&quot;;v=&quot;119&quot;, &quot;Not?A_Brand&quot;;v=&quot;24&quot;</stringProp>
-                  </elementProp>
-                  <elementProp name="sec-ch-ua-mobile" elementType="Header">
-                    <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
-                    <stringProp name="Header.value">?0</stringProp>
-                  </elementProp>
-                  <elementProp name="Authorization" elementType="Header">
-                    <stringProp name="Header.name">Authorization</stringProp>
-                    <stringProp name="Header.value">Bearer ${ex_accessToken}</stringProp>
-                  </elementProp>
-                  <elementProp name="User-Agent" elementType="Header">
-                    <stringProp name="Header.name">User-Agent</stringProp>
-                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36</stringProp>
-                  </elementProp>
-                  <elementProp name="x-dtpc" elementType="Header">
-                    <stringProp name="Header.name">x-dtpc</stringProp>
-                    <stringProp name="Header.value">2$251157096_623h23vLOOCWVUADSUJAKHUHHPSHFCAPEFKIGUQ-0e0</stringProp>
-                  </elementProp>
-                  <elementProp name="Content-Type" elementType="Header">
-                    <stringProp name="Header.name">Content-Type</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="accept" elementType="Header">
-                    <stringProp name="Header.name">accept</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="sec-ch-ua-platform" elementType="Header">
-                    <stringProp name="Header.name">sec-ch-ua-platform</stringProp>
-                    <stringProp name="Header.value">&quot;Windows&quot;</stringProp>
-                  </elementProp>
-                  <elementProp name="Origin" elementType="Header">
-                    <stringProp name="Header.name">Origin</stringProp>
-                    <stringProp name="Header.value">https://${BASE_URL}</stringProp>
-                  </elementProp>
-                  <elementProp name="Sec-Fetch-Site" elementType="Header">
-                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                    <stringProp name="Header.value">same-origin</stringProp>
-                  </elementProp>
-                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                    <stringProp name="Header.value">cors</stringProp>
-                  </elementProp>
-                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                    <stringProp name="Header.value">empty</stringProp>
-                  </elementProp>
-                  <elementProp name="Referer" elementType="Header">
-                    <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">https://${BASE_URL}/swagger-ui/index.html</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept-Encoding" elementType="Header">
-                    <stringProp name="Header.name">Accept-Encoding</stringProp>
-                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
-                  </elementProp>
-                  <elementProp name="Accept-Language" elementType="Header">
-                    <stringProp name="Header.name">Accept-Language</stringProp>
-                    <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-              <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="RandomTimer.range">0.0</stringProp>
-                <stringProp name="ConstantTimer.delay">0.0</stringProp>
-              </UniformRandomTimer>
-              <hashTree/>
-            </hashTree>
-            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Hearing Id" enabled="false">
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Hearing Id" enabled="true">
               <stringProp name="dataSource">dbConfig</stringProp>
-              <stringProp name="query">SELECT darts.hearing.hea_id, darts.hearing.cas_id, darts.hearing.ctr_id, court_case.case_number
-FROM darts.hearing 
-INNER JOIN
-    darts.court_case ON darts.hearing.cas_id = darts.court_case.cas_id
-WHERE court_case.case_number = &apos;PerfCase_${v_randomCaseName}&apos;
-ORDER BY  darts.hearing.created_ts desc
-LIMIT 1</stringProp>
+              <stringProp name="query">select ae.hea_id FROM darts.event e INNER JOIN darts.hearing_event_ae ae ON e.eve_id=ae.eve_id where e.event_id = ${medIdCounter}</stringProp>
               <stringProp name="queryArguments"></stringProp>
               <stringProp name="queryArgumentsTypes">VARCHAR</stringProp>
               <stringProp name="queryTimeout"></stringProp>
@@ -876,37 +916,10 @@ LIMIT 1</stringProp>
                 <stringProp name="Sample.scope">variable</stringProp>
               </RegexExtractor>
               <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Case Ids" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">ex_caseIds</stringProp>
-                <stringProp name="RegexExtractor.regex">cas_id=(\d+)</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">-1</stringProp>
-                <stringProp name="Scope.variable">ex_allHearingsIds</stringProp>
-                <stringProp name="Sample.scope">variable</stringProp>
-              </RegexExtractor>
-              <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract CourtRoom Ids" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">ex_courtRoomIds</stringProp>
-                <stringProp name="RegexExtractor.regex">ctr_id=(\d+)</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">-1</stringProp>
-                <stringProp name="Scope.variable">ex_allHearingsIds</stringProp>
-                <stringProp name="Sample.scope">variable</stringProp>
-              </RegexExtractor>
-              <hashTree/>
             </hashTree>
-            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Hearing Id" enabled="false">
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request Get Med_Id based on Audio File" enabled="true">
               <stringProp name="dataSource">dbConfig</stringProp>
-              <stringProp name="query">SELECT darts.hearing.hea_id, darts.hearing.cas_id, darts.hearing.ctr_id, court_case.case_number
-FROM darts.hearing
-INNER JOIN
-    darts.court_case ON darts.hearing.cas_id = darts.court_case.cas_id
-WHERE court_case.case_number = &apos;PerfCase_${v_randomCaseName}&apos;
-ORDER BY hea_id ASC</stringProp>
+              <stringProp name="query">SELECT m.med_id FROM darts.media m WHERE m.start_ts = &apos;1999-10-06T22:29:05.339Z&apos; AND m.end_ts = &apos;1999-10-06T23:29:05.339Z&apos; </stringProp>
               <stringProp name="queryArguments"></stringProp>
               <stringProp name="queryArgumentsTypes">VARCHAR</stringProp>
               <stringProp name="queryTimeout"></stringProp>
@@ -915,35 +928,13 @@ ORDER BY hea_id ASC</stringProp>
               <stringProp name="resultSetMaxRows"></stringProp>
               <stringProp name="resultVariable">ex_allHearingsIds</stringProp>
               <stringProp name="variableNames"></stringProp>
-              <stringProp name="TestPlan.comments">where cas_id = 10817</stringProp>
+              <stringProp name="TestPlan.comments">SELECT m.med_id FROM darts.media m WHERE m.start_ts = &apos;${v_audiodates}&apos; AND m.end_ts = &apos;${v_audiodates1hour}&apos; </stringProp>
             </JDBCSampler>
             <hashTree>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Hearings Ids" enabled="true">
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract med Ids" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">ex_hearingsIds</stringProp>
-                <stringProp name="RegexExtractor.regex">hea_id=(\d+)</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">-1</stringProp>
-                <stringProp name="Scope.variable">ex_allHearingsIds</stringProp>
-                <stringProp name="Sample.scope">variable</stringProp>
-              </RegexExtractor>
-              <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Case Ids" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">ex_caseIds</stringProp>
-                <stringProp name="RegexExtractor.regex">cas_id=(\d+)</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">-1</stringProp>
-                <stringProp name="Scope.variable">ex_allHearingsIds</stringProp>
-                <stringProp name="Sample.scope">variable</stringProp>
-              </RegexExtractor>
-              <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract CourtRoom Ids" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">ex_courtRoomIds</stringProp>
-                <stringProp name="RegexExtractor.regex">ctr_id=(\d+)</stringProp>
+                <stringProp name="RegexExtractor.refname">ex_medsIds</stringProp>
+                <stringProp name="RegexExtractor.regex">med_id=(\d+)</stringProp>
                 <stringProp name="RegexExtractor.template">$1$</stringProp>
                 <stringProp name="RegexExtractor.default"></stringProp>
                 <stringProp name="RegexExtractor.match_number">-1</stringProp>
@@ -952,6 +943,20 @@ ORDER BY hea_id ASC</stringProp>
               </RegexExtractor>
               <hashTree/>
             </hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Hea_id and Med_Id" enabled="true">
+              <stringProp name="dataSource">dbConfig</stringProp>
+              <stringProp name="query">INSERT INTO darts.hearing_media_ae (hea_id, med_id) values (${ex_hearingsIds_1}, ${ex_medsIds_1})</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes">VARCHAR</stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Update Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as Object</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">ex_allHearingsIds</stringProp>
+              <stringProp name="variableNames"></stringProp>
+              <stringProp name="TestPlan.comments">where cas_id = 10817</stringProp>
+            </JDBCSampler>
+            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Cases" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -960,10 +965,10 @@ ORDER BY hea_id ASC</stringProp>
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-  &quot;courthouse&quot;: &quot;PerfCourtHouse04&quot;,&#xd;
+  &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,&#xd;
   &quot;case_number&quot;: &quot;PerfCase_${v_randomCaseName}&quot;,&#xd;
   &quot;defendants&quot;: [&#xd;
-    &quot;Mr ${v_randomDefender} Defender&quot;&#xd;
+    &quot;Mr ${v_randomDefender} Defendant&quot;&#xd;
   ],&#xd;
   &quot;judges&quot;: [&#xd;
     &quot;Mr ${v_randomJudge} Judge&quot;&#xd;
@@ -1100,460 +1105,177 @@ ORDER BY hea_id ASC</stringProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - GET - Admin - Users - Search" enabled="false">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&#xd;
-  &quot;full_name&quot;: &quot;PerfTranscirber&quot;&#xd;
-}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">admin/users/search</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Host" elementType="Header">
-                  <stringProp name="Header.name">Host</stringProp>
-                  <stringProp name="Header.value">${BASE_URL}</stringProp>
-                </elementProp>
-                <elementProp name="Connection" elementType="Header">
-                  <stringProp name="Header.name">Connection</stringProp>
-                  <stringProp name="Header.value">keep-alive</stringProp>
-                </elementProp>
-                <elementProp name="Content-Length" elementType="Header">
-                  <stringProp name="Header.name">Content-Length</stringProp>
-                  <stringProp name="Header.value">36</stringProp>
-                </elementProp>
-                <elementProp name="sec-ch-ua" elementType="Header">
-                  <stringProp name="Header.name">sec-ch-ua</stringProp>
-                  <stringProp name="Header.value">&quot;Not_A Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;120&quot;, &quot;Google Chrome&quot;;v=&quot;120&quot;</stringProp>
-                </elementProp>
-                <elementProp name="accept" elementType="Header">
-                  <stringProp name="Header.name">accept</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="sec-ch-ua-mobile" elementType="Header">
-                  <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
-                  <stringProp name="Header.value">?0</stringProp>
-                </elementProp>
-                <elementProp name="Authorization" elementType="Header">
-                  <stringProp name="Header.name">Authorization</stringProp>
-                  <stringProp name="Header.value">Bearer ${ex_accessToken}</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</stringProp>
-                </elementProp>
-                <elementProp name="sec-ch-ua-platform" elementType="Header">
-                  <stringProp name="Header.name">sec-ch-ua-platform</stringProp>
-                  <stringProp name="Header.value">&quot;Windows&quot;</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://${BASE_URL}</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">same-origin</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">cors</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://${BASE_URL}/swagger-ui/index.html</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Get Ranom User Email" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">ex_getRanomUserEmail</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.[*].email_address</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-          </hashTree>
-          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop - Create Random Amount of Audio for Hearing" enabled="true">
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop  - Create Random Amount of Transcription for Hearing" enabled="true">
             <boolProp name="LoopController.continue_forever">true</boolProp>
             <stringProp name="LoopController.loops">1</stringProp>
-            <stringProp name="TestPlan.comments">${v_randomNumberForAudio}</stringProp>
+            <stringProp name="TestPlan.comments">${v_randomNumberForTranscription}</stringProp>
           </LoopController>
           <hashTree>
             <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
               <stringProp name="CounterConfig.start">1</stringProp>
-              <stringProp name="CounterConfig.end">4</stringProp>
+              <stringProp name="CounterConfig.end"></stringProp>
               <stringProp name="CounterConfig.incr">1</stringProp>
-              <stringProp name="CounterConfig.name">audioCounter</stringProp>
+              <stringProp name="CounterConfig.name">transcriptionCounter</stringProp>
               <stringProp name="CounterConfig.format"></stringProp>
-              <boolProp name="CounterConfig.per_user">true</boolProp>
-              <boolProp name="CounterConfig.reset_on_tg_iteration">true</boolProp>
+              <boolProp name="CounterConfig.per_user">false</boolProp>
             </CounterConfig>
             <hashTree/>
-            <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell - Update randomdates For Audio" enabled="true">
-              <stringProp name="BeanShellSampler.query">import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
-
-// Get the original random date
-String originalDate = vars.get(&quot;v_randomdates&quot;);
-
-// Format and save it as audiodates
-SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;);
-Date date = sdf.parse(originalDate);
-
-// Create a Calendar instance and set it to the original date
-Calendar calendar = Calendar.getInstance();
-calendar.setTime(date);
-
-// Generate a random time within a day (24 hours)
-Random random = new Random();
-int randomHour = random.nextInt(24);
-int randomMinute = random.nextInt(60);
-int randomSecond = random.nextInt(60);
-
-// Set the random time on the existing date
-calendar.set(Calendar.HOUR_OF_DAY, randomHour);
-calendar.set(Calendar.MINUTE, randomMinute);
-calendar.set(Calendar.SECOND, randomSecond);
-
-// Save the formatted date with the random time as audiodates
-vars.put(&quot;v_audiodates&quot;, sdf.format(calendar.getTime()));
-
-// Add one hour and save it as audiodates1hour
-calendar.add(Calendar.HOUR, 1);
-vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
-</stringProp>
-              <stringProp name="BeanShellSampler.filename"></stringProp>
-              <stringProp name="BeanShellSampler.parameters"></stringProp>
-              <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
-            </BeanShellSampler>
-            <hashTree/>
-            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction - Create Audio for Transcription" enabled="true">
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction - Create Transcription" enabled="true">
               <boolProp name="TransactionController.includeTimers">false</boolProp>
               <boolProp name="TransactionController.parent">false</boolProp>
             </TransactionController>
             <hashTree>
-              <RandomController guiclass="RandomControlGui" testclass="RandomController" testname="Random Controller" enabled="true">
-                <intProp name="InterleaveControl.style">1</intProp>
-              </RandomController>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Transcriptions - Created ${transcriptionCounter}" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+  &quot;hearing_id&quot;: ${ex_hearingsIds_1},&#xd;
+  &quot;case_id&quot;: ${ex_caseId},&#xd;
+  &quot;transcription_urgency_id&quot;: 2,&#xd;
+  &quot;transcription_type_id&quot;: 3,&#xd;
+  &quot;comment&quot;: &quot;PerfCase_${v_randomCaseName}&quot;&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">transcriptions</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
               <hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts - Api - POST - Audio - 1mb" enabled="true">
-                  <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-                    <collectionProp name="HTTPFileArgs.files">
-                      <elementProp name="${TEST_DATA}${FILE_TO_UPLOAD1mb}" elementType="HTTPFileArg">
-                        <stringProp name="File.path">${TEST_DATA}${FILE_TO_UPLOAD1mb}</stringProp>
-                        <stringProp name="File.paramname">file</stringProp>
-                        <stringProp name="File.mimetype">audio/mpeg</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-                    <collectionProp name="Arguments.arguments">
-                      <elementProp name="metadata" elementType="HTTPArgument">
-                        <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                        <stringProp name="Argument.name">metadata</stringProp>
-                        <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_audiodates}&quot;,    &quot;ended_at&quot;: &quot;${v_audiodates1hour}&quot;,    &quot;channel&quot;: 1,    &quot;total_channels&quot;: 4,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;sample.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse04&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,    &quot;file_size&quot;: 937.96,    &quot;checksum&quot;: &quot;TVRMwq16b4mcZwPSlZj/iQ==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
-                        <stringProp name="Argument.metadata">=</stringProp>
-                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                        <stringProp name="HTTPArgument.content_type">application/json</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
-                  <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.protocol">https</stringProp>
-                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">audios</stringProp>
-                  <stringProp name="HTTPSampler.method">POST</stringProp>
-                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                  <stringProp name="TestPlan.comments">${audioCounter}</stringProp>
-                </HTTPSamplerProxy>
-                <hashTree>
-                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-                    <collectionProp name="HeaderManager.headers">
-                      <elementProp name="Authorization" elementType="Header">
-                        <stringProp name="Header.name">Authorization</stringProp>
-                        <stringProp name="Header.value">Bearer ${ex_accessToken}</stringProp>
-                      </elementProp>
-                      <elementProp name="x-dtpc" elementType="Header">
-                        <stringProp name="Header.name">x-dtpc</stringProp>
-                        <stringProp name="Header.value">4$261474838_978h17vTCFUIAKFURHHRNPPCOHSKQRRHRBMNCRU-0e0</stringProp>
-                      </elementProp>
-                      <elementProp name="accept" elementType="Header">
-                        <stringProp name="Header.name">accept</stringProp>
-                        <stringProp name="Header.value">*/*</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </HeaderManager>
-                  <hashTree/>
-                  <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                    <stringProp name="RandomTimer.range">1500</stringProp>
-                    <stringProp name="ConstantTimer.delay">1500</stringProp>
-                  </UniformRandomTimer>
-                  <hashTree/>
-                </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts - Api - POST - Audio - 28mb" enabled="false">
-                  <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-                    <collectionProp name="HTTPFileArgs.files">
-                      <elementProp name="${TEST_DATA}${FILE_TO_UPLOAD28mb}" elementType="HTTPFileArg">
-                        <stringProp name="File.path">${TEST_DATA}${FILE_TO_UPLOAD28mb}</stringProp>
-                        <stringProp name="File.paramname">file</stringProp>
-                        <stringProp name="File.mimetype">audio/mpeg</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-                    <collectionProp name="Arguments.arguments">
-                      <elementProp name="metadata" elementType="HTTPArgument">
-                        <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                        <stringProp name="Argument.name">metadata</stringProp>
-                        <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_audiodates}&quot;,    &quot;ended_at&quot;: &quot;${v_audiodates1hour}&quot;,    &quot;channel&quot;: ${audioCounter},    &quot;total_channels&quot;: 4,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;02h.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,    &quot;file_size&quot;: 27.994,    &quot;checksum&quot;: &quot;TVRMwq16b4mcZwPSlZj/iQ==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
-                        <stringProp name="Argument.metadata">=</stringProp>
-                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                        <stringProp name="HTTPArgument.content_type">application/json</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
-                  <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.protocol">https</stringProp>
-                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">audios</stringProp>
-                  <stringProp name="HTTPSampler.method">POST</stringProp>
-                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                </HTTPSamplerProxy>
-                <hashTree>
-                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-                    <collectionProp name="HeaderManager.headers">
-                      <elementProp name="Authorization" elementType="Header">
-                        <stringProp name="Header.name">Authorization</stringProp>
-                        <stringProp name="Header.value">Bearer ${ex_accessToken}</stringProp>
-                      </elementProp>
-                      <elementProp name="x-dtpc" elementType="Header">
-                        <stringProp name="Header.name">x-dtpc</stringProp>
-                        <stringProp name="Header.value">4$261474838_978h17vTCFUIAKFURHHRNPPCOHSKQRRHRBMNCRU-0e0</stringProp>
-                      </elementProp>
-                      <elementProp name="accept" elementType="Header">
-                        <stringProp name="Header.name">accept</stringProp>
-                        <stringProp name="Header.value">*/*</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </HeaderManager>
-                  <hashTree/>
-                </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts - Api - POST - Audio - 168mb" enabled="false">
-                  <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-                    <collectionProp name="HTTPFileArgs.files">
-                      <elementProp name="${TEST_DATA}${FILE_TO_UPLOAD168mb}" elementType="HTTPFileArg">
-                        <stringProp name="File.path">${TEST_DATA}${FILE_TO_UPLOAD168mb}</stringProp>
-                        <stringProp name="File.paramname">file</stringProp>
-                        <stringProp name="File.mimetype">audio/mpeg</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-                    <collectionProp name="Arguments.arguments">
-                      <elementProp name="metadata" elementType="HTTPArgument">
-                        <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                        <stringProp name="Argument.name">metadata</stringProp>
-                        <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_audiodates}&quot;,    &quot;ended_at&quot;: &quot;${v_audiodates1hour}&quot;,    &quot;channel&quot;: ${audioCounter},    &quot;total_channels&quot;: 4,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;12h.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,    &quot;file_size&quot;: 167.960,    &quot;checksum&quot;: &quot;TVRMwq16b4mcZwPSlZj/iQ==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
-                        <stringProp name="Argument.metadata">=</stringProp>
-                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                        <stringProp name="HTTPArgument.content_type">application/json</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
-                  <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.protocol">https</stringProp>
-                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">audios</stringProp>
-                  <stringProp name="HTTPSampler.method">POST</stringProp>
-                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                </HTTPSamplerProxy>
-                <hashTree>
-                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-                    <collectionProp name="HeaderManager.headers">
-                      <elementProp name="Authorization" elementType="Header">
-                        <stringProp name="Header.name">Authorization</stringProp>
-                        <stringProp name="Header.value">Bearer ${ex_accessToken}</stringProp>
-                      </elementProp>
-                      <elementProp name="x-dtpc" elementType="Header">
-                        <stringProp name="Header.name">x-dtpc</stringProp>
-                        <stringProp name="Header.value">4$261474838_978h17vTCFUIAKFURHHRNPPCOHSKQRRHRBMNCRU-0e0</stringProp>
-                      </elementProp>
-                      <elementProp name="accept" elementType="Header">
-                        <stringProp name="Header.name">accept</stringProp>
-                        <stringProp name="Header.value">*/*</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </HeaderManager>
-                  <hashTree/>
-                </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts - Api - POST - Audio - 213mb" enabled="false">
-                  <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-                    <collectionProp name="HTTPFileArgs.files">
-                      <elementProp name="${TEST_DATA}${FILE_TO_UPLOAD213mb}" elementType="HTTPFileArg">
-                        <stringProp name="File.path">${TEST_DATA}${FILE_TO_UPLOAD213mb}</stringProp>
-                        <stringProp name="File.paramname">file</stringProp>
-                        <stringProp name="File.mimetype">audio/mpeg</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-                    <collectionProp name="Arguments.arguments">
-                      <elementProp name="metadata" elementType="HTTPArgument">
-                        <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                        <stringProp name="Argument.name">metadata</stringProp>
-                        <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_audiodates}&quot;,    &quot;ended_at&quot;: &quot;${v_audiodates1hour}&quot;,    &quot;channel&quot;: ${audioCounter},    &quot;total_channels&quot;: 4,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;15h 15m.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,    &quot;file_size&quot;: 213.448,    &quot;checksum&quot;: &quot;Phmv3F+lJTBS5BnsShUfOQ==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
-                        <stringProp name="Argument.metadata">=</stringProp>
-                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                        <stringProp name="HTTPArgument.content_type">application/json</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
-                  <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.protocol">https</stringProp>
-                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">audios</stringProp>
-                  <stringProp name="HTTPSampler.method">POST</stringProp>
-                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                </HTTPSamplerProxy>
-                <hashTree>
-                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-                    <collectionProp name="HeaderManager.headers">
-                      <elementProp name="Authorization" elementType="Header">
-                        <stringProp name="Header.name">Authorization</stringProp>
-                        <stringProp name="Header.value">Bearer ${ex_accessToken}</stringProp>
-                      </elementProp>
-                      <elementProp name="x-dtpc" elementType="Header">
-                        <stringProp name="Header.name">x-dtpc</stringProp>
-                        <stringProp name="Header.value">4$261474838_978h17vTCFUIAKFURHHRNPPCOHSKQRRHRBMNCRU-0e0</stringProp>
-                      </elementProp>
-                      <elementProp name="accept" elementType="Header">
-                        <stringProp name="Header.name">accept</stringProp>
-                        <stringProp name="Header.value">*/*</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </HeaderManager>
-                  <hashTree/>
-                </hashTree>
-                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts - Api - POST - Audio - 336mb" enabled="false">
-                  <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
-                    <collectionProp name="HTTPFileArgs.files">
-                      <elementProp name="${TEST_DATA}${FILE_TO_UPLOAD336mb}" elementType="HTTPFileArg">
-                        <stringProp name="File.path">${TEST_DATA}${FILE_TO_UPLOAD336mb}</stringProp>
-                        <stringProp name="File.paramname">file</stringProp>
-                        <stringProp name="File.mimetype">audio/mpeg</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-                    <collectionProp name="Arguments.arguments">
-                      <elementProp name="metadata" elementType="HTTPArgument">
-                        <boolProp name="HTTPArgument.always_encode">true</boolProp>
-                        <stringProp name="Argument.name">metadata</stringProp>
-                        <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_audiodates}&quot;,    &quot;ended_at&quot;: &quot;${v_audiodates1hour}&quot;,    &quot;channel&quot;: ${audioCounter},    &quot;total_channels&quot;: 4,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;24h.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,    &quot;file_size&quot;: 335.919,    &quot;checksum&quot;: &quot;K/g+CvVeLAgEIKXlKaJ34Q==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
-                        <stringProp name="Argument.metadata">=</stringProp>
-                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                        <stringProp name="HTTPArgument.content_type">application/json</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </elementProp>
-                  <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
-                  <stringProp name="HTTPSampler.port"></stringProp>
-                  <stringProp name="HTTPSampler.protocol">https</stringProp>
-                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                  <stringProp name="HTTPSampler.path">audios</stringProp>
-                  <stringProp name="HTTPSampler.method">POST</stringProp>
-                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
-                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
-                </HTTPSamplerProxy>
-                <hashTree>
-                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
-                    <collectionProp name="HeaderManager.headers">
-                      <elementProp name="Authorization" elementType="Header">
-                        <stringProp name="Header.name">Authorization</stringProp>
-                        <stringProp name="Header.value">Bearer ${ex_accessToken}</stringProp>
-                      </elementProp>
-                      <elementProp name="x-dtpc" elementType="Header">
-                        <stringProp name="Header.name">x-dtpc</stringProp>
-                        <stringProp name="Header.value">4$261474838_978h17vTCFUIAKFURHHRNPPCOHSKQRRHRBMNCRU-0e0</stringProp>
-                      </elementProp>
-                      <elementProp name="accept" elementType="Header">
-                        <stringProp name="Header.name">accept</stringProp>
-                        <stringProp name="Header.value">*/*</stringProp>
-                      </elementProp>
-                    </collectionProp>
-                  </HeaderManager>
-                  <hashTree/>
-                </hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Host" elementType="Header">
+                      <stringProp name="Header.name">Host</stringProp>
+                      <stringProp name="Header.value">${BASE_URL}</stringProp>
+                    </elementProp>
+                    <elementProp name="Connection" elementType="Header">
+                      <stringProp name="Header.name">Connection</stringProp>
+                      <stringProp name="Header.value">keep-alive</stringProp>
+                    </elementProp>
+                    <elementProp name="Content-Length" elementType="Header">
+                      <stringProp name="Header.name">Content-Length</stringProp>
+                      <stringProp name="Header.value">121</stringProp>
+                    </elementProp>
+                    <elementProp name="sec-ch-ua" elementType="Header">
+                      <stringProp name="Header.name">sec-ch-ua</stringProp>
+                      <stringProp name="Header.value">&quot;Google Chrome&quot;;v=&quot;119&quot;, &quot;Chromium&quot;;v=&quot;119&quot;, &quot;Not?A_Brand&quot;;v=&quot;24&quot;</stringProp>
+                    </elementProp>
+                    <elementProp name="sec-ch-ua-mobile" elementType="Header">
+                      <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
+                      <stringProp name="Header.value">?0</stringProp>
+                    </elementProp>
+                    <elementProp name="Authorization" elementType="Header">
+                      <stringProp name="Header.name">Authorization</stringProp>
+                      <stringProp name="Header.value">Bearer ${ex_accessTokenTrans}</stringProp>
+                    </elementProp>
+                    <elementProp name="User-Agent" elementType="Header">
+                      <stringProp name="Header.name">User-Agent</stringProp>
+                      <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36</stringProp>
+                    </elementProp>
+                    <elementProp name="x-dtpc" elementType="Header">
+                      <stringProp name="Header.name">x-dtpc</stringProp>
+                      <stringProp name="Header.value">3$353367900_249h39vFJVCICPLERLNMNMRQIEOQRIAHARLRUKW-0e0</stringProp>
+                    </elementProp>
+                    <elementProp name="Content-Type" elementType="Header">
+                      <stringProp name="Header.name">Content-Type</stringProp>
+                      <stringProp name="Header.value">application/json</stringProp>
+                    </elementProp>
+                    <elementProp name="accept" elementType="Header">
+                      <stringProp name="Header.name">accept</stringProp>
+                      <stringProp name="Header.value">application/json</stringProp>
+                    </elementProp>
+                    <elementProp name="sec-ch-ua-platform" elementType="Header">
+                      <stringProp name="Header.name">sec-ch-ua-platform</stringProp>
+                      <stringProp name="Header.value">&quot;Windows&quot;</stringProp>
+                    </elementProp>
+                    <elementProp name="Origin" elementType="Header">
+                      <stringProp name="Header.name">Origin</stringProp>
+                      <stringProp name="Header.value">https://${BASE_URL}</stringProp>
+                    </elementProp>
+                    <elementProp name="Sec-Fetch-Site" elementType="Header">
+                      <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                      <stringProp name="Header.value">same-origin</stringProp>
+                    </elementProp>
+                    <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                      <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                      <stringProp name="Header.value">cors</stringProp>
+                    </elementProp>
+                    <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                      <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                      <stringProp name="Header.value">empty</stringProp>
+                    </elementProp>
+                    <elementProp name="Referer" elementType="Header">
+                      <stringProp name="Header.name">Referer</stringProp>
+                      <stringProp name="Header.value">https://${BASE_URL}/swagger-ui/index.html</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept-Encoding" elementType="Header">
+                      <stringProp name="Header.name">Accept-Encoding</stringProp>
+                      <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">Accept-Language</stringProp>
+                      <stringProp name="Header.value">en-US,en;q=0.9</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+                <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+                  <stringProp name="RandomTimer.range">0.0</stringProp>
+                  <stringProp name="ConstantTimer.delay">0.0</stringProp>
+                </UniformRandomTimer>
+                <hashTree/>
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Error Id" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">ex_errorId</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.violations.[*].field</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+                  <stringProp name="Scope.variable"></stringProp>
+                </JSONPostProcessor>
+                <hashTree/>
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Error Message" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">ex_errorMessage</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.violations.[*].message</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+                  <stringProp name="Scope.variable"></stringProp>
+                </JSONPostProcessor>
+                <hashTree/>
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract User Status" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">ex_status</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.status</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+                  <stringProp name="Scope.variable"></stringProp>
+                </JSONPostProcessor>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert &apos;Check Transcriptions Status:&apos; - ${ex_status} - Error Message - ${ex_errorId} - ${ex_errorMessage}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="995686791">{&quot;transcription_id&quot;:</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.custom_message">Assert &apos;Check Transcriptions Status:&apos; - ${ex_status} - Error Message - ${ex_errorId} - ${ex_errorMessage}</stringProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">2</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Get Transcription Id" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">ex_getTranscriptionId</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.transcription_id</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+                </JSONPostProcessor>
+                <hashTree/>
               </hashTree>
             </hashTree>
           </hashTree>

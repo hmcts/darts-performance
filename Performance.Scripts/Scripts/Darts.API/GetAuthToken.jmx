@@ -50,7 +50,7 @@
           </elementProp>
           <elementProp name="USERNAME" elementType="Argument">
             <stringProp name="Argument.name">USERNAME</stringProp>
-            <stringProp name="Argument.value">${__P(USERNAME, 207065f3-7aec-4a16-b955-d241d5597427@hmctsstgextid.onmicrosoft.com)}</stringProp>
+            <stringProp name="Argument.value">${__P(USERNAME, PerfTranscirber01@hmcts.net)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="PASSWORD" elementType="Argument">
@@ -106,6 +106,16 @@
           <elementProp name="agent" elementType="Argument">
             <stringProp name="Argument.name">agent</stringProp>
             <stringProp name="Argument.value">${__machineIP()}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USERNAME2" elementType="Argument">
+            <stringProp name="Argument.name">USERNAME2</stringProp>
+            <stringProp name="Argument.value">${__P(USERNAME, darts.transcriber@hmcts.net)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PASSWORD2" elementType="Argument">
+            <stringProp name="Argument.name">PASSWORD2</stringProp>
+            <stringProp name="Argument.value">${__P(PASSWORD, Password@1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
