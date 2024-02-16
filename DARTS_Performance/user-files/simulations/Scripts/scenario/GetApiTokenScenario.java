@@ -1,24 +1,20 @@
 package scenario;
 
-import java.util.*;
-
 import Utilities.Feeders;
 import Headers.Headers;
 import Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
-import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class GetApiTokenScenario {
 
-  private static final String GROUP_NAME = "Test";
-
+  private static final String GROUP_NAME = "B2C_1_Ropc_Darts_Signin - Token";
   private GetApiTokenScenario() {}
 
     public static ChainBuilder getApiToken() {
-      return group(GROUP_NAME + "DARTS - Api - Token:GET")
+      return group(GROUP_NAME + "DARTS - Api - B2C - Oauth2 - Token:GET")
         .on(exec( 
               http("DARTS - Api - Token:GET")
                   .get(EnvironmentURL.B2B_Token.getUrl())

@@ -1,0 +1,4 @@
+RUN	DartsSoap.AddDocumentSOAPUser	adddocumentsoapuser	1708095386175	4	3.9.5
+USER	AddDocumentSOAPUser	START	1708095386894
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708095386922	1708095390374	OK	 
+USER	AddDocumentSOAPUser	END	1708095390614

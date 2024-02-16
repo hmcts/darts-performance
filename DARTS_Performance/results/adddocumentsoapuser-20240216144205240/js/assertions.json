@@ -1,0 +1,10 @@
+{
+  "simulation": "DartsSoap.AddDocumentSOAPUser",
+  "simulationId": "adddocumentsoapuser-20240216144205240",
+  "start": 1708094526267,
+  "description": "4",
+  "scenarios": ["AddDocumentSOAPUser"],
+  "assertions": [
+
+  ]
+}

@@ -4,7 +4,6 @@ import Headers.Headers;
 import Utilities.RandomStringGenerator;
 import Utilities.AppConfig;
 import Utilities.AppConfig.EnvironmentURL;
-import java.util.*;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
