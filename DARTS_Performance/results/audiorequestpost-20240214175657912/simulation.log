@@ -1,0 +1,34 @@
+RUN	DartsApi.AudioRequestPost	audiorequestpost	1707933417912	2	3.9.5
+USER	Scenario 2	START	1707933418743
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1707933418757
+USER	Scenario 2	END	1707933418763
+USER	APIToken	START	1707933418766
+REQUEST		DARTS - Api - Token:GET	1707933418765	1707933419664	OK	 
+USER	Scenario 2	START	1707933419733
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1707933419734
+USER	Scenario 2	END	1707933419734
+USER	APIToken	END	1707933420720
+USER	Scenario 2	START	1707933420734
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1707933420736
+USER	Scenario 2	END	1707933420737
+USER	Scenario 2	START	1707933421740
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1707933421742
+USER	Scenario 2	END	1707933421744
+USER	Scenario 2	START	1707933422734
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1707933422736
+USER	Scenario 2	END	1707933422737
+USER	Scenario 2	START	1707933423741
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1707933423743
+USER	Scenario 2	END	1707933423744
+USER	Scenario 2	START	1707933424739
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1707933424741
+USER	Scenario 2	END	1707933424743
+USER	Scenario 2	START	1707933425747
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1707933425749
+USER	Scenario 2	END	1707933425750
+USER	Scenario 2	START	1707933426732
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1707933426733
+USER	Scenario 2	END	1707933426733
+USER	Scenario 2	START	1707933427740
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1707933427742
+USER	Scenario 2	END	1707933427743

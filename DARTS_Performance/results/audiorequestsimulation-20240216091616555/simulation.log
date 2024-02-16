@@ -1,0 +1,7 @@
+RUN	DartsApi.AudioRequestSimulation	audiorequestsimulation	1708074976555	2	3.9.5
+USER	Test1	START	1708074977314
+REQUEST	TestDARTS - Api - Token:GET	DARTS - Api - Token:GET	1708074977313	1708074978237	OK	 
+GROUP	TestDARTS - Api - Token:GET	1708074977300	1708074978282	924	OK
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'hea_id' is defined 	1708074978289
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708074978284	1708074978293	0	KO
+USER	Test1	END	1708074978298

@@ -1,0 +1,25 @@
+RUN	DartsApi.AudioRequestSimulation	audiorequestsimulation	1708021979586	2	3.9.5
+USER	Test1	START	1708021981252
+REQUEST	TestDARTS - Api - Token:GET	DARTS - Api - Token:GET	1708021981272	1708021983045	OK	 
+GROUP	TestDARTS - Api - Token:GET	1708021981253	1708021983093	1773	OK
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708021983102	1708021983793	KO	status.find.is(409), but actually found 200
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708021983095	1708021983795	691	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708021983797	1708021983958	KO	status.find.is(200), but actually found 409
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708021983797	1708021983959	161	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708021983959	1708021984110	KO	status.find.is(200), but actually found 409
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708021983959	1708021984110	151	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708021984111	1708021984283	KO	status.find.is(200), but actually found 409
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708021984110	1708021984284	172	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708021984284	1708021984329	KO	status.find.is(200), but actually found 409
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708021984284	1708021984329	45	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708021984330	1708021984387	KO	status.find.is(200), but actually found 409
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708021984330	1708021984387	57	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708021984388	1708021984430	KO	status.find.is(200), but actually found 409
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708021984388	1708021984431	42	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708021984431	1708021984487	KO	status.find.is(200), but actually found 409
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708021984431	1708021984488	56	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708021984488	1708021984530	KO	status.find.is(200), but actually found 409
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708021984488	1708021984531	42	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708021984531	1708021984579	KO	status.find.is(200), but actually found 409
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708021984531	1708021984579	48	KO
+USER	Test1	END	1708021984582
