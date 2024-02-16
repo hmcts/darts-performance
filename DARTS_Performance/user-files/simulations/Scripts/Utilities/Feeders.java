@@ -13,7 +13,7 @@ public class Feeders {
     public static final FeederBuilder<String> AudioRequestCSV;
 
     static {
-        EventCode = listFeeder("eventCode", List.of("DL", "A", "B")).random();
+        EventCode = listFeeder("eventCode", List.of("DL", "DL2", "DL3")).random();
         AudioRequestCSV = CoreDsl.csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
     }    
     public static CheckBuilder.Final saveBearerToken() {

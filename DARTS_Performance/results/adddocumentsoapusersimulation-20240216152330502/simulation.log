@@ -1,0 +1,13 @@
+RUN	DartsSoap.AddDocumentSOAPUserSimulation	adddocumentsoapusersimulation	1708097010502	5	3.9.5
+USER	DARTS - GateWay - Soap - AddDocument :POST	START	1708097010966
+ERROR	DARTS - GateWay - Soap - AddDocument - User: Failed to build request: No attribute named 'xmlPayload' is defined 	1708097010986
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097011009	1708097011092	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097011220	1708097011272	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097011275	1708097011306	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097011309	1708097011343	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097011346	1708097011372	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097011377	1708097011403	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097011406	1708097011434	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097011436	1708097011463	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097011466	1708097011500	KO	status.find.is(200), but actually found 500
+USER	DARTS - GateWay - Soap - AddDocument :POST	END	1708097011507

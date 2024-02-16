@@ -1,0 +1,13 @@
+RUN	DartsSoap.AddDocumentSOAPUserSimulation	adddocumentsoapusersimulation	1708097642302	5	3.9.5
+USER	DARTS - GateWay - Soap - AddDocument :POST	START	1708097643045
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097643069	1708097643157	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097643169	1708097643256	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097643366	1708097643401	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097643404	1708097643443	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097643446	1708097643475	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097643478	1708097643517	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097643520	1708097643551	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097643553	1708097643585	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097643588	1708097643623	KO	status.find.is(200), but actually found 500
+REQUEST		DARTS - GateWay - Soap - AddDocument - User	1708097643625	1708097643659	KO	status.find.is(200), but actually found 500
+USER	DARTS - GateWay - Soap - AddDocument :POST	END	1708097643664

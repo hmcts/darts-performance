@@ -1,0 +1,25 @@
+RUN	DartsApi.AudioRequestSimulation	audiorequestsimulation	1708084957354	2	3.9.5
+USER	Test1	START	1708084957930
+REQUEST	TestDARTS - Api - Token:GET	DARTS - Api - Token:GET	1708084957951	1708084958476	OK	 
+GROUP	TestDARTS - Api - Token:GET	1708084957931	1708084958518	525	OK
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708084958526	1708084958649	KO	status.find.in(200,409), but actually found 400
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708084958520	1708084958653	123	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708084958654	1708084958687	KO	status.find.in(200,409), but actually found 400
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708084958654	1708084958688	33	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708084958689	1708084958728	KO	status.find.in(200,409), but actually found 400
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708084958688	1708084958729	39	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708084958730	1708084958763	KO	status.find.in(200,409), but actually found 400
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708084958729	1708084958764	33	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708084958764	1708084958797	KO	status.find.in(200,409), but actually found 400
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708084958764	1708084958798	33	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708084958799	1708084958838	KO	status.find.in(200,409), but actually found 400
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708084958798	1708084958840	39	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708084958841	1708084958880	KO	status.find.in(200,409), but actually found 400
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708084958840	1708084958880	39	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708084958881	1708084958929	KO	status.find.in(200,409), but actually found 400
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708084958881	1708084958930	48	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708084958931	1708084958980	KO	status.find.in(200,409), but actually found 400
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708084958930	1708084958981	49	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708084958982	1708084959023	KO	status.find.in(200,409), but actually found 400
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708084958981	1708084959024	41	KO
+USER	Test1	END	1708084959026

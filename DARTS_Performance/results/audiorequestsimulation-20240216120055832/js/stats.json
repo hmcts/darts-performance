@@ -1,0 +1,423 @@
+{
+  "type": "GROUP",
+"name": "All Requests",
+"path": "",
+"pathFormatted": "group_missing-name-b06d1",
+"stats": {
+    "name": "All Requests",
+    "numberOfRequests": {
+        "total": 11,
+        "ok": 1,
+        "ko": 10
+    },
+    "minResponseTime": {
+        "total": 33,
+        "ok": 476,
+        "ko": 33
+    },
+    "maxResponseTime": {
+        "total": 476,
+        "ok": 476,
+        "ko": 299
+    },
+    "meanResponseTime": {
+        "total": 141,
+        "ok": 476,
+        "ko": 108
+    },
+    "standardDeviation": {
+        "total": 136,
+        "ok": 0,
+        "ko": 89
+    },
+    "percentiles1": {
+        "total": 55,
+        "ok": 476,
+        "ko": 54
+    },
+    "percentiles2": {
+        "total": 194,
+        "ok": 476,
+        "ko": 174
+    },
+    "percentiles3": {
+        "total": 388,
+        "ok": 476,
+        "ko": 255
+    },
+    "percentiles4": {
+        "total": 458,
+        "ok": 476,
+        "ko": 290
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 1,
+    "percentage": 9
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 10,
+    "percentage": 91
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 5.5,
+        "ok": 0.5,
+        "ko": 5.0
+    }
+},
+"contents": {
+"group_testdarts---api-111de": {
+          "type": "GROUP",
+"name": "TestDARTS - Api - Token:GET",
+"path": "TestDARTS - Api - Token:GET",
+"pathFormatted": "group_testdarts---api-111de",
+"stats": {
+    "name": "TestDARTS - Api - Token:GET",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 1,
+        "ko": 0
+    },
+    "minResponseTime": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "maxResponseTime": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "meanResponseTime": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "percentiles2": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "percentiles3": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "percentiles4": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 1,
+    "percentage": 100
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 0,
+    "percentage": 0
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.5,
+        "ok": 0.5,
+        "ko": 0
+    }
+},
+"contents": {
+"req_darts---api---t-9065a": {
+        "type": "REQUEST",
+        "name": "DARTS - Api - Token:GET",
+"path": "TestDARTS - Api - Token:GET / DARTS - Api - Token:GET",
+"pathFormatted": "req_testdarts---api-488b3",
+"stats": {
+    "name": "DARTS - Api - Token:GET",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 1,
+        "ko": 0
+    },
+    "minResponseTime": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "maxResponseTime": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "meanResponseTime": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "percentiles2": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "percentiles3": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "percentiles4": {
+        "total": 476,
+        "ok": 476,
+        "ko": 0
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 1,
+    "percentage": 100
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 0,
+    "percentage": 0
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.5,
+        "ok": 0.5,
+        "ko": 0
+    }
+}
+    }
+}
+
+     },"group_audio-requestda-5436b": {
+          "type": "GROUP",
+"name": "Audio RequestDARTS - Api - AudioRequest:Post",
+"path": "Audio RequestDARTS - Api - AudioRequest:Post",
+"pathFormatted": "group_audio-requestda-5436b",
+"stats": {
+    "name": "Audio RequestDARTS - Api - AudioRequest:Post",
+    "numberOfRequests": {
+        "total": 10,
+        "ok": 0,
+        "ko": 10
+    },
+    "minResponseTime": {
+        "total": 33,
+        "ok": 0,
+        "ko": 33
+    },
+    "maxResponseTime": {
+        "total": 299,
+        "ok": 0,
+        "ko": 299
+    },
+    "meanResponseTime": {
+        "total": 108,
+        "ok": 0,
+        "ko": 108
+    },
+    "standardDeviation": {
+        "total": 89,
+        "ok": 0,
+        "ko": 89
+    },
+    "percentiles1": {
+        "total": 54,
+        "ok": 0,
+        "ko": 54
+    },
+    "percentiles2": {
+        "total": 174,
+        "ok": 0,
+        "ko": 174
+    },
+    "percentiles3": {
+        "total": 255,
+        "ok": 0,
+        "ko": 255
+    },
+    "percentiles4": {
+        "total": 290,
+        "ok": 0,
+        "ko": 290
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 10,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 5.0,
+        "ok": 0,
+        "ko": 5.0
+    }
+},
+"contents": {
+"req_darts---api---a-3f0a9": {
+        "type": "REQUEST",
+        "name": "DARTS - Api - AudioRequest:Post",
+"path": "Audio RequestDARTS - Api - AudioRequest:Post / DARTS - Api - AudioRequest:Post",
+"pathFormatted": "req_audio-requestda-b6b4f",
+"stats": {
+    "name": "DARTS - Api - AudioRequest:Post",
+    "numberOfRequests": {
+        "total": 10,
+        "ok": 0,
+        "ko": 10
+    },
+    "minResponseTime": {
+        "total": 33,
+        "ok": 0,
+        "ko": 33
+    },
+    "maxResponseTime": {
+        "total": 299,
+        "ok": 0,
+        "ko": 299
+    },
+    "meanResponseTime": {
+        "total": 108,
+        "ok": 0,
+        "ko": 108
+    },
+    "standardDeviation": {
+        "total": 89,
+        "ok": 0,
+        "ko": 89
+    },
+    "percentiles1": {
+        "total": 54,
+        "ok": 0,
+        "ko": 54
+    },
+    "percentiles2": {
+        "total": 174,
+        "ok": 0,
+        "ko": 174
+    },
+    "percentiles3": {
+        "total": 255,
+        "ok": 0,
+        "ko": 255
+    },
+    "percentiles4": {
+        "total": 290,
+        "ok": 0,
+        "ko": 290
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 10,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 5.0,
+        "ok": 0,
+        "ko": 5.0
+    }
+}
+    }
+}
+
+     }
+}
+
+}
