@@ -1,0 +1,45 @@
+RUN	DartsApi.AudioRequestSimulation	audiorequestsimulation	1708010624100	2	3.9.5
+USER	Test1	START	1708010624886
+REQUEST	TestDARTS - Api - Token:GET	DARTS - Api - Token:GET	1708010624903	1708010628439	OK	 
+GROUP	TestDARTS - Api - Token:GET	1708010624887	1708010628485	3536	OK
+USER	Test1	END	1708010628488
+USER	Test2	START	1708010628859
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1708010628861
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708010628859	1708010628863	0	KO
+USER	Test2	END	1708010628863
+USER	Test2	START	1708010629884
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1708010629885
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708010629884	1708010629885	0	KO
+USER	Test2	END	1708010629885
+USER	Test2	START	1708010630860
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1708010630860
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708010630860	1708010630861	0	KO
+USER	Test2	END	1708010630861
+USER	Test2	START	1708010631862
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1708010631863
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708010631863	1708010631863	0	KO
+USER	Test2	END	1708010631864
+USER	Test2	START	1708010632859
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1708010632859
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708010632859	1708010632860	0	KO
+USER	Test2	END	1708010632860
+USER	Test2	START	1708010633874
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1708010633875
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708010633875	1708010633875	0	KO
+USER	Test2	END	1708010633876
+USER	Test2	START	1708010634886
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1708010634887
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708010634886	1708010634888	0	KO
+USER	Test2	END	1708010634889
+USER	Test2	START	1708010635867
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1708010635868
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708010635868	1708010635868	0	KO
+USER	Test2	END	1708010635868
+USER	Test2	START	1708010636884
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1708010636884
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708010636884	1708010636884	0	KO
+USER	Test2	END	1708010636885
+USER	Test2	START	1708010637864
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1708010637864
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708010637864	1708010637864	0	KO
+USER	Test2	END	1708010637865

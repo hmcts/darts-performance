@@ -1,0 +1,7 @@
+RUN	DartsApi.AudioRequestPost	audiorequestpost	1707995089697	1	3.9.5
+USER	APIToken	START	1707995090467
+REQUEST		DARTS - Api - Token:GET	1707995090465	1707995092636	OK	 
+USER	APIToken	END	1707995097695
+USER	AudioRequest:Post	START	1707995098436
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1707995098440
+USER	AudioRequest:Post	END	1707995098445

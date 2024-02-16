@@ -1,0 +1,25 @@
+RUN	DartsApi.AudioRequestSimulation	audiorequestsimulation	1708079176304	h#	3.9.5
+USER	Test1	START	1708079176918
+REQUEST	TestDARTS - Api - Token:GET	DARTS - Api - Token:GET	1708079176916	1708079177492	OK	 
+GROUP	TestDARTS - Api - Token:GET	1708079176898	1708079177528	576	OK
+ERROR	DARTS - Api - AudioRequest:Post: Failed to build request: No attribute named 'hea_id' is defined 	1708079177533
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708079177530	1708079177536	0	KO
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708079177539	1708079177894	OK	 
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708079177539	1708079177896	355	OK
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708079177897	1708079178438	OK	 
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708079177897	1708079178438	541	OK
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708079178439	1708079178794	OK	 
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708079178439	1708079178794	355	OK
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708079178797	1708079179212	OK	 
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708079178796	1708079179213	415	OK
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708079179216	1708079179301	OK	 
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708079179215	1708079179302	85	OK
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708079179304	1708079179433	OK	 
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708079179303	1708079179433	129	OK
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708079179435	1708079179523	OK	 
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708079179434	1708079179524	88	OK
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708079179525	1708079179614	OK	 
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708079179525	1708079179614	89	OK
+REQUEST	Audio RequestDARTS - Api - AudioRequest:Post	DARTS - Api - AudioRequest:Post	1708079179616	1708079179704	OK	 
+GROUP	Audio RequestDARTS - Api - AudioRequest:Post	1708079179615	1708079179705	88	OK
+USER	Test1	END	1708079179712
