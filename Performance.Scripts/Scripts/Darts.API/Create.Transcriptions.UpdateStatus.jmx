@@ -384,10 +384,10 @@
             <stringProp name="1791439238">v_randomNumberForEvent</stringProp>
             <stringProp name="-628525754">audioCounter</stringProp>
             <stringProp name="1921384329">v_randomNumberRetention</stringProp>
-            <stringProp name="0"></stringProp>
+            <stringProp name="-1471382400">v_randomNumberEventId</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-427098844">
+            <collectionProp name="-1831882289">
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
@@ -403,7 +403,7 @@
               <stringProp name="1512311384">${__Random(1,10,)}</stringProp>
               <stringProp name="49">1</stringProp>
               <stringProp name="-1198056235">${__Random(1,4,)}</stringProp>
-              <stringProp name="0"></stringProp>
+              <stringProp name="1636120152">${__Random(1,1000,)}</stringProp>
             </collectionProp>
           </collectionProp>
           <boolProp name="UserParameters.per_iteration">true</boolProp>
@@ -430,12 +430,14 @@
               <stringProp name="-1579351719">v_randomdates</stringProp>
               <stringProp name="1787714242">v_randomNumberForAudio</stringProp>
               <stringProp name="-804253826">v_randomNumberForTranscription</stringProp>
+              <stringProp name="-1471382400">v_randomNumberEventId</stringProp>
             </collectionProp>
             <collectionProp name="UserParameters.thread_values">
-              <collectionProp name="-356811438">
+              <collectionProp name="418988914">
                 <stringProp name="1723739275">${__groovy(new Date((long)(Math.random() * System.currentTimeMillis())).format(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.SSS&apos;Z&apos;&quot;),)}</stringProp>
                 <stringProp name="-1198056235">${__Random(1,4,)}</stringProp>
                 <stringProp name="1512311384">${__Random(1,10,)}</stringProp>
+                <stringProp name="1636120152">${__Random(1,1000,)}</stringProp>
               </collectionProp>
             </collectionProp>
             <boolProp name="UserParameters.per_iteration">true</boolProp>
@@ -599,8 +601,8 @@ String currentUsername = vars.get(&quot;USERNAME&quot;);
   &quot;message_id&quot;: &quot;667&quot;,&#xd;
   &quot;type&quot;: &quot;2917&quot;,&#xd;
   &quot;sub_type&quot;: &quot;3979&quot;,&#xd;
-  &quot;event_id&quot;: &quot;72&quot;,&#xd;
-  &quot;courthouse&quot;: &quot;PerfCourtHouse04&quot;,&#xd;
+  &quot;event_id&quot;: &quot;${v_randomNumberEventId}&quot;,&#xd;
+  &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,&#xd;
   &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,&#xd;
   &quot;case_numbers&quot;: [&#xd;
     &quot;PerfCase_${v_randomCaseName}&quot;&#xd;
@@ -904,7 +906,55 @@ FROM darts.hearing
 INNER JOIN
     darts.court_case ON darts.hearing.cas_id = darts.court_case.cas_id
 WHERE court_case.case_number = &apos;PerfCase_${v_randomCaseName}&apos;
-ORDER BY hea_id ASC</stringProp>
+</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes">VARCHAR</stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as Object</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable">ex_allHearingsIds</stringProp>
+              <stringProp name="variableNames"></stringProp>
+              <stringProp name="TestPlan.comments">where cas_id = 10817</stringProp>
+            </JDBCSampler>
+            <hashTree>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Hearings Ids" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">ex_hearingsIds</stringProp>
+                <stringProp name="RegexExtractor.regex">hea_id=(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">-1</stringProp>
+                <stringProp name="Scope.variable">ex_allHearingsIds</stringProp>
+                <stringProp name="Sample.scope">variable</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Case Ids" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">ex_caseIds</stringProp>
+                <stringProp name="RegexExtractor.regex">cas_id=(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">-1</stringProp>
+                <stringProp name="Scope.variable">ex_allHearingsIds</stringProp>
+                <stringProp name="Sample.scope">variable</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract CourtRoom Ids" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">ex_courtRoomIds</stringProp>
+                <stringProp name="RegexExtractor.regex">ctr_id=(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">-1</stringProp>
+                <stringProp name="Scope.variable">ex_allHearingsIds</stringProp>
+                <stringProp name="Sample.scope">variable</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+            </hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Hearing Id" enabled="true">
+              <stringProp name="dataSource">dbConfig</stringProp>
+              <stringProp name="query">select ae.hea_id FROM darts.event e INNER JOIN darts.hearing_event_ae ae ON e.eve_id=ae.eve_id where e.event_id = ${v_randomNumberEventId}</stringProp>
               <stringProp name="queryArguments"></stringProp>
               <stringProp name="queryArgumentsTypes">VARCHAR</stringProp>
               <stringProp name="queryTimeout"></stringProp>
@@ -1286,7 +1336,7 @@ vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
                       <elementProp name="metadata" elementType="HTTPArgument">
                         <boolProp name="HTTPArgument.always_encode">true</boolProp>
                         <stringProp name="Argument.name">metadata</stringProp>
-                        <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_audiodates}&quot;,    &quot;ended_at&quot;: &quot;${v_audiodates1hour}&quot;,    &quot;channel&quot;: 1,    &quot;total_channels&quot;: 4,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;sample.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse04&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,    &quot;file_size&quot;: 937.96,    &quot;checksum&quot;: &quot;TVRMwq16b4mcZwPSlZj/iQ==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
+                        <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_audiodates}&quot;,    &quot;ended_at&quot;: &quot;${v_audiodates1hour}&quot;,    &quot;channel&quot;: 1,    &quot;total_channels&quot;: 4,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;sample.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,    &quot;file_size&quot;: 937.96,    &quot;checksum&quot;: &quot;TVRMwq16b4mcZwPSlZj/iQ==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
                         <stringProp name="Argument.metadata">=</stringProp>
                         <boolProp name="HTTPArgument.use_equals">true</boolProp>
                         <stringProp name="HTTPArgument.content_type">application/json</stringProp>
@@ -1555,7 +1605,7 @@ vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
               </hashTree>
             </hashTree>
           </hashTree>
-          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop  - Create Random Amount of Transcription for Hearing" enabled="false">
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop  - Create Random Amount of Transcription for Hearing" enabled="true">
             <boolProp name="LoopController.continue_forever">true</boolProp>
             <stringProp name="LoopController.loops">1</stringProp>
             <stringProp name="TestPlan.comments">${v_randomNumberForTranscription}</stringProp>
@@ -1595,7 +1645,7 @@ vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
                 <boolProp name="UserParameters.per_iteration">false</boolProp>
               </UserParameters>
               <hashTree/>
-              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor - Update User to Use Transcriptions POST" enabled="true">
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor - Update User to Use Transcriptions POST" enabled="false">
                 <stringProp name="cacheKey">true</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="parameters"></stringProp>
@@ -1623,7 +1673,7 @@ if (&quot;darts_global_test_user&quot;.equals(currentUsername)) {
                 <stringProp name="scriptLanguage">groovy</stringProp>
               </JSR223PreProcessor>
               <hashTree/>
-              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor - Update User to Use Transcriptions POST" enabled="false">
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor - Update User to Use Transcriptions POST" enabled="true">
                 <stringProp name="cacheKey">true</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="parameters"></stringProp>
@@ -1651,7 +1701,7 @@ if (&quot;darts_global_test_user&quot;.equals(currentUsername)) {
                 <stringProp name="IncludeController.includepath">Test.Fragment.Get.Auth.Token.jmx</stringProp>
               </IncludeController>
               <hashTree/>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Transcriptions - Created ${transcriptionCounter}" enabled="false">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Transcriptions - Created ${transcriptionCounter}" enabled="true">
                 <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                   <collectionProp name="Arguments.arguments">
@@ -1659,7 +1709,7 @@ if (&quot;darts_global_test_user&quot;.equals(currentUsername)) {
                       <boolProp name="HTTPArgument.always_encode">false</boolProp>
                       <stringProp name="Argument.value">{&#xd;
   &quot;hearing_id&quot;: ${ex_hearingsIds_1},&#xd;
-  &quot;case_id&quot;: ${ex_caseIds_1},&#xd;
+  &quot;case_id&quot;: ${ex_caseId},&#xd;
   &quot;transcription_urgency_id&quot;: 2,&#xd;
   &quot;transcription_type_id&quot;: 3,&#xd;
   &quot;comment&quot;: &quot;PerfCase_${v_randomCaseName}&quot;&#xd;
