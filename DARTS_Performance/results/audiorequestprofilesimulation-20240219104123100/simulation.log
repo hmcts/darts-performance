@@ -1,0 +1,27 @@
+RUN	DartsApi.AudioRequestProfileSimulation	audiorequestprofilesimulation	1708339283100	6	3.9.5
+USER	Audio Requests:POST	START	1708339283733
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1708339283731	1708339284285	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1708339283715	1708339284334	554	OK
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET	1708339284340	1708339284526	KO	jsonPath($.transformed_media_details.[*].transformed_media_id).findAll.exists extraction crashed: string matching regex '[^*.\[\]()=!<>\s]+' expected but '[' found
+GROUP	Audio Request Get	1708339284335	1708339284530	186	KO
+ERROR	DARTS - Api - AudioRequest:GET PlayBack: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708339284533
+GROUP	Audio Request Get	1708339284532	1708339284536	0	KO
+ERROR	DARTS - Api - AudioRequest:GET PlayBack: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708339284537
+GROUP	Audio Request Get	1708339284537	1708339284537	0	KO
+ERROR	DARTS - Api - AudioRequest:GET PlayBack: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708339284538
+GROUP	Audio Request Get	1708339284538	1708339284538	0	KO
+ERROR	DARTS - Api - AudioRequest:GET PlayBack: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708339284538
+GROUP	Audio Request Get	1708339284538	1708339284539	0	KO
+ERROR	DARTS - Api - AudioRequest:GET PlayBack: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708339284539
+GROUP	Audio Request Get	1708339284539	1708339284539	0	KO
+ERROR	DARTS - Api - AudioRequest:GET PlayBack: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708339284540
+GROUP	Audio Request Get	1708339284539	1708339284540	0	KO
+ERROR	DARTS - Api - AudioRequest:GET PlayBack: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708339284540
+GROUP	Audio Request Get	1708339284540	1708339284540	0	KO
+ERROR	DARTS - Api - AudioRequest:GET PlayBack: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708339284541
+GROUP	Audio Request Get	1708339284541	1708339284541	0	KO
+ERROR	DARTS - Api - AudioRequest:GET PlayBack: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708339284541
+GROUP	Audio Request Get	1708339284541	1708339284542	0	KO
+ERROR	DARTS - Api - AudioRequest:GET PlayBack: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708339284542
+GROUP	Audio Request Get	1708339284542	1708339284542	0	KO
+USER	Audio Requests:POST	END	1708339284545

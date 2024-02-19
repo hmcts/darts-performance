@@ -2,6 +2,7 @@ package scenario;
 
 import Headers.Headers;
 import Utilities.AppConfig;
+import Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -19,6 +20,7 @@ public final class GetAudioRequestScenario {
                 .exec(http("DARTS - Api - AudioRequest:GET")
                         .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/v2?expired=" + expired + "")
                         .headers(Headers.addAdditionalHeader(Headers.AuthorizationHeaders, true))
+                        .check(Feeders.saveTransformedMediaId())
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))
             ));
@@ -28,7 +30,7 @@ public final class GetAudioRequestScenario {
         return group("Audio Request Get")
             .on(exec(feed(feeder))
                 .exec(http("DARTS - Api - AudioRequest:GET PlayBack")
-                        .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/playback?transformed_media_id=#{hea_id}")
+                        .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/playback?transformed_media_id=#{getTransformedMediaId}")
                         .headers(Headers.AuthorizationHeaders)
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))
@@ -39,7 +41,7 @@ public final class GetAudioRequestScenario {
         return group("Audio Request Get")
             .on(exec(feed(feeder))
                 .exec(http("DARTS - Api - AudioRequest:GET Download")
-                        .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/download?transformed_media_id=#{hea_id}")
+                        .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/download?transformed_media_id=#{getTransformedMediaId}")
                         .headers(Headers.AuthorizationHeaders)
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))
