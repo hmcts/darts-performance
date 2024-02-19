@@ -18,7 +18,11 @@ public class Feeders {
     }    
     public static CheckBuilder.Final saveBearerToken() {
         return CoreDsl.jsonPath("$.access_token").saveAs("bearerToken");
-    }                
+    }
+   
+    public static CheckBuilder.Final saveTransformedMediaId() {
+        return CoreDsl.jsonPath("$.transformed_media_details[*].transformed_media_id").findAll().saveAs("getTransformedMediaId");
+    }
 
     public static FeederBuilder<Object> listFeeder(String key, List<Object> items) {
         return CoreDsl.listFeeder(items.stream()
