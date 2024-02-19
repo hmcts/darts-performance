@@ -1,0 +1,10 @@
+{
+  "simulation": "DartsSoap.AddCaseSOAPUserSimulation",
+  "simulationId": "addcasesoapusersimulation-20240219154558602",
+  "start": 1708357559329,
+  "description": "8",
+  "scenarios": ["DARTS - GateWay - Soap - AddCase :POST"],
+  "assertions": [
+
+  ]
+}

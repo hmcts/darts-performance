@@ -1,0 +1,10 @@
+{
+  "simulation": "DartsSoap.GetCasesSOAPUserSimulation",
+  "simulationId": "getcasessoapusersimulation-20240219163616767",
+  "start": 1708360577256,
+  "description": "1",
+  "scenarios": ["DARTS - GateWay - Soap - GetCases:GET"],
+  "assertions": [
+
+  ]
+}
