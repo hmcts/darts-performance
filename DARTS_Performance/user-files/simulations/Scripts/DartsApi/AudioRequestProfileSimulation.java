@@ -21,7 +21,7 @@ public class AudioRequestProfileSimulation extends Simulation {
 
     final ScenarioBuilder scn1 = scenario("Audio Requests:POST")
         .exec(GetApiTokenScenario.getApiToken())
-        .exec(GetAudioRequestScenario.GetAudioRequest().feed(feeder))
+        //.exec(GetAudioRequestScenario.GetAudioRequest().feed(feeder))
         .repeat(10)    
         .on(exec(GetAudioRequestScenario.GetAudioRequestPlayBack().feed(feeder))           
         );

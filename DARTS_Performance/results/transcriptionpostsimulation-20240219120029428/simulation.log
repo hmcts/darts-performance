@@ -1,0 +1,25 @@
+RUN	DartsApi.TranscriptionPostSimulation	transcriptionpostsimulation	1708344029428	7	3.9.5
+USER	Transcription:POST	START	1708344029911
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1708344029910	1708344030516	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1708344029896	1708344030556	606	OK
+REQUEST	Transcription Request Group	DARTS - Api - Transcription:POST	1708344030564	1708344030835	KO	jsonPath($.transcription_id).find.exists, found nothing
+GROUP	Transcription Request Group	1708344030558	1708344030838	271	KO
+REQUEST	Transcription Request Group	DARTS - Api - Transcription:POST	1708344030839	1708344031057	KO	jsonPath($.transcription_id).find.exists, found nothing
+GROUP	Transcription Request Group	1708344030839	1708344031058	218	KO
+REQUEST	Transcription Request Group	DARTS - Api - Transcription:POST	1708344031061	1708344031315	KO	jsonPath($.transcription_id).find.exists, found nothing
+GROUP	Transcription Request Group	1708344031059	1708344031316	254	KO
+REQUEST	Transcription Request Group	DARTS - Api - Transcription:POST	1708344031317	1708344031400	KO	jsonPath($.transcription_id).find.exists, found nothing
+GROUP	Transcription Request Group	1708344031316	1708344031400	83	KO
+REQUEST	Transcription Request Group	DARTS - Api - Transcription:POST	1708344031401	1708344031503	KO	jsonPath($.transcription_id).find.exists, found nothing
+GROUP	Transcription Request Group	1708344031401	1708344031504	102	KO
+REQUEST	Transcription Request Group	DARTS - Api - Transcription:POST	1708344031505	1708344031610	KO	jsonPath($.transcription_id).find.exists, found nothing
+GROUP	Transcription Request Group	1708344031504	1708344031610	105	KO
+REQUEST	Transcription Request Group	DARTS - Api - Transcription:POST	1708344031611	1708344031722	KO	jsonPath($.transcription_id).find.exists, found nothing
+GROUP	Transcription Request Group	1708344031611	1708344031723	111	KO
+REQUEST	Transcription Request Group	DARTS - Api - Transcription:POST	1708344031725	1708344031807	KO	jsonPath($.transcription_id).find.exists, found nothing
+GROUP	Transcription Request Group	1708344031724	1708344031808	82	KO
+REQUEST	Transcription Request Group	DARTS - Api - Transcription:POST	1708344031809	1708344031960	KO	jsonPath($.transcription_id).find.exists, found nothing
+GROUP	Transcription Request Group	1708344031808	1708344031961	151	KO
+REQUEST	Transcription Request Group	DARTS - Api - Transcription:POST	1708344031963	1708344032070	KO	jsonPath($.transcription_id).find.exists, found nothing
+GROUP	Transcription Request Group	1708344031961	1708344032071	107	KO
+USER	Transcription:POST	END	1708344032078

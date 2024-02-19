@@ -43,4 +43,33 @@ public class SOAPRequestBuilder {
                 "  </s:Body>\n" +
                 "</s:Envelope>";
     }
+
+    public static String AddCaseSOAPRequest(Session session) {
+        // Retrieve values from session or define defaults if needed
+        String courtHouseName = session.get("CourtHouseName").toString();    
+        String courtRoom = session.get("CourtRoom").toString();    
+
+        // Generate dynamic values
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String defendantName = randomStringGenerator.generateRandomString(10);
+        String defendantName2 = randomStringGenerator.generateRandomString(10);
+        String judgeName = randomStringGenerator.generateRandomString(10);
+
+    // Construct SOAP request
+    return String.format(
+        "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
+        "  <s:Header>\n" +
+        "    <ServiceContext token=\"temporary/127.0.0.1-1694086218480-789961425\" xmlns=\"http://context.core.datamodel.fs.documentum.emc.com/\">\n" +
+        "      <Identities xsi:type=\"RepositoryIdentity\" userName=\"%s\" password=\"%s\" repositoryName=\"moj_darts\" domain=\"\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"/>\n" +
+        "      <RuntimeProperties/>\n" +
+        "    </ServiceContext>\n" +
+        "  </s:Header>\n" +
+        "  <s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n" +
+        "    <ns2:addCase xmlns:ns2=\"http://com.synapps.mojdarts.service.com\">\n" +
+        "      <document><![CDATA[<case type=\"1\" id=\"U20231129-1733\"><courthouse>%s</courthouse><courtroom>%s</courtroom><defendants><defendant>%s</defendant><defendant>%s</defendant></defendants><judges><judge>Mr Judge</judge><judge>Mrs %s</judge></judges><prosecutors><prosecutor>Mr Prosecutor</prosecutor><prosecutor>Mrs Prosecutor</prosecutor></prosecutors></case>]]></document>\n" +
+        "    </ns2:addCase>\n" +
+        "  </s:Body>\n" +
+        "</s:Envelope>",
+        USERNAME, PASSWORD, courtHouseName, courtRoom, defendantName, defendantName2, judgeName);
+    }
 }
