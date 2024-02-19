@@ -4,6 +4,7 @@ import Utilities.Feeders;
 import Utilities.NumberGenerator;
 import Utilities.RandomStringGenerator;
 import Utilities.TimestampGenerator;
+import akka.dispatch.Envelope;
 import Utilities.AppConfig.EnvironmentURL;
 
 import io.gatling.javaapi.core.Session;
@@ -43,6 +44,35 @@ public class SOAPRequestBuilder {
                 "  </s:Body>\n" +
                 "</s:Envelope>";
     }
+
+    public static String GetCasesSOAPRequest(Session session) {
+        // Retrieve values from session or define defaults if needed
+        String courtHouseName = session.get("CourtHouseName").toString();    
+        String courtRoom = session.get("CourtRoom").toString();    
+
+        // Generate dynamic values
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+
+    // Construct SOAP request
+    return String.format(
+        "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
+        "   <s:Header>\n" +
+        "      <ServiceContext token=\"temporary/127.0.0.1-1694086218480-789961425\" xmlns=\"http://context.core.datamodel.fs.documentum.emc.com/\">\n" +
+        "         <Identities xsi:type=\"RepositoryIdentity\" userName=\"%s\" password=\"%s\" repositoryName=\"moj_darts\" domain=\"\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"/>\n" +
+        "         <RuntimeProperties/>\n" +
+        "      </ServiceContext>\n" +
+        "   </s:Header>\n" +
+        "   <s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n" +
+        "      <ns2:getCases xmlns:ns2=\"http://com.synapps.mojdarts.service.com\">\n" +
+        "         <courthouse>%s</courthouse>\n" +
+        "         <courtroom>%s</courtroom>\n" +
+        "         <date>2023-11-29</date>\n" +
+        "      </ns2:getCases>\n" +
+        "   </s:Body>\n" +
+        "</s:Envelope>",
+        USERNAME, PASSWORD, courtHouseName, courtRoom);  
+    }
+  
 
     public static String AddCaseSOAPRequest(Session session) {
         // Retrieve values from session or define defaults if needed

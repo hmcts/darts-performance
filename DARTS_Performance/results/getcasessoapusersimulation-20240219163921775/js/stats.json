@@ -1,0 +1,255 @@
+{
+  "type": "GROUP",
+"name": "All Requests",
+"path": "",
+"pathFormatted": "group_missing-name-b06d1",
+"stats": {
+    "name": "All Requests",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 0,
+        "ko": 1
+    },
+    "minResponseTime": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "maxResponseTime": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "meanResponseTime": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "percentiles2": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "percentiles3": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "percentiles4": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 1,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 1.0,
+        "ok": 0,
+        "ko": 1.0
+    }
+},
+"contents": {
+"group_adddocument-soa-1a38a": {
+          "type": "GROUP",
+"name": "AddDocument SOAP Request Group",
+"path": "AddDocument SOAP Request Group",
+"pathFormatted": "group_adddocument-soa-1a38a",
+"stats": {
+    "name": "AddDocument SOAP Request Group",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 0,
+        "ko": 1
+    },
+    "minResponseTime": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "maxResponseTime": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "meanResponseTime": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "percentiles2": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "percentiles3": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "percentiles4": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 1,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 1.0,
+        "ok": 0,
+        "ko": 1.0
+    }
+},
+"contents": {
+"req_darts---gateway-51015": {
+        "type": "REQUEST",
+        "name": "DARTS - GateWay - Soap - GetCase - User",
+"path": "AddDocument SOAP Request Group / DARTS - GateWay - Soap - GetCase - User",
+"pathFormatted": "req_adddocument-soa-30ae8",
+"stats": {
+    "name": "DARTS - GateWay - Soap - GetCase - User",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 0,
+        "ko": 1
+    },
+    "minResponseTime": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "maxResponseTime": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "meanResponseTime": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "percentiles2": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "percentiles3": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "percentiles4": {
+        "total": 613,
+        "ok": 0,
+        "ko": 613
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 1,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 1.0,
+        "ok": 0,
+        "ko": 1.0
+    }
+}
+    }
+}
+
+     }
+}
+
+}

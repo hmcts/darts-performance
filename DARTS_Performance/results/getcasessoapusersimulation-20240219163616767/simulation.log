@@ -1,0 +1,5 @@
+RUN	DartsSoap.GetCasesSOAPUserSimulation	getcasessoapusersimulation	1708360576767	1	3.9.5
+USER	DARTS - GateWay - Soap - GetCases:GET	START	1708360577256
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - GetCase - User	1708360577276	1708360577393	KO	status.find.is(200), but actually found 500
+GROUP	AddDocument SOAP Request Group	1708360577258	1708360577531	117	KO
+USER	DARTS - GateWay - Soap - GetCases:GET	END	1708360577536
