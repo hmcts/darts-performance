@@ -1,0 +1,25 @@
+RUN	DartsApi.AudioRequestGetSimulation	audiorequestgetsimulation	1708335187538	2	3.9.5
+USER	Audio Requests:POST	START	1708335188363
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1708335188361	1708335189434	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1708335188342	1708335189480	1073	OK
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET	1708335189486	1708335189778	KO	status.find.is(200), but actually found 405
+GROUP	Audio Request Get	1708335189483	1708335189781	292	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET	1708335189786	1708335189828	KO	status.find.is(200), but actually found 405
+GROUP	Audio Request Get	1708335189783	1708335189828	42	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET	1708335189829	1708335189909	KO	status.find.is(200), but actually found 405
+GROUP	Audio Request Get	1708335189829	1708335189910	80	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET	1708335189911	1708335189973	KO	status.find.is(200), but actually found 405
+GROUP	Audio Request Get	1708335189910	1708335189973	62	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET	1708335189975	1708335190024	KO	status.find.is(200), but actually found 405
+GROUP	Audio Request Get	1708335189974	1708335190024	49	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET	1708335190025	1708335190066	KO	status.find.is(200), but actually found 405
+GROUP	Audio Request Get	1708335190024	1708335190066	41	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET	1708335190067	1708335190096	KO	status.find.is(200), but actually found 405
+GROUP	Audio Request Get	1708335190067	1708335190096	29	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET	1708335190097	1708335190124	KO	status.find.is(200), but actually found 405
+GROUP	Audio Request Get	1708335190096	1708335190124	27	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET	1708335190125	1708335190165	KO	status.find.is(200), but actually found 405
+GROUP	Audio Request Get	1708335190124	1708335190165	40	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET	1708335190166	1708335190207	KO	status.find.is(200), but actually found 405
+GROUP	Audio Request Get	1708335190166	1708335190207	41	KO
+USER	Audio Requests:POST	END	1708335190210
