@@ -1,0 +1,23 @@
+RUN	DartsSoap.AddCaseSOAPUserSimulation	addcasesoapusersimulation	1708352340847	8	3.9.5
+USER	DARTS - GateWay - Soap - AddCase :POST	START	1708352341605
+REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708352341642	1708352341834	KO	status.find.is(200), but actually found 400
+GROUP	AddCase SOAP Request Group	1708352341609	1708352341963	192	KO
+REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708352341964	1708352342055	KO	status.find.is(200), but actually found 400
+GROUP	AddCase SOAP Request Group	1708352341964	1708352342057	91	KO
+REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708352342058	1708352342125	KO	status.find.is(200), but actually found 400
+GROUP	AddCase SOAP Request Group	1708352342057	1708352342126	67	KO
+REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708352342127	1708352342155	KO	status.find.is(200), but actually found 400
+GROUP	AddCase SOAP Request Group	1708352342127	1708352342156	28	KO
+REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708352342157	1708352342206	KO	status.find.is(200), but actually found 400
+GROUP	AddCase SOAP Request Group	1708352342157	1708352342207	49	KO
+REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708352342208	1708352342235	KO	status.find.is(200), but actually found 400
+GROUP	AddCase SOAP Request Group	1708352342208	1708352342237	27	KO
+REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708352342238	1708352342287	KO	status.find.is(200), but actually found 400
+GROUP	AddCase SOAP Request Group	1708352342237	1708352342290	49	KO
+REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708352342292	1708352342330	KO	status.find.is(200), but actually found 400
+GROUP	AddCase SOAP Request Group	1708352342291	1708352342332	38	KO
+REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708352342333	1708352342373	KO	status.find.is(200), but actually found 400
+GROUP	AddCase SOAP Request Group	1708352342333	1708352342374	40	KO
+REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708352342375	1708352342403	KO	status.find.is(200), but actually found 400
+GROUP	AddCase SOAP Request Group	1708352342375	1708352342405	28	KO
+USER	DARTS - GateWay - Soap - AddCase :POST	END	1708352342407

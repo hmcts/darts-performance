@@ -27,5 +27,5 @@ public final class AddDocumentSoapUserScenario {
                         .check(xpath("//return/code").saveAs("statusCode"))
                         .check(xpath("//return/message").saveAs("message"))
             ));
-    }    
+    } 
 }

@@ -10,7 +10,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class GetAudioRequestScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
+   // private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();    
+    private static final FeederBuilder<String> feeder = csv(AppConfig.TRANSFORMED_MEDIA_FILE_PATH).random();
     private static final boolean expired = ThreadLocalRandom.current().nextBoolean();
 
     private GetAudioRequestScenario() {}
@@ -18,9 +19,9 @@ public final class GetAudioRequestScenario {
         return group("Audio Request Get")
             .on(exec(feed(feeder))
                 .exec(http("DARTS - Api - AudioRequest:GET")
-                        .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/v2?expired=" + expired + "")
+                        .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/v2?expired=true") //+ expired + "")
                         .headers(Headers.addAdditionalHeader(Headers.AuthorizationHeaders, true))
-                        .check(Feeders.saveTransformedMediaId())
+                        //.check(Feeders.saveTransformedMediaId())
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))
             ));

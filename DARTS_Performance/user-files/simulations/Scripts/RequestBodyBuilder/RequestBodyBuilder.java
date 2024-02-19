@@ -12,7 +12,7 @@ public class RequestBodyBuilder {
     private static final int DOWNLOAD_PERCENTAGE = 70; //% chance
     private static final int PLAYBACK_PERCENTAGE = 30; //% chance
 
-    public static String buildRequestBody(String hearingId, String userId, LocalDateTime startTime, LocalDateTime endTime) {
+    public static String buildAudioRequestBody(String hearingId, String userId, LocalDateTime startTime, LocalDateTime endTime) {
         String startTimeFormatted = formatTime(startTime);
         String endTimeFormatted = formatTime(endTime);
         String requestType = getRandomRequestType();
@@ -39,4 +39,15 @@ public class RequestBodyBuilder {
             return REQUEST_TYPES[1]; // PLAYBACK
         }
     }
+
+    public static String buildTranscriptionRequestBody(String hearingId, String caseId, String transcriptionUrgencyId, String transcriptionTypeId, String comment) {
+        return String.format("{\"hearing_id\": \"%s\", " +
+                "\"case_id\": \"%s\", " +
+                "\"transcription_urgency_id\": \"%s\", " +
+                "\"transcription_type_id\": \"%s\", " +
+                "\"comment\": \"%s\"}",
+                hearingId, caseId, transcriptionUrgencyId, transcriptionTypeId, comment);
+    }
+
+
 }
