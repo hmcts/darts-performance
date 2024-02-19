@@ -10,7 +10,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 
-public class AudioRequestSimulation extends Simulation {   
+public class AudioRequestGetPlayBackSimulation extends Simulation {   
   {
     final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
 
@@ -22,7 +22,7 @@ public class AudioRequestSimulation extends Simulation {
     final ScenarioBuilder scn1 = scenario("Audio Requests:POST")
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(10)    
-        .on(exec(AudioRequestPostScenario.audioRequestPost().feed(feeder))    
+        .on(exec(GetAudioRequestScenario.GetAudioRequestPlayBack().feed(feeder))    
         );
 
     setUp(

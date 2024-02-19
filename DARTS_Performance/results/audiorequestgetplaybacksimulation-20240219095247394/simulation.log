@@ -1,0 +1,25 @@
+RUN	DartsApi.AudioRequestGetPlayBackSimulation	audiorequestgetplaybacksimulation	1708336367394	2	3.9.5
+USER	Audio Requests:POST	START	1708336368100
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1708336368098	1708336368661	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1708336368085	1708336368698	563	OK
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET PlayBack	1708336368704	1708336369061	KO	status.find.is(200), but actually found 404
+GROUP	Audio Request Get	1708336368700	1708336369064	357	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET PlayBack	1708336369068	1708336369099	KO	status.find.is(200), but actually found 404
+GROUP	Audio Request Get	1708336369065	1708336369099	31	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET PlayBack	1708336369100	1708336369135	KO	status.find.is(200), but actually found 404
+GROUP	Audio Request Get	1708336369100	1708336369135	35	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET PlayBack	1708336369137	1708336369248	KO	status.find.is(200), but actually found 404
+GROUP	Audio Request Get	1708336369136	1708336369248	111	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET PlayBack	1708336369249	1708336369339	KO	status.find.is(200), but actually found 404
+GROUP	Audio Request Get	1708336369249	1708336369339	90	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET PlayBack	1708336369341	1708336369391	KO	status.find.is(200), but actually found 404
+GROUP	Audio Request Get	1708336369340	1708336369392	50	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET PlayBack	1708336369393	1708336369426	KO	status.find.is(200), but actually found 404
+GROUP	Audio Request Get	1708336369392	1708336369426	33	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET PlayBack	1708336369427	1708336369470	KO	status.find.is(200), but actually found 404
+GROUP	Audio Request Get	1708336369427	1708336369471	43	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET PlayBack	1708336369472	1708336369522	KO	status.find.is(200), but actually found 404
+GROUP	Audio Request Get	1708336369471	1708336369522	50	KO
+REQUEST	Audio Request Get	DARTS - Api - AudioRequest:GET PlayBack	1708336369523	1708336369560	KO	status.find.is(200), but actually found 404
+GROUP	Audio Request Get	1708336369522	1708336369560	37	KO
+USER	Audio Requests:POST	END	1708336369563

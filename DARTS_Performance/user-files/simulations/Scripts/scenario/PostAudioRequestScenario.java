@@ -9,12 +9,12 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 import java.time.LocalDateTime;
 import RequestBodyBuilder.RequestBodyBuilder;
 
-public final class AudioRequestPostScenario {
+public final class PostAudioRequestScenario {
     private static final String AUDIO_REQUEST_FILE_PATH = AppConfig.AUDIO_REQUEST_POST_FILE_PATH;
     private static final FeederBuilder<String> feeder = csv(AUDIO_REQUEST_FILE_PATH).random();
-    private AudioRequestPostScenario() {}
+    private PostAudioRequestScenario() {}
 
-    public static ChainBuilder audioRequestPost() {
+    public static ChainBuilder PostaudioRequest() {
           return group("Audio Request Group")
           .on(exec(feed(feeder))
           .exec(session -> {

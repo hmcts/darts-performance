@@ -7,12 +7,12 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-public final class GetAudioRequestScenario {
+public final class GetAudioRequestPlayBackScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
     private static final boolean expired = ThreadLocalRandom.current().nextBoolean();
 
-    private GetAudioRequestScenario() {}
+    private GetAudioRequestPlayBackScenario() {}
     public static ChainBuilder GetAudioRequest() {
         return group("Audio Request Get")
             .on(exec(feed(feeder))
@@ -23,15 +23,4 @@ public final class GetAudioRequestScenario {
                         .check(status().is(200))
             ));
     }   
-
-    public static ChainBuilder GetAudioRequestPlayBack() {
-        return group("Audio Request Get")
-            .on(exec(feed(feeder))
-                .exec(http("DARTS - Api - AudioRequest:GET PlayBack")
-                        .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/playback?transformed_media_id=#{hea_id}")
-                        .headers(Headers.AuthorizationHeaders)
-                        .check(status().saveAs("statusCode"))
-                        .check(status().is(200))
-            ));
-    } 
 }
