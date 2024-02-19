@@ -34,4 +34,15 @@ public final class GetAudioRequestScenario {
                         .check(status().is(200))
             ));
     } 
+
+    public static ChainBuilder GetAudioRequestDownload() {
+        return group("Audio Request Get")
+            .on(exec(feed(feeder))
+                .exec(http("DARTS - Api - AudioRequest:GET Download")
+                        .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/download?transformed_media_id=#{hea_id}")
+                        .headers(Headers.AuthorizationHeaders)
+                        .check(status().saveAs("statusCode"))
+                        .check(status().is(200))
+            ));
+    } 
 }
