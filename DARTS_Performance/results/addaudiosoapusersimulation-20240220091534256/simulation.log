@@ -1,0 +1,5 @@
+RUN	DartsSoap.AddAudioSOAPUserSimulation	addaudiosoapusersimulation	1708420534256	 	3.9.5
+USER	DARTS - GateWay - Soap - AddCase :POST	START	1708420534841
+REQUEST	AddAudio SOAP Request Group	DARTS - GateWay - Soap - AddAudio - User	1708420534877	1708420538027	KO	status.find.is(200), but actually found 500
+GROUP	AddAudio SOAP Request Group	1708420534847	1708420538277	3150	KO
+USER	DARTS - GateWay - Soap - AddCase :POST	END	1708420538280

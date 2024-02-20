@@ -1,0 +1,15 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.synapps.mojdarts.service.com">
+   <soapenv:Header>
+      <ServiceContext token="temporary/127.0.0.1-1694086218480-789961425" xmlns="http://context.core.datamodel.fs.documentum.emc.com/">
+         <Identities xsi:type="RepositoryIdentity" userName="xhibit_user" password="Password@1" repositoryName="moj_darts" domain="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+         <RuntimeProperties/>
+      </ServiceContext>
+   </soapenv:Header>
+   <soapenv:Body>
+      <addLogEntry xmlns="http://com.synapps.mojdarts.service.com">
+  <document xmlns="">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;SWANSEA&lt;/courthouse&gt;&lt;courtroom&gt;CR1&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;CASE000001&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;THISISEVENTTEXT&lt;/text&gt;&lt;/log_entry&gt;
+  </document>
+</addLogEntry>
+
+   </soapenv:Body>
+</soapenv:Envelope>

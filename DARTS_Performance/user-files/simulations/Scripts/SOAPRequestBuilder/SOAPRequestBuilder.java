@@ -50,9 +50,6 @@ public class SOAPRequestBuilder {
         String courtHouseName = session.get("CourtHouseName").toString();    
         String courtRoom = session.get("CourtRoom").toString();    
 
-        // Generate dynamic values
-        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
-
     // Construct SOAP request
     return String.format(
         "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
@@ -102,4 +99,56 @@ public class SOAPRequestBuilder {
         "</s:Envelope>",
         USERNAME, PASSWORD, courtHouseName, courtRoom, defendantName, defendantName2, judgeName);
     }
+
+    public static String AddAudioSOAPRequest(Session session) {
+            // Retrieve values from session or define defaults if needed
+            String courtHouseName = session.get("CourtHouseName").toString();    
+            String courtRoom = session.get("CourtRoom").toString(); 
+            RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+            String caseName = randomStringGenerator.generateRandomString(10);
+
+    // Construct SOAP request
+    return String.format(
+        "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:com=\"http://com.synapps.mojdarts.service.com\" xmlns:core=\"http://core.datamodel.fs.documentum.emc.com/\" xmlns:prop=\"http://properties.core.datamodel.fs.documentum.emc.com/\" xmlns:con=\"http://content.core.datamodel.fs.documentum.emc.com/\">\n" +
+        "   <s:Header>\n" +
+        "      <ServiceContext token=\"temporary/127.0.0.1-1694086218480-789961425\" xmlns=\"http://context.core.datamodel.fs.documentum.emc.com/\">\n" +
+        "         <Identities xsi:type=\"RepositoryIdentity\" userName=\"%s\" password=\"%s\" repositoryName=\"moj_darts\" domain=\"\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"/>\n" +
+        "         <RuntimeProperties/>\n" +
+        "      </ServiceContext>\n" +
+        "   </s:Header>\n" +
+        "   <s:Body>\n" +
+        "      <com:addAudio>\n" +
+        "         <!--Optional:-->\n" +
+        "         <document>&lt;audio&gt;&lt;start Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"26\" S=\"51\" /&gt;&lt;end Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"29\" S=\"49\" /&gt;&lt;channel&gt;1&lt;/channel&gt;&lt;max_channels&gt;4&lt;/max_channels&gt;&lt;mediaformat&gt;mpeg2&lt;/mediaformat&gt;&lt;mediafile&gt;0001.a00&lt;/mediafile&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;%s&lt;/case_number&gt;&lt;case_number&gt;test&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;/audio&gt;</document>\n" +
+        "      </com:addAudio>\n" +
+        "   </s:Body>\n" +
+        "</s:Envelope>",
+        USERNAME, PASSWORD, courtHouseName, courtRoom, caseName);
+    }    
+
+    public static String AddCourtLogSOAPRequest(Session session) {
+        // Retrieve values from session or define defaults if needed
+        String courtHouseName = session.get("CourtHouseName").toString();    
+        String courtRoom = session.get("CourtRoom").toString(); 
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String caseName = randomStringGenerator.generateRandomString(10);
+
+    // Construct SOAP request
+    return String.format(
+        "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:com=\"http://com.synapps.mojdarts.service.com\">\n" +
+        "   <soapenv:Header>\n" +
+        "      <ServiceContext token=\"temporary/127.0.0.1-1694086218480-789961425\" xmlns=\"http://context.core.datamodel.fs.documentum.emc.com/\">\n" +
+        "         <Identities xsi:type=\"RepositoryIdentity\" userName=\"%s\" password=\"%s\" repositoryName=\"moj_darts\" domain=\"\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"/>\n" +
+        "         <RuntimeProperties/>\n" +
+        "      </ServiceContext>\n" +
+        "   </soapenv:Header>\n" +
+        "   <soapenv:Body>\n" +
+        "      <addLogEntry xmlns=\"http://com.synapps.mojdarts.service.com\">\n" +
+        "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;PerfCase_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;THISISEVENTTEXT&lt;/text&gt;&lt;/log_entry&gt;\n" +
+        "         </document>\n" +
+        "      </addLogEntry>\n" +
+        "   </soapenv:Body>\n" +
+        "</soapenv:Envelope>",
+        USERNAME, PASSWORD, courtHouseName, courtRoom, caseName);
+    } 
 }

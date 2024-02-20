@@ -28,8 +28,6 @@ public final class AddCaseSoapUserScenario {
                             .contentType("application/xop+xml; charset=UTF-8; type=\"text/xml")
                             .transferEncoding("8bit")
                             .contentId("<rootpart@soapui.org>"))
-                            //.fileName("dummy.xml"))
-                    //.dispositionType("form-data"))
                     .bodyPart(RawFileBodyPart("file", "C:\\Users\\a.cooper\\Desktop\\Performance.Testing\\DARTS\\Gatling_Base\\user-files\\Data\\sample.mp2")
                         .contentType("application/octet-stream")
                         .transferEncoding("binary")

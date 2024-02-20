@@ -1,0 +1,10 @@
+{
+  "simulation": "DartsSoap.AddCourtLogSOAPUserSimulation",
+  "simulationId": "addcourtlogsoapusersimulation-20240220101809923",
+  "start": 1708424290634,
+  "description": "11",
+  "scenarios": ["DARTS - GateWay - Soap - CourtLog:POST"],
+  "assertions": [
+
+  ]
+}
