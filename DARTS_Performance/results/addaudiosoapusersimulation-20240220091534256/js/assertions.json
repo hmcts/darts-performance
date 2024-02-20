@@ -1,0 +1,10 @@
+{
+  "simulation": "DartsSoap.AddAudioSOAPUserSimulation",
+  "simulationId": "addaudiosoapusersimulation-20240220091534256",
+  "start": 1708420534841,
+  "description": "",
+  "scenarios": ["DARTS - GateWay - Soap - AddCase :POST"],
+  "assertions": [
+
+  ]
+}

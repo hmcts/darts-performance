@@ -1,0 +1,18 @@
+RUN	DartsSoap.AddAudioSOAPUserSimulation	addaudiosoapusersimulation	1708420876784	9	3.9.5
+USER	DARTS - GateWay - Soap - AddAudio :POST	START	1708420877452
+ERROR	DARTS - GateWay - Soap - AddAudio - User: Failed to build request: Failed to build request: j.n.f.InvalidPathException: Illegal char <<> at index 0: <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="http://com.synapps.mojdarts.service.com" xmlns:core="http://core.datamodel.fs.documentum.emc.com/" xmlns:prop="http://properties.core.datamodel.fs.documentum.emc.com/" xmlns:con="http://content.core.datamodel.fs.documentum.emc.com/">
+   <s:Header>
+      <ServiceContext token="temporary/127.0.0.1-1694086218480-789961425" xmlns="http://context.core.datamodel.fs.documentum.emc.com/">
+         <Identities xsi:type="RepositoryIdentity" userName="xhibit_user" password="Password@1" repositoryName="moj_darts" domain="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+         <RuntimeProperties/>
+      </ServiceContext>
+   </s:Header>
+   <s:Body>
+      <com:addAudio>
+         <!--Optional:-->
+         <document>&lt;audio&gt;&lt;start Y="2023" M="9" D="7" H="11" MIN="26" S="51" /&gt;&lt;end Y="2023" M="9" D="7" H="11" MIN="29" S="49" /&gt;&lt;channel&gt;1&lt;/channel&gt;&lt;max_channels&gt;4&lt;/max_channels&gt;&lt;mediaformat&gt;mpeg2&lt;/mediaformat&gt;&lt;mediafile&gt;0001.a00&lt;/mediafile&gt;&lt;courthouse&gt;PerfCourtHouse04&lt;/courthouse&gt;&lt;courtroom&gt;PerfCourtroom01&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;wHmZ9nJpTg&lt;/case_number&gt;&lt;case_number&gt;test&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;/audio&gt;</document>
+      </com:addAudio>
+   </s:Body>
+</s:Envelope> 	1708420877468
+GROUP	AddAudio SOAP Request Group	1708420877454	1708420877473	0	KO
+USER	DARTS - GateWay - Soap - AddAudio :POST	END	1708420877475
