@@ -4,7 +4,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ThreadLocalRandom;
 
+import Utilities.RandomStringGenerator;
+import io.gatling.javaapi.core.Session;
+
 public class RequestBodyBuilder {
+
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
     private static final String[] REQUEST_TYPES = {"DOWNLOAD", "PLAYBACK"};
 
@@ -48,6 +52,16 @@ public class RequestBodyBuilder {
                 "\"comment\": \"%s\"}",
                 hearingId, caseId, transcriptionUrgencyId, transcriptionTypeId, comment);
     }
+    public static String buildPostAudioApiRequest(Session session) {
+        // Retrieve values from session or define defaults if needed
+        String courtHouseName = session.get("CourtHouseName").toString();    
+        String courtRoom = session.get("CourtRoom").toString(); 
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String caseName = randomStringGenerator.generateRandomString(10);
 
+        return String.format(
+        "{\"started_at\": \"1972-11-25T17:28:59.936Z\", \"ended_at\": \"1972-11-25T18:28:59.936Z\", \"channel\": 1, \"total_channels\": 4, \"format\": \"mp2\", \"filename\": \"sample.mp2\", \"courthouse\": \"%s\", \"courtroom\": \"%s\", \"file_size\": 937.96, \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\", \"cases\": [\"PerfCase_%s\"] }",
+        courtHouseName, courtRoom, caseName);
+    }
 
 }

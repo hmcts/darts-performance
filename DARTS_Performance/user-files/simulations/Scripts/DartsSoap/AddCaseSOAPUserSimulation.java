@@ -27,7 +27,7 @@ public class AddCaseSOAPUserSimulation extends Simulation {
       .contentTypeHeader("multipart/related; type=\"text/xml\"; start=\"<rootpart@soapui.org>\"; boundary=" + boundary)
       .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
 
-    final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddCase :POST")
+    final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddCase:POST")
         .feed(feeder)    
         .repeat(1)    
         .on(exec(AddCaseSoapUserScenario.addCaseSOAPUser().feed(feeder))    
