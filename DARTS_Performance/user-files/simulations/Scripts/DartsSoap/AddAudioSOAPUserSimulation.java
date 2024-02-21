@@ -26,7 +26,7 @@ public class AddAudioSOAPUserSimulation extends Simulation {
       .acceptEncodingHeader("gzip,deflate")
       .contentTypeHeader("multipart/related; type=\"application/xop+xml\"; start=\"<rootpart@soapui.org>\"; start-info=\"text/xml\"; boundary=" + boundary)
       .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
-    final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddAudio :POST")
+    final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddAudio:POST")
         .feed(feeder)    
         .repeat(1)    
         .on(exec(AddAudioSoapUserScenario.addAudioSOAPUser().feed(feeder))    

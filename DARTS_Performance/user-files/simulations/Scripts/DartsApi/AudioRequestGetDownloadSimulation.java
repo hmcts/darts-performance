@@ -19,7 +19,7 @@ public class AudioRequestGetDownloadSimulation extends Simulation {
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
-    final ScenarioBuilder scn1 = scenario("Audio Requests:POST")
+    final ScenarioBuilder scn1 = scenario("Audio Requests:GET Download")
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(10)    
         .on(exec(GetAudioRequestScenario.GetAudioRequestDownload().feed(feeder))    

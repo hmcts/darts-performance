@@ -23,7 +23,7 @@ public class AddDocumentSOAPUserSimulation extends Simulation {
       .contentTypeHeader("text/xml;charset=UTF-8")
       .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
 
-    final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddDocument :POST")
+    final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddDocument:POST")
         .feed(feeder)    
         .repeat(10)    
         .on(exec(AddDocumentSoapUserScenario.addDocumentSOAPUser().feed(feeder))    
