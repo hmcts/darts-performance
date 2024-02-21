@@ -25,6 +25,7 @@ public class AudioRequestProfileSimulation extends Simulation {
         .repeat(10)    
         .on(exec(GetAudioRequestScenario.GetAudioRequestPlayBack().feed(feeder))           
         );
+        
 
     setUp(
         scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));

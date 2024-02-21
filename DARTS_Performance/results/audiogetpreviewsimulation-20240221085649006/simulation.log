@@ -1,0 +1,25 @@
+RUN	DartsApi.AudioGETPreviewSimulation	audiogetpreviewsimulation	1708505809006	0	3.9.5
+USER	Audio Requests:GET Preview	START	1708505810346
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1708505810345	1708505813584	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1708505810332	1708505813623	3239	OK
+ERROR	DARTS - Api - AudioRequest:DELETE: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708505813627
+GROUP	Audio Request Get	1708505813625	1708505813630	0	KO
+ERROR	DARTS - Api - AudioRequest:DELETE: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708505813631
+GROUP	Audio Request Get	1708505813630	1708505813631	0	KO
+ERROR	DARTS - Api - AudioRequest:DELETE: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708505813631
+GROUP	Audio Request Get	1708505813631	1708505813632	0	KO
+ERROR	DARTS - Api - AudioRequest:DELETE: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708505813632
+GROUP	Audio Request Get	1708505813632	1708505813632	0	KO
+ERROR	DARTS - Api - AudioRequest:DELETE: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708505813632
+GROUP	Audio Request Get	1708505813632	1708505813633	0	KO
+ERROR	DARTS - Api - AudioRequest:DELETE: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708505813633
+GROUP	Audio Request Get	1708505813633	1708505813633	0	KO
+ERROR	DARTS - Api - AudioRequest:DELETE: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708505813634
+GROUP	Audio Request Get	1708505813634	1708505813634	0	KO
+ERROR	DARTS - Api - AudioRequest:DELETE: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708505813634
+GROUP	Audio Request Get	1708505813634	1708505813634	0	KO
+ERROR	DARTS - Api - AudioRequest:DELETE: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708505813635
+GROUP	Audio Request Get	1708505813635	1708505813635	0	KO
+ERROR	DARTS - Api - AudioRequest:DELETE: Failed to build request: No attribute named 'getTransformedMediaId' is defined 	1708505813635
+GROUP	Audio Request Get	1708505813635	1708505813635	0	KO
+USER	Audio Requests:GET Preview	END	1708505813637

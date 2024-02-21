@@ -10,7 +10,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 
-public class AudioRequestDeleteSimulation extends Simulation {   
+public class AudioGETPreviewSimulation extends Simulation {   
   {
     final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
 
@@ -19,10 +19,10 @@ public class AudioRequestDeleteSimulation extends Simulation {
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
-    final ScenarioBuilder scn1 = scenario("Audio Requests:DELETE")
+    final ScenarioBuilder scn1 = scenario("Audio Requests:GET Preview")
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(10)    
-        .on(exec(DeleteAudioRequestScenario.DeleteAudioRequest().feed(feeder))    
+        .on(exec(GetAudioPreviewScenario.GetAudioPreview().feed(feeder))    
         );
 
     setUp(
