@@ -19,6 +19,16 @@ public class Feeders {
     public static CheckBuilder.Final saveBearerToken() {
         return CoreDsl.jsonPath("$.access_token").saveAs("bearerToken");
     }
+    public static CheckBuilder.Final saveStateProperties() {
+        return CoreDsl.regex("StateProperties=(.*?)\"").find().saveAs("stateProperties");
+    }
+    public static CheckBuilder.Final saveCsrf() {
+        return CoreDsl.regex("csrf\":\"(.*?)\"").find().saveAs("csrf");
+    }
+
+    public static CheckBuilder.Final saveTokenCode() {
+        return CoreDsl.css("input[name='code']", "value").saveAs("csrf");
+    }
    
     public static CheckBuilder.Final saveTransformedMediaId() {
         return CoreDsl.jsonPath("$.transformed_media_details[*].transformed_media_id").findAll().saveAs("getTransformedMediaId");

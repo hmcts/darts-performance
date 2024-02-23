@@ -4,7 +4,6 @@ import Utilities.Feeders;
 import Utilities.NumberGenerator;
 import Utilities.RandomStringGenerator;
 import Utilities.TimestampGenerator;
-import akka.dispatch.Envelope;
 import Utilities.AppConfig.EnvironmentURL;
 
 import io.gatling.javaapi.core.Session;

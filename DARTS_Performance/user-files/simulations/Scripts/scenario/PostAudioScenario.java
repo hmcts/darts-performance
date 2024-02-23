@@ -11,6 +11,7 @@ import RequestBodyBuilder.RequestBodyBuilder;
 public final class PostAudioScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
+    private static final String randomAudioFile = AppConfig.getRandomAudioFile();
 
     private PostAudioScenario() {}
 
@@ -28,8 +29,8 @@ public final class PostAudioScenario {
                             .contentType("application/json")
                             .charset("US-ASCII")
                             .dispositionType("form-data"))
-                        .bodyPart(RawFileBodyPart("file", "C:\\Users\\a.cooper\\Desktop\\Performance.Testing\\DARTS\\Gatling_Base\\user-files\\Data\\sample.mp2")
-                            .fileName("sample.mp2")
+                        .bodyPart(RawFileBodyPart("file", AppConfig.CSV_FILE_COMMON_PATH + randomAudioFile)
+                            .fileName(randomAudioFile)
                             .contentType("audio/mpeg")
                             .dispositionType("form-data")
                         )                

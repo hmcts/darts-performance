@@ -74,7 +74,7 @@
             <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="TestPlan.comments">?client_id=${CLIENT_ID}&amp;redirect_uri=https://${BASE_URL}/auth/callback&amp;scope=openid&amp;prompt=login&amp;response_mode=form_post&amp;response_type=code</stringProp>
+            <stringProp name="TestPlan.comments">${BASE_URL_TOKEN}/B2C_1_darts_externaluser_signin/oauth2/v2.0/authorize?client_id=${CLIENT_ID}&amp;redirect_uri=https://${BASE_URL}/auth/callback&amp;scope=openid&amp;prompt=login&amp;response_mode=form_post&amp;response_type=code</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
@@ -150,6 +150,25 @@
               <stringProp name="RandomTimer.range">1500</stringProp>
               <stringProp name="ConstantTimer.delay">1500</stringProp>
             </UniformRandomTimer>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">vtest2</stringProp>
+              <stringProp name="RegexExtractor.regex">csrf\&quot;:\&quot;([^\\\&quot;]+)\&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number"></stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">vtest</stringProp>
+              <stringProp name="RegexExtractor.regex">StateProperties=(.*?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template"></stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number"></stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
             <hashTree/>
             <BoundaryExtractor guiclass="BoundaryExtractorGui" testclass="BoundaryExtractor" testname="Get State Properties Token" enabled="true">
               <stringProp name="BoundaryExtractor.useHeaders">false</stringProp>
@@ -268,6 +287,12 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
+          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugSampler>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="B2C_1_darts_externaluser_signin - client - perftrace - Old" enabled="false">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">

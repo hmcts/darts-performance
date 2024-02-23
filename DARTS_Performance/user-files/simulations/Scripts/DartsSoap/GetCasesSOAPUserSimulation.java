@@ -5,7 +5,6 @@ import Utilities.AppConfig.EnvironmentURL;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
-import scenario.AddCaseSoapUserScenario;
 import scenario.GetCasesSoapUserScenario;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
