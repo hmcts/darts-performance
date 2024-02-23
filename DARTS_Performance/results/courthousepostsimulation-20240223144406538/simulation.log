@@ -1,0 +1,23 @@
+RUN	DartsApi.CourthousePostSimulation	courthousepostsimulation	1708699446538	8	3.9.5
+USER	Courthouse:POST	START	1708699447333
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708699447356	1708699447592	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+GROUP	Courthouse Api Request Group	1708699447331	1708699447594	236	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708699447596	1708699447892	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+GROUP	Courthouse Api Request Group	1708699447595	1708699447892	296	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708699447893	1708699448125	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+GROUP	Courthouse Api Request Group	1708699447893	1708699448125	232	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708699448127	1708699448387	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+GROUP	Courthouse Api Request Group	1708699448126	1708699448387	260	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708699448389	1708699448641	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+GROUP	Courthouse Api Request Group	1708699448388	1708699448641	252	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708699448643	1708699448835	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+GROUP	Courthouse Api Request Group	1708699448642	1708699448835	192	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708699448836	1708699449081	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+GROUP	Courthouse Api Request Group	1708699448836	1708699449082	245	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708699449083	1708699449321	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+GROUP	Courthouse Api Request Group	1708699449083	1708699449321	238	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708699449322	1708699449578	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+GROUP	Courthouse Api Request Group	1708699449321	1708699449578	256	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708699449579	1708699449820	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+GROUP	Courthouse Api Request Group	1708699449578	1708699449820	241	KO
+USER	Courthouse:POST	END	1708699449822

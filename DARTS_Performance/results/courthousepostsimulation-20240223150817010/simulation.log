@@ -1,0 +1,9 @@
+RUN	DartsApi.CourthousePostSimulation	courthousepostsimulation	1708700897010	8	3.9.5
+USER	Courthouse:POST	START	1708700897788
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708700897807	1708700898098	OK	 
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post Redirect 1	1708700898106	1708700898493	KO	status.find.is(302), but actually found 200
+GROUP	Courthouse Api Request Group	1708700897787	1708700898498	678	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708700898505	1708700898567	OK	 
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post Redirect 1	1708700898567	1708700898751	KO	status.find.is(302), but actually found 200
+GROUP	Courthouse Api Request Group	1708700898500	1708700898752	246	KO
+USER	Courthouse:POST	END	1708700898756
