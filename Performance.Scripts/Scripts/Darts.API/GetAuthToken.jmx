@@ -48,14 +48,14 @@
             <stringProp name="Argument.value">${__P(USER_ITERATIONS, 1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="USERNAME" elementType="Argument">
-            <stringProp name="Argument.name">USERNAME</stringProp>
-            <stringProp name="Argument.value">${__P(USERNAME, PerfTranscirber01@hmcts.net)}</stringProp>
+          <elementProp name="USERNAME1" elementType="Argument">
+            <stringProp name="Argument.name">USERNAME1</stringProp>
+            <stringProp name="Argument.value">${__P(USERNAME1, PerfTranscirber01@hmcts.net)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="PASSWORD" elementType="Argument">
-            <stringProp name="Argument.name">PASSWORD</stringProp>
-            <stringProp name="Argument.value">${__P(PASSWORD, PerfTester01)}</stringProp>
+          <elementProp name="PASSWORD1" elementType="Argument">
+            <stringProp name="Argument.name">PASSWORD1</stringProp>
+            <stringProp name="Argument.value">${__P(PASSWORD1, PerfTester01)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="TENANT_ID" elementType="Argument">
@@ -108,13 +108,13 @@
             <stringProp name="Argument.value">${__machineIP()}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="USERNAME2" elementType="Argument">
-            <stringProp name="Argument.name">USERNAME2</stringProp>
+          <elementProp name="USERNAME" elementType="Argument">
+            <stringProp name="Argument.name">USERNAME</stringProp>
             <stringProp name="Argument.value">${__P(USERNAME, darts.transcriber@hmcts.net)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="PASSWORD2" elementType="Argument">
-            <stringProp name="Argument.name">PASSWORD2</stringProp>
+          <elementProp name="PASSWORD" elementType="Argument">
+            <stringProp name="Argument.name">PASSWORD</stringProp>
             <stringProp name="Argument.value">${__P(PASSWORD, Password@1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>

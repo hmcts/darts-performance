@@ -2,7 +2,6 @@ package scenario;
 
 import Headers.Headers;
 import Utilities.AppConfig;
-import Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;

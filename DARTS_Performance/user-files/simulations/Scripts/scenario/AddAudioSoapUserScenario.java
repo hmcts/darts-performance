@@ -11,6 +11,7 @@ import SOAPRequestBuilder.SOAPRequestBuilder;
 public final class AddAudioSoapUserScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
+    private static final String randomAudioFile = AppConfig.getRandomAudioFile();
 
     private AddAudioSoapUserScenario() {}
 
@@ -28,11 +29,11 @@ public final class AddAudioSoapUserScenario {
                             .contentType("application/xop+xml; charset=UTF-8; type=\"text/xml")
                             .transferEncoding("8bit")
                             .contentId("<rootpart@soapui.org>"))
-                    .bodyPart(RawFileBodyPart("file", "C:\\Users\\a.cooper\\Desktop\\Performance.Testing\\DARTS\\Gatling_Base\\user-files\\Data\\sample.mp2")
+                    .bodyPart(RawFileBodyPart("file", AppConfig.CSV_FILE_COMMON_PATH + randomAudioFile)
                         .contentType("application/octet-stream")
                         .transferEncoding("binary")
-                        .contentId("<sample6.mp2>")
-                        .dispositionType("attachment; name=\"sample6.mp2")
+                        .contentId("<"+ randomAudioFile+ ">")
+                        .dispositionType("attachment; name=\""+ randomAudioFile + "")
                     )
                         .check(status().is(200))
                         .check(xpath("//return/code").saveAs("statusCode"))

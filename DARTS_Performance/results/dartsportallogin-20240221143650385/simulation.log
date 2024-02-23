@@ -1,0 +1,18 @@
+RUN	DartsPortal.DartsPortalLogin	dartsportallogin	1708526210385	9	3.9.5
+USER	DartsPortalLogin	START	1708526211456
+REQUEST		request_0	1708526211455	1708526212214	OK	 
+REQUEST		request_0 Redirect 1	1708526212224	1708526215107	OK	 
+REQUEST		request_0	1708526215145	1708526216136	KO	regex(transId":"StateProperties=(.*?)").find.exists, found nothing
+REQUEST		request_1	1708526216154	1708526216270	OK	 
+REQUEST		favicon.ico	1708526216290	1708526216489	OK	 
+REQUEST		errors.js	1708526216291	1708526216497	OK	 
+REQUEST		licence-logo.png	1708526216498	1708526216541	OK	 
+REQUEST		govuk-crest-white.png	1708526216490	1708526216608	OK	 
+REQUEST		login.js	1708526216541	1708526216609	OK	 
+REQUEST		govuk-frontend-5.0.0.min.css	1708526216292	1708526217062	OK	 
+REQUEST		ruxitagentjs_ICA27NVfgjqrux_10283240117152214.js	1708526216290	1708526217176	OK	 
+REQUEST		xhr.js	1708526216291	1708526217178	OK	 
+REQUEST		login.css	1708526216292	1708526217577	OK	 
+ERROR	request_2: Failed to build request: No attribute named 'stateProperties' is defined 	1708526217581
+ERROR	request_3: Failed to build request: No attribute named 'stateProperties' is defined 	1708526225599
+USER	DartsPortalLogin	END	1708526225606

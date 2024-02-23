@@ -1,0 +1,18 @@
+RUN	DartsPortal.DartsPortalLogin	dartsportallogin	1708537686808	1	3.9.5
+USER	DartsPortalLogin	START	1708537687879
+REQUEST		request_0	1708537687877	1708537688582	OK	 
+REQUEST		request_0 Redirect 1	1708537688591	1708537691277	OK	 
+REQUEST		request_0	1708537691319	1708537692268	KO	jsonPath($.transId).find.exists preparation crashed: Jackson failed to parse into a valid AST: c.f.j.c.JsonParseException: Unexpected character ('<' (code 60)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')  at [Source: (io.netty.buffer.ByteBufInputStream); line: 1, column: 2]
+REQUEST		request_1	1708537692295	1708537692358	OK	 
+REQUEST		ruxitagentjs_ICA27NVfgjqrux_10283240117152214.js	1708537692376	1708537692599	OK	 
+REQUEST		govuk-crest-white.png	1708537692605	1708537692672	OK	 
+REQUEST		favicon.ico	1708537692376	1708537692679	OK	 
+REQUEST		login.css	1708537692377	1708537692694	OK	 
+REQUEST		xhr.js	1708537692377	1708537692701	OK	 
+REQUEST		errors.js	1708537692377	1708537692709	OK	 
+REQUEST		licence-logo.png	1708537692673	1708537692711	OK	 
+REQUEST		login.js	1708537692680	1708537692718	OK	 
+REQUEST		govuk-frontend-5.0.0.min.css	1708537692377	1708537692790	OK	 
+ERROR	request_2: Failed to build request: No attribute named 'stateProperties' is defined 	1708537692801
+ERROR	request_3: Failed to build request: No attribute named 'stateProperties' is defined 	1708537700819
+USER	DartsPortalLogin	END	1708537700829
