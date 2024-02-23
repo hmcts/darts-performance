@@ -1,0 +1,337 @@
+{
+  "type": "GROUP",
+"name": "All Requests",
+"path": "",
+"pathFormatted": "group_missing-name-b06d1",
+"stats": {
+    "name": "All Requests",
+    "numberOfRequests": {
+        "total": 4,
+        "ok": 2,
+        "ko": 2
+    },
+    "minResponseTime": {
+        "total": 109,
+        "ok": 109,
+        "ko": 193
+    },
+    "maxResponseTime": {
+        "total": 487,
+        "ok": 487,
+        "ko": 355
+    },
+    "meanResponseTime": {
+        "total": 286,
+        "ok": 298,
+        "ko": 274
+    },
+    "standardDeviation": {
+        "total": 146,
+        "ok": 189,
+        "ko": 81
+    },
+    "percentiles1": {
+        "total": 274,
+        "ok": 298,
+        "ko": 274
+    },
+    "percentiles2": {
+        "total": 388,
+        "ok": 393,
+        "ko": 315
+    },
+    "percentiles3": {
+        "total": 467,
+        "ok": 468,
+        "ko": 347
+    },
+    "percentiles4": {
+        "total": 483,
+        "ok": 483,
+        "ko": 353
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 2,
+    "percentage": 50
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 2,
+    "percentage": 50
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 2.0,
+        "ok": 1.0,
+        "ko": 1.0
+    }
+},
+"contents": {
+"group_courthouse-api--33678": {
+          "type": "GROUP",
+"name": "Courthouse Api Request Group",
+"path": "Courthouse Api Request Group",
+"pathFormatted": "group_courthouse-api--33678",
+"stats": {
+    "name": "Courthouse Api Request Group",
+    "numberOfRequests": {
+        "total": 2,
+        "ok": 0,
+        "ko": 2
+    },
+    "minResponseTime": {
+        "total": 302,
+        "ok": 0,
+        "ko": 302
+    },
+    "maxResponseTime": {
+        "total": 842,
+        "ok": 0,
+        "ko": 842
+    },
+    "meanResponseTime": {
+        "total": 572,
+        "ok": 0,
+        "ko": 572
+    },
+    "standardDeviation": {
+        "total": 270,
+        "ok": 0,
+        "ko": 270
+    },
+    "percentiles1": {
+        "total": 572,
+        "ok": 0,
+        "ko": 572
+    },
+    "percentiles2": {
+        "total": 707,
+        "ok": 0,
+        "ko": 707
+    },
+    "percentiles3": {
+        "total": 815,
+        "ok": 0,
+        "ko": 815
+    },
+    "percentiles4": {
+        "total": 837,
+        "ok": 0,
+        "ko": 837
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 2,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 1.0,
+        "ok": 0,
+        "ko": 1.0
+    }
+},
+"contents": {
+"req_darts---api---c-18cbf": {
+        "type": "REQUEST",
+        "name": "DARTS - Api - CourtHouse:Post",
+"path": "Courthouse Api Request Group / DARTS - Api - CourtHouse:Post",
+"pathFormatted": "req_courthouse-api--b3a65",
+"stats": {
+    "name": "DARTS - Api - CourtHouse:Post",
+    "numberOfRequests": {
+        "total": 2,
+        "ok": 2,
+        "ko": 0
+    },
+    "minResponseTime": {
+        "total": 109,
+        "ok": 109,
+        "ko": 0
+    },
+    "maxResponseTime": {
+        "total": 487,
+        "ok": 487,
+        "ko": 0
+    },
+    "meanResponseTime": {
+        "total": 298,
+        "ok": 298,
+        "ko": 0
+    },
+    "standardDeviation": {
+        "total": 189,
+        "ok": 189,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 298,
+        "ok": 298,
+        "ko": 0
+    },
+    "percentiles2": {
+        "total": 393,
+        "ok": 393,
+        "ko": 0
+    },
+    "percentiles3": {
+        "total": 468,
+        "ok": 468,
+        "ko": 0
+    },
+    "percentiles4": {
+        "total": 483,
+        "ok": 483,
+        "ko": 0
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 2,
+    "percentage": 100
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 0,
+    "percentage": 0
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 1.0,
+        "ok": 1.0,
+        "ko": 0
+    }
+}
+    },"req_darts---api---c-20fc1": {
+        "type": "REQUEST",
+        "name": "DARTS - Api - CourtHouse:Post Redirect 1",
+"path": "Courthouse Api Request Group / DARTS - Api - CourtHouse:Post Redirect 1",
+"pathFormatted": "req_courthouse-api--f8e27",
+"stats": {
+    "name": "DARTS - Api - CourtHouse:Post Redirect 1",
+    "numberOfRequests": {
+        "total": 2,
+        "ok": 0,
+        "ko": 2
+    },
+    "minResponseTime": {
+        "total": 193,
+        "ok": 0,
+        "ko": 193
+    },
+    "maxResponseTime": {
+        "total": 355,
+        "ok": 0,
+        "ko": 355
+    },
+    "meanResponseTime": {
+        "total": 274,
+        "ok": 0,
+        "ko": 274
+    },
+    "standardDeviation": {
+        "total": 81,
+        "ok": 0,
+        "ko": 81
+    },
+    "percentiles1": {
+        "total": 274,
+        "ok": 0,
+        "ko": 274
+    },
+    "percentiles2": {
+        "total": 315,
+        "ok": 0,
+        "ko": 315
+    },
+    "percentiles3": {
+        "total": 347,
+        "ok": 0,
+        "ko": 347
+    },
+    "percentiles4": {
+        "total": 353,
+        "ok": 0,
+        "ko": 353
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 2,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 1.0,
+        "ok": 0,
+        "ko": 1.0
+    }
+}
+    }
+}
+
+     }
+}
+
+}

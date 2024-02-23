@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ThreadLocalRandom;
 
 import Utilities.AppConfig;
+import Utilities.NumberGenerator;
 import Utilities.RandomStringGenerator;
 import io.gatling.javaapi.core.Session;
 
@@ -12,6 +13,7 @@ public class RequestBodyBuilder {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
     private static final String[] REQUEST_TYPES = {"DOWNLOAD", "PLAYBACK"};
+    public static final NumberGenerator generatorCourtHouseCode = new NumberGenerator(100);
 
     // Define the percentages for each request type (must sum up to 100)
     private static final int DOWNLOAD_PERCENTAGE = 70; //% chance
@@ -66,7 +68,7 @@ public class RequestBodyBuilder {
     }
 
 
-    public static String buildtestApiRequest(Session session) {
+    public static String buildDartsPortalPerftraceRequest(Session session) {
         return String.format(
             "{" +
             "   \"navigation\": {" +
@@ -176,8 +178,19 @@ public class RequestBodyBuilder {
             "           ]" +
             "       }," +
             "   ]" +
-            "}");
-        
+            "}"); 
+    }
 
+    public static String buildCourtHousePostBody(Session session) {
+        
+        // Generate a random court house name
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String courtHouseName = randomStringGenerator.generateRandomString(10);
+
+        return String.format("{\"courthouse_name\": \"PerfCourtHouse_%s\", " +
+        "\"code\": \" "+ generatorCourtHouseCode.generateNextNumber() + "\", " +
+        "\"display_name\": \"PerfCourtHouse_%s\", " +                
+        "\"region_id\": \"0\"}",
+        courtHouseName, courtHouseName);
     }
 }

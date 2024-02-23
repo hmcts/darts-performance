@@ -27,7 +27,7 @@ public class Feeders {
     }
 
     public static CheckBuilder.Final saveTokenCode() {
-        return CoreDsl.css("input[name='code']", "value").saveAs("csrf");
+        return CoreDsl.css("input[name='code']", "value").saveAs("TokenCode");
     }
    
     public static CheckBuilder.Final saveTransformedMediaId() {
