@@ -21,7 +21,7 @@ public class CourthousePostSimulation extends Simulation {
 
     final ScenarioBuilder scn1 = scenario("Courthouse:POST")
         //.exec(GetApiTokenScenario.getApiToken())
-        .repeat(2)    
+        .repeat(1)    
         .on(exec(PostCourthouseScenario.CourthousePost().feed(feeder))    
         );
 

@@ -1,0 +1,25 @@
+RUN	DartsApi.AudioPostSimulation	audiopostsimulation	1708958360182	1	3.9.5
+USER	Audio Requests:DELETE	START	1708958361153
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1708958361152	1708958362503	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1708958361132	1708958362548	1351	OK
+ERROR	DARTS - Api - Audios:POST: Failed to build request: Resource C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\DARTS_Performance\user-files\Data02h.mp2 not found 	1708958362560
+GROUP	Audio Request Group	1708958362550	1708958362563	0	KO
+ERROR	DARTS - Api - Audios:POST: Failed to build request: Resource C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\DARTS_Performance\user-files\Data02h.mp2 not found 	1708958362564
+GROUP	Audio Request Group	1708958362564	1708958362565	0	KO
+ERROR	DARTS - Api - Audios:POST: Failed to build request: Resource C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\DARTS_Performance\user-files\Data02h.mp2 not found 	1708958362566
+GROUP	Audio Request Group	1708958362565	1708958362566	0	KO
+ERROR	DARTS - Api - Audios:POST: Failed to build request: Resource C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\DARTS_Performance\user-files\Data02h.mp2 not found 	1708958362567
+GROUP	Audio Request Group	1708958362566	1708958362567	0	KO
+ERROR	DARTS - Api - Audios:POST: Failed to build request: Resource C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\DARTS_Performance\user-files\Data02h.mp2 not found 	1708958362568
+GROUP	Audio Request Group	1708958362567	1708958362569	0	KO
+ERROR	DARTS - Api - Audios:POST: Failed to build request: Resource C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\DARTS_Performance\user-files\Data02h.mp2 not found 	1708958362571
+GROUP	Audio Request Group	1708958362570	1708958362572	0	KO
+ERROR	DARTS - Api - Audios:POST: Failed to build request: Resource C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\DARTS_Performance\user-files\Data02h.mp2 not found 	1708958362573
+GROUP	Audio Request Group	1708958362572	1708958362573	0	KO
+ERROR	DARTS - Api - Audios:POST: Failed to build request: Resource C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\DARTS_Performance\user-files\Data02h.mp2 not found 	1708958362575
+GROUP	Audio Request Group	1708958362574	1708958362575	0	KO
+ERROR	DARTS - Api - Audios:POST: Failed to build request: Resource C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\DARTS_Performance\user-files\Data02h.mp2 not found 	1708958362577
+GROUP	Audio Request Group	1708958362576	1708958362577	0	KO
+ERROR	DARTS - Api - Audios:POST: Failed to build request: Resource C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\DARTS_Performance\user-files\Data02h.mp2 not found 	1708958362578
+GROUP	Audio Request Group	1708958362578	1708958362579	0	KO
+USER	Audio Requests:DELETE	END	1708958362582

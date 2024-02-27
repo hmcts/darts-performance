@@ -1,0 +1,7 @@
+RUN	DartsApi.AudioGETPreviewSimulation	audiogetpreviewsimulation	1708955676917	0	3.9.5
+USER	Audio Requests:GET Preview	START	1708955677669
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1708955677667	1708955678593	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1708955677653	1708955678646	926	OK
+REQUEST	Audio Get Preview	DARTS - Api - Audio:GET Preview	1708955678652	1708955678749	KO	i.n.h.p.HttpProxyHandler$HttpProxyConnectException: http, none, /127.0.0.1:8888 => darts-api.staging.platform.hmcts.net/<unresolved>:443, status: 502 Fiddler - DNS Lookup Failed
+GROUP	Audio Get Preview	1708955678649	1708955678750	97	KO
+USER	Audio Requests:GET Preview	END	1708955678753

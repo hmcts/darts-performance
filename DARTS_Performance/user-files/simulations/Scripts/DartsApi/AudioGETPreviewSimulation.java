@@ -21,11 +21,11 @@ public class AudioGETPreviewSimulation extends Simulation {
 
     final ScenarioBuilder scn1 = scenario("Audio Requests:GET Preview")
         .exec(GetApiTokenScenario.getApiToken())
-        .repeat(10)    
+        .repeat(1)    
         .on(exec(GetAudioPreviewScenario.GetAudioPreview().feed(feeder))    
         );
 
-    setUp(
-        scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
+    setUp(        
+        scn1.injectOpen(constantUsersPerSec(10).during(1)).protocols(httpProtocol));
     }    
 }

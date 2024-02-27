@@ -1,0 +1,10 @@
+{
+  "simulation": "DartsPortal.DartsPortalLoginSimulation",
+  "simulationId": "dartsportalloginsimulation-20240227162351805",
+  "start": 1709051032736,
+  "description": "1",
+  "scenarios": ["Darts Portal Login"],
+  "assertions": [
+
+  ]
+}

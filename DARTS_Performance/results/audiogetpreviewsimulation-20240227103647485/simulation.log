@@ -1,0 +1,13 @@
+RUN	DartsApi.AudioGETPreviewSimulation	audiogetpreviewsimulation	1709030207485	0	3.9.5
+USER	Audio Requests:GET Preview	START	1709030208448
+USER	Audio Requests:GET Preview	START	1709030208935
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1709030208447	1709030209468	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1709030208432	1709030209519	1021	OK
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1709030208934	1709030209578	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1709030208934	1709030209580	644	OK
+REQUEST	Audio Get Preview	DARTS - Api - Audio:GET Preview	1709030209524	1709030239831	KO	status.find.is(200), but actually found 504
+GROUP	Audio Get Preview	1709030209521	1709030239833	30307	KO
+USER	Audio Requests:GET Preview	END	1709030239836
+REQUEST	Audio Get Preview	DARTS - Api - Audio:GET Preview	1709030209580	1709030239913	KO	status.find.is(200), but actually found 504
+GROUP	Audio Get Preview	1709030209580	1709030239914	30333	KO
+USER	Audio Requests:GET Preview	END	1709030239915

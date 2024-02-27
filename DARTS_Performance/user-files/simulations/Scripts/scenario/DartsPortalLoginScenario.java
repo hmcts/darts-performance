@@ -54,44 +54,52 @@ public final class DartsPortalLoginScenario {
                 http("B2C_1_darts_externaluser_signin - Client - Perftrace")
                   .post(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/client/perftrace?tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin")
                   .headers(Headers.DartsPortalHeaders2)
-                  .body(StringBody(session -> session.get("xmlPayload"))
-                ))
+                  //.body(StringBody(session -> session.get("xmlPayload"))
+                  .body(RawFileBody("recordedsimulation/0002_request.bin"))
+                )
                 .pause(8)
                 .exec(
                   http("B2C_1_darts_externaluser_signin - SelfAsserted")
                     .post(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/SelfAsserted?tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin")
-                    .headers(Headers.DartsPortalHeaders2)
+                    .headers(Headers.DartsPortalHeaders21)
                     .formParam("request_type", "RESPONSE")
-                    .formParam("email", "PerfTranscirber01@hmcts.net")
-                    .formParam("password", "PerfTester@01")
-                    .resources(
-                      http("B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed")
-                        .get(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/api/CombinedSigninAndSignup/confirmed?rememberMe=false&csrf_token=#{csrf}&tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin&diags=%7B%22pageViewId%22%3A%223ec520ab-1a56-4387-a71c-8f4357eb169d%22%2C%22pageId%22%3A%22CombinedSigninAndSignup%22%2C%22trace%22%3A%5B%7B%22ac%22%3A%22T005%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A2%7D%2C%7B%22ac%22%3A%22T021%20-%20URL%3A" + AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "%2Fauth%2Fazuread-b2c-login%3FscreenName%3DloginScreen%26ui_locales%3Den%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A267%7D%2C%7B%22ac%22%3A%22T019%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A3%7D%2C%7B%22ac%22%3A%22T004%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A2%7D%2C%7B%22ac%22%3A%22T003%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A1%7D%2C%7B%22ac%22%3A%22T035%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T030Online%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T035%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T002%22%2C%22acST%22%3A1708515190%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T018T010%22%2C%22acST%22%3A1708515189%2C%22acD%22%3A608%7D%5D%7D")
-                        .headers(Headers.DartsPortalHeaders0)
-                        .check(Feeders.saveTokenCode()),
-                      http("Darts-Portal - Auth - Callback")
-                        .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/callback")
-                        .headers(Headers.DartsPortalHeaders3)
-                        .formParam("code", "#{TokenCode}"),
-                      http("Darts-Portal - App - Config")
-                        .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
-                        .headers(Headers.DartsPortalHeaders4),
-                      http("Darts-Portal - Auth - Is-authenticated")
+                    .formParam("email", AppConfig.EnvironmentURL.DARTS_API_USERNAME2.getUrl())
+                    .formParam("password", AppConfig.EnvironmentURL.DARTS_API_PASSWORD2.getUrl())
+                    .check(status().is(200)))
+                .exec(
+                    http("B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed")
+                      .get(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/api/CombinedSigninAndSignup/confirmed?rememberMe=false&csrf_token=#{csrf}&tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin&diags=%7B%22pageViewId%22%3A%223ec520ab-1a56-4387-a71c-8f4357eb169d%22%2C%22pageId%22%3A%22CombinedSigninAndSignup%22%2C%22trace%22%3A%5B%7B%22ac%22%3A%22T005%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A2%7D%2C%7B%22ac%22%3A%22T021%20-%20URL%3A" + AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "%2Fauth%2Fazuread-b2c-login%3FscreenName%3DloginScreen%26ui_locales%3Den%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A267%7D%2C%7B%22ac%22%3A%22T019%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A3%7D%2C%7B%22ac%22%3A%22T004%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A2%7D%2C%7B%22ac%22%3A%22T003%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A1%7D%2C%7B%22ac%22%3A%22T035%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T030Online%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T035%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T002%22%2C%22acST%22%3A1708515190%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T018T010%22%2C%22acST%22%3A1708515189%2C%22acD%22%3A608%7D%5D%7D")
+                      .headers(Headers.DartsPortalHeaders0)
+                      .check(Feeders.saveTokenCode()))
+                .exec(
+                  http("Darts-Portal - Auth - Callback")
+                      .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/callback")
+                      .headers(Headers.DartsPortalHeaders3)
+                      .formParam("code", "#{TokenCode}"))
+                .exec(
+                  http("Darts-Portal - App - Config")
+                      .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
+                      .headers(Headers.DartsPortalHeaders4))
+                .exec(
+                  http("Darts-Portal - Auth - Is-authenticated")
+                      .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + generator.generateNextNumber())
+                      .headers(Headers.DartsPortalHeaders4))
+                .exec(   
+                  http("Darts-Portal - Auth - Is-authenticated")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + generator.generateNextNumber())
-                        .headers(Headers.DartsPortalHeaders4),
-                      http("Darts-Portal - Auth - Is-authenticated")
-                        .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + generator.generateNextNumber())
-                        .headers(Headers.DartsPortalHeaders4),
-                      http("Darts-Portal - User - Profile")
+                        .headers(Headers.DartsPortalHeaders4))
+                .exec(    
+                  http("Darts-Portal - User - Profile")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/profile")
-                        .headers(Headers.DartsPortalHeaders4),
-                      http("request_10")
+                        .headers(Headers.DartsPortalHeaders4))
+                .exec(     
+                  http("request_10")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
-                        .headers(Headers.DartsPortalHeaders4),
-                      http("Darts-Portal - Api - Courthouses")
+                        .headers(Headers.DartsPortalHeaders4))
+                .exec(    
+                  http("Darts-Portal - Api - Courthouses")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/courthouses")
                         .headers(Headers.DartsPortalHeaders5)
-                    )
-                );
+                    );
             }   
 }

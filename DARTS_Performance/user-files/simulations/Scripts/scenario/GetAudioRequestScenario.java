@@ -19,7 +19,7 @@ public final class GetAudioRequestScenario {
             .on(exec(feed(feeder))
                 .exec(http("DARTS - Api - AudioRequest:GET")
                         .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/v2?expired=true") //+ expired + "")
-                        .headers(Headers.addAdditionalHeader(Headers.AuthorizationHeaders, true))
+                        .headers(Headers.addAdditionalHeader(Headers.AuthorizationHeaders, true, false))
                         //.check(Feeders.saveTransformedMediaId())
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))

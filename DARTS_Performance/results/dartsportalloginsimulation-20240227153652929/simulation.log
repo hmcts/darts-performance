@@ -1,0 +1,27 @@
+RUN	DartsPortal.DartsPortalLoginSimulation	dartsportalloginsimulation	1709048212929	1	3.9.5
+USER	Darts Portal Login	START	1709048213810
+REQUEST	Darts Portal Login	Darts-Portal - Auth - Login	1709048213822	1709048214341	OK	 
+REQUEST	Darts Portal Login	Darts-Portal - Auth - Login Redirect 1	1709048214375	1709048214911	OK	 
+GROUP	Darts Portal Login	1709048213809	1709048214963	1055	OK
+REQUEST		B2C_1_darts_externaluser_signin - Oauth2/v2.0 - Authorize	1709048214964	1709048215123	OK	 
+REQUEST		Darts-Portal - Auth - Azuread-b2c-login	1709048215157	1709048215212	OK	 
+REQUEST		ruxitagentjs_ICA27NVfgjqrux_10283240117152214.js	1709048215230	1709048215352	OK	 
+REQUEST		govuk-crest-white.png	1709048215370	1709048215414	OK	 
+REQUEST		errors.js	1709048215231	1709048215454	OK	 
+REQUEST		licence-logo.png	1709048215416	1709048215461	OK	 
+REQUEST		favicon.ico	1709048215230	1709048215465	OK	 
+REQUEST		xhr.js	1709048215231	1709048215491	OK	 
+REQUEST		login.js	1709048215459	1709048215500	OK	 
+REQUEST		login.css	1709048215232	1709048215502	OK	 
+REQUEST		govuk-frontend-5.0.0.min.css	1709048215231	1709048215607	OK	 
+REQUEST		B2C_1_darts_externaluser_signin - Client - Perftrace	1709048215654	1709048215654	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+REQUEST		B2C_1_darts_externaluser_signin - SelfAsserted	1709048223670	1709048224292	OK	 
+ERROR	Darts-Portal - Auth - Callback: Failed to build request: No attribute named 'TokenCode' is defined 	1709048224296
+REQUEST		Darts-Portal - Auth - Is-authenticated	1709048224298	1709048224345	OK	 
+REQUEST		Darts-Portal - User - Profile	1709048224299	1709048224347	KO	status.find.in([200, 209], 304), found 401
+REQUEST		Darts-Portal - Api - Courthouses	1709048224299	1709048224349	KO	status.find.in([200, 209], 304), found 401
+REQUEST		Darts-Portal - Auth - Is-authenticated	1709048224298	1709048224351	OK	 
+REQUEST		request_10	1709048224299	1709048224353	KO	status.find.in([200, 209], 304), found 401
+REQUEST		Darts-Portal - App - Config	1709048224297	1709048224364	OK	 
+REQUEST		B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed	1709048224300	1709048225157	OK	 
+USER	Darts Portal Login	END	1709048225176

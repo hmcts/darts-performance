@@ -13,7 +13,7 @@ public class RequestBodyBuilder {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
     private static final String[] REQUEST_TYPES = {"DOWNLOAD", "PLAYBACK"};
-    public static final NumberGenerator generatorCourtHouseCode = new NumberGenerator(100);
+    public static final NumberGenerator generatorCourtHouseCode = new NumberGenerator(1);
 
     // Define the percentages for each request type (must sum up to 100)
     private static final int DOWNLOAD_PERCENTAGE = 70; //% chance
@@ -67,8 +67,139 @@ public class RequestBodyBuilder {
         courtHouseName, courtRoom, caseName);
     }
 
-
     public static String buildDartsPortalPerftraceRequest(Session session) {
+        return String.format(
+             "{" +
+                "  \"navigation\": {" +
+                "    \"type\": 0," +
+                "    \"redirectCount\": 0" +
+                "  }," +
+                "  \"timing\": {" +
+                "    \"connectStart\": 1709047511193," +
+                "    \"navigationStart\": 1709047510670," +
+                "    \"secureConnectionStart\": 1709047511228," +
+                "    \"fetchStart\": 1709047511190," +
+                "    \"domContentLoadedEventStart\": 1709047511811," +
+                "    \"responseStart\": 1709047511729," +
+                "    \"domInteractive\": 1709047511811," +
+                "    \"domainLookupEnd\": 1709047511190," +
+                "    \"responseEnd\": 1709047511731," +
+                "    \"redirectStart\": 0," +
+                "    \"requestStart\": 1709047511489," +
+                "    \"unloadEventEnd\": 0," +
+                "    \"unloadEventStart\": 0," +
+                "    \"domLoading\": 1709047511757," +
+                "    \"domComplete\": 1709047511842," +
+                "    \"domainLookupStart\": 1709047511190," +
+                "    \"loadEventStart\": 1709047511842," +
+                "    \"domContentLoadedEventEnd\": 1709047511811," +
+                "    \"loadEventEnd\": 1709047511842," +
+                "    \"redirectEnd\": 0," +
+                "    \"connectEnd\": 1709047511489" +
+                "  }," +
+                "  \"entries\": [" +
+                "    {" +
+                "      \"name\": \"https://hmctsstgextid.b2clogin.com/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/oauth2/v2.0/authorize?client_id=363c11cb-48b9-44bf-9d06-9a3973f6f413&redirect_uri=https%3A%2F%2Fdarts.staging.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\"," +
+                "      \"entryType\": \"navigation\"," +
+                "      \"startTime\": 0," +
+                "      \"duration\": 1171.7000000029802," +
+                "      \"initiatorType\": \"navigation\"," +
+                "      \"deliveryType\": \"\"," +
+                "      \"nextHopProtocol\": \"http/1.1\"," +
+                "      \"renderBlockingStatus\": \"non-blocking\"," +
+                "      \"workerStart\": 0," +
+                "      \"redirectStart\": 0," +
+                "      \"redirectEnd\": 0," +
+                "      \"fetchStart\": 520," +
+                "      \"domainLookupStart\": 520," +
+                "      \"domainLookupEnd\": 520," +
+                "      \"connectStart\": 522.2000000029802," +
+                "      \"secureConnectionStart\": 557.7999999970198," +
+                "      \"connectEnd\": 818.2000000029802," +
+                "      \"requestStart\": 818.2999999970198," +
+                "      \"responseStart\": 1059," +
+                "      \"firstInterimResponseStart\": 0," +
+                "      \"responseEnd\": 1060.7999999970198," +
+                "      \"transferSize\": 69665," +
+                "      \"encodedBodySize\": 69365," +
+                "      \"decodedBodySize\": 176293," +
+                "      \"responseStatus\": 200," +
+                "      \"serverTiming\": []," +
+                "      \"unloadEventStart\": 0," +
+                "      \"unloadEventEnd\": 0," +
+                "      \"domInteractive\": 1140.4000000059605," +
+                "      \"domContentLoadedEventStart\": 1140.4000000059605," +
+                "      \"domContentLoadedEventEnd\": 1140.7999999970198," +
+                "      \"domComplete\": 1171.5999999940395," +
+                "      \"loadEventStart\": 1171.7000000029802," +
+                "      \"loadEventEnd\": 1171.7000000029802," +
+                "      \"type\": \"navigate\"," +
+                "      \"redirectCount\": 0," +
+                "      \"activationStart\": 0," +
+                "      \"criticalCHRestart\": 0" +
+                "    }," +
+                "    {" +
+                "      \"name\": \"visible\"," +
+                "      \"entryType\": \"visibility-state\"," +
+                "      \"startTime\": 0," +
+                "      \"duration\": 0" +
+                "    }," +
+                "    {" +
+                "      \"name\": \"https://darts.staging.apps.hmcts.net/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en\"," +
+                "      \"entryType\": \"resource\"," +
+                "      \"startTime\": 1132," +
+                "      \"duration\": 411.90000000596046," +
+                "      \"initiatorType\": \"xmlhttprequest\"," +
+                "      \"deliveryType\": \"\"," +
+                "      \"nextHopProtocol\": \"http/1.1\"," +
+                "      \"renderBlockingStatus\": \"non-blocking\"," +
+                "      \"workerStart\": 0," +
+                "      \"redirectStart\": 0," +
+                "      \"redirectEnd\": 0," +
+                "      \"fetchStart\": 1132," +
+                "      \"domainLookupStart\": 1132," +
+                "      \"domainLookupEnd\": 1132," +
+                "      \"connectStart\": 1133.2999999970198," +
+                "      \"secureConnectionStart\": 1159.4000000059605," +
+                "      \"connectEnd\": 1299.2000000029802," +
+                "      \"requestStart\": 1299.2999999970198," +
+                "      \"responseStart\": 1543.4000000059605," +
+                "      \"firstInterimResponseStart\": 0," +
+                "      \"responseEnd\": 1543.9000000059605," +
+                "      \"transferSize\": 5876," +
+                "      \"encodedBodySize\": 5576," +
+                "      \"decodedBodySize\": 5576," +
+                "      \"responseStatus\": 200," +
+                "      \"serverTiming\": [" +
+                "        {" +
+                "          \"name\": \"dtSInfo\"," +
+                "          \"duration\": 0," +
+                "          \"description\": \"0\"" +
+                "        }," +
+                "        {" +
+                "          \"name\": \"dtRpid\"," +
+                "          \"duration\": 0," +
+                "          \"description\": \"1087509397\"" +
+                "        }," +
+                "        {" +
+                "          \"name\": \"dtTao\"," +
+                "          \"duration\": 0," +
+                "          \"description\": \"1\"" +
+                "        }" +
+                "      ]" +
+                "    }" +
+                "  ]," +
+                "  \"connection\": {" +
+                "    \"onchange\": null," +
+                "    \"effectiveType\": \"3g\"," +
+                "    \"rtt\": 950," +
+                "    \"downlink\": 1.4," +
+                "    \"saveData\": false" +
+                "  }" +
+                "}"); 
+            }
+    
+    public static String buildDartsPortalPerftraceRequest2(Session session) {
         return String.format(
             "{" +
             "   \"navigation\": {" +
@@ -76,31 +207,31 @@ public class RequestBodyBuilder {
             "       \"redirectCount\": 0" +
             "   }," +
             "   \"timing\": {" +
-            "       \"connectStart\": %d," +
-            "       \"navigationStart\": %d," +
-            "       \"secureConnectionStart\": %d," +
-            "       \"fetchStart\": %d," +
-            "       \"domContentLoadedEventStart\": %d," +
-            "       \"responseStart\": %d," +
-            "       \"domInteractive\": %d," +
-            "       \"domainLookupEnd\": %d," +
-            "       \"responseEnd\": %d," +
-            "       \"redirectStart\": %d," +
-            "       \"requestStart\": %d," +
-            "       \"unloadEventEnd\": %d," +
-            "       \"unloadEventStart\": %d," +
-            "       \"domLoading\": %d," +
-            "       \"domComplete\": %d," +
-            "       \"domainLookupStart\": %d," +
-            "       \"loadEventStart\": %d," +
-            "       \"domContentLoadedEventEnd\": %d," +
-            "       \"loadEventEnd\": %d," +
-            "       \"redirectEnd\": %d," +
-            "       \"connectEnd\": %d" +
+            "       \"connectStart\": 522.20000000298," +
+            "       \"navigationStart\": 522.20000000298," +
+            "       \"secureConnectionStart\": 557.79999999702," +
+            "       \"fetchStart\": 520," +
+            "       \"domContentLoadedEventStart\": 1140.40000000596," +
+            "       \"responseStart\": 0," +
+            "       \"domInteractive\": 1140.40000000596," +
+            "       \"domainLookupEnd\": 520," +
+            "       \"responseEnd\": 1060.79999999702," +
+            "       \"redirectStart\": 0," +
+            "       \"requestStart\": 818.29999999702," +
+            "       \"unloadEventEnd\": 0," +
+            "       \"unloadEventStart\": 0," +
+            "       \"domLoading\": 1709047511757," +
+            "       \"domComplete\": 1709047511842," +
+            "       \"domainLookupStart\": 520," +
+            "       \"loadEventStart\": 1709047511842," +
+            "       \"domContentLoadedEventEnd\": 1140.79999999702," +
+            "       \"loadEventEnd\": 1171.70000000298," +
+            "       \"redirectEnd\": 0," +
+            "       \"connectEnd\": 818.20000000298," +
             "   }," +
             "   \"entries\": [" +
             "       {" +
-            "           \"name\": \"" + AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl()?client_id=" + AppConfig.EnvironmentURL.AZURE_AD_B2C_CLIENT_ID.getUrl() + "&redirect_uri=https%3A%2F%2Fdarts.staging.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\"," +
+            "           \"name\": \"" + AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/" + AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "?client_id=" + AppConfig.EnvironmentURL.AZURE_AD_B2C_CLIENT_ID.getUrl() + "&redirect_uri=https%3A%2F%2Fdarts.staging.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\"," +
             "           \"entryType\": \"navigation\"," +
             "           \"startTime\": 0," +
             "           \"duration\": 2919.9000000953674," +

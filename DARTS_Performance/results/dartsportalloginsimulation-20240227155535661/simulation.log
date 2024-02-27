@@ -1,0 +1,27 @@
+RUN	DartsPortal.DartsPortalLoginSimulation	dartsportalloginsimulation	1709049335661	1	3.9.5
+USER	Darts Portal Login	START	1709049336340
+REQUEST	Darts Portal Login	Darts-Portal - Auth - Login	1709049336351	1709049336884	OK	 
+REQUEST	Darts Portal Login	Darts-Portal - Auth - Login Redirect 1	1709049336892	1709049337313	OK	 
+GROUP	Darts Portal Login	1709049336338	1709049337346	954	OK
+REQUEST		B2C_1_darts_externaluser_signin - Oauth2/v2.0 - Authorize	1709049337349	1709049337512	OK	 
+REQUEST		Darts-Portal - Auth - Azuread-b2c-login	1709049337529	1709049337572	OK	 
+REQUEST		ruxitagentjs_ICA27NVfgjqrux_10283240117152214.js	1709049337589	1709049337669	OK	 
+REQUEST		govuk-crest-white.png	1709049337671	1709049337712	OK	 
+REQUEST		licence-logo.png	1709049337712	1709049337761	OK	 
+REQUEST		login.js	1709049337761	1709049337798	OK	 
+REQUEST		errors.js	1709049337590	1709049337818	OK	 
+REQUEST		xhr.js	1709049337590	1709049337820	OK	 
+REQUEST		login.css	1709049337590	1709049337821	OK	 
+REQUEST		favicon.ico	1709049337589	1709049337827	OK	 
+REQUEST		govuk-frontend-5.0.0.min.css	1709049337590	1709049337918	OK	 
+REQUEST		B2C_1_darts_externaluser_signin - Client - Perftrace	1709049337934	1709049337934	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
+REQUEST		B2C_1_darts_externaluser_signin - SelfAsserted	1709049345944	1709049346488	OK	 
+ERROR	Darts-Portal - Auth - Callback: Failed to build request: No attribute named 'TokenCode' is defined 	1709049346493
+REQUEST		Darts-Portal - Api - Courthouses	1709049346497	1709049346543	KO	status.find.in([200, 209], 304), found 401
+REQUEST		Darts-Portal - User - Profile	1709049346496	1709049346551	KO	status.find.in([200, 209], 304), found 401
+REQUEST		Darts-Portal - App - Config	1709049346494	1709049346553	OK	 
+REQUEST		request_10	1709049346497	1709049346555	KO	status.find.in([200, 209], 304), found 401
+REQUEST		Darts-Portal - Auth - Is-authenticated	1709049346495	1709049346566	OK	 
+REQUEST		Darts-Portal - Auth - Is-authenticated	1709049346495	1709049346570	OK	 
+REQUEST		B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed	1709049346498	1709049347021	OK	 
+USER	Darts Portal Login	END	1709049347055
