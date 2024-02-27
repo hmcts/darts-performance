@@ -1,0 +1,27 @@
+RUN	DartsPortal.DartsPortalLoginSimulation	dartsportalloginsimulation	1709050695198	1	3.9.5
+USER	Darts Portal Login	START	1709050695999
+REQUEST	Darts Portal Login	Darts-Portal - Auth - Login	1709050696011	1709050696539	OK	 
+REQUEST	Darts Portal Login	Darts-Portal - Auth - Login Redirect 1	1709050696553	1709050696908	OK	 
+GROUP	Darts Portal Login	1709050695997	1709050696949	883	OK
+REQUEST		B2C_1_darts_externaluser_signin - Oauth2/v2.0 - Authorize	1709050696951	1709050697112	OK	 
+REQUEST		Darts-Portal - Auth - Azuread-b2c-login	1709050697121	1709050697174	OK	 
+REQUEST		ruxitagentjs_ICA27NVfgjqrux_10283240117152214.js	1709050697192	1709050697293	OK	 
+REQUEST		govuk-crest-white.png	1709050697295	1709050697336	OK	 
+REQUEST		licence-logo.png	1709050697337	1709050697388	OK	 
+REQUEST		login.js	1709050697389	1709050697429	OK	 
+REQUEST		xhr.js	1709050697193	1709050697444	OK	 
+REQUEST		favicon.ico	1709050697193	1709050697450	OK	 
+REQUEST		login.css	1709050697194	1709050697487	OK	 
+REQUEST		govuk-frontend-5.0.0.min.css	1709050697194	1709050697510	OK	 
+REQUEST		errors.js	1709050697193	1709050697517	OK	 
+REQUEST		B2C_1_darts_externaluser_signin - Client - Perftrace	1709050697527	1709050697592	OK	 
+REQUEST		B2C_1_darts_externaluser_signin - SelfAsserted	1709050705600	1709050706241	OK	 
+ERROR	Darts-Portal - Auth - Callback: Failed to build request: No attribute named 'TokenCode' is defined 	1709050706243
+REQUEST		Darts-Portal - Auth - Is-authenticated	1709050706245	1709050706284	OK	 
+REQUEST		Darts-Portal - App - Config	1709050706244	1709050706292	OK	 
+REQUEST		request_10	1709050706246	1709050706294	KO	status.find.in([200, 209], 304), found 401
+REQUEST		Darts-Portal - Api - Courthouses	1709050706246	1709050706295	KO	status.find.in([200, 209], 304), found 401
+REQUEST		Darts-Portal - Auth - Is-authenticated	1709050706245	1709050706298	OK	 
+REQUEST		Darts-Portal - User - Profile	1709050706245	1709050706303	KO	status.find.in([200, 209], 304), found 401
+REQUEST		B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed	1709050706246	1709050707155	OK	 
+USER	Darts Portal Login	END	1709050707167

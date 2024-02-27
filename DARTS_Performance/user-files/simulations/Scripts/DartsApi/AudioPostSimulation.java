@@ -21,7 +21,7 @@ public class AudioPostSimulation extends Simulation {
 
     final ScenarioBuilder scn1 = scenario("Audio Requests:DELETE")
         .exec(GetApiTokenScenario.getApiToken())
-        .repeat(10)    
+        .repeat(1)    
         .on(exec(PostAudioScenario.PostApiAudio().feed(feeder))    
         );
 

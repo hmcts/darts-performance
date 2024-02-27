@@ -1,0 +1,7 @@
+RUN	DartsApi.AudioGETPreviewSimulation	audiogetpreviewsimulation	1708956208709	1	3.9.5
+USER	Audio Requests:GET Preview	START	1708956211184
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1708956211183	1708956212060	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1708956211167	1708956212117	877	OK
+REQUEST	Audio Get Preview	DARTS - Api - Audio:GET Preview	1708956212122	1708956213576	OK	 
+GROUP	Audio Get Preview	1708956212119	1708956213579	1454	OK
+USER	Audio Requests:GET Preview	END	1708956213582

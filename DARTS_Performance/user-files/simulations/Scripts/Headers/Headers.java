@@ -23,7 +23,7 @@ public class Headers {
         AuthorizationHeaders.put("Sec-Fetch-Site", "same-origin");
         AuthorizationHeaders.put("accept-language", "en-US,en;q=0.9");
         AuthorizationHeaders.put("authorization", "Bearer #{bearerToken}");
-        AuthorizationHeaders.put("origin", "BASE_URL");
+        //AuthorizationHeaders.put("origin", "BASE_URL");
         AuthorizationHeaders.put("sec-ch-ua", "Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24");
         AuthorizationHeaders.put("sec-ch-ua-mobile", "?0");
         AuthorizationHeaders.put("sec-ch-ua-platform", "Windows");
@@ -32,15 +32,19 @@ public class Headers {
     }
 
     // Method to add an additional header conditionally
-    public static Map<String, String> addAdditionalHeader(Map<String, String> headers, boolean condition) {
-        if (condition) {
-            Map<String, String> updatedHeaders = new HashMap<>(headers);
+    public static Map<String, String> addAdditionalHeader(Map<String, String> headers, boolean userId, boolean eventStream) {
+        Map<String, String> updatedHeaders = new HashMap<>(headers);
+    
+        if (userId) {
             updatedHeaders.put("user_id", "#{usr_id}");
-            return updatedHeaders;
-        } else {
-            return headers;
         }
+    
+        // Add or update the "accept" header based on the condition
+        updatedHeaders.put("accept", eventStream ? "text/event-stream" : "*/*");
+    
+        return updatedHeaders;
     }
+
     public static final Map<CharSequence, String> ApiHeaders = Map.ofEntries(
         Map.entry("Accept", "*/*"),
         Map.entry("Cache-Control", "no-cache"),
@@ -94,6 +98,27 @@ public class Headers {
     Map.entry("sec-ch-ua-mobile", "?0"),
     Map.entry("sec-ch-ua-platform", "Windows")
     );
+    public static final Map<CharSequence, String> DartsPortalHeaders21 = Map.ofEntries(
+    Map.entry("Host", "hmctsstgextid.b2clogin.com"),
+    Map.entry("Connection", "keep-alive"),
+    Map.entry("Content-Length", "82"),
+    Map.entry("sec-ch-ua", "\"Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121\""),
+    Map.entry("X-CSRF-TOKEN", "#{csrf}"),
+    Map.entry("sec-ch-ua-mobile", "?0"),
+    Map.entry("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"),
+    Map.entry("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"),
+    Map.entry("Accept", "application/json, text/javascript, */*; q=0.01"),
+    Map.entry("X-Requested-With", "XMLHttpRequest"),
+    Map.entry("sec-ch-ua-platform", "\"Windows\""),
+    Map.entry("Origin", "https://hmctsstgextid.b2clogin.com"),
+    Map.entry("Sec-Fetch-Site", "same-origin"),
+    Map.entry("Sec-Fetch-Mode", "cors"),
+    Map.entry("Sec-Fetch-Dest", "empty"),
+    Map.entry("Referer", "https://hmctsstgextid.b2clogin.com/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/oauth2/v2.0/authorize?client_id=363c11cb-48b9-44bf-9d06-9a3973f6f413&redirect_uri=https%3A%2F%2Fdarts.staging.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code"),
+    Map.entry("Accept-Encoding", "gzip, deflate, br, zstd"),
+    Map.entry("Accept-Language", "en-US,en;q=0.9")
+    );
+
     
     public static final Map<CharSequence, String> DartsPortalHeaders3 = Map.ofEntries(
     Map.entry("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"),
