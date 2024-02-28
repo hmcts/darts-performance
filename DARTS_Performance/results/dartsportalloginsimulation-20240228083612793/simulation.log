@@ -1,0 +1,17 @@
+RUN	DartsPortal.DartsPortalLoginSimulation	dartsportalloginsimulation	1709109372793	1	3.9.5
+USER	Darts Portal Login	START	1709109374156
+ERROR	Darts-Portal - Auth - Login: Failed to build request: url testtest/auth/login can't be parsed into an Uri: j.l.IllegalArgumentException: testtest/auth/login could not be parsed into a proper Uri, missing scheme 	1709109374160
+GROUP	Darts Portal Login	1709109374154	1709109374164	0	KO
+ERROR	B2C_1_darts_externaluser_signin - Oauth2/v2.0 - Authorize: Failed to build request: url testtesttesttest?client_id=test&redirect_uri=test/auth/callback&scope=openid&prompt=login&response_mode=form_post&response_type=code can't be parsed into an Uri: j.l.IllegalArgumentException: testtesttesttest?client_id=test&redirect_uri=test/auth/callback&scope=openid&prompt=login&response_mode=form_post&response_type=code could not be parsed into a proper Uri, missing scheme 	1709109374164
+ERROR	Darts-Portal - Auth - Azuread-b2c-login: Failed to build request: url testtest/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en can't be parsed into an Uri: j.l.IllegalArgumentException: testtest/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en could not be parsed into a proper Uri, missing scheme 	1709109374167
+ERROR	B2C_1_darts_externaluser_signin - Client - Perftrace: Failed to build request: No attribute named 'stateProperties' is defined 	1709109374171
+ERROR	B2C_1_darts_externaluser_signin - SelfAsserted: Failed to build request: No attribute named 'stateProperties' is defined 	1709109382187
+ERROR	B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed: Failed to build request: No attribute named 'csrf' is defined 	1709109382188
+ERROR	Darts-Portal - Auth - Callback: Failed to build request: url testtest/auth/callback can't be parsed into an Uri: j.l.IllegalArgumentException: testtest/auth/callback could not be parsed into a proper Uri, missing scheme 	1709109382191
+ERROR	Darts-Portal - App - Config: Failed to build request: url testtest/app/config can't be parsed into an Uri: j.l.IllegalArgumentException: testtest/app/config could not be parsed into a proper Uri, missing scheme 	1709109382191
+ERROR	Darts-Portal - Auth - Is-authenticated: Failed to build request: url testtest/auth/is-authenticated?t=641771567 can't be parsed into an Uri: j.l.IllegalArgumentException: testtest/auth/is-authenticated?t=641771567 could not be parsed into a proper Uri, missing scheme 	1709109382191
+ERROR	Darts-Portal - Auth - Is-authenticated: Failed to build request: url testtest/auth/is-authenticated?t=-1005345818 can't be parsed into an Uri: j.l.IllegalArgumentException: testtest/auth/is-authenticated?t=-1005345818 could not be parsed into a proper Uri, missing scheme 	1709109382192
+ERROR	Darts-Portal - User - Profile: Failed to build request: url testtest/user/profile can't be parsed into an Uri: j.l.IllegalArgumentException: testtest/user/profile could not be parsed into a proper Uri, missing scheme 	1709109382192
+ERROR	request_10: Failed to build request: url testtest/api/audio-requests/not-accessed-count can't be parsed into an Uri: j.l.IllegalArgumentException: testtest/api/audio-requests/not-accessed-count could not be parsed into a proper Uri, missing scheme 	1709109382192
+ERROR	Darts-Portal - Api - Courthouses: Failed to build request: url testtest/api/courthouses can't be parsed into an Uri: j.l.IllegalArgumentException: testtest/api/courthouses could not be parsed into a proper Uri, missing scheme 	1709109382192
+USER	Darts Portal Login	END	1709109382194
