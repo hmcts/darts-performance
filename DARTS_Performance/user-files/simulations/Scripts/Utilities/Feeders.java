@@ -34,6 +34,10 @@ public class Feeders {
         return CoreDsl.jsonPath("$.transformed_media_details[*].transformed_media_id").findAll().saveAs("getTransformedMediaId");
     }
 
+    public static CheckBuilder.Final saveRegistrationToken() {
+        return CoreDsl.regex("<return>(.*?)</return>").find(0).saveAs("registrationToken");
+    }
+
     public static FeederBuilder<Object> listFeeder(String key, List<Object> items) {
         return CoreDsl.listFeeder(items.stream()
             .map(item -> Map.of(key, item)).toList()

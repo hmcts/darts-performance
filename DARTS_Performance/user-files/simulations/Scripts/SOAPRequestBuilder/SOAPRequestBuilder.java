@@ -10,8 +10,8 @@ import io.gatling.javaapi.core.Session;
 
 public class SOAPRequestBuilder {
 
-    private static final String USERNAME = EnvironmentURL.DARTS_SOAP_USERNAME.getUrl();
-    private static final String PASSWORD = EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl();
+    private static final String USERNAME = EnvironmentURL.DARTS_EXTERNAL_SOAP_USERNAME.getUrl();
+    private static final String PASSWORD = EnvironmentURL.DARTS_EXTERNAL_SOAP_PASSWORD.getUrl();
 
     public static String AddDcoumentSOAPRequest(Session session) {
         // Retrieve values from session or define defaults if needed
@@ -150,4 +150,28 @@ public class SOAPRequestBuilder {
         "</soapenv:Envelope>",
         USERNAME, PASSWORD, courtHouseName, courtRoom, caseName);
     } 
+
+
+    public static String RegisterWithUsernameSOAPRequest(Session session) {
+    // Construct SOAP request
+    return String.format(
+        "<S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
+        "   <S:Header>\n" +
+        "      <ServiceContext token=\"temporary/127.0.0.1-1700061962100--7690714146928305881\" xmlns=\"http://context.core.datamodel.fs.documentum.emc.com/\" xmlns:ns2=\"http://properties.core.datamodel.fs.documentum.emc.com/\" xmlns:ns3=\"http://profiles.core.datamodel.fs.documentum.emc.com/\" xmlns:ns4=\"http://query.core.datamodel.fs.documentum.emc.com/\" xmlns:ns5=\"http://content.core.datamodel.fs.documentum.emc.com/\" xmlns:ns6=\"http://core.datamodel.fs.documentum.emc.com/\">\n" +
+        "         <Identities password=\"%s\" repositoryName=\"moj_darts\" userName=\"%s\" xsi:type=\"RepositoryIdentity\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"></Identities>\n" +
+        "         <Profiles allowAsyncContentTransfer=\"false\" allowCachedContentTransfer=\"false\" isProcessOLELinks=\"false\" transferMode=\"MTOM\" xsi:type=\"ns3:ContentTransferProfile\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"></Profiles>\n" +
+        "      </ServiceContext>\n" +
+        "   </S:Header>\n" +
+        "   <S:Body>\n" +
+        "      <ns8:register xmlns:ns8=\"http://services.rt.fs.documentum.emc.com/\" xmlns:ns7=\"http://core.datamodel.fs.documentum.emc.com/\" xmlns:ns6=\"http://content.core.datamodel.fs.documentum.emc.com/\" xmlns:ns5=\"http://query.core.datamodel.fs.documentum.emc.com/\" xmlns:ns4=\"http://profiles.core.datamodel.fs.documentum.emc.com/\" xmlns:ns3=\"http://properties.core.datamodel.fs.documentum.emc.com/\" xmlns:ns2=\"http://context.core.datamodel.fs.documentum.emc.com/\">\n" +
+        "         <context>\n" +
+        "            <ns2:Identities xsi:type=\"ns2:RepositoryIdentity\" repositoryName=\"moj_darts\" password=\"%s\" userName=\"%s\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"></ns2:Identities>\n" +
+        "            <ns2:Profiles xsi:type=\"ns4:ContentTransferProfile\" isProcessOLELinks=\"false\" allowAsyncContentTransfer=\"false\" allowCachedContentTransfer=\"false\" transferMode=\"MTOM\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"></ns2:Profiles>\n" +
+        "         </context>\n" +
+        "         <host>http://localhost:8070/service/darts/</host>\n" +
+        "      </ns8:register>\n" +
+        "   </S:Body>\n" +
+        "</S:Envelope>",
+        PASSWORD, USERNAME, PASSWORD, USERNAME);
+    }
 }
