@@ -1,6 +1,7 @@
 package DartsApi;
 
-import Scenario.*;
+import Scenario.DartsApi.GetApiTokenScenario;
+import Scenario.DartsApi.GetAudioRequestScenario;
 import Utilities.AppConfig;
 import Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
