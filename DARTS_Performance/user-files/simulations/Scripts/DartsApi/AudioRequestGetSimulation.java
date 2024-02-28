@@ -1,6 +1,6 @@
 package DartsApi;
 
-import scenario.*;
+import Scenario.*;
 import Utilities.AppConfig;
 import Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;

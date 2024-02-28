@@ -2,10 +2,10 @@ package DartsSoap;
 
 import Utilities.AppConfig;
 import Utilities.AppConfig.EnvironmentURL;
+import Scenario.DartsSoap.GetCasesSoapUserScenario;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
-import scenario.GetCasesSoapUserScenario;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
