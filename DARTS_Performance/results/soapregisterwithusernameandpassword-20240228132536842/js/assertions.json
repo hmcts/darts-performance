@@ -1,0 +1,10 @@
+{
+  "simulation": "SOAPregisterWithUsernameAndPassword",
+  "simulationId": "soapregisterwithusernameandpassword-20240228132536842",
+  "start": 1709126739072,
+  "description": "1",
+  "scenarios": ["SOAPregisterWithUsernameAndPassword"],
+  "assertions": [
+
+  ]
+}

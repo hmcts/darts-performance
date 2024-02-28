@@ -1,7 +1,6 @@
 package Scenario.DartsPortal;
 
 import Headers.Headers;
-import RequestBodyBuilder.RequestBodyBuilder;
 import Utilities.AppConfig;
 import Utilities.Feeders;
 import io.gatling.javaapi.core.*;
