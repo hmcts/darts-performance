@@ -4,17 +4,17 @@ import Headers.Headers;
 import RequestBodyBuilder.RequestBodyBuilder;
 import Utilities.AppConfig;
 import Utilities.Feeders;
-import Utilities.NumberGenerator;
 import io.gatling.javaapi.core.*;
+import scala.util.Random;
+
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 public final class DartsPortalLoginScenario {
 
    // private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();    
     private static final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_USERS_FILE_PATH).random();
-    private static final NumberGenerator generator = new NumberGenerator(10);
+    private static final Random randomNumber = new Random();
 
     private DartsPortalLoginScenario() {}
 
@@ -46,10 +46,10 @@ public final class DartsPortalLoginScenario {
                   .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en")
                   .headers(Headers.DartsPortalHeaders1)
               )
-              .exec(session -> {
-                String xmlPayload = RequestBodyBuilder.buildDartsPortalPerftraceRequest(session);
-                return session.set("xmlPayload", xmlPayload);
-              })
+              // .exec(session -> {
+              //   String xmlPayload = RequestBodyBuilder.buildDartsPortalPerftraceRequest(session);
+              //   return session.set("xmlPayload", xmlPayload);
+              // })
               .exec(
                 http("B2C_1_darts_externaluser_signin - Client - Perftrace")
                   .post(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/client/perftrace?tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin")
@@ -82,18 +82,19 @@ public final class DartsPortalLoginScenario {
                       .headers(Headers.DartsPortalHeaders4))
                 .exec(
                   http("Darts-Portal - Auth - Is-authenticated")
-                      .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + generator.generateNextNumber())
+                      .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
                       .headers(Headers.DartsPortalHeaders4))
                 .exec(   
                   http("Darts-Portal - Auth - Is-authenticated")
-                        .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + generator.generateNextNumber())
+                        .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
                         .headers(Headers.DartsPortalHeaders4))
                 .exec(    
                   http("Darts-Portal - User - Profile")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/profile")
                         .headers(Headers.DartsPortalHeaders4))
                 .exec(     
-                  http("request_10")
+                  
+                  http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
                         .headers(Headers.DartsPortalHeaders4))
                 .exec(    

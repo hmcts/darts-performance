@@ -1,19 +1,14 @@
 package DartsPortal;
 
-import java.time.Duration;
-import java.util.*;
-
-import RequestBodyBuilder.RequestBodyBuilder;
 import Utilities.AppConfig;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
-import io.gatling.javaapi.jdbc.*;
 import scenario.DartsPortalLoginScenario;
+import scenario.DartsPortalLogoutScenario;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import static io.gatling.javaapi.jdbc.JdbcDsl.*;
 
 public class DartsPortalLoginSimulation extends Simulation {   
   {
@@ -31,7 +26,8 @@ public class DartsPortalLoginSimulation extends Simulation {
       
 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
-        .exec(DartsPortalLoginScenario.DartsPortalLoginRequest());
+        .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
+        .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
     setUp(
         scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
