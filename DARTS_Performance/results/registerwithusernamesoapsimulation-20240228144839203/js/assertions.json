@@ -1,0 +1,10 @@
+{
+  "simulation": "DartsSoap.RegisterWithUsernameSOAPSimulation",
+  "simulationId": "registerwithusernamesoapsimulation-20240228144839203",
+  "start": 1709131721006,
+  "description": "1",
+  "scenarios": ["DARTS - GateWay - Soap - RegisterWithUsername"],
+  "assertions": [
+
+  ]
+}
