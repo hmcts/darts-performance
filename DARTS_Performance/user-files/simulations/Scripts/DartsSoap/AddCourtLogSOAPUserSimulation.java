@@ -2,14 +2,15 @@ package DartsSoap;
 
 import Utilities.AppConfig;
 import Utilities.AppConfig.EnvironmentURL;
+import Scenario.DartsSoap.AddCourtlogSoapUserScenario;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
-import scenario.AddCourtlogSoapUserScenario;
 
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+
 
 public class AddCourtLogSOAPUserSimulation extends Simulation {
 

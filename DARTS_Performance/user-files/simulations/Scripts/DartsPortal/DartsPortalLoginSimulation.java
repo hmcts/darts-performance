@@ -4,11 +4,13 @@ import Utilities.AppConfig;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
-import scenario.DartsPortalLoginScenario;
-import scenario.DartsPortalLogoutScenario;
+
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+
+import Scenario.DartsPortal.DartsPortalLoginScenario;
+import Scenario.DartsPortal.DartsPortalLogoutScenario;
 
 public class DartsPortalLoginSimulation extends Simulation {   
   {

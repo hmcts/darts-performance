@@ -2,17 +2,15 @@ package DartsSoap;
 
 import Utilities.AppConfig;
 import Utilities.AppConfig.EnvironmentURL;
+import Scenario.DartsSoap.AddCaseSoapUserScenario;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
-import scenario.AddCaseSoapUserScenario;
-
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 import java.util.UUID;
-
 public class AddCaseSOAPUserSimulation extends Simulation {
 
   FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
