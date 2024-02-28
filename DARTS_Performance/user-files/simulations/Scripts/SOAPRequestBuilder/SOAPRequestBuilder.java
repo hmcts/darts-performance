@@ -4,6 +4,7 @@ import Utilities.Feeders;
 import Utilities.NumberGenerator;
 import Utilities.RandomStringGenerator;
 import Utilities.TimestampGenerator;
+
 import Utilities.AppConfig.EnvironmentURL;
 
 import io.gatling.javaapi.core.Session;
@@ -173,5 +174,29 @@ public class SOAPRequestBuilder {
         "   </S:Body>\n" +
         "</S:Envelope>",
         PASSWORD, USERNAME, PASSWORD, USERNAME);
+    }
+    public static String RegisterWithTokenSOAPRequest(Session session) {
+
+        String registrationToken = session.get("registrationToken");
+
+        // Construct SOAP request
+        return String.format(
+            "<S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
+            "    <S:Header>\n" +
+            "        <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n" +
+            "            <wsse:BinarySecurityToken QualificationValueType=\"http://schemas.emc.com/documentum#ResourceAccessToken\" xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"RAD\">%s</wsse:BinarySecurityToken>\n" +
+            "        </wsse:Security>\n" +
+            "    </S:Header>\n" +
+            "    <S:Body>\n" +
+            "        <ns8:register xmlns:ns8=\"http://services.rt.fs.documentum.emc.com/\" xmlns:ns7=\"http://core.datamodel.fs.documentum.emc.com/\" xmlns:ns6=\"http://content.core.datamodel.fs.documentum.emc.com/\" xmlns:ns5=\"http://query.core.datamodel.fs.documentum.emc.com/\" xmlns:ns4=\"http://profiles.core.datamodel.fs.documentum.emc.com/\" xmlns:ns3=\"http://properties.core.datamodel.fs.documentum.emc.com/\" xmlns:ns2=\"http://context.core.datamodel.fs.documentum.emc.com/\">\n" +
+            "            <context>\n" +
+            "                <ns2:Identities xsi:type=\"ns2:RepositoryIdentity\" repositoryName=\"moj_darts\" password=\"%s\" userName=\"%s\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"></ns2:Identities>\n" +
+            "                <ns2:Profiles xsi:type=\"ns4:ContentTransferProfile\" isProcessOLELinks=\"false\" allowAsyncContentTransfer=\"false\" allowCachedContentTransfer=\"false\" transferMode=\"MTOM\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"></ns2:Profiles>\n" +
+            "            </context>\n" +
+            "            <host>http://localhost:8070/service/darts/</host>\n" +
+            "        </ns8:register>\n" +
+            "    </S:Body>\n" +
+            "</S:Envelope>",
+            registrationToken, PASSWORD, USERNAME);
     }
 }
