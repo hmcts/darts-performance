@@ -1,6 +1,6 @@
 package DartsApi;
 
-import Scenario.*;
+import Scenario.DartsApi.PostCourthouseScenario;
 import Utilities.AppConfig;
 import Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
@@ -8,7 +8,6 @@ import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-
 
 public class CourthousePostSimulation extends Simulation {   
   {
