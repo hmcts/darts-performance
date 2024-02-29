@@ -1,0 +1,10 @@
+{
+  "simulation": "DartsSoap.AddDocumentSOAPTokenSimulation",
+  "simulationId": "adddocumentsoaptokensimulation-20240229102634591",
+  "start": 1709202395708,
+  "description": "14",
+  "scenarios": ["DARTS - GateWay - Soap - AddDocument:POST"],
+  "assertions": [
+
+  ]
+}
