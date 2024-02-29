@@ -1,0 +1,423 @@
+{
+  "type": "GROUP",
+"name": "All Requests",
+"path": "",
+"pathFormatted": "group_missing-name-b06d1",
+"stats": {
+    "name": "All Requests",
+    "numberOfRequests": {
+        "total": 2,
+        "ok": 1,
+        "ko": 1
+    },
+    "minResponseTime": {
+        "total": 630,
+        "ok": 1030,
+        "ko": 630
+    },
+    "maxResponseTime": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 630
+    },
+    "meanResponseTime": {
+        "total": 830,
+        "ok": 1030,
+        "ko": 630
+    },
+    "standardDeviation": {
+        "total": 200,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 830,
+        "ok": 1030,
+        "ko": 630
+    },
+    "percentiles2": {
+        "total": 930,
+        "ok": 1030,
+        "ko": 630
+    },
+    "percentiles3": {
+        "total": 1010,
+        "ok": 1030,
+        "ko": 630
+    },
+    "percentiles4": {
+        "total": 1026,
+        "ok": 1030,
+        "ko": 630
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 1,
+    "percentage": 50
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 1,
+    "percentage": 50
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.6666666666666666,
+        "ok": 0.3333333333333333,
+        "ko": 0.3333333333333333
+    }
+},
+"contents": {
+"group_register-with-u-32886": {
+          "type": "GROUP",
+"name": "Register With Username SOAP Request Group",
+"path": "Register With Username SOAP Request Group",
+"pathFormatted": "group_register-with-u-32886",
+"stats": {
+    "name": "Register With Username SOAP Request Group",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 1,
+        "ko": 0
+    },
+    "minResponseTime": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "maxResponseTime": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "meanResponseTime": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "percentiles2": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "percentiles3": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "percentiles4": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 1,
+    "percentage": 100
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 0,
+    "percentage": 0
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.3333333333333333,
+        "ok": 0.3333333333333333,
+        "ko": 0
+    }
+},
+"contents": {
+"req_darts---gateway-38d41": {
+        "type": "REQUEST",
+        "name": "DARTS - GateWay - Soap - RegisterWithUsername",
+"path": "Register With Username SOAP Request Group / DARTS - GateWay - Soap - RegisterWithUsername",
+"pathFormatted": "req_register-with-u-818f0",
+"stats": {
+    "name": "DARTS - GateWay - Soap - RegisterWithUsername",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 1,
+        "ko": 0
+    },
+    "minResponseTime": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "maxResponseTime": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "meanResponseTime": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "percentiles2": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "percentiles3": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "percentiles4": {
+        "total": 1030,
+        "ok": 1030,
+        "ko": 0
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 1,
+    "percentage": 100
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 0,
+    "percentage": 0
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.3333333333333333,
+        "ok": 0.3333333333333333,
+        "ko": 0
+    }
+}
+    }
+}
+
+     },"group_adddocument-soa-1a38a": {
+          "type": "GROUP",
+"name": "AddDocument SOAP Request Group",
+"path": "AddDocument SOAP Request Group",
+"pathFormatted": "group_adddocument-soa-1a38a",
+"stats": {
+    "name": "AddDocument SOAP Request Group",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 0,
+        "ko": 1
+    },
+    "minResponseTime": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "maxResponseTime": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "meanResponseTime": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "percentiles2": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "percentiles3": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "percentiles4": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 1,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.3333333333333333,
+        "ok": 0,
+        "ko": 0.3333333333333333
+    }
+},
+"contents": {
+"req_darts---gateway-9a38d": {
+        "type": "REQUEST",
+        "name": "DARTS - GateWay - Soap - AddDocument - User",
+"path": "AddDocument SOAP Request Group / DARTS - GateWay - Soap - AddDocument - User",
+"pathFormatted": "req_adddocument-soa-3078c",
+"stats": {
+    "name": "DARTS - GateWay - Soap - AddDocument - User",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 0,
+        "ko": 1
+    },
+    "minResponseTime": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "maxResponseTime": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "meanResponseTime": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "percentiles2": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "percentiles3": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "percentiles4": {
+        "total": 630,
+        "ok": 0,
+        "ko": 630
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 1,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.3333333333333333,
+        "ok": 0,
+        "ko": 0.3333333333333333
+    }
+}
+    }
+}
+
+     }
+}
+
+}
