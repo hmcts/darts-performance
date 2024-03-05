@@ -1,5 +1,9 @@
 #!groovy
-//noinspection GroovyUnusedAssignment
+/*
+properties([
+        pipelineTriggers([cron('00 21 * * *')])
+])
+*/
 @Library("Infrastructure") _
 
 def product = "darts"
