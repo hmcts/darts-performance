@@ -3,9 +3,12 @@
 @Library("Infrastructure") _
 
 def product = "darts"
+def type = "java"
+def component = "performance"
 def branchesToSync = ['demo', 'perftest']
 
 
 withNightlyPipeline(type, product, component) {
   enablePerformancetest()
+  enableSlackNotifications('#darts-builds')
 }
