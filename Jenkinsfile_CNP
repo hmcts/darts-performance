@@ -7,8 +7,5 @@ def branchesToSync = ['demo', 'perftest']
 
 
 withNightlyPipeline(type, product, component) {
-
-  // add this!
-  enableCrossBrowserTest()
-  enableFortifyScan()
+  enablePerformancetest()
 }
