@@ -3,17 +3,28 @@ package Utilities;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
 
 import io.gatling.javaapi.core.CoreDsl;
 import io.gatling.javaapi.core.FeederBuilder;
+import io.gatling.javaapi.jdbc.JdbcDsl;
 import io.gatling.javaapi.core.CheckBuilder;
 
 public class Feeders {
 
     public static final FeederBuilder<String> AudioRequestCSV;
+    private static final AtomicInteger COUNTER;
+    private static final Logger log = Logger.getLogger(Feeders.class.getName());
+    public static final FeederBuilder<Object> RANDOM_USER_FEEDER;
+
 
     static {
         AudioRequestCSV = CoreDsl.csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
+        COUNTER = new AtomicInteger(0);
+        RANDOM_USER_FEEDER = jdbcFeeder("SELECT * FROM darts.user_account "
+        + "order by RANDOM()").random();
+
     }    
 
     public static String getRandomEventCode() {
@@ -47,5 +58,16 @@ public class Feeders {
         return CoreDsl.listFeeder(items.stream()
             .map(item -> Map.of(key, item)).toList()
         );
+    }
+
+    public static FeederBuilder<Object> jdbcFeeder(String sql) {
+            
+            log.info("Creating jdbcFeeder: " + AppConfig.DB_URL + ", " + AppConfig.DB_USERNAME + ", " + AppConfig.DB_PASSWORD + ", " + sql);
+    
+            return JdbcDsl.jdbcFeeder(AppConfig.DB_URL, AppConfig.DB_USERNAME, AppConfig.DB_PASSWORD, sql);       
+    }    
+
+    public static void resetCounter() {
+        COUNTER.set(0);
     }
 }

@@ -1,0 +1,7 @@
+RUN	DartsApi.AudioGETPreviewSimulation	audiogetpreviewsimulation	1709826688885	0	3.9.5
+USER	Audio Requests:GET Preview	START	1709826689788
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1709826689786	1709826691696	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1709826689766	1709826691733	1910	OK
+REQUEST	Audio Get Preview	DARTS - Api - Audio:GET Preview	1709826691737	1709826751750	KO	Request timeout to 127.0.0.1/127.0.0.1:8888 after 60000 ms
+GROUP	Audio Get Preview	1709826691735	1709826751752	60013	KO
+USER	Audio Requests:GET Preview	END	1709826751755

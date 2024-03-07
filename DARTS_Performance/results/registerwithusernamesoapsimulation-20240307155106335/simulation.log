@@ -1,0 +1,7 @@
+RUN	DartsSoap.RegisterWithUsernameSOAPSimulation	registerwithusernamesoapsimulation	1709826666335	1	3.9.5
+USER	DARTS - GateWay - Soap - RegisterWithUsername	START	1709826667441
+REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1709826667457	1709826668190	OK	 
+GROUP	Register With Username SOAP Request Group	1709826667444	1709826668203	733	OK
+REQUEST	Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1709826668206	1709826668621	OK	 
+GROUP	Register With Token SOAP Request Group	1709826668203	1709826668622	415	OK
+USER	DARTS - GateWay - Soap - RegisterWithUsername	END	1709826668624

@@ -31,6 +31,13 @@ public class Headers {
         AuthorizationHeaders.put("x-dtpc", "3$353367900_249h39vFJVCICPLERLNMNMRQIEOQRIAHARLRUKW-0e0");
     }
 
+    public static final Map<String, String> CourthouseHeaders = new HashMap<>();
+
+    static {
+        CourthouseHeaders.put("Content-Type", "application/json");
+        CourthouseHeaders.put("authorization", "Bearer #{bearerToken}");
+    }
+
     // Method to add an additional header conditionally
     public static Map<String, String> addAdditionalHeader(Map<String, String> headers, boolean userId, boolean eventStream) {
         Map<String, String> updatedHeaders = new HashMap<>(headers);
@@ -51,7 +58,6 @@ public class Headers {
         Map.entry("accept-encoding", "gzip, deflate, br"),
         Map.entry("user-agent", "application/x-www-form-urlencoded"),
         Map.entry("Content-Type", "application/x-www-form-urlencoded")
-
       );
 
 

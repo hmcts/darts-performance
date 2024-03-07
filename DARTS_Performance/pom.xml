@@ -41,7 +41,7 @@
       <groupId>io.gatling</groupId>
       <artifactId>gatling-http</artifactId>
       <version>${gatling.version}</version>
-    </dependency>
+    </dependency>   
   </dependencies>
   <build>
     <testSourceDirectory>user-files/simulations/Scripts</testSourceDirectory>

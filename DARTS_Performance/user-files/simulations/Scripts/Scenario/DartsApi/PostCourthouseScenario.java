@@ -28,7 +28,7 @@ public final class PostCourthouseScenario {
                 })
                 .exec(http("DARTS - Api - CourtHouse:Post")
                         .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/courthouses")
-                        .headers(Headers.ApiHeaders)
+                        .headers(Headers.CourthouseHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
                         .check(status().is(200))
             ));
