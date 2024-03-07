@@ -1,0 +1,7 @@
+RUN	DartsApi.CourthousePostSimulation	courthousepostsimulation	1709569666718	8	3.9.5
+ERROR	DARTS - Api - Token:GET: Failed to build request: No attribute named 'bearerToken' is defined 	1709569667637
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1709569667627	1709569667643	0	KO
+USER	Courthouse:POST	START	1709569667647
+ERROR	DARTS - Api - CourtHouse:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1709569667650
+GROUP	Courthouse Api Request Group	1709569667646	1709569667650	0	KO
+USER	Courthouse:POST	END	1709569667652

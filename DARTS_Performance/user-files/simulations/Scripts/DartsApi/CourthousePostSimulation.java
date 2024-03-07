@@ -1,6 +1,7 @@
 package DartsApi;
 
 import Scenario.DartsApi.PostCourthouseScenario;
+import Scenario.DartsApi.GetApiTokenScenario;
 import Utilities.AppConfig;
 import Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
@@ -19,10 +20,10 @@ public class CourthousePostSimulation extends Simulation {
         .inferHtmlResources();
 
     final ScenarioBuilder scn1 = scenario("Courthouse:POST")
-        //.exec(GetApiTokenScenario.getApiToken())
-        .repeat(1)    
+        .exec(GetApiTokenScenario.getApiToken()
+        .repeat(2)    
         .on(exec(PostCourthouseScenario.CourthousePost().feed(feeder))    
-        );
+        ));
 
     setUp(
         scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));

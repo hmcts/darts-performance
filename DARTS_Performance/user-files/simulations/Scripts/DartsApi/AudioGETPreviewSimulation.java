@@ -27,6 +27,6 @@ public class AudioGETPreviewSimulation extends Simulation {
         );
 
     setUp(        
-        scn1.injectOpen(constantUsersPerSec(10).during(1)).protocols(httpProtocol));
+        scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
     }    
 }

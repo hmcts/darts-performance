@@ -13,7 +13,7 @@ public class RequestBodyBuilder {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
     private static final String[] REQUEST_TYPES = {"DOWNLOAD", "PLAYBACK"};
-    public static final NumberGenerator generatorCourtHouseCode = new NumberGenerator(1);
+    public static final NumberGenerator generatorCourtHouseCode = new NumberGenerator(15);
 
     // Define the percentages for each request type (must sum up to 100)
     private static final int DOWNLOAD_PERCENTAGE = 70; //% chance
@@ -55,6 +55,38 @@ public class RequestBodyBuilder {
                 "\"comment\": \"%s\"}",
                 hearingId, caseId, transcriptionUrgencyId, transcriptionTypeId, comment);
     }
+
+    public static String buildSearchCaseRequestBody(Session session) {
+        String caseNumber = session.get("caseNumber").toString(); 
+
+        return String.format("{\"case_number\": \"%s\", " +
+        "\"courthouse\": null, " +
+        "\"courtroom\": null, " +
+        "\"judge_name\": null, " +
+        "\"defendant_name\": null, " +
+        "\"event_text_contains\": null, " +
+        "\"date_from\": null, " +
+        "\"date_to\": null}",
+        caseNumber);
+    }
+
+    public static String buildAudioRequestBody(Session session) {
+
+        LocalDateTime startTime = LocalDateTime.now();
+        LocalDateTime endTime = startTime.plusHours(3);
+        String startTimeFormatted = formatTime(startTime);
+        String endTimeFormatted = formatTime(endTime);
+        String requestType = getRandomRequestType();
+        String getHearingId = session.get("getHearingId").toString(); 
+
+        return String.format("{\"hearing_id\": %d, " +
+        "\"requestor\": %d, " +
+        "\"start_time\": \"%s\", " +
+        "\"end_time\": \"%s\", " +
+        "\"request_type\": \"%s\"}",
+        getHearingId,  startTimeFormatted, endTimeFormatted, requestType);
+    }
+
     public static String buildPostAudioApiRequest(Session session) {
         // Retrieve values from session or define defaults if needed
         String courtHouseName = session.get("CourtHouseName").toString();    
@@ -63,7 +95,7 @@ public class RequestBodyBuilder {
         String caseName = randomStringGenerator.generateRandomString(10);
 
         return String.format(
-        "{\"started_at\": \"1972-11-25T17:28:59.936Z\", \"ended_at\": \"1972-11-25T18:28:59.936Z\", \"channel\": 1, \"total_channels\": 4, \"format\": \"mp2\", \"filename\": \"sample.mp2\", \"courthouse\": \"%s\", \"courtroom\": \"%s\", \"file_size\": 937.96, \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\", \"cases\": [\"PerfCase_%s\"] }",
+        "{\"started_at\": \"1972-11-25T17:28:59.936Z\", \"ended_at\": \"1972-11-25T18:28:59.936Z\", \"channel\": 1, \"total_channels\": 4, \"format\": \"mp2\", \"filename\": \"sample.mp2\", \"courthouse\": \"%s\", \"courtroom\": \"%s\", \"file_size\": 937.96, \"checksum\": \"2IWB54XjyM+8uiY4INhtcQ==\", \"cases\": [\"PerfCase_%s\"] }",
         courtHouseName, courtRoom, caseName);
     }
 

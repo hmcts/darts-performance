@@ -1,0 +1,5 @@
+RUN	DartsApi.CourthousePostSimulation	courthousepostsimulation	1709570091216	8	3.9.5
+USER	Courthouse:POST	START	1709570092313
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1709570092312	1709570093111	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1709570092297	1709570093159	799	OK
+USER	Courthouse:POST	END	1709570093162
