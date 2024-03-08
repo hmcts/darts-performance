@@ -13,6 +13,5 @@ def branchesToSync = ['demo', 'perftest']
 
 
 withNightlyPipeline(type, product, component) {
-  enablePerformancetest()
   enableSlackNotifications('#darts-builds')
 }
