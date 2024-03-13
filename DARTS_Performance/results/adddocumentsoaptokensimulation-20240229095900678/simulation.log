@@ -1,7 +1,0 @@
-RUN	DartsSoap.AddDocumentSOAPTokenSimulation	adddocumentsoaptokensimulation	1709200740678	14	3.9.5
-USER	DARTS - GateWay - Soap - AddDocument:POST	START	1709200741670
-REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1709200741688	1709200742788	OK	 
-GROUP	Register With Username SOAP Request Group	1709200741671	1709200742817	1100	OK
-REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - User	1709200742827	1709200743545	KO	xpath((//return/code,Map())).find.exists, found nothing
-GROUP	AddDocument SOAP Request Group	1709200742820	1709200743813	718	KO
-USER	DARTS - GateWay - Soap - AddDocument:POST	END	1709200743815

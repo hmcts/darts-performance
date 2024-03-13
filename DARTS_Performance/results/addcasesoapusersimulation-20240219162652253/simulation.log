@@ -1,5 +1,0 @@
-RUN	DartsSoap.AddCaseSOAPUserSimulation	addcasesoapusersimulation	1708360012253	9	3.9.5
-USER	DARTS - GateWay - Soap - AddCase :POST	START	1708360012829
-REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708360012858	1708360013862	KO	status.find.is(200), but actually found 400
-GROUP	AddCase SOAP Request Group	1708360012832	1708360014004	1004	KO
-USER	DARTS - GateWay - Soap - AddCase :POST	END	1708360014008
