@@ -1,7 +1,0 @@
-RUN	DartsSoap.AddDocumentSOAPTokenSimulation	adddocumentsoaptokensimulation	1709201001857	14	3.9.5
-USER	DARTS - GateWay - Soap - AddDocument:POST	START	1709201002618
-REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1709201002634	1709201003378	OK	 
-GROUP	Register With Username SOAP Request Group	1709201002618	1709201003394	744	OK
-REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - User	1709201003397	1709201003564	OK	 
-GROUP	AddDocument SOAP Request Group	1709201003395	1709201003808	167	OK
-USER	DARTS - GateWay - Soap - AddDocument:POST	END	1709201003810

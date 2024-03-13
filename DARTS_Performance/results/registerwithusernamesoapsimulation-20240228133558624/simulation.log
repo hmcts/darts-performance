@@ -1,5 +1,0 @@
-RUN	DartsSoap.RegisterWithUsernameSOAPSimulation	registerwithusernamesoapsimulation	1709127358624	TEST	3.9.5
-USER	DARTS - GateWay - Soap - RegisterWithUsername	START	1709127359297
-REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1709127359319	1709127359501	KO	j.l.NullPointerException: Cannot invoke "java.lang.CharSequence.length()" because "seq" is null
-GROUP	Register With Username SOAP Request Group	1709127359300	1709127359504	182	KO
-USER	DARTS - GateWay - Soap - RegisterWithUsername	END	1709127359509

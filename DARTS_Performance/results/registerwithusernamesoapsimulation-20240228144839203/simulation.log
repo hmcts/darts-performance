@@ -1,7 +1,0 @@
-RUN	DartsSoap.RegisterWithUsernameSOAPSimulation	registerwithusernamesoapsimulation	1709131719203	1	3.9.5
-USER	DARTS - GateWay - Soap - RegisterWithUsername	START	1709131721006
-REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1709131721045	1709131723592	OK	 
-GROUP	Register With Username SOAP Request Group	1709131721011	1709131723610	2547	OK
-REQUEST	Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1709131723614	1709131723786	KO	status.find.is(200), but actually found 500
-GROUP	Register With Token SOAP Request Group	1709131723611	1709131723788	172	KO
-USER	DARTS - GateWay - Soap - RegisterWithUsername	END	1709131723789
