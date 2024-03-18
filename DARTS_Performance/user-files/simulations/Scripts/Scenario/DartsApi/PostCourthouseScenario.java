@@ -19,11 +19,8 @@ public final class PostCourthouseScenario {
             .on(exec(feed(feeder))
                 .exec(session -> {
                     String xmlPayload = RequestBodyBuilder.buildCourtHousePostBody(session);
-
                     System.out.println("Code xmlPayload: " + xmlPayload);
                     System.out.println("Code session: " + session);
-
-
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - Api - CourtHouse:Post")

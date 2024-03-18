@@ -2,8 +2,6 @@ package DartsSoap;
 
 import Utilities.AppConfig;
 import Utilities.AppConfig.EnvironmentURL;
-import Scenario.DartsApi.GetApiTokenScenario;
-import Scenario.DartsApi.GetAudioRequestScenario;
 import Scenario.DartsSoap.AddDocumentSoapTokenScenario;
 import Scenario.DartsSoap.RegisterWithUsernameSoapScenario;
 import io.gatling.javaapi.core.*;
@@ -28,8 +26,7 @@ public class AddDocumentSOAPTokenSimulation extends Simulation {
         .feed(feeder)  
         .exec(RegisterWithUsernameSoapScenario.RegisterWithUsernameSoap())
         .repeat(1)    
-        .on(exec(AddDocumentSoapTokenScenario.addDocumentSOAPToken().feed(feeder))    
-        );
+        .on(exec(AddDocumentSoapTokenScenario.addDocumentSOAPToken().feed(feeder)));
     setUp(
         scn.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
     }  
