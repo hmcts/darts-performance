@@ -18,12 +18,12 @@ public final class DartsPortalLogoutScenario {
               exec(
                 http("Darts-Portal - Auth - Logout")
                 .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout")
-                .headers(Headers.DartsPortalHeaders0)
+                .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
                 )  
               .exec(
                     http("Darts-Portal - Auth - Logout-callback")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout-callback")
-                    .headers(Headers.DartsPortalHeaders0)                    
+                    .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))                   
                   )
               .exec(session -> {
                   Object stateProperties = session.get("stateProperties");
@@ -33,7 +33,7 @@ public final class DartsPortalLogoutScenario {
               .exec(
                 http("Darts-Portal - App - Config")
                   .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
-                  .headers(Headers.DartsPortalHeaders1)
+                  .headers(Headers.PerftraceHeaders(Headers.PortalCommonHeaders))
               )
             );
       }  

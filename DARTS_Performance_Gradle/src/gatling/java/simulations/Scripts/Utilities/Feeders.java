@@ -1,5 +1,7 @@
 package simulations.Scripts.Utilities;
 
+import static io.gatling.javaapi.core.CoreDsl.jsonPath;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -40,6 +42,9 @@ public class Feeders {
     }
     public static CheckBuilder.Final saveCsrf() {
         return CoreDsl.regex("csrf\":\"(.*?)\"").find().saveAs("csrf");
+    }
+    public static CheckBuilder.Final saveCaseId() {
+        return CoreDsl.jsonPath("$.[*]").ofMap().findRandom().saveAs("getCaseId");
     }
 
     public static CheckBuilder.Final saveTokenCode() {

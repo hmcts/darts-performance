@@ -3,7 +3,7 @@ package DartsPortal;
 import Utilities.AppConfig;
 import Scenario.DartsPortal.DartsPortalLoginScenario;
 import Scenario.DartsPortal.DartsPortalLogoutScenario;
-
+import Scenario.DartsPortal.DartsPortalRequestAudio;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -30,6 +30,7 @@ public class DartsPortalLoginSimulation extends Simulation {
 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
+        .exec(DartsPortalRequestAudio.DartsPortalRequestAudioDownload())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
     setUp(
