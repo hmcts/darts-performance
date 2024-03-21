@@ -3,8 +3,8 @@ package simulations.Scripts.DartsSoap;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsSoap.GetCasesUserScenario;
-import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenSoapScenario;
-import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameSoapScenario;
+import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
+import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -29,8 +29,8 @@ public class GetCasesTokenSimulation extends Simulation {
 
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - GetCases:GET")
         .feed(feeder)   
-        .exec(RegisterWithUsernameSoapScenario.RegisterWithUsernameSoap().feed(feeder))
-        .exec(RegisterWithTokenSoapScenario.RegisterWithTokenSoap())
+        .exec(RegisterWithUsernameScenario.RegisterWithUsername().feed(feeder))
+        .exec(RegisterWithTokenScenario.RegisterWithToken())
         .repeat(1)    
         .on(exec(GetCasesUserScenario.GetCaseSOAPUser().feed(feeder))    
         );    

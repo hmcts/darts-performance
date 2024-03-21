@@ -3,7 +3,8 @@ package simulations.Scripts.DartsSoap;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsSoap.AddDcoumentDailyListTokenScenario;
-import simulations.Scripts.Scenario.DartsSoap.AddDocumentUserScenario;
+import simulations.Scripts.Scenario.DartsSoap.AddDocumentDailyListUserScenario;
+import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventUserScenario;
 import simulations.Scripts.Scenario.DartsSoap.GetCasesUserScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
@@ -29,8 +30,8 @@ public class AddDocumentUserSimulation extends Simulation {
                 .feed(feeder)
                 //on.group("DARTS - GateWay",
                 .randomSwitchOrElse().on(
-                  percent(60.0).then(AddDocumentUserScenario.addDocumentUser()),
-                  percent(20.0).then(AddDocumentUserScenario.addDocumentUser())
+                  percent(60.0).then(AddDocumentEventUserScenario.addDocumentEventUser()),
+                  percent(20.0).then(AddDocumentDailyListUserScenario.addDocumentTokenUser())
                 ).orElse(exitHere()
               );
     }

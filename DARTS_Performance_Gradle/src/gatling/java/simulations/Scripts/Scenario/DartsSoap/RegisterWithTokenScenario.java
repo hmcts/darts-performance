@@ -9,15 +9,15 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 
-public final class RegisterWithTokenSoapScenario {
+public final class RegisterWithTokenScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
-    private RegisterWithTokenSoapScenario() {}
-    public static ChainBuilder RegisterWithTokenSoap() {
+    private RegisterWithTokenScenario() {}
+    public static ChainBuilder RegisterWithToken() {
         return group("Register With Token SOAP Request Group")
             .on(exec(feed(feeder))
                 .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.RegisterWithTokenSOAPRequest(session);
+                    String xmlPayload = SOAPRequestBuilder.RegisterWithTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - RegisterWithToken")

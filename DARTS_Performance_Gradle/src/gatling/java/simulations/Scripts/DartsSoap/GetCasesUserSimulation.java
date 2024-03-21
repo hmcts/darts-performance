@@ -2,7 +2,7 @@ package simulations.Scripts.DartsSoap;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import simulations.Scripts.Scenario.DartsSoap.GetCasesSoapUserScenario;
+import simulations.Scripts.Scenario.DartsSoap.GetCasesUserScenario;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
@@ -12,7 +12,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 import java.util.UUID;
 
-public class GetCasesSOAPUserSimulation extends Simulation {
+public class GetCasesUserSimulation extends Simulation {
 
   FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
   String boundary = UUID.randomUUID().toString();
@@ -29,7 +29,7 @@ public class GetCasesSOAPUserSimulation extends Simulation {
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - GetCases:GET")
         .feed(feeder)    
         .repeat(1)    
-        .on(exec(GetCasesSoapUserScenario.GetCaseSOAPUser().feed(feeder))    
+        .on(exec(GetCasesUserScenario.GetCaseSOAPUser().feed(feeder))    
         );    
   
     setUp(
