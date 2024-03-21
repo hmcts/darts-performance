@@ -8,18 +8,18 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 
-public final class AddDocumentSoapUserScenario {
+public final class AddDcoumentDailyListTokenScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
-    private AddDocumentSoapUserScenario() {}
-    public static ChainBuilder addDocumentSOAPUser() {
+    private AddDcoumentDailyListTokenScenario() {}
+    public static ChainBuilder AddDcoumentDailyListToken() {
         return group("AddDocument SOAP Request Group")
             .on(exec(feed(feeder))
                 .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddDcoumentSOAPRequest(session);
+                    String xmlPayload = SOAPRequestBuilder.AddDcoumentDailyListTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
-                .exec(http("DARTS - GateWay - Soap - AddDocument - User")
+                .exec(http("DARTS - GateWay - Soap - AddDocument - DailyList - User")
                         .post(SoapServiceEndpoint.ContextRegistryService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))

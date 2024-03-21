@@ -2,9 +2,8 @@ package simulations.Scripts.DartsSoap;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
-import simulations.Scripts.Scenario.DartsApi.GetAudioRequestScenario;
-import simulations.Scripts.Scenario.DartsSoap.AddDocumentSoapTokenScenario;
+import simulations.Scripts.Scenario.DartsSoap.GetCasesUserScenario;
+import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenSoapScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameSoapScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
@@ -12,9 +11,13 @@ import io.gatling.javaapi.http.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public class AddDocumentSOAPTokenSimulation extends Simulation {
+import java.util.UUID;
+
+public class GetCasesTokenSimulation extends Simulation {
 
   FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
+  String boundary = UUID.randomUUID().toString();
+
   {
     HttpProtocolBuilder httpProtocol = http
       .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT).httpsPort(AppConfig.PROXY_PORT))
@@ -24,12 +27,14 @@ public class AddDocumentSOAPTokenSimulation extends Simulation {
       .contentTypeHeader("text/xml;charset=UTF-8")
       .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
 
-    final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddDocument:POST")
-        .feed(feeder)  
-        .exec(RegisterWithUsernameSoapScenario.RegisterWithUsernameSoap())
+    final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - GetCases:GET")
+        .feed(feeder)   
+        .exec(RegisterWithUsernameSoapScenario.RegisterWithUsernameSoap().feed(feeder))
+        .exec(RegisterWithTokenSoapScenario.RegisterWithTokenSoap())
         .repeat(1)    
-        .on(exec(AddDocumentSoapTokenScenario.addDocumentSOAPToken().feed(feeder))    
-        );
+        .on(exec(GetCasesUserScenario.GetCaseSOAPUser().feed(feeder))    
+        );    
+  
     setUp(
         scn.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
     }  

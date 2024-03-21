@@ -99,7 +99,9 @@ public final class DartsPortalLoginScenario {
                 .exec(    
                   http("Darts-Portal - User - Profile")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/profile")
-                        .headers(Headers.DartsPortalHeaders4))
+                        .headers(Headers.DartsPortalHeaders4)
+                        .check(Feeders.saveUserId()))         
+
                 .exec(     
                   
                   http("Darts-Portal - Api - Audio-requests - Not-accessed-count")

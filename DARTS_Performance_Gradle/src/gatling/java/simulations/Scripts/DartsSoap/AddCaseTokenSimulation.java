@@ -2,8 +2,9 @@ package simulations.Scripts.DartsSoap;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import simulations.Scripts.Scenario.DartsSoap.AddCaseSoapUserScenario;
-
+import simulations.Scripts.Scenario.DartsSoap.AddCaseTokenScenario;
+import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenSoapScenario;
+import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameSoapScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -11,7 +12,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 import java.util.UUID;
-public class AddCaseSOAPUserSimulation extends Simulation {
+public class AddCaseTokenSimulation extends Simulation {
 
   FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
   String boundary = UUID.randomUUID().toString();
@@ -28,9 +29,11 @@ public class AddCaseSOAPUserSimulation extends Simulation {
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddCase:POST")
         .feed(feeder)    
         .repeat(1)    
-        .on(exec(AddCaseSoapUserScenario.addCaseSOAPUser().feed(feeder))    
-        );    
-  
+        .on(exec(RegisterWithUsernameSoapScenario.RegisterWithUsernameSoap().feed(feeder))  
+        .exec(RegisterWithTokenSoapScenario.RegisterWithTokenSoap()  
+        .exec(AddCaseTokenScenario.addCaseToken().feed(feeder))    
+        ));    
+     
     setUp(
         scn.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
     }  

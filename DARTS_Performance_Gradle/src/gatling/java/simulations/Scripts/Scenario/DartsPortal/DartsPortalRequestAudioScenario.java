@@ -3,6 +3,7 @@ package simulations.Scripts.Scenario.DartsPortal;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Utilities.RandomStringGenerator;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
@@ -74,7 +75,6 @@ public final class DartsPortalRequestAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId.case_id}/hearings")
               .headers(Headers.caseReferer(Headers.CommonHeaders))
               .check(status().saveAs("statusCode"))
-              //.check(jsonPath("$.[*].id").saveAs("getHearingId"))
               .check(jsonPath("$[*]").ofMap().findRandom().saveAs("getHearings")) 
               ).exec(session -> {
                 Object getHearings = session.get("getHearings");
@@ -129,15 +129,24 @@ public final class DartsPortalRequestAudioScenario {
           )
           .pause(2)
           .exec(session -> {
-            String audioxmlPayload = RequestBodyBuilder.buildAudioRequestBody(session);
-            session.get("getEvent");
-            return session.set("audioxmlPayload", audioxmlPayload);
+            System.out.println("getHearings.id: " + session.get("getHearings.id"));
+            System.out.println("getUserId: " + session.get("getUserId"));
+            System.out.println("startTime: " + session.get("startTime"));
+            System.out.println("endTime: " + session.get("endTime"));
+            return session;
           })
           .exec(
             http("Darts-Portal - Api - Audio-requests")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests")
-              .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
-              .body(StringBody(session -> session.get("audioxmlPayload"))).asJson()
+              .headers(Headers.StandardHeaders2)
+              .body(StringBody(session ->
+                  RequestBodyBuilder.buildAudioRequestBody(
+                      session.get("getHearings.id").toString(),
+                      session.get("getUserId").toString(),
+                      session.get("startTime"),
+                      session.get("endTime")
+                  )
+              )).asJson()
           )          
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
