@@ -7,14 +7,14 @@ import simulations.Scripts.Scenario.DartsApi.GetAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDcoumentDailyListTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDcoumentEventTokenScenario;
 
-import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameSoapScenario;
+import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public class AddDocumentSOAPTokenSimulation extends Simulation {
+public class AddDocumentTokenSimulation extends Simulation {
 
   FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
   
@@ -29,7 +29,7 @@ public class AddDocumentSOAPTokenSimulation extends Simulation {
       protected ScenarioBuilder getScenario() {      
         return scenario("DARTS - GateWay - Soap - AddDocument:POST")
                 .feed(feeder)
-                .exec(RegisterWithUsernameSoapScenario.RegisterWithUsernameSoap())
+                .exec(RegisterWithUsernameScenario.RegisterWithUsername())
                 .randomSwitchOrElse().on(
                   percent(60.0).then(AddDcoumentDailyListTokenScenario.AddDcoumentDailyListToken()),
                   percent(20.0).then(AddDcoumentEventTokenScenario.AddDcoumentEventToken())

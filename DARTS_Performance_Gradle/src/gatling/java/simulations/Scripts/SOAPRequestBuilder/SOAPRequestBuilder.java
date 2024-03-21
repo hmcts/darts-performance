@@ -283,7 +283,7 @@ public class SOAPRequestBuilder {
         USERNAME, PASSWORD, courtHouseName, courtRoom, caseName);
     }    
 
-    public static String AddCourtLogSOAPRequest(Session session) {
+    public static String AddCourtLogUserRequest(Session session) {
         // Retrieve values from session or define defaults if needed
         String courtHouseName = session.get("CourtHouseName").toString();    
         String courtRoom = session.get("CourtRoom").toString(); 
@@ -309,6 +309,31 @@ public class SOAPRequestBuilder {
         USERNAME, PASSWORD, courtHouseName, courtRoom, caseName);
     } 
 
+    public static String AddCourtLogTokenRequest(Session session) {
+        // Retrieve values from session or define defaults if needed
+        String registrationToken = session.get("registrationToken");
+        String courtHouseName = session.get("CourtHouseName").toString();    
+        String courtRoom = session.get("CourtRoom").toString(); 
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String caseName = randomStringGenerator.generateRandomString(10);
+
+    // Construct SOAP request
+    return String.format(
+        "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:com=\"http://com.synapps.mojdarts.service.com\">\n" +
+        "    <S:Header>\n" +
+        "        <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n" +
+        "            <wsse:BinarySecurityToken QualificationValueType=\"http://schemas.emc.com/documentum#ResourceAccessToken\" xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"RAD\">%s</wsse:BinarySecurityToken>\n" +
+        "        </wsse:Security>\n" +
+        "    </S:Header>\n" +
+        "   <soapenv:Body>\n" +
+        "      <addLogEntry xmlns=\"http://com.synapps.mojdarts.service.com\">\n" +
+        "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;PerfCase_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;THISISEVENTTEXT&lt;/text&gt;&lt;/log_entry&gt;\n" +
+        "         </document>\n" +
+        "      </addLogEntry>\n" +
+        "   </soapenv:Body>\n" +
+        "</soapenv:Envelope>",
+        registrationToken, courtHouseName, courtRoom, caseName);
+    } 
 
     public static String RegisterWithUsernameSOAPRequest(Session session) {
     // Construct SOAP request

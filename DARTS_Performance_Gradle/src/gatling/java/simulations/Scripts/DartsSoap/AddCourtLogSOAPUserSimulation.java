@@ -2,7 +2,7 @@ package simulations.Scripts.DartsSoap;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import simulations.Scripts.Scenario.DartsSoap.AddCourtlogSoapUserScenario;
+import simulations.Scripts.Scenario.DartsSoap.AddCourtlogUserScenario;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
@@ -26,7 +26,7 @@ public class AddCourtLogSOAPUserSimulation extends Simulation {
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - CourtLog:POST")
         .feed(feeder)    
         .repeat(10)    
-        .on(exec(AddCourtlogSoapUserScenario.addCourtLogSOAPUser().feed(feeder))    
+        .on(exec(AddCourtlogUserScenario.addCourtLogUser().feed(feeder))    
         );    
   
     setUp(

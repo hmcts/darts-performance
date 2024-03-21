@@ -3,8 +3,8 @@ package simulations.Scripts.DartsSoap;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsSoap.AddCaseTokenScenario;
-import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenSoapScenario;
-import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameSoapScenario;
+import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
+import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -27,11 +27,11 @@ public class AddCaseTokenSimulation extends Simulation {
       .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
 
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddCase:POST")
-        .feed(feeder)    
-        .repeat(1)    
-        .on(exec(RegisterWithUsernameSoapScenario.RegisterWithUsernameSoap().feed(feeder))  
-        .exec(RegisterWithTokenSoapScenario.RegisterWithTokenSoap()  
-        .exec(AddCaseTokenScenario.addCaseToken().feed(feeder))    
+        .feed(feeder) 
+        .exec(RegisterWithUsernameScenario.RegisterWithUsername().feed(feeder))
+        .exec(RegisterWithTokenScenario.RegisterWithToken() 
+        .repeat(1) 
+        .on(exec(AddCaseTokenScenario.addCaseToken().feed(feeder))    
         ));    
      
     setUp(
