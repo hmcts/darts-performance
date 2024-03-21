@@ -8,19 +8,19 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 
-public final class GetCasesSoapUserScenario {
+public final class AddDcoumentEventTokenScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
-    private GetCasesSoapUserScenario() {}
-    public static ChainBuilder GetCaseSOAPUser() {
+    private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
+    private AddDcoumentEventTokenScenario() {}
+    public static ChainBuilder AddDcoumentDailyListToken() {
         return group("AddDocument SOAP Request Group")
             .on(exec(feed(feeder))
                 .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.GetCasesSOAPRequest(session);
+                    String xmlPayload = SOAPRequestBuilder.AddDcoumentEventTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
-                .exec(http("DARTS - GateWay - Soap - GetCase - User")
-                        .post(SoapServiceEndpoint.StandardService.getEndpoint())
+                .exec(http("DARTS - GateWay - Soap - AddDocument - Event - User")
+                        .post(SoapServiceEndpoint.ContextRegistryService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
                         .check(status().is(200))

@@ -46,6 +46,9 @@ public class Feeders {
     public static CheckBuilder.Final saveCaseId() {
         return CoreDsl.jsonPath("$.[*]").ofMap().findRandom().saveAs("getCaseId");
     }
+    public static CheckBuilder.Final saveUserId() {
+        return CoreDsl.jsonPath("$.userId").ofMap().findRandom().saveAs("getUserId");
+    }
 
     public static CheckBuilder.Final saveTokenCode() {
         return CoreDsl.css("input[name='code']", "value").saveAs("TokenCode");

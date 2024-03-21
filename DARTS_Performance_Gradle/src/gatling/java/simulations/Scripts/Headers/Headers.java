@@ -17,6 +17,20 @@ public class Headers {
         Map.entry("x-dtpc", "3$353367900_249h39vFJVCICPLERLNMNMRQIEOQRIAHARLRUKW-0e0")
     );
 
+    public static final Map<CharSequence, String> StandardHeaders2 = Map.ofEntries(
+        Map.entry("Sec-Fetch-Dest", "empty"),
+        Map.entry("Sec-Fetch-Mode", "cors"),
+        Map.entry("Sec-Fetch-Site", "same-origin"),
+        Map.entry("sec-ch-ua", "Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24"),
+        Map.entry("sec-ch-ua-mobile", "?0"),
+        Map.entry("sec-ch-ua-platform", "Windows"),
+        Map.entry("Accept", "application/json, text/plain, */*"),
+        Map.entry("Content-Type", "application/json"),
+        Map.entry("Origin", AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl()),
+        Map.entry("Referer", AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "/case/#{getCaseId.case_id}/hearing/#{getHearings.id}")
+               //Map.entry("Accept-Encoding", "gzip, deflate, br, zstd")
+    );
+
     public static final Map<String, String> AuthorizationHeaders = new HashMap<>();
 
     // Populate AuthorizationHeaders
