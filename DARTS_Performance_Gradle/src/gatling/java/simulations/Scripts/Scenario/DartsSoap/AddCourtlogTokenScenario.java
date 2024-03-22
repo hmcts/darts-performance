@@ -19,7 +19,7 @@ public final class AddCourtlogTokenScenario {
                     String xmlPayload = SOAPRequestBuilder.AddCourtLogTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
-                .exec(http("DARTS - GateWay - Soap - CourtLog - User")
+                .exec(http("DARTS - GateWay - Soap - CourtLog - Token")
                         .post(SoapServiceEndpoint.ContextRegistryService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))

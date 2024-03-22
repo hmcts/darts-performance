@@ -19,7 +19,7 @@ public final class AddDcoumentDailyListTokenScenario {
                     String xmlPayload = SOAPRequestBuilder.AddDcoumentDailyListTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
-                .exec(http("DARTS - GateWay - Soap - AddDocument - DailyList - User")
+                .exec(http("DARTS - GateWay - Soap - AddDocument - DailyList - Token")
                         .post(SoapServiceEndpoint.ContextRegistryService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))

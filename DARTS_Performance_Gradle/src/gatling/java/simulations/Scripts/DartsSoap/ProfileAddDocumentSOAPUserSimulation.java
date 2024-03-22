@@ -4,7 +4,7 @@ import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Utilities.AppConfig.TestType;
 import simulations.Scripts.Utilities.Feeders;
-import simulations.Scripts.Scenario.DartsSoap.AddDocumentSoapUserScenario;
+import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventUserScenario;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
@@ -18,7 +18,7 @@ import java.time.Duration;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public abstract class ProfileAddDocumentSOAPUserSimulation extends AddDocumentSOAPUserSimulation {
+public abstract class ProfileAddDocumentSOAPUserSimulation extends AddDocumentUserSimulation {
 
     FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
     private final HttpProtocolBuilder httpProtocol;

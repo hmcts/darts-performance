@@ -19,7 +19,7 @@ public final class GetCasesTokenScenario {
                     String xmlPayload = SOAPRequestBuilder.GetCasesTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
-                .exec(http("DARTS - GateWay - Soap - GetCase - User")
+                .exec(http("DARTS - GateWay - Soap - GetCase - Token")
                         .post(SoapServiceEndpoint.StandardService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))

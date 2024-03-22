@@ -12,14 +12,14 @@ public final class AddDcoumentEventTokenScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
     private AddDcoumentEventTokenScenario() {}
-    public static ChainBuilder AddDcoumentDailyListToken() {
+    public static ChainBuilder AddDcoumentEventToken() {
         return group("AddDocument SOAP Request Group")
             .on(exec(feed(feeder))
                 .exec(session -> {
                     String xmlPayload = SOAPRequestBuilder.AddDcoumentEventTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
-                .exec(http("DARTS - GateWay - Soap - AddDocument - Event - User")
+                .exec(http("DARTS - GateWay - Soap - AddDocument - Event - Token")
                         .post(SoapServiceEndpoint.ContextRegistryService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
