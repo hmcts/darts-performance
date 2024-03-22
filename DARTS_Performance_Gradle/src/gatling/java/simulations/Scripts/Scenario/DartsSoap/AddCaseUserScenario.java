@@ -8,17 +8,17 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 
-public final class AddCaseSoapUserScenario {
+public final class AddCaseUserScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
 
-    private AddCaseSoapUserScenario() {}
+    private AddCaseUserScenario() {}
 
-    public static ChainBuilder addCaseSOAPUser() {
+    public static ChainBuilder addCaseUser() {
         return group("AddCase SOAP Request Group")
             .on(exec(feed(feeder))
             .exec(session -> {
-                String xmlPayload = SOAPRequestBuilder.AddCaseSOAPRequest(session);
+                String xmlPayload = SOAPRequestBuilder.AddCaseUserRequest(session);
                 return session.set("xmlPayload", xmlPayload);
             })
             .exec(http("DARTS - GateWay - Soap - AddCase - User")

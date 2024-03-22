@@ -2,7 +2,7 @@ package simulations.Scripts.DartsSoap;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import simulations.Scripts.Scenario.DartsSoap.AddAudioSoapUserScenario;
+import simulations.Scripts.Scenario.DartsSoap.AddAudioUserScenario;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
@@ -13,7 +13,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 import java.util.UUID;
 
-public class AddAudioSOAPUserSimulation extends Simulation {
+public class AddAudioUserSimulation extends Simulation {
 
   FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
   String boundary = UUID.randomUUID().toString();
@@ -29,7 +29,7 @@ public class AddAudioSOAPUserSimulation extends Simulation {
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddAudio:POST")
         .feed(feeder)    
         .repeat(1)    
-        .on(exec(AddAudioSoapUserScenario.addAudioSOAPUser().feed(feeder))    
+        .on(exec(AddAudioUserScenario.addAudioUser().feed(feeder))    
         );    
   
     setUp(

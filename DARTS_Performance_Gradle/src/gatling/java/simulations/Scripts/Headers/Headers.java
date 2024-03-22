@@ -26,9 +26,8 @@ public class Headers {
         Map.entry("sec-ch-ua-platform", "Windows"),
         Map.entry("Accept", "application/json, text/plain, */*"),
         Map.entry("Content-Type", "application/json"),
-        Map.entry("Origin", AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl()),
-        Map.entry("Referer", AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "/case/#{getCaseId.case_id}/hearing/#{getHearings.id}")
-               //Map.entry("Accept-Encoding", "gzip, deflate, br, zstd")
+        Map.entry("Origin", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl()),
+        Map.entry("Referer", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/case/#{getCaseId.case_id}/hearing/#{getHearings.id}")
     );
 
     public static final Map<String, String> AuthorizationHeaders = new HashMap<>();

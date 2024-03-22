@@ -93,18 +93,23 @@ public class RequestBodyBuilder {
         caseNumber, courtHouseName, courtRoom, judgeName, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
     }
     
-    public static String buildAudioRequestBody(Session session) {
+    public static String buildAudioRequestBody(Session session, Object getHearingId) {
+
+        Object getHearingId2 = session.get("getHearingId");
+        System.out.println("getHearingId for Audio Request: " + getHearingId2.toString());
+    
 
         LocalDateTime startTime = LocalDateTime.now();
         LocalDateTime endTime = startTime.plusHours(3);
         String startTimeFormatted = formatTime(startTime);
         String endTimeFormatted = formatTime(endTime);
         String requestType = getRandomRequestType();
-        String getHearingId = session.get("#{getHearings.id}").toString(); 
+        // String getHearingId = getHearings.get("id").toString();
+        // String getHearingId = ((Session) getHearings).get("id").toString();
         String requestor = "-36";
 
-        return String.format("{\"hearing_id\": %d, " +
-        "\"requestor\": %d, " +
+        return String.format("{\"hearing_id\": %s, " +
+        "\"requestor\": %s, " +
         "\"start_time\": \"%s\", " +
         "\"end_time\": \"%s\", " +
         "\"request_type\": \"%s\"}",

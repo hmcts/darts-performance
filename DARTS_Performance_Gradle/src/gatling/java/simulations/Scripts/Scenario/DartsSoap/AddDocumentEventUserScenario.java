@@ -19,7 +19,7 @@ public final class AddDocumentEventUserScenario {
                     String xmlPayload = SOAPRequestBuilder.AddDocumentEventUserRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
-                .exec(http("DARTS - GateWay - Soap - AddDocument - User")
+                .exec(http("DARTS - GateWay - Soap - AddDocument - Event - User")
                         .post(SoapServiceEndpoint.ContextRegistryService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
