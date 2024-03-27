@@ -1,6 +1,7 @@
 package simulations.Scripts.DartsPortal;
 
 import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalApproveAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
@@ -13,9 +14,9 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 
 
-public class DartsPortalLoginSimulation extends Simulation {   
+public class CourtManagerApproverSimulation extends Simulation {   
   {
-    //final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
+    final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV).random();
 
 
       HttpProtocolBuilder httpProtocol = http
@@ -29,8 +30,9 @@ public class DartsPortalLoginSimulation extends Simulation {
       
 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
+        .exec(feed(feeder))
         .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
-        .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
+        .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
     setUp(

@@ -47,7 +47,7 @@ public class Feeders {
         return CoreDsl.jsonPath("$.[*]").ofMap().findRandom().saveAs("getCaseId");
     }
     public static CheckBuilder.Final saveUserId() {
-        return CoreDsl.jsonPath("$.userId").ofMap().findRandom().saveAs("getUserId");
+        return CoreDsl.jsonPath("$.userId").saveAs("getUserId");
     }
 
     public static CheckBuilder.Final saveTokenCode() {
