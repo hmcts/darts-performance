@@ -11,8 +11,6 @@ import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-import javax.jms.IllegalStateException;
-
 public final class DartsPortalRequestAudioScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();    
@@ -136,8 +134,10 @@ public final class DartsPortalRequestAudioScenario {
           .exec(session -> {
             Object getHearingId = session.get("getHearingId");
             System.out.println("getHearingId for Audio Request: " + getHearingId.toString());
-        
-            String AudioXmlPayload = RequestBodyBuilder.buildAudioRequestBody(session, getHearingId);
+            Object getUserId = session.get("getUserId");
+            System.out.println("getUserId for Audio Request: " + getUserId.toString());
+
+            String AudioXmlPayload = RequestBodyBuilder.buildAudioRequestBody(session, getHearingId, getUserId);
             return session.set("AudioXmlPayload", AudioXmlPayload);
         })
           .exec(

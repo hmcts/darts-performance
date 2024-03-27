@@ -192,7 +192,21 @@ public class Headers {
         Map.entry("sec-ch-ua-platform", "Windows"),
         Map.entry("traceparent", "00-43d8376d8efc4a2c96aafc203b3ee232-16ba10280ab1428c-01"),
         Map.entry("x-dtpc", "5$336731829_286h95vSEKMHRRHHHPUKSBIGWAIQRROWWRCFGGR-0e0")
-    );   
+    );  
+    
+    public static final Map<String, String> headers_6 = Map.ofEntries(
+    Map.entry("Content-Type", "application/json"),
+    Map.entry("Origin", "https://darts.test.apps.hmcts.net"),
+    Map.entry("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128"),
+    Map.entry("Request-Id", "|597bfa8201c241449ff1bff600c82581.c6401b1f193f49e5"),
+    Map.entry("Sec-Fetch-Dest", "empty"),
+    Map.entry("Sec-Fetch-Mode", "cors"),
+    Map.entry("Sec-Fetch-Site", "same-origin"),
+    Map.entry("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123"),
+    Map.entry("sec-ch-ua-mobile", "?0"),
+    Map.entry("sec-ch-ua-platform", "Windows"),
+    Map.entry("traceparent", "00-597bfa8201c241449ff1bff600c82581-c6401b1f193f49e5-01")
+    );
 
         // Define headers for each case
         // Method to add an additional header conditionally

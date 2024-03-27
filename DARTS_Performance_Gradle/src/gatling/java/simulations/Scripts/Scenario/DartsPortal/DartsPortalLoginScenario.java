@@ -12,36 +12,34 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class DartsPortalLoginScenario {
 
-   // private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();    
-    private static final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_USERS_FILE_PATH).random();
+    //private static final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_USERS_FILE_PATH).random();
+    //exec(feed(feeder))
     private static final Random randomNumber = new Random();
 
     private DartsPortalLoginScenario() {}
 
-    public static ChainBuilder DartsPortalLoginRequest() {
-
-      
+    public static ChainBuilder DartsPortalLoginRequest() {      
         return group("Darts Portal Login")
-            .on(exec(feed(feeder))
-            .exec(
+            .on(
+            exec(
                 http("Darts-Portal - Auth - Login")
                   .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/login")
                   .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
                 )              
               .exec(
-                    http("B2C_1_darts_externaluser_signin - Oauth2/v2.0 - Authorize")
-                      .get(AppConfig.EnvironmentURL.B2B_Login.getUrl() + AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + 
-                      "?client_id=" + AppConfig.EnvironmentURL.AZURE_AD_B2C_CLIENT_ID.getUrl() +
-                      "&redirect_uri=" + AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + 
-                      "/auth/callback&scope=openid&prompt=login&response_mode=form_post&response_type=code")
-                      .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
-                      .check(Feeders.saveStateProperties())
-                      .check(Feeders.saveCsrf())          
-                    )
-                .exec(session -> {
-                  Object stateProperties = session.get("stateProperties");
-                  System.out.println("Extracted StateProperties: " + stateProperties);
-                  return session;
+                http("B2C_1_darts_externaluser_signin - Oauth2/v2.0 - Authorize")
+                  .get(AppConfig.EnvironmentURL.B2B_Login.getUrl() + AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + 
+                  "?client_id=" + AppConfig.EnvironmentURL.AZURE_AD_B2C_CLIENT_ID.getUrl() +
+                  "&redirect_uri=" + AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + 
+                  "/auth/callback&scope=openid&prompt=login&response_mode=form_post&response_type=code")
+                  .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
+                  .check(Feeders.saveStateProperties())
+                  .check(Feeders.saveCsrf())          
+                )
+              .exec(session -> {
+                Object stateProperties = session.get("stateProperties");
+                System.out.println("Extracted StateProperties: " + stateProperties);
+                return session;
               })
               .exec(
                 http("Darts-Portal - Auth - Azuread-b2c-login")
@@ -67,11 +65,8 @@ public final class DartsPortalLoginScenario {
                     //.headers(Headers.DartsPortalHeaders21)
                     .headers(Headers.headers_0)
                     .formParam("request_type", "RESPONSE")
-                    .formParam("email", "darts.admin@hmcts.net")
-                    .formParam("password", "Password@1")
-                    // .formParam("request_type", "RESPONSE")
-                    // .formParam("email", AppConfig.EnvironmentURL.DARTS_API_USERNAME2.getUrl())
-                    // .formParam("password", AppConfig.EnvironmentURL.DARTS_API_PASSWORD2.getUrl())
+                    .formParam("email", "#{Email}")
+                    .formParam("password", "#{Password}")
                     .check(status().is(200)))
                 .exec(
                     http("B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed")

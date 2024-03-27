@@ -10,6 +10,7 @@ import simulations.Scripts.Utilities.NumberGenerator;
 import simulations.Scripts.Utilities.RandomDateGenerator;
 import simulations.Scripts.Utilities.RandomStringGenerator;
 import io.gatling.javaapi.core.Session;
+import scala.util.Random;
 
 public class RequestBodyBuilder {
 
@@ -93,20 +94,13 @@ public class RequestBodyBuilder {
         caseNumber, courtHouseName, courtRoom, judgeName, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
     }
     
-    public static String buildAudioRequestBody(Session session, Object getHearingId) {
-
-        Object getHearingId2 = session.get("getHearingId");
-        System.out.println("getHearingId for Audio Request: " + getHearingId2.toString());
-    
+    public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor) {
 
         LocalDateTime startTime = LocalDateTime.now();
         LocalDateTime endTime = startTime.plusHours(3);
         String startTimeFormatted = formatTime(startTime);
         String endTimeFormatted = formatTime(endTime);
         String requestType = getRandomRequestType();
-        // String getHearingId = getHearings.get("id").toString();
-        // String getHearingId = ((Session) getHearings).get("id").toString();
-        String requestor = "-36";
 
         return String.format("{\"hearing_id\": %s, " +
         "\"requestor\": %s, " +
@@ -114,6 +108,34 @@ public class RequestBodyBuilder {
         "\"end_time\": \"%s\", " +
         "\"request_type\": \"%s\"}",
         getHearingId, requestor, startTimeFormatted, endTimeFormatted, requestType);
+    }
+
+    public static String buildTranscriptionApprovalRequestBody(Session session) {
+
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String randomComment = randomStringGenerator.generateRandomString(10);
+    
+        // Define variables for Approve
+        String approve = "{\"transcription_status_id\": \"3\"}";
+    
+        // Define variables for Reject
+        String reject = String.format("{\"transcription_status_id\": \"4\", " +
+                "\"workflow_comment\": \"%s\"}", randomComment);
+    
+        // Create a random number generator
+        Random random = new Random();
+    
+        // Generate a random number between 0 and 1
+        // If the generated number is less than 0.5, select Approve, otherwise select Reject
+        String selectedAction;
+        if (random.nextDouble() < 0.5) {
+            selectedAction = approve;
+        } else {
+            selectedAction = reject;
+        }
+    
+        // Return the selected string
+        return selectedAction;
     }
 
     public static String buildPostAudioApiRequest(Session session) {
