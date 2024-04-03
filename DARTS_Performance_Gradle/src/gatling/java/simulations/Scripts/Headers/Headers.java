@@ -193,6 +193,19 @@ public class Headers {
         Map.entry("traceparent", "00-43d8376d8efc4a2c96aafc203b3ee232-16ba10280ab1428c-01"),
         Map.entry("x-dtpc", "5$336731829_286h95vSEKMHRRHHHPUKSBIGWAIQRROWWRCFGGR-0e0")
     );  
+
+    public static final Map<String, String> AddDocHeaders = Map.ofEntries(
+        Map.entry("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122"),
+        Map.entry("sec-ch-ua-platform", "Windows"),
+        Map.entry("traceparent", "00-43d8376d8efc4a2c96aafc203b3ee232-16ba10280ab1428c-01"),
+        Map.entry("sec-ch-ua-mobile", "?0"),
+        Map.entry("Request-Id", "|43d8376d8efc4a2c96aafc203b3ee232.16ba10280ab1428c"),
+        Map.entry("Request-Context", "appId=cid-v1:b3dee2d6-8fe5-407e-b65f-c7d24670531d"),
+        Map.entry("Sec-Fetch-Dest", "empty"),
+        Map.entry("Sec-Fetch-Mode", "cors"),
+        Map.entry("Sec-Fetch-Site", "same-origin"),
+        Map.entry("Referer", "https://darts.test.apps.hmcts.net/work/#{getTranscriptionId}")
+    ); 
     
     public static final Map<String, String> headers_6 = Map.ofEntries(
     Map.entry("Content-Type", "application/json"),

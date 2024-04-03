@@ -1,10 +1,10 @@
 package simulations.Scripts.DartsPortal;
 
 import simulations.Scripts.Utilities.AppConfig;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalApproveAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
+import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachfileAndDownlaodAudioScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -14,10 +14,9 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 
 
-public class CourtManagerApproverSimulation extends Simulation {   
+public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation {   
   {
-    final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV).circular();
-
+    final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_USERS3_FILE_PATH).circular();
 
       HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
@@ -32,8 +31,7 @@ public class CourtManagerApproverSimulation extends Simulation {
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(feeder))
         .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
-        .repeat(20).on(
-        exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio()))
+        .exec(TranscriberAttachfileAndDownlaodAudioScenario.TranscriberAttachfileAndDownlaodAudio())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
     setUp(

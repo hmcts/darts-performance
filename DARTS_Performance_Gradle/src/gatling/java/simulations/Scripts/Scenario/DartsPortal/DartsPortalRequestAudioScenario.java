@@ -14,7 +14,6 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public final class DartsPortalRequestAudioScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();    
-   // private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
     private static final Random randomNumber = new Random();
 
     private DartsPortalRequestAudioScenario() {}

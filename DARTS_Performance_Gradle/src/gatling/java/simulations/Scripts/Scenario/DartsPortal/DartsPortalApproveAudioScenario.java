@@ -70,7 +70,7 @@ public final class DartsPortalApproveAudioScenario {
           .exec(
             http("Darts-Portal - Api - Transcriptions - Id")
               .patch(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
-              .headers(Headers.headers_6)
+              .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
               .body(StringBody(session -> session.get("xmlPayload"))).asJson()
           )
           .exec(
