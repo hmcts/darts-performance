@@ -5,6 +5,7 @@ import static io.gatling.javaapi.core.CoreDsl.jsonPath;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
@@ -66,6 +67,23 @@ public class Feeders {
         return CoreDsl.listFeeder(items.stream()
             .map(item -> Map.of(key, item)).toList()
         );
+    }
+
+        private static final String[] REQUEST_TYPES = {"DOWNLOAD", "PLAYBACK"};
+
+        // Define the percentages for each request type (must sum up to 100)
+        private static final int DOWNLOAD_PERCENTAGE = 70; //% chance
+        private static final int PLAYBACK_PERCENTAGE = 30; //% chance
+
+        public static String getRandomRequestType() {
+        int totalPercentage = DOWNLOAD_PERCENTAGE + PLAYBACK_PERCENTAGE;
+        int randomNumber = ThreadLocalRandom.current().nextInt(totalPercentage) + 1; // Generate random number between 1 and the total percentage
+
+        if (randomNumber <= DOWNLOAD_PERCENTAGE) {
+            return REQUEST_TYPES[0]; // DOWNLOAD
+        } else {
+            return REQUEST_TYPES[1]; // PLAYBACK
+        }
     }
 
     // public static FeederBuilder<Object> jdbcFeeder(String sql) {

@@ -15,6 +15,7 @@ public final class DartsPortalRequestAudioScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();    
     private static final Random randomNumber = new Random();
+    private static final String requestType = Feeders.getRandomRequestType();
 
     private DartsPortalRequestAudioScenario() {}
 
@@ -113,12 +114,12 @@ public final class DartsPortalRequestAudioScenario {
             http("Darts-Portal - Api - Hearings - Audios")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/hearings/#{getHearings.id}/audios")
               .headers(Headers.caseReferer(Headers.CommonHeaders))
-          )
-          .exec(
-            http("Darts-Portal - Api - Hearings - Annotations")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/annotations")
-              .headers(Headers.caseReferer(Headers.CommonHeaders))
-          )
+          )               
+          // .exec(
+          //   http("Darts-Portal - Api - Hearings - Annotations")
+          //     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/annotations")
+          //     .headers(Headers.caseReferer(Headers.CommonHeaders))
+          // )
           .exec(
             http("Darts-Portal - Api - Hearings - Transcripts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/transcripts")
@@ -131,18 +132,20 @@ public final class DartsPortalRequestAudioScenario {
               .headers(Headers.CommonHeaders)
           )
           .exec(session -> {
-            Object getHearingId = session.get("getHearingId");
-            System.out.println("getHearingId for Audio Request: " + getHearingId.toString());
-            Object getUserId = session.get("getUserId");
-            System.out.println("getUserId for Audio Request: " + getUserId.toString());
 
-            String AudioXmlPayload = RequestBodyBuilder.buildAudioRequestBody(session, getHearingId, getUserId);
-            return session.set("AudioXmlPayload", AudioXmlPayload);
-        })
+            Object getHearingId = session.get("getHearingId");
+            System.out.println("getHearingId for Audio Request: " + getHearingId);
+            Object getUserId = session.get("getUserId");
+            System.out.println("getUserId for Audio Request: " + getUserId);
+
+            // Build audioXmlPayload
+            String audioXmlPayload = RequestBodyBuilder.buildAudioRequestBody(session, getHearingId, getUserId, requestType);
+            return session.set("AudioXmlPayload", audioXmlPayload);
+          })
           .exec(
               http("Darts-Portal - Api - Audio-requests")
-                  .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests")
-                  .headers(Headers.StandardHeaders2)                
+                  .post(session -> AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/" + requestType.toLowerCase())
+                  .headers(Headers.StandardHeaders2)
                   .body(StringBody(session -> session.get("AudioXmlPayload"))).asJson()
           )       
           .exec(
