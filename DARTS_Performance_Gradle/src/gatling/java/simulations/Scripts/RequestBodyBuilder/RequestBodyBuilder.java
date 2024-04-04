@@ -22,7 +22,7 @@ public class RequestBodyBuilder {
     private static final int DOWNLOAD_PERCENTAGE = 70; //% chance
     private static final int PLAYBACK_PERCENTAGE = 30; //% chance
 
-    public static String buildAudioRequestBody(String hearingId, String userId, LocalDateTime startTime, LocalDateTime endTime) {
+    public static String buildPOSTAudioRequestBody(String hearingId, String userId, LocalDateTime startTime, LocalDateTime endTime) {
         String startTimeFormatted = formatTime(startTime);
         String endTimeFormatted = formatTime(endTime);
         String requestType = getRandomRequestType();
@@ -94,13 +94,14 @@ public class RequestBodyBuilder {
         caseNumber, courtHouseName, courtRoom, judgeName, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
     }
     
-    public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor) {
+    public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor, Object requestType) {
 
         LocalDateTime startTime = LocalDateTime.now();
         LocalDateTime endTime = startTime.plusHours(3);
         String startTimeFormatted = formatTime(startTime);
-        String endTimeFormatted = formatTime(endTime);
-        String requestType = getRandomRequestType();
+        String endTimeFormatted = formatTime(endTime);        
+        System.out.println("requestType for RequestBody: " + requestType);
+
 
         return String.format("{\"hearing_id\": %s, " +
         "\"requestor\": %s, " +

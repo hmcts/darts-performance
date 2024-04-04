@@ -35,7 +35,7 @@
           </elementProp>
           <elementProp name="USER_COUNT" elementType="Argument">
             <stringProp name="Argument.name">USER_COUNT</stringProp>
-            <stringProp name="Argument.value">${__P(USER_COUNT, 55)}</stringProp>
+            <stringProp name="Argument.value">${__P(USER_COUNT, 1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="USER_RAMP_TIME" elementType="Argument">
@@ -45,7 +45,7 @@
           </elementProp>
           <elementProp name="USER_ITERATIONS" elementType="Argument">
             <stringProp name="Argument.name">USER_ITERATIONS</stringProp>
-            <stringProp name="Argument.value">${__P(USER_ITERATIONS, 100000)}</stringProp>
+            <stringProp name="Argument.value">${__P(USER_ITERATIONS, 1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="TENANT_ID" elementType="Argument">
@@ -575,7 +575,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - ${SCRIPT_NAME}" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - ${SCRIPT_NAME}" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -807,7 +807,7 @@ String currentUsername = vars.get(&quot;USERNAME&quot;);
               <stringProp name="scriptLanguage">groovy</stringProp>
             </JSR223PreProcessor>
             <hashTree/>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Cases" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DARTS - Api - POST - Cases" enabled="false">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">

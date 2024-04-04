@@ -31,6 +31,7 @@ public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(feeder))
         .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
+        .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
         .exec(TranscriberAttachfileAndDownlaodAudioScenario.TranscriberAttachfileAndDownlaodAudio())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
