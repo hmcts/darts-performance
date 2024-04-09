@@ -23,7 +23,7 @@ public final class GetApiTokenScenario {
                   .formParam("client_id", EnvironmentURL.CLINET_ID.getUrl())
                   .formParam("client_secret", EnvironmentURL.CLIENT_SECRET.getUrl())
                   .formParam("scope", EnvironmentURL.SCOPE.getUrl())
-                  .formParam("username", EnvironmentURL.DARTS_API_USERNAME.getUrl())
+                  .formParam("username", EnvironmentURL.DARTS_API_GLOBAL_USERNAME.getUrl())
                   .formParam("password", EnvironmentURL.DARTS_API_PASSWORD.getUrl())
                   .check(Feeders.saveBearerToken())                    
                   ).exec(session -> {

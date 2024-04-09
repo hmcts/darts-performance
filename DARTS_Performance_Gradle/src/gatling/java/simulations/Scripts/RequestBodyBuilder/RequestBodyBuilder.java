@@ -70,7 +70,7 @@ public class RequestBodyBuilder {
         String dateTo = session.get("DateTo") != null ? "\"" + session.get("DateTo").toString() + "\"" : "null";
         
         // Generate random dates using RandomDateGenerator
-        LocalDate randomDateFrom = RandomDateGenerator.getRandomDate(LocalDate.of(2024, 3, 1), LocalDate.of(2024, 3, 15));
+        LocalDate randomDateFrom = RandomDateGenerator.getRandomDate(LocalDate.of(2017, 3, 1), LocalDate.of(2017, 3, 15));
         LocalDate randomDateTo = RandomDateGenerator.getRandomDate(randomDateFrom, LocalDate.of(2024, 3, 15));
         
         // Ensure dates don't go past the current date

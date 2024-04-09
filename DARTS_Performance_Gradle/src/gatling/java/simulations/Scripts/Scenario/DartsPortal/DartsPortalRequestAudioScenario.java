@@ -140,14 +140,46 @@ public final class DartsPortalRequestAudioScenario {
 
             // Build audioXmlPayload
             String audioXmlPayload = RequestBodyBuilder.buildAudioRequestBody(session, getHearingId, getUserId, requestType);
-            return session.set("AudioXmlPayload", audioXmlPayload);
+            return session.set("AudioXmlPayload", audioXmlPayload);             
+          })         
+          
+          .exec(session -> {
+              // Get the user type from the session
+              String userType = session.get("Type").toString();
+              System.out.println("userType for Audio Request: " + userType);
+  
+              String requestType;
+  
+              // Determine request type based on user type
+              if (userType.equalsIgnoreCase("Transcirber")) {
+                  // If the user type is Transcriber, select request type randomly between "download" and "playback"
+                  String[] possibleRequestTypes = {"download", "playback"};
+                  requestType = possibleRequestTypes[new Random().nextInt(2)]; // Randomly select index 0 or 1
+              } else if (userType.equalsIgnoreCase("clerk")) {
+                  // If the user type is Clerk, request type is "playback"
+                  requestType = "playback";
+              } else if (userType.equalsIgnoreCase("reviewer")) {
+                  // If the user type is Reviewer, request type is "download"
+                  requestType = "download";
+              } else {
+                  // Default request type if user type is not recognized
+                  requestType = "defaultRequestType";
+              }
+  
+              // Set request type in the session
+              Session requestTypeSession = session.set("requestType", requestType);
+              System.out.println("requestType for Audio Request: " + requestType);
+              System.out.println("sessionRequestTypes for Audio Request: " + session);
+  
+              return requestTypeSession;
           })
           .exec(
-              http("Darts-Portal - Api - Audio-requests")
-                  .post(session -> AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/" + requestType.toLowerCase())
-                  .headers(Headers.StandardHeaders2)
-                  .body(StringBody(session -> session.get("AudioXmlPayload"))).asJson()
-          )       
+            http("Darts-Portal - Api - Audio-requests")
+                .post(requestTypeSession -> AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/" + (requestTypeSession.get("requestType") != null ? requestTypeSession.get("requestType").toString().toLowerCase() : ""))
+                //.post(sessionRequestTypes -> AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/" + sessionRequestTypes.get("requestType").toString().toLowerCase())
+                .headers(Headers.StandardHeaders2)
+                .body(StringBody(session -> session.get("AudioXmlPayload"))).asJson()
+          )             
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
