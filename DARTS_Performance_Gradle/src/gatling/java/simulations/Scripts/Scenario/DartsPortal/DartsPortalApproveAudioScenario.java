@@ -46,12 +46,13 @@ public final class DartsPortalApproveAudioScenario {
                 }
                 return session;
             })
+          .exitHereIfFailed()
           .exec(
             http("Darts-Portal - Api - Transcriptions - Urgencies")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/urgencies")
               .headers(Headers.CommonHeaders)
           )          
-          .pause(10)
+          .pause(3)
           .exec(            
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
@@ -62,7 +63,7 @@ public final class DartsPortalApproveAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
               .headers(Headers.CommonHeaders)
           )          
-          .pause(4)
+          .pause(3)
           .exec(session -> {
             String xmlPayload = RequestBodyBuilder.buildTranscriptionApprovalRequestBody(session);
             return session.set("xmlPayload", xmlPayload);
@@ -73,6 +74,7 @@ public final class DartsPortalApproveAudioScenario {
               .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
               .body(StringBody(session -> session.get("xmlPayload"))).asJson()
           )
+          .exitHereIfFailed()
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())

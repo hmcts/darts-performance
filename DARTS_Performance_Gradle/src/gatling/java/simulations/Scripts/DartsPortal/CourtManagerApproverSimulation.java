@@ -35,7 +35,6 @@ public class CourtManagerApproverSimulation extends Simulation {
         .repeat(20).on(
         exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio()))
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
-
     setUp(
         scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
     }    

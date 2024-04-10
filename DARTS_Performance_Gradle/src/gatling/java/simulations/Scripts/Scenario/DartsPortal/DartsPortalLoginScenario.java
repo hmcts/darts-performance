@@ -3,7 +3,6 @@ package simulations.Scripts.Scenario.DartsPortal;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
-import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 
@@ -12,8 +11,6 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class DartsPortalLoginScenario {
 
-    //private static final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_USERS_FILE_PATH).random();
-    //exec(feed(feeder))
     private static final Random randomNumber = new Random();
 
     private DartsPortalLoginScenario() {}
@@ -50,15 +47,14 @@ public final class DartsPortalLoginScenario {
               //   String xmlPayload = RequestBodyBuilder.buildDartsPortalPerftraceRequest(session);
               //   return session.set("xmlPayload", xmlPayload);
               // })
+              .pause(3)
               .exec(
                 http("B2C_1_darts_externaluser_signin - Client - Perftrace")
                   .post(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/client/perftrace?tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin")
                   .headers(Headers.PerftraceHeaders(Headers.PortalCommonHeaders))
                   //.body(StringBody(session -> session.get("xmlPayload"))).asJson()
                   .body(RawFileBody("perftrace/0000_request.bin"))
-                )
-               
-                .pause(8)
+                )  
                 .exec(
                   http("B2C_1_darts_externaluser_signin - SelfAsserted")
                     .post(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/SelfAsserted?tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin")
@@ -68,6 +64,7 @@ public final class DartsPortalLoginScenario {
                     .formParam("email", "#{Email}")
                     .formParam("password", "#{Password}")
                     .check(status().is(200)))
+                    .exitHereIfFailed()
                 .exec(
                     http("B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed")
                       .get(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/api/CombinedSigninAndSignup/confirmed?rememberMe=false&csrf_token=#{csrf}&tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin&diags=%7B%22pageViewId%22%3A%223ec520ab-1a56-4387-a71c-8f4357eb169d%22%2C%22pageId%22%3A%22CombinedSigninAndSignup%22%2C%22trace%22%3A%5B%7B%22ac%22%3A%22T005%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A2%7D%2C%7B%22ac%22%3A%22T021%20-%20URL%3A" + AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "%2Fauth%2Fazuread-b2c-login%3FscreenName%3DloginScreen%26ui_locales%3Den%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A267%7D%2C%7B%22ac%22%3A%22T019%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A3%7D%2C%7B%22ac%22%3A%22T004%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A2%7D%2C%7B%22ac%22%3A%22T003%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A1%7D%2C%7B%22ac%22%3A%22T035%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T030Online%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T035%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T002%22%2C%22acST%22%3A1708515190%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T018T010%22%2C%22acST%22%3A1708515189%2C%22acD%22%3A608%7D%5D%7D")
@@ -95,10 +92,8 @@ public final class DartsPortalLoginScenario {
                   http("Darts-Portal - User - Profile")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/profile")
                         .headers(Headers.DartsPortalHeaders4)
-                        .check(Feeders.saveUserId()))         
-
-                .exec(     
-                  
+                        .check(Feeders.saveUserId()))
+                .exec(
                   http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
                         .headers(Headers.DartsPortalHeaders4))

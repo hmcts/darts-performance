@@ -26,24 +26,36 @@ public final class DartsPortalRequestAudioScenario {
               String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
               return session.set("xmlPayload", xmlPayload);
           })
+          .pause(3)
           .exec(http("Darts-Portal - Api - Cases - Search")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
-              .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
+              .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))              
               .body(StringBody(session -> session.get("xmlPayload"))).asJson()
+              .check(status().is(200))
               .check(jsonPath("$[*].case_id").count().gt(1))
               //.check(Feeders.saveCaseId())
               .check(jsonPath("$[*]").ofMap().findRandom().saveAs("getCaseId"))
-              ).exec(session -> {
+              .check(jsonPath("$.title").optional().saveAs("errorTitle"))              
+              )
+              .exec(session -> {
                 Object getCaseId = session.get("getCaseId");
                 if (getCaseId != null) {
                     System.out.println("getCaseId: " + getCaseId.toString());
                 } else {
                     System.out.println("No value saved using saveAs.");
                 }
+                
+                Object errorTitle = session.get("errorTitle");
+                if (errorTitle != null) {
+                    String errorMessage = "Request failed with error: " + errorTitle.toString();
+                    System.out.println(errorMessage);
+                    throw new RuntimeException(errorMessage); // Fail the test by throwing an exception
+                }
                 return session;
             }
-          )          
-          .pause(1)
+          )
+          .exitHereIfFailed()
+          .pause(3)
           .exec(http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
@@ -60,7 +72,7 @@ public final class DartsPortalRequestAudioScenario {
           .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId.case_id}/transcripts")
           .headers(Headers.searchReferer(Headers.CommonHeaders))
           )
-          .pause(1)
+          .pause(3)
           .exec(http("Darts-Portal - Auth - Is-authenticated")
           .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
           .headers(Headers.CommonHeaders)
@@ -93,6 +105,7 @@ public final class DartsPortalRequestAudioScenario {
                 return session;
             }
           )
+          .exitHereIfFailed()
           .exec(
             http("Darts-Portal - Api - Hearings - Events")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
@@ -125,7 +138,7 @@ public final class DartsPortalRequestAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/transcripts")
               .headers(Headers.caseReferer(Headers.CommonHeaders))
           )
-          .pause(2)
+          .pause(3)
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
