@@ -108,7 +108,7 @@ public class RequestBodyBuilder {
         "\"start_time\": \"%s\", " +
         "\"end_time\": \"%s\", " +
         "\"request_type\": \"%s\"}",
-        getHearingId, requestor, startTimeFormatted, endTimeFormatted, requestType);
+        getHearingId, requestor, startTimeFormatted, endTimeFormatted, requestType.toString().toUpperCase());
     }
 
     public static String buildTranscriptionApprovalRequestBody(Session session) {

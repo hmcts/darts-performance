@@ -16,7 +16,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation {   
   {
-    final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_USERS3_FILE_PATH).circular();
+    final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH).circular();
 
       HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
