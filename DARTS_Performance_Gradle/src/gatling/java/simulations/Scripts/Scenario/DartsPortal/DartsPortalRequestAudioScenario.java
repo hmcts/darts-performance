@@ -13,7 +13,8 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class DartsPortalRequestAudioScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();    
+    private static final FeederBuilder<String> judges = csv(AppConfig.DARTS_PORTAL_JUDGES_FILE_PATH).random();
+
     private static final Random randomNumber = new Random();
     private static final String requestType = Feeders.getRandomRequestType();
 
@@ -21,7 +22,7 @@ public final class DartsPortalRequestAudioScenario {
 
     public static ChainBuilder DartsPortalRequestAudioDownload() {
       return group("Darts Request Audio PLayBack/Download")
-      .on(exec(feed(feeder))
+      .on(exec(feed(judges))
       .exec(session -> {
               String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
               return session.set("xmlPayload", xmlPayload);
@@ -156,7 +157,7 @@ public final class DartsPortalRequestAudioScenario {
               if (userType.equalsIgnoreCase("Transcirber")) {
                   // If the user type is Transcriber, select request type randomly between "download" and "playback"
                   requestType = Feeders.getRandomRequestType();
-              } else if (userType.equalsIgnoreCase("clerk")) {
+              } else if (userType.equalsIgnoreCase("CourtClerk")) {
                   // If the user type is Clerk, request type is "playback"
                   requestType = "playback";
               } else if (userType.equalsIgnoreCase("reviewer")) {

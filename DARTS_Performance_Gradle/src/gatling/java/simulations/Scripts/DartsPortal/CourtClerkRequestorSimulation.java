@@ -15,7 +15,8 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class CourtClerkRequestorSimulation extends Simulation {   
   {
-    final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_USERS_CSV).random();
+    final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_COURTCLERK_USERS_FILE_PATH).circular();
+    final FeederBuilder<String> judges = csv(AppConfig.DARTS_PORTAL_JUDGES_FILE_PATH).random();
 
       HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
@@ -29,6 +30,7 @@ public class CourtClerkRequestorSimulation extends Simulation {
 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(feeder))
+        .exec(feed(judges))
         .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
         .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
