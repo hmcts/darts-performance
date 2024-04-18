@@ -17,19 +17,41 @@ import io.gatling.javaapi.core.CheckBuilder;
 public class Feeders {
 
     public static final FeederBuilder<String> AudioRequestCSV;
+    public static final FeederBuilder<String> JudgesCSV;
+    public static final FeederBuilder<String> LanguageShopUsers;
+    public static final FeederBuilder<String> CourtClerkUsers;
+    public static final FeederBuilder<String> TranscriberUsers;
     private static final AtomicInteger COUNTER;
     private static final Logger log = Logger.getLogger(Feeders.class.getName());
     //public static final FeederBuilder<Object> RANDOM_USER_FEEDER;
 
-
     static {
         AudioRequestCSV = CoreDsl.csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
+        JudgesCSV = CoreDsl.csv(AppConfig.DARTS_PORTAL_JUDGES_FILE_PATH).random();
+        LanguageShopUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_LANGUAGESHOP_FILE_PATH).circular();
+        CourtClerkUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV).circular();
+        TranscriberUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH).circular();
         COUNTER = new AtomicInteger(0);
         // RANDOM_USER_FEEDER = jdbcFeeder("SELECT * FROM darts.user_account "
         // + "order by RANDOM()").random();
 
-    }    
+    }   
+    
+    public static FeederBuilder<String> createJudgesFeeder() {
+        return JudgesCSV;
+    }
 
+    public static FeederBuilder<String> createTranscriberUsers() {
+        return TranscriberUsers;
+    }
+
+    public static FeederBuilder<String> createLanguageShopUsers() {
+        return LanguageShopUsers;
+    }
+
+    public static FeederBuilder<String> createCourtClerkUsers() {
+        return CourtClerkUsers;
+    }
     public static String getRandomEventCode() {
         List<String> eventCodes = List.of("DL", "DL2", "DL3");
         return eventCodes.get(new Random().nextInt(eventCodes.size()));

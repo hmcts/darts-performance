@@ -3,7 +3,6 @@ package simulations.Scripts.Scenario.DartsPortal;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
-import simulations.Scripts.Utilities.RandomStringGenerator;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
@@ -72,6 +71,7 @@ public final class DartsPortalRequestAudioScenario {
           .exec(http("Darts-Portal - Api - Cases - Transcripts")
           .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId.case_id}/transcripts")
           .headers(Headers.searchReferer(Headers.CommonHeaders))
+          .check(status().in(200, 403))
           )
           .pause(3)
           .exec(http("Darts-Portal - Auth - Is-authenticated")
@@ -138,6 +138,7 @@ public final class DartsPortalRequestAudioScenario {
             http("Darts-Portal - Api - Hearings - Transcripts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/transcripts")
               .headers(Headers.caseReferer(Headers.CommonHeaders))
+              .check(status().in(200, 403))
           )
           .pause(3)
           .exec(
@@ -160,6 +161,9 @@ public final class DartsPortalRequestAudioScenario {
               } else if (userType.equalsIgnoreCase("CourtClerk")) {
                   // If the user type is Clerk, request type is "playback"
                   requestType = "playback";
+              } else if (userType.equalsIgnoreCase("LanguageShop")) {
+                // If the user type is LanguageShop, request type is "playback"
+                requestType = "playback";
               } else if (userType.equalsIgnoreCase("reviewer")) {
                   // If the user type is Reviewer, request type is "download"
                   requestType = "download";

@@ -1,6 +1,7 @@
 package simulations.Scripts.DartsPortal;
 
 import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
@@ -15,9 +16,6 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class CourtClerkRequestorSimulation extends Simulation {   
   {
-    final FeederBuilder<String> feeder = csv(AppConfig.DARTS_PORTAL_COURTCLERK_USERS_FILE_PATH).circular();
-    final FeederBuilder<String> judges = csv(AppConfig.DARTS_PORTAL_JUDGES_FILE_PATH).random();
-
       HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
@@ -29,8 +27,8 @@ public class CourtClerkRequestorSimulation extends Simulation {
       
 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
-        .exec(feed(feeder))
-        .exec(feed(judges))
+        .exec(feed(Feeders.createCourtClerkUsers()))
+        .exec(feed(Feeders.JudgesCSV))
         .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
         .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
