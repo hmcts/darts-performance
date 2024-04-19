@@ -4,7 +4,7 @@ import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Utilities.AppConfig.TestType;
 import simulations.Scripts.Utilities.Feeders;
-import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventUserScenario;
+//import simulations.Scripts.DartsSoap.AddDocumentTokenSimulation;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
@@ -18,14 +18,14 @@ import java.time.Duration;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public abstract class ProfileAddDocumentSOAPUserSimulation extends AddDocumentUserSimulation {
+public abstract class ProfileAddDocumentSOAPUserSimulation extends Simulation {
 
     FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
     private final HttpProtocolBuilder httpProtocol;
 
     protected ProfileAddDocumentSOAPUserSimulation() {
         this.httpProtocol = http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT).httpsPort(AppConfig.PROXY_PORT))
+            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
             .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
             .inferHtmlResources()
             .acceptEncodingHeader("gzip,deflate")
@@ -33,7 +33,6 @@ public abstract class ProfileAddDocumentSOAPUserSimulation extends AddDocumentUs
             .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");            
             setupClosed();
     }
-
             private ScenarioBuilder getScenarioBuilder() {
               Feeders.resetCounter();
               return getScenario();

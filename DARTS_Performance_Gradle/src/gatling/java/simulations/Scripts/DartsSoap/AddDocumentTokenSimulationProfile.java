@@ -1,23 +1,21 @@
 package simulations.Scripts.DartsSoap;
 
 import simulations.Scripts.Utilities.AppConfig;
-import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
+import simulations.Scripts.Scenario.DartsSoap.AddDocumentDailyListTokenScenario;
+import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
+
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-
-public class RegisterWithUsernameSOAPSimulation extends Simulation {
+public class AddDocumentTokenSimulationProfile extends Simulation {
 
   FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
-
-  //FeederBuilder<Object> users = Feeders.RANDOM_USER_FEEDER;
-
-  {
+    
     HttpProtocolBuilder httpProtocol = http
       .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
       .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
@@ -26,14 +24,15 @@ public class RegisterWithUsernameSOAPSimulation extends Simulation {
       .contentTypeHeader("text/xml;charset=UTF-8")
       .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
 
-    final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - RegisterWithUsername")
-        .feed(feeder)    
-        .repeat(1)    
-        .on(exec(RegisterWithUsernameScenario.RegisterWithUsername().feed(feeder))  
-        .exec(RegisterWithTokenScenario.RegisterWithToken()  
-        ));    
-  
-    setUp(
-        scn.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
-    }  
-}
+      protected ScenarioBuilder getScenario() {      
+        return scenario("DARTS - GateWay - Soap - AddDocument:POST")
+                .feed(feeder)
+                .exec(RegisterWithUsernameScenario.RegisterWithUsername())
+                .exec(RegisterWithTokenScenario.RegisterWithToken())
+                .randomSwitchOrElse().on(
+                  percent(60.0).then(AddDocumentDailyListTokenScenario.AddDocumentDailyListToken()),
+                  percent(20.0).then(AddDocumentEventTokenScenario.AddDocumentEventToken())
+                ).orElse(exitHere()
+              ); 
+            }
+        }
