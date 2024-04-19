@@ -13,6 +13,8 @@ public class SOAPRequestBuilder {
 
     private static final String USERNAME = EnvironmentURL.DARTS_EXTERNAL_SOAP_USERNAME.getUrl();
     private static final String PASSWORD = EnvironmentURL.DARTS_EXTERNAL_SOAP_PASSWORD.getUrl();
+    private static final String EXTERNALUSERNAME = EnvironmentURL.DARTS_EXTERNAL_USERNAME.getUrl();
+    private static final String EXTERNALPASSWORD = EnvironmentURL.DARTS_EXTERNAL_PASSWORD.getUrl();
 
     public static String AddDocumentDailyListUserRequest(Session session) {
         // Retrieve values from session or define defaults if needed
@@ -80,15 +82,14 @@ public class SOAPRequestBuilder {
                 caseName, courtHouseName, courtRoomName, eventText);
     }
 
-    public static String AddDcoumentDailyListTokenRequest(Session session) {
-
-        String registrationToken = session.get("registrationToken");
+    public static String AddDocumentDailyListTokenRequest(Session session) {
 
         // Retrieve values from session or define defaults if needed
-        String courtHouseType = session.get("CourtHouseType").toString();
-        String courtHouseName = session.get("CourtHouseName").toString();    
-        String courtHouseCode = session.get("CourtHouseCode").toString();    
-        String eventType = Feeders.getRandomEventCode(); 
+        String registrationToken = session.get("registrationToken") != null ? session.get("registrationToken").toString() : "";
+        String courtHouseType = session.get("CourtHouseType") != null ? session.get("CourtHouseType").toString() : "";
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtHouseCode = session.get("CourtHouseCode") != null ? session.get("CourtHouseCode").toString() : "";
+        String eventType = Feeders.getRandomEventCode();
 
         // Generate dynamic values
         NumberGenerator generator = new NumberGenerator(10);
@@ -115,7 +116,7 @@ public class SOAPRequestBuilder {
         registrationToken, courtHouseType, courtHouseName, courtHouseCode);        
     }
 
-    public static String AddDcoumentEventTokenRequest(Session session) {
+    public static String AddDocumentEventTokenRequest(Session session) {
 
         String registrationToken = session.get("registrationToken");
 
@@ -172,7 +173,7 @@ public class SOAPRequestBuilder {
         "      </ns2:getCases>\n" +
         "   </s:Body>\n" +
         "</s:Envelope>",
-        USERNAME, PASSWORD, courtHouseName, courtRoom);  
+        EXTERNALUSERNAME, EXTERNALPASSWORD, courtHouseName, courtRoom);  
     }
   
     public static String GetCasesTokenRequest(Session session) {
@@ -193,11 +194,11 @@ public class SOAPRequestBuilder {
         "      <ns2:getCases xmlns:ns2=\"http://com.synapps.mojdarts.service.com\">\n" +
         "         <courthouse>%s</courthouse>\n" +
         "         <courtroom>%s</courtroom>\n" +
-        "         <date>2023-11-29</date>\n" +
+        "         <date>2017-11-29</date>\n" +
         "      </ns2:getCases>\n" +
         "   </s:Body>\n" +
         "</s:Envelope>",
-        registrationToken, USERNAME, PASSWORD, courtHouseName, courtRoom);  
+        registrationToken, courtHouseName, courtRoom);  
     }
     public static String AddCaseUserRequest(Session session) {
         // Retrieve values from session or define defaults if needed
@@ -254,7 +255,7 @@ public class SOAPRequestBuilder {
         "    </ns2:addCase>\n" +
         "  </s:Body>\n" +
         "</s:Envelope>",
-        registrationToken, PASSWORD, USERNAME, courtHouseName, courtRoom, defendantName, defendantName2, judgeName);
+        registrationToken, EXTERNALPASSWORD, EXTERNALUSERNAME, courtHouseName, courtRoom, defendantName, defendantName2, judgeName);
     }
 
     public static String AddAudioUserRequest(Session session) {

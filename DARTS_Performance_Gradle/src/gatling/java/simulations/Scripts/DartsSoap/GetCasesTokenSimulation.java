@@ -2,6 +2,7 @@ package simulations.Scripts.DartsSoap;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
+import simulations.Scripts.Scenario.DartsSoap.GetCasesTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.GetCasesUserScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
@@ -20,7 +21,7 @@ public class GetCasesTokenSimulation extends Simulation {
 
   {
     HttpProtocolBuilder httpProtocol = http
-      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT).httpsPort(AppConfig.PROXY_PORT))
+      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
       .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
       .inferHtmlResources()
       .acceptEncodingHeader("gzip,deflate")
@@ -29,10 +30,10 @@ public class GetCasesTokenSimulation extends Simulation {
 
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - GetCases:GET")
         .feed(feeder)   
-        .exec(RegisterWithUsernameScenario.RegisterWithUsername().feed(feeder))
+        .exec(RegisterWithUsernameScenario.RegisterWithUsername())
         .exec(RegisterWithTokenScenario.RegisterWithToken())
         .repeat(1)    
-        .on(exec(GetCasesUserScenario.GetCaseSOAPUser().feed(feeder))    
+        .on(exec(GetCasesTokenScenario.GetCaseToken().feed(feeder))    
         );    
   
     setUp(

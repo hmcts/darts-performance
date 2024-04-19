@@ -19,7 +19,7 @@ public class GetCasesUserSimulation extends Simulation {
 
   {
     HttpProtocolBuilder httpProtocol = http
-      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT).httpsPort(AppConfig.PROXY_PORT))
+      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
       .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
       .inferHtmlResources()
       .acceptEncodingHeader("gzip,deflate")
@@ -30,8 +30,7 @@ public class GetCasesUserSimulation extends Simulation {
         .feed(feeder)    
         .repeat(1)    
         .on(exec(GetCasesUserScenario.GetCaseSOAPUser().feed(feeder))    
-        );    
-  
+        );
     setUp(
         scn.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
     }  
