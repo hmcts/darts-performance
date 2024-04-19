@@ -1,6 +1,7 @@
 package simulations.Scripts.DartsSoap;
 
 import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsSoap.AddAudioUserScenario;
 
@@ -15,9 +16,7 @@ import java.util.UUID;
 
 public class AddAudioUserSimulation extends Simulation {
 
-  FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
   String boundary = UUID.randomUUID().toString();
-
   {
     HttpProtocolBuilder httpProtocol = http
       .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
@@ -27,9 +26,9 @@ public class AddAudioUserSimulation extends Simulation {
       .contentTypeHeader("multipart/related; type=\"application/xop+xml\"; start=\"<rootpart@soapui.org>\"; start-info=\"text/xml\"; boundary=" + boundary)
       .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddAudio:POST")
-        .feed(feeder)    
+        .feed(Feeders.createCourtHouseAndCourtRooms())    
         .repeat(1)    
-        .on(exec(AddAudioUserScenario.addAudioUser().feed(feeder))    
+        .on(exec(AddAudioUserScenario.addAudioUser())    
         );    
   
     setUp(

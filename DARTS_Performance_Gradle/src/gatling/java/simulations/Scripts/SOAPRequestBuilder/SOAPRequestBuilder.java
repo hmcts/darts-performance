@@ -260,8 +260,8 @@ public class SOAPRequestBuilder {
 
     public static String AddAudioUserRequest(Session session) {
             // Retrieve values from session or define defaults if needed
-            String courtHouseName = session.get("CourtHouseName").toString();    
-            String courtRoom = session.get("CourtRoom").toString(); 
+            String courtHouseName = session.get("courtroom_name").toString();    
+            String courtRoom = session.get("courthouse_name").toString(); 
             RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
             String caseName = randomStringGenerator.generateRandomString(10);
 
@@ -281,7 +281,7 @@ public class SOAPRequestBuilder {
         "      </com:addAudio>\n" +
         "   </s:Body>\n" +
         "</s:Envelope>",
-        USERNAME, PASSWORD, courtHouseName, courtRoom, caseName);
+        EXTERNALUSERNAME, EXTERNALPASSWORD, courtHouseName, courtRoom, caseName);
     }    
     public static String AddAudioTokenRequest(Session session) {
         // Retrieve values from session or define defaults if needed
