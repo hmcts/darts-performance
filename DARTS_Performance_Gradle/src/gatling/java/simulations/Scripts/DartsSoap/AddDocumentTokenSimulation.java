@@ -4,6 +4,7 @@ import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentDailyListTokenScenario;
+import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
 import io.gatling.javaapi.core.*;
@@ -28,11 +29,15 @@ public class AddDocumentTokenSimulation extends Simulation {
 
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddDocument:POST")
         .feed(Feeders.createCourtHouseAndCourtRooms())   
-        .exec(RegisterWithUsernameScenario.RegisterWithUsername())
-        .exec(RegisterWithTokenScenario.RegisterWithToken())
-        .repeat(1)    
-        .on(exec(AddDocumentDailyListTokenScenario.AddDocumentDailyListToken())           
-        );    
+        .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
+        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
+        .repeat(5)    
+        .on(exec(AddDocumentDailyListTokenScenario.AddDocumentDailyListToken())); 
+    //    .on(randomSwitchOrElse().on(
+    //         percent(60.0).then(AddDocumentDailyListTokenScenario.AddDocumentDailyListToken()),
+    //         percent(20.0).then(AddDocumentEventTokenScenario.AddDocumentEventToken())
+    // ).orElse(exitHere()));           
+       // );    
   
     setUp(
         scn.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));

@@ -11,18 +11,19 @@ import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 
 public final class RegisterWithTokenScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
     private RegisterWithTokenScenario() {}
-    public static ChainBuilder RegisterWithToken() {
+    public static ChainBuilder RegisterWithToken(String USERNAME, String PASSWORD) {
         return group("Register With Token SOAP Request Group")
-            .on(exec(feed(feeder))
-                .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.RegisterWithTokenRequest(session);
+            .on(exec(session -> {
+                    String xmlPayload = SOAPRequestBuilder.RegisterWithTokenRequest(session, USERNAME, PASSWORD);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - RegisterWithToken")
                         .post(SoapServiceEndpoint.ContextRegistryService.getEndpoint())
                         .headers(Headers.SoapHeaders)
+                        .header("Accept-Encoding", "gzip,deflate")
+                        .header("Content-Type", "text/xml;charset=UTF-8")
+                        .header("User-Agent", "Apache-HttpClient/4.5.5 (Java/16.0.2)")
                         .body(StringBody(session -> session.get("xmlPayload")))
                         .check(status().is(200))
                         .check(Feeders.saveRegistrationToken()) 

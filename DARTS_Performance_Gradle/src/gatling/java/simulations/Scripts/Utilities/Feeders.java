@@ -2,6 +2,7 @@ package simulations.Scripts.Utilities;
 
 import static io.gatling.javaapi.core.CoreDsl.jsonPath;
 
+import java.io.ObjectInputFilter.Config;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -25,7 +26,16 @@ public class Feeders {
 
     private static final AtomicInteger COUNTER;
     private static final Logger log = Logger.getLogger(Feeders.class.getName());
-    //public static final FeederBuilder<Object> RANDOM_USER_FEEDER;
+
+   
+    // Add AppConfig.EnvironmentURL.DARTS_EXTERNAL_USERNAME.getUrl() and AppConfig.EnvironmentURL.DARTS_EXTERNAL_PASSWORD.getUrl()
+    public static String getDartsExternalUsernameUrl() {
+        return AppConfig.EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl();
+    }
+
+    public static String getDartsExternalPasswordUrl() {
+        return AppConfig.EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl();
+    }
 
     static {        
         //Audio Files
@@ -38,7 +48,7 @@ public class Feeders {
         LanguageShopUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_LANGUAGESHOP_FILE_PATH).circular();
         CourtClerkUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV).circular();
         TranscriberUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH).circular();
-
+        
         //CourtHouseDetails
         CourtHouseAndCourtRooms = CoreDsl.csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
 
@@ -47,7 +57,6 @@ public class Feeders {
         // + "order by RANDOM()").random();
 
     }   
-
     public static FeederBuilder<String> createCourtHouseAndCourtRooms() {
         return CourtHouseAndCourtRooms;
     }

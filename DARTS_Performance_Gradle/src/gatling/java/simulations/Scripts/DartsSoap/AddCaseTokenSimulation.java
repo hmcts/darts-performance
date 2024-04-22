@@ -23,17 +23,16 @@ public class AddCaseTokenSimulation extends Simulation {
       .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
       .inferHtmlResources()
       .acceptEncodingHeader("gzip,deflate")
-      .contentTypeHeader("multipart/related; type=\"text/xml\"; start=\"<rootpart@soapui.org>\"; boundary=" + boundary)
+      .contentTypeHeader("text/xml;charset=UTF-8")
       .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
-
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddCase:POST")
         .feed(feeder) 
-        .exec(RegisterWithUsernameScenario.RegisterWithUsername().feed(feeder))
-        .exec(RegisterWithTokenScenario.RegisterWithToken() 
+        .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
+        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
         .repeat(1) 
-        .on(exec(AddCaseTokenScenario.addCaseToken().feed(feeder))    
+        .on(exec(AddCaseTokenScenario.addCaseToken()    
         ));    
-     
+        
     setUp(
         scn.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
     }  

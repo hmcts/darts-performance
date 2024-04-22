@@ -3,6 +3,8 @@ package simulations.Scripts.DartsSoap;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsSoap.AddAudioTokenScenario;
+import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
+import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
@@ -22,12 +24,11 @@ public class AddAudioTokenSimulation extends Simulation {
     HttpProtocolBuilder httpProtocol = http
       .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
       .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
-      .inferHtmlResources()
-      .acceptEncodingHeader("gzip,deflate")
-      .contentTypeHeader("multipart/related; type=\"application/xop+xml\"; start=\"<rootpart@soapui.org>\"; start-info=\"text/xml\"; boundary=" + boundary)
-      .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
+      .inferHtmlResources();
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddAudio:POST")
         .feed(feeder)    
+        .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
+        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
         .repeat(1)    
         .on(exec(AddAudioTokenScenario.addAudioToken().feed(feeder))    
         );    

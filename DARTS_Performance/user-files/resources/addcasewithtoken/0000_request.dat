@@ -1,0 +1,12 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+   <s:Header>
+      <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><wsse:BinarySecurityToken QualificationValueType="http://schemas.emc.com/documentum#ResourceAccessToken" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="RAD">eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJpZHAiOiJMb2NhbEFjY291bnQiLCJvaWQiOiI3MzJkNDg1MS04OWVkLTQ0M2QtOTdjMi0wMDhlYWI0ZWNjNzMiLCJzdWIiOiI3MzJkNDg1MS04OWVkLTQ0M2QtOTdjMi0wMDhlYWI0ZWNjNzMiLCJnaXZlbl9uYW1lIjoiVmlRIiwiZmFtaWx5X25hbWUiOiJFeHRlcm5hbCB1c2VyIiwidGZwIjoiQjJDXzFfcm9wY19kYXJ0c19zaWduaW4iLCJzY3AiOiJEYXJ0cy5FeHRlcm5hbFNlcnZpY2UiLCJhenAiOiIzNjNjMTFjYi00OGI5LTQ0YmYtOWQwNi05YTM5NzNmNmY0MTMiLCJ2ZXIiOiIxLjAiLCJpYXQiOjE3MTM3ODkwNDgsImF1ZCI6IjM2M2MxMWNiLTQ4YjktNDRiZi05ZDA2LTlhMzk3M2Y2ZjQxMyIsImV4cCI6MTcxMzc5MjY0OCwiaXNzIjoiaHR0cHM6Ly9obWN0c3N0Z2V4dGlkLmIyY2xvZ2luLmNvbS84YjE4NWY4Yi02NjVkLTRiYjMtYWY0YS1hYjdlZTYxYjkzMzQvdjIuMC8iLCJuYmYiOjE3MTM3ODkwNDh9.kJHD5C3mncpNpGyE9J0FO9Mt63eDAjVz7W3m5kXAAQgcCWFwUIqoF8SmpPL8GHgumeppex72u4ia6qk9N3ggbt0VkvqRWvvIzxaalvFGP2rfNUcRJ83p6WisxtNCZUd2v05-WVPQ0UTMbDC1U9gViI9D_Cdl7ydCDEMhI9OeZawb4Fj1MVryr-55B6qaXAT5fyHfBG2URkfvmIcDrBZx5O_zW-uh05zHMQw3C5LbZRllSsn_vCo4Mk6tEShTRmCMsJi0R0_x1yQ1StaHWJI--R4Sdn9TRAM7hbj_sJoe9_dDY87OuFGhOhsJmjtdgycC2uLAQLoHRUNqJhfeqoxWNw</wsse:BinarySecurityToken></wsse:Security>
+   </s:Header>
+   <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <ns2:addCase xmlns:ns2="http://com.synapps.mojdarts.service.com">
+         <document><![CDATA[<case type="1" id="U20231129-1733"><courthouse>Bristol</courthouse><courtroom>1</courtroom><defendants><defendant>U20221006-143541</defendant><defendant>U20221007-143542</defendant></defendants><judges><judge>Mr
+    Judge</judge><judge>Mrs Judge</judge></judges><prosecutors><prosecutor>Mr
+    Prosecutor</prosecutor><prosecutor>Mrs Prosecutor</prosecutor></prosecutors></case>]]></document>
+      </ns2:addCase>
+   </s:Body>
+</s:Envelope>

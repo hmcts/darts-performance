@@ -27,8 +27,8 @@ public class AddDocumentTokenSimulationProfile extends Simulation {
       protected ScenarioBuilder getScenario() {      
         return scenario("DARTS - GateWay - Soap - AddDocument:POST")
                 .feed(feeder)
-                .exec(RegisterWithUsernameScenario.RegisterWithUsername())
-                .exec(RegisterWithTokenScenario.RegisterWithToken())
+                .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
+                .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
                 .randomSwitchOrElse().on(
                   percent(60.0).then(AddDocumentDailyListTokenScenario.AddDocumentDailyListToken()),
                   percent(20.0).then(AddDocumentEventTokenScenario.AddDocumentEventToken())

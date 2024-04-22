@@ -12,11 +12,11 @@ public final class GetCasesUserScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
     private GetCasesUserScenario() {}
-    public static ChainBuilder GetCaseSOAPUser() {
+    public static ChainBuilder GetCaseSOAPUser(String USERNAME, String PASSWORD) {
         return group("AddDocument SOAP Request Group")
             .on(exec(feed(feeder))
                 .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.GetCasesUserRequest(session);
+                    String xmlPayload = SOAPRequestBuilder.GetCasesUserRequest(session, USERNAME, PASSWORD);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - GetCase - User")
