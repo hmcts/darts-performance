@@ -28,7 +28,7 @@ public class AddAudioUserSimulation extends Simulation {
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddAudio:POST")
         .feed(Feeders.createCourtHouseAndCourtRooms())    
         .repeat(1)    
-        .on(exec(AddAudioUserScenario.addAudioUser())    
+        .on(exec(AddAudioUserScenario.addAudioUser(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))    
         );    
   
     setUp(

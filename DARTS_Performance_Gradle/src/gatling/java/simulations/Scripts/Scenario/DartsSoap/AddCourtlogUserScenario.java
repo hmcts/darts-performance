@@ -10,13 +10,11 @@ import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 
 public final class AddCourtlogUserScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
     private AddCourtlogUserScenario() {}
-    public static ChainBuilder addCourtLogUser() {
+    public static ChainBuilder addCourtLogUser(String USERNAME, String PASSWORD) {
         return group("CourtLog SOAP Request Group")
-            .on(exec(feed(feeder))
-                .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddCourtLogUserRequest(session);
+            .on(exec(session -> {
+                    String xmlPayload = SOAPRequestBuilder.AddCourtLogUserRequest(session, USERNAME, PASSWORD);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - CourtLog - User")

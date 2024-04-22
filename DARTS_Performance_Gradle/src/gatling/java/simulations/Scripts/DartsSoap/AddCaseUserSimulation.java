@@ -28,7 +28,7 @@ public class AddCaseUserSimulation extends Simulation {
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddCase:POST")
         .feed(feeder)    
         .repeat(1)    
-        .on(exec(AddCaseUserScenario.addCaseUser().feed(feeder))    
+        .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))    
         );    
   
     setUp(

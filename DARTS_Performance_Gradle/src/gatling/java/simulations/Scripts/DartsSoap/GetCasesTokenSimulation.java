@@ -30,10 +30,10 @@ public class GetCasesTokenSimulation extends Simulation {
 
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - GetCases:GET")
         .feed(feeder)   
-        .exec(RegisterWithUsernameScenario.RegisterWithUsername())
-        .exec(RegisterWithTokenScenario.RegisterWithToken())
+        .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
+        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
         .repeat(1)    
-        .on(exec(GetCasesTokenScenario.GetCaseToken().feed(feeder))    
+        .on(exec(GetCasesTokenScenario.GetCaseToken())    
         );    
   
     setUp(

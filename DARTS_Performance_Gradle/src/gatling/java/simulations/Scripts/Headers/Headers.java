@@ -80,7 +80,7 @@ public class Headers {
 
           // SoapHeaders 
     public static final Map<CharSequence, String> SoapHeaders = Map.ofEntries(
-        Map.entry("SOAPAction", "")
+        Map.entry("SOAPAction", "\"\"")
     );
 
 

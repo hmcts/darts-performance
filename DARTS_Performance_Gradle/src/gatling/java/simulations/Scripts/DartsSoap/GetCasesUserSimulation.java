@@ -29,7 +29,7 @@ public class GetCasesUserSimulation extends Simulation {
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - GetCases:GET")
         .feed(feeder)    
         .repeat(1)    
-        .on(exec(GetCasesUserScenario.GetCaseSOAPUser().feed(feeder))    
+        .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))    
         );
     setUp(
         scn.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));

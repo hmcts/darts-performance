@@ -1,6 +1,7 @@
 package simulations.Scripts.DartsSoap;
 
 import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsSoap.AddCourtlogUserScenario;
 
@@ -13,7 +14,6 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class AddCourtLogSOAPUserSimulation extends Simulation {
 
-  FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
   {
     HttpProtocolBuilder httpProtocol = http
       .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
@@ -24,9 +24,9 @@ public class AddCourtLogSOAPUserSimulation extends Simulation {
       .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
 
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - CourtLog:POST")
-        .feed(feeder)    
+        .feed(Feeders.createCourtHouseAndCourtRooms())    
         .repeat(10)    
-        .on(exec(AddCourtlogUserScenario.addCourtLogUser().feed(feeder))    
+        .on(exec(AddCourtlogUserScenario.addCourtLogUser(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))    
         );    
   
     setUp(

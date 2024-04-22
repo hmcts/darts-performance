@@ -7,11 +7,13 @@ import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
+import java.util.UUID;
 
 public final class AddAudioTokenScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
     private static final String randomAudioFile = AppConfig.getRandomAudioFile();
+    private static final String boundary = UUID.randomUUID().toString();
 
     private AddAudioTokenScenario() {}
 
@@ -24,7 +26,9 @@ public final class AddAudioTokenScenario {
             })
             .exec(http("DARTS - GateWay - Soap - AddAudio - Token")
                     .post(SoapServiceEndpoint.StandardService.getEndpoint())
-                    .headers(Headers.SoapHeaders)                    
+                    .headers(Headers.SoapHeaders)  
+                    .header("Content-Type", "multipart/related; type=\"application/xop+xml\"; start=\"<rootpart@soapui.org>\"; start-info=\"text/xml\"; boundary=" + boundary)
+                    .header("User-Agent", "Apache-HttpClient/4.5.5 (Java/16.0.2)")              
                     .bodyPart(StringBodyPart("metadata", session -> session.get("xmlPayload"))
                             .contentType("application/xop+xml; charset=UTF-8; type=\"text/xml")
                             .transferEncoding("8bit")

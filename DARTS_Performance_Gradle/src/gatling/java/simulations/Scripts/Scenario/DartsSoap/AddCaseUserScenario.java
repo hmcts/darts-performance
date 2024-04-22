@@ -14,11 +14,11 @@ public final class AddCaseUserScenario {
 
     private AddCaseUserScenario() {}
 
-    public static ChainBuilder addCaseUser() {
+    public static ChainBuilder addCaseUser(String USERNAME, String PASSWORD) {
         return group("AddCase SOAP Request Group")
             .on(exec(feed(feeder))
             .exec(session -> {
-                String xmlPayload = SOAPRequestBuilder.AddCaseUserRequest(session);
+                String xmlPayload = SOAPRequestBuilder.AddCaseUserRequest(session, USERNAME, PASSWORD);
                 return session.set("xmlPayload", xmlPayload);
             })
             .exec(http("DARTS - GateWay - Soap - AddCase - User")

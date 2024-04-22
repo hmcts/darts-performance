@@ -15,11 +15,11 @@ public final class AddAudioUserScenario {
 
     private AddAudioUserScenario() {}
 
-    public static ChainBuilder addAudioUser() {
+    public static ChainBuilder addAudioUser(String USERNAME, String PASSWORD) {
         return group("AddAudio SOAP Request Group")
             .on(exec(feed(feeder))
             .exec(session -> {
-                String xmlPayload = SOAPRequestBuilder.AddAudioUserRequest(session);
+                String xmlPayload = SOAPRequestBuilder.AddAudioUserRequest(session, USERNAME, PASSWORD);
                 return session.set("xmlPayload", xmlPayload);
             })
             .exec(http("DARTS - GateWay - Soap - AddAudio - User")

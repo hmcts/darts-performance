@@ -24,7 +24,7 @@ public class RegisterWithTokenSOAPSimulation extends Simulation {
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - RegisterWithToken")
         .feed(feeder)    
         .repeat(1)    
-        .on(exec(RegisterWithTokenScenario.RegisterWithToken().feed(feeder))    
+        .on(exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_USERNAME.getUrl()))    
         );    
   
     setUp(
