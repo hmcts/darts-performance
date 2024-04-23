@@ -30,7 +30,7 @@ public class AddAudioTokenSimulation extends Simulation {
         .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
         .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
         .repeat(1)    
-        .on(exec(AddAudioTokenScenario.addAudioToken().feed(feeder))    
+        .on(exec(AddAudioTokenScenario.addAudioToken())    
         );    
   
     setUp(

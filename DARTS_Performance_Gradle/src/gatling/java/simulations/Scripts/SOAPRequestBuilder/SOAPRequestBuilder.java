@@ -287,15 +287,15 @@ public class SOAPRequestBuilder {
         // Construct SOAP request
         return String.format(
             "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:com=\"http://com.synapps.mojdarts.service.com\" xmlns:core=\"http://core.datamodel.fs.documentum.emc.com/\" xmlns:prop=\"http://properties.core.datamodel.fs.documentum.emc.com/\" xmlns:con=\"http://content.core.datamodel.fs.documentum.emc.com/\">\n" +
-            "    <S:Header>\n" +
+            "    <s:Header>\n" +
             "        <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n" +
             "            <wsse:BinarySecurityToken QualificationValueType=\"http://schemas.emc.com/documentum#ResourceAccessToken\" xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"RAD\">%s</wsse:BinarySecurityToken>\n" +
             "        </wsse:Security>\n" +
-            "    </S:Header>\n" +
+            "    </s:Header>\n" +
             "   <s:Body>\n" +
             "      <com:addAudio>\n" +
-            "         <!--Optional:-->\n" +
-            "         <document>&lt;audio&gt;&lt;start Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"26\" S=\"51\" /&gt;&lt;end Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"29\" S=\"49\" /&gt;&lt;channel&gt;1&lt;/channel&gt;&lt;max_channels&gt;4&lt;/max_channels&gt;&lt;mediaformat&gt;mpeg2&lt;/mediaformat&gt;&lt;mediafile&gt;0001.a00&lt;/mediafile&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;%s&lt;/case_number&gt;&lt;case_number&gt;test&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;/audio&gt;</document>\n" +
+            "         <document><![CDATA[<audio><start Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"26\" S=\"51\" /><end Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"29\" S=\"49\" /><channel>1</channel><max_channels>4</max_channels><mediaformat>mpeg2</mediaformat><mediafile>0001.a00</mediafile><courthouse>%s</courthouse><courtroom>%s</courtroom><case_numbers><case_number>T20230294</case_number><case_number>%s</case_number></case_numbers></audio>]]></document>\n" +
+           // "         <document>&lt;audio&gt;&lt;start Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"26\" S=\"51\" /&gt;&lt;end Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"29\" S=\"49\" /&gt;&lt;channel&gt;1&lt;/channel&gt;&lt;max_channels&gt;4&lt;/max_channels&gt;&lt;mediaformat&gt;mpeg2&lt;/mediaformat&gt;&lt;mediafile&gt;0001.a00&lt;/mediafile&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;%s&lt;/case_number&gt;&lt;case_number&gt;test&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;/audio&gt;</document>\n" +
             "      </com:addAudio>\n" +
             "   </s:Body>\n" +
             "</s:Envelope>",
