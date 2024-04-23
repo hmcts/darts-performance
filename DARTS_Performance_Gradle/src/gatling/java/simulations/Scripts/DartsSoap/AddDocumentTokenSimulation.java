@@ -29,8 +29,8 @@ public class AddDocumentTokenSimulation extends Simulation {
 
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddDocument:POST")
         .feed(Feeders.createCourtHouseAndCourtRooms())   
-        .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
-        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
+        .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
+        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
         .repeat(5)    
         .on(exec(AddDocumentDailyListTokenScenario.AddDocumentDailyListToken())); 
     //    .on(randomSwitchOrElse().on(

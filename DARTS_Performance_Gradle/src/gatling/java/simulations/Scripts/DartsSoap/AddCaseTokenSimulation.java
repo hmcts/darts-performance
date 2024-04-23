@@ -27,8 +27,8 @@ public class AddCaseTokenSimulation extends Simulation {
       .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddCase:POST")
         .feed(feeder) 
-        .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
-        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
+        .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
+        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
         .repeat(1) 
         .on(exec(AddCaseTokenScenario.addCaseToken()    
         ));    
