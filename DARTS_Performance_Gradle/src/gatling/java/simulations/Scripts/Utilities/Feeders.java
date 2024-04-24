@@ -77,7 +77,7 @@ public class Feeders {
         return CourtClerkUsers;
     }
     public static String getRandomEventCode() {
-        List<String> eventCodes = List.of("DL", "DL2", "DL3");
+        List<String> eventCodes = List.of("DL", "DL", "DL");
         return eventCodes.get(new Random().nextInt(eventCodes.size()));
     }
 

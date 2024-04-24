@@ -111,7 +111,7 @@ public class SOAPRequestBuilder {
 
     public static String AddDocumentEventTokenRequest(Session session) {
 
-        String registrationToken = session.get("registrationToken");
+        String registrationToken = session.get("registrationToken") != null ? session.get("registrationToken").toString() : "";
 
         // Retrieve values from session or define defaults if needed
         String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
@@ -131,17 +131,14 @@ public class SOAPRequestBuilder {
         "   </s:Header>\n" +
         "       <s:Body>\n" +
         "      <ns5:addDocument xmlns:ns5=\"http://com.synapps.mojdarts.service.com\">\n" +
-        "            <messageId>18418</messageId>\n" +
-        "            <type>1100</type>\n" +
-        "            <subType>0</subType>\n" +
-        "            <document>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;&lt;be:DartsEvent\n" +
-        "                    Y=&quot;2023&quot; S=&quot;44&quot; M=&quot;5&quot; MIN=&quot;53&quot; ID=&quot;-15&quot; H=&quot;15&quot;\n" +
-        "                    D=&quot;5&quot; xmlns:be=&quot;urn:integration-cjsonline-gov-uk:pilot:entities&quot;&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:CourtHouse&gt;%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;%s&lt;/be:CourtRoom&gt;&lt;be:%s&gt;Hearing\n" +
-        "                    started&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n" +
+        "            <messageId>2005012</messageId>\n" +
+        "            <type>2198</type>\n" +
+        "            <subType>3940</subType>\n" +
+        "            <document><![CDATA[<be:DartsEvent xmlns:be=\"urn:integration-cjsonline-gov-uk:pilot:entities\" ID=\"2005012\" Y=\"2024\" M=\"02\" D=\"26\" H=\"15\" MIN=\"21\" S=\"43\"><be:CourtHouse>%s</be:CourtHouse><be:CourtRoom>%s</be:CourtRoom><be:CaseNumbers><be:CaseNumber>%s</be:CaseNumber></be:CaseNumbers><be:EventText>%s</be:EventText></be:DartsEvent>]]></document>\n" +
         "            </ns5:addDocument>\n" +
         "        </s:Body>\n" +
         "     </s:Envelope>",
-        registrationToken, caseName, courtHouseName, courtRoom, eventText);        
+        registrationToken, courtHouseName, courtRoom, caseName, eventText);        
     }
 
     public static String GetCasesUserRequest(Session session, String USERNAME, String PASSWORD) {
@@ -307,6 +304,8 @@ public class SOAPRequestBuilder {
         String courtRoom = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(10);
+        String randomLogText = randomStringGenerator.generateRandomString(10);
+
 
     // Construct SOAP request
     return String.format(
@@ -319,12 +318,12 @@ public class SOAPRequestBuilder {
         "   </soapenv:Header>\n" +
         "   <soapenv:Body>\n" +
         "      <addLogEntry xmlns=\"http://com.synapps.mojdarts.service.com\">\n" +
-        "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;PerfCase_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;THISISEVENTTEXT&lt;/text&gt;&lt;/log_entry&gt;\n" +
+        "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;PerfCase_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;%s&lt;/text&gt;&lt;/log_entry&gt;\n" +
         "         </document>\n" +
         "      </addLogEntry>\n" +
         "   </soapenv:Body>\n" +
         "</soapenv:Envelope>",
-        USERNAME, PASSWORD, courtHouseName, courtRoom, caseName);
+        USERNAME, PASSWORD, courtHouseName, courtRoom, caseName, randomLogText);
     } 
 
     public static String AddCourtLogTokenRequest(Session session) {
@@ -335,6 +334,7 @@ public class SOAPRequestBuilder {
 
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(10);
+        String randomLogText = randomStringGenerator.generateRandomString(10);
 
     // Construct SOAP request
     return String.format(
@@ -346,12 +346,46 @@ public class SOAPRequestBuilder {
         "    </s:Header>\n" +
         "   <s:Body>\n" +
         "      <addLogEntry xmlns=\"http://com.synapps.mojdarts.service.com\">\n" +
-        "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;PerfCase_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;THISISEVENTTEXT&lt;/text&gt;&lt;/log_entry&gt;\n" +
+        "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;PerfCase_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;%s&lt;/text&gt;&lt;/log_entry&gt;\n" +
         "         </document>\n" +
         "      </addLogEntry>\n" +
         "   </s:Body>\n" +
         "</s:Envelope>",
-        registrationToken, courtHouseName, courtRoom, caseName);
+        registrationToken, courtHouseName, courtRoom, caseName, randomLogText);
+    } 
+
+    public static String GetCourtLogTokenRequest(Session session) {
+        // Retrieve values from session or define defaults if needed
+        String registrationToken = session.get("registrationToken") != null ? session.get("registrationToken").toString() : "";
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoom = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
+
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String caseName = randomStringGenerator.generateRandomString(10);
+        String randomLogText = randomStringGenerator.generateRandomString(10);
+
+    // Construct SOAP request
+    return String.format(
+    "    <soapenv:Envelope\n" +
+    "    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n" +
+    "    xmlns:com=\"http://com.synapps.mojdarts.service.com\">\n" +
+    "    <soapenv:Header>\n" +
+    "        <wsse:Security\n" +
+    "            xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n" +
+    "            <wsse:BinarySecurityToken QualificationValueType=\"http://schemas.emc.com/documentum#ResourceAccessToken\"\n" +
+    "                xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"RAD\">%s</wsse:BinarySecurityToken>\n" +
+    "        </wsse:Security>\n" +
+    "    </soapenv:Header>\n" +
+    "    <soapenv:Body>\n" +
+    "        <addLogEntry\n" +
+    "            xmlns=\"http://com.synapps.mojdarts.service.com\">\n" +
+    "            <document\n" +
+    "                xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;%s&lt;/text&gt;&lt;/log_entry&gt;\n" +
+    "            </document>\n" +
+    "        </addLogEntry>\n" +
+    "    </soapenv:Body>\n" +
+    "</soapenv:Envelope>",
+        registrationToken, courtHouseName, courtRoom, caseName, randomLogText);
     } 
 
     public static String RegisterWithUsernameRequest(Session session, String USERNAME, String PASSWORD) {

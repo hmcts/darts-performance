@@ -14,7 +14,7 @@ import java.time.Duration;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public class AddDocumentTokenSimulation extends Simulation {
+public class AddDocumentTokenSimulation2 extends Simulation {
   {
     HttpProtocolBuilder httpProtocol = http
       .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
@@ -29,18 +29,19 @@ public class AddDocumentTokenSimulation extends Simulation {
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - AddDocument:POST")
         .feed(Feeders.createCourtHouseAndCourtRooms())   
         .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
-        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
-        .exec(repeat(1)    
-        .on(randomSwitchOrElse().on(
-            percent(60.0).then(AddDocumentDailyListTokenScenario.AddDocumentDailyListToken()),
-            percent(20.0).then(AddDocumentEventTokenScenario.AddDocumentEventToken())
-    ).orElse(exitHere())));           
-       //);    
-  
+        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))        
+        .repeat(15)   
+        .on(exec
+            (AddDocumentDailyListTokenScenario.AddDocumentDailyListToken()),
+            pace(Duration.ofMinutes(2))
+        .repeat(538)
+        .on(exec
+            (AddDocumentEventTokenScenario.AddDocumentEventToken()),
+            pace(Duration.ofMillis(2000)))
+        );
        setUp(
             scn.injectOpen(
-                rampUsersPerSec(0.1).to(1).during(Duration.ofMinutes(10)), // Baseline - 10% of production load per 10 minutes
-                constantUsersPerSec(0.6 / 30).during(Duration.ofMinutes(20)) // Remaining load over the remaining 20 minutes
+              rampUsers(1).during(Duration.ofMinutes(30)) // Single user over 30 minutes
             ).protocols(httpProtocol)
         );
     }  

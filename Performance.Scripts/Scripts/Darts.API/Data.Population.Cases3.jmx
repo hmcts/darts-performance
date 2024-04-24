@@ -634,7 +634,7 @@
             <stringProp name="-1241140545">ex_accessTokenTrans</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="545888722">
+            <collectionProp name="688595314">
               <stringProp name="-917173624">${__RandomString(15,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
@@ -651,8 +651,8 @@
               <stringProp name="49">1</stringProp>
               <stringProp name="-1198056235">${__Random(1,4,)}</stringProp>
               <stringProp name="1636120152">${__Random(1,1000,)}</stringProp>
-              <stringProp name="1633637894">eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJpZHAiOiJMb2NhbEFjY291bnQiLCJvaWQiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJzdWIiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJnaXZlbl9uYW1lIjoiRGFydHMgR2xvYmFsIiwiZmFtaWx5X25hbWUiOiJUZXN0IFVzZXIiLCJ0ZnAiOiJCMkNfMV9yb3BjX2RhcnRzX3NpZ25pbiIsInNjcCI6IkZ1bmN0aW9uYWwuVGVzdCIsImF6cCI6Ijg1MTE4ZWUyLTY1NDQtNDE4MC1hMTZlLTk5NjE1MzY1ZjIwOSIsInZlciI6IjEuMCIsImlhdCI6MTcxMzQzMzg4OCwiYXVkIjoiODUxMThlZTItNjU0NC00MTgwLWExNmUtOTk2MTUzNjVmMjA5IiwiZXhwIjoxNzEzNDM3NDg4LCJpc3MiOiJodHRwczovL2htY3Rzc3RnZXh0aWQuYjJjbG9naW4uY29tLzhiMTg1ZjhiLTY2NWQtNGJiMy1hZjRhLWFiN2VlNjFiOTMzNC92Mi4wLyIsIm5iZiI6MTcxMzQzMzg4OH0.bIQ6Em5-UUN50Vxhz7SRm0O5t4_a1QusKX7YMFpv-kwFLarXcfWhFpeY2mLukYbHf5Ljp5ZKjqlpenlyOtkeZtdP36M0xU65ucnjPvBg2f7gPacj7GH9rGqeMWZmI2KLx8sUFK6Lg94UPkdE6EdW1Hw88PYsMybDtnaezIoB-h_HAeXb86fzo0cNq9IDCoeMbg4pUqTdUftcnPKP15N2tbe76pbGZ68Jg6gyIY0S9eOGcvLSAekQB6A3oOAukVdcOxMoaWiQNSKNIV3vwh6vOil5U8zxkVTIODXW4Ny19BIhY4ArlnZe7008zEW4ef8MEs5ZG-O5fmkl3zEWET0Qfw</stringProp>
-              <stringProp name="1633637894">eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJpZHAiOiJMb2NhbEFjY291bnQiLCJvaWQiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJzdWIiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJnaXZlbl9uYW1lIjoiRGFydHMgR2xvYmFsIiwiZmFtaWx5X25hbWUiOiJUZXN0IFVzZXIiLCJ0ZnAiOiJCMkNfMV9yb3BjX2RhcnRzX3NpZ25pbiIsInNjcCI6IkZ1bmN0aW9uYWwuVGVzdCIsImF6cCI6Ijg1MTE4ZWUyLTY1NDQtNDE4MC1hMTZlLTk5NjE1MzY1ZjIwOSIsInZlciI6IjEuMCIsImlhdCI6MTcxMzQzMzg4OCwiYXVkIjoiODUxMThlZTItNjU0NC00MTgwLWExNmUtOTk2MTUzNjVmMjA5IiwiZXhwIjoxNzEzNDM3NDg4LCJpc3MiOiJodHRwczovL2htY3Rzc3RnZXh0aWQuYjJjbG9naW4uY29tLzhiMTg1ZjhiLTY2NWQtNGJiMy1hZjRhLWFiN2VlNjFiOTMzNC92Mi4wLyIsIm5iZiI6MTcxMzQzMzg4OH0.bIQ6Em5-UUN50Vxhz7SRm0O5t4_a1QusKX7YMFpv-kwFLarXcfWhFpeY2mLukYbHf5Ljp5ZKjqlpenlyOtkeZtdP36M0xU65ucnjPvBg2f7gPacj7GH9rGqeMWZmI2KLx8sUFK6Lg94UPkdE6EdW1Hw88PYsMybDtnaezIoB-h_HAeXb86fzo0cNq9IDCoeMbg4pUqTdUftcnPKP15N2tbe76pbGZ68Jg6gyIY0S9eOGcvLSAekQB6A3oOAukVdcOxMoaWiQNSKNIV3vwh6vOil5U8zxkVTIODXW4Ny19BIhY4ArlnZe7008zEW4ef8MEs5ZG-O5fmkl3zEWET0Qfw</stringProp>
+              <stringProp name="832791107">eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJpZHAiOiJMb2NhbEFjY291bnQiLCJvaWQiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJzdWIiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJnaXZlbl9uYW1lIjoiRGFydHMgR2xvYmFsIiwiZmFtaWx5X25hbWUiOiJUZXN0IFVzZXIiLCJ0ZnAiOiJCMkNfMV9yb3BjX2RhcnRzX3NpZ25pbiIsInNjcCI6IkZ1bmN0aW9uYWwuVGVzdCIsImF6cCI6Ijg1MTE4ZWUyLTY1NDQtNDE4MC1hMTZlLTk5NjE1MzY1ZjIwOSIsInZlciI6IjEuMCIsImlhdCI6MTcxMzk0ODgyNiwiYXVkIjoiODUxMThlZTItNjU0NC00MTgwLWExNmUtOTk2MTUzNjVmMjA5IiwiZXhwIjoxNzEzOTUyNDI2LCJpc3MiOiJodHRwczovL2htY3Rzc3RnZXh0aWQuYjJjbG9naW4uY29tLzhiMTg1ZjhiLTY2NWQtNGJiMy1hZjRhLWFiN2VlNjFiOTMzNC92Mi4wLyIsIm5iZiI6MTcxMzk0ODgyNn0.OSvcywUy5Tmd818zOS1av3ASZV1skG9-UzNX76y3ZlqgOMjLsLywnqlUL4_DtbjGaQAiymirn1-jh7gNloDmUyMSK9lZNaYIVEIWomIJXA-db3vyuedrdnr21n8MuNTAMP0meAYd-QIdiLG940xaTYzngb7HoXHEZE_5wxqrPTAJgjZ3LHZ4SYd_MppfnUVz9Mi3PhIllatGPIb1GGLk8qZ2Z61bpHlsCnFWexXobVAhrYN1FRyGAcKoBP8OK7naJTh6DhmRmK2MQPr-XjW0DxxmJXpCqEKsH_tAFU0r3q9UQeAtqKPqj9rYJeHN922YsW2JnBBRaGT6EyRujcJyiA</stringProp>
+              <stringProp name="832791107">eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJpZHAiOiJMb2NhbEFjY291bnQiLCJvaWQiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJzdWIiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJnaXZlbl9uYW1lIjoiRGFydHMgR2xvYmFsIiwiZmFtaWx5X25hbWUiOiJUZXN0IFVzZXIiLCJ0ZnAiOiJCMkNfMV9yb3BjX2RhcnRzX3NpZ25pbiIsInNjcCI6IkZ1bmN0aW9uYWwuVGVzdCIsImF6cCI6Ijg1MTE4ZWUyLTY1NDQtNDE4MC1hMTZlLTk5NjE1MzY1ZjIwOSIsInZlciI6IjEuMCIsImlhdCI6MTcxMzk0ODgyNiwiYXVkIjoiODUxMThlZTItNjU0NC00MTgwLWExNmUtOTk2MTUzNjVmMjA5IiwiZXhwIjoxNzEzOTUyNDI2LCJpc3MiOiJodHRwczovL2htY3Rzc3RnZXh0aWQuYjJjbG9naW4uY29tLzhiMTg1ZjhiLTY2NWQtNGJiMy1hZjRhLWFiN2VlNjFiOTMzNC92Mi4wLyIsIm5iZiI6MTcxMzk0ODgyNn0.OSvcywUy5Tmd818zOS1av3ASZV1skG9-UzNX76y3ZlqgOMjLsLywnqlUL4_DtbjGaQAiymirn1-jh7gNloDmUyMSK9lZNaYIVEIWomIJXA-db3vyuedrdnr21n8MuNTAMP0meAYd-QIdiLG940xaTYzngb7HoXHEZE_5wxqrPTAJgjZ3LHZ4SYd_MppfnUVz9Mi3PhIllatGPIb1GGLk8qZ2Z61bpHlsCnFWexXobVAhrYN1FRyGAcKoBP8OK7naJTh6DhmRmK2MQPr-XjW0DxxmJXpCqEKsH_tAFU0r3q9UQeAtqKPqj9rYJeHN922YsW2JnBBRaGT6EyRujcJyiA</stringProp>
             </collectionProp>
           </collectionProp>
           <boolProp name="UserParameters.per_iteration">true</boolProp>
@@ -1065,7 +1065,8 @@ String currentUsername = vars.get(&quot;USERNAME&quot;);
     &quot;case_total_sentence&quot;: &quot;1&quot;&#xd;
   },&#xd;
   &quot;start_time&quot;: &quot;${start_time}&quot;,&#xd;
-  &quot;end_time&quot;: &quot;${end_time}&quot;&#xd;
+  &quot;end_time&quot;: &quot;${end_time}&quot;,&#xd;
+  &quot;is_mid_tier&quot;: false&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
