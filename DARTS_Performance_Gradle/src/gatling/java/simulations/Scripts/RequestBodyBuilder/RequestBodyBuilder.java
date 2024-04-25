@@ -2,9 +2,11 @@ package simulations.Scripts.RequestBodyBuilder;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.time.LocalDate;
 
+//import uk.gov.hmcts.juror.support.generation.generators.value.LocalTimeGeneratorImpl;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.NumberGenerator;
 import simulations.Scripts.Utilities.RandomDateGenerator;
@@ -60,6 +62,7 @@ public class RequestBodyBuilder {
     }
 
     public static String buildSearchCaseRequestBody(Session session) {
+        Optional.ofNullable(session.get("caseNumber")).orElse("null");
         String caseNumber = session.get("caseNumber") != null ? "\"" + session.get("caseNumber").toString() + "\"" : "null";
         String courtHouseName = session.get("CourtHouseName") != null ? "\"" + session.get("CourtHouseName").toString() + "\"" : "null";       
         String courtRoom = session.get("CourtRoom") != null ? "\"" + session.get("CourtRoom").toString() + "\"" : "null";        
@@ -72,7 +75,8 @@ public class RequestBodyBuilder {
         // Generate random dates using RandomDateGenerator
         LocalDate randomDateFrom = RandomDateGenerator.getRandomDate(LocalDate.of(2017, 3, 1), LocalDate.of(2017, 3, 15));
         LocalDate randomDateTo = RandomDateGenerator.getRandomDate(randomDateFrom, LocalDate.of(2024, 3, 15));
-        
+        // new LocalTimeGeneratorImpl(LocalDate.of(2017, 3, 1), LocalDate.of(2017, 3, 15)).generate();
+         
         // Ensure dates don't go past the current date
         LocalDate currentDate = LocalDate.now();
         randomDateFrom = randomDateFrom.isAfter(currentDate) ? currentDate : randomDateFrom;

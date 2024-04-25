@@ -17,3 +17,8 @@ gatling {
 repositories {
   mavenCentral()
 }
+
+// dependencies {
+
+//     gatling 'com.github.hmcts:juror-generation-support-library:1.5.3'
+// }
