@@ -242,7 +242,7 @@ public class SOAPRequestBuilder {
         "    </s:Header>\n" +
         "  <s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n" +
         "    <ns2:addCase xmlns:ns2=\"http://com.synapps.mojdarts.service.com\">\n" +
-        "      <document><![CDATA[<case type=\"1\" id=\"U20231129-1733\"><courthouse>Bristol</courthouse><courtroom>1</courtroom><defendants><defendant>U20221006-143541</defendant><defendant>U20221007-143542</defendant></defendants><judges><judge>MrJudge</judge><judge>Mrs Judge</judge></judges><prosecutors><prosecutor>MrProsecutor</prosecutor><prosecutor>Mrs Prosecutor</prosecutor></prosecutors></case>]]></document>\n" +
+        "      <document><![CDATA[<case type=\"1\" id=\"U20231129-1733\"><courthouse>%s</courthouse><courtroom>%s</courtroom><defendants><defendant>%s</defendant><defendant>%s</defendant></defendants><judges><judge>%s</judge><judge>Mrs Judge</judge></judges><prosecutors><prosecutor>MrProsecutor</prosecutor><prosecutor>Mrs Prosecutor</prosecutor></prosecutors></case>]]></document>\n" +
         "    </ns2:addCase>\n" +
         "  </s:Body>\n" +
         "</s:Envelope>",

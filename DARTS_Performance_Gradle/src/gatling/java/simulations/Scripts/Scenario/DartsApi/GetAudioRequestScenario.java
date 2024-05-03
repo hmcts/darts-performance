@@ -2,6 +2,8 @@ package simulations.Scripts.Scenario.DartsApi;
 
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.*;
+
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -9,8 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class GetAudioRequestScenario {
 
-   // private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();    
-    private static final FeederBuilder<String> feeder = csv(AppConfig.TRANSFORMED_MEDIA_FILE_PATH).random();
+    private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();    
     private static final boolean expired = ThreadLocalRandom.current().nextBoolean();
 
     private GetAudioRequestScenario() {}
@@ -20,7 +21,7 @@ public final class GetAudioRequestScenario {
                 .exec(http("DARTS - Api - AudioRequest:GET")
                         .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/v2?expired=true") //+ expired + "")
                         .headers(Headers.addAdditionalHeader(Headers.AuthorizationHeaders, true, false))
-                        //.check(Feeders.saveTransformedMediaId())
+                        .check(Feeders.saveTransformedMediaId())
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))
             ));

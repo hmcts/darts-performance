@@ -15,7 +15,7 @@
           </elementProp>
           <elementProp name="BASE_URL" elementType="Argument">
             <stringProp name="Argument.name">BASE_URL</stringProp>
-            <stringProp name="Argument.value">${__P(BASE_URL, darts-api.test.platform.hmcts.net)}</stringProp>
+            <stringProp name="Argument.value">${__P(BASE_URL, darts-api.staging.platform.hmcts.net)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="BASE_URL_LOGIN" elementType="Argument">
@@ -35,7 +35,7 @@
           </elementProp>
           <elementProp name="USER_COUNT" elementType="Argument">
             <stringProp name="Argument.name">USER_COUNT</stringProp>
-            <stringProp name="Argument.value">${__P(USER_COUNT, 10)}</stringProp>
+            <stringProp name="Argument.value">${__P(USER_COUNT, 1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="USER_RAMP_TIME" elementType="Argument">
@@ -971,8 +971,8 @@ values  (&apos;${ex_hearingsIds_1}&apos;, currval(&apos;darts.med_seq&apos;));</
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Darts - Api - POST - Audio - 336mb" enabled="true">
               <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
                 <collectionProp name="HTTPFileArgs.files">
-                  <elementProp name="${TEST_DATA}${FILE_TO_UPLOAD336mb}" elementType="HTTPFileArg">
-                    <stringProp name="File.path">${TEST_DATA}${FILE_TO_UPLOAD336mb}</stringProp>
+                  <elementProp name="${TEST_DATA}${FILE_TO_UPLOAD}" elementType="HTTPFileArg">
+                    <stringProp name="File.path">${TEST_DATA}${FILE_TO_UPLOAD}</stringProp>
                     <stringProp name="File.paramname">file</stringProp>
                     <stringProp name="File.mimetype">audio/mpeg</stringProp>
                   </elementProp>
@@ -983,7 +983,7 @@ values  (&apos;${ex_hearingsIds_1}&apos;, currval(&apos;darts.med_seq&apos;));</
                   <elementProp name="metadata" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">true</boolProp>
                     <stringProp name="Argument.name">metadata</stringProp>
-                    <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_audiodates}&quot;,    &quot;ended_at&quot;: &quot;${v_audiodates1hour}&quot;,    &quot;channel&quot;:1,    &quot;total_channels&quot;: 4,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;24h.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse_A52A0v84lC&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom_teeamkmojfd&quot;,    &quot;file_size&quot;: 335.919,    &quot;checksum&quot;: &quot;K/g+CvVeLAgEIKXlKaJ34Q==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
+                    <stringProp name="Argument.value"> {    &quot;started_at&quot;: &quot;${v_audiodates}&quot;,    &quot;ended_at&quot;: &quot;${v_audiodates1hour}&quot;,    &quot;channel&quot;:1,    &quot;total_channels&quot;: 4,    &quot;format&quot;: &quot;mp2&quot;,    &quot;filename&quot;: &quot;sample.mp2&quot;,    &quot;courthouse&quot;: &quot;PerfCourtHouse01&quot;,    &quot;courtroom&quot;: &quot;PerfCourtroom01&quot;,    &quot;file_size&quot;: 335.919,    &quot;checksum&quot;: &quot;K/g+CvVeLAgEIKXlKaJ34Q==&quot;,    &quot;cases&quot;: [      &quot;PerfCase_${v_randomCaseName}&quot;    ]  }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                     <stringProp name="HTTPArgument.content_type">application/json</stringProp>
