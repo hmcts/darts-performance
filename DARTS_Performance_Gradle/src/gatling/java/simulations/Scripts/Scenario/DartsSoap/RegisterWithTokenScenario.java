@@ -27,6 +27,8 @@ public final class RegisterWithTokenScenario {
                         .body(StringBody(session -> session.get("xmlPayload")))
                         .check(status().is(200))
                         .check(Feeders.saveRegistrationToken()) 
-            ));
+                        
+                        )
+            );
     } 
 }

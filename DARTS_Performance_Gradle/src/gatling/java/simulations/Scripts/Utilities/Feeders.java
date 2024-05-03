@@ -102,7 +102,7 @@ public class Feeders {
     }
    
     public static CheckBuilder.Final saveTransformedMediaId() {
-        return CoreDsl.jsonPath("$.transformed_media_details[*].transformed_media_id").findAll().saveAs("getTransformedMediaId");
+        return CoreDsl.jsonPath("$.transformed_media_details[*].transformed_media_id").findRandom().saveAs("getTransformedMediaId");
     }
 
     public static CheckBuilder.Final saveRegistrationToken() {

@@ -24,8 +24,19 @@ public final class AddDocumentDailyListTokenScenario {
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
                         .check(status().is(200))
+                        .check(xpath("//messageId/text()").find().optional().saveAs("messageId"))
                         .check(xpath("//return/code").saveAs("statusCode"))
                         .check(xpath("//return/message").saveAs("message"))
-            ));
+                )
+                .exec(session -> {
+                    Object messageId = session.get("messageId");
+                    if (messageId != null) {
+                        System.out.println("messageId: " + messageId.toString());
+                    } else {
+                        System.out.println("No value for messageId.");
+                    }
+                    return session;
+                })
+            );
     } 
 }
