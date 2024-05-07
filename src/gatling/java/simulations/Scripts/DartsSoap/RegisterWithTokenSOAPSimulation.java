@@ -2,7 +2,7 @@ package simulations.Scripts.DartsSoap;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenSoapScenario;
+import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -14,7 +14,7 @@ public class RegisterWithTokenSOAPSimulation extends Simulation {
   FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
   {
     HttpProtocolBuilder httpProtocol = http
-      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT).httpsPort(AppConfig.PROXY_PORT))
+      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
       .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
       .inferHtmlResources()
       .acceptEncodingHeader("gzip,deflate")
@@ -24,7 +24,7 @@ public class RegisterWithTokenSOAPSimulation extends Simulation {
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - RegisterWithToken")
         .feed(feeder)    
         .repeat(1)    
-        .on(exec(RegisterWithTokenSoapScenario.RegisterWithTokenSoap().feed(feeder))    
+        .on(exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_USERNAME.getUrl()))    
         );    
   
     setUp(

@@ -2,12 +2,17 @@ package simulations.Scripts.RequestBodyBuilder;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
+import java.time.LocalDate;
 
+//import uk.gov.hmcts.juror.support.generation.generators.value.LocalTimeGeneratorImpl;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.NumberGenerator;
+import simulations.Scripts.Utilities.RandomDateGenerator;
 import simulations.Scripts.Utilities.RandomStringGenerator;
 import io.gatling.javaapi.core.Session;
+import scala.util.Random;
 
 public class RequestBodyBuilder {
 
@@ -19,7 +24,7 @@ public class RequestBodyBuilder {
     private static final int DOWNLOAD_PERCENTAGE = 70; //% chance
     private static final int PLAYBACK_PERCENTAGE = 30; //% chance
 
-    public static String buildAudioRequestBody(String hearingId, String userId, LocalDateTime startTime, LocalDateTime endTime) {
+    public static String buildPOSTAudioRequestBody(String hearingId, String userId, LocalDateTime startTime, LocalDateTime endTime) {
         String startTimeFormatted = formatTime(startTime);
         String endTimeFormatted = formatTime(endTime);
         String requestType = getRandomRequestType();
@@ -57,35 +62,85 @@ public class RequestBodyBuilder {
     }
 
     public static String buildSearchCaseRequestBody(Session session) {
-        String caseNumber = session.get("caseNumber").toString(); 
-
-        return String.format("{\"case_number\": \"%s\", " +
-        "\"courthouse\": null, " +
-        "\"courtroom\": null, " +
-        "\"judge_name\": null, " +
-        "\"defendant_name\": null, " +
-        "\"event_text_contains\": null, " +
-        "\"date_from\": null, " +
-        "\"date_to\": null}",
-        caseNumber);
+        Optional.ofNullable(session.get("caseNumber")).orElse("null");
+        String caseNumber = session.get("caseNumber") != null ? "\"" + session.get("caseNumber").toString() + "\"" : "null";
+        String courtHouseName = session.get("CourtHouseName") != null ? "\"" + session.get("CourtHouseName").toString() + "\"" : "null";       
+        String courtRoom = session.get("CourtRoom") != null ? "\"" + session.get("CourtRoom").toString() + "\"" : "null";        
+        String judgeName = session.get("JudgeName") != null ? "\"" + session.get("JudgeName").toString() + "\"" : "null";
+        String defendantName = session.get("DefendantName") != null ? "\"" + session.get("DefendantName").toString() + "\"" : "null";
+        String eventTextContains = session.get("EventTextContains") != null ? "\"" + session.get("EventTextContains").toString() + "\"" : "null";
+        String dateFrom = session.get("DateFrom") != null ? "\"" + session.get("DateFrom").toString() + "\"" : "null";
+        String dateTo = session.get("DateTo") != null ? "\"" + session.get("DateTo").toString() + "\"" : "null";
+        
+        // Generate random dates using RandomDateGenerator
+        LocalDate randomDateFrom = RandomDateGenerator.getRandomDate(LocalDate.of(2017, 3, 1), LocalDate.of(2017, 3, 15));
+        LocalDate randomDateTo = RandomDateGenerator.getRandomDate(randomDateFrom, LocalDate.of(2024, 3, 15));
+        // new LocalTimeGeneratorImpl(LocalDate.of(2017, 3, 1), LocalDate.of(2017, 3, 15)).generate();
+         
+        // Ensure dates don't go past the current date
+        LocalDate currentDate = LocalDate.now();
+        randomDateFrom = randomDateFrom.isAfter(currentDate) ? currentDate : randomDateFrom;
+        randomDateTo = randomDateTo.isAfter(currentDate) ? currentDate : randomDateTo;
+    
+        // Format dates as strings
+        String formattedDateFrom = "\"" + randomDateFrom.toString() + "\"";
+        String formattedDateTo = "\"" + randomDateTo.toString() + "\"";
+    
+    
+        return String.format("{\"case_number\":%s," +
+        "\"courthouse\":%s," +
+        "\"courtroom\":%s," +
+        "\"judge_name\":%s," +
+        "\"defendant_name\":%s," +
+        "\"event_text_contains\":%s," +
+        "\"date_from\":%s," +
+        "\"date_to\":%s}",
+        caseNumber, courtHouseName, courtRoom, judgeName, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
     }
-
-    public static String buildAudioRequestBody(Session session) {
+    
+    public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor, Object requestType) {
 
         LocalDateTime startTime = LocalDateTime.now();
         LocalDateTime endTime = startTime.plusHours(3);
         String startTimeFormatted = formatTime(startTime);
-        String endTimeFormatted = formatTime(endTime);
-        String requestType = getRandomRequestType();
-        String getHearingId = session.get("getHearingId").toString(); 
-        String requestor = "test";
+        String endTimeFormatted = formatTime(endTime);        
+        System.out.println("requestType for RequestBody: " + requestType);
 
-        return String.format("{\"hearing_id\": %d, " +
-        "\"requestor\": %d, " +
+
+        return String.format("{\"hearing_id\": %s, " +
+        "\"requestor\": %s, " +
         "\"start_time\": \"%s\", " +
         "\"end_time\": \"%s\", " +
         "\"request_type\": \"%s\"}",
-        getHearingId, requestor, startTimeFormatted, endTimeFormatted, requestType);
+        getHearingId, requestor, startTimeFormatted, endTimeFormatted, requestType.toString().toUpperCase());
+    }
+
+    public static String buildTranscriptionApprovalRequestBody(Session session) {
+
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String randomComment = randomStringGenerator.generateRandomString(10);
+    
+        // Define variables for Approve
+        String approve = "{\"transcription_status_id\": \"3\"}";
+    
+        // Define variables for Reject
+        String reject = String.format("{\"transcription_status_id\": \"4\", " +
+                "\"workflow_comment\": \"%s\"}", randomComment);
+    
+        // Create a random number generator
+        Random random = new Random();
+    
+        // Generate a random number between 0 and 1
+        // If the generated number is less than 0.5, select Approve, otherwise select Reject
+        String selectedAction;
+        if (random.nextDouble() < 0.5) {
+            selectedAction = approve;
+        } else {
+            selectedAction = reject;
+        }
+    
+        // Return the selected string
+        return selectedAction;
     }
 
     public static String buildPostAudioApiRequest(Session session) {
@@ -132,7 +187,7 @@ public class RequestBodyBuilder {
                 "  }," +
                 "  \"entries\": [" +
                 "    {" +
-                "      \"name\": \"https://hmctsstgextid.b2clogin.com/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/oauth2/v2.0/authorize?client_id=363c11cb-48b9-44bf-9d06-9a3973f6f413&redirect_uri=https%3A%2F%2Fdarts.staging.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\"," +
+                "      \"name\": \"https://hmctsstgextid.b2clogin.com/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/oauth2/v2.0/authorize?client_id=363c11cb-48b9-44bf-9d06-9a3973f6f413&redirect_uri=https%3A%2F%2Fdarts.test.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\"," +
                 "      \"entryType\": \"navigation\"," +
                 "      \"startTime\": 0," +
                 "      \"duration\": 1171.7000000029802," +
@@ -178,7 +233,7 @@ public class RequestBodyBuilder {
                 "      \"duration\": 0" +
                 "    }," +
                 "    {" +
-                "      \"name\": \"https://darts.staging.apps.hmcts.net/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en\"," +
+                "      \"name\": \"https://darts.test.apps.hmcts.net/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en\"," +
                 "      \"entryType\": \"resource\"," +
                 "      \"startTime\": 1132," +
                 "      \"duration\": 411.90000000596046," +
@@ -264,7 +319,7 @@ public class RequestBodyBuilder {
             "   }," +
             "   \"entries\": [" +
             "       {" +
-            "           \"name\": \"" + AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/" + AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "?client_id=" + AppConfig.EnvironmentURL.AZURE_AD_B2C_CLIENT_ID.getUrl() + "&redirect_uri=https%3A%2F%2Fdarts.staging.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\"," +
+            "           \"name\": \"" + AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/" + AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "?client_id=" + AppConfig.EnvironmentURL.AZURE_AD_B2C_CLIENT_ID.getUrl() + "&redirect_uri=https%3A%2F%2Fdarts.test.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\"," +
             "           \"entryType\": \"navigation\"," +
             "           \"startTime\": 0," +
             "           \"duration\": 2919.9000000953674," +

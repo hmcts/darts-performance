@@ -1,0 +1,9 @@
+RUN	simulations.Scripts.DartsApi.CourthousePostSimulation	courthousepostsimulation	1715091313386	9	3.10.4
+USER	Courthouse:POST	START	1715091314819
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1715091314815	1715091324833	KO	i.n.h.s.SslHandshakeTimeoutException: handshake timed out after 10000ms
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1715091314789	1715091324858	10018	KO
+ERROR	DARTS - Api - CourtHouse:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1715091324870
+GROUP	Courthouse Api Request Group	1715091324861	1715091324871	0	KO
+ERROR	DARTS - Api - CourtHouse:Post: Failed to build request: No attribute named 'bearerToken' is defined 	1715091324874
+GROUP	Courthouse Api Request Group	1715091324872	1715091324875	0	KO
+USER	Courthouse:POST	END	1715091324879
