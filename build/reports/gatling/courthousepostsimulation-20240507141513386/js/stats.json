@@ -1,0 +1,255 @@
+{
+  "type": "GROUP",
+"name": "All Requests",
+"path": "",
+"pathFormatted": "group_missing-name--1146707516",
+"stats": {
+    "name": "All Requests",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 0,
+        "ko": 1
+    },
+    "minResponseTime": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "maxResponseTime": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "meanResponseTime": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "percentiles2": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "percentiles3": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "percentiles4": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 1,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.09090909090909091,
+        "ok": 0,
+        "ko": 0.09090909090909091
+    }
+},
+"contents": {
+"group_b2c-1-ropc-dart--1858400483": {
+          "type": "GROUP",
+"name": "B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET",
+"path": "B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET",
+"pathFormatted": "group_b2c-1-ropc-dart--1858400483",
+"stats": {
+    "name": "B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 0,
+        "ko": 1
+    },
+    "minResponseTime": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "maxResponseTime": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "meanResponseTime": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "percentiles2": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "percentiles3": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "percentiles4": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 1,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.09090909090909091,
+        "ok": 0,
+        "ko": 0.09090909090909091
+    }
+},
+"contents": {
+"req_darts---api---t-682788445": {
+        "type": "REQUEST",
+        "name": "DARTS - Api - Token:GET",
+"path": "B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET / DARTS - Api - Token:GET",
+"pathFormatted": "req_b2c-1-ropc-dart--1802363351",
+"stats": {
+    "name": "DARTS - Api - Token:GET",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 0,
+        "ko": 1
+    },
+    "minResponseTime": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "maxResponseTime": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "meanResponseTime": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "percentiles2": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "percentiles3": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "percentiles4": {
+        "total": 10018,
+        "ok": 0,
+        "ko": 10018
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 1,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.09090909090909091,
+        "ok": 0,
+        "ko": 0.09090909090909091
+    }
+}
+    }
+}
+
+     }
+}
+
+}

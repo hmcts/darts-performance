@@ -27,7 +27,7 @@ public final class PostAudioRequestScenario {
                   .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests")
                   .headers(Headers.AuthorizationHeaders)
                   .body(StringBody(session -> 
-                      RequestBodyBuilder.buildAudioRequestBody(
+                      RequestBodyBuilder.buildPOSTAudioRequestBody(
                           session.get("hea_id"),
                           session.get("usr_id"),
                           session.get("startTime"),
