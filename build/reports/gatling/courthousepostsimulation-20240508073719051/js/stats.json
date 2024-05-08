@@ -1,0 +1,423 @@
+{
+  "type": "GROUP",
+"name": "All Requests",
+"path": "",
+"pathFormatted": "group_missing-name--1146707516",
+"stats": {
+    "name": "All Requests",
+    "numberOfRequests": {
+        "total": 135,
+        "ok": 1,
+        "ko": 134
+    },
+    "minResponseTime": {
+        "total": 75,
+        "ok": 613,
+        "ko": 75
+    },
+    "maxResponseTime": {
+        "total": 613,
+        "ok": 613,
+        "ko": 592
+    },
+    "meanResponseTime": {
+        "total": 134,
+        "ok": 613,
+        "ko": 130
+    },
+    "standardDeviation": {
+        "total": 77,
+        "ok": 0,
+        "ko": 65
+    },
+    "percentiles1": {
+        "total": 116,
+        "ok": 613,
+        "ko": 116
+    },
+    "percentiles2": {
+        "total": 148,
+        "ok": 613,
+        "ko": 147
+    },
+    "percentiles3": {
+        "total": 182,
+        "ok": 613,
+        "ko": 178
+    },
+    "percentiles4": {
+        "total": 535,
+        "ok": 613,
+        "ko": 408
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 1,
+    "percentage": 1
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 134,
+    "percentage": 99
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 6.75,
+        "ok": 0.05,
+        "ko": 6.7
+    }
+},
+"contents": {
+"group_b2c-1-ropc-dart--1858400483": {
+          "type": "GROUP",
+"name": "B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET",
+"path": "B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET",
+"pathFormatted": "group_b2c-1-ropc-dart--1858400483",
+"stats": {
+    "name": "B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 1,
+        "ko": 0
+    },
+    "minResponseTime": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "maxResponseTime": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "meanResponseTime": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "percentiles2": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "percentiles3": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "percentiles4": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 1,
+    "percentage": 100
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 0,
+    "percentage": 0
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.05,
+        "ok": 0.05,
+        "ko": 0
+    }
+},
+"contents": {
+"req_darts---api---t-682788445": {
+        "type": "REQUEST",
+        "name": "DARTS - Api - Token:GET",
+"path": "B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET / DARTS - Api - Token:GET",
+"pathFormatted": "req_b2c-1-ropc-dart--1802363351",
+"stats": {
+    "name": "DARTS - Api - Token:GET",
+    "numberOfRequests": {
+        "total": 1,
+        "ok": 1,
+        "ko": 0
+    },
+    "minResponseTime": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "maxResponseTime": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "meanResponseTime": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "standardDeviation": {
+        "total": 0,
+        "ok": 0,
+        "ko": 0
+    },
+    "percentiles1": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "percentiles2": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "percentiles3": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "percentiles4": {
+        "total": 613,
+        "ok": 613,
+        "ko": 0
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 1,
+    "percentage": 100
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 0,
+    "percentage": 0
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 0.05,
+        "ok": 0.05,
+        "ko": 0
+    }
+}
+    }
+}
+
+     },"group_courthouse-api--822527741": {
+          "type": "GROUP",
+"name": "Courthouse Api Request Group",
+"path": "Courthouse Api Request Group",
+"pathFormatted": "group_courthouse-api--822527741",
+"stats": {
+    "name": "Courthouse Api Request Group",
+    "numberOfRequests": {
+        "total": 134,
+        "ok": 0,
+        "ko": 134
+    },
+    "minResponseTime": {
+        "total": 75,
+        "ok": 0,
+        "ko": 75
+    },
+    "maxResponseTime": {
+        "total": 592,
+        "ok": 0,
+        "ko": 592
+    },
+    "meanResponseTime": {
+        "total": 130,
+        "ok": 0,
+        "ko": 130
+    },
+    "standardDeviation": {
+        "total": 65,
+        "ok": 0,
+        "ko": 65
+    },
+    "percentiles1": {
+        "total": 116,
+        "ok": 0,
+        "ko": 116
+    },
+    "percentiles2": {
+        "total": 147,
+        "ok": 0,
+        "ko": 147
+    },
+    "percentiles3": {
+        "total": 178,
+        "ok": 0,
+        "ko": 178
+    },
+    "percentiles4": {
+        "total": 408,
+        "ok": 0,
+        "ko": 408
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 134,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 6.7,
+        "ok": 0,
+        "ko": 6.7
+    }
+},
+"contents": {
+"req_darts---api---c-1766279917": {
+        "type": "REQUEST",
+        "name": "DARTS - Api - CourtHouse:Post",
+"path": "Courthouse Api Request Group / DARTS - Api - CourtHouse:Post",
+"pathFormatted": "req_courthouse-api--776278425",
+"stats": {
+    "name": "DARTS - Api - CourtHouse:Post",
+    "numberOfRequests": {
+        "total": 134,
+        "ok": 0,
+        "ko": 134
+    },
+    "minResponseTime": {
+        "total": 75,
+        "ok": 0,
+        "ko": 75
+    },
+    "maxResponseTime": {
+        "total": 592,
+        "ok": 0,
+        "ko": 592
+    },
+    "meanResponseTime": {
+        "total": 130,
+        "ok": 0,
+        "ko": 130
+    },
+    "standardDeviation": {
+        "total": 65,
+        "ok": 0,
+        "ko": 65
+    },
+    "percentiles1": {
+        "total": 116,
+        "ok": 0,
+        "ko": 116
+    },
+    "percentiles2": {
+        "total": 147,
+        "ok": 0,
+        "ko": 147
+    },
+    "percentiles3": {
+        "total": 178,
+        "ok": 0,
+        "ko": 178
+    },
+    "percentiles4": {
+        "total": 408,
+        "ok": 0,
+        "ko": 408
+    },
+    "group1": {
+    "name": "t < 800 ms",
+    "htmlName": "t < 800 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group2": {
+    "name": "800 ms <= t < 1200 ms",
+    "htmlName": "t >= 800 ms <br> t < 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group3": {
+    "name": "t >= 1200 ms",
+    "htmlName": "t >= 1200 ms",
+    "count": 0,
+    "percentage": 0
+},
+    "group4": {
+    "name": "failed",
+    "htmlName": "failed",
+    "count": 134,
+    "percentage": 100
+},
+    "meanNumberOfRequestsPerSecond": {
+        "total": 6.7,
+        "ok": 0,
+        "ko": 6.7
+    }
+}
+    }
+}
+
+     }
+}
+
+}

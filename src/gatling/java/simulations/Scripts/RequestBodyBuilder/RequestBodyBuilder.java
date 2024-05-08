@@ -407,9 +407,9 @@ public class RequestBodyBuilder {
         String courtHouseName = randomStringGenerator.generateRandomString(10);
 
         return String.format("{\"courthouse_name\": \"PerfCourtHouse_%s\", " +
-        "\"code\": \" "+ generatorCourtHouseCode.generateNextNumber() + "\", " +
-        "\"display_name\": \"PerfCourtHouse_%s\", " +                
-        "\"region_id\": \"0\"}",
+        // "\"code\": \" "+ generatorCourtHouseCode.generateNextNumber() + "\", " +
+        "\"display_name\": \"PerfCourtHouse_%s\"}",                
+        // "\"region_id\": \"0\"}",
         courtHouseName, courtHouseName);
     }
 }

@@ -9,15 +9,12 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
 public final class PostCourthouseScenario {
-    private static final String AUDIO_REQUEST_FILE_PATH = AppConfig.AUDIO_REQUEST_POST_FILE_PATH;
-    private static final FeederBuilder<String> feeder = csv(AUDIO_REQUEST_FILE_PATH).random();
 
     private PostCourthouseScenario() {}
 
     public static ChainBuilder CourthousePost() {
     return group("Courthouse Api Request Group")
-            .on(exec(feed(feeder))
-                .exec(session -> {
+            .on(exec(session -> {
                     String xmlPayload = RequestBodyBuilder.buildCourtHousePostBody(session);
 
                     System.out.println("Code xmlPayload: " + xmlPayload);
@@ -27,7 +24,7 @@ public final class PostCourthouseScenario {
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - Api - CourtHouse:Post")
-                        .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/courthouses")
+                        .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/courthouses")
                         .headers(Headers.CourthouseHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
                         .check(status().is(200))
