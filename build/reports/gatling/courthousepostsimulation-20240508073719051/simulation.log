@@ -1,0 +1,273 @@
+RUN	simulations.Scripts.DartsApi.CourthousePostSimulation	courthousepostsimulation	1715153839051	9	3.10.4
+USER	Courthouse:POST	START	1715153839937
+REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1715153839934	1715153840547	OK	 
+GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1715153839902	1715153840609	613	OK
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153840619	1715153841211	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153840612	1715153841236	592	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153841239	1715153841592	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153841237	1715153841599	353	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153841601	1715153841978	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153841599	1715153841988	377	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153841991	1715153842415	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153841989	1715153842425	424	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153842429	1715153842558	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153842426	1715153842565	129	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153842567	1715153842688	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153842565	1715153842694	121	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153842698	1715153842838	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153842694	1715153842845	140	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153842847	1715153842932	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153842845	1715153842938	85	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153842940	1715153843049	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153842938	1715153843055	109	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153843060	1715153843149	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153843055	1715153843155	89	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153843158	1715153843305	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153843155	1715153843311	147	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153843314	1715153843412	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153843311	1715153843418	98	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153843420	1715153843571	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153843418	1715153843576	151	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153843579	1715153843739	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153843576	1715153843745	160	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153843747	1715153843840	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153843745	1715153843846	93	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153843849	1715153844016	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153843847	1715153844022	167	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153844027	1715153844172	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153844023	1715153844178	145	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153844181	1715153844328	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153844178	1715153844333	147	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153844336	1715153844476	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153844333	1715153844482	140	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153844485	1715153844644	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153844482	1715153844650	159	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153844654	1715153844798	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153844651	1715153844803	144	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153844807	1715153844954	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153844804	1715153844960	147	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153844962	1715153845051	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153844960	1715153845056	89	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153845057	1715153845215	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153845056	1715153845227	158	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153845230	1715153845370	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153845227	1715153845375	140	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153845378	1715153845462	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153845375	1715153845468	84	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153845470	1715153845614	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153845468	1715153845619	144	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153845621	1715153845798	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153845619	1715153845809	177	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153845815	1715153845963	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153845810	1715153845968	148	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153845970	1715153846125	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153845968	1715153846130	155	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153846134	1715153846280	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153846131	1715153846289	146	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153846292	1715153846387	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153846289	1715153846394	95	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153846397	1715153846555	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153846394	1715153846560	158	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153846563	1715153846654	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153846561	1715153846661	91	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153846664	1715153846814	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153846661	1715153846819	150	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153846821	1715153847004	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153846819	1715153847013	183	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153847015	1715153847128	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153847013	1715153847150	113	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153847156	1715153847328	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153847151	1715153847334	172	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153847337	1715153847518	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153847334	1715153847532	181	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153847535	1715153847702	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153847532	1715153847732	167	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153847741	1715153847837	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153847732	1715153847845	96	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153847847	1715153847939	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153847845	1715153847949	92	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153847951	1715153848100	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153847949	1715153848113	149	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153848117	1715153848272	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153848113	1715153848280	155	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153848282	1715153848425	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153848280	1715153848431	143	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153848434	1715153848579	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153848432	1715153848585	145	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153848588	1715153848669	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153848585	1715153848679	81	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153848681	1715153848832	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153848679	1715153848849	151	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153848856	1715153848980	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153848850	1715153848985	124	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153848989	1715153849068	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153848986	1715153849074	79	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153849077	1715153849188	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153849074	1715153849194	111	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153849197	1715153849305	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153849195	1715153849313	108	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153849316	1715153849392	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153849313	1715153849397	76	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153849399	1715153849519	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153849397	1715153849526	120	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153849530	1715153849637	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153849526	1715153849644	107	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153849647	1715153849802	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153849644	1715153849808	155	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153849812	1715153849887	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153849809	1715153849893	75	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153849896	1715153849980	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153849893	1715153849984	84	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153849986	1715153850064	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153849984	1715153850069	78	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153850071	1715153850153	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153850069	1715153850158	82	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153850162	1715153850250	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153850158	1715153850254	88	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153850256	1715153850379	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153850255	1715153850384	123	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153850386	1715153850468	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153850384	1715153850472	82	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153850474	1715153850623	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153850472	1715153850630	149	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153850632	1715153850747	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153850630	1715153850753	115	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153850755	1715153850886	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153850754	1715153850897	131	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153850899	1715153851018	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153850897	1715153851024	119	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153851027	1715153851138	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153851024	1715153851141	111	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153851144	1715153851224	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153851141	1715153851230	80	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153851232	1715153851360	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153851230	1715153851367	128	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153851369	1715153851479	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153851367	1715153851485	110	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153851488	1715153851602	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153851486	1715153851608	114	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153851611	1715153851707	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153851608	1715153851713	96	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153851716	1715153851844	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153851714	1715153851848	128	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153851851	1715153851965	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153851849	1715153851971	114	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153851973	1715153852095	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153851971	1715153852101	122	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153852103	1715153852219	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153852101	1715153852223	116	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153852227	1715153852315	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153852223	1715153852321	88	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153852323	1715153852430	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153852321	1715153852436	107	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153852439	1715153852526	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153852436	1715153852532	87	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153852535	1715153852611	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153852532	1715153852615	76	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153852617	1715153852726	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153852616	1715153852731	109	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153852735	1715153852842	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153852732	1715153852848	107	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153852851	1715153852931	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153852848	1715153852935	80	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153852938	1715153853047	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153852936	1715153853053	109	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153853056	1715153853137	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153853054	1715153853143	81	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153853145	1715153853231	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153853143	1715153853237	86	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153853238	1715153853382	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153853237	1715153853388	144	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153853390	1715153853502	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153853388	1715153853508	112	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153853512	1715153853604	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153853508	1715153853609	92	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153853611	1715153853697	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153853609	1715153853705	86	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153853708	1715153853784	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153853705	1715153853790	76	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153853793	1715153853904	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153853790	1715153853909	111	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153853912	1715153854035	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153853909	1715153854042	123	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153854046	1715153854164	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153854043	1715153854170	118	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153854173	1715153854280	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153854171	1715153854285	107	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153854287	1715153854371	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153854285	1715153854375	84	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153854377	1715153854464	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153854375	1715153854470	87	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153854472	1715153854567	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153854470	1715153854572	95	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153854574	1715153854719	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153854572	1715153854725	145	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153854729	1715153855008	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153854726	1715153855014	279	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153855017	1715153855129	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153855015	1715153855134	112	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153855136	1715153855251	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153855134	1715153855257	115	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153855260	1715153855367	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153855257	1715153855373	107	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153855377	1715153855454	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153855374	1715153855457	77	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153855460	1715153855547	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153855458	1715153855552	87	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153855554	1715153855697	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153855552	1715153855705	143	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153855709	1715153855871	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153855706	1715153855877	162	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153855880	1715153855968	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153855877	1715153855973	88	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153855975	1715153856074	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153855973	1715153856078	99	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153856081	1715153856166	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153856078	1715153856171	85	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153856174	1715153856262	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153856171	1715153856266	88	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153856268	1715153856412	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153856267	1715153856416	144	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153856418	1715153856522	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153856416	1715153856540	104	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153856544	1715153856704	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153856540	1715153856713	160	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153856715	1715153856860	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153856713	1715153856865	145	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153856869	1715153857032	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153856866	1715153857037	163	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153857039	1715153857159	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153857037	1715153857165	120	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153857168	1715153857316	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153857165	1715153857322	148	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153857326	1715153857411	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153857323	1715153857415	85	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153857417	1715153857570	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153857415	1715153857576	153	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153857578	1715153857689	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153857577	1715153857695	111	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153857698	1715153857845	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153857695	1715153857850	147	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153857854	1715153858013	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153857850	1715153858020	159	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153858022	1715153858130	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153858020	1715153858137	108	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153858141	1715153858256	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153858137	1715153858270	115	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153858276	1715153858416	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153858271	1715153858421	140	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153858424	1715153858504	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153858421	1715153858508	80	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153858511	1715153858598	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153858509	1715153858604	87	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153858608	1715153858767	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153858605	1715153858772	159	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153858774	1715153858853	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153858772	1715153858858	79	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153858860	1715153859003	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153858858	1715153859008	143	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153859011	1715153859167	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153859009	1715153859173	156	KO
+REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1715153859176	1715153859331	KO	status.find.is(200), but actually found 201
+GROUP	Courthouse Api Request Group	1715153859173	1715153859336	155	KO
+USER	Courthouse:POST	END	1715153859339

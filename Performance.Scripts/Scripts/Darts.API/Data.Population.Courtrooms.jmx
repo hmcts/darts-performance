@@ -45,7 +45,7 @@
           </elementProp>
           <elementProp name="USER_ITERATIONS" elementType="Argument">
             <stringProp name="Argument.name">USER_ITERATIONS</stringProp>
-            <stringProp name="Argument.value">${__P(USER_ITERATIONS, 2)}</stringProp>
+            <stringProp name="Argument.value">${__P(USER_ITERATIONS, 8)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="TENANT_ID" elementType="Argument">
@@ -371,11 +371,11 @@
           <stringProp name="connectionAge">5000</stringProp>
           <stringProp name="connectionProperties"></stringProp>
           <stringProp name="dataSource">dbConfig</stringProp>
-          <stringProp name="dbUrl">jdbc:postgresql://darts-api-stg.postgres.database.azure.com:5432/darts</stringProp>
+          <stringProp name="dbUrl">jdbc:postgresql://darts-api-test.postgres.database.azure.com:5432/darts</stringProp>
           <stringProp name="driver">org.postgresql.Driver</stringProp>
           <stringProp name="initQuery"></stringProp>
           <boolProp name="keepAlive">true</boolProp>
-          <stringProp name="password">PQuEyVaUAxqu0UeNUo8(</stringProp>
+          <stringProp name="password">oIYRDeLXDMLKahVUjP0D</stringProp>
           <stringProp name="poolMax">1</stringProp>
           <boolProp name="preinit">false</boolProp>
           <stringProp name="timeout">10000</stringProp>
@@ -510,10 +510,36 @@ try {
             <boolProp name="CounterConfig.per_user">false</boolProp>
           </CounterConfig>
           <hashTree/>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Courtroom creation" enabled="true">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Courtroom creation" enabled="false">
             <stringProp name="dataSource">dbConfig</stringProp>
             <stringProp name="query">INSERT INTO darts.courtroom (ctr_id, cth_id, courtroom_name) 
 VALUES (nextval(&apos;darts.ctr_seq&apos;), ${RandomCourtHouseId}, &apos;PerfCourtroom_${v_randomCourtroom}&apos;);</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes">VARCHAR</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="queryType">Update Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as Object</stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultVariable">ex_allHearingsIds</stringProp>
+            <stringProp name="variableNames"></stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Hearings Ids" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">ex_hearingsIds</stringProp>
+              <stringProp name="RegexExtractor.regex">hea_id=(\d+)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">-1</stringProp>
+              <stringProp name="Scope.variable">ex_allHearingsIds</stringProp>
+              <stringProp name="Sample.scope">variable</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Courtroom creation" enabled="true">
+            <stringProp name="dataSource">dbConfig</stringProp>
+            <stringProp name="query">INSERT INTO darts.courtroom (ctr_id, cth_id, courtroom_name) 
+VALUES (nextval(&apos;darts.ctr_seq&apos;), 23040, &apos;PerfCourtroom_${v_randomCourtroom}&apos;);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes">VARCHAR</stringProp>
             <stringProp name="queryTimeout"></stringProp>
