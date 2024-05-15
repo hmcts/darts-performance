@@ -49,12 +49,6 @@ public class GetCasesTokenSimulation extends Simulation {
           .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
           .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
           .repeat(repeats)
-          .on(            
-              doIf(session -> session.get("messageId").equals("E_UNKNOWN_TOKEN"))
-                  .then(
-                      exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
-                          .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
-                  )          
-          .exec(GetCasesTokenScenario.GetCaseToken().pace(Duration.ofMillis(paceDurationMillis))));
+          .on(exec(GetCasesTokenScenario.GetCaseToken().pace(Duration.ofMillis(paceDurationMillis))));
   }
 }
