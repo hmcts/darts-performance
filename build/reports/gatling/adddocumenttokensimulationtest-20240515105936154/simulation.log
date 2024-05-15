@@ -1,0 +1,1037 @@
+RUN	simulations.Scripts.DartsSoap.AddDocumentTokenSimulationTest	adddocumenttokensimulationtest	1715770776154	23	3.10.4
+USER	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token	START	1715770777820
+USER	Baseline - DARTS - GateWay - Soap - GetCase - Token	START	1715770777820
+REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715770777816	1715770780916	OK	 
+GROUP	Register With Username SOAP Request Group	1715770777777	1715770780953	3100	OK
+REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715770777815	1715770781051	OK	 
+GROUP	Register With Username SOAP Request Group	1715770777777	1715770781053	3236	OK
+REQUEST	Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715770780958	1715770782824	OK	 
+GROUP	Register With Token SOAP Request Group	1715770780953	1715770782825	1866	OK
+REQUEST	Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715770781056	1715770783246	OK	 
+GROUP	Register With Token SOAP Request Group	1715770781053	1715770783247	2190	OK
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770782829	1715770783655	OK	 
+GROUP	GetCase SOAP Request Group	1715770782828	1715770784087	826	OK
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770784089	1715770784886	OK	 
+GROUP	GetCase SOAP Request Group	1715770784087	1715770784888	797	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770783250	1715770785102	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770783247	1715770785128	1852	KO
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770785130	1715770785789	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770785129	1715770785801	659	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770790102	1715770791011	OK	 
+GROUP	GetCase SOAP Request Group	1715770790099	1715770791012	909	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770791148	1715770791412	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770791142	1715770791422	264	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770796109	1715770796947	OK	 
+GROUP	GetCase SOAP Request Group	1715770796104	1715770796948	838	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770797166	1715770797544	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770797159	1715770797555	378	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770802115	1715770802511	OK	 
+GROUP	GetCase SOAP Request Group	1715770802112	1715770802515	396	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770803172	1715770803625	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770803167	1715770803644	453	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770808123	1715770808370	OK	 
+GROUP	GetCase SOAP Request Group	1715770808118	1715770808371	247	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770809181	1715770809489	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770809174	1715770809501	308	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770814133	1715770814495	OK	 
+GROUP	GetCase SOAP Request Group	1715770814131	1715770814499	362	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770815178	1715770815479	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770815177	1715770815490	301	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770820137	1715770820393	OK	 
+GROUP	GetCase SOAP Request Group	1715770820132	1715770820394	256	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770821192	1715770821456	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770821188	1715770821469	264	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770826137	1715770826403	OK	 
+GROUP	GetCase SOAP Request Group	1715770826136	1715770826404	266	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770827190	1715770827466	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770827188	1715770827477	276	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770832148	1715770832429	OK	 
+GROUP	GetCase SOAP Request Group	1715770832144	1715770832431	281	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770833208	1715770833432	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770833201	1715770833443	224	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770838149	1715770838431	OK	 
+GROUP	GetCase SOAP Request Group	1715770838146	1715770838433	282	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770839208	1715770839582	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770839206	1715770839594	374	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770844152	1715770844467	OK	 
+GROUP	GetCase SOAP Request Group	1715770844151	1715770844468	315	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770845209	1715770845540	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770845207	1715770845561	331	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770850155	1715770850404	OK	 
+GROUP	GetCase SOAP Request Group	1715770850152	1715770850405	249	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770851227	1715770851505	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770851222	1715770851517	278	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770856163	1715770857413	OK	 
+GROUP	GetCase SOAP Request Group	1715770856158	1715770857414	1250	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770857229	1715770857524	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770857227	1715770857535	295	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770862163	1715770862414	OK	 
+GROUP	GetCase SOAP Request Group	1715770862161	1715770862415	251	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770863238	1715770864289	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770863235	1715770864304	1051	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770868175	1715770868398	OK	 
+GROUP	GetCase SOAP Request Group	1715770868174	1715770868399	223	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770869254	1715770869525	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770869250	1715770869545	271	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770874181	1715770874446	OK	 
+GROUP	GetCase SOAP Request Group	1715770874177	1715770874447	265	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770875253	1715770875552	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770875251	1715770875563	299	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770880186	1715770880515	OK	 
+GROUP	GetCase SOAP Request Group	1715770880184	1715770880516	329	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770881262	1715770881478	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770881260	1715770881489	216	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770886204	1715770886463	OK	 
+GROUP	GetCase SOAP Request Group	1715770886199	1715770886464	259	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770887275	1715770887528	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770887273	1715770887542	253	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770892208	1715770892641	OK	 
+GROUP	GetCase SOAP Request Group	1715770892202	1715770892642	433	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770893283	1715770893558	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770893279	1715770893570	275	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770898213	1715770898450	OK	 
+GROUP	GetCase SOAP Request Group	1715770898212	1715770898451	237	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770899286	1715770899515	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770899284	1715770899532	229	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770904222	1715770904586	OK	 
+GROUP	GetCase SOAP Request Group	1715770904217	1715770904588	364	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770905294	1715770905618	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770905292	1715770905630	324	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770910235	1715770910519	OK	 
+GROUP	GetCase SOAP Request Group	1715770910231	1715770910520	284	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770911299	1715770911541	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770911297	1715770911552	242	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770916248	1715770916528	OK	 
+GROUP	GetCase SOAP Request Group	1715770916243	1715770916530	280	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770917305	1715770917545	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770917299	1715770917566	240	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770922254	1715770922502	OK	 
+GROUP	GetCase SOAP Request Group	1715770922252	1715770922503	248	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770923313	1715770923529	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770923308	1715770923539	216	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770928271	1715770928525	OK	 
+GROUP	GetCase SOAP Request Group	1715770928268	1715770928526	254	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770929316	1715770929576	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770929311	1715770929594	260	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770934274	1715770934510	OK	 
+GROUP	GetCase SOAP Request Group	1715770934270	1715770934511	236	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770935316	1715770935561	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770935312	1715770935578	245	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770940280	1715770940536	OK	 
+GROUP	GetCase SOAP Request Group	1715770940278	1715770940537	256	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770941318	1715770941531	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770941316	1715770941541	213	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770946290	1715770946559	OK	 
+GROUP	GetCase SOAP Request Group	1715770946286	1715770946560	269	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770947332	1715770947601	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770947327	1715770947615	269	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770952298	1715770952521	OK	 
+GROUP	GetCase SOAP Request Group	1715770952293	1715770952521	223	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770953341	1715770953555	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770953337	1715770953564	214	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770958312	1715770958591	OK	 
+GROUP	GetCase SOAP Request Group	1715770958308	1715770958594	279	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770959351	1715770959568	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770959346	1715770959588	217	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770964316	1715770965076	OK	 
+GROUP	GetCase SOAP Request Group	1715770964311	1715770965077	760	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770965357	1715770965594	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770965350	1715770965605	237	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770970326	1715770970625	OK	 
+GROUP	GetCase SOAP Request Group	1715770970324	1715770970626	299	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770971368	1715770971640	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770971364	1715770971652	272	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770976335	1715770976604	OK	 
+GROUP	GetCase SOAP Request Group	1715770976331	1715770976605	269	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770977378	1715770977693	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770977372	1715770977706	315	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770982343	1715770982663	OK	 
+GROUP	GetCase SOAP Request Group	1715770982341	1715770982665	320	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770983388	1715770983635	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770983386	1715770983646	247	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770988347	1715770988649	OK	 
+GROUP	GetCase SOAP Request Group	1715770988343	1715770988650	302	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770989404	1715770989702	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770989402	1715770989714	298	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715770994350	1715770994632	OK	 
+GROUP	GetCase SOAP Request Group	1715770994346	1715770994633	282	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715770995415	1715770995651	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715770995411	1715770995666	236	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771000356	1715771000639	OK	 
+GROUP	GetCase SOAP Request Group	1715771000351	1715771000640	283	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771001428	1715771001692	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771001423	1715771001702	264	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771006369	1715771006652	OK	 
+GROUP	GetCase SOAP Request Group	1715771006364	1715771006652	283	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771007444	1715771007652	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771007437	1715771007663	208	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771012373	1715771012621	OK	 
+GROUP	GetCase SOAP Request Group	1715771012370	1715771012623	248	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771013443	1715771013698	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771013438	1715771013714	255	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771018376	1715771018599	OK	 
+GROUP	GetCase SOAP Request Group	1715771018372	1715771018599	223	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771019452	1715771019690	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771019447	1715771019712	238	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771024382	1715771024668	OK	 
+GROUP	GetCase SOAP Request Group	1715771024378	1715771024670	286	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771025456	1715771025683	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771025450	1715771025693	227	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771030388	1715771030650	OK	 
+GROUP	GetCase SOAP Request Group	1715771030386	1715771030651	262	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771031457	1715771031717	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771031454	1715771031733	260	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771036398	1715771036611	OK	 
+GROUP	GetCase SOAP Request Group	1715771036396	1715771036612	213	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771037463	1715771037715	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771037459	1715771037732	252	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771042404	1715771042688	OK	 
+GROUP	GetCase SOAP Request Group	1715771042399	1715771042690	284	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771043474	1715771043710	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771043472	1715771043729	236	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771048410	1715771048661	OK	 
+GROUP	GetCase SOAP Request Group	1715771048405	1715771048663	251	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771049479	1715771049815	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771049477	1715771049832	336	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771054422	1715771054675	OK	 
+GROUP	GetCase SOAP Request Group	1715771054417	1715771054676	253	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771055493	1715771055720	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771055491	1715771055737	227	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771060424	1715771060802	OK	 
+GROUP	GetCase SOAP Request Group	1715771060418	1715771060803	378	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771061493	1715771061745	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771061491	1715771061759	252	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771066436	1715771066704	OK	 
+GROUP	GetCase SOAP Request Group	1715771066432	1715771066706	268	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771067503	1715771067822	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771067501	1715771067837	319	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771072452	1715771072732	OK	 
+GROUP	GetCase SOAP Request Group	1715771072447	1715771072733	280	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771073505	1715771073753	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771073503	1715771073765	248	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771078467	1715771078670	OK	 
+GROUP	GetCase SOAP Request Group	1715771078462	1715771078671	203	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771079519	1715771079749	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771079513	1715771079760	230	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771084475	1715771084866	OK	 
+GROUP	GetCase SOAP Request Group	1715771084470	1715771084867	391	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771085528	1715771085918	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771085525	1715771085936	390	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771090477	1715771090951	OK	 
+GROUP	GetCase SOAP Request Group	1715771090472	1715771090954	474	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771091530	1715771091772	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771091528	1715771091783	242	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771096488	1715771096935	OK	 
+GROUP	GetCase SOAP Request Group	1715771096484	1715771096938	447	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771097546	1715771097919	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771097540	1715771097930	373	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771102501	1715771102937	OK	 
+GROUP	GetCase SOAP Request Group	1715771102496	1715771102938	436	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771103559	1715771104008	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771103553	1715771104024	449	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771108514	1715771108776	OK	 
+GROUP	GetCase SOAP Request Group	1715771108508	1715771108777	262	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771109569	1715771109851	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771109567	1715771109867	282	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771114524	1715771114851	OK	 
+GROUP	GetCase SOAP Request Group	1715771114519	1715771114852	327	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771115580	1715771115867	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771115575	1715771115885	287	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771120539	1715771120876	OK	 
+GROUP	GetCase SOAP Request Group	1715771120534	1715771120878	337	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771121585	1715771121823	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771121584	1715771121835	238	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771126550	1715771126957	OK	 
+GROUP	GetCase SOAP Request Group	1715771126546	1715771126958	407	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771127589	1715771127874	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771127588	1715771127884	285	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771132553	1715771132800	OK	 
+GROUP	GetCase SOAP Request Group	1715771132547	1715771132801	247	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771133607	1715771133882	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771133602	1715771133903	275	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771138560	1715771138850	OK	 
+GROUP	GetCase SOAP Request Group	1715771138556	1715771138851	290	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771139614	1715771139814	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771139609	1715771139824	200	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771144562	1715771145106	OK	 
+GROUP	GetCase SOAP Request Group	1715771144560	1715771145108	544	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771145622	1715771146003	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771145616	1715771146019	381	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771150579	1715771150872	OK	 
+GROUP	GetCase SOAP Request Group	1715771150573	1715771150873	293	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771151638	1715771151831	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771151632	1715771151841	193	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771156591	1715771157162	OK	 
+GROUP	GetCase SOAP Request Group	1715771156588	1715771157164	571	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771157646	1715771157940	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771157645	1715771157951	294	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771162603	1715771162873	OK	 
+GROUP	GetCase SOAP Request Group	1715771162601	1715771162874	270	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771163659	1715771163913	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771163657	1715771163933	254	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771168618	1715771168970	OK	 
+GROUP	GetCase SOAP Request Group	1715771168613	1715771168972	352	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771169673	1715771169976	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771169668	1715771169989	303	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771174623	1715771174909	OK	 
+GROUP	GetCase SOAP Request Group	1715771174621	1715771174910	286	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771175683	1715771175919	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771175678	1715771175934	236	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771180629	1715771180981	OK	 
+GROUP	GetCase SOAP Request Group	1715771180627	1715771180982	352	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771181691	1715771181889	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771181685	1715771181901	198	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771186637	1715771186903	OK	 
+GROUP	GetCase SOAP Request Group	1715771186635	1715771186904	266	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771187695	1715771187923	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771187694	1715771187934	228	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771192647	1715771192945	OK	 
+GROUP	GetCase SOAP Request Group	1715771192645	1715771192947	298	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771193705	1715771193927	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771193704	1715771193963	222	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771198662	1715771198967	OK	 
+GROUP	GetCase SOAP Request Group	1715771198658	1715771198969	305	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771199713	1715771199928	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771199712	1715771199944	215	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771204664	1715771204997	OK	 
+GROUP	GetCase SOAP Request Group	1715771204663	1715771204999	333	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771205724	1715771205981	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771205722	1715771205992	257	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771210669	1715771211014	OK	 
+GROUP	GetCase SOAP Request Group	1715771210667	1715771211017	345	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771211724	1715771211969	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771211723	1715771211981	245	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771216676	1715771216978	OK	 
+GROUP	GetCase SOAP Request Group	1715771216674	1715771216980	302	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771217731	1715771217938	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771217729	1715771217949	207	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771222677	1715771222988	OK	 
+GROUP	GetCase SOAP Request Group	1715771222675	1715771222990	311	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771223745	1715771223996	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771223744	1715771224010	251	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771228682	1715771228993	OK	 
+GROUP	GetCase SOAP Request Group	1715771228677	1715771228994	311	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771229747	1715771230011	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771229746	1715771230029	264	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771234688	1715771235018	OK	 
+GROUP	GetCase SOAP Request Group	1715771234686	1715771235020	330	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771235761	1715771235968	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771235759	1715771235981	207	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771240697	1715771241020	OK	 
+GROUP	GetCase SOAP Request Group	1715771240693	1715771241021	323	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771241766	1715771242063	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771241765	1715771242073	297	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771246708	1715771247026	OK	 
+GROUP	GetCase SOAP Request Group	1715771246703	1715771247027	318	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771247769	1715771247971	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771247765	1715771247981	202	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771252711	1715771253027	OK	 
+GROUP	GetCase SOAP Request Group	1715771252706	1715771253028	316	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771253778	1715771254000	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771253776	1715771254015	222	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771258713	1715771259027	OK	 
+GROUP	GetCase SOAP Request Group	1715771258711	1715771259028	314	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771259782	1715771260010	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771259781	1715771260026	228	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771264730	1715771265043	OK	 
+GROUP	GetCase SOAP Request Group	1715771264725	1715771265044	313	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771265795	1715771266057	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771265794	1715771266074	262	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771270732	1715771271079	OK	 
+GROUP	GetCase SOAP Request Group	1715771270728	1715771271081	347	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771271802	1715771272330	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771271801	1715771272341	528	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771276742	1715771277225	OK	 
+GROUP	GetCase SOAP Request Group	1715771276739	1715771277226	483	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771277810	1715771278118	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771277809	1715771278135	308	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771282758	1715771283024	OK	 
+GROUP	GetCase SOAP Request Group	1715771282753	1715771283025	266	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771283812	1715771284044	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771283810	1715771284054	232	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771288759	1715771289051	OK	 
+GROUP	GetCase SOAP Request Group	1715771288754	1715771289051	292	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771289823	1715771290047	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771289822	1715771290058	224	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771294764	1715771295048	OK	 
+GROUP	GetCase SOAP Request Group	1715771294761	1715771295049	284	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771295833	1715771296065	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771295832	1715771296076	232	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771300769	1715771301085	OK	 
+GROUP	GetCase SOAP Request Group	1715771300764	1715771301088	316	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771301839	1715771302099	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771301834	1715771302112	260	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771306775	1715771307017	OK	 
+GROUP	GetCase SOAP Request Group	1715771306771	1715771307018	242	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771307841	1715771308097	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771307838	1715771308118	256	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771312788	1715771313111	OK	 
+GROUP	GetCase SOAP Request Group	1715771312786	1715771313113	323	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771313842	1715771314108	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771313839	1715771314125	266	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771318789	1715771319044	OK	 
+GROUP	GetCase SOAP Request Group	1715771318787	1715771319045	255	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771319845	1715771320084	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771319842	1715771320094	239	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771324800	1715771325095	OK	 
+GROUP	GetCase SOAP Request Group	1715771324798	1715771325097	295	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771325854	1715771326152	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771325852	1715771326170	298	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771330815	1715771331094	OK	 
+GROUP	GetCase SOAP Request Group	1715771330814	1715771331095	279	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771331859	1715771332084	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771331858	1715771332102	225	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771336819	1715771337147	OK	 
+GROUP	GetCase SOAP Request Group	1715771336816	1715771337148	328	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771337870	1715771338149	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771337869	1715771338165	279	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771342823	1715771343121	OK	 
+GROUP	GetCase SOAP Request Group	1715771342818	1715771343123	298	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771343876	1715771344090	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771343874	1715771344105	214	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771348830	1715771349077	OK	 
+GROUP	GetCase SOAP Request Group	1715771348826	1715771349078	247	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771349883	1715771350140	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771349881	1715771350158	257	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771354833	1715771355087	OK	 
+GROUP	GetCase SOAP Request Group	1715771354829	1715771355088	254	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771355888	1715771356108	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771355885	1715771356118	220	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771360837	1715771361127	OK	 
+GROUP	GetCase SOAP Request Group	1715771360833	1715771361128	290	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771361894	1715771362131	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771361891	1715771362144	237	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771366844	1715771367084	OK	 
+GROUP	GetCase SOAP Request Group	1715771366840	1715771367086	240	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771367901	1715771368132	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771367896	1715771368146	231	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771372853	1715771373130	OK	 
+GROUP	GetCase SOAP Request Group	1715771372852	1715771373131	277	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771373911	1715771374119	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771373910	1715771374129	208	KO
+USER	Baseline - DARTS - GateWay - Soap - GetCase - Token	END	1715771378873
+USER	Ramp Up Test 2	START	1715771379786
+USER	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token	END	1715771379923
+REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715771379782	1715771380310	OK	 
+GROUP	Register With Username SOAP Request Group	1715771379778	1715771380311	528	OK
+REQUEST	Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715771380313	1715771380750	OK	 
+GROUP	Register With Token SOAP Request Group	1715771380311	1715771380752	437	OK
+USER	Ramp Up Test	START	1715771380785
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771380755	1715771381044	OK	 
+GROUP	GetCase SOAP Request Group	1715771380752	1715771381045	289	OK
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771381046	1715771381393	OK	 
+GROUP	GetCase SOAP Request Group	1715771381045	1715771381395	347	OK
+REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715771380783	1715771381487	OK	 
+GROUP	Register With Username SOAP Request Group	1715771380782	1715771381487	704	OK
+REQUEST	Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715771381488	1715771381933	OK	 
+GROUP	Register With Token SOAP Request Group	1715771381487	1715771381934	445	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771381937	1715771382156	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771381934	1715771382166	219	KO
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771382167	1715771382361	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771382166	1715771382370	194	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771387058	1715771387310	OK	 
+GROUP	GetCase SOAP Request Group	1715771387057	1715771387311	252	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771388181	1715771388431	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771388175	1715771388441	250	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771393067	1715771393377	OK	 
+GROUP	GetCase SOAP Request Group	1715771393065	1715771393378	310	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771394189	1715771394496	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771394184	1715771394506	307	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771399077	1715771399484	OK	 
+GROUP	GetCase SOAP Request Group	1715771399075	1715771399485	407	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771400198	1715771400496	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771400196	1715771400514	298	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771405084	1715771405471	OK	 
+GROUP	GetCase SOAP Request Group	1715771405082	1715771405471	387	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771406208	1715771406605	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771406203	1715771406616	397	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771411096	1715771411587	OK	 
+GROUP	GetCase SOAP Request Group	1715771411094	1715771411587	491	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771412216	1715771412667	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771412214	1715771412676	451	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771417099	1715771417331	OK	 
+GROUP	GetCase SOAP Request Group	1715771417098	1715771417332	232	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771418226	1715771418451	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771418224	1715771418463	225	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771423104	1715771423368	OK	 
+GROUP	GetCase SOAP Request Group	1715771423102	1715771423369	264	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771424240	1715771424585	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771424234	1715771424596	345	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771429107	1715771429350	OK	 
+GROUP	GetCase SOAP Request Group	1715771429106	1715771429352	243	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771430241	1715771430497	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771430237	1715771430508	256	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771435121	1715771435377	OK	 
+GROUP	GetCase SOAP Request Group	1715771435120	1715771435379	256	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771436244	1715771436657	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771436239	1715771436669	413	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771441127	1715771441384	OK	 
+GROUP	GetCase SOAP Request Group	1715771441126	1715771441386	257	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771442247	1715771442633	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771442245	1715771442649	386	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771447129	1715771447356	OK	 
+GROUP	GetCase SOAP Request Group	1715771447128	1715771447357	227	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771448255	1715771448455	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771448253	1715771448466	200	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771453143	1715771453398	OK	 
+GROUP	GetCase SOAP Request Group	1715771453142	1715771453399	255	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771454266	1715771454505	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771454261	1715771454516	239	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771459155	1715771459391	OK	 
+GROUP	GetCase SOAP Request Group	1715771459154	1715771459392	236	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771460273	1715771460477	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771460268	1715771460487	204	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771465164	1715771465400	OK	 
+GROUP	GetCase SOAP Request Group	1715771465162	1715771465401	236	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771466281	1715771466668	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771466275	1715771466683	387	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771471173	1715771471383	OK	 
+GROUP	GetCase SOAP Request Group	1715771471172	1715771471383	210	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771472295	1715771472531	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771472289	1715771472553	236	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771477176	1715771477524	OK	 
+GROUP	GetCase SOAP Request Group	1715771477175	1715771477525	348	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771478302	1715771478514	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771478298	1715771478524	212	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771483179	1715771483548	OK	 
+GROUP	GetCase SOAP Request Group	1715771483178	1715771483549	369	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771484304	1715771484552	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771484299	1715771484562	248	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771489194	1715771489421	OK	 
+GROUP	GetCase SOAP Request Group	1715771489192	1715771489422	227	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771490301	1715771490672	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771490300	1715771490685	371	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771495196	1715771495450	OK	 
+GROUP	GetCase SOAP Request Group	1715771495195	1715771495450	254	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771496318	1715771497803	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771496313	1715771497816	1485	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771501206	1715771501453	OK	 
+GROUP	GetCase SOAP Request Group	1715771501205	1715771501455	247	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771502333	1715771502562	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771502327	1715771502572	229	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771507206	1715771507458	OK	 
+GROUP	GetCase SOAP Request Group	1715771507205	1715771507459	252	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771508342	1715771508579	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771508337	1715771508590	237	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771513209	1715771513497	OK	 
+GROUP	GetCase SOAP Request Group	1715771513207	1715771513499	288	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771514358	1715771514627	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771514352	1715771514651	269	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771519214	1715771519428	OK	 
+GROUP	GetCase SOAP Request Group	1715771519212	1715771519429	214	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771520368	1715771520598	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771520363	1715771520612	230	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771525222	1715771525466	OK	 
+GROUP	GetCase SOAP Request Group	1715771525221	1715771525468	244	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771526380	1715771526750	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771526375	1715771526763	370	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771531227	1715771531468	OK	 
+GROUP	GetCase SOAP Request Group	1715771531225	1715771531469	241	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771532383	1715771532573	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771532382	1715771532581	190	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771537235	1715771537958	OK	 
+GROUP	GetCase SOAP Request Group	1715771537233	1715771537959	723	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771538399	1715771538627	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771538398	1715771538639	228	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771543249	1715771543495	OK	 
+GROUP	GetCase SOAP Request Group	1715771543247	1715771543496	246	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771544418	1715771544625	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771544413	1715771544634	207	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771549256	1715771549518	OK	 
+GROUP	GetCase SOAP Request Group	1715771549251	1715771549520	262	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771550423	1715771550834	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771550418	1715771550845	411	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771555265	1715771555579	OK	 
+GROUP	GetCase SOAP Request Group	1715771555260	1715771555580	314	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771556430	1715771556755	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771556424	1715771556774	325	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771561267	1715771561550	OK	 
+GROUP	GetCase SOAP Request Group	1715771561263	1715771561551	283	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771562444	1715771562684	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771562439	1715771562695	240	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771567281	1715771567489	OK	 
+GROUP	GetCase SOAP Request Group	1715771567277	1715771567491	208	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771568451	1715771568665	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771568445	1715771568675	214	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771573290	1715771573525	OK	 
+GROUP	GetCase SOAP Request Group	1715771573286	1715771573526	235	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771574460	1715771574663	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771574458	1715771574672	203	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771579291	1715771579561	OK	 
+GROUP	GetCase SOAP Request Group	1715771579287	1715771579561	270	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771580476	1715771580742	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771580471	1715771580760	266	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771585299	1715771585546	OK	 
+GROUP	GetCase SOAP Request Group	1715771585298	1715771585548	247	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771586482	1715771586765	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771586476	1715771586789	283	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771591307	1715771592356	OK	 
+GROUP	GetCase SOAP Request Group	1715771591305	1715771592356	1049	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771592491	1715771592723	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771592489	1715771592733	232	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771597323	1715771597545	OK	 
+GROUP	GetCase SOAP Request Group	1715771597319	1715771597546	222	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771598503	1715771598739	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771598502	1715771598749	236	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771603326	1715771603552	OK	 
+GROUP	GetCase SOAP Request Group	1715771603322	1715771603553	226	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771604520	1715771604729	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771604517	1715771604741	209	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771609334	1715771609582	OK	 
+GROUP	GetCase SOAP Request Group	1715771609333	1715771609583	248	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771610530	1715771610816	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771610527	1715771610831	286	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771615349	1715771615602	OK	 
+GROUP	GetCase SOAP Request Group	1715771615344	1715771615603	253	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771616542	1715771616800	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771616540	1715771616809	258	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771621352	1715771621664	OK	 
+GROUP	GetCase SOAP Request Group	1715771621347	1715771621664	312	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771622555	1715771622775	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771622553	1715771622784	220	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771627360	1715771627607	OK	 
+GROUP	GetCase SOAP Request Group	1715771627359	1715771627608	247	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771628564	1715771628777	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771628561	1715771628787	213	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771633371	1715771633597	OK	 
+GROUP	GetCase SOAP Request Group	1715771633370	1715771633598	226	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771634571	1715771634855	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771634569	1715771634864	284	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771639379	1715771639613	OK	 
+GROUP	GetCase SOAP Request Group	1715771639375	1715771639614	234	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771640574	1715771640855	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771640571	1715771640873	281	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771645390	1715771645639	OK	 
+GROUP	GetCase SOAP Request Group	1715771645385	1715771645640	249	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771646585	1715771646882	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771646580	1715771646893	297	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771651393	1715771651627	OK	 
+GROUP	GetCase SOAP Request Group	1715771651388	1715771651627	234	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771652589	1715771652790	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771652587	1715771652799	201	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771657398	1715771657766	OK	 
+GROUP	GetCase SOAP Request Group	1715771657393	1715771657767	368	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771658606	1715771658824	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771658603	1715771658834	218	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771663397	1715771663622	OK	 
+GROUP	GetCase SOAP Request Group	1715771663393	1715771663623	225	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771664622	1715771665049	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771664619	1715771665061	427	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771669406	1715771669652	OK	 
+GROUP	GetCase SOAP Request Group	1715771669405	1715771669652	246	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771670627	1715771670873	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771670621	1715771670892	246	KO
+USER	Ramp Up Test 2	END	1715771675411
+USER	Spike Test 2	START	1715771675777
+REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715771675776	1715771676353	OK	 
+GROUP	Register With Username SOAP Request Group	1715771675774	1715771676355	577	OK
+USER	Ramp Up Test	END	1715771676637
+USER	Spike Test	START	1715771676785
+REQUEST	Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715771676357	1715771676875	OK	 
+GROUP	Register With Token SOAP Request Group	1715771676355	1715771676875	518	OK
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771676876	1715771677156	OK	 
+GROUP	GetCase SOAP Request Group	1715771676875	1715771677158	280	OK
+REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715771676783	1715771677407	OK	 
+GROUP	Register With Username SOAP Request Group	1715771676782	1715771677408	624	OK
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771677160	1715771677462	OK	 
+GROUP	GetCase SOAP Request Group	1715771677158	1715771677462	302	OK
+REQUEST	Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715771677409	1715771677733	OK	 
+GROUP	Register With Token SOAP Request Group	1715771677408	1715771677733	324	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771677734	1715771677928	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771677733	1715771677938	194	KO
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771677939	1715771678196	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771677938	1715771678215	257	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771678964	1715771679202	OK	 
+GROUP	GetCase SOAP Request Group	1715771678963	1715771679203	238	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771679756	1715771679954	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771679755	1715771679964	198	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771680774	1715771681012	OK	 
+GROUP	GetCase SOAP Request Group	1715771680769	1715771681013	238	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771681567	1715771681832	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771681566	1715771681847	265	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771682582	1715771682813	OK	 
+GROUP	GetCase SOAP Request Group	1715771682577	1715771682814	231	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771683376	1715771683619	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771683370	1715771683637	243	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771684384	1715771684643	OK	 
+GROUP	GetCase SOAP Request Group	1715771684379	1715771684645	259	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771685180	1715771685380	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771685175	1715771685389	200	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771686189	1715771686424	OK	 
+GROUP	GetCase SOAP Request Group	1715771686184	1715771686425	235	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771686983	1715771687207	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771686978	1715771687217	224	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771687998	1715771688227	OK	 
+GROUP	GetCase SOAP Request Group	1715771687994	1715771688228	229	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771688792	1715771689005	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771688790	1715771689013	213	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771689804	1715771690027	OK	 
+GROUP	GetCase SOAP Request Group	1715771689800	1715771690028	223	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771690594	1715771690891	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771690593	1715771690901	297	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771691605	1715771691842	OK	 
+GROUP	GetCase SOAP Request Group	1715771691603	1715771691844	237	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771692400	1715771692618	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771692396	1715771692630	218	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771693420	1715771693652	OK	 
+GROUP	GetCase SOAP Request Group	1715771693418	1715771693653	232	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771694215	1715771694476	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771694210	1715771694486	261	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771695221	1715771695607	OK	 
+GROUP	GetCase SOAP Request Group	1715771695219	1715771695609	386	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771696018	1715771696253	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771696013	1715771696263	235	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771697024	1715771697250	OK	 
+GROUP	GetCase SOAP Request Group	1715771697020	1715771697250	226	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771697829	1715771698040	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771697826	1715771698050	211	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771698837	1715771699054	OK	 
+GROUP	GetCase SOAP Request Group	1715771698836	1715771699055	217	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771699635	1715771699912	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771699630	1715771699923	277	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771700647	1715771700916	OK	 
+GROUP	GetCase SOAP Request Group	1715771700642	1715771700916	269	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771701445	1715771701721	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771701439	1715771701740	276	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771702452	1715771702766	OK	 
+GROUP	GetCase SOAP Request Group	1715771702447	1715771702767	314	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771703245	1715771703703	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771703243	1715771703728	458	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771704257	1715771704566	OK	 
+GROUP	GetCase SOAP Request Group	1715771704256	1715771704566	309	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771705050	1715771705295	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771705048	1715771705306	245	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771706062	1715771706628	OK	 
+GROUP	GetCase SOAP Request Group	1715771706058	1715771706630	566	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771706853	1715771707117	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771706851	1715771707131	264	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771707861	1715771708092	OK	 
+GROUP	GetCase SOAP Request Group	1715771707858	1715771708093	231	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771708669	1715771708982	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771708664	1715771708993	313	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771709677	1715771710005	OK	 
+GROUP	GetCase SOAP Request Group	1715771709672	1715771710005	328	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771710480	1715771710701	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771710477	1715771710711	221	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771711488	1715771711709	OK	 
+GROUP	GetCase SOAP Request Group	1715771711486	1715771711710	221	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771712298	1715771712514	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771712292	1715771712524	216	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771713301	1715771713484	OK	 
+GROUP	GetCase SOAP Request Group	1715771713300	1715771713484	183	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771714110	1715771714325	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771714105	1715771714335	215	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771715118	1715771715531	OK	 
+GROUP	GetCase SOAP Request Group	1715771715113	1715771715532	413	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771715924	1715771716189	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771715920	1715771716206	265	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771716929	1715771717294	OK	 
+GROUP	GetCase SOAP Request Group	1715771716925	1715771717296	365	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771717727	1715771718077	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771717722	1715771718094	350	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771718735	1715771718947	OK	 
+GROUP	GetCase SOAP Request Group	1715771718732	1715771718948	212	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771719533	1715771719750	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771719528	1715771719760	217	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771720536	1715771720766	OK	 
+GROUP	GetCase SOAP Request Group	1715771720533	1715771720767	230	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771721340	1715771721626	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771721338	1715771721635	286	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771722336	1715771722583	OK	 
+GROUP	GetCase SOAP Request Group	1715771722335	1715771722584	247	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771723153	1715771723376	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771723147	1715771723387	223	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771724144	1715771724461	OK	 
+GROUP	GetCase SOAP Request Group	1715771724140	1715771724462	317	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771724965	1715771725189	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771724961	1715771725205	224	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771725957	1715771726192	OK	 
+GROUP	GetCase SOAP Request Group	1715771725952	1715771726192	235	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771726777	1715771727033	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771726773	1715771727044	256	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771727770	1715771728002	OK	 
+GROUP	GetCase SOAP Request Group	1715771727767	1715771728002	232	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771728592	1715771728784	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771728587	1715771728796	192	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771729573	1715771729926	OK	 
+GROUP	GetCase SOAP Request Group	1715771729571	1715771729927	353	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771730394	1715771730630	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771730390	1715771730640	236	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771731384	1715771731627	OK	 
+GROUP	GetCase SOAP Request Group	1715771731383	1715771731628	243	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771732208	1715771732728	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771732203	1715771732738	520	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771733189	1715771733436	OK	 
+GROUP	GetCase SOAP Request Group	1715771733188	1715771733437	247	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771734015	1715771734247	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771734014	1715771734257	232	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771734994	1715771735233	OK	 
+GROUP	GetCase SOAP Request Group	1715771734993	1715771735235	239	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771735821	1715771736171	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771735815	1715771736183	350	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771736812	1715771737075	OK	 
+GROUP	GetCase SOAP Request Group	1715771736807	1715771737076	263	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771737634	1715771737855	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771737629	1715771737865	221	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771738625	1715771738909	OK	 
+GROUP	GetCase SOAP Request Group	1715771738620	1715771738909	284	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771739445	1715771739710	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771739442	1715771739723	265	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771740438	1715771740711	OK	 
+GROUP	GetCase SOAP Request Group	1715771740436	1715771740712	273	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771741244	1715771741543	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771741243	1715771741555	299	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771742252	1715771742477	OK	 
+GROUP	GetCase SOAP Request Group	1715771742248	1715771742478	225	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771743045	1715771743266	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771743044	1715771743277	221	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771744055	1715771744306	OK	 
+GROUP	GetCase SOAP Request Group	1715771744054	1715771744307	251	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771744864	1715771745079	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771744859	1715771745090	215	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771745875	1715771746202	OK	 
+GROUP	GetCase SOAP Request Group	1715771745870	1715771746203	327	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771746667	1715771746897	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771746662	1715771746908	230	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771747679	1715771747974	OK	 
+GROUP	GetCase SOAP Request Group	1715771747674	1715771747974	295	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771748472	1715771748701	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771748470	1715771748711	229	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771749487	1715771749727	OK	 
+GROUP	GetCase SOAP Request Group	1715771749485	1715771749728	240	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771750278	1715771750534	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771750276	1715771750544	256	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771751292	1715771751547	OK	 
+GROUP	GetCase SOAP Request Group	1715771751289	1715771751549	255	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771752084	1715771752300	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771752083	1715771752309	216	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771753109	1715771753375	OK	 
+GROUP	GetCase SOAP Request Group	1715771753105	1715771753376	266	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771753886	1715771754133	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771753884	1715771754143	247	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771754914	1715771755131	OK	 
+GROUP	GetCase SOAP Request Group	1715771754909	1715771755132	217	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771755690	1715771755918	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771755686	1715771755929	228	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771756716	1715771757070	OK	 
+GROUP	GetCase SOAP Request Group	1715771756715	1715771757071	354	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771757492	1715771757701	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771757490	1715771757711	209	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771758532	1715771758748	OK	 
+GROUP	GetCase SOAP Request Group	1715771758531	1715771758749	216	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771759298	1715771759512	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771759293	1715771759521	214	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771760345	1715771760565	OK	 
+GROUP	GetCase SOAP Request Group	1715771760342	1715771760566	220	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771761106	1715771761348	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771761102	1715771761357	242	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771762153	1715771762388	OK	 
+GROUP	GetCase SOAP Request Group	1715771762151	1715771762389	235	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771762915	1715771763152	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771762912	1715771763170	237	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771763953	1715771764181	OK	 
+GROUP	GetCase SOAP Request Group	1715771763952	1715771764182	228	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771764723	1715771764988	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771764719	1715771764999	265	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771765764	1715771766083	OK	 
+GROUP	GetCase SOAP Request Group	1715771765760	1715771766084	319	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771766522	1715771766814	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771766520	1715771766830	292	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771767569	1715771767836	OK	 
+GROUP	GetCase SOAP Request Group	1715771767565	1715771767836	267	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771768333	1715771768571	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771768329	1715771768581	238	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771769374	1715771769823	OK	 
+GROUP	GetCase SOAP Request Group	1715771769370	1715771769825	449	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771770139	1715771770349	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771770134	1715771770359	210	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771771177	1715771771406	OK	 
+GROUP	GetCase SOAP Request Group	1715771771173	1715771771407	229	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771771955	1715771772164	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771771949	1715771772173	209	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771772979	1715771773235	OK	 
+GROUP	GetCase SOAP Request Group	1715771772974	1715771773236	256	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771773758	1715771773949	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771773753	1715771773959	191	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771774778	1715771775092	OK	 
+GROUP	GetCase SOAP Request Group	1715771774777	1715771775093	314	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771775561	1715771775755	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771775557	1715771775766	194	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771776589	1715771776846	OK	 
+GROUP	GetCase SOAP Request Group	1715771776585	1715771776847	257	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771777367	1715771777633	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771777365	1715771777650	266	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771778396	1715771778604	OK	 
+GROUP	GetCase SOAP Request Group	1715771778392	1715771778605	208	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771779173	1715771779373	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771779171	1715771779383	200	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771780198	1715771780417	OK	 
+GROUP	GetCase SOAP Request Group	1715771780194	1715771780418	219	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771780993	1715771781210	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771780988	1715771781219	217	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771782013	1715771782249	OK	 
+GROUP	GetCase SOAP Request Group	1715771782009	1715771782250	236	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771782807	1715771783028	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771782803	1715771783044	221	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771783819	1715771784081	OK	 
+GROUP	GetCase SOAP Request Group	1715771783814	1715771784082	262	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771784607	1715771784831	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771784605	1715771784841	224	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771785621	1715771785837	OK	 
+GROUP	GetCase SOAP Request Group	1715771785620	1715771785837	216	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771786420	1715771786629	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771786415	1715771786638	209	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771787429	1715771787658	OK	 
+GROUP	GetCase SOAP Request Group	1715771787425	1715771787658	229	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771788227	1715771788471	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771788221	1715771788488	244	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771789239	1715771789450	OK	 
+GROUP	GetCase SOAP Request Group	1715771789235	1715771789451	211	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771790026	1715771790272	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771790020	1715771790287	246	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771791050	1715771791300	OK	 
+GROUP	GetCase SOAP Request Group	1715771791045	1715771791301	250	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771791823	1715771792021	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771791821	1715771792032	198	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771792863	1715771793130	OK	 
+GROUP	GetCase SOAP Request Group	1715771792859	1715771793132	267	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771793626	1715771793813	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771793621	1715771793823	187	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771794666	1715771794930	OK	 
+GROUP	GetCase SOAP Request Group	1715771794665	1715771794932	264	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771795434	1715771795656	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771795430	1715771795667	222	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771796478	1715771796800	OK	 
+GROUP	GetCase SOAP Request Group	1715771796474	1715771796801	322	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771797235	1715771797441	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771797233	1715771797451	206	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771798278	1715771798532	OK	 
+GROUP	GetCase SOAP Request Group	1715771798274	1715771798533	254	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771799043	1715771799254	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771799042	1715771799263	211	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771800089	1715771800348	OK	 
+GROUP	GetCase SOAP Request Group	1715771800083	1715771800349	259	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771800851	1715771801053	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771800846	1715771801062	202	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771801895	1715771802334	OK	 
+GROUP	GetCase SOAP Request Group	1715771801890	1715771802335	439	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771802660	1715771802866	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771802655	1715771802876	206	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771803698	1715771803966	OK	 
+GROUP	GetCase SOAP Request Group	1715771803696	1715771803967	268	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771804476	1715771804671	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771804471	1715771804681	195	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771805514	1715771805744	OK	 
+GROUP	GetCase SOAP Request Group	1715771805509	1715771805744	230	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771806285	1715771806498	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771806284	1715771806508	213	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771807320	1715771807578	OK	 
+GROUP	GetCase SOAP Request Group	1715771807315	1715771807579	258	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771808095	1715771808359	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771808090	1715771808374	264	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771809119	1715771809331	OK	 
+GROUP	GetCase SOAP Request Group	1715771809118	1715771809332	212	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771809900	1715771810106	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771809895	1715771810115	206	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771810939	1715771811156	OK	 
+GROUP	GetCase SOAP Request Group	1715771810934	1715771811157	217	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771811714	1715771811951	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771811710	1715771811962	237	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771812743	1715771812987	OK	 
+GROUP	GetCase SOAP Request Group	1715771812739	1715771812988	244	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771813516	1715771813921	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771813511	1715771813933	405	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771814557	1715771814792	OK	 
+GROUP	GetCase SOAP Request Group	1715771814552	1715771814792	235	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771815318	1715771815523	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771815313	1715771815532	205	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771816354	1715771816573	OK	 
+GROUP	GetCase SOAP Request Group	1715771816353	1715771816574	219	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771817133	1715771817365	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771817128	1715771817376	232	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771818174	1715771818442	OK	 
+GROUP	GetCase SOAP Request Group	1715771818169	1715771818443	268	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771818934	1715771819153	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771818932	1715771819164	219	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771819972	1715771820220	OK	 
+GROUP	GetCase SOAP Request Group	1715771819970	1715771820222	248	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771820752	1715771820968	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771820747	1715771820982	216	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771821772	1715771822006	OK	 
+GROUP	GetCase SOAP Request Group	1715771821770	1715771822007	234	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771822567	1715771822812	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771822562	1715771822821	245	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771823591	1715771823843	OK	 
+GROUP	GetCase SOAP Request Group	1715771823586	1715771823844	252	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771824383	1715771824638	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771824378	1715771824653	255	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771825406	1715771825626	OK	 
+GROUP	GetCase SOAP Request Group	1715771825401	1715771825627	220	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771826196	1715771826591	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771826193	1715771826609	395	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771827212	1715771827443	OK	 
+GROUP	GetCase SOAP Request Group	1715771827211	1715771827444	231	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771828012	1715771828246	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771828007	1715771828257	234	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771829019	1715771829269	OK	 
+GROUP	GetCase SOAP Request Group	1715771829018	1715771829270	250	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771829814	1715771830047	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771829812	1715771830057	233	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771830824	1715771831042	OK	 
+GROUP	GetCase SOAP Request Group	1715771830821	1715771831043	218	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771831618	1715771831876	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771831613	1715771831886	258	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771832629	1715771832862	OK	 
+GROUP	GetCase SOAP Request Group	1715771832624	1715771832864	233	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771833424	1715771833677	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771833419	1715771833689	253	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771834435	1715771834671	OK	 
+GROUP	GetCase SOAP Request Group	1715771834431	1715771834672	236	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771835228	1715771835555	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771835222	1715771835571	327	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771836236	1715771836470	OK	 
+GROUP	GetCase SOAP Request Group	1715771836235	1715771836471	234	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771837025	1715771837240	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771837023	1715771837249	215	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771838046	1715771838305	OK	 
+GROUP	GetCase SOAP Request Group	1715771838040	1715771838305	259	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771838834	1715771839038	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771838833	1715771839048	204	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771839844	1715771840083	OK	 
+GROUP	GetCase SOAP Request Group	1715771839843	1715771840084	239	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771840643	1715771840992	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771840638	1715771841003	349	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771841664	1715771841871	OK	 
+GROUP	GetCase SOAP Request Group	1715771841659	1715771841871	207	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771842449	1715771842676	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771842447	1715771842693	227	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771843478	1715771843712	OK	 
+GROUP	GetCase SOAP Request Group	1715771843474	1715771843713	234	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771844251	1715771844484	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771844249	1715771844494	233	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771845281	1715771845469	OK	 
+GROUP	GetCase SOAP Request Group	1715771845277	1715771845470	188	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771846059	1715771846291	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771846053	1715771846302	232	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771847095	1715771847398	OK	 
+GROUP	GetCase SOAP Request Group	1715771847091	1715771847399	303	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771847854	1715771848113	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771847853	1715771848122	259	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771848905	1715771849094	OK	 
+GROUP	GetCase SOAP Request Group	1715771848902	1715771849094	189	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771849672	1715771850001	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771849667	1715771850014	329	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771850712	1715771850941	OK	 
+GROUP	GetCase SOAP Request Group	1715771850707	1715771850942	229	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771851473	1715771851681	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771851467	1715771851694	208	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771852513	1715771852752	OK	 
+GROUP	GetCase SOAP Request Group	1715771852508	1715771852753	239	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771853289	1715771853550	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771853283	1715771853564	261	KO
+REQUEST	GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715771854315	1715771854559	OK	 
+GROUP	GetCase SOAP Request Group	1715771854310	1715771854560	244	OK
+REQUEST	AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715771855091	1715771855364	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	AddDocument SOAP Request Group	1715771855086	1715771855374	273	KO
+USER	Spike Test 2	END	1715771856128
+USER	Spike Test	END	1715771856887

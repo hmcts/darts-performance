@@ -2,6 +2,7 @@ package simulations.Scripts.Scenario.DartsSoap;
 
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig.SoapServiceEndpoint;
+import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -11,8 +12,9 @@ public final class GetCasesTokenScenario {
 
     private GetCasesTokenScenario() {}
     public static ChainBuilder GetCaseToken() {
-        return group("AddDocument SOAP Request Group")
-            .on(exec(session -> {
+        return group("GetCase SOAP Request Group")
+            .on(feed(Feeders.createCourtHouseAndCourtRooms())   
+            .exec(session -> {
                     String xmlPayload = SOAPRequestBuilder.GetCasesTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })

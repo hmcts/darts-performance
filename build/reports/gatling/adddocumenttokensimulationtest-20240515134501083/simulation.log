@@ -1,0 +1,1043 @@
+RUN	simulations.Scripts.DartsSoap.AddDocumentTokenSimulationTest	adddocumenttokensimulationtest	1715780701083	23	3.10.4
+USER	Baseline - DARTS - GateWay - Soap - GetCase - Token	START	1715780702059
+USER	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token	START	1715780702059
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715780702054	1715780702896	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,Register With Username SOAP Request Group	1715780702023	1715780702927	842	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715780702053	1715780703031	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,Register With Username SOAP Request Group	1715780702023	1715780703034	978	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715780702931	1715780703551	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,Register With Token SOAP Request Group	1715780702928	1715780703552	620	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715780703037	1715780703695	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,Register With Token SOAP Request Group	1715780703034	1715780703696	658	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780703697	1715780704030	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780703696	1715780704392	333	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780704394	1715780704733	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780704392	1715780704736	339	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780703557	1715780705199	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780703553	1715780705204	1642	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780705210	1715780706799	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780705205	1715780706803	1589	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780710398	1715780710621	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780710396	1715780710623	223	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780711214	1715780713289	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780711211	1715780713291	2075	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780716405	1715780716641	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780716401	1715780716645	236	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780717226	1715780718518	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780717221	1715780718519	1292	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780722406	1715780722668	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780722404	1715780722669	262	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780723227	1715780724437	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780723225	1715780724439	1210	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780728421	1715780729197	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780728419	1715780729198	776	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780729229	1715780731011	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780729227	1715780731015	1782	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780734427	1715780734648	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780734423	1715780734649	221	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780735231	1715780736932	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780735229	1715780736933	1701	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780740438	1715780740643	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780740437	1715780740644	205	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780741243	1715780743124	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780741241	1715780743126	1881	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780746447	1715780746660	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780746444	1715780746661	213	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780747253	1715780751245	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780747251	1715780751250	3992	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780752461	1715780752703	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780752459	1715780752706	242	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780753254	1715780754740	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780753252	1715780754741	1486	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780758471	1715780758700	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780758469	1715780758701	229	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780759271	1715780761252	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780759265	1715780761254	1981	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780764483	1715780764738	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780764481	1715780764740	255	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780765273	1715780767437	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780765270	1715780767439	2164	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780770497	1715780770683	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780770495	1715780770685	186	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780771288	1715780772977	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780771283	1715780772978	1689	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780776505	1715780776730	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780776503	1715780776731	225	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780777295	1715780778905	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780777289	1715780778907	1610	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780782507	1715780782729	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780782505	1715780782730	222	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780783299	1715780786962	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780783297	1715780786963	3663	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780788516	1715780788770	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780788514	1715780788772	254	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780789310	1715780794406	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780789305	1715780794408	5096	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780794524	1715780794705	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780794522	1715780794706	181	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780795313	1715780798771	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780795308	1715780798772	3458	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780800531	1715780800818	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780800529	1715780800821	287	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780801317	1715780802643	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780801314	1715780802645	1326	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780806545	1715780806744	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780806544	1715780806745	199	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780807320	1715780809059	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780807315	1715780809060	1739	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780812561	1715780812804	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780812560	1715780812805	243	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780813321	1715780814602	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780813320	1715780814604	1281	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780818576	1715780818823	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780818574	1715780818824	247	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780819334	1715780821401	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780819330	1715780821402	2067	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780824583	1715780824796	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780824579	1715780824799	213	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780825350	1715780826778	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780825345	1715780826782	1428	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780830596	1715780830853	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780830593	1715780830854	257	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780831350	1715780833495	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780831347	1715780833496	2145	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780836601	1715780836846	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780836599	1715780836848	245	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780837356	1715780839837	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780837353	1715780839839	2481	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780842605	1715780842813	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780842600	1715780842814	208	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780843359	1715780844866	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780843358	1715780844868	1507	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780848606	1715780848774	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780848604	1715780848775	168	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780849369	1715780850858	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780849367	1715780850859	1489	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780854619	1715780854814	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780854615	1715780854815	195	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780855379	1715780856728	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780855376	1715780856729	1349	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780860626	1715780860826	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780860622	1715780860827	200	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780861393	1715780863296	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780861392	1715780863297	1903	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780866638	1715780866829	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780866636	1715780866830	191	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780867395	1715780870618	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780867394	1715780870620	3223	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780872650	1715780872868	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780872645	1715780872869	218	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780873404	1715780875382	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780873402	1715780875384	1978	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780878652	1715780878865	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780878650	1715780878865	213	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780879415	1715780881357	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780879413	1715780881358	1942	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780884656	1715780884878	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780884654	1715780884879	222	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780885417	1715780887044	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780885415	1715780887045	1627	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780890665	1715780890896	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780890663	1715780890897	231	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780891430	1715780892754	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780891428	1715780892756	1324	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780896680	1715780896924	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780896676	1715780896925	244	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780897447	1715780898811	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780897444	1715780898814	1364	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780902684	1715780902932	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780902680	1715780902933	248	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780903454	1715780906627	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780903453	1715780906631	3173	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780908697	1715780908923	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780908694	1715780908924	226	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780909466	1715780911268	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780909463	1715780911270	1802	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780914712	1715780914907	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780914708	1715780914908	195	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780915468	1715780916726	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780915464	1715780916728	1258	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780920714	1715780920927	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780920711	1715780920927	213	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780921475	1715780922380	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780921470	1715780922383	905	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780926713	1715780926924	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780926712	1715780926925	211	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780927490	1715780928242	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780927486	1715780928246	752	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780932729	1715780932956	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780932727	1715780932957	227	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780933499	1715780935027	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780933498	1715780935029	1528	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780938740	1715780939012	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780938739	1715780939013	272	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780939506	1715780942793	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780939501	1715780942795	3287	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780944750	1715780944945	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780944748	1715780944946	195	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780945509	1715780946142	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780945503	1715780946143	633	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780950762	1715780950962	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780950761	1715780950963	200	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780951517	1715780952337	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780951513	1715780952339	820	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780956767	1715780957518	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780956762	1715780957519	751	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780957527	1715780958834	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780957523	1715780958837	1307	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780962776	1715780962998	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780962774	1715780962998	222	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780963536	1715780964901	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780963534	1715780964902	1365	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780968789	1715780969011	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780968787	1715780969012	222	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780969541	1715780971285	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780969539	1715780971286	1744	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780974805	1715780975027	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780974802	1715780975028	222	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780975549	1715780978909	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780975548	1715780978910	3360	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780980811	1715780981459	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780980809	1715780981460	648	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780981554	1715780982918	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780981552	1715780982919	1364	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780986819	1715780987002	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780986817	1715780987005	183	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780987560	1715780988732	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780987557	1715780988734	1172	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780992831	1715780993046	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780992829	1715780993047	215	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780993573	1715780994481	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780993571	1715780994482	908	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715780998840	1715780999316	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715780998839	1715780999317	476	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715780999583	1715781001216	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715780999582	1715781001218	1633	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781004851	1715781005060	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781004849	1715781005060	209	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781005596	1715781006876	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781005594	1715781006877	1280	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781010867	1715781011041	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781010865	1715781011042	174	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781011608	1715781014633	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781011607	1715781014635	3025	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781016881	1715781017109	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781016877	1715781017109	228	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781017619	1715781018959	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781017617	1715781018961	1340	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781022888	1715781023124	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781022884	1715781023124	236	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781023629	1715781024856	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781023627	1715781024858	1227	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781028901	1715781029110	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781028900	1715781029111	209	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781029640	1715781031619	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781029638	1715781031620	1979	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781034917	1715781035141	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781034911	1715781035142	224	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781035644	1715781037024	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781035643	1715781037026	1380	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781040920	1715781041198	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781040916	1715781041199	278	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781041658	1715781042218	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781041656	1715781042219	560	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781046928	1715781047232	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781046926	1715781047234	304	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781047667	1715781051422	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781047665	1715781051423	3755	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781052932	1715781053140	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781052930	1715781053141	208	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781053674	1715781055364	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781053672	1715781055365	1690	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781058943	1715781059138	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781058939	1715781059139	195	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781059684	1715781061206	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781059682	1715781061207	1522	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781064952	1715781065155	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781064949	1715781065156	203	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781065696	1715781067188	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781065693	1715781067189	1492	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781070964	1715781071163	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781070962	1715781071163	199	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781071709	1715781072773	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781071708	1715781072774	1064	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781076970	1715781077169	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781076968	1715781077170	199	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781077726	1715781078743	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781077724	1715781078745	1017	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781082974	1715781083192	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781082969	1715781083194	218	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781083730	1715781085721	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781083728	1715781085722	1991	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781088985	1715781089191	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781088982	1715781089192	206	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781089742	1715781090989	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781089740	1715781090990	1247	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781094987	1715781095210	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781094986	1715781095211	223	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781095756	1715781097494	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781095755	1715781097496	1738	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781100993	1715781101209	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781100990	1715781101210	216	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781101767	1715781102615	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781101763	1715781102616	848	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781106993	1715781107251	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781106990	1715781107252	258	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781107778	1715781108789	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781107776	1715781108791	1011	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781112998	1715781113198	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781112993	1715781113199	200	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781113783	1715781114829	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781113781	1715781114830	1046	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781119009	1715781119251	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781119005	1715781119252	242	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781119796	1715781122018	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781119794	1715781122019	2222	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781125016	1715781125223	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781125011	1715781125224	207	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781125799	1715781127331	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781125796	1715781127335	1532	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781131015	1715781131216	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781131012	1715781131217	201	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781131807	1715781132294	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781131805	1715781132295	487	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781137017	1715781137228	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781137014	1715781137229	211	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781137818	1715781138370	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781137815	1715781138372	552	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781143020	1715781143233	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781143016	1715781143234	213	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781143823	1715781144794	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781143821	1715781144797	971	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781149022	1715781149316	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781149020	1715781149318	294	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781149829	1715781151399	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781149827	1715781151400	1570	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781155034	1715781155272	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781155031	1715781155273	238	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781155833	1715781160294	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781155832	1715781160295	4461	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781161039	1715781161258	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781161035	1715781161259	219	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781161847	1715781163924	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781161841	1715781163925	2077	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781167043	1715781167249	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781167040	1715781167250	206	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781167860	1715781168713	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781167856	1715781168714	853	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781173059	1715781173274	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781173055	1715781173275	215	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781173866	1715781174787	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781173864	1715781174789	921	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781179068	1715781179274	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781179066	1715781179275	206	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781179873	1715781181539	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781179869	1715781181540	1666	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781185083	1715781185301	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781185079	1715781185301	218	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781185876	1715781186895	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781185871	1715781186896	1019	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781191086	1715781191321	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781191084	1715781191322	235	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781191889	1715781195251	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781191885	1715781195254	3362	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781197103	1715781197343	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781197098	1715781197343	240	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781197892	1715781199964	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781197890	1715781199965	2072	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781203109	1715781203312	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781203107	1715781203312	203	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781203895	1715781204974	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781203894	1715781204975	1079	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781209123	1715781209395	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781209121	1715781209397	272	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781209914	1715781211006	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781209910	1715781211007	1092	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781215134	1715781215390	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781215128	1715781215391	256	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781215919	1715781217140	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781215916	1715781217141	1221	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781221137	1715781221328	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781221135	1715781221328	191	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781221924	1715781224182	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781221921	1715781224183	2258	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781227155	1715781227358	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781227150	1715781227358	203	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781227929	1715781230468	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781227925	1715781230469	2539	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781233159	1715781233398	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781233156	1715781233398	239	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781233935	1715781236257	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781233933	1715781236260	2322	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781239163	1715781239387	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781239161	1715781239389	224	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781239936	1715781241059	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781239934	1715781241062	1123	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781245168	1715781245416	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781245166	1715781245417	248	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781245941	1715781247251	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781245939	1715781247253	1310	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781251174	1715781251398	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781251170	1715781251398	224	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781251954	1715781254206	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781251952	1715781254209	2252	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781257185	1715781257435	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781257183	1715781257436	250	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781257963	1715781258770	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781257959	1715781258771	807	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781263191	1715781263397	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781263189	1715781263398	206	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781263966	1715781265027	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781263964	1715781265029	1061	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781269204	1715781269407	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781269199	1715781269408	203	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781269977	1715781272180	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781269973	1715781272181	2203	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781275216	1715781275440	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781275211	1715781275442	224	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781275983	1715781277186	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781275981	1715781277187	1203	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781281220	1715781281453	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781281217	1715781281454	233	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781281992	1715781283134	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781281990	1715781283135	1142	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781287228	1715781287481	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781287223	1715781287483	253	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781288005	1715781290079	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781288001	1715781290080	2074	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781293227	1715781293421	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token,GetCase SOAP Request Group	1715781293225	1715781293421	194	OK
+REQUEST	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781294003	1715781295101	OK	 
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token,AddDocument SOAP Request Group	1715781294001	1715781295102	1098	OK
+GROUP	Baseline - DARTS - GateWay - Soap - GetCase - Token	1715780702021	1715781299237	25900	OK
+USER	Baseline - DARTS - GateWay - Soap - GetCase - Token	END	1715781299240
+GROUP	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token	1715780702021	1715781300014	174718	OK
+USER	Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token	END	1715781300016
+USER	Ramp Up Test 2	START	1715781300018
+REQUEST	Ramp Up Test 2,Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715781300017	1715781300657	OK	 
+GROUP	Ramp Up Test 2,Register With Username SOAP Request Group	1715781300016	1715781300659	640	OK
+USER	Ramp Up Test	START	1715781301012
+REQUEST	Ramp Up Test 2,Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715781300661	1715781301038	OK	 
+GROUP	Ramp Up Test 2,Register With Token SOAP Request Group	1715781300659	1715781301039	377	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781301041	1715781301302	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781301039	1715781301303	261	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781301304	1715781301592	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781301303	1715781301593	288	OK
+REQUEST	Ramp Up Test,Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715781301010	1715781301634	OK	 
+GROUP	Ramp Up Test,Register With Username SOAP Request Group	1715781301009	1715781301635	624	OK
+REQUEST	Ramp Up Test,Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715781301636	1715781302002	OK	 
+GROUP	Ramp Up Test,Register With Token SOAP Request Group	1715781301635	1715781302003	366	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781302004	1715781304639	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781302003	1715781304641	2635	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781307316	1715781307539	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781307314	1715781307540	223	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781304642	1715781307720	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781304641	1715781307721	3078	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781310658	1715781311665	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781310652	1715781311666	1007	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781313318	1715781313506	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781313314	1715781313506	188	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781316659	1715781317952	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781316656	1715781317953	1293	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781319324	1715781319514	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781319319	1715781319515	190	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781322661	1715781323786	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781322658	1715781323787	1125	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781325336	1715781325539	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781325334	1715781325539	203	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781328675	1715781330132	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781328672	1715781330133	1457	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781331340	1715781331531	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781331338	1715781331532	191	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781334686	1715781336109	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781334684	1715781336110	1423	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781337354	1715781337559	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781337352	1715781337560	205	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781343356	1715781343541	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781343354	1715781343542	185	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781340691	1715781343692	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781340687	1715781343693	3001	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781346694	1715781348147	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781346692	1715781348148	1453	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781349371	1715781349602	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781349369	1715781349603	231	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781352701	1715781354038	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781352699	1715781354040	1337	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781355379	1715781355631	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781355377	1715781355631	252	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781358713	1715781360148	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781358709	1715781360148	1435	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781361394	1715781361625	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781361390	1715781361626	231	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781364714	1715781366328	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781364713	1715781366329	1614	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781367405	1715781367608	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781367403	1715781367609	203	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781370719	1715781371800	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781370718	1715781371801	1081	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781373410	1715781373639	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781373409	1715781373640	229	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781379424	1715781379652	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781379423	1715781379653	228	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781376725	1715781379864	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781376721	1715781379866	3139	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781382725	1715781383623	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781382722	1715781383624	898	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781385430	1715781385595	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781385429	1715781385596	165	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781388731	1715781389725	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781388730	1715781389726	994	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781391432	1715781391605	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781391431	1715781391606	173	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781394741	1715781396321	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781394739	1715781396322	1580	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781397438	1715781397661	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781397436	1715781397662	223	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781400754	1715781402111	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781400749	1715781402112	1357	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781403451	1715781403650	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781403449	1715781403651	199	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781406761	1715781407633	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781406759	1715781407634	872	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781409462	1715781409790	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781409460	1715781409791	328	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781415472	1715781415765	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781415470	1715781415766	293	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781412762	1715781417277	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781412761	1715781417278	4515	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781418775	1715781420322	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781418773	1715781420323	1547	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781421476	1715781421779	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781421474	1715781421780	303	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781424786	1715781426232	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781424782	1715781426233	1446	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781427478	1715781427714	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781427477	1715781427715	236	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781430791	1715781432064	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781430786	1715781432064	1273	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781433493	1715781433715	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781433488	1715781433716	222	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781436796	1715781438269	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781436791	1715781438270	1473	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781439492	1715781439667	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781439490	1715781439667	175	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781442800	1715781444030	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781442796	1715781444031	1230	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781445501	1715781445801	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781445499	1715781445802	300	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781448814	1715781451688	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781448810	1715781451689	2874	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781451512	1715781451778	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781451509	1715781451779	266	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781454824	1715781455981	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781454822	1715781455982	1157	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781457517	1715781458029	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781457515	1715781458030	512	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781460839	1715781462042	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781460838	1715781462043	1203	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781463530	1715781463731	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781463528	1715781463732	201	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781466847	1715781467781	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781466844	1715781467781	934	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781469541	1715781469747	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781469538	1715781469748	206	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781472859	1715781474503	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781472857	1715781474504	1644	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781475549	1715781475748	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781475545	1715781475749	199	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781478864	1715781480636	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781478862	1715781480638	1772	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781481555	1715781481846	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781481552	1715781481847	291	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781487565	1715781487809	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781487560	1715781487811	244	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781484872	1715781488345	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781484870	1715781488346	3473	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781490884	1715781491878	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781490882	1715781491879	994	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781493567	1715781493768	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781493563	1715781493769	201	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781496891	1715781498045	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781496889	1715781498046	1154	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781499579	1715781499811	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781499576	1715781499811	232	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781502900	1715781504144	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781502898	1715781504146	1244	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781505595	1715781505791	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781505592	1715781505791	196	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781508907	1715781509889	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781508905	1715781509890	982	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781511597	1715781511820	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781511594	1715781511821	223	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781514915	1715781516274	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781514912	1715781516275	1359	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781517608	1715781517929	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781517605	1715781517929	321	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781523614	1715781523856	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781523612	1715781523856	242	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781520917	1715781524073	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781520915	1715781524075	3156	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781526926	1715781528048	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781526924	1715781528049	1122	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781529621	1715781529847	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781529619	1715781529847	226	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781532934	1715781534373	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781532933	1715781534373	1439	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781535638	1715781535848	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781535634	1715781535849	210	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781538949	1715781541108	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781538947	1715781541108	2159	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781541646	1715781541879	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781541643	1715781541879	233	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781544963	1715781546173	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781544961	1715781546174	1210	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781547659	1715781547908	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781547657	1715781547909	249	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781550974	1715781551850	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781550969	1715781551851	876	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781553674	1715781553882	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781553669	1715781553883	208	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781556984	1715781559889	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781556982	1715781559890	2905	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781559685	1715781559933	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781559680	1715781559933	248	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781562994	1715781563579	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781562992	1715781563580	585	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781565687	1715781565887	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781565685	1715781565888	200	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781569012	1715781570779	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781569008	1715781570782	1767	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781571700	1715781571923	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781571695	1715781571924	223	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781575017	1715781576216	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781575014	1715781576217	1199	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781577705	1715781577974	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781577702	1715781577976	269	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781581023	1715781582449	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781581017	1715781582451	1426	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781583717	1715781583949	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781583715	1715781583950	232	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781587028	1715781588296	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781587026	1715781588297	1268	OK
+REQUEST	Ramp Up Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781589728	1715781589924	OK	 
+GROUP	Ramp Up Test 2,GetCase SOAP Request Group	1715781589726	1715781589925	196	OK
+REQUEST	Ramp Up Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781593041	1715781595719	OK	 
+GROUP	Ramp Up Test,AddDocument SOAP Request Group	1715781593040	1715781595719	2678	OK
+GROUP	Ramp Up Test 2	1715781300016	1715781595732	12770	OK
+USER	Ramp Up Test 2	END	1715781595734
+USER	Spike Test 2	START	1715781596022
+REQUEST	Spike Test 2,Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715781596020	1715781596500	OK	 
+GROUP	Spike Test 2,Register With Username SOAP Request Group	1715781596018	1715781596501	480	OK
+REQUEST	Spike Test 2,Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715781596502	1715781597009	OK	 
+GROUP	Spike Test 2,Register With Token SOAP Request Group	1715781596501	1715781597010	507	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781597012	1715781597292	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781597010	1715781597293	280	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781597294	1715781597483	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781597293	1715781597483	189	OK
+GROUP	Ramp Up Test	1715781301008	1715781599042	83833	OK
+USER	Ramp Up Test	END	1715781599043
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781599105	1715781599286	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781599103	1715781599286	181	OK
+USER	Spike Test	START	1715781600022
+REQUEST	Spike Test,Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1715781600020	1715781600518	OK	 
+GROUP	Spike Test,Register With Username SOAP Request Group	1715781600019	1715781600518	498	OK
+REQUEST	Spike Test,Register With Token SOAP Request Group	DARTS - GateWay - Soap - RegisterWithToken	1715781600519	1715781600871	OK	 
+GROUP	Spike Test,Register With Token SOAP Request Group	1715781600518	1715781600872	352	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781600921	1715781601244	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781600919	1715781601245	323	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781600874	1715781602807	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781600872	1715781602808	1933	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781602727	1715781603160	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781602725	1715781603161	433	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781604531	1715781604734	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781604530	1715781604735	203	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781602811	1715781604830	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781602808	1715781604830	2019	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781604832	1715781606253	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781604831	1715781606254	1421	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781606344	1715781606757	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781606343	1715781606758	413	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781606638	1715781607793	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781606635	1715781607794	1155	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781608151	1715781608337	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781608146	1715781608337	186	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781608438	1715781609645	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781608436	1715781609646	1207	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781609961	1715781610151	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781609957	1715781610151	190	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781610253	1715781611661	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781610249	1715781611663	1408	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781611769	1715781612048	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781611767	1715781612049	279	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781612062	1715781612868	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781612060	1715781612869	806	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781613571	1715781613793	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781613568	1715781613794	222	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781613865	1715781615241	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781613862	1715781615242	1376	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781615380	1715781615605	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781615379	1715781615606	225	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781615675	1715781616947	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781615671	1715781616948	1272	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781617193	1715781617386	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781617189	1715781617386	193	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781617487	1715781618595	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781617483	1715781618596	1108	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781618994	1715781619204	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781618992	1715781619205	210	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781619286	1715781620056	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781619285	1715781620057	770	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781620806	1715781621097	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781620804	1715781621098	291	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781622615	1715781622833	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781622613	1715781622833	218	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781621099	1715781622866	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781621098	1715781622867	1767	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781624417	1715781624631	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781624416	1715781624632	214	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781622908	1715781624780	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781622905	1715781624781	1872	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781626225	1715781626449	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781626223	1715781626449	224	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781624782	1715781627805	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781624781	1715781627806	3023	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781628036	1715781628222	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781628034	1715781628223	186	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781629846	1715781630153	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781629843	1715781630154	307	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781627807	1715781630170	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781627806	1715781630172	2363	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781631659	1715781631903	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781631657	1715781631903	244	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781630175	1715781632411	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781630172	1715781632412	2236	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781633468	1715781633693	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781633467	1715781633694	225	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781632413	1715781634037	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781632412	1715781634039	1624	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781635277	1715781635538	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781635274	1715781635539	261	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781634227	1715781636093	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781634224	1715781636094	1866	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781637086	1715781637307	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781637085	1715781637308	221	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781636095	1715781638072	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781636094	1715781638073	1977	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781638889	1715781639145	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781638887	1715781639146	256	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781638074	1715781639341	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781638073	1715781639342	1267	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781640691	1715781640922	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781640690	1715781640922	231	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781639882	1715781641004	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781639881	1715781641005	1122	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781642501	1715781642738	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781642500	1715781642739	237	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781641684	1715781642850	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781641681	1715781642851	1166	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781643491	1715781644519	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781643488	1715781644520	1028	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781644314	1715781644571	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781644310	1715781644571	257	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781646123	1715781646358	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781646122	1715781646360	235	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781645291	1715781646860	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781645289	1715781646861	1569	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781647936	1715781648146	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781647934	1715781648146	210	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781647100	1715781648621	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781647099	1715781648621	1521	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781649742	1715781650002	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781649739	1715781650002	260	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781648908	1715781650503	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781648905	1715781650504	1595	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781650711	1715781651706	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781650710	1715781651706	995	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781651557	1715781651817	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781651554	1715781651818	260	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781653369	1715781653572	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781653367	1715781653572	203	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781652527	1715781654050	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781652525	1715781654051	1523	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781655177	1715781655419	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781655174	1715781655419	242	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781654340	1715781655494	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781654339	1715781655494	1154	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781656149	1715781657077	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781656147	1715781657078	928	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781656985	1715781657210	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781656981	1715781657211	225	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781658792	1715781658974	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781658787	1715781658975	182	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781657958	1715781659628	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781657956	1715781659629	1670	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781660596	1715781660814	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781660592	1715781660814	218	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781659761	1715781661263	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781659760	1715781661264	1502	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781662401	1715781662720	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781662396	1715781662721	319	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781661580	1715781664191	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781661575	1715781664192	2611	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781664207	1715781664437	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781664205	1715781664438	230	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781666014	1715781666268	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781666009	1715781666268	254	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781664194	1715781666955	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781664193	1715781666956	2761	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781667818	1715781668061	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781667817	1715781668062	243	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781666957	1715781669209	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781666956	1715781669210	2252	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781669629	1715781669841	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781669627	1715781669841	212	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781669212	1715781670930	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781669210	1715781670931	1718	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781671444	1715781671660	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781671440	1715781671660	216	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781671026	1715781672149	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781671020	1715781672150	1123	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781673259	1715781673584	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781673255	1715781673585	325	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781672828	1715781673706	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781672825	1715781673707	878	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781675071	1715781675278	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781675067	1715781675279	207	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781674635	1715781675623	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781674632	1715781675625	988	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781676870	1715781677078	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781676868	1715781677079	208	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781676440	1715781677081	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781676438	1715781677081	641	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781678682	1715781678867	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781678680	1715781678868	185	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781678250	1715781679676	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781678248	1715781679677	1426	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781680485	1715781680687	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781680484	1715781680687	202	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781680059	1715781681346	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781680055	1715781681347	1287	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781682296	1715781682561	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781682295	1715781682562	265	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781681866	1715781683005	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781681864	1715781683006	1139	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781684109	1715781684304	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781684107	1715781684305	195	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781683676	1715781684656	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781683675	1715781684657	980	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781685918	1715781686141	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781685917	1715781686142	223	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781685490	1715781686423	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781685486	1715781686423	933	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781687734	1715781687971	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781687731	1715781687971	237	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781687303	1715781688432	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781687300	1715781688438	1129	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781689536	1715781689770	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781689534	1715781689771	234	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781689115	1715781689903	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781689113	1715781689904	788	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781691351	1715781691591	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781691347	1715781691592	240	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781690915	1715781692901	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781690914	1715781692902	1986	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781693162	1715781693367	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781693157	1715781693368	205	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781692903	1715781694106	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781692902	1715781694108	1203	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781694960	1715781695205	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781694959	1715781695205	245	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781694714	1715781695650	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781694712	1715781695651	936	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781696762	1715781697020	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781696760	1715781697021	258	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781698568	1715781698796	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781698567	1715781698797	228	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781696517	1715781699284	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781696515	1715781699285	2767	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781700386	1715781700626	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781700381	1715781700626	240	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781699286	1715781701728	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781699285	1715781701729	2442	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781702194	1715781702456	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781702190	1715781702456	262	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781701730	1715781704118	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781701729	1715781704119	2388	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781704000	1715781704332	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781703998	1715781704332	332	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781704120	1715781705288	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781704119	1715781705289	1168	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781705812	1715781706048	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781705808	1715781706049	236	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781705932	1715781706264	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781705931	1715781706290	332	KO
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781707620	1715781707853	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781707616	1715781707853	233	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781707739	1715781708470	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781707738	1715781708471	731	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781709425	1715781709636	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781709423	1715781709637	211	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781709551	1715781710097	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781709549	1715781710098	546	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781711236	1715781711433	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781711234	1715781711434	197	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781711360	1715781711719	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781711358	1715781711720	359	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781713045	1715781713313	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781713041	1715781713313	268	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781713166	1715781713622	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781713165	1715781713623	456	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781714858	1715781715104	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781714856	1715781715104	246	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781714980	1715781715415	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781714979	1715781715415	435	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781716664	1715781716905	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781716661	1715781716905	241	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781716786	1715781717230	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781716785	1715781717231	444	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781718477	1715781718752	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781718475	1715781718753	275	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781718599	1715781718993	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781718597	1715781718994	394	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781720285	1715781720604	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781720281	1715781720604	319	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781720408	1715781720906	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781720406	1715781720907	498	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781722085	1715781722457	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781722083	1715781722457	372	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781722221	1715781722753	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781722220	1715781722754	532	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781723900	1715781724197	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781723896	1715781724197	297	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781724036	1715781724395	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781724035	1715781724396	359	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781725712	1715781726030	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781725709	1715781726031	318	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781725849	1715781727337	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781725848	1715781727339	1488	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781727519	1715781727759	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781727515	1715781727759	240	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781727657	1715781728048	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781727656	1715781728048	391	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781729469	1715781729928	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781729468	1715781729930	459	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781729332	1715781730015	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781729329	1715781730016	683	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781731144	1715781731510	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781731142	1715781731511	366	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781731284	1715781732427	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781731282	1715781732428	1143	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781732950	1715781733245	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781732949	1715781733246	295	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781733089	1715781733683	KO	xpath((//return/message,Map())).find.exists, found nothing
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781733087	1715781733694	594	KO
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781734766	1715781735447	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781734764	1715781735449	681	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781734903	1715781736159	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781734901	1715781736161	1256	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781736578	1715781736797	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781736577	1715781736797	219	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781736717	1715781737763	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781736716	1715781737763	1046	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781738393	1715781738596	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781738387	1715781738596	203	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781738528	1715781739456	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781738527	1715781739458	928	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781740208	1715781740494	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781740203	1715781740495	286	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781740329	1715781740763	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781740328	1715781740764	434	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781742011	1715781742238	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781742009	1715781742239	227	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781742135	1715781742537	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781742133	1715781742538	402	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781743820	1715781744275	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781743817	1715781744277	455	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781743941	1715781744406	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781743940	1715781744406	465	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781745630	1715781746020	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781745627	1715781746021	390	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781745751	1715781746236	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781745750	1715781746236	485	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781747438	1715781747927	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781747434	1715781747928	489	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781747558	1715781747996	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781747556	1715781747996	438	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781749238	1715781749457	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781749234	1715781749457	219	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781749361	1715781749956	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781749358	1715781749957	595	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781751039	1715781751463	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781751037	1715781751465	424	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781751162	1715781751573	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781751160	1715781751574	411	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781752853	1715781753249	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781752850	1715781753251	396	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781752976	1715781753397	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781752975	1715781753398	421	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781754654	1715781754925	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781754653	1715781754925	271	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781754778	1715781755126	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781754777	1715781755127	348	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781756471	1715781756905	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781756467	1715781756906	434	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781756593	1715781757047	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781756591	1715781757047	454	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781758269	1715781758490	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781758268	1715781758490	221	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781758408	1715781758757	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781758407	1715781758758	349	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781760224	1715781760708	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781760222	1715781760709	484	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781760070	1715781760928	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781760069	1715781760930	858	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781761878	1715781762217	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781761873	1715781762217	339	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781762031	1715781762383	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781762029	1715781762385	352	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781763692	1715781764022	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781763687	1715781764023	330	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781763844	1715781764883	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781763842	1715781764884	1039	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781765496	1715781765735	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781765492	1715781765735	239	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781765649	1715781765988	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781765647	1715781765989	339	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781767310	1715781767520	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781767304	1715781767520	210	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781767462	1715781767934	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781767460	1715781767935	472	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781769121	1715781769378	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781769119	1715781769378	257	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781769276	1715781769708	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781769275	1715781769709	432	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781770926	1715781771180	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781770921	1715781771180	254	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781771079	1715781771624	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781771077	1715781771625	545	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781772739	1715781773012	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781772734	1715781773012	273	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781772892	1715781773507	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781772890	1715781773509	615	OK
+REQUEST	Spike Test 2,GetCase SOAP Request Group	DARTS - GateWay - Soap - GetCase - Token	1715781774539	1715781774804	OK	 
+GROUP	Spike Test 2,GetCase SOAP Request Group	1715781774537	1715781774804	265	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781774695	1715781775005	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781774694	1715781775006	310	OK
+GROUP	Spike Test 2	1715781596018	1715781776339	28423	OK
+USER	Spike Test 2	END	1715781776340
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781776514	1715781776952	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781776510	1715781776952	438	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781778315	1715781778691	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781778310	1715781778692	376	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781780122	1715781780532	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781780120	1715781780533	410	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781781934	1715781782276	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781781929	1715781782277	342	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781783737	1715781784116	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781783732	1715781784117	379	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781785539	1715781786092	OK	 
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781785534	1715781786094	553	OK
+REQUEST	Spike Test,AddDocument SOAP Request Group	DARTS - GateWay - Soap - AddDocument - Event - Token	1715781787355	1715781817396	KO	status.find.is(200), but actually found 504
+GROUP	Spike Test,AddDocument SOAP Request Group	1715781787349	1715781817436	30041	KO
+GROUP	Spike Test	1715781600019	1715781817436	136957	KO
+USER	Spike Test	END	1715781817437
