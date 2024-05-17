@@ -1,6 +1,0 @@
-RUN	DartsApi.CourthousePostSimulation	courthousepostsimulation	1708704558255	8	3.9.5
-USER	Courthouse:POST	START	1708704559283
-REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1708704559301	1708704561088	OK	 
-REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post Redirect 1	1708704561092	1708704561454	OK	 
-GROUP	Courthouse Api Request Group	1708704559282	1708704561489	2149	OK
-USER	Courthouse:POST	END	1708704561492

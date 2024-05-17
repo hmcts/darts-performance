@@ -1,9 +1,0 @@
-RUN	DartsPortal.DartsPortalLogin	dartsportallogin	1708523811637	 	3.9.5
-USER	DartsPortalLogin	START	1708523815953
-REQUEST		request_0	1708523815948	1708523816394	OK	 
-REQUEST		request_0 Redirect 1	1708523816409	1708523822801	OK	 
-ERROR	request_2: Failed to build request: No attribute named 'stateProperties' is defined 	1708523822837
-REQUEST		request_1	1708523822840	1708523822973	OK	 
-REQUEST		request_0	1708523822841	1708523823857	KO	regex(StateProperties=(.*?)).find.exists, found nothing
-ERROR	request_3: Failed to build request: No attribute named 'stateProperties' is defined 	1708523831876
-USER	DartsPortalLogin	END	1708523831882

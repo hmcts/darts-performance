@@ -1,5 +1,0 @@
-RUN	DartsSoap.RegisterWithUsernameSOAPSimulation	registerwithusernamesoapsimulation	1709127541829	16	3.9.5
-USER	DARTS - GateWay - Soap - RegisterWithUsername	START	1709127543508
-REQUEST	Register With Username SOAP Request Group	DARTS - GateWay - Soap - RegisterWithUsername	1709127543528	1709127544517	KO	xpath((//return/code,Map())).find.exists, found nothing
-GROUP	Register With Username SOAP Request Group	1709127543512	1709127544772	989	KO
-USER	DARTS - GateWay - Soap - RegisterWithUsername	END	1709127544775
