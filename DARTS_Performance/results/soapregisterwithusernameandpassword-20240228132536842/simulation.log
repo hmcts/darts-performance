@@ -1,4 +1,0 @@
-RUN	SOAPregisterWithUsernameAndPassword	soapregisterwithusernameandpassword	1709126736842	1	3.9.5
-USER	SOAPregisterWithUsernameAndPassword	START	1709126739073
-REQUEST		request_0	1709126739072	1709126741255	OK	 
-USER	SOAPregisterWithUsernameAndPassword	END	1709126741274

@@ -7,32 +7,32 @@ import java.util.Optional;
 public class AppConfig {
 
     //Performance Env
-    public static final String PERFORMANCE_GATEWAY_BASE_URL= "test";
-    public static final String PERFORMANCE_DARTS_API_BASE_URL= "test";
-    public static final String PERFORMANCE_DARTS_BASE_URL= "test";
-    public static final String PERFORMANCE_CLINET_ID = "test";
-    public static final String PERFORMANCE_CLIENT_SECRET = "test";
-    public static final String PERFORMANCE_AZURE_AD_B2C_CLIENT_ID = "test";
-    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "test";
-    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "test";
-    public static final String PERFORMANCE_B2B_Login = "test";
-    public static final String PERFORMANCE_B2B_Token = "test";
-    public static final String PERFORMANCE_SCOPE = "test";
-    public static final String PERFORMANCE_GRANT_TYPE = "test";
+    public static final String PERFORMANCE_GATEWAY_BASE_URL= "http://darts-gateway.test.platform.hmcts.net";
+    public static final String PERFORMANCE_DARTS_API_BASE_URL= "https://darts-api.test.platform.hmcts.net";
+    public static final String PERFORMANCE_DARTS_BASE_URL= "https://darts.test.apps.hmcts.net";
+    public static final String PERFORMANCE_CLINET_ID = "85118ee2-6544-4180-a16e-99615365f209";
+    public static final String PERFORMANCE_CLIENT_SECRET = "zKO8Q~0Ab-4MZKHcghuhLKvzG8Ot~lkzr4EaacjI";        
+    public static final String PERFORMANCE_AZURE_AD_B2C_CLIENT_ID = "363c11cb-48b9-44bf-9d06-9a3973f6f413";
+    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/";
+    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "oauth2/v2.0/authorize";
+    public static final String PERFORMANCE_B2B_Login = "https://hmctsstgextid.b2clogin.com";
+    public static final String PERFORMANCE_B2B_Token = "/hmctsstgextid.onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
+    public static final String PERFORMANCE_SCOPE = "https://hmctsstgextid.onmicrosoft.com/85118ee2-6544-4180-a16e-99615365f209/Functional.Test";
+    public static final String PERFORMANCE_GRANT_TYPE = "password";
     
     //Staging Env
-    public static final String STAGING_GATEWAY_BASE_URL= "test";
-    public static final String STAGING_DARTS_API_BASE_URL= "test";
-    public static final String STAGING_DARTS_BASE_URL= "test";
-    public static final String STAGING_CLINET_ID = "test";
-    public static final String STAGING_CLIENT_SECRET = "test";      
-    public static final String STAGING_AZURE_AD_B2C_CLIENT_ID = "test";
-    public static final String STAGING_DARTS_PORTAL_SIGNIN = "test";
-    public static final String STAGING_DARTS_PORTAL_Auth_LOGIN = STAGING_DARTS_PORTAL_SIGNIN + "test";
-    public static final String STAGING_B2B_Login = "test";
-    public static final String STAGING_B2B_Token = "test";
-    public static final String STAGING_SCOPE = "test";
-    public static final String STAGING_GRANT_TYPE = "test";
+    public static final String STAGING_GATEWAY_BASE_URL= "http://darts-gateway.staging.platform.hmcts.net";
+    public static final String STAGING_DARTS_API_BASE_URL= "https://darts-api.staging.platform.hmcts.net";
+    public static final String STAGING_DARTS_BASE_URL= "https://darts.staging.apps.hmcts.net";
+    public static final String STAGING_CLINET_ID = "85118ee2-6544-4180-a16e-99615365f209";
+    public static final String STAGING_CLIENT_SECRET = "zKO8Q~0Ab-4MZKHcghuhLKvzG8Ot~lkzr4EaacjI";        
+    public static final String STAGING_AZURE_AD_B2C_CLIENT_ID = "363c11cb-48b9-44bf-9d06-9a3973f6f413";
+    public static final String STAGING_DARTS_PORTAL_SIGNIN = "/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/";
+    public static final String STAGING_DARTS_PORTAL_Auth_LOGIN = STAGING_DARTS_PORTAL_SIGNIN + "oauth2/v2.0/authorize";
+    public static final String STAGING_B2B_Login = "https://hmctsstgextid.b2clogin.com";
+    public static final String STAGING_B2B_Token = "/hmctsstgextid.onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
+    public static final String STAGING_SCOPE = "https://hmctsstgextid.onmicrosoft.com/85118ee2-6544-4180-a16e-99615365f209/Functional.Test";
+    public static final String STAGING_GRANT_TYPE = "password";
 
 
     public static final long RANK_UP_TIME_SECONDS;
@@ -149,15 +149,15 @@ public class AppConfig {
         AZURE_AD_B2C_CLIENT_ID(PERFORMANCE_AZURE_AD_B2C_CLIENT_ID),
 
         //Users
-        DARTS_API_USERNAME("test"),
-        DARTS_API_GLOBAL_USERNAME("test"),
-        DARTS_API_PASSWORD("test"),
-        DARTS_SOAP_USERNAME("test"),
-        DARTS_SOAP_PASSWORD("test"),
-        DARTS_API_USERNAME2("test"),
-        DARTS_API_PASSWORD2("test"),
-        DARTS_SOAP_EXTERNAL_USERNAME("test"),
-        DARTS_SOAP_EXTERNAL_PASSWORD("test");
+        DARTS_API_USERNAME("darts.transcriber@hmcts.net"),
+        DARTS_API_GLOBAL_USERNAME("darts_global_test_user"),
+        DARTS_API_PASSWORD("Password@1"),
+        DARTS_SOAP_USERNAME("xhibit_ws_user"),
+        DARTS_SOAP_PASSWORD("l0g1c@"),
+        DARTS_API_USERNAME2("darts.admin@hmcts.net"),
+        DARTS_API_PASSWORD2("Password@1"),
+        DARTS_SOAP_EXTERNAL_USERNAME("viq_ws_user"),
+        DARTS_SOAP_EXTERNAL_PASSWORD("darts");
 
         private final String url;
         EnvironmentURL(String url) {
@@ -174,9 +174,9 @@ public class AppConfig {
 
     // SOAP service endpoint
     public enum SoapServiceEndpoint {
-        ContextRegistryService("test"),
-        DARTSService("test"),
-        StandardService("test");
+        ContextRegistryService("/service/darts/runtime/ContextRegistryService"),
+        DARTSService("/service/darts/DARTSService"),
+        StandardService("/service/darts");
         private final String endpoint;
 
         SoapServiceEndpoint(String endpoint) {
