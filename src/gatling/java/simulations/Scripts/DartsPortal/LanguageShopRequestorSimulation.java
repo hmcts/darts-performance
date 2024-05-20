@@ -1,6 +1,5 @@
 package simulations.Scripts.DartsPortal;
 
-import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
@@ -14,7 +13,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class LanguageShopRequestorSimulation extends Simulation {   
   {    
       HttpProtocolBuilder httpProtocol = http
-        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+     //   .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources()
         .acceptHeader("application/json, text/plain, */*")

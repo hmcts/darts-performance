@@ -13,17 +13,16 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class AudioPostSimulation extends Simulation {   
   {
-    final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
 
     final HttpProtocolBuilder httpProtocol = http
-        //.proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT).httpsPort(AppConfig.PROXY_PORT))
+    //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
     final ScenarioBuilder scn1 = scenario("Audio:POST")
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(1)    
-        .on(exec(PostAudioScenario.PostApiAudio().feed(feeder))    
+        .on(exec(PostAudioScenario.PostApiAudio())    
         );
 
     setUp(
