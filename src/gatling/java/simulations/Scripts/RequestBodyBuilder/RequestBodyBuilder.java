@@ -145,8 +145,8 @@ public class RequestBodyBuilder {
 
     public static String buildPostAudioApiRequest(Session session) {
         // Retrieve values from session or define defaults if needed
-        String courtHouseName = session.get("CourtHouseName").toString();    
-        String courtRoom = session.get("CourtRoom").toString(); 
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoom = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : ""; 
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(10);
 

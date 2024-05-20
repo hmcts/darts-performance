@@ -20,6 +20,8 @@ public final class PostAudioScenario {
                 .on(exec(feed(feeder))
                 .exec(session -> {
                     String xmlPayload = RequestBodyBuilder.buildPostAudioApiRequest(session);
+                    System.out.println("Code xmlPayload: " + xmlPayload);
+                    System.out.println("Code session: " + session);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - Api - Audios:POST")

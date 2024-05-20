@@ -22,7 +22,7 @@ public class AddAudioUserSimulation extends Simulation {
 
   public AddAudioUserSimulation() {
       HttpProtocolBuilder httpProtocol = http
-      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+    //  .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
       .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
       .inferHtmlResources()
       .acceptEncodingHeader("gzip,deflate")

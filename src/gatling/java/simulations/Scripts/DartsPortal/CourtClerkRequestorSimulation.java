@@ -17,7 +17,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class CourtClerkRequestorSimulation extends Simulation {   
   {
       HttpProtocolBuilder httpProtocol = http
-        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+     //   .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources()
         .acceptHeader("application/json, text/plain, */*")
