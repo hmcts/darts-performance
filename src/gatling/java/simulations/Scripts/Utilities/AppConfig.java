@@ -42,9 +42,6 @@ public class AppConfig {
     public static final TestType TEST_TYPE;
     public static final boolean DEBUG;
     public static final String ENVIRONMENT;
-    public static final String DB_URL;
-    public static final String DB_USERNAME;
-    public static final String DB_PASSWORD;
 
     //Users
     public static final int USERS_PER_SECOND;
