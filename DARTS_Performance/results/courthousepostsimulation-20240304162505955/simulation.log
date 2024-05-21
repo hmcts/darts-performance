@@ -1,7 +1,0 @@
-RUN	DartsApi.CourthousePostSimulation	courthousepostsimulation	1709569505955	8	3.9.5
-USER	Courthouse:POST	START	1709569507007
-REQUEST	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	DARTS - Api - Token:GET	1709569507006	1709569507641	OK	 
-GROUP	B2C_1_Ropc_Darts_Signin - TokenDARTS - Api - B2C - Oauth2 - Token:GET	1709569506992	1709569507682	635	OK
-REQUEST	Courthouse Api Request Group	DARTS - Api - CourtHouse:Post	1709569507691	1709569508297	KO	status.find.is(200), but actually found 415
-GROUP	Courthouse Api Request Group	1709569507684	1709569508302	606	KO
-USER	Courthouse:POST	END	1709569508309

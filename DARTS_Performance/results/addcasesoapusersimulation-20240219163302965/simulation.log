@@ -1,5 +1,0 @@
-RUN	DartsSoap.AddCaseSOAPUserSimulation	addcasesoapusersimulation	1708360382965	9	3.9.5
-USER	DARTS - GateWay - Soap - AddCase :POST	START	1708360383609
-REQUEST	AddCase SOAP Request Group	DARTS - GateWay - Soap - AddCase - User	1708360383641	1708360384652	KO	xpath((//return/message,Map())).find.exists, found nothing
-GROUP	AddCase SOAP Request Group	1708360383611	1708360384995	1011	KO
-USER	DARTS - GateWay - Soap - AddCase :POST	END	1708360384998
