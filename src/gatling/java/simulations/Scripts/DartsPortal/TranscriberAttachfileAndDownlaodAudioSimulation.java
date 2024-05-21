@@ -5,7 +5,7 @@ import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
-import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachfileAndDownlaodAudioScenario;
+import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownloadAudioScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -29,7 +29,7 @@ public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation 
         .exec(feed(Feeders.createJudgesFeeder()))
         .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
         .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-        .exec(TranscriberAttachfileAndDownlaodAudioScenario.TranscriberAttachfileAndDownlaodAudio())
+        .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
     setUp(
