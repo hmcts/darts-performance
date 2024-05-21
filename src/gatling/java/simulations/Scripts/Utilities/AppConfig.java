@@ -10,29 +10,29 @@ public class AppConfig {
     public static final String PERFORMANCE_GATEWAY_BASE_URL= "http://darts-gateway.test.platform.hmcts.net";
     public static final String PERFORMANCE_DARTS_API_BASE_URL= "https://darts-api.test.platform.hmcts.net";
     public static final String PERFORMANCE_DARTS_BASE_URL= "https://darts.test.apps.hmcts.net";
-    public static final String PERFORMANCE_CLINET_ID = "test";
-    public static final String PERFORMANCE_CLIENT_SECRET = "test";       
-    public static final String PERFORMANCE_AZURE_AD_B2C_CLIENT_ID = "test";
-    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "test";
+    public static final String PERFORMANCE_CLINET_ID = "85118ee2-6544-4180-a16e-99615365f209";
+    public static final String PERFORMANCE_CLIENT_SECRET = "zKO8Q~0Ab-4MZKHcghuhLKvzG8Ot~lkzr4EaacjI";        
+    public static final String PERFORMANCE_AZURE_AD_B2C_CLIENT_ID = "363c11cb-48b9-44bf-9d06-9a3973f6f413";
+    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/";
     public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "oauth2/v2.0/authorize";
-    public static final String PERFORMANCE_B2B_Login = "test";
-    public static final String PERFORMANCE_B2B_Token = "test";
-    public static final String PERFORMANCE_SCOPE = "test";
-    public static final String PERFORMANCE_GRANT_TYPE = "test";
-
+    public static final String PERFORMANCE_B2B_Login = "https://hmctsstgextid.b2clogin.com";
+    public static final String PERFORMANCE_B2B_Token = "/hmctsstgextid.onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
+    public static final String PERFORMANCE_SCOPE = "https://hmctsstgextid.onmicrosoft.com/85118ee2-6544-4180-a16e-99615365f209/Functional.Test";
+    public static final String PERFORMANCE_GRANT_TYPE = "password";
+    
     //Staging Env
     public static final String STAGING_GATEWAY_BASE_URL= "http://darts-gateway.staging.platform.hmcts.net";
     public static final String STAGING_DARTS_API_BASE_URL= "https://darts-api.staging.platform.hmcts.net";
     public static final String STAGING_DARTS_BASE_URL= "https://darts.staging.apps.hmcts.net";
-    public static final String STAGING_CLINET_ID = "test";
-    public static final String STAGING_CLIENT_SECRET = "test";
-    public static final String STAGING_AZURE_AD_B2C_CLIENT_ID = "test";
-    public static final String STAGING_DARTS_PORTAL_SIGNIN = "test";
-    public static final String STAGING_DARTS_PORTAL_Auth_LOGIN = STAGING_DARTS_PORTAL_SIGNIN + "test";
-    public static final String STAGING_B2B_Login = "test";
-    public static final String STAGING_B2B_Token = "test";
-    public static final String STAGING_SCOPE = "test";
-    public static final String STAGING_GRANT_TYPE = "test";
+    public static final String STAGING_CLINET_ID = "85118ee2-6544-4180-a16e-99615365f209";
+    public static final String STAGING_CLIENT_SECRET = "zKO8Q~0Ab-4MZKHcghuhLKvzG8Ot~lkzr4EaacjI";        
+    public static final String STAGING_AZURE_AD_B2C_CLIENT_ID = "363c11cb-48b9-44bf-9d06-9a3973f6f413";
+    public static final String STAGING_DARTS_PORTAL_SIGNIN = "/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/";
+    public static final String STAGING_DARTS_PORTAL_Auth_LOGIN = STAGING_DARTS_PORTAL_SIGNIN + "oauth2/v2.0/authorize";
+    public static final String STAGING_B2B_Login = "https://hmctsstgextid.b2clogin.com";
+    public static final String STAGING_B2B_Token = "/hmctsstgextid.onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
+    public static final String STAGING_SCOPE = "https://hmctsstgextid.onmicrosoft.com/85118ee2-6544-4180-a16e-99615365f209/Functional.Test";
+    public static final String STAGING_GRANT_TYPE = "password";
 
 
     public static final long RANK_UP_TIME_SECONDS;
@@ -92,8 +92,8 @@ public class AppConfig {
                 Double.parseDouble(getProperty("REQUESTS_PER_HOUR_PER_USER","3600")) / 3600.0;
         } else {
             REQUESTS_PER_SECOND_PER_USER = Double.parseDouble(getProperty("REQUESTS_PER_SECOND_PER_USER", "1"));
-        }	
-		
+        }
+        
         CONSTANT_CONCURRENT_USERS = Integer.parseInt(getProperty("CONSTANT_CONCURRENT_USERS", "1"));
         REQUESTS_PER_SECOND = Math.max(1, (int) (REQUESTS_PER_SECOND_PER_USER * USERS_PER_SECOND)); 
 
@@ -114,9 +114,7 @@ public class AppConfig {
         SOAP_SPIKE_PACE_DURATION_MILLIS = Integer.parseInt(getProperty("SOAP_SPIKE_PACE_DURATION_MILLIS", "1800"));
 
 
-        DB_URL = getProperty("DB_URL", "test");
-        DB_USERNAME = getProperty("DB_USERNAME", "test");
-        DB_PASSWORD = getProperty("DB_PASSWORD", "test");       
+    
     }
 
     private static boolean hasProperty(String name) {
@@ -149,15 +147,15 @@ public class AppConfig {
         AZURE_AD_B2C_CLIENT_ID(PERFORMANCE_AZURE_AD_B2C_CLIENT_ID),
 
         //Users
-        DARTS_API_USERNAME("test"),
-        DARTS_API_GLOBAL_USERNAME("test"),
-        DARTS_API_PASSWORD("test"),
-        DARTS_SOAP_USERNAME("test"),
-        DARTS_SOAP_PASSWORD("test"),
-        DARTS_API_USERNAME2("test"),
-        DARTS_API_PASSWORD2("test"),
-        DARTS_SOAP_EXTERNAL_USERNAME("test"),
-        DARTS_SOAP_EXTERNAL_PASSWORD("test");		  
+        DARTS_API_USERNAME("darts.transcriber@hmcts.net"),
+        DARTS_API_GLOBAL_USERNAME("darts_global_test_user"),
+        DARTS_API_PASSWORD("Password@1"),
+        DARTS_SOAP_USERNAME("xhibit_ws_user"),
+        DARTS_SOAP_PASSWORD("l0g1c@"),
+        DARTS_API_USERNAME2("darts.admin@hmcts.net"),
+        DARTS_API_PASSWORD2("Password@1"),
+        DARTS_SOAP_EXTERNAL_USERNAME("viq_ws_user"),
+        DARTS_SOAP_EXTERNAL_PASSWORD("darts");
 
         private final String url;
         EnvironmentURL(String url) {
@@ -174,9 +172,9 @@ public class AppConfig {
 
     // SOAP service endpoint
     public enum SoapServiceEndpoint {
-        ContextRegistryService("test"),
-        DARTSService("test"),
-        StandardService("test");
+        ContextRegistryService("/service/darts/runtime/ContextRegistryService"),
+        DARTSService("/service/darts/DARTSService"),
+        StandardService("/service/darts");
         private final String endpoint;
 
         SoapServiceEndpoint(String endpoint) {
@@ -188,52 +186,52 @@ public class AppConfig {
         }
     }
 
-	   // Get the base directory of the project
-		public static final String BASE_DIR = System.getProperty("user.dir");
+    // Get the base directory of the project
+    public static final String BASE_DIR = System.getProperty("user.dir");
 
-		// Common part of the CSV file paths
-		public static final String CSV_FILE_COMMON_PATH = "DARTS_Performance_Gradle/src/gatling/resources";
+    // Common part of the CSV file paths
+    public static final String CSV_FILE_COMMON_PATH = "DARTS_Performance_Gradle/src/gatling/resources";
 
-		// Specific CSV file names
-		public static final String COURT_HOUSE_AND_COURT_ROOMS_CSV = "GetAllCourtroomsAndCourthouses.csv";
-		public static final String TRANSCRIPTION_POST_CSV = "Transcription_Post.csv";
-		public static final String AUDIO_REQUEST_POST_CSV = "Audio_Request_Post.csv";
-		public static final String TRANSFORMED_MEDIA_CSV = "TransformedMedia.csv";
+    // Specific CSV file names
+    public static final String COURT_HOUSE_AND_COURT_ROOMS_CSV = "GetAllCourtroomsAndCourthouses.csv";
+    public static final String TRANSCRIPTION_POST_CSV = "Transcription_Post.csv";
+    public static final String AUDIO_REQUEST_POST_CSV = "Audio_Request_Post.csv";
+    public static final String TRANSFORMED_MEDIA_CSV = "TransformedMedia.csv";
 
-		// Specific CSV file for Users
-		public static final String DARTS_PORTAL_USERS_CSV = "Users.csv";
-		public static final String DARTS_PORTAL_COURTCLERK_USERS_CSV = "UsersCourtClerks.csv";
-		public static final String DARTS_PORTAL_TRANSCRIBERS_USERS_CSV = "UsersTranscribers.csv";
-		public static final String DARTS_PORTAL_LANGUAGESHOP_USERS_CSV = "UsersLanguageShop.csv";
+    // Specific CSV file for Users
+    public static final String DARTS_PORTAL_USERS_CSV = "Users.csv";
+    public static final String DARTS_PORTAL_COURTCLERK_USERS_CSV = "UsersCourtClerks.csv";
+    public static final String DARTS_PORTAL_TRANSCRIBERS_USERS_CSV = "UsersTranscribers.csv";
+    public static final String DARTS_PORTAL_LANGUAGESHOP_USERS_CSV = "UsersLanguageShop.csv";
 
-		// Specific CSV file for Judges
-		public static final String DARTS_PORTAL_JUDGES_CSV = "JudgeName2.csv";
+    // Specific CSV file for Judges
+    public static final String DARTS_PORTAL_JUDGES_CSV = "JudgeName2.csv";
 
-		// Full CSV file paths
-		public static final String COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, COURT_HOUSE_AND_COURT_ROOMS_CSV).toString();
-		public static final String TRANSCRIPTION_POST_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSCRIPTION_POST_CSV).toString();
-		public static final String AUDIO_REQUEST_POST_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, AUDIO_REQUEST_POST_CSV).toString();
-		public static final String TRANSFORMED_MEDIA_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSFORMED_MEDIA_CSV).toString();
-		public static final String DARTS_PORTAL_USERS1_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_USERS_CSV).toString();
-		public static final String DARTS_PORTAL_COURTCLERK_USERS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_COURTCLERK_USERS_CSV).toString();
-		public static final String DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_TRANSCRIBERS_USERS_CSV).toString();
-		public static final String DARTS_PORTAL_LANGUAGESHOP_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_LANGUAGESHOP_USERS_CSV).toString();
-		public static final String DARTS_PORTAL_JUDGES_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_JUDGES_CSV).toString();
+    // Full CSV file paths
+    public static final String COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, COURT_HOUSE_AND_COURT_ROOMS_CSV).toString();
+    public static final String TRANSCRIPTION_POST_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSCRIPTION_POST_CSV).toString();
+    public static final String AUDIO_REQUEST_POST_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, AUDIO_REQUEST_POST_CSV).toString();
+    public static final String TRANSFORMED_MEDIA_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSFORMED_MEDIA_CSV).toString();
+    public static final String DARTS_PORTAL_USERS1_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_USERS_CSV).toString();
+    public static final String DARTS_PORTAL_COURTCLERK_USERS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_COURTCLERK_USERS_CSV).toString();
+    public static final String DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_TRANSCRIBERS_USERS_CSV).toString();
+    public static final String DARTS_PORTAL_LANGUAGESHOP_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_LANGUAGESHOP_USERS_CSV).toString();
+    public static final String DARTS_PORTAL_JUDGES_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_JUDGES_CSV).toString();
 
 
-															 
-								 
-							   
-																						  
-							   
-																									 
-							   
-																									   
-					
-																								 
-		 
-	 
-		// List of Document files
+    public static String getFilePath(String simulationType) {
+        switch (simulationType) {
+            case "Simulation1":
+                return Paths.get(CSV_FILE_COMMON_PATH, DARTS_PORTAL_USERS_CSV).toString();
+            case "Simulation2":
+                return Paths.get(CSV_FILE_COMMON_PATH, DARTS_PORTAL_COURTCLERK_USERS_CSV).toString();
+            case "Simulation3":
+                return Paths.get(CSV_FILE_COMMON_PATH, DARTS_PORTAL_TRANSCRIBERS_USERS_CSV).toString();
+            default:
+                throw new IllegalArgumentException("Invalid simulation type: " + simulationType);
+        }
+    }
+        // List of Document files
         public static final String[] DOCUMENT_FILES = {"SampleDoc2.docx"};
 
         // Method to select a random audio file
@@ -241,7 +239,7 @@ public class AppConfig {
             Random random = new Random();
             int index = random.nextInt(DOCUMENT_FILES.length);
             return DOCUMENT_FILES[index];
-        }															  
+        }
 
         // List of audio files
         public static final String[] AUDIO_FILES = {"sample.mp2", "00h05m.mp2", "00h10m.mp2", "00h10m.mp2", "00h15m.mp2","00h20m.mp2", "02h.mp2"};
@@ -261,8 +259,8 @@ public class AppConfig {
             addValueToBuilder(builder, "Debug", String.valueOf(DEBUG));
             addValueToBuilder(builder, "Rank Up Time Seconds", String.valueOf(RANK_UP_TIME_SECONDS));
             addValueToBuilder(builder, "Rank Down Time Seconds", String.valueOf(RANK_DOWN_TIME_SECONDS));
-            
-			//Users
+
+            //Users
             addValueToBuilder(builder, "Users Per Second", String.valueOf(USERS_PER_SECOND));
             addValueToBuilder(builder, "Constant concurrent users", String.valueOf(CONSTANT_CONCURRENT_USERS));
             addValueToBuilder(builder, "Pipeline Users Per Second", String.valueOf(PIPELINE_USERS_PER_SECOND));
