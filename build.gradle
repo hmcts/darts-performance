@@ -1,29 +1,19 @@
 plugins {
-    id 'org.owasp.dependencycheck' version '9.1.0'
     id 'java'
-    id 'io.gatling.gradle' version '3.11.2'
+    // The following line allows to load io.gatling.gradle plugin and directly apply it
+    id 'io.gatling.gradle' version '3.10.4'
 }
 
-group = 'uk.gov.hmcts'
-version = '0.0.2'
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
+gatling {
+  // WARNING: options below only work when logback config file isn't provided
+  logLevel = 'WARN' // logback root level
+  logHttp = 'NONE' // set to 'ALL' for all HTTP traffic in TRACE, 'FAILURES' for failed HTTP traffic in DEBUG
+  enterprise {
+    // Enterprise Cloud (https://cloud.gatling.io/) configuration reference: https://gatling.io/docs/gatling/reference/current/extensions/gradle_plugin/#working-with-gatling-enterprise-cloud
+    // Enterprise Self-Hosted configuration reference: https://gatling.io/docs/gatling/reference/current/extensions/gradle_plugin/#working-with-gatling-enterprise-self-hosted
+  }
 }
 
 repositories {
-    mavenCentral()
-    mavenLocal()
-    maven { url 'https://jitpack.io' }
-}
-
-dependencies {
-    gatling 'org.projectlombok:lombok:1.18.32'
-    gatlingAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
-
-    gatling group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.6'
-    gatling group: 'ch.qos.logback', name: 'logback-core', version: '1.5.6'
-    gatling group: 'org.slf4j', name: 'slf4j-api', version: '2.0.13'
+  mavenCentral()
 }

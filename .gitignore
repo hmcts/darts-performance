@@ -11,3 +11,35 @@ Performance.Scripts/Data/12h.mp2
 Performance.Scripts/Data/15h 15m.mp2
 Performance.Scripts/Data/24h.mp2
 *.class
+.gradle/
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+*.class
+bin/functionalTest/
+bin/integrationTest/
+bin/main/
+bin/smokeTest/
+bin/test/
+bin/generated-sources/
+ 
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+ 
+### IntelliJ IDEA ###
+.idea/*
+!.idea/codeStyles/
+/out
+*.iws
+*.iml
+*.ipr
+*.lock
+ 
+.DS_Store
+ 
+applicationinsights-agent-*.jar
+*.log
