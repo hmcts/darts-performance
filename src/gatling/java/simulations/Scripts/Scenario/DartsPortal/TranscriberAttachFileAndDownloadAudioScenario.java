@@ -9,13 +9,13 @@ import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public final class TranscriberAttachfileAndDownlaodAudioScenario {
+public final class TranscriberAttachFileAndDownloadAudioScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();    
+    private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
     private static final Random randomNumber = new Random();
     private static final String randomDocumentFile = AppConfig.getRandomDocumentFile();
 
-    private TranscriberAttachfileAndDownlaodAudioScenario() {}
+    private TranscriberAttachFileAndDownloadAudioScenario() {}
 
     public static ChainBuilder TranscriberAttachfileAndDownlaodAudio() {
       return group("Darts Attachfile And Downlaod Audio")
