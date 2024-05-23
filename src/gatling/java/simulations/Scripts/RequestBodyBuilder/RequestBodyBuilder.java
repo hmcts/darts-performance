@@ -145,14 +145,12 @@ public class RequestBodyBuilder {
 
     public static String buildPostAudioApiRequest(Session session) {
         // Retrieve values from session or define defaults if needed
-        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
-        String courtRoom = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : ""; 
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(10);
 
         return String.format(
-        "{\"started_at\": \"1972-11-25T17:28:59.936Z\", \"ended_at\": \"1972-11-25T18:28:59.936Z\", \"channel\": 1, \"total_channels\": 4, \"format\": \"mp2\", \"filename\": \"sample.mp2\", \"courthouse\": \"%s\", \"courtroom\": \"%s\", \"file_size\": 937.96, \"checksum\": \"2IWB54XjyM+8uiY4INhtcQ==\", \"cases\": [\"PerfCase_%s\"] }",
-        courtHouseName, courtRoom, caseName);
+        "{\"case_number\": \"PerfCase_agwiagkzzxcgx\"}",
+        caseName);
     }
 
     public static String buildDartsPortalPerftraceRequest(Session session) {

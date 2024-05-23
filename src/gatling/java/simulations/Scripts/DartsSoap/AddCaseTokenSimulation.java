@@ -46,16 +46,10 @@ public class AddCaseTokenSimulation extends Simulation {
 
   private ScenarioBuilder setUpScenario(String scenarioName, int paceDurationMillis, int repeats) {
       return scenario(scenarioName)
-          .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
+      .group(scenarioName)
+      .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
           .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
           .repeat(repeats)
-          .on(            
-              doIf(session -> session.get("messageId").equals("E_UNKNOWN_TOKEN"))
-                  .then(
-                      exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
-                          .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
-                  )
-          
-          .exec(AddCaseTokenScenario.addCaseToken().pace(Duration.ofMillis(paceDurationMillis))));
+          .on(exec(AddCaseTokenScenario.addCaseToken().pace(Duration.ofMillis(paceDurationMillis)))));
   }
 }

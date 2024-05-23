@@ -2,6 +2,7 @@ package simulations.Scripts.DartsApi;
 
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
 import simulations.Scripts.Scenario.DartsApi.GetAudioPreviewScenario;
+import simulations.Scripts.Scenario.DartsApi.PostCaseSearchScenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
@@ -11,7 +12,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 
-public class AudioGETPreviewSimulation extends Simulation {   
+public class CasePostSearchSimulation extends Simulation {   
   {
 
     final HttpProtocolBuilder httpProtocol = http
@@ -19,10 +20,10 @@ public class AudioGETPreviewSimulation extends Simulation {
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
-    final ScenarioBuilder scn1 = scenario("Audio Requests:GET Preview")
+    final ScenarioBuilder scn1 = scenario("Case Requests:POST Search")
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(1)    
-        .on(exec(GetAudioPreviewScenario.GetAudioPreview())    
+        .on(exec(PostCaseSearchScenario.PostCaseSearch())    
         );
 
     setUp(        

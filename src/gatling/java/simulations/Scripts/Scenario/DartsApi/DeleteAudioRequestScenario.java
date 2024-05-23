@@ -9,12 +9,10 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class DeleteAudioRequestScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
-
     private DeleteAudioRequestScenario() {}
     public static ChainBuilder DeleteAudioRequest() {
         return group("Audio Request Get")
-            .on(exec(feed(feeder))
+            .on(exec(feed(Feeders.createAudioRequestCSV()))
                 .exec(http("DARTS - Api - AudioRequest:DELETE")
                         .delete(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/transformed_media/#{getTransformedMediaId}")
                         .headers(Headers.AuthorizationHeaders)

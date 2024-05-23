@@ -1,7 +1,7 @@
 package simulations.Scripts.Scenario.DartsApi;
 
 import simulations.Scripts.Headers.Headers;
-import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.*;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
@@ -10,14 +10,13 @@ import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
 public final class PostAudioScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
     private static final String randomAudioFile = AppConfig.getRandomAudioFile();
 
     private PostAudioScenario() {}
 
     public static ChainBuilder PostApiAudio() {
         return group("Audio Request Group")
-                .on(exec(feed(feeder))
+                .on(exec(feed(Feeders.CourtHouseAndCourtRooms))
                 .exec(session -> {
                     String xmlPayload = RequestBodyBuilder.buildPostAudioApiRequest(session);
                     System.out.println("Code xmlPayload: " + xmlPayload);
