@@ -12,7 +12,6 @@ import java.time.Duration;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-
 public class AddDocumentTokenSimulation extends Simulation {
 
     private static final String BASELINE_SCENARIO_NAME = "DARTS - GateWay - Soap - AddDocument:POST - Event Token";
@@ -26,13 +25,12 @@ public class AddDocumentTokenSimulation extends Simulation {
 
     public AddDocumentTokenSimulation() {
         HttpProtocolBuilder httpProtocol = http
-       //     .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
             .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
             .inferHtmlResources()
             .acceptEncodingHeader("gzip,deflate")
             .contentTypeHeader("text/xml;charset=UTF-8")
             .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
-    
+
         setUpScenarios(httpProtocol);
     }
       
@@ -41,24 +39,26 @@ public class AddDocumentTokenSimulation extends Simulation {
         ScenarioBuilder baselineScenario = setUpScenario(BASELINE_SCENARIO_NAME, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, AppConfig.SOAP_BASELINE_REPEATS);
         ScenarioBuilder rampUpScenario = setUpScenario(RAMP_UP_SCENARIO_NAME, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, AppConfig.SOAP_RAMPUP_REPEATS);
         ScenarioBuilder spikeScenario = setUpScenario(SPIKE_SCENARIO_NAME, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, AppConfig.SOAP_SPIKE_REPEATS);
-    
-    // Call setUp once with all scenarios
-    setUp(
-        baselineScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_TEST_DURATION_MINUTES))).protocols(httpProtocol)
-        .andThen(rampUpScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.RAMP_TEST_DURATION_MINUTES))).protocols(httpProtocol))
-        .andThen(spikeScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SPIKE_TEST_DURATION_MINUTES))).protocols(httpProtocol))
+
+        // Call setUp once with all scenarios
+        setUp(
+            baselineScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_TEST_DURATION_MINUTES))).protocols(httpProtocol)
+            .andThen(rampUpScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.RAMP_TEST_DURATION_MINUTES))).protocols(httpProtocol))
+            .andThen(spikeScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SPIKE_TEST_DURATION_MINUTES))).protocols(httpProtocol))
         );    
     }
 
     private ScenarioBuilder setUpScenario(String scenarioName, int paceDurationMillis, int repeats) {
-    return scenario(scenarioName)
-        .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
-        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
-        .repeat(repeats)
-        .on(exec(AddDocumentEventTokenScenario.AddDocumentEventToken().pace(Duration.ofMillis(paceDurationMillis))));
+        return scenario(scenarioName)
+            .group(scenarioName)
+            .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
+            .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
+            .repeat(repeats)
+            .on(exec(AddDocumentEventTokenScenario.AddDocumentEventToken().pace(Duration.ofMillis(paceDurationMillis)))));
     }
+
     @Override
     public void after() {
-    System.out.println("Simulation is finished!");
+        System.out.println("Simulation is finished!");
     }
 }

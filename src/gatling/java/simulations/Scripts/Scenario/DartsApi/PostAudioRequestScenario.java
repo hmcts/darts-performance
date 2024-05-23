@@ -3,6 +3,7 @@ package simulations.Scripts.Scenario.DartsApi;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
+import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -10,13 +11,12 @@ import java.time.LocalDateTime;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
 public final class PostAudioRequestScenario {
-    private static final String AUDIO_REQUEST_FILE_PATH = AppConfig.AUDIO_REQUEST_POST_FILE_PATH;
-    private static final FeederBuilder<String> feeder = csv(AUDIO_REQUEST_FILE_PATH).random();
+
     private PostAudioRequestScenario() {}
 
     public static ChainBuilder PostaudioRequest() {
           return group("Audio Request Group")
-          .on(exec(feed(feeder))
+          .on(exec(feed(Feeders.createAudioRequestCSV()))
           .exec(session -> {
               LocalDateTime startTime = LocalDateTime.now();
               LocalDateTime endTime = startTime.plusHours(3);

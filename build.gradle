@@ -1,19 +1,102 @@
 plugins {
     id 'java'
-    // The following line allows to load io.gatling.gradle plugin and directly apply it
     id 'io.gatling.gradle' version '3.10.4'
 }
 
 gatling {
-  // WARNING: options below only work when logback config file isn't provided
-  logLevel = 'WARN' // logback root level
-  logHttp = 'NONE' // set to 'ALL' for all HTTP traffic in TRACE, 'FAILURES' for failed HTTP traffic in DEBUG
-  enterprise {
-    // Enterprise Cloud (https://cloud.gatling.io/) configuration reference: https://gatling.io/docs/gatling/reference/current/extensions/gradle_plugin/#working-with-gatling-enterprise-cloud
-    // Enterprise Self-Hosted configuration reference: https://gatling.io/docs/gatling/reference/current/extensions/gradle_plugin/#working-with-gatling-enterprise-self-hosted
-  }
+    logLevel = 'WARN'
+    logHttp = 'NONE'
 }
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
+
+// sourceSets {
+//     main {
+//         java {
+//             srcDirs = ['src/gatling/java']
+//         }
+//         resources {
+//             srcDirs = ['src/gatling/resources']
+//         }
+//     }
+//     dartsApi {
+//         java {
+//             srcDirs = ['src/gatling/java/simulations/Scripts/DartsApi']
+//         }
+//         resources {
+//             srcDirs = ['src/gatling/resources']
+//         }
+//     }
+//     dartsPortal {
+//         java {
+//             srcDirs = ['src/gatling/java/simulations/Scripts/DartsPortal']
+//         }
+//         resources {
+//             srcDirs = ['src/gatling/resources']
+//         }
+//     }
+//     dartsSoap {
+//         java {
+//             srcDirs = ['src/gatling/java/simulations/Scripts/DartsSoap']
+//         }
+//         resources {
+//             srcDirs = ['src/gatling/resources']
+//         }
+//     }
+// }
+// configurations {
+//     dartsApiImplementation.extendsFrom gatlingImplementation
+//     dartsPortalImplementation.extendsFrom gatlingImplementation
+//     dartsSoapImplementation.extendsFrom gatlingImplementation
+// }
+
+// dependencies {
+//     implementation 'io.gatling.highcharts:gatling-charts-highcharts:3.10.4'
+//     dartsApiImplementation 'io.gatling.highcharts:gatling-charts-highcharts:3.10.4'
+//     dartsPortalImplementation 'io.gatling.highcharts:gatling-charts-highcharts:3.10.4'
+//     dartsSoapImplementation 'io.gatling.highcharts:gatling-charts-highcharts:3.10.4'
+// }
+
+// tasks.register('gatlingRunDartsApiTests', JavaExec) {
+//     group = "Gatling"
+//     description = "Run Darts API tests"
+//     classpath = sourceSets.dartsApi.runtimeClasspath
+//     mainClass.set("io.gatling.app.Gatling")
+//     args = [
+//         '--simulation', 'simulations.Scripts.DartsApi',
+//         '--results-folder', 'build/reports/gatling/dartsApiTests'
+//     ]
+// }
+
+// tasks.register('gatlingRunDartsPortalTests', JavaExec) {
+//     group = "Gatling"
+//     description = "Run Darts Portal tests"
+//     classpath = sourceSets.dartsPortal.runtimeClasspath
+//     mainClass.set("io.gatling.app.Gatling")
+//     args = [
+//         '--simulation', 'simulations.Scripts.DartsPortal',
+//         '--results-folder', 'build/reports/gatling/dartsPortalTests'
+//     ]
+// }
+
+// tasks.register('gatlingRunDartsSoapTests', JavaExec) {
+//     group = "Gatling"
+//     description = "Run Darts SOAP tests"
+//     classpath = sourceSets.dartsSoap.runtimeClasspath
+//     mainClass.set("io.gatling.app.Gatling")
+//     args = [
+//         '--simulation', 'simulations.Scripts.DartsSoap.AddDocumentTokenSimulation',
+//         '--simulation', 'simulations.Scripts.DartsSoap.GetCasesTokenSimulation',
+//         '--simulation', 'simulations.Scripts.DartsSoap.AddCourtLogTokenSimulation',
+//         '--results-folder', 'build/reports/gatling/dartsSoapTests'
+//     ]
+// }
+// tasks.register("helloTask") {
+//     group = "Other"
+//     description = "Hello task"
+//     doLast {
+//         println("Hello")
+//     }
+// }
