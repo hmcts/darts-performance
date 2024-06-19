@@ -1,7 +1,7 @@
 package simulations.Scripts.DartsApi;
 
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
-import simulations.Scripts.Scenario.DartsApi.GetAudioRequestScenario;
+import simulations.Scripts.Scenario.DartsApi.PostAudioRequestScenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
@@ -10,24 +10,43 @@ import io.gatling.javaapi.http.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public class AudioRequestProfileSimulation extends Simulation {   
-  {
-    final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
+import java.time.Duration;
 
-    final HttpProtocolBuilder httpProtocol = http
-    //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT).httpsPort(AppConfig.PROXY_PORT))
+public class AudioRequestProfileSimulation extends Simulation {  
+
+    private static final String BASELINE_SCENARIO_NAME = "Baseline - DARTS - API - Audio-request:POST";
+    private static final String RAMP_UP_SCENARIO_NAME = "Ramp Up Test - DARTS - API - Audio-request:POST";
+    private static final String SPIKE_SCENARIO_NAME = "Spike Test - DARTS - API - Audio-request:POST";
+  
+    public AudioRequestProfileSimulation() {
+
+        HttpProtocolBuilder httpProtocol = http
+        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
+  
+        setUpScenarios(httpProtocol);
+    }
 
-    final ScenarioBuilder scn1 = scenario("Audio Requests:POST")
-        .exec(GetApiTokenScenario.getApiToken())
-        //.exec(GetAudioRequestScenario.GetAudioRequest().feed(feeder))
-        .repeat(10)    
-        .on(exec(GetAudioRequestScenario.GetAudioRequestPlayBack().feed(feeder))           
+    private void setUpScenarios(HttpProtocolBuilder httpProtocol) {
+        // Set up scenarios with configurable parameters
+        ScenarioBuilder baselineScenario = setUpScenario(BASELINE_SCENARIO_NAME, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, 9);
+        ScenarioBuilder rampUpScenario = setUpScenario(RAMP_UP_SCENARIO_NAME, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, 43);
+        ScenarioBuilder spikeScenario = setUpScenario(SPIKE_SCENARIO_NAME, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, 95);
+  
+        // Call setUp once with all scenarios
+        setUp(
+            baselineScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_TEST_DURATION_MINUTES))).protocols(httpProtocol)
+            .andThen(rampUpScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.RAMP_TEST_DURATION_MINUTES))).protocols(httpProtocol))
+            .andThen(spikeScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SPIKE_TEST_DURATION_MINUTES))).protocols(httpProtocol))
         );
-        
+    }
 
-    setUp(
-        scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
-    }    
+    private ScenarioBuilder setUpScenario(String scenarioName, int paceDurationMillis, int repeats) {
+        return scenario(scenarioName)
+        .group(scenarioName)
+        .on(exec(GetApiTokenScenario.getApiToken())
+            .repeat(repeats)
+            .on(exec(PostAudioRequestScenario.PostaudioRequest().pace(Duration.ofMillis(paceDurationMillis)))));       
+    }
 }

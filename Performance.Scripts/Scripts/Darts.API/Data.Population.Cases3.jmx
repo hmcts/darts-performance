@@ -83,13 +83,13 @@
             <stringProp name="Argument.value">${__P(USERNAME3, PerfTranscirber01)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="PASSWORD3" elementType="Argument">
-            <stringProp name="Argument.name">PASSWORD3</stringProp>
-            <stringProp name="Argument.value">${__P(PASSWORD3, PerfTester@01)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="PASSWORD" elementType="Argument">
             <stringProp name="Argument.name">PASSWORD</stringProp>
+            <stringProp name="Argument.value">${__P(PASSWORD, Password@1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PASSWORD3" elementType="Argument">
+            <stringProp name="Argument.name">PASSWORD3</stringProp>
             <stringProp name="Argument.value">${__GetSecret(PASSWORD)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -349,7 +349,7 @@
         <boolProp name="CacheManager.controlledByThread">false</boolProp>
       </CacheManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - test1" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - test1" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -579,7 +579,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - ${SCRIPT_NAME}" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - ${SCRIPT_NAME}" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -634,7 +634,7 @@
             <stringProp name="-1241140545">ex_accessTokenTrans</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="1222278130">
+            <collectionProp name="1084318290">
               <stringProp name="-917173624">${__RandomString(15,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
               <stringProp name="-1161236289">${__RandomString(5,abcdefghijklmnopqrstuvwxyz,)}</stringProp>
@@ -651,8 +651,8 @@
               <stringProp name="49">1</stringProp>
               <stringProp name="-1198056235">${__Random(1,4,)}</stringProp>
               <stringProp name="1636120152">${__Random(1,1000,)}</stringProp>
-              <stringProp name="44162327">eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJpZHAiOiJMb2NhbEFjY291bnQiLCJvaWQiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJzdWIiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJnaXZlbl9uYW1lIjoiRGFydHMgR2xvYmFsIiwiZmFtaWx5X25hbWUiOiJUZXN0IFVzZXIiLCJ0ZnAiOiJCMkNfMV9yb3BjX2RhcnRzX3NpZ25pbiIsInNjcCI6IkZ1bmN0aW9uYWwuVGVzdCIsImF6cCI6Ijg1MTE4ZWUyLTY1NDQtNDE4MC1hMTZlLTk5NjE1MzY1ZjIwOSIsInZlciI6IjEuMCIsImlhdCI6MTcxNjQ3MjM5MiwiYXVkIjoiODUxMThlZTItNjU0NC00MTgwLWExNmUtOTk2MTUzNjVmMjA5IiwiZXhwIjoxNzE2NDg2NzkyLCJpc3MiOiJodHRwczovL2htY3Rzc3RnZXh0aWQuYjJjbG9naW4uY29tLzhiMTg1ZjhiLTY2NWQtNGJiMy1hZjRhLWFiN2VlNjFiOTMzNC92Mi4wLyIsIm5iZiI6MTcxNjQ3MjM5Mn0.qDtHe7O8tL8jJrpXlYaW4XRLTIOx7aedvvAQBVWUcAUmqVXQ_DfxMHyRPHbiwQMXo7vG0_dp1pSGdVSEi2ihqw1OxQML0sFtlvwkNeArOhFO6sI7WnnMC9RJC2xaHe_eQT5T_mZiekc0YeBU2pc7P9jaLfrKI6QymiYCnbq4BD7i9sembw-42GhwfO_jEb7zvjXcn5UBP0iX9L5I6szujqj6XeQ3CSzJJse8m4rCdVSMrqBsuXbWv65SDZ4s3f9rJ3vM5B4doE8T0_ovKHgBU9h1ctmt7Wwk1kpxBpaGmvZq2vmbZ2PZvWqD7NX3iTzBjPdcEqsL5rlK6B2JhXH7rg</stringProp>
-              <stringProp name="44162327">eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJpZHAiOiJMb2NhbEFjY291bnQiLCJvaWQiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJzdWIiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJnaXZlbl9uYW1lIjoiRGFydHMgR2xvYmFsIiwiZmFtaWx5X25hbWUiOiJUZXN0IFVzZXIiLCJ0ZnAiOiJCMkNfMV9yb3BjX2RhcnRzX3NpZ25pbiIsInNjcCI6IkZ1bmN0aW9uYWwuVGVzdCIsImF6cCI6Ijg1MTE4ZWUyLTY1NDQtNDE4MC1hMTZlLTk5NjE1MzY1ZjIwOSIsInZlciI6IjEuMCIsImlhdCI6MTcxNjQ3MjM5MiwiYXVkIjoiODUxMThlZTItNjU0NC00MTgwLWExNmUtOTk2MTUzNjVmMjA5IiwiZXhwIjoxNzE2NDg2NzkyLCJpc3MiOiJodHRwczovL2htY3Rzc3RnZXh0aWQuYjJjbG9naW4uY29tLzhiMTg1ZjhiLTY2NWQtNGJiMy1hZjRhLWFiN2VlNjFiOTMzNC92Mi4wLyIsIm5iZiI6MTcxNjQ3MjM5Mn0.qDtHe7O8tL8jJrpXlYaW4XRLTIOx7aedvvAQBVWUcAUmqVXQ_DfxMHyRPHbiwQMXo7vG0_dp1pSGdVSEi2ihqw1OxQML0sFtlvwkNeArOhFO6sI7WnnMC9RJC2xaHe_eQT5T_mZiekc0YeBU2pc7P9jaLfrKI6QymiYCnbq4BD7i9sembw-42GhwfO_jEb7zvjXcn5UBP0iX9L5I6szujqj6XeQ3CSzJJse8m4rCdVSMrqBsuXbWv65SDZ4s3f9rJ3vM5B4doE8T0_ovKHgBU9h1ctmt7Wwk1kpxBpaGmvZq2vmbZ2PZvWqD7NX3iTzBjPdcEqsL5rlK6B2JhXH7rg</stringProp>
+              <stringProp name="-1704920495">eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJpZHAiOiJMb2NhbEFjY291bnQiLCJvaWQiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJzdWIiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJnaXZlbl9uYW1lIjoiRGFydHMgR2xvYmFsIiwiZmFtaWx5X25hbWUiOiJUZXN0IFVzZXIiLCJ0ZnAiOiJCMkNfMV9yb3BjX2RhcnRzX3NpZ25pbiIsInNjcCI6IkZ1bmN0aW9uYWwuVGVzdCIsImF6cCI6Ijg1MTE4ZWUyLTY1NDQtNDE4MC1hMTZlLTk5NjE1MzY1ZjIwOSIsInZlciI6IjEuMCIsImlhdCI6MTcxNzA2MjQ1MCwiYXVkIjoiODUxMThlZTItNjU0NC00MTgwLWExNmUtOTk2MTUzNjVmMjA5IiwiZXhwIjoxNzE3MDc2ODUwLCJpc3MiOiJodHRwczovL2htY3Rzc3RnZXh0aWQuYjJjbG9naW4uY29tLzhiMTg1ZjhiLTY2NWQtNGJiMy1hZjRhLWFiN2VlNjFiOTMzNC92Mi4wLyIsIm5iZiI6MTcxNzA2MjQ1MH0.pRnfwVWg5TuOoY6TfI99ClhmI4-v98i_PiQaSXzVdwd9jnm0hQ9nk-49zUHQNJ6taUjzBB5X3ImWtPvAlwtHAsRmZwhmch2X0lN0vCDcAePkOsqAf9R_TXo9q4mI9ZycYhSfy3sWqDBlSTH72AAYq6pcdZwXgMX8OufUXxnaFg2KhZx65fsX0dlurhJgUDrWMF6CZ4j3MCQIjzHiKjdyGoIh_5qtZfu4zl2igp6qKMb3a2Us-Ox5ULZWBmfgZCxxlOndKWhXKyLdEue6JtDHa4e8ewZbhZFm2TvW1ps5tfbbSsZHwAzIGDZN08DwRVMGUfCKjgfB_qWpioxKofi0dA</stringProp>
+              <stringProp name="-1704920495">eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJpZHAiOiJMb2NhbEFjY291bnQiLCJvaWQiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJzdWIiOiI5Nzk3YTRmYy04ZTYyLTQwOTUtYmRhNi0wNGU3NzQ3YjA1ZTUiLCJnaXZlbl9uYW1lIjoiRGFydHMgR2xvYmFsIiwiZmFtaWx5X25hbWUiOiJUZXN0IFVzZXIiLCJ0ZnAiOiJCMkNfMV9yb3BjX2RhcnRzX3NpZ25pbiIsInNjcCI6IkZ1bmN0aW9uYWwuVGVzdCIsImF6cCI6Ijg1MTE4ZWUyLTY1NDQtNDE4MC1hMTZlLTk5NjE1MzY1ZjIwOSIsInZlciI6IjEuMCIsImlhdCI6MTcxNzA2MjQ1MCwiYXVkIjoiODUxMThlZTItNjU0NC00MTgwLWExNmUtOTk2MTUzNjVmMjA5IiwiZXhwIjoxNzE3MDc2ODUwLCJpc3MiOiJodHRwczovL2htY3Rzc3RnZXh0aWQuYjJjbG9naW4uY29tLzhiMTg1ZjhiLTY2NWQtNGJiMy1hZjRhLWFiN2VlNjFiOTMzNC92Mi4wLyIsIm5iZiI6MTcxNzA2MjQ1MH0.pRnfwVWg5TuOoY6TfI99ClhmI4-v98i_PiQaSXzVdwd9jnm0hQ9nk-49zUHQNJ6taUjzBB5X3ImWtPvAlwtHAsRmZwhmch2X0lN0vCDcAePkOsqAf9R_TXo9q4mI9ZycYhSfy3sWqDBlSTH72AAYq6pcdZwXgMX8OufUXxnaFg2KhZx65fsX0dlurhJgUDrWMF6CZ4j3MCQIjzHiKjdyGoIh_5qtZfu4zl2igp6qKMb3a2Us-Ox5ULZWBmfgZCxxlOndKWhXKyLdEue6JtDHa4e8ewZbhZFm2TvW1ps5tfbbSsZHwAzIGDZN08DwRVMGUfCKjgfB_qWpioxKofi0dA</stringProp>
             </collectionProp>
           </collectionProp>
           <boolProp name="UserParameters.per_iteration">true</boolProp>
@@ -674,7 +674,7 @@
         </LoopController>
         <hashTree>
           <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
-            <stringProp name="CounterConfig.start">42100000</stringProp>
+            <stringProp name="CounterConfig.start">46600000</stringProp>
             <stringProp name="CounterConfig.end"></stringProp>
             <stringProp name="CounterConfig.incr">1</stringProp>
             <stringProp name="CounterConfig.name">medIdCounter</stringProp>
@@ -776,7 +776,7 @@ vars.put(&quot;v_audiodates1hour&quot;, sdf.format(calendar.getTime()));
             <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
           </BeanShellSampler>
           <hashTree/>
-          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell - Select Random Hearing Id" enabled="true">
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell - Select Random Media Id" enabled="true">
             <stringProp name="BeanShellSampler.query">import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;

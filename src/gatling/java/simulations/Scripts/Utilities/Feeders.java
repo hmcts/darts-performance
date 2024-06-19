@@ -1,14 +1,18 @@
 package simulations.Scripts.Utilities;
 
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
+import java.sql.Connection;
 
 import io.gatling.javaapi.core.CoreDsl;
 import io.gatling.javaapi.core.FeederBuilder;
+import io.gatling.javaapi.jdbc.JdbcDsl;
 import io.gatling.javaapi.core.CheckBuilder;
 
 public class Feeders {
@@ -19,12 +23,12 @@ public class Feeders {
     public static final FeederBuilder<String> CourtClerkUsers;
     public static final FeederBuilder<String> TranscriberUsers;
     public static final FeederBuilder<String> CourtHouseAndCourtRooms;
+    public static final FeederBuilder<String> CaseHouseRoomsHearingDetails;
 
     private static final AtomicInteger COUNTER;
     private static final Logger log = Logger.getLogger(Feeders.class.getName());
 
    
-    // Add AppConfig.EnvironmentURL.DARTS_EXTERNAL_USERNAME.getUrl() and AppConfig.EnvironmentURL.DARTS_EXTERNAL_PASSWORD.getUrl()
     public static String getDartsExternalUsernameUrl() {
         return AppConfig.EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl();
     }
@@ -47,6 +51,7 @@ public class Feeders {
 
         //CourtHouseDetails
         CourtHouseAndCourtRooms = CoreDsl.csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
+        CaseHouseRoomsHearingDetails = CoreDsl.csv(AppConfig.CASE_HOUSE_ROOMS_HEARING_FILE_PATH).random();
 
         COUNTER = new AtomicInteger(0);
         // RANDOM_USER_FEEDER = jdbcFeeder("SELECT * FROM darts.user_account "
@@ -57,8 +62,11 @@ public class Feeders {
         return CourtHouseAndCourtRooms;
     }
 
+    public static FeederBuilder<String> createCaseHouseRoomsHearingDetails() {
+        return CaseHouseRoomsHearingDetails;
+    }
     public static FeederBuilder<String> createAudioRequestCSV() {
-        return CourtHouseAndCourtRooms;
+        return AudioRequestCSV;
     }
     
     public static FeederBuilder<String> createJudgesFeeder() {
@@ -91,7 +99,7 @@ public class Feeders {
         return CoreDsl.regex("csrf\":\"(.*?)\"").find().saveAs("csrf");
     }
     public static CheckBuilder.Final saveCaseId() {
-        return CoreDsl.jsonPath("$.[*]").ofMap().findRandom().saveAs("getCaseId");
+        return CoreDsl.jsonPath("$[*].case_id").findRandom().saveAs("getCaseId");
     }
     public static CheckBuilder.Final saveUserId() {
         return CoreDsl.jsonPath("$.userId").saveAs("getUserId");
@@ -132,12 +140,41 @@ public class Feeders {
         }
     }
 
-    // public static FeederBuilder<Object> jdbcFeeder(String sql) {
-            
-    //         log.info("Creating jdbcFeeder: " + AppConfig.DB_URL + ", " + AppConfig.DB_USERNAME + ", " + AppConfig.DB_PASSWORD + ", " + sql);
-    
-    //         return JdbcDsl.jdbcFeeder(AppConfig.DB_URL, AppConfig.DB_USERNAME, AppConfig.DB_PASSWORD, sql);       
-    // }    
+    public static void executeUpdate(String sql) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            log.info("Executing update: " + AppConfig.DB_URL + ", " + AppConfig.DB_USERNAME + ", " + sql);
+            connection = DriverManager.getConnection(AppConfig.DB_URL, AppConfig.DB_USERNAME, AppConfig.DB_PASSWORD);
+            preparedStatement = connection.prepareStatement(sql);
+            int result = preparedStatement.executeUpdate();
+            if (result > 0) {
+                log.info("Update successful");
+            } else {
+                log.info("No rows affected");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // This method can be used for SELECT queries
+    public static FeederBuilder<Object> jdbcFeeder(String sql) {
+        log.info("Creating jdbcFeeder: " + AppConfig.DB_URL + ", " + AppConfig.DB_USERNAME + ", " + AppConfig.DB_PASSWORD + ", " + sql);
+        return JdbcDsl.jdbcFeeder(AppConfig.DB_URL, AppConfig.DB_USERNAME, AppConfig.DB_PASSWORD, sql);
+    }
+
 
     public static void resetCounter() {
         COUNTER.set(0);
