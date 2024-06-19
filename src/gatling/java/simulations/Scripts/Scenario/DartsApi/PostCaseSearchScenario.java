@@ -16,7 +16,7 @@ public final class PostCaseSearchScenario {
         return group("Audio POST Preview")
             .on(exec(feed(Feeders.createAudioRequestCSV()))
                 .exec(session -> {
-                        String xmlPayload = RequestBodyBuilder.buildPostAudioApiRequest(session);
+                        String xmlPayload = RequestBodyBuilder.buildPostCaseSearchApiRequest(session);
                         return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - Api - Case:POST Search")

@@ -11,7 +11,11 @@ gatling {
 repositories {
     mavenCentral()
 }
+dependencies {
 
+    gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.3'
+
+}
 // sourceSets {
 //     main {
 //         java {

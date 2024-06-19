@@ -17,8 +17,9 @@ public final class PostAudioScenario {
     public static ChainBuilder PostApiAudio() {
         return group("Audio Request Group")
                 .on(exec(feed(Feeders.CourtHouseAndCourtRooms))
+                //.pause(120)
                 .exec(session -> {
-                    String xmlPayload = RequestBodyBuilder.buildPostAudioApiRequest(session);
+                    String xmlPayload = RequestBodyBuilder.buildPostAudioApiRequest(session, randomAudioFile);
                     System.out.println("Code xmlPayload: " + xmlPayload);
                     System.out.println("Code session: " + session);
                     return session.set("xmlPayload", xmlPayload);

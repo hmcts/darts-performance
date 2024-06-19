@@ -1,7 +1,9 @@
-package simulations.Scripts.DartsSoap;
+package simulations.Scripts.DartsApi;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
+import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
+import simulations.Scripts.Scenario.DartsApi.PostAudioScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.GetCasesTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
@@ -15,10 +17,10 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 import java.time.Duration;
 
-public class MultipleSimulationTest extends Simulation {
+public class ScenarioMultipleSimulationTest extends Simulation {
 
-    private static final String BASELINE_SCENARIO_NAME = "Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token";
-    private static final String RAMP_UP_SCENARIO_NAME = "Ramp Up - DARTS - GateWay - Soap - AddDocument:POST - Event Token";
+    private static final String BASELINE_SCENARIO_NAME = "Baseline - DARTS - Api - Audio:POST";
+    private static final String RAMP_UP_SCENARIO_NAME = "Ramp Up - DARTS - Api - Audio:POST";
     private static final String SPIKE_SCENARIO_NAME = "Spike - DARTS - GateWay - Soap - AddDocument:POST - Event Token";
     private static final String BASELINE_SCENARIO_NAME2 = "Baseline - DARTS - GateWay - Soap - GetCase - Token";
     private static final String RAMP_UP_SCENARIO_NAME2 = "Ramp Up - DARTS - GateWay - Soap - GetCase - Token";
@@ -29,17 +31,15 @@ public class MultipleSimulationTest extends Simulation {
         System.out.println("Simulation is about to start!");
     }
 
-    public MultipleSimulationTest() {
+    public ScenarioMultipleSimulationTest() {
         HttpProtocolBuilder httpProtocol = http
            //     .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
-                .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
-                .inferHtmlResources()
-                .acceptEncodingHeader("gzip,deflate")
-                .contentTypeHeader("text/xml;charset=UTF-8")
-                .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
-
+                  .baseUrl(EnvironmentURL.B2B_Login.getUrl())
+                  .inferHtmlResources();
         setUpScenarios(httpProtocol);
+        
     }
+
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocol) {
         // Set up scenarios with configurable parameters
@@ -64,10 +64,9 @@ public class MultipleSimulationTest extends Simulation {
     private ScenarioBuilder setUpScenario(String scenarioName, int paceDurationMillis, int repeats) {
         return scenario(scenarioName)        
         .group(scenarioName)
-            .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
-                .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
+            .on(exec(GetApiTokenScenario.getApiToken()))
                 .repeat(repeats)
-                .on(exec(AddDocumentEventTokenScenario.AddDocumentEventToken().pace(Duration.ofMillis(paceDurationMillis)))));
+                .on(exec(PostAudioScenario.PostApiAudio().pace(Duration.ofMillis(paceDurationMillis))));
     }
 
     private ScenarioBuilder setUpScenario2(String scenarioName, int paceDurationMillis, int repeats) {
@@ -78,6 +77,7 @@ public class MultipleSimulationTest extends Simulation {
                 .repeat(repeats)
                 .on(exec(GetCasesTokenScenario.GetCaseToken().pace(Duration.ofMillis(paceDurationMillis)))));
     }
+
 
     @Override
     public void after() {

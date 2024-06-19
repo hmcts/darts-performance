@@ -16,13 +16,13 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class AddAudioTokenSimulation extends Simulation {
 
 
-  private static final String BASELINE_SCENARIO_NAME = "DARTS - GateWay - Soap - AddAudio:POST";
-  private static final String RAMP_UP_SCENARIO_NAME = "Ramp Up Test";
-  private static final String SPIKE_SCENARIO_NAME = "Spike Test";
+  private static final String BASELINE_SCENARIO_NAME = "BaseLine - DARTS - GateWay - Soap - AddAudio:POST";
+  private static final String RAMP_UP_SCENARIO_NAME = "Ramp Up - DARTS - GateWay - Soap - AddAudio:POST";
+  private static final String SPIKE_SCENARIO_NAME = "Spike - DARTS - GateWay - Soap - AddAudio:POST";
 
   public AddAudioTokenSimulation() {
       HttpProtocolBuilder httpProtocol = http
-    //  .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
       .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
       .inferHtmlResources();
 
@@ -31,9 +31,9 @@ public class AddAudioTokenSimulation extends Simulation {
 
   private void setUpScenarios(HttpProtocolBuilder httpProtocol) {
       // Set up scenarios with configurable parameters
-      ScenarioBuilder baselineScenario = setUpScenario(BASELINE_SCENARIO_NAME, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, AppConfig.SOAP_BASELINE_REPEATS);
-      ScenarioBuilder rampUpScenario = setUpScenario(RAMP_UP_SCENARIO_NAME, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, AppConfig.SOAP_RAMPUP_REPEATS);
-      ScenarioBuilder spikeScenario = setUpScenario(SPIKE_SCENARIO_NAME, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, AppConfig.SOAP_SPIKE_REPEATS);
+      ScenarioBuilder baselineScenario = setUpScenario(BASELINE_SCENARIO_NAME, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, 1);
+      ScenarioBuilder rampUpScenario = setUpScenario(RAMP_UP_SCENARIO_NAME, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, 1);
+      ScenarioBuilder spikeScenario = setUpScenario(SPIKE_SCENARIO_NAME, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, 1);
 
       // Call setUp once with all scenarios
       setUp(
@@ -46,8 +46,8 @@ public class AddAudioTokenSimulation extends Simulation {
   private ScenarioBuilder setUpScenario(String scenarioName, int paceDurationMillis, int repeats) {
       return scenario(scenarioName)
       .group(scenarioName)
-      .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
-          .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
+      .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
+          .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
           .repeat(repeats)
           .on(exec(AddAudioTokenScenario.addAudioToken().pace(Duration.ofMillis(paceDurationMillis)))));
   }

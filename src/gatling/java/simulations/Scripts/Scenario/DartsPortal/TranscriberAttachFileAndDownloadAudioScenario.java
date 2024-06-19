@@ -2,6 +2,7 @@ package simulations.Scripts.Scenario.DartsPortal;
 
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
@@ -11,7 +12,6 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class TranscriberAttachFileAndDownloadAudioScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
     private static final Random randomNumber = new Random();
     private static final String randomDocumentFile = AppConfig.getRandomDocumentFile();
 
@@ -19,7 +19,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
 
     public static ChainBuilder TranscriberAttachfileAndDownlaodAudio() {
       return group("Darts Attachfile And Downlaod Audio")
-      .on(exec(feed(feeder))
+      .on(exec(feed(Feeders.createAudioRequestCSV()))
       .exec(session -> {
               String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
               return session.set("xmlPayload", xmlPayload);

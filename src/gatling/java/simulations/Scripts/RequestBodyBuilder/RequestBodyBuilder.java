@@ -5,12 +5,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.time.LocalDate;
+import java.time.LocalDate;
+import java.util.concurrent.ThreadLocalRandom;
 
 //import uk.gov.hmcts.juror.support.generation.generators.value.LocalTimeGeneratorImpl;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.NumberGenerator;
 import simulations.Scripts.Utilities.RandomDateGenerator;
 import simulations.Scripts.Utilities.RandomStringGenerator;
+
 import io.gatling.javaapi.core.Session;
 import scala.util.Random;
 
@@ -24,9 +27,13 @@ public class RequestBodyBuilder {
     private static final int DOWNLOAD_PERCENTAGE = 70; //% chance
     private static final int PLAYBACK_PERCENTAGE = 30; //% chance
 
-    public static String buildPOSTAudioRequestBody(String hearingId, String userId, LocalDateTime startTime, LocalDateTime endTime) {
-        String startTimeFormatted = formatTime(startTime);
-        String endTimeFormatted = formatTime(endTime);
+    public static String buildPOSTAudioRequestBody(Session session) {
+
+        String hearingId = session.get("hea_id") != null ? session.get("hea_id").toString() : "";
+        String userId = session.get("usr_id") != null ? session.get("usr_id").toString() : "";
+        String startTime = session.get("start_ts") != null ? session.get("start_ts").toString() : "";
+        String endTime = session.get("end_ts") != null ? session.get("end_ts").toString() : "";
+
         String requestType = getRandomRequestType();
 
         return String.format("{\"hearing_id\": \"%s\", " +
@@ -34,7 +41,7 @@ public class RequestBodyBuilder {
                 "\"start_time\": \"%s\", " +
                 "\"end_time\": \"%s\", " +
                 "\"request_type\": \"%s\"}",
-                hearingId, userId, startTimeFormatted, endTimeFormatted, requestType);
+                hearingId, userId, startTime, endTime, requestType);
     }
 
     private static String formatTime(LocalDateTime time) {
@@ -66,36 +73,47 @@ public class RequestBodyBuilder {
         String caseNumber = session.get("caseNumber") != null ? "\"" + session.get("caseNumber").toString() + "\"" : "null";
         String courtHouseName = session.get("CourtHouseName") != null ? "\"" + session.get("CourtHouseName").toString() + "\"" : "null";       
         String courtRoom = session.get("CourtRoom") != null ? "\"" + session.get("CourtRoom").toString() + "\"" : "null";        
-        String judgeName = session.get("JudgeName") != null ? "\"" + session.get("JudgeName").toString() + "\"" : "null";
-        String defendantName = session.get("DefendantName") != null ? "\"" + session.get("DefendantName").toString() + "\"" : "null";
-        String eventTextContains = session.get("EventTextContains") != null ? "\"" + session.get("EventTextContains").toString() + "\"" : "null";
+       // String judgeName = session.get("JudgeName") != null ? "\"" + session.get("JudgeName").toString() + "\"" : "null";
+        String defendantName = session.get("defendant_name") != null ? "\"" + session.get("defendant_name").toString() + "\"" : "null";  
+        String eventTextContains = session.get("EventTextContains") != null ? "\"" + session.get("EventTextContains").toString() + "\"" : "null";       
         String dateFrom = session.get("DateFrom") != null ? "\"" + session.get("DateFrom").toString() + "\"" : "null";
         String dateTo = session.get("DateTo") != null ? "\"" + session.get("DateTo").toString() + "\"" : "null";
         
-        // Generate random dates using RandomDateGenerator
-        LocalDate randomDateFrom = RandomDateGenerator.getRandomDate(LocalDate.of(2017, 3, 1), LocalDate.of(2017, 3, 15));
-        LocalDate randomDateTo = RandomDateGenerator.getRandomDate(randomDateFrom, LocalDate.of(2024, 3, 15));
-        // new LocalTimeGeneratorImpl(LocalDate.of(2017, 3, 1), LocalDate.of(2017, 3, 15)).generate();
-         
-        // Ensure dates don't go past the current date
+        // Get the current date
         LocalDate currentDate = LocalDate.now();
-        randomDateFrom = randomDateFrom.isAfter(currentDate) ? currentDate : randomDateFrom;
-        randomDateTo = randomDateTo.isAfter(currentDate) ? currentDate : randomDateTo;
-    
+        
+        // Define the start date
+        LocalDate startDate = LocalDate.of(2015, 1, 1);
+        
+        // Define the end date, constrained by the current date and not beyond 2024-12-31
+        LocalDate endDate = currentDate.isBefore(LocalDate.of(2024, 12, 31)) ? currentDate : LocalDate.of(2024, 12, 31);
+
+        // Generate random dates using RandomDateGenerator
+        LocalDate randomDateFrom = RandomDateGenerator.getRandomDate(startDate, endDate.minusYears(2));
+        
+        // Ensure randomDateTo is at least 2 years after randomDateFrom
+        LocalDate minEndDate = randomDateFrom.plusYears(2);
+        LocalDate adjustedEndDate = endDate.isAfter(minEndDate) ? endDate : minEndDate;
+        LocalDate randomDateTo = RandomDateGenerator.getRandomDate(randomDateFrom.plusYears(2), adjustedEndDate);
+
         // Format dates as strings
         String formattedDateFrom = "\"" + randomDateFrom.toString() + "\"";
         String formattedDateTo = "\"" + randomDateTo.toString() + "\"";
-    
+
+        // Print out the formatted dates
+        System.out.println("Random Date From: " + formattedDateFrom);
+        System.out.println("Random Date To: " + formattedDateTo);
+
     
         return String.format("{\"case_number\":%s," +
         "\"courthouse\":%s," +
         "\"courtroom\":%s," +
-        "\"judge_name\":%s," +
+        "\"judge_name\":null," +
         "\"defendant_name\":%s," +
         "\"event_text_contains\":%s," +
         "\"date_from\":%s," +
         "\"date_to\":%s}",
-        caseNumber, courtHouseName, courtRoom, judgeName, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
+        caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
     }
     
     public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor, Object requestType) {
@@ -142,14 +160,28 @@ public class RequestBodyBuilder {
         // Return the selected string
         return selectedAction;
     }
+    public static String buildPostAudioApiRequest(Session session, String randomAudioFile) {
+        // Retrieve values from session or define defaults if needed
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoom = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";       
+         
 
-    public static String buildPostAudioApiRequest(Session session) {
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String caseName = randomStringGenerator.generateRandomString(10);
+
+        return String.format(
+        "{\"started_at\": \"1972-11-25T17:28:59.936Z\", \"ended_at\": \"1972-11-25T18:28:59.936Z\", \"channel\": 1, \"total_channels\": 4, \"format\": \"mp2\", \"filename\": \"%s\", \"courthouse\": \"%s\", \"courtroom\": \"%s\", \"file_size\": 937.96, \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\", \"cases\": [\"PerfCase_%s\"] }",
+        randomAudioFile, courtHouseName, courtRoom, caseName);
+    }
+
+
+    public static String buildPostCaseSearchApiRequest(Session session) {
         // Retrieve values from session or define defaults if needed
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(10);
 
         return String.format(
-        "{\"case_number\": \"PerfCase_agwiagkzzxcgx\"}",
+        "{\"case_number\": \"PerfCase_\"%s\"}",
         caseName);
     }
 
@@ -409,5 +441,38 @@ public class RequestBodyBuilder {
         "\"display_name\": \"PerfCourtHouse_%s\"}",                
         // "\"region_id\": \"0\"}",
         courtHouseName, courtHouseName);
+    }
+
+    public static String buildEventsPostBody(Session session) {
+        
+        // Generate a random court house name
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
+        String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
+        String courtCaseId = session.get("cas_id") != null ? session.get("cas_id").toString() : "";
+
+        return String.format("{\"event_id\": \"1\", " +
+        "\"type\": \"30300\", " +
+        "\"sub_type\": \"\", " +
+        "\"courthouse\": \"%s\", " +
+        "\"courtroom\": \"%s\", " +
+        "\"case_numbers\": [ " +
+        "\"%s\" ], " +            
+        "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
+    courtHouseName, courtRoomName, courtCaseNumber);
+    }
+
+    public static String buildRetentionsPostBody(Session session) {
+        
+        // Generate a random court house name
+        String courtCaseId = session.get("cas_id") != null ? session.get("cas_id").toString() : "";
+        // Generate a random comment
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String randomComment = randomStringGenerator.generateRandomString(10);
+
+        return String.format("{\"case_id\": \"%s\", " +
+        "\"is_permanent_retention\": \"true\", " +
+        "\"comments\": \"Perf_%s\"}",
+        courtCaseId, randomComment);
     }
 }

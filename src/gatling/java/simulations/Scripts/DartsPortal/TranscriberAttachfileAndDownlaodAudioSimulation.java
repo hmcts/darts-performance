@@ -16,7 +16,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation {   
   {
       HttpProtocolBuilder httpProtocol = http
-      //  .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources()
         .acceptHeader("application/json, text/plain, */*")
@@ -28,8 +28,9 @@ public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation 
         .exec(feed(Feeders.createTranscriberUsers()))
         .exec(feed(Feeders.createJudgesFeeder()))
         .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
-        .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-        .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
+        .repeat(50)
+        .on(exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()))
+      //  .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
     setUp(

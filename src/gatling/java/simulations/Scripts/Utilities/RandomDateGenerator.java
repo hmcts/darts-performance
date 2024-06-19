@@ -12,9 +12,17 @@ public class RandomDateGenerator {
         LocalDate startDate = LocalDate.of(2024, 3, 1);
         LocalDate endDate = LocalDate.of(2024, 3, 15);
 
+        // Ensure the endDate is at least 2 years from the startDate
+        LocalDate minEndDate = startDate.plusYears(2);
+
+        // Adjust the endDate if necessary
+        if (endDate.isBefore(minEndDate)) {
+            endDate = minEndDate;
+        }
+
         // Generate random dates within the range
-        LocalDate randomDateFrom = getRandomDate(startDate, endDate);
-        LocalDate randomDateTo = getRandomDate(randomDateFrom, endDate);
+        LocalDate randomDateFrom = getRandomDate(startDate, endDate.minusYears(2));
+        LocalDate randomDateTo = getRandomDate(randomDateFrom.plusYears(2), endDate);
 
         // Ensure dates don't go past the current date
         randomDateFrom = randomDateFrom.isAfter(currentDate) ? currentDate : randomDateFrom;
