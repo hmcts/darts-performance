@@ -274,13 +274,14 @@ public class SOAPRequestBuilder {
         "</s:Envelope>",
         USERNAME, PASSWORD, courtHouseName, courtRoom, caseName);
     }    
-    public static String AddAudioTokenRequest(Session session) {
+    public static String AddAudioTokenRequest(Session session, String randomAudioFile) {
         // Retrieve values from session or define defaults if needed
         String registrationToken = session.get("registrationToken");
         String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
         String courtRoom = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(10);
+        String caseName2 = randomStringGenerator.generateRandomString(10);
 
         // Construct SOAP request
         return String.format(
@@ -292,12 +293,12 @@ public class SOAPRequestBuilder {
             "    </s:Header>\n" +
             "   <s:Body>\n" +
             "      <com:addAudio>\n" +
-            "         <document><![CDATA[<audio><start Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"26\" S=\"51\" /><end Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"29\" S=\"49\" /><channel>1</channel><max_channels>4</max_channels><mediaformat>mpeg2</mediaformat><mediafile>0001.a00</mediafile><courthouse>%s</courthouse><courtroom>%s</courtroom><case_numbers><case_number>T20230294</case_number><case_number>%s</case_number></case_numbers></audio>]]></document>\n" +
+            "         <document><![CDATA[<audio><start Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"26\" S=\"51\" /><end Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"29\" S=\"49\" /><channel>1</channel><max_channels>4</max_channels><mediaformat>mpeg2</mediaformat><mediafile>"+ randomAudioFile +"</mediafile><courthouse>%s</courthouse><courtroom>%s</courtroom><case_numbers><case_number>%s</case_number><case_number>%s</case_number></case_numbers></audio>]]></document>\n" +
            // "         <document>&lt;audio&gt;&lt;start Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"26\" S=\"51\" /&gt;&lt;end Y=\"2023\" M=\"9\" D=\"7\" H=\"11\" MIN=\"29\" S=\"49\" /&gt;&lt;channel&gt;1&lt;/channel&gt;&lt;max_channels&gt;4&lt;/max_channels&gt;&lt;mediaformat&gt;mpeg2&lt;/mediaformat&gt;&lt;mediafile&gt;0001.a00&lt;/mediafile&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;%s&lt;/case_number&gt;&lt;case_number&gt;test&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;/audio&gt;</document>\n" +
             "      </com:addAudio>\n" +
             "   </s:Body>\n" +
             "</s:Envelope>",
-            registrationToken, courtHouseName, courtRoom, caseName);
+            registrationToken, courtHouseName, courtRoom, caseName, caseName2);
         }    
     public static String AddCourtLogUserRequest(Session session, String USERNAME, String PASSWORD) {
         // Retrieve values from session or define defaults if needed
