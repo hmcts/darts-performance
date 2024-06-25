@@ -74,65 +74,65 @@ public class ScenarioTwoSimulationTest extends Simulation {
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocol) {
         // Set up scenarios with configurable parameters
-        ScenarioBuilder baselineAddDocument = setUpAddDocumentEvent(BASELINE_SCENARIO_NAME, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, AppConfig.SOAP_BASELINE_REPEATS);
-        ScenarioBuilder rampUpAddDocument = setUpAddDocumentEvent(RAMP_UP_SCENARIO_NAME, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, AppConfig.SOAP_RAMPUP_REPEATS);
-        ScenarioBuilder spikeAddDocument = setUpAddDocumentEvent(SPIKE_SCENARIO_NAME, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, AppConfig.SOAP_SPIKE_REPEATS);
-        ScenarioBuilder baselineGetCase = setUpGetCase(BASELINE_SCENARIO_NAME2, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, AppConfig.SOAP_BASELINE_REPEATS);
-        ScenarioBuilder rampUpGetCase = setUpGetCase(RAMP_UP_SCENARIO_NAME2, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, AppConfig.SOAP_RAMPUP_REPEATS);
-        ScenarioBuilder spikeGetCase = setUpGetCase(SPIKE_SCENARIO_NAME2, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, AppConfig.SOAP_SPIKE_REPEATS);
-        ScenarioBuilder baselineAddCase = setUpAddCase(BASELINE_SCENARIO_NAME3, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, AppConfig.SOAP_BASELINE_REPEATS);
-        ScenarioBuilder rampUpAddCase = setUpAddCase(RAMP_UP_SCENARIO_NAME3, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, AppConfig.SOAP_RAMPUP_REPEATS);
-        ScenarioBuilder spikeAddCase = setUpAddCase(SPIKE_SCENARIO_NAME3, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, AppConfig.SOAP_SPIKE_REPEATS);
-        ScenarioBuilder baselineGetCourtLog = setUpGetCourtLog(BASELINE_SCENARIO_NAME4, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, AppConfig.SOAP_BASELINE_REPEATS);
-        ScenarioBuilder rampUpGetCourtLog = setUpGetCourtLog(RAMP_UP_SCENARIO_NAME4, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, AppConfig.SOAP_RAMPUP_REPEATS);
-        ScenarioBuilder spikeGetCourtLog = setUpGetCourtLog(SPIKE_SCENARIO_NAME4, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, AppConfig.SOAP_SPIKE_REPEATS);
+        ScenarioBuilder baselineAddDocument = setUpAddDocumentEvent(BASELINE_SCENARIO_NAME, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_BASELINE_REPEATS);
+        ScenarioBuilder rampUpAddDocument = setUpAddDocumentEvent(RAMP_UP_SCENARIO_NAME, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_RAMPUP_REPEATS);
+        ScenarioBuilder spikeAddDocument = setUpAddDocumentEvent(SPIKE_SCENARIO_NAME, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_SPIKE_REPEATS);
+        ScenarioBuilder baselineGetCase = setUpGetCase(BASELINE_SCENARIO_NAME2, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_BASELINE_REPEATS);
+        ScenarioBuilder rampUpGetCase = setUpGetCase(RAMP_UP_SCENARIO_NAME2, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_RAMPUP_REPEATS);
+        ScenarioBuilder spikeGetCase = setUpGetCase(SPIKE_SCENARIO_NAME2, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_SPIKE_REPEATS);
+        ScenarioBuilder baselineAddCase = setUpAddCase(BASELINE_SCENARIO_NAME3, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_BASELINE_REPEATS);
+        ScenarioBuilder rampUpAddCase = setUpAddCase(RAMP_UP_SCENARIO_NAME3, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_RAMPUP_REPEATS);
+        ScenarioBuilder spikeAddCase = setUpAddCase(SPIKE_SCENARIO_NAME3, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_SPIKE_REPEATS);
+        ScenarioBuilder baselineGetCourtLog = setUpGetCourtLog(BASELINE_SCENARIO_NAME4, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_BASELINE_REPEATS);
+        ScenarioBuilder rampUpGetCourtLog = setUpGetCourtLog(RAMP_UP_SCENARIO_NAME4, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_RAMPUP_REPEATS);
+        ScenarioBuilder spikeGetCourtLog = setUpGetCourtLog(SPIKE_SCENARIO_NAME4, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_SPIKE_REPEATS);
 
         // Call setUp once with all scenarios
         setUp(
-            baselineAddDocument.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_TEST_DURATION_MINUTES))).protocols(httpProtocol)
-                        .andThen(rampUpAddDocument.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.RAMP_TEST_DURATION_MINUTES))).protocols(httpProtocol))
-                        .andThen(spikeAddDocument.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SPIKE_TEST_DURATION_MINUTES))).protocols(httpProtocol)),
-                        baselineGetCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_TEST_DURATION_MINUTES))).protocols(httpProtocol)
-                        .andThen(rampUpGetCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.RAMP_TEST_DURATION_MINUTES))).protocols(httpProtocol))
-                        .andThen(spikeGetCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SPIKE_TEST_DURATION_MINUTES))).protocols(httpProtocol)),
-                        baselineAddCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_TEST_DURATION_MINUTES))).protocols(httpProtocol)
-                        .andThen(rampUpAddCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.RAMP_TEST_DURATION_MINUTES))).protocols(httpProtocol))
-                        .andThen(spikeAddCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SPIKE_TEST_DURATION_MINUTES))).protocols(httpProtocol)),
-                        baselineGetCourtLog.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_TEST_DURATION_MINUTES))).protocols(httpProtocol)
-                        .andThen(rampUpGetCourtLog.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.RAMP_TEST_DURATION_MINUTES))).protocols(httpProtocol))
-                        .andThen(spikeGetCourtLog.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SPIKE_TEST_DURATION_MINUTES))).protocols(httpProtocol))
+            baselineAddDocument.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)
+                        .andThen(rampUpAddDocument.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol))
+                        .andThen(spikeAddDocument.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)),
+                        baselineGetCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)
+                        .andThen(rampUpGetCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol))
+                        .andThen(spikeGetCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)),
+                        baselineAddCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)
+                        .andThen(rampUpAddCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol))
+                        .andThen(spikeAddCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)),
+                        baselineGetCourtLog.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)
+                        .andThen(rampUpGetCourtLog.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol))
+                        .andThen(spikeGetCourtLog.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol))
         );
     }
 
     private void setUpScenariosApi(HttpProtocolBuilder httpProtocolApi) {
         // Set up scenarios with configurable parameters
-        ScenarioBuilder baselinePostAudioRequest = setUpPostAudioRequest(BASELINE_SCENARIO_NAME5, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, AppConfig.SOAP_BASELINE_REPEATS);
-        ScenarioBuilder rampUpPostAudioRequest = setUpPostAudioRequest(RAMP_UP_SCENARIO_NAME5, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, AppConfig.SOAP_RAMPUP_REPEATS);
-        ScenarioBuilder spikePostAudioRequest = setUpPostAudioRequest(SPIKE_SCENARIO_NAME5, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, AppConfig.SOAP_SPIKE_REPEATS);
-        ScenarioBuilder baselineGetAudioRequest = setUpGetAudioRequest(BASELINE_SCENARIO_NAME6, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, AppConfig.SOAP_BASELINE_REPEATS);
-        ScenarioBuilder rampUpGetAudioRequest = setUpGetAudioRequest(RAMP_UP_SCENARIO_NAME6, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, AppConfig.SOAP_RAMPUP_REPEATS);
-        ScenarioBuilder spikeGetAudioRequest = setUpGetAudioRequest(SPIKE_SCENARIO_NAME6, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, AppConfig.SOAP_SPIKE_REPEATS);
-        ScenarioBuilder baselineDeleteAudioRequest = setUpDeleteAudioRequest(BASELINE_SCENARIO_NAME7, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, AppConfig.SOAP_BASELINE_REPEATS);
-        ScenarioBuilder rampUpDeleteAudioRequest = setUpDeleteAudioRequest(RAMP_UP_SCENARIO_NAME7, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, AppConfig.SOAP_RAMPUP_REPEATS);
-        ScenarioBuilder spikeDeleteAudioRequest = setUpDeleteAudioRequest(SPIKE_SCENARIO_NAME7, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, AppConfig.SOAP_SPIKE_REPEATS);
-        ScenarioBuilder baselinePostAudio = setUpPostAudio(BASELINE_SCENARIO_NAME8, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, AppConfig.SOAP_BASELINE_REPEATS);
-        ScenarioBuilder rampUpPostAudio = setUpPostAudio(RAMP_UP_SCENARIO_NAME8, AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS, AppConfig.SOAP_RAMPUP_REPEATS);
-        ScenarioBuilder spikePostAudio = setUpPostAudio(SPIKE_SCENARIO_NAME8, AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS, AppConfig.SOAP_SPIKE_REPEATS);
+        ScenarioBuilder baselinePostAudioRequest = setUpPostAudioRequest(BASELINE_SCENARIO_NAME5, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_BASELINE_REPEATS);
+        ScenarioBuilder rampUpPostAudioRequest = setUpPostAudioRequest(RAMP_UP_SCENARIO_NAME5, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_RAMPUP_REPEATS);
+        ScenarioBuilder spikePostAudioRequest = setUpPostAudioRequest(SPIKE_SCENARIO_NAME5, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_SPIKE_REPEATS);
+        ScenarioBuilder baselineGetAudioRequest = setUpGetAudioRequest(BASELINE_SCENARIO_NAME6, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_BASELINE_REPEATS);
+        ScenarioBuilder rampUpGetAudioRequest = setUpGetAudioRequest(RAMP_UP_SCENARIO_NAME6, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_RAMPUP_REPEATS);
+        ScenarioBuilder spikeGetAudioRequest = setUpGetAudioRequest(SPIKE_SCENARIO_NAME6, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_SPIKE_REPEATS);
+        ScenarioBuilder baselineDeleteAudioRequest = setUpDeleteAudioRequest(BASELINE_SCENARIO_NAME7, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_BASELINE_REPEATS);
+        ScenarioBuilder rampUpDeleteAudioRequest = setUpDeleteAudioRequest(RAMP_UP_SCENARIO_NAME7, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_RAMPUP_REPEATS);
+        ScenarioBuilder spikeDeleteAudioRequest = setUpDeleteAudioRequest(SPIKE_SCENARIO_NAME7, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_SPIKE_REPEATS);
+        ScenarioBuilder baselinePostAudio = setUpPostAudio(BASELINE_SCENARIO_NAME8, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_BASELINE_REPEATS);
+        ScenarioBuilder rampUpPostAudio = setUpPostAudio(RAMP_UP_SCENARIO_NAME8, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_RAMPUP_REPEATS);
+        ScenarioBuilder spikePostAudio = setUpPostAudio(SPIKE_SCENARIO_NAME8, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_SPIKE_REPEATS);
 
         // Call setUp once with all scenarios
          setUp(
-            baselinePostAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_TEST_DURATION_MINUTES))).protocols(httpProtocolApi)
-                    .andThen(rampUpPostAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.RAMP_TEST_DURATION_MINUTES))).protocols(httpProtocolApi))
-                    .andThen(spikePostAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SPIKE_TEST_DURATION_MINUTES))).protocols(httpProtocolApi)),
-                    baselineGetAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_TEST_DURATION_MINUTES))).protocols(httpProtocolApi)
-                    .andThen(rampUpGetAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.RAMP_TEST_DURATION_MINUTES))).protocols(httpProtocolApi))
-                    .andThen(spikeGetAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SPIKE_TEST_DURATION_MINUTES))).protocols(httpProtocolApi)),
-                    baselineDeleteAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_TEST_DURATION_MINUTES))).protocols(httpProtocolApi)
-                    .andThen(rampUpDeleteAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.RAMP_TEST_DURATION_MINUTES))).protocols(httpProtocolApi))
-                    .andThen(spikeDeleteAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SPIKE_TEST_DURATION_MINUTES))).protocols(httpProtocolApi)),
-                    baselinePostAudio.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_TEST_DURATION_MINUTES))).protocols(httpProtocolApi)
-                    .andThen(rampUpPostAudio.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.RAMP_TEST_DURATION_MINUTES))).protocols(httpProtocolApi))
-                    .andThen(spikePostAudio.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SPIKE_TEST_DURATION_MINUTES))).protocols(httpProtocolApi))
+            baselinePostAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi)
+                    .andThen(rampUpPostAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi))
+                    .andThen(spikePostAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi)),
+                    baselineGetAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi)
+                    .andThen(rampUpGetAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi))
+                    .andThen(spikeGetAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi)),
+                    baselineDeleteAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi)
+                    .andThen(rampUpDeleteAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi))
+                    .andThen(spikeDeleteAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi)),
+                    baselinePostAudio.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi)
+                    .andThen(rampUpPostAudio.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi))
+                    .andThen(spikePostAudio.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi))
     );
 }
 

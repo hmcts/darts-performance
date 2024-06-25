@@ -48,14 +48,14 @@ public class ScenarioThreeSimulationTest extends Simulation {
         "Spike - DARTS - API - Post - Audio"
     };
 
-    private static final int BASELINE_DURATION_MILLIS = AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS;
-    private static final int RAMPUP_DURATION_MILLIS = AppConfig.SOAP_RAMPUP_PACE_DURATION_MILLIS;
-    private static final int SPIKE_DURATION_MILLIS = AppConfig.SOAP_SPIKE_PACE_DURATION_MILLIS;
+    private static final int BASELINE_DURATION_MILLIS = AppConfig.SMOKE_PACE_DURATION_MINS;
+    private static final int RAMPUP_DURATION_MILLIS = AppConfig.SMOKE_PACE_DURATION_MINS;
+    private static final int SPIKE_DURATION_MILLIS = AppConfig.SMOKE_PACE_DURATION_MINS;
     private static final int REPEATS = AppConfig.SOAP_BASELINE_REPEATS;
     private static final int USERS_PER_SECOND = AppConfig.USERS_PER_SECOND;
-    private static final long BASELINE_TEST_DURATION_MINUTES = AppConfig.BASELINE_TEST_DURATION_MINUTES;
-    private static final long RAMP_TEST_DURATION_MINUTES = AppConfig.RAMP_TEST_DURATION_MINUTES;
-    private static final long SPIKE_TEST_DURATION_MINUTES = AppConfig.SPIKE_TEST_DURATION_MINUTES;
+    private static final long BASELINE_TEST_DURATION_MINUTES = AppConfig.SMOKE_PACE_DURATION_MINS;
+    private static final long RAMP_TEST_DURATION_MINUTES = AppConfig.SMOKE_PACE_DURATION_MINS;
+    private static final long SPIKE_TEST_DURATION_MINUTES = AppConfig.SMOKE_PACE_DURATION_MINS;
 
     @Override
     public void before() {
@@ -80,7 +80,7 @@ public class ScenarioThreeSimulationTest extends Simulation {
     }
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocol, String[] baselineNames, String[] rampUpNames, String[] spikeNames) {
-        ScenarioBuilder[] baselineScenarios = createScenarios(baselineNames, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, REPEATS);
+        ScenarioBuilder[] baselineScenarios = createScenarios(baselineNames, AppConfig.SMOKE_PACE_DURATION_MINS, REPEATS);
         ScenarioBuilder[] rampUpScenarios = createScenarios(rampUpNames, RAMPUP_DURATION_MILLIS, REPEATS);
         ScenarioBuilder[] spikeScenarios = createScenarios(spikeNames, SPIKE_DURATION_MILLIS, REPEATS);
 
@@ -90,7 +90,7 @@ public class ScenarioThreeSimulationTest extends Simulation {
     }
 
     private void setUpScenariosApi(HttpProtocolBuilder httpProtocolApi, String[] baselineNames, String[] rampUpNames, String[] spikeNames) {
-        ScenarioBuilder[] baselineScenarios = createScenarios(baselineNames, AppConfig.SOAP_BASELINE_PACE_DURATION_MILLIS, REPEATS);
+        ScenarioBuilder[] baselineScenarios = createScenarios(baselineNames, AppConfig.SMOKE_PACE_DURATION_MINS, REPEATS);
         ScenarioBuilder[] rampUpScenarios = createScenarios(rampUpNames, RAMPUP_DURATION_MILLIS, REPEATS);
         ScenarioBuilder[] spikeScenarios = createScenarios(spikeNames, SPIKE_DURATION_MILLIS, REPEATS);
 

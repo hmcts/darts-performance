@@ -3,6 +3,7 @@ package simulations.Scripts.Scenario.DartsSoap;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.SoapServiceEndpoint;
+import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -12,7 +13,7 @@ import java.util.UUID;
 public final class AddAudioTokenScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
-    private static final String randomAudioFile = AppConfig.getRandomAudioFile();
+    private static final String randomAudioFile = Feeders.getRandomAudioFile();
     private static final String boundary = UUID.randomUUID().toString();
 
     private AddAudioTokenScenario() {}
