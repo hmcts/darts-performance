@@ -140,6 +140,46 @@ public class Feeders {
         }
     }
 
+            // List of audio files
+            public static final String[] AUDIO_FILES = {"sample.mp2", "00h10m.mp2", "00h15m.mp2","00h20m.mp2", "02h.mp2"};
+            //private static final String[] AUDIO_FILES = {"1MB.mp2", "4MB.mp2", "16MB.mp2", "64MB.mp2", "256MB.mp2"};
+        
+            // Corresponding percentages (must sum up to 100)
+            private static final int[] PERCENTAGES = {5, 10, 30, 40, 15};
+    
+            // Method to select a random audio file based on percentages
+            public static String getRandomAudioFile() {
+                int totalPercentage = 0;
+    
+                // Calculate the total percentage
+                for (int percentage : PERCENTAGES) {
+                    totalPercentage += percentage;
+                }
+    
+                // Generate a random number between 1 and totalPercentage
+                int randomNumber = ThreadLocalRandom.current().nextInt(totalPercentage) + 1;
+    
+                // Find the index of the audio file corresponding to the random number
+                int runningSum = 0;
+                for (int i = 0; i < PERCENTAGES.length; i++) {
+                    runningSum += PERCENTAGES[i];
+                    if (randomNumber <= runningSum) {
+                        return AUDIO_FILES[i];
+                    }
+                }
+    
+                // Fallback return (should not reach here)
+                return AUDIO_FILES[0];
+            }
+    
+            // Main method for testing
+            public static void main(String[] args) {
+                // Test the getRandomAudioFile method
+                for (int i = 0; i < 100; i++) {
+                    System.out.println(getRandomAudioFile());
+                }
+            }
+
     public static void executeUpdate(String sql) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

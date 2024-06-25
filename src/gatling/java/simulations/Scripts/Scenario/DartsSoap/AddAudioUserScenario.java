@@ -2,6 +2,7 @@ package simulations.Scripts.Scenario.DartsSoap;
 
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.AppConfig.SoapServiceEndpoint;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
@@ -11,7 +12,7 @@ import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 public final class AddAudioUserScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
-    private static final String randomAudioFile = AppConfig.getRandomAudioFile();
+    private static final String randomAudioFile = Feeders.getRandomAudioFile();
 
     private AddAudioUserScenario() {}
 

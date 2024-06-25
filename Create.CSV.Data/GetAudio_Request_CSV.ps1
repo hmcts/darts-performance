@@ -1,48 +1,61 @@
 ﻿# Define the SQL query
 $query = @"
 SELECT DISTINCT
-    h.hea_id,
-    h.cas_id,
-    cc.case_number,
-    ch.cth_id,
-    ch.courthouse_name,
-    h.ctr_id,
-    cr.courtroom_name,
-    TO_CHAR(m.start_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD""T""HH24:MI:SS.MS""z""') AS start_ts,
-    TO_CHAR(m.end_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD""T""HH24:MI:SS.MS""z""') AS end_ts,
-    sguae.usr_id,
-    CASE WHEN POSITION(' ' IN d.defendant_name) > 0 THEN SUBSTRING(d.defendant_name FROM 1 FOR POSITION(' ' IN d.defendant_name) - 1)
-         ELSE d.defendant_name END AS first_name,
-    darts.judge.judge_name
-FROM
-    darts.hearing h
-INNER JOIN 
-    darts.courtroom cr ON h.ctr_id = cr.ctr_id
-INNER JOIN 
-    darts.courthouse ch ON cr.cth_id = ch.cth_id
-INNER JOIN 
-    darts.court_case cc ON cc.cas_id = h.cas_id
-INNER JOIN 
-    darts.hearing_media_ae hma ON hma.hea_id = h.hea_id
-INNER JOIN 
-    darts.media m ON m.med_id = hma.med_id
-INNER JOIN 
-    darts.security_group_courthouse_ae sgcae ON ch.cth_id = sgcae.cth_id
-INNER JOIN 
-    darts.security_group_user_account_ae sguae ON sgcae.grp_id = sguae.grp_id
-INNER JOIN 
-    darts.defendant d ON d.cas_id = cc.cas_id
-INNER JOIN	
-    darts.hearing_judge_ae ON darts.hearing_judge_ae.hea_id = h.hea_id
-INNER JOIN		
-    darts.judge ON darts.judge.jud_id = darts.hearing_judge_ae.jud_id
-WHERE 
-    ch.courthouse_name LIKE '%NEWCASTLE UPON TYNE%'
-    AND sguae.usr_id NOT IN (-44, -38, -35, -51)
-    -- AND cc.created_ts < CURRENT_DATE - INTERVAL '7 days'
-ORDER BY 
-    h.cas_id DESC
-LIMIT 4000;
+    subquery.hea_id,
+    subquery.cas_id,
+    subquery.case_number,
+    subquery.cth_id,
+    subquery.courthouse_name,
+    subquery.ctr_id,
+    subquery.courtroom_name,
+    subquery.start_ts,
+    subquery.end_ts,
+    subquery.usr_id,
+    subquery.first_name,
+    subquery.judge_name
+FROM (
+    SELECT
+        h.hea_id,
+        h.cas_id,
+        cc.case_number,
+        ch.cth_id,
+        ch.courthouse_name,
+        h.ctr_id,
+        cr.courtroom_name,
+        TO_CHAR(m.start_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD""T""HH24:MI:SS.MS""z""') AS start_ts,
+        TO_CHAR(m.end_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD""T""HH24:MI:SS.MS""z""') AS end_ts,
+        sguae.usr_id,
+        CASE WHEN POSITION(' ' IN d.defendant_name) > 0 THEN SUBSTRING(d.defendant_name FROM 1 FOR POSITION(' ' IN d.defendant_name) - 1)
+             ELSE d.defendant_name END AS first_name,
+        darts.judge.judge_name
+    FROM
+        darts.hearing h
+    INNER JOIN 
+        darts.courtroom cr ON h.ctr_id = cr.ctr_id
+    INNER JOIN 
+        darts.courthouse ch ON cr.cth_id = ch.cth_id
+    INNER JOIN 
+        darts.court_case cc ON cc.cas_id = h.cas_id
+    INNER JOIN 
+        darts.hearing_media_ae hma ON hma.hea_id = h.hea_id
+    INNER JOIN 
+        darts.media m ON m.med_id = hma.med_id
+    INNER JOIN 
+        darts.security_group_courthouse_ae sgcae ON ch.cth_id = sgcae.cth_id
+    INNER JOIN 
+        darts.security_group_user_account_ae sguae ON sgcae.grp_id = sguae.grp_id
+    INNER JOIN 
+        darts.defendant d ON d.cas_id = cc.cas_id
+    INNER JOIN 
+        darts.hearing_judge_ae ON darts.hearing_judge_ae.hea_id = h.hea_id
+    INNER JOIN 
+        darts.judge ON darts.judge.jud_id = darts.hearing_judge_ae.jud_id
+    WHERE     
+        sguae.usr_id NOT IN (-48, -44, -4, -3, -2, -1, 0, 1, 6493)
+    ORDER BY
+        RANDOM()
+    LIMIT 4000
+) subquery;
 "@
 
 # Database connection parameters

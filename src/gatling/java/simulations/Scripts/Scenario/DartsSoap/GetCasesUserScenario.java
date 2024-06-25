@@ -1,20 +1,19 @@
 package simulations.Scripts.Scenario.DartsSoap;
 
 import simulations.Scripts.Headers.Headers;
-import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.SoapServiceEndpoint;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
+import simulations.Scripts.Utilities.*;
 
 public final class GetCasesUserScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
     private GetCasesUserScenario() {}
     public static ChainBuilder GetCaseSOAPUser(String USERNAME, String PASSWORD) {
         return group("AddDocument SOAP Request Group")
-            .on(exec(feed(feeder))
+            .on(exec(feed(Feeders.createCourtHouseAndCourtRooms()))
                 .exec(session -> {
                     String xmlPayload = SOAPRequestBuilder.GetCasesUserRequest(session, USERNAME, PASSWORD);
                     return session.set("xmlPayload", xmlPayload);

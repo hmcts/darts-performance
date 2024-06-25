@@ -20,7 +20,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 import java.time.Duration;
 
-public class ScenarioOneSimulationTest2 extends Simulation {
+public class ScenarioOneSimulationTest extends Simulation {
 
     private static final String BASELINE_ADD_DOCUMENT_EVENTS = "Baseline - DARTS - GateWay - Soap - AddDocument:POST - Event Token";
     private static final String BASELINE_GET_CASES = "Baseline - DARTS - GateWay - Soap - GetCase - User";
@@ -33,7 +33,7 @@ public class ScenarioOneSimulationTest2 extends Simulation {
         System.out.println("Simulation is about to start!");
     }
 
-    public ScenarioOneSimulationTest2() {
+    public ScenarioOneSimulationTest() {
         HttpProtocolBuilder httpProtocol = http
            //     .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())

@@ -198,6 +198,7 @@ public class SOAPRequestBuilder {
 
         // Generate dynamic values
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String Id = randomStringGenerator.generateRandomString(10);
         String defendantName = randomStringGenerator.generateRandomString(10);
         String defendantName2 = randomStringGenerator.generateRandomString(10);
         String judgeName = randomStringGenerator.generateRandomString(10);
@@ -213,11 +214,11 @@ public class SOAPRequestBuilder {
         "  </s:Header>\n" +
         "  <s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n" +
         "    <ns2:addCase xmlns:ns2=\"http://com.synapps.mojdarts.service.com\">\n" +
-        "      <document><![CDATA[<case type=\"1\" id=\"U20231129-1733\"><courthouse>%s</courthouse><courtroom>%s</courtroom><defendants><defendant>%s</defendant><defendant>%s</defendant></defendants><judges><judge>Mr Judge</judge><judge>Mrs %s</judge></judges><prosecutors><prosecutor>Mr Prosecutor</prosecutor><prosecutor>Mrs Prosecutor</prosecutor></prosecutors></case>]]></document>\n" +
+        "      <document><![CDATA[<case type=\"1\" id=\"Perf_%s\"><courthouse>%s</courthouse><courtroom>%s</courtroom><defendants><defendant>%s</defendant><defendant>%s</defendant></defendants><judges><judge>Mr Judge</judge><judge>Mrs %s</judge></judges><prosecutors><prosecutor>Mr Prosecutor</prosecutor><prosecutor>Mrs Prosecutor</prosecutor></prosecutors></case>]]></document>\n" +
         "    </ns2:addCase>\n" +
         "  </s:Body>\n" +
         "</s:Envelope>",
-        USERNAME, PASSWORD, courtHouseName, courtRoom, defendantName, defendantName2, judgeName);
+        USERNAME, PASSWORD, Id, courtHouseName, courtRoom, defendantName, defendantName2, judgeName);
     }
 
     public static String AddCaseTokenRequest(Session session) {
