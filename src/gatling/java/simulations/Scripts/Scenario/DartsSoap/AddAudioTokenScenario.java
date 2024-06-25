@@ -21,7 +21,7 @@ public final class AddAudioTokenScenario {
         return group("AddAudio SOAP Request Group")
             .on(exec(feed(feeder))
             .exec(session -> {
-                String xmlPayload = SOAPRequestBuilder.AddAudioTokenRequest(session);
+                String xmlPayload = SOAPRequestBuilder.AddAudioTokenRequest(session, randomAudioFile);
                 return session.set("xmlPayload", xmlPayload);
             })
             .exec(http("DARTS - GateWay - Soap - AddAudio - Token")

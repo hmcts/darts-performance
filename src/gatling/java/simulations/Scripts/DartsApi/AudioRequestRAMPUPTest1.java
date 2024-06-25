@@ -19,7 +19,7 @@ public class AudioRequestRAMPUPTest1 extends Simulation {
     public AudioRequestRAMPUPTest1() {
 
         HttpProtocolBuilder httpProtocol = http
-       // .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
   
@@ -28,7 +28,7 @@ public class AudioRequestRAMPUPTest1 extends Simulation {
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocol) {
         // Set up scenarios with configurable parameters
-        ScenarioBuilder rampUpScenario = setUpRampUpScenario(RAMP_UP_SCENARIO_NAME, 100, Duration.ofHours(1)); // New Ramp Up Scenario
+        ScenarioBuilder rampUpScenario = setUpRampUpScenario(RAMP_UP_SCENARIO_NAME, 95, Duration.ofHours(1)); // New Ramp Up Scenario with 95 requests
   
         // Call setUp once with all scenarios
         setUp(
