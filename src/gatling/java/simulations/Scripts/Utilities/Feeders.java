@@ -24,8 +24,9 @@ public class Feeders {
     public static final FeederBuilder<String> TranscriberUsers;
     public static final FeederBuilder<String> CourtHouseAndCourtRooms;
     public static final FeederBuilder<String> CaseHouseRoomsHearingDetails;
-    public static final FeederBuilder<String> TransformedMediaIdCSV;
-    
+    public static final FeederBuilder<String> TransformedMediaDownloadIdCSV;
+    public static final FeederBuilder<String> TransformedMediaPlaybackIdCSV;
+
     private static final AtomicInteger COUNTER;
     private static final Logger log = Logger.getLogger(Feeders.class.getName());
 
@@ -55,7 +56,8 @@ public class Feeders {
         CaseHouseRoomsHearingDetails = CoreDsl.csv(AppConfig.CASE_HOUSE_ROOMS_HEARING_FILE_PATH).random();
         
         //Transformed Media Id's
-        TransformedMediaIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_IDS_FILE_PATH).random();
+        TransformedMediaDownloadIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH).random();
+        TransformedMediaPlaybackIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH).random();
 
 
         COUNTER = new AtomicInteger(0);
@@ -73,8 +75,11 @@ public class Feeders {
     public static FeederBuilder<String> createAudioRequestCSV() {
         return AudioRequestCSV;
     }
-    public static FeederBuilder<String> createTransformedMediaIdCSV() {
-        return TransformedMediaIdCSV;
+    public static FeederBuilder<String> createTransformedMediaDownloadIdCSV() {
+        return TransformedMediaDownloadIdCSV;
+    }
+    public static FeederBuilder<String> createTransformedMediaPlaybackIdCSV() {
+        return TransformedMediaPlaybackIdCSV;
     }
     
     public static FeederBuilder<String> createJudgesFeeder() {
