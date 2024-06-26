@@ -28,13 +28,13 @@ public final class GetAudioRequestScenario {
 
     public static ChainBuilder GetAudioRequestPlayBack() {
         return group("Audio Request Get")
-            .on(exec(feed(Feeders.createTransformedMediaIdCSV()))
+            .on(exec(feed(Feeders.createTransformedMediaPlaybackIdCSV()))
                 .exec(session -> {
-                    String transformedMediaId = session.getString("getTransformedMediaId");
-                    return session.set("getTransformedMediaId", transformedMediaId);
+                    String transformedMediaId = session.getString("trm_id");
+                    return session.set("trm_id", transformedMediaId);
                 })
                 .exec(http("DARTS - Api - AudioRequest:GET PlayBack")
-                    .get(session -> AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/playback?transformed_media_id=" + session.getString("getTransformedMediaId"))
+                    .get(session -> AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/playback?transformed_media_id=" + session.getString("trm_id"))
                     .headers(Headers.AuthorizationHeaders)
                     .check(status().saveAs("statusCode"))
                     .check(status().is(200))
@@ -44,13 +44,13 @@ public final class GetAudioRequestScenario {
 
     public static ChainBuilder GetAudioRequestDownload() {
         return group("Audio Request Get")
-            .on(exec(feed(Feeders.createTransformedMediaIdCSV()))
+            .on(exec(feed(Feeders.createTransformedMediaDownloadIdCSV()))
             .exec(session -> {
-                String transformedMediaId = session.get("getTransformedMediaId");
-                return session.set("getTransformedMediaId", transformedMediaId);
+                String transformedMediaId = session.get("trm_id");
+                return session.set("trm_id", transformedMediaId);
             })
                 .exec(http("DARTS - Api - AudioRequest:GET Download")
-                        .get(session -> AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/download?transformed_media_id=" + session.get("getTransformedMediaId"))
+                        .get(session -> AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/download?transformed_media_id=" + session.get("trm_id"))
                         .headers(Headers.AuthorizationHeaders)
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))
