@@ -13,20 +13,23 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class AudioRequestGetSimulation extends Simulation {   
   {
-    final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
 
     final HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
-    final ScenarioBuilder scn1 = scenario("Audio Requests:GET")
+        final ScenarioBuilder scn1 = scenario("Audio Requests:GET")
         .exec(GetApiTokenScenario.getApiToken())
-        .repeat(1)    
-        .on(exec(GetAudioRequestScenario.GetAudioRequest().feed(feeder))    
+        .repeat(10)
+        .on(
+            uniformRandomSwitch().on(
+                exec(GetAudioRequestScenario.GetAudioRequestDownload()),
+                exec(GetAudioRequestScenario.GetAudioRequestPlayBack())
+            )
         );
-
     setUp(
-        scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
-    }    
+        scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol)
+    );
+}    
 }

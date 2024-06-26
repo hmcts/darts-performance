@@ -104,8 +104,13 @@ public class ScenarioOneSimulationTest extends Simulation {
         .group(scenarioName)
         .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
                 .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
-                .repeat(repeats)
-                .on(exec(GetAudioRequestScenario.GetAudioRequest().pace(Duration.ofMillis(paceDurationMillis)))));
+                .repeat(repeats).on(
+                    uniformRandomSwitch().on(
+                        exec(GetAudioRequestScenario.GetAudioRequestDownload()),
+                        exec(GetAudioRequestScenario.GetAudioRequestPlayBack())
+                    )
+                ).pace(Duration.ofMillis(paceDurationMillis))
+            );
     }
 
     @Override
