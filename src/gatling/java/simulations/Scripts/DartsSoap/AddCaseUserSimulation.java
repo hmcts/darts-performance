@@ -10,11 +10,8 @@ import io.gatling.javaapi.http.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import java.time.Duration;
-
-import java.util.UUID;
 public class AddCaseUserSimulation extends Simulation {
 
-  String boundary = UUID.randomUUID().toString();
   
   private static final String BASELINE_SCENARIO_NAME = "DARTS - GateWay - Soap - AddCase:POST";
   private static final String RAMP_UP_SCENARIO_NAME = "Ramp Up Test";
@@ -22,12 +19,9 @@ public class AddCaseUserSimulation extends Simulation {
 
   public AddCaseUserSimulation() {
       HttpProtocolBuilder httpProtocol = http
-      //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+          .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
           .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
-          .inferHtmlResources()
-          .acceptEncodingHeader("gzip,deflate")
-          .contentTypeHeader("multipart/related; type=\"text/xml\"; start=\"<rootpart@soapui.org>\"; boundary=" + boundary)
-          .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
+          .inferHtmlResources();
 
       setUpScenarios(httpProtocol);
   }
@@ -49,7 +43,7 @@ public class AddCaseUserSimulation extends Simulation {
   private ScenarioBuilder setUpScenario(String scenarioName, int paceDurationMillis, int repeats) {
       return scenario(scenarioName)
       .group(scenarioName)
-      .on(repeat(repeats)
+      .on(repeat(1)
           .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()).pace(Duration.ofMillis(paceDurationMillis)))));
   }
 }
