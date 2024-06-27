@@ -12,7 +12,6 @@ import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 public final class AddAudioUserScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
-    private static final String randomAudioFile = Feeders.getRandomAudioFile();
 
     private AddAudioUserScenario() {}
 
@@ -20,8 +19,10 @@ public final class AddAudioUserScenario {
         return group("AddAudio SOAP Request Group")
             .on(exec(feed(feeder))
             .exec(session -> {
-                String xmlPayload = SOAPRequestBuilder.AddAudioUserRequest(session, USERNAME, PASSWORD);
-                return session.set("xmlPayload", xmlPayload);
+                String randomAudioFile = Feeders.getRandomAudioFile();
+                String xmlPayload = SOAPRequestBuilder.AddAudioTokenRequest(session, randomAudioFile);
+                return session.set("randomAudioFile", randomAudioFile)
+                .set("xmlPayload", xmlPayload);
             })
             .exec(http("DARTS - GateWay - Soap - AddAudio - User")
                     .post(SoapServiceEndpoint.StandardService.getEndpoint())
@@ -30,11 +31,11 @@ public final class AddAudioUserScenario {
                             .contentType("application/xop+xml; charset=UTF-8; type=\"text/xml")
                             .transferEncoding("8bit")
                             .contentId("<rootpart@soapui.org>"))
-                    .bodyPart(RawFileBodyPart("file", AppConfig.CSV_FILE_COMMON_PATH + randomAudioFile)
+                    .bodyPart(RawFileBodyPart("file",session ->  AppConfig.CSV_FILE_COMMON_PATH + session.get("randomAudioFile"))
                         .contentType("application/octet-stream")
                         .transferEncoding("binary")
-                        .contentId("<"+ randomAudioFile+ ">")
-                        .dispositionType("attachment; name=\""+ randomAudioFile + "")
+                        .contentId(session ->"<"+ session.get("randomAudioFile")+ ">")
+                        .dispositionType(session ->"attachment; name=\""+ session.get("randomAudioFile") + "")
                     )
                         .check(status().is(200))
                         .check(xpath("//return/code").saveAs("statusCode"))

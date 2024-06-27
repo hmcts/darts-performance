@@ -13,7 +13,6 @@ import java.util.UUID;
 public final class AddAudioTokenScenario {
 
     private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
-    private static final String randomAudioFile = Feeders.getRandomAudioFile();
     private static final String boundary = UUID.randomUUID().toString();
 
     private AddAudioTokenScenario() {}
@@ -22,10 +21,12 @@ public final class AddAudioTokenScenario {
         return group("AddAudio SOAP Request Group")
             .on(exec(feed(feeder))
             .exec(session -> {
+                String randomAudioFile = Feeders.getRandomAudioFile();
                 String xmlPayload = SOAPRequestBuilder.AddAudioTokenRequest(session, randomAudioFile);
-                return session.set("xmlPayload", xmlPayload);
+                return session.set("randomAudioFile", randomAudioFile)
+                .set("xmlPayload", xmlPayload);
             })
-            .exec(http("DARTS - GateWay - Soap - AddAudio - Token")
+            .exec(http(session -> "DARTS - GateWay - Soap - AddAudio - Token: File - " + session.get("randomAudioFile"))
                     .post(SoapServiceEndpoint.StandardService.getEndpoint())
                     .headers(Headers.SoapHeaders)  
                     .header("Content-Type", "multipart/related; type=\"application/xop+xml\"; start=\"<rootpart@soapui.org>\"; start-info=\"text/xml\"; boundary=" + boundary)
@@ -34,11 +35,11 @@ public final class AddAudioTokenScenario {
                             .contentType("application/xop+xml; charset=UTF-8; type=\"text/xml")
                             .transferEncoding("8bit")
                             .contentId("<rootpart@soapui.org>"))
-                    .bodyPart(RawFileBodyPart("file", AppConfig.CSV_FILE_COMMON_PATH + randomAudioFile)
+                    .bodyPart(RawFileBodyPart("file",session ->  AppConfig.CSV_FILE_COMMON_PATH + session.get("randomAudioFile"))
                         .contentType("application/octet-stream")
                         .transferEncoding("binary")
-                        .contentId("<"+ randomAudioFile+ ">")
-                        .dispositionType("attachment; name=\""+ randomAudioFile + "")
+                        .contentId(session ->"<"+ session.get("randomAudioFile") + ">")
+                        .dispositionType(session ->"attachment; name=\""+ session.get("randomAudioFile") + "")
                     )
                         .check(status().is(200))
                         .check(xpath("//return/code").saveAs("statusCode"))

@@ -20,7 +20,7 @@ public class AddCaseTokenSimulation extends Simulation {
 
   public AddCaseTokenSimulation() {
       HttpProtocolBuilder httpProtocol = http
-       //   .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+          .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
           .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
           .inferHtmlResources()
           .acceptEncodingHeader("gzip,deflate")
@@ -49,7 +49,7 @@ public class AddCaseTokenSimulation extends Simulation {
       .group(scenarioName)
       .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
           .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
-          .repeat(repeats)
+          .repeat(1)
           .on(exec(AddCaseTokenScenario.addCaseToken().pace(Duration.ofMillis(paceDurationMillis)))));
   }
 }
