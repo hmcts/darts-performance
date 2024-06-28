@@ -11,20 +11,18 @@ import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 
 public final class AddAudioUserScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
-
     private AddAudioUserScenario() {}
 
     public static ChainBuilder addAudioUser(String USERNAME, String PASSWORD) {
         return group("AddAudio SOAP Request Group")
-            .on(exec(feed(feeder))
+            .on(exec(feed(Feeders.createCourtHouseAndCourtRooms()))
             .exec(session -> {
                 String randomAudioFile = Feeders.getRandomAudioFile();
                 String xmlPayload = SOAPRequestBuilder.AddAudioTokenRequest(session, randomAudioFile);
                 return session.set("randomAudioFile", randomAudioFile)
                 .set("xmlPayload", xmlPayload);
             })
-            .exec(http("DARTS - GateWay - Soap - AddAudio - User")
+            .exec(http(session -> "DARTS - GateWay - Soap - AddAudio - User: File - " + session.get("randomAudioFile"))
                     .post(SoapServiceEndpoint.StandardService.getEndpoint())
                     .headers(Headers.SoapHeaders)                    
                     .bodyPart(StringBodyPart("metadata", session -> session.get("xmlPayload"))

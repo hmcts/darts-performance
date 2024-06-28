@@ -12,14 +12,13 @@ import java.util.UUID;
 
 public final class AddAudioTokenScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
     private static final String boundary = UUID.randomUUID().toString();
 
     private AddAudioTokenScenario() {}
 
     public static ChainBuilder addAudioToken() {
         return group("AddAudio SOAP Request Group")
-            .on(exec(feed(feeder))
+            .on(exec(feed(Feeders.createCourtHouseAndCourtRooms()))
             .exec(session -> {
                 String randomAudioFile = Feeders.getRandomAudioFile();
                 String xmlPayload = SOAPRequestBuilder.AddAudioTokenRequest(session, randomAudioFile);
