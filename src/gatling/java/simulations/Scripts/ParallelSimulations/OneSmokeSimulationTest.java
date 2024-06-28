@@ -21,7 +21,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 import java.time.Duration;
 
-public class ScenarioOneSmokeSimulationTest extends Simulation {
+public class OneSmokeSimulationTest extends Simulation {
 
     private static final String SMOKE_ADD_DOCUMENT_EVENTS = "Smoke - DARTS - GateWay - Soap - AddDocument:POST - Event Token";
     private static final String SMOKE_GET_CASES = "Smoke - DARTS - GateWay - Soap - GetCase - User";
@@ -34,7 +34,7 @@ public class ScenarioOneSmokeSimulationTest extends Simulation {
         System.out.println("Simulation is about to start!");
     }
 
-    public ScenarioOneSmokeSimulationTest() {
+    public OneSmokeSimulationTest() {
         HttpProtocolBuilder httpProtocolSoap = http
                 .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .inferHtmlResources()

@@ -20,8 +20,8 @@ public class GetCasesUserSimulation extends Simulation {
 
   public GetCasesUserSimulation() {
       HttpProtocolBuilder httpProtocol = http
-       //   .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
-          .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
+          .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+          .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
           .inferHtmlResources()
           .acceptEncodingHeader("gzip,deflate")
           .contentTypeHeader("text/xml;charset=UTF-8")
@@ -47,7 +47,7 @@ public class GetCasesUserSimulation extends Simulation {
   private ScenarioBuilder setUpScenario(String scenarioName, int paceDurationMillis, int repeats) {
       return scenario(scenarioName)
       .group(scenarioName)
-      .on(repeat(repeats)
+      .on(repeat(1)
           .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()).pace(Duration.ofMillis(paceDurationMillis)))));
   }
 }
