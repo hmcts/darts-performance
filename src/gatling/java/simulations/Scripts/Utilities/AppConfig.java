@@ -7,34 +7,20 @@ import java.util.Optional;
 public class AppConfig {
 
     //Performance Env
-    public static final String PERFORMANCE_GATEWAY_BASE_URL= "http://darts-gateway.test.platform.hmcts.net";
-    public static final String PERFORMANCE_DARTS_API_BASE_URL= "https://darts-api.test.platform.hmcts.net";
-    public static final String PERFORMANCE_DARTS_BASE_URL= "https://darts.test.apps.hmcts.net";
-    public static final String PERFORMANCE_CLINET_ID = "85118ee2-6544-4180-a16e-99615365f209";
-    public static final String PERFORMANCE_CLIENT_SECRET = "zKO8Q~0Ab-4MZKHcghuhLKvzG8Ot~lkzr4EaacjI";        
-    public static final String PERFORMANCE_AZURE_AD_B2C_CLIENT_ID = "363c11cb-48b9-44bf-9d06-9a3973f6f413";
-    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/";
-    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "oauth2/v2.0/authorize";
-    public static final String PERFORMANCE_B2B_Login = "https://hmctsstgextid.b2clogin.com";
-    public static final String PERFORMANCE_B2B_Token = "/hmctsstgextid.onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
-    public static final String PERFORMANCE_SCOPE = "https://hmctsstgextid.onmicrosoft.com/85118ee2-6544-4180-a16e-99615365f209/Functional.Test";
-    public static final String PERFORMANCE_GRANT_TYPE = "password";
-    
-    //Staging Env
-    public static final String STAGING_GATEWAY_BASE_URL= "http://darts-gateway.staging.platform.hmcts.net";
-    public static final String STAGING_DARTS_API_BASE_URL= "https://darts-api.staging.platform.hmcts.net";
-    public static final String STAGING_DARTS_BASE_URL= "https://darts.staging.apps.hmcts.net";
-    public static final String STAGING_CLINET_ID = "85118ee2-6544-4180-a16e-99615365f209";
-    public static final String STAGING_CLIENT_SECRET = "zKO8Q~0Ab-4MZKHcghuhLKvzG8Ot~lkzr4EaacjI";        
-    public static final String STAGING_AZURE_AD_B2C_CLIENT_ID = "363c11cb-48b9-44bf-9d06-9a3973f6f413";
-    public static final String STAGING_DARTS_PORTAL_SIGNIN = "/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/";
-    public static final String STAGING_DARTS_PORTAL_Auth_LOGIN = STAGING_DARTS_PORTAL_SIGNIN + "oauth2/v2.0/authorize";
-    public static final String STAGING_B2B_Login = "https://hmctsstgextid.b2clogin.com";
-    public static final String STAGING_B2B_Token = "/hmctsstgextid.onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
-    public static final String STAGING_SCOPE = "https://hmctsstgextid.onmicrosoft.com/85118ee2-6544-4180-a16e-99615365f209/Functional.Test";
-    public static final String STAGING_GRANT_TYPE = "password";
-
-
+    public static final String PERFORMANCE_GATEWAY_BASE_URL= "test";
+    public static final String PERFORMANCE_PROXY_BASE_URL= "test";
+    public static final String PERFORMANCE_DARTS_API_BASE_URL= "test";
+    public static final String PERFORMANCE_DARTS_BASE_URL= "test";
+    public static final String PERFORMANCE_CLINET_ID = "test";
+    public static final String PERFORMANCE_CLIENT_SECRET = "test";
+    public static final String PERFORMANCE_AZURE_AD_B2C_CLIENT_ID = "test";
+    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "test";
+    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "test";
+    public static final String PERFORMANCE_B2B_Login = "test";
+    public static final String PERFORMANCE_B2B_Token = "test";
+    public static final String PERFORMANCE_SCOPE = "test";
+    public static final String PERFORMANCE_GRANT_TYPE = "test";
+ 
     public static final long RANK_UP_TIME_SECONDS;
     public static final long RANK_DOWN_TIME_SECONDS;
     public static final int REQUESTS_PER_SECOND;
@@ -51,19 +37,74 @@ public class AppConfig {
     //Test Times Set up
     public static final long TEST_DURATION_SECONDS;
     public static final long TEST_DURATION_MINUTES;
-    public static final long BASELINE_TEST_DURATION_MINUTES;
-    public static final long RAMP_TEST_DURATION_MINUTES;
-    public static final long SPIKE_TEST_DURATION_MINUTES;
-
+    public static final long SMOKE_TEST_DURATION_MINUTES;
+    public static final long BASELINE_NORMAL_DURATION_MINUTES;
+    public static final long PEAK_TEST_DURATION_MINUTES;
+    
     //Soap Requests
     public static final int SOAP_BASELINE_REPEATS;
     public static final int SOAP_RAMPUP_REPEATS;
     public static final int SOAP_SPIKE_REPEATS;
+   
+    //Events Requests
+    public static final int EVENTS_SMOKE_REPEATS;
+    public static final int EVENTS_BASELINE_NORMAL_REPEATS;
+    public static final int EVENTS_PEAK_REPEATS;
+    
+    //POST Audio Requests
+    public static final int POST_AUDIO_REQUEST_SMOKE_REPEATS;
+    public static final int POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS;
+    public static final int POST_AUDIO_REQUEST_PEAK_REPEATS;
+    
+    //GET Audio Requests
+    public static final int GET_AUDIO_REQUEST_SMOKE_REPEATS;
+    public static final int GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS;
+    public static final int GET_AUDIO_REQUEST_PEAK_REPEATS;   
+    
+    //DELETE Audio Requests
+    public static final int DELETE_AUDIO_REQUEST_SMOKE_REPEATS;
+    public static final int DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS;
+    public static final int DELETE_AUDIO_REQUEST_PEAK_REPEATS;
+    
+    //Add Cases Requests
+    public static final int ADD_CASES_SMOKE_REPEATS;
+    public static final int ADD_CASES_BASELINE_NORMAL_REPEATS;
+    public static final int ADD_CASES_PEAK_REPEATS;  
+    
+    //GET Cases Requests
+    public static final int GET_CASES_SMOKE_REPEATS;
+    public static final int GET_CASES_BASELINE_NORMAL_REPEATS;
+    public static final int GET_CASES_PEAK_REPEATS;  
+    
+    //Add Log Entry Requests
+    public static final int ADD_LOG_ENTRY_SMOKE_REPEATS;
+    public static final int ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS;
+    public static final int ADD_LOG_ENTRY_PEAK_REPEATS; 
+    
+    //Get Log Entry Requests
+    public static final int GET_LOG_ENTRY_SMOKE_REPEATS;
+    public static final int GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS;
+    public static final int GET_LOG_ENTRY_PEAK_REPEATS; 
 
-    public static final int SOAP_BASELINE_PACE_DURATION_MILLIS;
-    public static final int SOAP_RAMPUP_PACE_DURATION_MILLIS;
-    public static final int SOAP_SPIKE_PACE_DURATION_MILLIS;
+    //POST Audio (Api)
+    public static final int POST_AUDIO_SMOKE_REPEATS;
+    public static final int POST_AUDIO_BASELINE_NORMAL_REPEATS;
+    public static final int POST_AUDIO_PEAK_REPEATS; 
 
+    //Add Audio (Soap)
+    public static final int ADD_AUDIO_SMOKE_REPEATS;
+    public static final int ADD_AUDIO_BASELINE_NORMAL_REPEATS;
+    public static final int ADD_AUDIO_PEAK_REPEATS; 
+
+    //Test Durations
+    public static final int SMOKE_PACE_DURATION_MINS;
+    public static final int BASELINE_NORMAL_PACE_DURATION_MINS;
+    public static final int PEAK_PACE_DURATION_MINS;
+
+    //DB Connections
+    public static final String DB_URL;
+    public static final String DB_USERNAME;
+    public static final String DB_PASSWORD;
 
     //public static final String DB_URL = "darts-api-stg.postgres.database.azure.com";
 
@@ -97,20 +138,75 @@ public class AppConfig {
         //Test Times Set up
         TEST_DURATION_SECONDS = Long.parseLong(getProperty("TEST_DURATION_SECONDS", "600"));
         TEST_DURATION_MINUTES = Long.parseLong(getProperty("TEST_DURATION_MINUTES", "30"));
-        BASELINE_TEST_DURATION_MINUTES = Long.parseLong(getProperty("BASELINE_TEST_DURATION_MINUTES", "30"));
-        RAMP_TEST_DURATION_MINUTES = Long.parseLong(getProperty("RAMP_TEST_DURATION_MINUTES", "20"));
-        SPIKE_TEST_DURATION_MINUTES = Long.parseLong(getProperty("SPIKE_TEST_DURATION_MINUTES", "10"));
+        SMOKE_TEST_DURATION_MINUTES = Long.parseLong(getProperty("BASELINE_TEST_DURATION_MINUTES", "30"));
+        BASELINE_NORMAL_DURATION_MINUTES = Long.parseLong(getProperty("RAMP_TEST_DURATION_MINUTES", "20"));
+        PEAK_TEST_DURATION_MINUTES = Long.parseLong(getProperty("SPIKE_TEST_DURATION_MINUTES", "10"));
 
         //Soap Requests
         SOAP_BASELINE_REPEATS = Integer.parseInt(getProperty("SOAP_BASELINE_REPEATS", "100"));
         SOAP_RAMPUP_REPEATS = Integer.parseInt(getProperty("SOAP_RAMPUP_REPEATS", "50"));
         SOAP_SPIKE_REPEATS = Integer.parseInt(getProperty("SOAP_SPIKE_REPEATS", "100"));
+        
+        //Event Requests
+        EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("EVENTS_SMOKE_REPEATS", "538"));
+        EVENTS_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("EVENTS_BASELINE_NORMAL_REPEATS", "2692"));
+        EVENTS_PEAK_REPEATS = Integer.parseInt(getProperty("EVENTS_PEAK_REPEATS", "5384"));
 
-        SOAP_BASELINE_PACE_DURATION_MILLIS = Integer.parseInt(getProperty("SOAP_BASELINE_PACE_DURATION_MILLIS", "6000"));
-        SOAP_RAMPUP_PACE_DURATION_MILLIS = Integer.parseInt(getProperty("SOAP_RAMPUP_PACE_DURATION_MILLIS", "6000"));
-        SOAP_SPIKE_PACE_DURATION_MILLIS = Integer.parseInt(getProperty("SOAP_SPIKE_PACE_DURATION_MILLIS", "1800"));
+        //POST Audio Requests
+        POST_AUDIO_REQUEST_SMOKE_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_REQUEST_SMOKE_REPEATS", "9"));
+        POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "43"));
+        POST_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_REQUEST_PEAK_REPEATS", "95"));
+
+        //GET Audio Requests
+        GET_AUDIO_REQUEST_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_AUDIO_REQUEST_SMOKE_REPEATS", "9"));
+        GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "43"));
+        GET_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("GET_AUDIO_REQUEST_PEAK_REPEATS", "95"));
+                
+        //GET Audio Requests
+        DELETE_AUDIO_REQUEST_SMOKE_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_SMOKE_REPEATS", "9"));
+        DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "43"));
+        DELETE_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_PEAK_REPEATS", "95"));
+                
+        //Add Cases Requests
+        ADD_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_CASES_SMOKE_REPEATS", "698"));
+        ADD_CASES_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("ADD_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "3490"));
+        ADD_CASES_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_CASES_REQUEST_PEAK_REPEATS", "6980"));
+        
+        //Get Cases Requests
+        GET_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_CASES_SMOKE_REPEATS", "158"));
+        GET_CASES_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("GET_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "790"));
+        GET_CASES_PEAK_REPEATS = Integer.parseInt(getProperty("GET_CASES_REQUEST_PEAK_REPEATS", "1580"));
+
+        //Add Log Entry Requests
+        ADD_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_SMOKE_REPEATS", "2114"));
+        ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "10571"));
+        ADD_LOG_ENTRY_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_PEAK_REPEATS", "21142"));
+
+        //Get Log Entry Requests
+        GET_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_SMOKE_REPEATS", "2114"));
+        GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "10571"));
+        GET_LOG_ENTRY_PEAK_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_PEAK_REPEATS", "21142"));
 
 
+        //POST Audio (Api)
+        POST_AUDIO_SMOKE_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_SMOKE_REPEATS", "2114"));
+        POST_AUDIO_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_BASELINE_NORMAL_REPEATS", "10571"));
+        POST_AUDIO_PEAK_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_PEAK_REPEATS", "21142"));
+        
+        //Add Audio (Soap)
+        ADD_AUDIO_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_AUDIO_SMOKE_REPEATS", "2776"));
+        ADD_AUDIO_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("ADD_AUDIO_BASELINE_NORMAL_REPEATS", "13881"));
+        ADD_AUDIO_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_AUDIO_PEAK_REPEATS", "27762"));
+
+        //Test Durations
+        SMOKE_PACE_DURATION_MINS = Integer.parseInt(getProperty("SMOKE_PACE_DURATION_MINS", "30"));
+        BASELINE_NORMAL_PACE_DURATION_MINS = Integer.parseInt(getProperty("BASELINE_NORMAL_PACE_DURATION_MINS", "20"));
+        PEAK_PACE_DURATION_MINS = Integer.parseInt(getProperty("PEAK_PACE_DURATION_MINS", "10"));
+     
+        //DataBase Connections
+        DB_URL = getProperty("DB_URL", "test");
+        DB_USERNAME = getProperty("DB_USERNAME", "test");
+        DB_PASSWORD = getProperty("DB_PASSWORD", "test");
     
     }
 
@@ -129,6 +225,7 @@ public class AppConfig {
     // Base URL
     public enum EnvironmentURL {  
         GATEWAY_BASE_URL(PERFORMANCE_GATEWAY_BASE_URL),
+        PROXY_BASE_URL(PERFORMANCE_PROXY_BASE_URL),        
         DARTS_BASE_URL(PERFORMANCE_DARTS_API_BASE_URL),        
         DARTS_PORTAL_BASE_URL(PERFORMANCE_DARTS_BASE_URL),
         
@@ -144,15 +241,15 @@ public class AppConfig {
         AZURE_AD_B2C_CLIENT_ID(PERFORMANCE_AZURE_AD_B2C_CLIENT_ID),
 
         //Users
-        DARTS_API_USERNAME("darts.transcriber@hmcts.net"),
-        DARTS_API_GLOBAL_USERNAME("darts_global_test_user"),
-        DARTS_API_PASSWORD("Password@1"),
-        DARTS_SOAP_USERNAME("xhibit_ws_user"),
-        DARTS_SOAP_PASSWORD("l0g1c@"),
-        DARTS_API_USERNAME2("darts.admin@hmcts.net"),
-        DARTS_API_PASSWORD2("Password@1"),
-        DARTS_SOAP_EXTERNAL_USERNAME("viq_ws_user"),
-        DARTS_SOAP_EXTERNAL_PASSWORD("darts");
+        DARTS_API_USERNAME("test"),
+        DARTS_API_GLOBAL_USERNAME("test"),
+        DARTS_API_PASSWORD("test"),
+        DARTS_SOAP_USERNAME("test"),
+        DARTS_SOAP_PASSWORD("test"),
+        DARTS_API_USERNAME2("test"),
+        DARTS_API_PASSWORD2("test"),
+        DARTS_SOAP_EXTERNAL_USERNAME("test"),
+        DARTS_SOAP_EXTERNAL_PASSWORD("test");
 
         private final String url;
         EnvironmentURL(String url) {
@@ -169,9 +266,9 @@ public class AppConfig {
 
     // SOAP service endpoint
     public enum SoapServiceEndpoint {
-        ContextRegistryService("/service/darts/runtime/ContextRegistryService"),
-        DARTSService("/service/darts/DARTSService"),
-        StandardService("/service/darts");
+        ContextRegistryService("test"),
+        DARTSService("test"),
+        StandardService("test");
         private final String endpoint;
 
         SoapServiceEndpoint(String endpoint) {
@@ -187,13 +284,15 @@ public class AppConfig {
     public static final String BASE_DIR = System.getProperty("user.dir");
 
     // Common part of the CSV file paths
-    public static final String CSV_FILE_COMMON_PATH = "DARTS_Performance_Gradle/src/gatling/resources";
+    public static final String CSV_FILE_COMMON_PATH = "src/gatling/resources/";
 
     // Specific CSV file names
     public static final String COURT_HOUSE_AND_COURT_ROOMS_CSV = "GetAllCourtroomsAndCourthouses.csv";
     public static final String TRANSCRIPTION_POST_CSV = "Transcription_Post.csv";
     public static final String AUDIO_REQUEST_POST_CSV = "Audio_Request_Post.csv";
-    public static final String TRANSFORMED_MEDIA_CSV = "TransformedMedia.csv";
+    public static final String CASE_HOUSE_ROOMS_HEARING_FILE_PATH_CSV = "Case_House_Room_HearingDetails.csv";
+    public static final String TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH_CSV = "Transformed_Media_Download.csv";
+    public static final String TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH_CSV = "Transformed_Media_Playback.csv";
 
     // Specific CSV file for Users
     public static final String DARTS_PORTAL_USERS_CSV = "Users.csv";
@@ -208,26 +307,16 @@ public class AppConfig {
     public static final String COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, COURT_HOUSE_AND_COURT_ROOMS_CSV).toString();
     public static final String TRANSCRIPTION_POST_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSCRIPTION_POST_CSV).toString();
     public static final String AUDIO_REQUEST_POST_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, AUDIO_REQUEST_POST_CSV).toString();
-    public static final String TRANSFORMED_MEDIA_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSFORMED_MEDIA_CSV).toString();
     public static final String DARTS_PORTAL_USERS1_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_USERS_CSV).toString();
     public static final String DARTS_PORTAL_COURTCLERK_USERS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_COURTCLERK_USERS_CSV).toString();
     public static final String DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_TRANSCRIBERS_USERS_CSV).toString();
     public static final String DARTS_PORTAL_LANGUAGESHOP_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_LANGUAGESHOP_USERS_CSV).toString();
     public static final String DARTS_PORTAL_JUDGES_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_JUDGES_CSV).toString();
+    public static final String CASE_HOUSE_ROOMS_HEARING_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, CASE_HOUSE_ROOMS_HEARING_FILE_PATH_CSV).toString();
+    public static final String TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH_CSV).toString();
+    public static final String TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH_CSV).toString();
 
 
-    public static String getFilePath(String simulationType) {
-        switch (simulationType) {
-            case "Simulation1":
-                return Paths.get(CSV_FILE_COMMON_PATH, DARTS_PORTAL_USERS_CSV).toString();
-            case "Simulation2":
-                return Paths.get(CSV_FILE_COMMON_PATH, DARTS_PORTAL_COURTCLERK_USERS_CSV).toString();
-            case "Simulation3":
-                return Paths.get(CSV_FILE_COMMON_PATH, DARTS_PORTAL_TRANSCRIBERS_USERS_CSV).toString();
-            default:
-                throw new IllegalArgumentException("Invalid simulation type: " + simulationType);
-        }
-    }
         // List of Document files
         public static final String[] DOCUMENT_FILES = {"SampleDoc2.docx"};
 
@@ -237,18 +326,6 @@ public class AppConfig {
             int index = random.nextInt(DOCUMENT_FILES.length);
             return DOCUMENT_FILES[index];
         }
-
-        // List of audio files
-        public static final String[] AUDIO_FILES = {"sample.mp2", "00h05m.mp2", "00h10m.mp2", "00h10m.mp2", "00h15m.mp2","00h20m.mp2", "02h.mp2"};
-        public static final String[] AUDIO_FILES2 = {"02h.mp2"};
-
-        // Method to select a random audio file
-        public static String getRandomAudioFile() {
-            Random random = new Random();
-            int index = random.nextInt(AUDIO_FILES2.length);
-            return AUDIO_FILES2[index];
-        }
-
 
         public static String asString() {
             StringBuilder builder = new StringBuilder();
@@ -265,21 +342,18 @@ public class AppConfig {
             //Test Times Set up
             addValueToBuilder(builder, "Test Duration Seconds", String.valueOf(TEST_DURATION_SECONDS));
             addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(TEST_DURATION_MINUTES));
-            addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(BASELINE_TEST_DURATION_MINUTES));
-            addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(RAMP_TEST_DURATION_MINUTES));
-            addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(SPIKE_TEST_DURATION_MINUTES));
+            addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(SMOKE_TEST_DURATION_MINUTES));
+            addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(BASELINE_NORMAL_DURATION_MINUTES));
+            addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(PEAK_TEST_DURATION_MINUTES));
 
             //Soap Requests
             addValueToBuilder(builder, "Number of repeats for the baseline Soap Request", String.valueOf(SOAP_BASELINE_REPEATS));
             addValueToBuilder(builder, "Number of repeats for the ramp up Soap Request", String.valueOf(SOAP_RAMPUP_REPEATS));
             addValueToBuilder(builder, "Number of repeats for the spike Soap Request", String.valueOf(SOAP_SPIKE_REPEATS));
 
-            addValueToBuilder(builder, "The duration in milliseconds of pacing for the repeats within the baseline Soap Request", String.valueOf(SOAP_BASELINE_PACE_DURATION_MILLIS));
-            addValueToBuilder(builder, "The duration in milliseconds of pacing for the repeats within the ramp up Soap Request", String.valueOf(SOAP_RAMPUP_PACE_DURATION_MILLIS));
-            addValueToBuilder(builder, "The duration in milliseconds of pacing for the repeats within the spike Soap Request", String.valueOf(SOAP_SPIKE_PACE_DURATION_MILLIS));       
-
-
-
+            addValueToBuilder(builder, "The duration in minutes of pacing for the repeats within the smoke test", String.valueOf(SMOKE_PACE_DURATION_MINS));
+            addValueToBuilder(builder, "The duration in minutes of pacing for the repeats within the baseline standard test", String.valueOf(BASELINE_NORMAL_PACE_DURATION_MINS));
+            addValueToBuilder(builder, "The duration in minutes of pacing for the repeats within the peak test", String.valueOf(PEAK_PACE_DURATION_MINS));       
 
             return builder.toString();
         }
