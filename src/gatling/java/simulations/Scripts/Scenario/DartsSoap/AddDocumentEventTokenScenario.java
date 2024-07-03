@@ -19,7 +19,7 @@ public final class AddDocumentEventTokenScenario {
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - AddDocument - Event - Token")
-                        .post(SoapServiceEndpoint.StandardService.getEndpoint())
+                        .post(SoapServiceEndpoint.DARTSService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
                         .check(status().is(200))

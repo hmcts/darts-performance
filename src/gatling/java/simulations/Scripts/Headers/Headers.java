@@ -27,7 +27,7 @@ public class Headers {
         Map.entry("Accept", "application/json, text/plain, */*"),
         Map.entry("Content-Type", "application/json"),
         Map.entry("Origin", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl()),
-        Map.entry("Referer", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/case/#{getCaseId.case_id}/hearing/#{getHearings.id}")
+        Map.entry("Referer", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/case/#{getCaseId}/hearing/#{getHearings.id}")
     );
 
     public static final Map<String, String> AuthorizationHeaders = new HashMap<>();
