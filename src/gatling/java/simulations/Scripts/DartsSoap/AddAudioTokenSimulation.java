@@ -23,7 +23,7 @@ public class AddAudioTokenSimulation extends Simulation {
   public AddAudioTokenSimulation() {
       HttpProtocolBuilder httpProtocol = http
       .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
-      .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
+      .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
       .inferHtmlResources();
 
       setUpScenarios(httpProtocol);

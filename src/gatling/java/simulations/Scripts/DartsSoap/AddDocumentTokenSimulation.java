@@ -25,7 +25,7 @@ public class AddDocumentTokenSimulation extends Simulation {
 
     public AddDocumentTokenSimulation() {
         HttpProtocolBuilder httpProtocol = http
-            .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
+            .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
             .inferHtmlResources()
             .acceptEncodingHeader("gzip,deflate")
             .contentTypeHeader("text/xml;charset=UTF-8")

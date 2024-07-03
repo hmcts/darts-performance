@@ -16,11 +16,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class PortalMultipleSimulationTest extends Simulation {   
 
     private static final String BASELINE_SCENARIO_NAME = "Baseline - DARTS - Portal - Transcriber Attachfile And Downlaod Audio";
-    private static final String RAMP_UP_SCENARIO_NAME = "Ramp Up - DARTS - Portal - Transcriber Attachfile And Downlaod Audio";
-    private static final String SPIKE_SCENARIO_NAME = "Spike - DARTS - Portal - Transcriber Attachfile And Downlaod Audio";
     private static final String BASELINE_SCENARIO_NAME2 = "Baseline - DARTS - Portal - Court Clerk Requesting Audio";
-    private static final String RAMP_UP_SCENARIO_NAME2 = "Ramp Up - DARTS - Portal - Court Clerk Requesting Audio";
-    private static final String SPIKE_SCENARIO_NAME2 = "Spike - DARTS - Portal - Court Clerk Requesting Audio";
 
     @Override
     public void before() {
@@ -28,8 +24,9 @@ public class PortalMultipleSimulationTest extends Simulation {
     }
 
     public PortalMultipleSimulationTest() {
+
         HttpProtocolBuilder httpProtocol = http
-      //      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
             .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
             .inferHtmlResources()
             .acceptHeader("application/json, text/plain, */*")
@@ -43,43 +40,37 @@ public class PortalMultipleSimulationTest extends Simulation {
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocol) {
         // Set up scenarios with configurable parameters
-        ScenarioBuilder baselineScenario = setUpScenario(BASELINE_SCENARIO_NAME, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_BASELINE_REPEATS);
-        ScenarioBuilder rampUpScenario = setUpScenario(RAMP_UP_SCENARIO_NAME, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_RAMPUP_REPEATS);
-        ScenarioBuilder spikeScenario = setUpScenario(SPIKE_SCENARIO_NAME, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_SPIKE_REPEATS);
-        ScenarioBuilder baselineScenario2 = setUpScenario2(BASELINE_SCENARIO_NAME2, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_BASELINE_REPEATS);
-        ScenarioBuilder rampUpScenario2 = setUpScenario2(RAMP_UP_SCENARIO_NAME2, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_RAMPUP_REPEATS);
-        ScenarioBuilder spikeScenario2 = setUpScenario2(SPIKE_SCENARIO_NAME2, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.SOAP_SPIKE_REPEATS);
+        ScenarioBuilder baselineScenario = setUpScenario(BASELINE_SCENARIO_NAME);
+        ScenarioBuilder baselineScenario2 = setUpScenario2(BASELINE_SCENARIO_NAME2);
 
         // Call setUp once with all scenarios
         setUp(
-                baselineScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)
-                        .andThen(rampUpScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol))
-                        .andThen(spikeScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)),
-                baselineScenario2.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)
-                        .andThen(rampUpScenario2.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol))
-                        .andThen(spikeScenario2.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol))
+            baselineScenario.injectOpen(
+                rampUsers(1).during(Duration.ofMinutes(5)) // Ramp up 93 users over 30 minutes
+            ).protocols(httpProtocol)
+            // baselineScenario2.injectOpen(
+            //     rampUsers(93).during(Duration.ofMinutes(30)) // Ramp up 93 users over 30 minutes
+            // ).protocols(httpProtocol)
         );
     }
 
-    private ScenarioBuilder setUpScenario(String scenarioName, int paceDurationMillis, int repeats) {
+    private ScenarioBuilder setUpScenario(String scenarioName) {
         return scenario(scenarioName)        
-        .group(scenarioName)
-            .on(exec(feed(Feeders.createTranscriberUsers()))
-                .exec(feed(Feeders.createJudgesFeeder()))
-                .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
-                .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-                .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
-                .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest()));
+            .exec(feed(Feeders.createTranscriberUsers()))
+            .exec(feed(Feeders.createJudgesFeeder()))
+            .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
+            .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
+            .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
+            .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
     }
 
-    private ScenarioBuilder setUpScenario2(String scenarioName, int paceDurationMillis, int repeats) {
+    private ScenarioBuilder setUpScenario2(String scenarioName) {
         return scenario(scenarioName)        
-        .group(scenarioName)
-            .on(exec(feed(Feeders.createCourtClerkUsers()))
+            .exec(feed(Feeders.createCourtClerkUsers()))
             .exec(feed(Feeders.JudgesCSV))
             .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-            .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest()));
+            .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
     }
 
     @Override

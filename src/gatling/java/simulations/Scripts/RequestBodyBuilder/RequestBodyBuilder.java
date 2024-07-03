@@ -116,12 +116,13 @@ public class RequestBodyBuilder {
         caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
     }
     
-    public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor, Object requestType) {
+    public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor, Object audioStartDate, Object audioEndDate, Object requestType) {
 
-        LocalDateTime startTime = LocalDateTime.now();
-        LocalDateTime endTime = startTime.plusHours(3);
-        String startTimeFormatted = formatTime(startTime);
-        String endTimeFormatted = formatTime(endTime);        
+      
+        System.out.println("getHearingId for RequestBody: " + getHearingId);
+        System.out.println("requestor for RequestBody: " + requestor);
+        System.out.println("audioStartDate for RequestBody: " + audioStartDate);
+        System.out.println("audioEndDate for RequestBody: " + audioEndDate);
         System.out.println("requestType for RequestBody: " + requestType);
 
 
@@ -130,8 +131,10 @@ public class RequestBodyBuilder {
         "\"start_time\": \"%s\", " +
         "\"end_time\": \"%s\", " +
         "\"request_type\": \"%s\"}",
-        getHearingId, requestor, startTimeFormatted, endTimeFormatted, requestType.toString().toUpperCase());
+        getHearingId, requestor, audioStartDate, audioEndDate, requestType.toString().toUpperCase());
     }
+
+
 
     public static String buildTranscriptionApprovalRequestBody(Session session) {
 
