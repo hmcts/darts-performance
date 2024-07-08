@@ -19,7 +19,7 @@ public final class AddCaseTokenScenario {
                 return session.set("xmlPayload", xmlPayload);
             })
             .exec(http("DARTS - GateWay - Soap - AddCase - Token")
-                .post(SoapServiceEndpoint.StandardService.getEndpoint())
+                .post(SoapServiceEndpoint.DARTSService.getEndpoint())
                 //.headers(Headers.SoapHeaders)
                 .header("SOAPAction", "\"\"")
                 .header("Client-Type", "SOAPUI Gateway Suite") 

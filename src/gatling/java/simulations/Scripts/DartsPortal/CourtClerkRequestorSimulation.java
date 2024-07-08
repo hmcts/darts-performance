@@ -17,7 +17,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class CourtClerkRequestorSimulation extends Simulation {   
   {
       HttpProtocolBuilder httpProtocol = http
-     //   .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources()
         .acceptHeader("application/json, text/plain, */*")
@@ -28,7 +28,6 @@ public class CourtClerkRequestorSimulation extends Simulation {
 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(Feeders.createCourtClerkUsers()))
-        .exec(feed(Feeders.JudgesCSV))
         .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
         .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());

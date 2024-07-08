@@ -5,8 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.time.LocalDate;
-import java.time.LocalDate;
-import java.util.concurrent.ThreadLocalRandom;
 
 //import uk.gov.hmcts.juror.support.generation.generators.value.LocalTimeGeneratorImpl;
 import simulations.Scripts.Utilities.AppConfig;
@@ -71,7 +69,7 @@ public class RequestBodyBuilder {
     public static String buildSearchCaseRequestBody(Session session) {
         Optional.ofNullable(session.get("caseNumber")).orElse("null");
         String caseNumber = session.get("caseNumber") != null ? "\"" + session.get("caseNumber").toString() + "\"" : "null";
-        String courtHouseName = session.get("CourtHouseName") != null ? "\"" + session.get("CourtHouseName").toString() + "\"" : "null";       
+        String courtHouseName = session.get("courthouse_name") != null ? "\"" + session.get("courthouse_name").toString() + "\"" : "null";       
         String courtRoom = session.get("CourtRoom") != null ? "\"" + session.get("CourtRoom").toString() + "\"" : "null";        
        // String judgeName = session.get("JudgeName") != null ? "\"" + session.get("JudgeName").toString() + "\"" : "null";
         String defendantName = session.get("defendant_name") != null ? "\"" + session.get("defendant_name").toString() + "\"" : "null";  
@@ -352,7 +350,7 @@ public class RequestBodyBuilder {
             "   }," +
             "   \"entries\": [" +
             "       {" +
-            "           \"name\": \"" + AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/" + AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "?client_id=" + AppConfig.EnvironmentURL.AZURE_AD_B2C_CLIENT_ID.getUrl() + "&redirect_uri=https%3A%2F%2Fdarts.test.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\"," +
+            "           \"name\": \"" + AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/" + AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "?client_id=" + AppConfig.EnvironmentURL.EXTERNAL_AZURE_AD_B2C_CLIENT_ID.getUrl() + "&redirect_uri=https%3A%2F%2Fdarts.test.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\"," +
             "           \"entryType\": \"navigation\"," +
             "           \"startTime\": 0," +
             "           \"duration\": 2919.9000000953674," +

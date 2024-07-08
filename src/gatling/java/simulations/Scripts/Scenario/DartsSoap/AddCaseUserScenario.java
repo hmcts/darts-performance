@@ -1,13 +1,11 @@
 package simulations.Scripts.Scenario.DartsSoap;
 
-import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig.SoapServiceEndpoint;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 import simulations.Scripts.Utilities.*;
-import java.util.UUID;
 
 public final class AddCaseUserScenario {
     
@@ -24,7 +22,7 @@ public final class AddCaseUserScenario {
             })
            // .exec(http(session -> "DARTS - GateWay - Soap - AddCase - User: File - " + session.get("randomAudioFile"))
             .exec(http("DARTS - GateWay - Soap - AddCase - User")
-                    .post(SoapServiceEndpoint.StandardService.getEndpoint())
+                    .post(SoapServiceEndpoint.DARTSService.getEndpoint())
                     //.headers(Headers.SoapHeaders)
                     .header("SOAPAction", "\"\"")
                     .header("Client-Type", "SOAPUI Gateway Suite") 

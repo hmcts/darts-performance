@@ -46,7 +46,7 @@ public class PortalMultipleSimulationTest extends Simulation {
         // Call setUp once with all scenarios
         setUp(
             baselineScenario.injectOpen(
-                rampUsers(1).during(Duration.ofMinutes(5)) // Ramp up 93 users over 30 minutes
+                rampUsers(10).during(Duration.ofMinutes(10)) // Ramp up 93 users over 30 minutes
             ).protocols(httpProtocol)
             // baselineScenario2.injectOpen(
             //     rampUsers(93).during(Duration.ofMinutes(30)) // Ramp up 93 users over 30 minutes
@@ -57,7 +57,6 @@ public class PortalMultipleSimulationTest extends Simulation {
     private ScenarioBuilder setUpScenario(String scenarioName) {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createTranscriberUsers()))
-            .exec(feed(Feeders.createJudgesFeeder()))
             .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
             .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
@@ -67,7 +66,7 @@ public class PortalMultipleSimulationTest extends Simulation {
     private ScenarioBuilder setUpScenario2(String scenarioName) {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createCourtClerkUsers()))
-            .exec(feed(Feeders.JudgesCSV))
+            .exec(feed(Feeders.createJudgesFeeder()))
             .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
             .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());

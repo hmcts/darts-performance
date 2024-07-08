@@ -14,8 +14,6 @@ public class RegisterWithUsernameSOAPSimulation extends Simulation {
 
   FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
 
-  //FeederBuilder<Object> users = Feeders.RANDOM_USER_FEEDER;
-
   {
     HttpProtocolBuilder httpProtocol = http
     //  .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))

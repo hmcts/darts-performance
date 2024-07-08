@@ -1,7 +1,6 @@
 package simulations.Scripts.Scenario.DartsApi;
 
 import simulations.Scripts.Headers.Headers;
-import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;

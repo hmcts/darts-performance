@@ -17,7 +17,7 @@ public final class AddCourtlogUserScenario {
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - CourtLog - User")
-                        .post(SoapServiceEndpoint.ContextRegistryService.getEndpoint())
+                        .post(SoapServiceEndpoint.DARTSService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
                         .check(status().is(200))

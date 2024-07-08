@@ -1,2 +1,2 @@
-Email,Password,Type,CourtHouseName
-PerfTranscirber02@hmcts.net,PerfTester@01,Transcirber,NEWCASTLE UPON TYNE
+Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type
+PerfTranscirber02@hmcts.net,PerfTester@01,PerfTranscriberTwo,89,NEWCASTLE UPON TYNE,,Transcriber

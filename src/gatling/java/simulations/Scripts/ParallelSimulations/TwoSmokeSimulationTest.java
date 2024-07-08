@@ -4,7 +4,6 @@ import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsApi.GetAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsApi.PostAudioRequestScenario;
-import simulations.Scripts.Scenario.DartsApi.PostAudioScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddAudioTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddCaseUserScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddCourtlogUserScenario;
@@ -68,7 +67,7 @@ public class TwoSmokeSimulationTest extends Simulation {
         ScenarioBuilder baselineAddCase = setUpAddCase(SMOKE_ADD_CASES, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.ADD_CASES_SMOKE_REPEATS);
         ScenarioBuilder baselineAddLogEntry = setUpAddLogEntry(SMOKE_ADD_LOG_ENTRY, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.ADD_LOG_ENTRY_SMOKE_REPEATS);
         ScenarioBuilder baselineGetLogEntry = setUpGetLogEntry(SMOKE_GET_LOG_ENTRY, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.GET_LOG_ENTRY_SMOKE_REPEATS);
-        ScenarioBuilder baselineAddAudio = setUpAddAudio(SMOKE_ADD_AUDIO, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.ADD_AUDIO_SMOKE_REPEATS);
+       // ScenarioBuilder baselineAddAudio = setUpAddAudio(SMOKE_ADD_AUDIO, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.ADD_AUDIO_SMOKE_REPEATS);
 
         // Set up API scenarios with configurable parameters
         ScenarioBuilder baselinePostAudioRequest = setUpPostAudioRequest(SMOKE_POST_AUDIO_REQUEST, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.POST_AUDIO_REQUEST_SMOKE_REPEATS);
@@ -85,8 +84,8 @@ public class TwoSmokeSimulationTest extends Simulation {
                 baselineGetAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi),
                 baselineDeleteAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi),
                 baselineAddLogEntry.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolSoap),
-                baselineGetLogEntry.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolSoap),
-                baselineAddAudio.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolSoap)
+                baselineGetLogEntry.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolSoap)
+             //   baselineAddAudio.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolSoap)
               //  baselinePostAudio.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocolApi)
             );
     }
@@ -136,14 +135,14 @@ public class TwoSmokeSimulationTest extends Simulation {
                 .on(exec(GetCourtlogTokenScenario.getCourtLogToken().pace(Duration.ofMillis(paceDurationMillis)))));
     }
 
-    private ScenarioBuilder setUpAddAudio(String scenarioName, int paceDurationMillis, int repeats) {
-        return scenario(scenarioName)
-        .group(scenarioName)
-        .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
-                .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
-                .repeat(repeats)
-                .on(exec(AddAudioTokenScenario.addAudioToken().pace(Duration.ofMillis(paceDurationMillis)))));
-    }
+    // private ScenarioBuilder setUpAddAudio(String scenarioName, int paceDurationMillis, int repeats) {
+    //     return scenario(scenarioName)
+    //     .group(scenarioName)
+    //     .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
+    //             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()))
+    //             .repeat(repeats)
+    //             .on(exec(AddAudioTokenScenario.addAudioToken().pace(Duration.ofMillis(paceDurationMillis)))));
+    // }
     private ScenarioBuilder setUpPostAudioRequest(String scenarioName, int paceDurationMillis, int repeats) {
         return scenario(scenarioName)
         .group(scenarioName)
