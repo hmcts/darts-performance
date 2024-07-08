@@ -19,7 +19,7 @@ public final class AddDocumentDailyListTokenScenario {
                     return session.set("xmlPayload", xmlPayload);  
                 })
                 .exec(http("DARTS - GateWay - Soap - AddDocument - DailyList - Token")
-                        .post(SoapServiceEndpoint.StandardService.getEndpoint())
+                        .post(SoapServiceEndpoint.DARTSService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
                         .check(status().is(200))

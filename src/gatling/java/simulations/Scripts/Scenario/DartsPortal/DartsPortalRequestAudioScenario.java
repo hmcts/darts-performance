@@ -171,7 +171,7 @@ public final class DartsPortalRequestAudioScenario {
               String requestType;
   
               // Determine request type based on user type
-              if (userType.equalsIgnoreCase("Transcirber")) {
+              if (userType.equalsIgnoreCase("Transcriber")) {
                   // If the user type is Transcriber, select request type randomly between "download" and "playback"
                   requestType = Feeders.getRandomRequestType();
               } else if (userType.equalsIgnoreCase("CourtClerk")) {

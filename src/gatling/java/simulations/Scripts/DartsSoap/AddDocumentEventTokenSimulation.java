@@ -7,7 +7,6 @@ import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
-import java.time.Duration;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -15,8 +14,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class AddDocumentEventTokenSimulation extends Simulation {
 
     private static final String BASELINE_SCENARIO_NAME = "DARTS - GateWay - Soap - AddDocument:POST - Event Token";
-    private static final String RAMP_UP_SCENARIO_NAME = "Ramp Up Test";
-    private static final String SPIKE_SCENARIO_NAME = "Spike Test";
+
 
     @Override
     public void before() {
@@ -26,7 +24,7 @@ public class AddDocumentEventTokenSimulation extends Simulation {
     public AddDocumentEventTokenSimulation() {
         HttpProtocolBuilder httpProtocol = http
             .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
-            .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
+            .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
             .inferHtmlResources()
             .acceptEncodingHeader("gzip,deflate")
             .contentTypeHeader("text/xml;charset=UTF-8")
@@ -41,7 +39,7 @@ public class AddDocumentEventTokenSimulation extends Simulation {
 
         // Call setUp once with all scenarios
         setUp(
-            baselineScenario.injectOpen(rampUsers(1).during(1))).protocols(httpProtocol);    
+            baselineScenario.injectOpen(rampUsers(10).during(1))).protocols(httpProtocol);    
     }
 
     private ScenarioBuilder setUpScenario(String scenarioName) {
@@ -49,7 +47,7 @@ public class AddDocumentEventTokenSimulation extends Simulation {
             .group(scenarioName)
             .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
-            .repeat(1)
+            .repeat(100)
             .on(exec(AddDocumentEventTokenScenario.AddDocumentEventToken())));
     }
 }

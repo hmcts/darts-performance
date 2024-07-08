@@ -2,7 +2,6 @@ package simulations.Scripts.DartsApi;
 
 import simulations.Scripts.Scenario.DartsApi.PostCourthouseScenario;
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
-import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;

@@ -23,7 +23,6 @@ public class LanguageShopRequestorSimulation extends Simulation {
       
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(Feeders.createLanguageShopUsers()))
-        .exec(feed(Feeders.createJudgesFeeder()))
         .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
         .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());

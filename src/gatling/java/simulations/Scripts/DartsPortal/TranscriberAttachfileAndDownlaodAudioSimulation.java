@@ -6,6 +6,7 @@ import simulations.Scripts.Scenario.DartsPortal.DartsPortalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownloadAudioScenario;
+
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -26,11 +27,10 @@ public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation 
 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(Feeders.createTranscriberUsers()))
-        .exec(feed(Feeders.createJudgesFeeder()))
         .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
-        .repeat(50)
+        .repeat(1)
         .on(exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()))
-      //  .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
+        .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
     setUp(

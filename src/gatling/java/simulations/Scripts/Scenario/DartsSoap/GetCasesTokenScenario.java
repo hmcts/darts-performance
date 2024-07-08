@@ -19,7 +19,7 @@ public final class GetCasesTokenScenario {
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - GetCase - Token")
-                        .post(SoapServiceEndpoint.ContextRegistryService.getEndpoint())
+                        .post(SoapServiceEndpoint.DARTSService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
                         .check(status().is(200))

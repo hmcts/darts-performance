@@ -22,7 +22,7 @@ public class AddAudioUserSimulation extends Simulation {
 
   public AddAudioUserSimulation() {
       HttpProtocolBuilder httpProtocol = http
-    //  .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
       .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
       .inferHtmlResources()
       .acceptEncodingHeader("gzip,deflate")
@@ -49,7 +49,9 @@ public class AddAudioUserSimulation extends Simulation {
   private ScenarioBuilder setUpScenario(String scenarioName, int paceDurationMillis, int repeats) {
       return scenario(scenarioName)
       .group(scenarioName)
-        .on(repeat(repeats)
-          .on(exec(AddAudioUserScenario.addAudioUser(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()).pace(Duration.ofMillis(paceDurationMillis)))));
+        .on(repeat(1)
+          .on(exec(AddAudioUserScenario.addAudioUser(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()).pace(Duration.ofMillis(paceDurationMillis))
+          // exec(AddAudioUserScenario.addAudioUserBinary(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()).pace(Duration.ofMillis(paceDurationMillis)))
+        )));
   }
 }

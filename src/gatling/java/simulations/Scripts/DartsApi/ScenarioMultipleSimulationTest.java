@@ -4,7 +4,6 @@ import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
 import simulations.Scripts.Scenario.DartsApi.PostAudioScenario;
-import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.GetCasesTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;

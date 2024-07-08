@@ -26,7 +26,7 @@ public final class AddAudioTokenScenario {
                 .set("xmlPayload", xmlPayload);
             })
             .exec(http(session -> "DARTS - GateWay - Soap - AddAudio - Token: File - " + session.get("randomAudioFile"))
-                    .post(SoapServiceEndpoint.StandardService.getEndpoint())
+                    .post(SoapServiceEndpoint.DARTSService.getEndpoint())
                     .headers(Headers.SoapHeaders)  
                     .header("Content-Type", "multipart/related; type=\"application/xop+xml\"; start=\"<rootpart@soapui.org>\"; start-info=\"text/xml\"; boundary=" + boundary)
                     .header("User-Agent", "Apache-HttpClient/4.5.5 (Java/16.0.2)")              

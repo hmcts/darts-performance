@@ -23,7 +23,7 @@ public final class AddAudioUserScenario {
                 .set("xmlPayload", xmlPayload);
             })
             .exec(http(session -> "DARTS - GateWay - Soap - AddAudio - User: File - " + session.get("randomAudioFile"))
-                    .post(SoapServiceEndpoint.StandardService.getEndpoint())
+                    .post(SoapServiceEndpoint.DARTSService.getEndpoint())
                     .headers(Headers.SoapHeaders)                    
                     .bodyPart(StringBodyPart("metadata", session -> session.get("xmlPayload"))
                             .contentType("application/xop+xml; charset=UTF-8; type=\"text/xml")
@@ -38,6 +38,37 @@ public final class AddAudioUserScenario {
                         .check(status().is(200))
                         .check(xpath("//return/code").saveAs("statusCode"))
                         .check(xpath("//return/message").saveAs("message"))
-            ));
+                        )
+                    );
+            }
+
+            public static ChainBuilder addAudioUserBinary(String USERNAME, String PASSWORD) {
+                return group("AddAudio SOAP Request Group")
+                    .on(exec(feed(Feeders.createCourtHouseAndCourtRooms()))
+                    .exec(session -> {
+                        String randomAudioFile = Feeders.getRandomAudioFile();
+                        String xmlPayload = SOAPRequestBuilder.AddAudioTokenRequestBinary(session, randomAudioFile);
+                        return session.set("randomAudioFile", randomAudioFile)
+                                      .set("xmlPayload", xmlPayload);
+                    })
+                    .exec(http(session -> "DARTS - GateWay - Soap - AddAudio - User: File - " + session.get("randomAudioFile"))
+                        .post(SoapServiceEndpoint.DARTSService.getEndpoint())
+                        .headers(Headers.SoapHeaders)
+                        .header("Content-Type", "multipart/related; type=\"application/xop+xml\"; start=\"<rootpart@soapui.org>\"; boundary=\"MIMEBoundary\"")
+                        .bodyPart(StringBodyPart("root", session -> session.getString("xmlPayload"))
+                            .contentType("application/xop+xml; charset=UTF-8; type=\"text/xml\"")
+                            .transferEncoding("8bit")
+                            .contentId("<rootpart@soapui.org>")
+                        )
+                        .bodyPart(RawFileBodyPart("file", session -> AppConfig.CSV_FILE_COMMON_PATH + session.getString("randomAudioFile"))
+                            .contentType("application/octet-stream")
+                            .transferEncoding("binary")
+                            .contentId(session -> "<" + session.getString("randomAudioFile") + ">")
+                            .dispositionType(session -> "attachment; name=\"" + session.getString("randomAudioFile") + "\"")
+                        )
+                        .check(status().is(200))
+                        .check(xpath("//return/code").saveAs("statusCode"))
+                        .check(xpath("//return/message").saveAs("message"))
+                    ));
     }
 }

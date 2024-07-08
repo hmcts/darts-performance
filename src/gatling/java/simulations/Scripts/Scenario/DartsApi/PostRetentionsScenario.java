@@ -3,7 +3,6 @@ package simulations.Scripts.Scenario.DartsApi;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 import simulations.Scripts.Utilities.AppConfig;
-import simulations.Scripts.Utilities.Feeders;
 
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;

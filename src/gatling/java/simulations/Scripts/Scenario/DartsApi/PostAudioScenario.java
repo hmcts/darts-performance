@@ -14,7 +14,7 @@ public final class PostAudioScenario {
 
     public static ChainBuilder PostApiAudio() {
         return group("Audio Request Group")
-                .on(exec(feed(Feeders.CourtHouseAndCourtRooms))
+                .on(exec(feed(Feeders.createCourtHouseAndCourtRooms()))
                 //.pause(120)
                 .exec(session -> {
                     String randomAudioFile = Feeders.getRandomAudioFile();

@@ -1,3 +1,2 @@
-Email,Password,Type,CourtHouseName
-PerfCourtClerk12@hmcts.net,PerfTester@01,CourtClerk,PerfCourtHouse_A52A0v84lC
-PerfCourtClerk11@hmcts.net,PerfTester@01,CourtClerk,PerfCourtHouse_NHGofIJRZM
+Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type
+PerfCourtClerk12@hmcts.net,PerfTester@01,PerfCourtClerkTwelve,89,NEWCASTLE UPON TYNE,,CourtClerk
