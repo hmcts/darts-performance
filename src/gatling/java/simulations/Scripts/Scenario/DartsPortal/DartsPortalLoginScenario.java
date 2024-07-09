@@ -34,8 +34,8 @@ public final class DartsPortalLoginScenario {
                             loginUser = "External";
                             clientId = AppConfig.EnvironmentURL.EXTERNAL_AZURE_AD_B2C_CLIENT_ID.getUrl();
                             break;
-                        case "courtclerk":
-                        case "reviewer":
+                        case "CourtClerk":
+                        case "CourtManager":
                             loginUser = "Internal";
                             clientId = AppConfig.EnvironmentURL.INTERNAL_AZURE_AD_B2C_CLIENT_ID.getUrl();
                             break;

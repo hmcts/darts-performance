@@ -180,7 +180,7 @@ public final class DartsPortalRequestAudioScenario {
               } else if (userType.equalsIgnoreCase("LanguageShop")) {
                 // If the user type is LanguageShop, request type is "playback"
                 requestType = "playback";
-              } else if (userType.equalsIgnoreCase("reviewer")) {
+              } else if (userType.equalsIgnoreCase("CourtManager")) {
                   // If the user type is Reviewer, request type is "download"
                   requestType = "download";
               } else {

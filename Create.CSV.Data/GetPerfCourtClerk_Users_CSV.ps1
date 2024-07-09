@@ -5,7 +5,7 @@ SELECT
     'PerfTester@01' AS Password,
     ua.user_name, 
     ch.cth_id, 
-    ch.courthouse_name,
+    '\"' || REPLACE(ch.courthouse_name, '\"', '\"\"') || '\"' AS courthouse_name,
     ch.courthouse_code,
     'CourtClerk' AS Type
 FROM 
