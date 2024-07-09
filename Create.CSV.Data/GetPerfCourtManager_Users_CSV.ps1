@@ -1,13 +1,13 @@
 ﻿# Define the SQL query
 $query = @"
 SELECT 
-	ua.user_email_address,
+    ua.user_email_address,
     'PerfTester@01' AS Password,
     ua.user_name, 
     ch.cth_id, 
     '\"' || REPLACE(ch.courthouse_name, '\"', '\"\"') || '\"' AS courthouse_name,
     ch.courthouse_code,
-    'Transcriber' AS Type
+    'CourtManager' AS Type
 FROM 
     darts.user_account ua
 INNER JOIN 
@@ -17,9 +17,9 @@ INNER JOIN
 INNER JOIN 
     darts.courthouse ch ON sgch.cth_id = ch.cth_id
 WHERE  
-    ua.user_name LIKE '%PerfTranscriber%'
+    ua.user_name LIKE '%PerfCourtManager%'
 GROUP BY 
-	ua.user_email_address, 
+    ua.user_email_address, 
     ua.user_name, 
     ch.cth_id, 
     ch.courthouse_name,
@@ -34,7 +34,7 @@ $user = "pgadmin"
 $password = "oIYRDeLXDMLKahVUjP0D"
 
 # Output file path
-$outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\UsersTranscribers.csv"
+$outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\UsersCourtManager.csv"
 
 # Ensure PGPASSWORD environment variable is set
 $env:PGPASSWORD = $password
