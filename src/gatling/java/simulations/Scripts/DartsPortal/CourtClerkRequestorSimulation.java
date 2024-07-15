@@ -2,7 +2,8 @@ package simulations.Scripts.DartsPortal;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import io.gatling.javaapi.core.*;
@@ -18,7 +19,9 @@ public class CourtClerkRequestorSimulation extends Simulation {
   {
       HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
-        .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
+       // .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
+        .baseUrl("https://login.microsoftonline.com") 
+
         .inferHtmlResources()
         .acceptHeader("application/json, text/plain, */*")
         .acceptEncodingHeader("gzip, deflate, br")
@@ -28,12 +31,12 @@ public class CourtClerkRequestorSimulation extends Simulation {
 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(Feeders.createCourtClerkUsers()))
-        .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
+        .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())      
         .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
     setUp(
-        scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
+        scn1.injectOpen(rampUsers(7).during(420)).protocols(httpProtocol));
     }    
 } 
     

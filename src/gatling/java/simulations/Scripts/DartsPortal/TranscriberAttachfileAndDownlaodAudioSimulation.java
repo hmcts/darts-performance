@@ -2,7 +2,8 @@ package simulations.Scripts.DartsPortal;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownloadAudioScenario;
@@ -27,7 +28,7 @@ public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation 
 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(Feeders.createTranscriberUsers()))
-        .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
+        .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
         .repeat(1)
         .on(exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()))
         .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())

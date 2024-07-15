@@ -2,12 +2,6 @@
 $query = @"
 SELECT DISTINCT
     subquery.hea_id,
-    subquery.cas_id,
-    subquery.case_number,
-    subquery.cth_id,
-    subquery.courthouse_name,
-    subquery.ctr_id,
-    subquery.courtroom_name,
     subquery.start_ts,
     subquery.end_ts,
     subquery.usr_id,
@@ -16,12 +10,6 @@ SELECT DISTINCT
 FROM (
     SELECT
         h.hea_id,
-        h.cas_id,
-        cc.case_number,
-        ch.cth_id,
-        ch.courthouse_name,
-        h.ctr_id,
-        cr.courtroom_name,
         TO_CHAR(m.start_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD""T""HH24:MI:SS.MS""z""') AS start_ts,
         TO_CHAR(m.end_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD""T""HH24:MI:SS.MS""z""') AS end_ts,
         sguae.usr_id,
@@ -51,10 +39,12 @@ FROM (
     INNER JOIN 
         darts.judge ON darts.judge.jud_id = darts.hearing_judge_ae.jud_id
     WHERE     
-        sguae.usr_id NOT IN (-48, -44, -4, -3, -2, -1, 0, 1, 6493)
+	    h.hearing_date BETWEEN '2023-02-26' AND '2024-05-27' 
+	And
+		sguae.usr_id NOT IN (-100,-99,-69,-68,-67,-48,-44,-4,-3,-2,-1,0,1,-101,221,241,1141)
     ORDER BY
         RANDOM()
-    LIMIT 1000
+    LIMIT 4000
 ) subquery;
 "@
 
@@ -81,7 +71,7 @@ if (Test-Path -Path $outputFile) {
 }
 
 # Export column headers to a new CSV file
-$headers = "hea_id,cas_id,case_number,cth_id,courthouse_name,ctr_id,courtroom_name,start_ts,end_ts,usr_id,defendant_name,judge_name"
+$headers = "hea_id,start_ts,end_ts,usr_id,defendant_name,judge_name"
 $headers | Out-File -FilePath $outputFile -Encoding ASCII
 
 # Append the query results to the CSV file with comma delimiters

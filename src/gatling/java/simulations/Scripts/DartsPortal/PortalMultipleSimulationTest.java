@@ -2,7 +2,8 @@ package simulations.Scripts.DartsPortal;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownloadAudioScenario;
@@ -57,7 +58,7 @@ public class PortalMultipleSimulationTest extends Simulation {
     private ScenarioBuilder setUpScenario(String scenarioName) {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createTranscriberUsers()))
-            .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
+            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
             .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
             .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
@@ -67,7 +68,7 @@ public class PortalMultipleSimulationTest extends Simulation {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createCourtClerkUsers()))
             .exec(feed(Feeders.createJudgesFeeder()))
-            .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
+            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
             .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
     }

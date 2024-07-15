@@ -1,6 +1,7 @@
 package simulations.Scripts.DartsPortal;
 
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import simulations.Scripts.Utilities.*;
@@ -23,7 +24,7 @@ public class LanguageShopRequestorSimulation extends Simulation {
       
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(Feeders.createLanguageShopUsers()))
-        .exec(DartsPortalLoginScenario.DartsPortalLoginRequest())
+        .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
         .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
