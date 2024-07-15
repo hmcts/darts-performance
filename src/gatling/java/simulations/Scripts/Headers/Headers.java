@@ -254,4 +254,75 @@ public class Headers {
         Map.entry("sec-ch-ua-mobile", "?0"),
         Map.entry("sec-ch-ua-platform", "Windows")
         );
+
+
+        public static Map<String, String> getHeaders(int headerType) {
+            Map<String, String> headers = new HashMap<>();
+            switch (headerType) {
+                case 0:
+                    headers.put("Sec-Fetch-Dest", "document");
+                    headers.put("Sec-Fetch-Mode", "navigate");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("Sec-Fetch-User", "?1");
+                    headers.put("Upgrade-Insecure-Requests", "1");
+                    headers.put("sec-ch-ua", "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\"");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
+                    headers.put("Accept-Encoding", "gzip, deflate, br, zstd");
+                    headers.put("Accept-Language", "en-US,en;q=0.9");
+                    headers.put("Connection", "keep-alive");
+                    break;
+                case 1:
+                    headers.put("Accept", "application/json");
+                    headers.put("Content-type", "application/json; charset=UTF-8");
+                    headers.put("Origin", "https://login.microsoftonline.com");
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("canary", "${canary}");
+                    headers.put("client-request-id", "${clientRequestId}");
+                    headers.put("hpgact", "1800");
+                    headers.put("hpgid", "1104");
+                    headers.put("hpgrequestid", "${sessionId}");
+                    headers.put("sec-ch-ua", "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\"");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    break;
+                case 2:
+                    headers.put("Cache-Control", "max-age=0");
+                    headers.put("Origin", "https://login.microsoftonline.com");
+                    headers.put("Sec-Fetch-Dest", "document");
+                    headers.put("Sec-Fetch-Mode", "navigate");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("Sec-Fetch-User", "?1");
+                    headers.put("Upgrade-Insecure-Requests", "1");
+                    headers.put("sec-ch-ua", "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\"");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    break;
+                case 3:
+                    Map<CharSequence, String> headers_0 = new HashMap<>();
+                    headers_0.put("Cache-Control", "max-age=0");
+                    headers_0.put("Sec-Fetch-Dest", "document");
+                    headers_0.put("Sec-Fetch-Mode", "navigate");
+                    headers_0.put("Sec-Fetch-Site", "same-origin");
+                    headers_0.put("Sec-Fetch-User", "?1");
+                    headers_0.put("sec-ch-ua", "Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126");
+                    headers_0.put("sec-ch-ua-mobile", "?0");
+                    headers_0.put("sec-ch-ua-platform", "Windows");
+                    break;
+                case 4:
+                    Map<CharSequence, String> headers_1 = new HashMap<>();
+                    headers_1.put("Cache-Control", "max-age=0");
+                    headers_1.put("Sec-Fetch-Dest", "document");
+                    headers_1.put("Sec-Fetch-Mode", "navigate");
+                    headers_1.put("Sec-Fetch-Site", "cross-site");
+                    headers_1.put("sec-ch-ua", "Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126");
+                    headers_1.put("sec-ch-ua-mobile", "?0");
+                    headers_1.put("sec-ch-ua-platform", "Windows");
+    
+            }
+            return headers;
+        }
 }

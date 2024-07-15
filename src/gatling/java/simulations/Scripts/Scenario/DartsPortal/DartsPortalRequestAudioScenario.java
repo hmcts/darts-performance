@@ -19,8 +19,8 @@ public final class DartsPortalRequestAudioScenario {
 
     public static ChainBuilder DartsPortalRequestAudioDownload() {
       return group("Darts Request Audio PlayBack/Download")
-      .on(exec(feed(Feeders.createAudioRequestCSV()))
-      .exec(session -> {
+      .on(exec
+            (session -> {
               String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
               return session.set("xmlPayload", xmlPayload);
           })

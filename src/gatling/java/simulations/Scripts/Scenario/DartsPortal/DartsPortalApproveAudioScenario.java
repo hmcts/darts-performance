@@ -2,7 +2,7 @@ package simulations.Scripts.Scenario.DartsPortal;
 
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
-
+import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
@@ -12,8 +12,6 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class DartsPortalApproveAudioScenario {
 
-    private static final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();    
-   // private static final FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
     private static final Random randomNumber = new Random();
 
     private DartsPortalApproveAudioScenario() {}    
@@ -21,7 +19,7 @@ public final class DartsPortalApproveAudioScenario {
     public static ChainBuilder DartsPortalApproveAudio() {    
 
       return group("Darts Approve / Reject Transcription")
-      .on(exec(feed(feeder))      
+      .on(exec(feed(Feeders.createCourtClerkUsers()))
           .exec(http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
