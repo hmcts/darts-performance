@@ -60,15 +60,15 @@ public class OneSmokeSimulationTest extends Simulation {
 
         // Set up API scenarios with configurable parameters
         ScenarioBuilder baselinePostAudioRequest = setUpPostAudioRequest(SMOKE_POST_AUDIO_REQUEST, calculatePaceDuration(AppConfig.POST_AUDIO_REQUEST_SMOKE_REPEATS), AppConfig.POST_AUDIO_REQUEST_SMOKE_REPEATS);
-        ScenarioBuilder baselineGetAudioRequest = setUpGetAudioRequest(SMOKE_GET_AUDIO_REQUEST, calculatePaceDuration(AppConfig.GET_AUDIO_REQUEST_SMOKE_REPEATS), AppConfig.GET_AUDIO_REQUEST_SMOKE_REPEATS);
+       // ScenarioBuilder baselineGetAudioRequest = setUpGetAudioRequest(SMOKE_GET_AUDIO_REQUEST, calculatePaceDuration(AppConfig.GET_AUDIO_REQUEST_SMOKE_REPEATS), AppConfig.GET_AUDIO_REQUEST_SMOKE_REPEATS);
 
         // Call setUp once with all scenarios
         setUp(
                 baselineAddDocumentEvent.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(TOTAL_TEST_DURATION_MINUTES))).protocols(httpProtocolSoap),
                 baselineGetCases.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(TOTAL_TEST_DURATION_MINUTES))).protocols(httpProtocolSoap),
                 baselineAddCase.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(TOTAL_TEST_DURATION_MINUTES))).protocols(httpProtocolSoap),
-                baselinePostAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(TOTAL_TEST_DURATION_MINUTES))).protocols(httpProtocolApi),
-                baselineGetAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(TOTAL_TEST_DURATION_MINUTES))).protocols(httpProtocolApi)
+                baselinePostAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(TOTAL_TEST_DURATION_MINUTES))).protocols(httpProtocolApi)
+        //        baselineGetAudioRequest.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(TOTAL_TEST_DURATION_MINUTES))).protocols(httpProtocolApi)
         );
     }
 
@@ -111,18 +111,18 @@ public class OneSmokeSimulationTest extends Simulation {
                         .on(exec(PostAudioRequestScenario.PostaudioRequest()).pace(Duration.ofMillis(paceDurationMillis))));
     }
 
-    private ScenarioBuilder setUpGetAudioRequest(String scenarioName, int paceDurationMillis, int repeats) {
-        return scenario(scenarioName)
-                .group(scenarioName)
-                .on(exec(GetApiTokenScenario.getApiToken())
-                        .repeat(repeats).on(
-                                uniformRandomSwitch().on(
-                                        exec(GetAudioRequestScenario.GetAudioRequestDownload()),
-                                        exec(GetAudioRequestScenario.GetAudioRequestPlayBack())
-                                )
-                        ).pace(Duration.ofMillis(paceDurationMillis))
-                );
-    }
+//     private ScenarioBuilder setUpGetAudioRequest(String scenarioName, int paceDurationMillis, int repeats) {
+//         return scenario(scenarioName)
+//                 .group(scenarioName)
+//                 .on(exec(GetApiTokenScenario.getApiToken())
+//                         .repeat(repeats).on(
+//                                 uniformRandomSwitch().on(
+//                                         exec(GetAudioRequestScenario.GetAudioRequestDownload()),
+//                                         exec(GetAudioRequestScenario.GetAudioRequestPlayBack())
+//                                 )
+//                         ).pace(Duration.ofMillis(paceDurationMillis))
+//                 );
+//     }
 
     @Override
     public void after() {
