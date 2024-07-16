@@ -8,6 +8,9 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
+
+import static io.gatling.javaapi.core.CoreDsl.regex;
+
 import java.sql.Connection;
 
 import io.gatling.javaapi.core.CoreDsl;
@@ -127,8 +130,10 @@ public class Feeders {
     }
 
     public static CheckBuilder.Final saveRegistrationToken() {
-        return CoreDsl.regex("<return>(.*?)</return>").find(0).saveAs("registrationToken");
-    }
+        return CoreDsl.regex("<return[^>]*>([^<]+)<\\/return>").find(0).saveAs("registrationToken");
+    }                   
+
+
 
     public static FeederBuilder<Object> listFeeder(String key, List<Object> items) {
         return CoreDsl.listFeeder(items.stream()
