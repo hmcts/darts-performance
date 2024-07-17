@@ -13,7 +13,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class RegisterWithUsernameSOAPSimulation extends Simulation {
   {
     HttpProtocolBuilder httpProtocol = http
-      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+     // .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
       .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
       .inferHtmlResources()
       .acceptEncodingHeader("gzip,deflate")
