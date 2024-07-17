@@ -11,26 +11,22 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class RegisterWithUsernameSOAPSimulation extends Simulation {
-
-  FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
-
   {
     HttpProtocolBuilder httpProtocol = http
-    //  .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
       .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
       .inferHtmlResources()
       .acceptEncodingHeader("gzip,deflate")
       .contentTypeHeader("text/xml;charset=UTF-8")
       .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
 
-    final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - RegisterWithUsername")
-        .feed(feeder)    
+    final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - RegisterWithUsername")           
         .repeat(1)    
-        .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_USERNAME.getUrl()))  
-        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_USERNAME.getUrl())  
-        ));    
+        .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
+        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
+        );    
   
     setUp(
-        scn.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
+        scn.injectOpen(constantUsersPerSec(150).during(1)).protocols(httpProtocol));
     }  
 }
