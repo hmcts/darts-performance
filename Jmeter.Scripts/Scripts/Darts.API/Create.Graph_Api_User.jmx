@@ -360,7 +360,7 @@
         <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <stringProp name="LoopController.loops">24</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
@@ -389,15 +389,15 @@
           <stringProp name="username">pgadmin</stringProp>
         </JDBCDataSource>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Assign User Roles" enabled="false">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Assign User Roles" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
         <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Updating Courthouse and User with Roles" enabled="false">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Updating Courthouse and User with Roles" enabled="true">
             <stringProp name="dataSource">dbConfig</stringProp>
             <stringProp name="query">SET SEARCH_PATH TO darts;
-select darts.addsingleuserrolepermissions(&apos;${CourtHouse}&apos;, &apos;${Username}&apos;, &apos;${Email}&apos;, 1);</stringProp>
+select darts.addsingleuserrolepermissions(&apos;${CourtHouse}&apos;, &apos;${Username}&apos;, &apos;${Email}&apos;, 4);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes">VARCHAR</stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -406,7 +406,6 @@ select darts.addsingleuserrolepermissions(&apos;${CourtHouse}&apos;, &apos;${Use
             <stringProp name="resultSetMaxRows"></stringProp>
             <stringProp name="resultVariable"></stringProp>
             <stringProp name="variableNames"></stringProp>
-            <stringProp name="TestPlan.comments">where cas_id = 10817</stringProp>
           </JDBCSampler>
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
@@ -442,8 +441,32 @@ select darts.adduserpermissions(&apos;${CourtHouse}&apos;, &apos;${Username}&apo
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Updating Courthouse and User with Existing Roles" enabled="false">
+            <stringProp name="dataSource">dbConfig</stringProp>
+            <stringProp name="query">SET SEARCH_PATH TO darts;
+select darts.adduserpermissions(&apos;LIVERPOOL&apos;, &apos;PerfCourtClerk131&apos;, &apos;PerfCourtClerk131dev.platform.hmcts.net&apos;);</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes">VARCHAR</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="queryType">Update Statement</stringProp>
+            <stringProp name="resultSetHandler">Count Records</stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="TestPlan.comments">where cas_id = 10817</stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings"/>
+              <stringProp name="Assertion.custom_message">A result was returned when none was expected.</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller for User Creation" enabled="true">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller for User Creation" enabled="false">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">45</stringProp>
         </LoopController>
