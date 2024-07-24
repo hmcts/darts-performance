@@ -28,21 +28,32 @@ public class PortalLoginSimulationTest extends Simulation {
     }
 
     public PortalLoginSimulationTest() {
+            HttpProtocolBuilder httpProtocolExternal = http
+                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+                .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
+                .inferHtmlResources()
+                .acceptHeader("application/json, text/plain, */*")
+                .acceptEncodingHeader("gzip, deflate, br")
+                .acceptLanguageHeader("en-US,en;q=0.9")
+                .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36");   
 
-        HttpProtocolBuilder httpProtocol = http
-        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
-            .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
-            .inferHtmlResources()
-            .acceptHeader("application/json, text/plain, */*")
-            .acceptEncodingHeader("gzip, deflate, br")
-            .acceptLanguageHeader("en-US,en;q=0.9")
-            .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36");   
-
-
-        setUpScenarios(httpProtocol);
-    }
-
-    private void setUpScenarios(HttpProtocolBuilder httpProtocol) {
+    
+            HttpProtocolBuilder httpProtocolInternal = http
+            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+                //.baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
+                .baseUrl("https://login.microsoftonline.com") 
+                .inferHtmlResources()
+                .acceptHeader("application/json, text/plain, */*")
+                .acceptEncodingHeader("gzip, deflate, br")
+                .acceptLanguageHeader("en-US,en;q=0.9")
+                .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36");
+              
+    
+                setUpScenarios(httpProtocolExternal, httpProtocolInternal);
+            }
+           
+        
+    private void setUpScenarios(HttpProtocolBuilder httpProtocolExternal, HttpProtocolBuilder httpProtocolInternal) {
         // Set up scenarios with configurable parameters
         ScenarioBuilder smokeJudgeUsers = setUpJudgeUsers(SMOKE_LOGIN_JUDGE_USERS);
         ScenarioBuilder smokeCourtClerkUsers = setUpCourtClerkUsers(SMOKE_LOGIN_COURT_CLERK_USERS);
@@ -53,20 +64,20 @@ public class PortalLoginSimulationTest extends Simulation {
         // Call setUp once with all scenarios
         setUp(
             smokeJudgeUsers.injectOpen(
-                rampUsers(1).during(Duration.ofMinutes(1)) 
-            ).protocols(httpProtocol),
+                rampUsers(2).during(Duration.ofMinutes(1)) 
+            ).protocols(httpProtocolInternal),
             smokeCourtClerkUsers.injectOpen(
-                rampUsers(1).during(Duration.ofMinutes(1)) 
-            ).protocols(httpProtocol),
+                rampUsers(19).during(Duration.ofMinutes(1)) 
+            ).protocols(httpProtocolInternal),
             smokeCourtManagerUsers.injectOpen(
-                rampUsers(1).during(Duration.ofMinutes(1)) 
-            ).protocols(httpProtocol),
+                rampUsers(9).during(Duration.ofMinutes(1)) 
+            ).protocols(httpProtocolInternal),
             smokeTranscriberUsers.injectOpen(
-                rampUsers(1).during(Duration.ofMinutes(1))
-            ).protocols(httpProtocol),
+                rampUsers(4).during(Duration.ofMinutes(1))
+            ).protocols(httpProtocolExternal),
             smokeLanguageShopUsers.injectOpen(
                 rampUsers(1).during(Duration.ofMinutes(1)) 
-            ).protocols(httpProtocol)
+            ).protocols(httpProtocolExternal)
         );
     }
 

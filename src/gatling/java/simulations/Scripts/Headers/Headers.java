@@ -128,10 +128,10 @@ public class Headers {
     public static final Map<CharSequence, String> DartsPortalHeaders21 = Map.ofEntries(   
     Map.entry("Connection", "keep-alive"),
     Map.entry("Content-Length", "82"),
-    Map.entry("sec-ch-ua", "\"Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121\""),
+    Map.entry("sec-ch-ua", "\"Not A(Brand\";v=\"8\", \"Google Chrome\";v=\"126\", \"Chromium\";v=\"126\""),
     Map.entry("X-CSRF-TOKEN", "#{csrf}"),
     Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"),
+    Map.entry("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"),
     Map.entry("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"),
     Map.entry("Accept", "application/json, text/javascript, */*; q=0.01"),
     Map.entry("X-Requested-With", "XMLHttpRequest"),
@@ -247,7 +247,7 @@ public class Headers {
         Map.entry("Sec-Fetch-Dest", "empty"),
         Map.entry("Sec-Fetch-Mode", "cors"),
         Map.entry("Sec-Fetch-Site", "same-origin"),
-        Map.entry("X-CSRF-TOKEN", "NW1xRG1PN2NyYTh3REI1Tm5sRkFCM3dNeVQrMExvSVYzRHhyK3hEd1YxdXBoa2EyVHRuV1Y5SG1Fb0dKY2I5R2NtbnBScjIwQ0E4NWxSTzZ4dVlhN2c9PTsyMDI0LTAzLTE1VDE0OjU1OjI5LjUzMTE2MTZaO211K1RzbWc5TDBaZm0yKzlzTllqV3c9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ=="),
+        Map.entry("X-CSRF-TOKEN", "#{csrf}"),
         Map.entry("X-Requested-With", "XMLHttpRequest"),
         Map.entry("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122"),
         Map.entry("sec-ch-ua-mobile", "?0"),
@@ -279,11 +279,11 @@ public class Headers {
                     headers.put("Sec-Fetch-Dest", "empty");
                     headers.put("Sec-Fetch-Mode", "cors");
                     headers.put("Sec-Fetch-Site", "same-origin");
-                    headers.put("canary", "${canary}");
-                    headers.put("client-request-id", "${clientRequestId}");
+                    headers.put("canary", "#{canary}");
+                    headers.put("client-request-id", "#{clientRequestId}");
                     headers.put("hpgact", "1800");
                     headers.put("hpgid", "1104");
-                    headers.put("hpgrequestid", "${sessionId}");
+                    headers.put("hpgrequestid", "#{sessionId}");
                     headers.put("sec-ch-ua", "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\"");
                     headers.put("sec-ch-ua-mobile", "?0");
                     headers.put("sec-ch-ua-platform", "Windows");

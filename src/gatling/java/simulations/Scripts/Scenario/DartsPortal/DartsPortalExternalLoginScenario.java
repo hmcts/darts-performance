@@ -55,11 +55,20 @@ public final class DartsPortalExternalLoginScenario {
                   //.body(StringBody(session -> session.get("xmlPayload"))).asJson()
                   .body(RawFileBody("perftrace/0000_request.bin"))
                 )  
+                .exec(session -> {
+                  String email = session.getString("Email");
+                  String password = session.getString("Password");
+                  String userName = session.getString("user_name");
+                  System.out.println("Email: " + email);
+                  System.out.println("Password: " + password);
+                  System.out.println("User Name: " + userName);
+                  return session;
+              })
                 .exec(
                   http("B2C_1_darts_externaluser_signin - SelfAsserted")
                     .post(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/SelfAsserted?tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin")
-                    .headers(Headers.DartsPortalHeaders21)
-                    //.headers(Headers.headers_0)
+                   // .headers(Headers.DartsPortalHeaders21)
+                    .headers(Headers.headers_0)
                     .formParam("request_type", "RESPONSE")
                     .formParam("email", "#{Email}")
                     .formParam("password", "#{Password}")
