@@ -26,7 +26,7 @@ public final class DartsPortalExternalLoginScenario {
               .exec(
                 http("B2C_1_darts_externaluser_signin - Oauth2/v2.0 - Authorize")
                   .get(AppConfig.EnvironmentURL.B2B_Login.getUrl() + AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + 
-                  "?client_id=" + AppConfig.EnvironmentURL.EXTERNAL_AZURE_AD_B2C_CLIENT_ID.getUrl() +
+                  "?client_id=" + AppConfig.EnvironmentURL.EXTERNAL_CLIENT_ID.getUrl() +
                   "&redirect_uri=" + AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + 
                   "/auth/callback&scope=openid&prompt=login&response_mode=form_post&response_type=code")
                   .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
@@ -58,8 +58,8 @@ public final class DartsPortalExternalLoginScenario {
                 .exec(
                   http("B2C_1_darts_externaluser_signin - SelfAsserted")
                     .post(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/SelfAsserted?tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin")
-                    //.headers(Headers.DartsPortalHeaders21)
-                    .headers(Headers.headers_0)
+                    .headers(Headers.DartsPortalHeaders21)
+                    //.headers(Headers.headers_0)
                     .formParam("request_type", "RESPONSE")
                     .formParam("email", "#{Email}")
                     .formParam("password", "#{Password}")
