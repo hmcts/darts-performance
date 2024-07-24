@@ -4,8 +4,7 @@ import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalApproveAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -33,7 +32,7 @@ public class CourtManagerApproverSimulation extends Simulation {
         .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())      
         .repeat(20).on(
         exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio()))
-        .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
+        .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
     setUp(
         scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
     }    

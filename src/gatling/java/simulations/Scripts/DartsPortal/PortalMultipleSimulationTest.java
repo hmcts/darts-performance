@@ -4,7 +4,7 @@ import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownloadAudioScenario;
 import io.gatling.javaapi.core.*;
@@ -61,7 +61,7 @@ public class PortalMultipleSimulationTest extends Simulation {
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
             .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
-            .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
+            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest());
     }
 
     private ScenarioBuilder setUpScenario2(String scenarioName) {
@@ -70,7 +70,7 @@ public class PortalMultipleSimulationTest extends Simulation {
             .exec(feed(Feeders.createJudgesFeeder()))
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-            .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
+            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest());
     }
 
     @Override

@@ -2,9 +2,7 @@ package simulations.Scripts.DartsPortal;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownloadAudioScenario;
 
@@ -32,7 +30,7 @@ public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation 
         .repeat(1)
         .on(exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()))
         .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
-        .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
+        .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest());
 
     setUp(
         scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));

@@ -3,8 +3,9 @@ package simulations.Scripts.ParallelSimulations;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownloadAudioScenario;
 import io.gatling.javaapi.core.*;
@@ -63,21 +64,21 @@ public class PortalLoginSimulationTest extends Simulation {
 
         // Call setUp once with all scenarios
         setUp(
-            smokeJudgeUsers.injectOpen(
-                rampUsers(2).during(Duration.ofMinutes(1)) 
-            ).protocols(httpProtocolInternal),
+            // smokeJudgeUsers.injectOpen(
+            //     rampUsers(1).during(Duration.ofMinutes(1)) 
+            // ).protocols(httpProtocolInternal),
             smokeCourtClerkUsers.injectOpen(
-                rampUsers(19).during(Duration.ofMinutes(1)) 
-            ).protocols(httpProtocolInternal),
-            smokeCourtManagerUsers.injectOpen(
-                rampUsers(9).during(Duration.ofMinutes(1)) 
-            ).protocols(httpProtocolInternal),
-            smokeTranscriberUsers.injectOpen(
-                rampUsers(4).during(Duration.ofMinutes(1))
-            ).protocols(httpProtocolExternal),
-            smokeLanguageShopUsers.injectOpen(
                 rampUsers(1).during(Duration.ofMinutes(1)) 
-            ).protocols(httpProtocolExternal)
+            ).protocols(httpProtocolInternal)
+            // smokeCourtManagerUsers.injectOpen(
+            //     rampUsers(1).during(Duration.ofMinutes(1)) 
+            // ).protocols(httpProtocolInternal),
+            // smokeTranscriberUsers.injectOpen(
+            //     rampUsers(1).during(Duration.ofMinutes(1))
+            // ).protocols(httpProtocolExternal),
+            // smokeLanguageShopUsers.injectOpen(
+            //     rampUsers(1).during(Duration.ofMinutes(1)) 
+            // ).protocols(httpProtocolExternal)
         );
     }
 
@@ -85,35 +86,35 @@ public class PortalLoginSimulationTest extends Simulation {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createTranscriberUsers()))
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
-            .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
+            .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest());
     }
 
     private ScenarioBuilder setUpCourtClerkUsers(String scenarioName) {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createCourtClerkUsers()))
             .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
-            .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
+            .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
     }
 
     private ScenarioBuilder setUpCourtManagerUsers(String scenarioName) {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createCourtManagerUsers()))
             .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
-            .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
+            .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
     }
 
     private ScenarioBuilder setUpLanguageShopUsers(String scenarioName) {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createLanguageShopUsers()))
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
-            .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
+            .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest());
     }
 
     private ScenarioBuilder setUpJudgeUsers(String scenarioName) {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createJudgeUsers()))
             .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
-            .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
+            .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
     }
     @Override
     public void after() {

@@ -7,13 +7,13 @@ import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public final class DartsPortalLogoutScenario {
+public final class DartsPortalExternalLogoutScenario {
 
 
-    private DartsPortalLogoutScenario() {}
+    private DartsPortalExternalLogoutScenario() {}
 
-    public static ChainBuilder DartsPortalLogoutRequest() {
-        return group("Darts Portal Logout")
+    public static ChainBuilder DartsPortalExternalLogoutRequest() {
+        return group("Darts Portal External Logout")
             .on(
               exec(
                 http("Darts-Portal - Auth - Logout")
@@ -24,16 +24,11 @@ public final class DartsPortalLogoutScenario {
                     http("Darts-Portal - Auth - Logout-callback")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout-callback")
                     .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))                   
-                  )
-              .exec(session -> {
-                  Object stateProperties = session.get("stateProperties");
-                  System.out.println("Extracted StateProperties: " + stateProperties);
-                  return session;
-              })
-              .exec(
-                http("Darts-Portal - App - Config")
-                  .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
-                  .headers(Headers.PerftraceHeaders(Headers.PortalCommonHeaders))
+                )
+                .exec(
+                  http("Darts-Portal - App - Config")
+                      .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
+                      .headers(Headers.DartsPortalHeaders4)
               )
             );
       }  
