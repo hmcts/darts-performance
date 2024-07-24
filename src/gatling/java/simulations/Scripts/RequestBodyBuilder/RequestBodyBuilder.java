@@ -140,15 +140,28 @@ public class RequestBodyBuilder {
         "\"date_to\":%s}",
         caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
     }
-    
-    public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor, Object audioStartDate, Object audioEndDate, Object requestType) {
+    public static String buildTranscriptionsBody(Session session) {
+        String hearingId = session.get("getHearingId") != null ? "" + session.get("getHearingId").toString() + "" : "null";       
+        String caseId = session.get("getCaseId") != null ? "" + session.get("getCaseId").toString() + "" : "null";       
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String randomComment = randomStringGenerator.generateRandomString(10);
 
+        return String.format("{\"case_id\":\"%s\", " +
+        "\"hearing_id\":\"%s\", " +
+        "\"transcription_type_id\":1, " +
+        "\"transcription_urgency_id\":4, " +
+        "\"comment\":\"%s\", " +
+        "\"start_date_time\": \"\", " +
+        "\"end_date_time\": \"\"}",
+        caseId, hearingId, randomComment);
+    }    
+    public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor, Object audioStartDate, Object audioEndDate, Object requestType) {
       
-        System.out.println("getHearingId for RequestBody: " + getHearingId);
-        System.out.println("requestor for RequestBody: " + requestor);
-        System.out.println("audioStartDate for RequestBody: " + audioStartDate);
-        System.out.println("audioEndDate for RequestBody: " + audioEndDate);
-        System.out.println("requestType for RequestBody: " + requestType);
+        // System.out.println("getHearingId for RequestBody: " + getHearingId);
+        // System.out.println("requestor for RequestBody: " + requestor);
+        // System.out.println("audioStartDate for RequestBody: " + audioStartDate);
+        // System.out.println("audioEndDate for RequestBody: " + audioEndDate);
+        // System.out.println("requestType for RequestBody: " + requestType);
 
 
         return String.format("{\"hearing_id\": %s, " +
@@ -488,6 +501,32 @@ public class RequestBodyBuilder {
         "\"%s\" ], " +            
         "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
     courtHouseName, courtRoomName, courtCaseNumber);
+    }
+
+    public static String buildEventsRetentionsPostBody(Session session) {
+        
+        // Generate a random court house name
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
+        String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String randomComment = randomStringGenerator.generateRandomString(10);
+
+        return String.format("{ \"type\": \"30500\", " +
+        "\"event_id\": \"215\", " +
+        "\"courthouse\": \"%s\", " +
+        "\"courtroom\": \"%s\"," +
+        "\"case_numbers\": [ " +
+        "\"%s\" ], " +    
+        "\"event_text\": \"Perf_Event_%s\"," +        
+        "\"date_time\": \"2024-04-05T12:02:00.000Z\"," +
+        "\"retention_policy\": {" +
+            "\"case_retention_fixed_policy\": \"1\"," +
+            "\"case_total_sentence\": \"1\"}," +
+        "\"start_time\": \"2024-07-19T17:27:33.212Z\"," +
+        "\"end_time\": \"2024-07-19T17:27:33.212Z\"," +
+        "\"is_mid_tier\": true}",
+    courtHouseName, courtRoomName, courtCaseNumber, randomComment);
     }
 
     public static String buildRetentionsPostBody(Session session) {

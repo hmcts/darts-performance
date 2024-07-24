@@ -10,10 +10,12 @@ import io.gatling.javaapi.http.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+import java.time.Duration;
+
 public class RegisterWithUsernameSOAPSimulation extends Simulation {
   {
     HttpProtocolBuilder httpProtocol = http
-     // .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
       .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
       .inferHtmlResources()
       .acceptEncodingHeader("gzip,deflate")
@@ -23,10 +25,10 @@ public class RegisterWithUsernameSOAPSimulation extends Simulation {
     final ScenarioBuilder scn = scenario("DARTS - GateWay - Soap - RegisterWithUsername")           
         .repeat(1)    
         .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
-        .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
+        //.exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_PASSWORD.getUrl()))
         );    
   
     setUp(
-        scn.injectOpen(constantUsersPerSec(150).during(1)).protocols(httpProtocol));
+        scn.injectOpen(constantUsersPerSec(150).during(1)).protocols(httpProtocol));  
     }  
 }

@@ -4,13 +4,13 @@ SELECT
 	ua.user_email_address,
     'PerfTester@01' AS Password,
     ua.user_name, 
-    'Judge' AS Type
+    'LanguageShop' AS Type
 FROM 
     darts.user_account ua
 INNER JOIN 
     darts.security_group_user_account_ae sgua ON sgua.usr_id = ua.usr_id
 WHERE  
-    ua.user_name LIKE '%PerfJudge%'
+    ua.user_name LIKE '%PerfLanguageShop%'
 GROUP BY 
 	ua.user_email_address,
     ua.user_name
@@ -24,7 +24,7 @@ $user = "pgadmin"
 $password = "oIYRDeLXDMLKahVUjP0D"
 
 # Output file path
-$outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\UsersJudge.csv"
+$outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\UsersLanguageShop.csv"
 
 # Ensure PGPASSWORD environment variable is set
 $env:PGPASSWORD = $password

@@ -6,6 +6,7 @@ import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestTranscriptionScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -33,6 +34,7 @@ public class CourtClerkRequestorSimulation extends Simulation {
         .exec(feed(Feeders.createCourtClerkUsers()))
         .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())      
         .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
+        .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
     setUp(

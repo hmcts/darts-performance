@@ -24,7 +24,10 @@ public class Feeders {
     public static final FeederBuilder<String> JudgesCSV;
     public static final FeederBuilder<String> LanguageShopUsers;
     public static final FeederBuilder<String> CourtClerkUsers;
+    public static final FeederBuilder<String> CourtManagerUsers;
     public static final FeederBuilder<String> TranscriberUsers;
+    public static final FeederBuilder<String> JudgeUsers;
+
     public static final FeederBuilder<String> CourtHouseAndCourtRooms;
     public static final FeederBuilder<String> CaseHouseRoomsHearingDetails;
     public static final FeederBuilder<String> TransformedMediaDownloadIdCSV;
@@ -53,7 +56,10 @@ public class Feeders {
         LanguageShopUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_LANGUAGESHOP_FILE_PATH).circular();
         CourtClerkUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV).circular();
         TranscriberUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH).circular();
+        CourtManagerUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH).circular();
+        JudgeUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_JUDGE_USERS_FILE_PATH).circular();
 
+        
         //CourtHouseDetails
         CourtHouseAndCourtRooms = CoreDsl.csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
         CaseHouseRoomsHearingDetails = CoreDsl.csv(AppConfig.CASE_HOUSE_ROOMS_HEARING_FILE_PATH).random();
@@ -92,6 +98,9 @@ public class Feeders {
     public static FeederBuilder<String> createTranscriberUsers() {
         return TranscriberUsers;
     }
+    public static FeederBuilder<String> createJudgeUsers() {
+        return JudgeUsers;
+    }
 
     public static FeederBuilder<String> createLanguageShopUsers() {
         return LanguageShopUsers;
@@ -100,6 +109,10 @@ public class Feeders {
     public static FeederBuilder<String> createCourtClerkUsers() {
         return CourtClerkUsers;
     }
+    public static FeederBuilder<String> createCourtManagerUsers() {
+        return CourtManagerUsers;
+    }
+    
     public static String getRandomEventCode() {
         List<String> eventCodes = List.of("DL", "DL", "DL");
         return eventCodes.get(new Random().nextInt(eventCodes.size()));
@@ -160,12 +173,12 @@ public class Feeders {
 
         // List of audio files
         //public static final String[] AUDIO_FILES = {"sample.mp2", "00h10m.mp2", "00h15m.mp2","00h20m.mp2", "02h.mp2"};
-        //private static final String[] AUDIO_FILES = {"1mb.mp2", "4mb.mp2", "16mb.mp2", "64mb.mp2", "256mb.mp2"};
-        private static final String[] AUDIO_FILES = {"1mb.mp2"};
+        private static final String[] AUDIO_FILES = {"1mb.mp2", "4mb.mp2", "16mb.mp2", "64mb.mp2", "256mb.mp2"};
+        //private static final String[] AUDIO_FILES = {"1mb.mp2"};
 
         // Corresponding percentages (must sum up to 100)
-       // private static final int[] PERCENTAGES = {5, 10, 30, 40, 15};
-        private static final int[] PERCENTAGES = {5};
+        private static final int[] PERCENTAGES = {5, 10, 30, 40, 15};
+       // private static final int[] PERCENTAGES = {5};
 
         // Method to select a random audio file based on percentages
         public static String getRandomAudioFile() {

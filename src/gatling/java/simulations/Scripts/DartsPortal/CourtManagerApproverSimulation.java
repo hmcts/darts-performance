@@ -17,7 +17,7 @@ public class CourtManagerApproverSimulation extends Simulation {
   {
 
       HttpProtocolBuilder httpProtocol = http
-     //   .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         //.baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
         .baseUrl("https://login.microsoftonline.com") 
 
@@ -29,7 +29,7 @@ public class CourtManagerApproverSimulation extends Simulation {
       
 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
-        .exec(feed(Feeders.createCourtClerkUsers()))
+        .exec(feed(Feeders.createCourtManagerUsers()))
         .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())      
         .repeat(20).on(
         exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio()))
