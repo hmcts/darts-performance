@@ -1,2 +1,6 @@
-Email,Password,Type,CourtHouseName
-darts.languageshop@hmcts.net,Password@1,LanguageShop,PerfCourtHouse_A52A0v84lC
+Email,Password,user_name,Type
+PerfLanguageShop01@hmcts.net,PerfTester@01,PerfLanguageShop01,LanguageShop
+PerfLanguageShop02@hmcts.net,PerfTester@01,PerfLanguageShop02,LanguageShop
+PerfLanguageShop03@hmcts.net,PerfTester@01,PerfLanguageShop03,LanguageShop
+PerfLanguageShop04@hmcts.net,PerfTester@01,PerfLanguageShop04,LanguageShop
+PerfLanguageShop05@hmcts.net,PerfTester@01,PerfLanguageShop05,LanguageShop

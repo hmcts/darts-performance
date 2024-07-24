@@ -125,8 +125,7 @@ public class Headers {
         return updatedHeaders;
     }
 
-    public static final Map<CharSequence, String> DartsPortalHeaders21 = Map.ofEntries(
-    Map.entry("Host", AppConfig.EnvironmentURL.B2B_Login.getUrl()),
+    public static final Map<CharSequence, String> DartsPortalHeaders21 = Map.ofEntries(   
     Map.entry("Connection", "keep-alive"),
     Map.entry("Content-Length", "82"),
     Map.entry("sec-ch-ua", "\"Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121\""),
@@ -141,7 +140,7 @@ public class Headers {
     Map.entry("Sec-Fetch-Site", "same-origin"),
     Map.entry("Sec-Fetch-Mode", "cors"),
     Map.entry("Sec-Fetch-Dest", "empty"),
-    Map.entry("Referer", AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/"+ AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "?client_id="+ AppConfig.EnvironmentURL.EXTERNAL_AZURE_AD_B2C_CLIENT_ID.getUrl() +"&redirect_uri="+ AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code"),
+    Map.entry("Referer", AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/"+ AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "?client_id="+ AppConfig.EnvironmentURL.EXTERNAL_CLIENT_ID.getUrl() +"&redirect_uri="+ AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code"),
     Map.entry("Accept-Encoding", "gzip, deflate, br, zstd"),
     Map.entry("Accept-Language", "en-US,en;q=0.9")
     );

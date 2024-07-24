@@ -38,7 +38,7 @@ public class CourtClerkRequestorSimulation extends Simulation {
         .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
 
     setUp(
-        scn1.injectOpen(rampUsers(7).during(420)).protocols(httpProtocol));
+        scn1.injectOpen(rampUsers(1).during(1)).protocols(httpProtocol));
     }    
 } 
     

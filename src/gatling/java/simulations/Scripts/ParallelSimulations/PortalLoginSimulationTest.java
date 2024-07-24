@@ -53,19 +53,19 @@ public class PortalLoginSimulationTest extends Simulation {
         // Call setUp once with all scenarios
         setUp(
             smokeJudgeUsers.injectOpen(
-                rampUsers(2).during(Duration.ofMinutes(30)) 
+                rampUsers(1).during(Duration.ofMinutes(1)) 
             ).protocols(httpProtocol),
             smokeCourtClerkUsers.injectOpen(
-                rampUsers(19).during(Duration.ofMinutes(30)) 
+                rampUsers(1).during(Duration.ofMinutes(1)) 
             ).protocols(httpProtocol),
             smokeCourtManagerUsers.injectOpen(
-                rampUsers(9).during(Duration.ofMinutes(30)) 
+                rampUsers(1).during(Duration.ofMinutes(1)) 
             ).protocols(httpProtocol),
             smokeTranscriberUsers.injectOpen(
-                rampUsers(4).during(Duration.ofMinutes(30))
+                rampUsers(1).during(Duration.ofMinutes(1))
             ).protocols(httpProtocol),
             smokeLanguageShopUsers.injectOpen(
-                rampUsers(1).during(Duration.ofMinutes(30)) 
+                rampUsers(1).during(Duration.ofMinutes(1)) 
             ).protocols(httpProtocol)
         );
     }
@@ -80,14 +80,14 @@ public class PortalLoginSimulationTest extends Simulation {
     private ScenarioBuilder setUpCourtClerkUsers(String scenarioName) {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createCourtClerkUsers()))
-            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
+            .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
             .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
     }
 
     private ScenarioBuilder setUpCourtManagerUsers(String scenarioName) {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createCourtManagerUsers()))
-            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
+            .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
             .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
     }
 
@@ -101,7 +101,7 @@ public class PortalLoginSimulationTest extends Simulation {
     private ScenarioBuilder setUpJudgeUsers(String scenarioName) {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createJudgeUsers()))
-            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
+            .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
             .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
     }
     @Override
