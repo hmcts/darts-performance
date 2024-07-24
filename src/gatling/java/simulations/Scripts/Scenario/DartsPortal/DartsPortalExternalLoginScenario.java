@@ -16,7 +16,7 @@ public final class DartsPortalExternalLoginScenario {
     private DartsPortalExternalLoginScenario() {}
 
     public static ChainBuilder DartsPortalExternalLoginRequest() {      
-        return group("Darts Portal Login")
+        return group("Darts Portal External Login")
             .on(
             exec(
                 http("Darts-Portal - Auth - Login")

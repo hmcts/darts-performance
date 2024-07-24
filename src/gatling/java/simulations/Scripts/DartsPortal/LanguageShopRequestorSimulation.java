@@ -2,7 +2,7 @@ package simulations.Scripts.DartsPortal;
 
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalLogoutScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import simulations.Scripts.Utilities.*;
 import io.gatling.javaapi.core.*;
@@ -26,7 +26,7 @@ public class LanguageShopRequestorSimulation extends Simulation {
         .exec(feed(Feeders.createLanguageShopUsers()))
         .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
         .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-        .exec(DartsPortalLogoutScenario.DartsPortalLogoutRequest());
+        .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
 
     setUp(
         scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
