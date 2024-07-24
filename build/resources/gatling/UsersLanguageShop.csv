@@ -1,6 +1,2 @@
-Email,Password,user_name,Type
-PerfLanguageShop01@hmcts.net,PerfTester@01,PerfLanguageShop01,LanguageShop
-PerfLanguageShop02@hmcts.net,PerfTester@01,PerfLanguageShop02,LanguageShop
-PerfLanguageShop03@hmcts.net,PerfTester@01,PerfLanguageShop03,LanguageShop
-PerfLanguageShop04@hmcts.net,PerfTester@01,PerfLanguageShop04,LanguageShop
-PerfLanguageShop05@hmcts.net,PerfTester@01,PerfLanguageShop05,LanguageShop
+Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,defendant_name
+PerfLanguageShop01@hmcts.net,PerfTester@01,PerfTranscriberOne,1,"4 NEWTON STREET",Transcriber,Baylor
