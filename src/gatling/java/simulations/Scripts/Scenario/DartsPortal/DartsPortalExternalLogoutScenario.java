@@ -2,6 +2,7 @@ package simulations.Scripts.Scenario.DartsPortal;
 
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
@@ -19,17 +20,26 @@ public final class DartsPortalExternalLogoutScenario {
                 http("Darts-Portal - Auth - Logout")
                 .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout")
                 .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
-                )  
+              )  
+              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Logout"))
+
+              .exitHereIfFailed() 
               .exec(
                     http("Darts-Portal - Auth - Logout-callback")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout-callback")
                     .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))                   
-                )
-                .exec(
+              )
+              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Logout-callback"))
+
+              .exitHereIfFailed() 
+              .exec(
                   http("Darts-Portal - App - Config")
                       .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
                       .headers(Headers.DartsPortalHeaders4)
               )
+              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - App - Config"))
+
+              .exitHereIfFailed() 
             );
       }  
 }
