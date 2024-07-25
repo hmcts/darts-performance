@@ -21,7 +21,7 @@ public final class DartsPortalInternalLogoutScenario {
                 .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout")
                 .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
               )
-              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Logout"))
+              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Logout"))
 
               .exitHereIfFailed()  
               .exec(
@@ -39,7 +39,7 @@ public final class DartsPortalInternalLogoutScenario {
                     .formParam("x-client-src-SKU", "MSAL.xplat.Win32")
                     .formParam("mkt", "en-gb")  
               )
-              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Login Microsoftonline - Oauth2 - Token"))
+              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Login Microsoftonline - Oauth2 - Token"))
 
               .exitHereIfFailed() 
               .exec(
@@ -56,7 +56,7 @@ public final class DartsPortalInternalLogoutScenario {
                     .formParam("post_logout_redirect_uri", "https://darts.test.apps.hmcts.net/auth/logout-callback")
                     .formParam("i19", "")
               )
-              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Login Microsoftonline - Oauth2 - v2.0 - Logoutsession"))
+              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Login Microsoftonline - Oauth2 - v2.0 - Logoutsession"))
   
               .exitHereIfFailed()   
               .exec(
@@ -64,7 +64,7 @@ public final class DartsPortalInternalLogoutScenario {
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/internal/logout-callback?sid=#{sessionId}")                
                     .headers(Headers.getHeaders(5))
               )
-              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Internal - Logout-callback"))
+              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Internal - Logout-callback"))
 
               .exitHereIfFailed() 
               .exec(
@@ -72,7 +72,7 @@ public final class DartsPortalInternalLogoutScenario {
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
                     .headers(Headers.getHeaders(6))
                 )
-              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - App - Config"))
+              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - App - Config"))
 
               .exitHereIfFailed() 
               .exec(
@@ -80,7 +80,7 @@ public final class DartsPortalInternalLogoutScenario {
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout-callback")
                     .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))                   
               )
-              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Logout-callback"))
+              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Logout-callback"))
               
               .exitHereIfFailed() 
               .exec(
@@ -88,7 +88,7 @@ public final class DartsPortalInternalLogoutScenario {
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
                         .headers(Headers.getHeaders(7))
               )
-              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - App - Config"))
+              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - App - Config"))
 
               .exitHereIfFailed() 
             );
