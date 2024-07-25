@@ -13,7 +13,7 @@ public final class DartsPortalInternalLogoutScenario {
     private DartsPortalInternalLogoutScenario() {}
 
     public static ChainBuilder DartsPortalInternalLogoutRequest() {
-        return group("Darts Portal Logout")
+        return group("Darts Portal Internal Logout")
             .on(
               exec(
                 http("Darts-Portal - Auth - Logout")
