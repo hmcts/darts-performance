@@ -64,21 +64,21 @@ public class PortalLoginSimulationTest extends Simulation {
 
         // Call setUp once with all scenarios
         setUp(
-            // smokeJudgeUsers.injectOpen(
-            //     rampUsers(1).during(Duration.ofMinutes(1)) 
-            // ).protocols(httpProtocolInternal),
+            smokeJudgeUsers.injectOpen(
+                rampUsers(1).during(Duration.ofMinutes(1)) 
+            ).protocols(httpProtocolInternal),
             smokeCourtClerkUsers.injectOpen(
                 rampUsers(1).during(Duration.ofMinutes(1)) 
-            ).protocols(httpProtocolInternal)
-            // smokeCourtManagerUsers.injectOpen(
-            //     rampUsers(1).during(Duration.ofMinutes(1)) 
-            // ).protocols(httpProtocolInternal),
-            // smokeTranscriberUsers.injectOpen(
-            //     rampUsers(1).during(Duration.ofMinutes(1))
-            // ).protocols(httpProtocolExternal),
-            // smokeLanguageShopUsers.injectOpen(
-            //     rampUsers(1).during(Duration.ofMinutes(1)) 
-            // ).protocols(httpProtocolExternal)
+            ).protocols(httpProtocolInternal),
+            smokeCourtManagerUsers.injectOpen(
+                rampUsers(1).during(Duration.ofMinutes(1)) 
+            ).protocols(httpProtocolInternal),
+            smokeTranscriberUsers.injectOpen(
+                rampUsers(1).during(Duration.ofMinutes(1))
+            ).protocols(httpProtocolExternal),
+            smokeLanguageShopUsers.injectOpen(
+                rampUsers(1).during(Duration.ofMinutes(1)) 
+            ).protocols(httpProtocolExternal)
         );
     }
 

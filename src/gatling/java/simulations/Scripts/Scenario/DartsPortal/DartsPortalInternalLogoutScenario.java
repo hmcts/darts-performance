@@ -2,6 +2,7 @@ package simulations.Scripts.Scenario.DartsPortal;
 
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
@@ -19,7 +20,10 @@ public final class DartsPortalInternalLogoutScenario {
                 http("Darts-Portal - Auth - Logout")
                 .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout")
                 .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
-              ) 
+              )
+              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Logout"))
+
+              .exitHereIfFailed()  
               .exec(
                   http("Darts-Portal - Login Microsoftonline - Oauth2 - Token")
                     .post("https://login.microsoftonline.com/b9fec68c-c92d-461e-9a97-3d03a0f18b82/oauth2/token")
@@ -35,6 +39,9 @@ public final class DartsPortalInternalLogoutScenario {
                     .formParam("x-client-src-SKU", "MSAL.xplat.Win32")
                     .formParam("mkt", "en-gb")  
               )
+              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Login Microsoftonline - Oauth2 - Token"))
+
+              .exitHereIfFailed() 
               .exec(
                   http("Darts-Portal - Login Microsoftonline - Oauth2 - v2.0 - Logoutsession")
                     .post("https://login.microsoftonline.com//e575f663-b30a-4786-89ad-319842dfe853/oauth2/v2.0/logoutsession")
@@ -48,27 +55,42 @@ public final class DartsPortalInternalLogoutScenario {
                     .formParam("postLogoutRedirectUriValid", "0")
                     .formParam("post_logout_redirect_uri", "https://darts.test.apps.hmcts.net/auth/logout-callback")
                     .formParam("i19", "")
-              )    
+              )
+              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Login Microsoftonline - Oauth2 - v2.0 - Logoutsession"))
+  
+              .exitHereIfFailed()   
               .exec(
                   http("Darts-Portal - Auth - Internal - Logout-callback")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/internal/logout-callback?sid=#{sessionId}")                
                     .headers(Headers.getHeaders(5))
               )
+              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Internal - Logout-callback"))
+
+              .exitHereIfFailed() 
               .exec(
                 http("Darts-Portal - App - Config")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
                     .headers(Headers.getHeaders(6))
                 )
+              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - App - Config"))
+
+              .exitHereIfFailed() 
               .exec(
                     http("Darts-Portal - Auth - Logout-callback")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout-callback")
                     .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))                   
-                  )
-                  .exec(
+              )
+              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Logout-callback"))
+              
+              .exitHereIfFailed() 
+              .exec(
                     http("Darts-Portal - App - Config")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
                         .headers(Headers.getHeaders(7))
-                  )
+              )
+              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - App - Config"))
+
+              .exitHereIfFailed() 
             );
       }  
 }
