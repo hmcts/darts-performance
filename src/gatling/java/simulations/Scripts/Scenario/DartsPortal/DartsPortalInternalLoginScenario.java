@@ -85,7 +85,7 @@ public final class DartsPortalInternalLoginScenario {
                 .body(StringBody("#{xmlPayload}")).asJson()
                 .check(status().is(200))
             )
-            .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Internal - Login"))
+            .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Login Microsoftonline - Common - GetCredentialType"))
 
             .exitHereIfFailed() 
             .pause(7)

@@ -26,7 +26,7 @@ public final class DartsPortalExternalLoginScenario {
                   .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/login")
                   .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
                 )  
-                .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Login"))
+                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Login"))
             
               .exec(
                 http("B2C_1_darts_externaluser_signin - Oauth2/v2.0 - Authorize")
@@ -38,7 +38,7 @@ public final class DartsPortalExternalLoginScenario {
                   .check(Feeders.saveStateProperties())
                   .check(Feeders.saveCsrf())          
                 )
-                .exec(UserInfoLogger.logUserInfoOnFailure("B2C_1_darts_externaluser_signin - Oauth2/v2.0 - Authorize"))
+                .exec(UserInfoLogger.logDetailedErrorMessage("B2C_1_darts_externaluser_signin - Oauth2/v2.0 - Authorize"))
 
               .exitHereIfFailed() 
               .exec(session -> {
@@ -51,7 +51,7 @@ public final class DartsPortalExternalLoginScenario {
                   .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en")
                   .headers(Headers.AzureadB2cLoginHeaders(Headers.PortalCommonHeaders))
               )
-              .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Azuread-b2c-login"))
+              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Azuread-b2c-login"))
 
               // .exec(session -> {
               //   String xmlPayload = RequestBodyBuilder.buildDartsPortalPerftraceRequest(session);
@@ -66,7 +66,7 @@ public final class DartsPortalExternalLoginScenario {
                   //.body(StringBody(session -> session.get("xmlPayload"))).asJson()
                   .body(RawFileBody("perftrace/0000_request.bin"))
                 )
-                .exec(UserInfoLogger.logUserInfoOnFailure("B2C_1_darts_externaluser_signin - Client - Perftrace"))  
+                .exec(UserInfoLogger.logDetailedErrorMessage("B2C_1_darts_externaluser_signin - Client - Perftrace"))  
                 .exitHereIfFailed() 
                 .exec(session -> {
                   String email = session.getString("Email");
@@ -77,7 +77,7 @@ public final class DartsPortalExternalLoginScenario {
                   System.out.println("User Name: " + userName);
                   return session;
               })
-              .exec(UserInfoLogger.logUserInfoOnFailure("B2C_1_darts_externaluser_signin - SelfAsserted"))
+              .exec(UserInfoLogger.logDetailedErrorMessage("B2C_1_darts_externaluser_signin - SelfAsserted"))
               .exitHereIfFailed() 
                 .exec(
                   http("B2C_1_darts_externaluser_signin - SelfAsserted")
@@ -96,7 +96,7 @@ public final class DartsPortalExternalLoginScenario {
                       .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
                       .check(Feeders.saveTokenCode())
                 )
-                .exec(UserInfoLogger.logUserInfoOnFailure("B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed"))
+                .exec(UserInfoLogger.logDetailedErrorMessage("B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed"))
 
                 .exitHereIfFailed() 
                 .exec(
@@ -107,7 +107,7 @@ public final class DartsPortalExternalLoginScenario {
                       .check(status().is(200))
                 )
 
-                .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Callback"))
+                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Callback"))
 
                 .exitHereIfFailed() 
                 .exec(
@@ -115,7 +115,7 @@ public final class DartsPortalExternalLoginScenario {
                       .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
                       .headers(Headers.DartsPortalHeaders4)
                 )
-                .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - App - Config"))
+                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - App - Config"))
 
                 .exitHereIfFailed() 
                 .exec(
@@ -123,7 +123,7 @@ public final class DartsPortalExternalLoginScenario {
                       .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
                       .headers(Headers.DartsPortalHeaders4)
                 )
-                .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Is-authenticated"))
+                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
                 .exitHereIfFailed() 
                 .exec(   
@@ -131,7 +131,7 @@ public final class DartsPortalExternalLoginScenario {
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
                         .headers(Headers.DartsPortalHeaders4)
                 )
-                .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Auth - Is-authenticated"))
+                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
                 .exitHereIfFailed() 
                 .exec(    
@@ -140,7 +140,7 @@ public final class DartsPortalExternalLoginScenario {
                         .headers(Headers.DartsPortalHeaders4)
                         .check(Feeders.saveUserId())
                 )
-                .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - User - Profile"))
+                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - User - Profile"))
 
                 .exitHereIfFailed() 
                 .exec(
@@ -148,7 +148,7 @@ public final class DartsPortalExternalLoginScenario {
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
                         .headers(Headers.DartsPortalHeaders4)
                 )
-                .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
+                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
 
                 .exitHereIfFailed() 
                 .exec(    
@@ -156,7 +156,8 @@ public final class DartsPortalExternalLoginScenario {
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/courthouses")
                         .headers(Headers.DartsPortalHeaders5)
                     )
-                    .exec(UserInfoLogger.logUserInfoOnFailure("Darts-Portal - Api - Courthouses"))
+                    .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Courthouses"))
+                    
                     .exitHereIfFailed() 
               );
             } 
