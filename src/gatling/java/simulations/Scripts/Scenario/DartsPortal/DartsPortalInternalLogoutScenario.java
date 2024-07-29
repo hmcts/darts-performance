@@ -20,14 +20,22 @@ public final class DartsPortalInternalLogoutScenario {
                 http("Darts-Portal - Auth - Logout")
                 .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout")
                 .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
+                .check(regex("https://login\\.microsoftonline\\.com/([a-f0-9\\-]+)/oauth2/v2\\.0/logout\\?id_token_hint=").find().saveAs("extractedUUID")) // Extract the UUID using regex
+
               )
+              .exec(session -> {
+                // Print the extracted UUID
+                String uuid = session.getString("extractedUUID");
+                System.out.println("Extracted UUID: " + uuid);
+                return session;
+            })
               .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Logout"))
 
               .exitHereIfFailed()  
               .exec(
                   http("Darts-Portal - Login Microsoftonline - Oauth2 - Token")
-                    .post("https://login.microsoftonline.com/b9fec68c-c92d-461e-9a97-3d03a0f18b82/oauth2/token")
-                    .headers(Headers.portalLogOutHeaders(Headers.PortalCommonHeaders))
+                  .post(session -> "https://login.microsoftonline.com/" + session.getString("extractedUUID") + "/oauth2/token")
+                  .headers(Headers.portalLogOutHeaders(Headers.PortalCommonHeaders))
                     .formParam("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer")
                     .formParam("request", "***REMOVED***")
                     .formParam("client_info", "1")
@@ -44,7 +52,7 @@ public final class DartsPortalInternalLogoutScenario {
               .exitHereIfFailed() 
               .exec(
                   http("Darts-Portal - Login Microsoftonline - Oauth2 - v2.0 - Logoutsession")
-                    .post("https://login.microsoftonline.com//e575f663-b30a-4786-89ad-319842dfe853/oauth2/v2.0/logoutsession")
+                    .post(session -> "https://login.microsoftonline.com/" + session.getString("extractedUUID") + "/oauth2/v2.0/logoutsession")
                     .headers(Headers.getHeaders(2))
                     .formParam("sessionId", "#{sessionId}")
                     .formParam("canary", "#{canary}")
