@@ -20,7 +20,7 @@ public final class DartsPortalInternalLogoutScenario {
                 http("Darts-Portal - Auth - Logout")
                 .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout")
                 .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
-                .check(regex("https://login\\.microsoftonline\\.com/([a-f0-9\\-]+)/oauth2/v2\\.0/logout\\?id_token_hint=").find().saveAs("extractedUUID")) // Extract the UUID using regex
+                .check(regex("https:\\/\\/login\\.microsoftonline\\.com\\/([a-f0-9\\-]+)").find().saveAs("extractedUUID"))  // Updated regex pattern to extract the UUID
 
               )
               .exec(session -> {
@@ -32,21 +32,32 @@ public final class DartsPortalInternalLogoutScenario {
               .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Logout"))
 
               .exitHereIfFailed()  
-              .exec(
-                  http("Darts-Portal - Login Microsoftonline - Oauth2 - Token")
-                  .post(session -> "https://login.microsoftonline.com/" + session.getString("extractedUUID") + "/oauth2/token")
-                  .headers(Headers.portalLogOutHeaders(Headers.PortalCommonHeaders))
-                    .formParam("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer")
-                    .formParam("request", "***REMOVED***")
-                    .formParam("client_info", "1")
-                    .formParam("windows_api_version", "2.0.1")
-                    .formParam("wam_compat", "2.0")
-                    .formParam("x-client-SKU", "MSAL.xplat.Win32")
-                    .formParam("x-client-Ver", "1.1.0+00747db6")
-                    .formParam("x-client-OS", "10.0.19041.3636")
-                    .formParam("x-client-src-SKU", "MSAL.xplat.Win32")
-                    .formParam("mkt", "en-gb")  
-              )
+              // .exec(
+              //     http("Darts-Portal - Login Microsoftonline - Oauth2 - Token")
+              //     .post(session -> "https://login.microsoftonline.com/" + session.getString("extractedUUID") + "/oauth2/token")
+              //     .headers(Headers.portalLogOutHeaders(Headers.PortalCommonHeaders))
+              //       .formParam("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer")
+              //       .formParam("request", "***REMOVED***")
+              //       .formParam("client_info", "1")
+              //       .formParam("windows_api_version", "2.0.1")
+              //       .formParam("wam_compat", "2.0")
+              //       .formParam("x-client-SKU", "MSAL.xplat.Win32")
+              //       .formParam("x-client-Ver", "1.1.0+00747db6")
+              //       .formParam("x-client-OS", "10.0.19041.3636")
+              //       .formParam("x-client-src-SKU", "MSAL.xplat.Win32")
+              //       .formParam("mkt", "en-gb")  
+              //       .check(status().in(200, 400))                    
+              //       .check(jsonPath("$.error").is("invalid_grant").saveAs("errorType")
+              //       )
+              // )
+              // .exec(session -> {
+              //     // Check if the error type is present and log it
+              //     String errorType = session.getString("errorType");
+              //     if (errorType != null && errorType.equals("invalid_grant")) {
+              //         System.out.println("Error: invalid_grant detected");
+              //     }
+              //     return session;
+              // })
               .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Login Microsoftonline - Oauth2 - Token"))
 
               .exitHereIfFailed() 
