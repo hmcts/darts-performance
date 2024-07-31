@@ -6,20 +6,38 @@ import java.util.Optional;
 
 public class AppConfig {
 
+
+    
+    //EXTERNAL Tenant
+    //old public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = "test";
+    public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = "test";
+    //old public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";
+    public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";
+    //old public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";
+    public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";
+    
+    // Old public static final String TENANT_NAME = "hmctsstgextid";
+
+    public static final String TENANT_NAME = "test";
+
+    //INTERNAL Tenant
+    public static final String PERFORMANCE_INTERNAL_CLIENT_ID = "test";     
+    public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = "test";    
+    public static final String PERFORMANCE_INTERNAL_TENANT_ID = "test";
+
     //Performance Env
     public static final String PERFORMANCE_GATEWAY_BASE_URL= "test";
     public static final String PERFORMANCE_PROXY_BASE_URL= "test";
     public static final String PERFORMANCE_DARTS_API_BASE_URL= "test";
     public static final String PERFORMANCE_DARTS_BASE_URL= "test";
-    public static final String PERFORMANCE_CLINET_ID = "test";
-    public static final String PERFORMANCE_CLIENT_SECRET = "test";
-    public static final String PERFORMANCE_AZURE_AD_B2C_CLIENT_ID = "test";
-    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "test";
-    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "test";
-    public static final String PERFORMANCE_B2B_Login = "test";
-    public static final String PERFORMANCE_B2B_Token = "test";
-    public static final String PERFORMANCE_SCOPE = "test";
-    public static final String PERFORMANCE_GRANT_TYPE = "test";
+    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/" + TENANT_NAME+".onmicrosoft.com/B2C_1_darts_externaluser_signin/";
+    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "oauth2/v2.0/authorize";
+    public static final String PERFORMANCE_B2B_Login = "https://"+TENANT_NAME+".b2clogin.com";
+    public static final String PERFORMANCE_B2B_Token = "/"+TENANT_NAME+".onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
+    // Old public static final String PERFORMANCE_SCOPE = ""test";";
+    public static final String PERFORMANCE_SCOPE = "https://"+TENANT_NAME+".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "/test";
+
+    public static final String PERFORMANCE_GRANT_TYPE = "password";
  
     public static final long RANK_UP_TIME_SECONDS;
     public static final long RANK_DOWN_TIME_SECONDS;
@@ -33,6 +51,18 @@ public class AppConfig {
     public static final int USERS_PER_SECOND;
     public static final int PIPELINE_USERS_PER_SECOND;
     public static final int CONSTANT_CONCURRENT_USERS;
+    public static final int JUDGE_RAMP_UP_USERS;
+    public static final int COURT_CLERK_RAMP_UP_USERS;
+    public static final int COURT_MANAGER_RAMP_UP_USERS;
+    public static final int TRANSCRIBER_RAMP_UP_USERS;
+    public static final int LANGUAGE_SHOP_RAMP_UP_USERS;
+
+    //Users Ramp up Duration
+    public static final int RAMP_UP_DURATION_OF_JUDGES;
+    public static final int RAMP_UP_DURATION_OF_COURT_CLERK;
+    public static final int RAMP_UP_DURATION_OF_COURT_MANAGER;
+    public static final int RAMP_UP_DURATION_OF_TRANSCRIBER;
+    public static final int RAMP_UP_DURATION_OF_LANGUAGE_SHOP;
 
     //Test Times Set up
     public static final long TEST_DURATION_SECONDS;
@@ -117,8 +147,21 @@ public class AppConfig {
         RANK_DOWN_TIME_SECONDS = Long.parseLong(getProperty("RANK_DOWN_TIME_SECONDS", "120"));
 
         //Users
-        PIPELINE_USERS_PER_SECOND = Integer.parseInt(getProperty("PIPELINE_USERS_PER_SECOND", "1"));
+        JUDGE_RAMP_UP_USERS = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
+        COURT_CLERK_RAMP_UP_USERS = Integer.parseInt(getProperty("COURT_CLERK_RAMP_UP_USERS", "1"));
+        COURT_MANAGER_RAMP_UP_USERS = Integer.parseInt(getProperty("COURT_MANAGER_RAMP_UP_USERS", "1"));
+        TRANSCRIBER_RAMP_UP_USERS = Integer.parseInt(getProperty("TRANSCRIBER_RAMP_UP_USERS", "1"));
+        LANGUAGE_SHOP_RAMP_UP_USERS = Integer.parseInt(getProperty("LANGUAGE_SHOP_RAMP_UP_USERS", "1"));
 
+        //Users Ramp up Duration
+        RAMP_UP_DURATION_OF_JUDGES = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
+        RAMP_UP_DURATION_OF_COURT_CLERK = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
+        RAMP_UP_DURATION_OF_COURT_MANAGER = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
+        RAMP_UP_DURATION_OF_TRANSCRIBER = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
+        RAMP_UP_DURATION_OF_LANGUAGE_SHOP = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
+
+        //Pipeline users
+        PIPELINE_USERS_PER_SECOND = Integer.parseInt(getProperty("PIPELINE_USERS_PER_SECOND", "1"));
         if (hasProperty("USERS_PER_HOUR")) {
             USERS_PER_SECOND = Integer.parseInt((Double.parseDouble(getProperty("USERS_PER_HOUR", "3600")) / 3600.0) +
                 "");
@@ -236,9 +279,17 @@ public class AppConfig {
         B2B_Token(PERFORMANCE_B2B_Token),
         SCOPE(PERFORMANCE_SCOPE),
         GRANT_TYPE(PERFORMANCE_GRANT_TYPE),
-        CLINET_ID(PERFORMANCE_CLINET_ID),
-        CLIENT_SECRET(PERFORMANCE_CLIENT_SECRET),  
-        AZURE_AD_B2C_CLIENT_ID(PERFORMANCE_AZURE_AD_B2C_CLIENT_ID),
+       
+        //External Tennat
+        EXTERNAL_CLIENT_ID(PERFORMANCE_EXTERNAL_CLIENT_ID),
+        EXTERNAL_CLIENT_SECRET(PERFORMANCE_EXTERNAL_CLIENT_SECRET),  
+        EXTERNAL_AZURE_AD_B2C_CLIENT_ID(PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID),
+       
+        //Internal Tennat
+        INTERNAL_CLIENT_ID(PERFORMANCE_INTERNAL_CLIENT_ID),
+        INTERNAL_CLIENT_SECRET(PERFORMANCE_INTERNAL_CLIENT_SECRET),  
+        INTERNAL_AZURE_AD_B2C_CLIENT_ID(PERFORMANCE_INTERNAL_TENANT_ID),
+
 
         //Users
         DARTS_API_USERNAME("test"),
@@ -297,8 +348,10 @@ public class AppConfig {
     // Specific CSV file for Users
     public static final String DARTS_PORTAL_USERS_CSV = "Users.csv";
     public static final String DARTS_PORTAL_COURTCLERK_USERS_CSV = "UsersCourtClerks.csv";
+    public static final String DARTS_PORTAL_COURTMANAGER_USERS_CSV = "UsersCourtManager.csv";
     public static final String DARTS_PORTAL_TRANSCRIBERS_USERS_CSV = "UsersTranscribers.csv";
     public static final String DARTS_PORTAL_LANGUAGESHOP_USERS_CSV = "UsersLanguageShop.csv";
+    public static final String DARTS_PORTAL_JUDGE_USERS_CSV = "UsersJudge.csv";
 
     // Specific CSV file for Judges
     public static final String DARTS_PORTAL_JUDGES_CSV = "JudgeName2.csv";
@@ -309,8 +362,11 @@ public class AppConfig {
     public static final String AUDIO_REQUEST_POST_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, AUDIO_REQUEST_POST_CSV).toString();
     public static final String DARTS_PORTAL_USERS1_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_USERS_CSV).toString();
     public static final String DARTS_PORTAL_COURTCLERK_USERS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_COURTCLERK_USERS_CSV).toString();
+    public static final String DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_COURTMANAGER_USERS_CSV).toString();
     public static final String DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_TRANSCRIBERS_USERS_CSV).toString();
     public static final String DARTS_PORTAL_LANGUAGESHOP_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_LANGUAGESHOP_USERS_CSV).toString();
+    public static final String DARTS_PORTAL_JUDGE_USERS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_JUDGE_USERS_CSV).toString();
+    
     public static final String DARTS_PORTAL_JUDGES_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_JUDGES_CSV).toString();
     public static final String CASE_HOUSE_ROOMS_HEARING_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, CASE_HOUSE_ROOMS_HEARING_FILE_PATH_CSV).toString();
     public static final String TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH_CSV).toString();
