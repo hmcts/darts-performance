@@ -28,6 +28,6 @@ public class RegisterWithTokenSOAPSimulation extends Simulation {
         );    
   
     setUp(
-        scn.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
+        scn.injectOpen(constantUsersPerSec(50).during(1)).protocols(httpProtocol));
     }  
 }

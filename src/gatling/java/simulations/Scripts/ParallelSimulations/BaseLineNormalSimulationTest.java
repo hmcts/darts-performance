@@ -37,6 +37,9 @@ public class BaseLineNormalSimulationTest extends Simulation {
     private static final String BASELINE_NORMAL_DELETE_AUDIO_REQUEST = "Baseline - Normal - DARTS - Api - DELETE Audio Request";
    // private static final String BASELINE_NORMAL_POST_AUDIO = "Baseline - Normal - DARTS - Api - POST Audio - User";
 
+   private static final int TOTAL_TEST_DURATION_MINUTES = 60;
+   private static final int TOTAL_TEST_DURATION_MILLIS = TOTAL_TEST_DURATION_MINUTES * 60 * 1000;
+
     @Override
     public void before() {
         System.out.println("Simulation is about to start!");
@@ -62,18 +65,18 @@ public class BaseLineNormalSimulationTest extends Simulation {
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolApi) {
         // Set up SOAP scenarios with configurable parameters
-        ScenarioBuilder baselineAddDocumentEvent = setUpAddDocumentEvent(BASELINE_NORMAL_ADD_DOCUMENT_EVENTS, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, AppConfig.EVENTS_BASELINE_NORMAL_REPEATS);
-        ScenarioBuilder baselineGetCases = setUpGetCases(BASELINE_NORMAL_GET_CASES, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, AppConfig.GET_CASES_BASELINE_NORMAL_REPEATS);
-        ScenarioBuilder baselineAddCase = setUpAddCase(BASELINE_NORMAL_ADD_CASES, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, AppConfig.ADD_CASES_BASELINE_NORMAL_REPEATS);
-        ScenarioBuilder baselineAddLogEntry = setUpAddLogEntry(BASELINE_NORMAL_ADD_LOG_ENTRY, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, AppConfig.ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS);
-        ScenarioBuilder baselineGetLogEntry = setUpGetLogEntry(BASELINE_NORMAL_GET_LOG_ENTRY, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, AppConfig.GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS);
-        ScenarioBuilder baselineAddAudio = setUpAddAudio(BASELINE_NORMAL_ADD_AUDIO, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, AppConfig.ADD_AUDIO_BASELINE_NORMAL_REPEATS);
+        ScenarioBuilder baselineAddDocumentEvent = setUpAddDocumentEvent(BASELINE_NORMAL_ADD_DOCUMENT_EVENTS, calculatePaceDuration(AppConfig.EVENTS_BASELINE_NORMAL_REPEATS), AppConfig.EVENTS_BASELINE_NORMAL_REPEATS);
+        ScenarioBuilder baselineGetCases = setUpGetCases(BASELINE_NORMAL_GET_CASES, calculatePaceDuration(AppConfig.GET_CASES_BASELINE_NORMAL_REPEATS), AppConfig.GET_CASES_BASELINE_NORMAL_REPEATS);
+        ScenarioBuilder baselineAddCase = setUpAddCase(BASELINE_NORMAL_ADD_CASES, calculatePaceDuration(AppConfig.ADD_CASES_BASELINE_NORMAL_REPEATS), AppConfig.ADD_CASES_BASELINE_NORMAL_REPEATS);
+        ScenarioBuilder baselineAddLogEntry = setUpAddLogEntry(BASELINE_NORMAL_ADD_LOG_ENTRY, calculatePaceDuration(AppConfig.ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS), AppConfig.ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS);
+        ScenarioBuilder baselineGetLogEntry = setUpGetLogEntry(BASELINE_NORMAL_GET_LOG_ENTRY, calculatePaceDuration(AppConfig.GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS), AppConfig.GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS);
+        ScenarioBuilder baselineAddAudio = setUpAddAudio(BASELINE_NORMAL_ADD_AUDIO, calculatePaceDuration(AppConfig.ADD_AUDIO_BASELINE_NORMAL_REPEATS), AppConfig.ADD_AUDIO_BASELINE_NORMAL_REPEATS);
 
         // Set up API scenarios with configurable parameters
-        ScenarioBuilder baselinePostAudioRequest = setUpPostAudioRequest(BASELINE_NORMAL_POST_AUDIO_REQUEST, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, AppConfig.POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS);
-        ScenarioBuilder baselineGetAudioRequest = setUpGetAudioRequest(BASELINE_NORMAL_GET_AUDIO_REQUEST, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, AppConfig.GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS);
-        ScenarioBuilder baselineDeleteAudioRequest = setUpDeleteAudioRequest(BASELINE_NORMAL_DELETE_AUDIO_REQUEST, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, AppConfig.DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS);
-        //ScenarioBuilder baselinePostAudio = setUpPostAudio(BASELINE_NORMAL_POST_AUDIO, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, AppConfig.POST_AUDIO_BASELINE_NORMAL_REPEATS);
+        ScenarioBuilder baselinePostAudioRequest = setUpPostAudioRequest(BASELINE_NORMAL_POST_AUDIO_REQUEST, calculatePaceDuration(AppConfig.POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS), AppConfig.POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS);
+        ScenarioBuilder baselineGetAudioRequest = setUpGetAudioRequest(BASELINE_NORMAL_GET_AUDIO_REQUEST, calculatePaceDuration(AppConfig.GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS), AppConfig.GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS);
+        ScenarioBuilder baselineDeleteAudioRequest = setUpDeleteAudioRequest(BASELINE_NORMAL_DELETE_AUDIO_REQUEST, calculatePaceDuration(AppConfig.DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS), AppConfig.DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS);
+        //ScenarioBuilder baselinePostAudio = setUpPostAudio(BASELINE_NORMAL_POST_AUDIO, calculatePaceDuration(AppConfig.POST_AUDIO_BASELINE_NORMAL_REPEATS), AppConfig.POST_AUDIO_BASELINE_NORMAL_REPEATS);
 
         // Call setUp once with all scenarios
         setUp(
@@ -88,6 +91,10 @@ public class BaseLineNormalSimulationTest extends Simulation {
                 baselineAddAudio.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS))).protocols(httpProtocolSoap)
                 // baselinePostAudio.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS))).protocols(httpProtocolApi)
             );
+    }
+
+    private int calculatePaceDuration(int repeats) {
+        return TOTAL_TEST_DURATION_MILLIS / repeats;
     }
 
     private ScenarioBuilder setUpAddDocumentEvent(String scenarioName, int paceDurationMillis, int repeats) {
