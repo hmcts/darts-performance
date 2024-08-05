@@ -57,13 +57,18 @@ public class RequestBodyBuilder {
         }
     }
 
-    public static String buildTranscriptionRequestBody(String hearingId, String caseId, String transcriptionUrgencyId, String transcriptionTypeId, String comment) {
+    public static String buildTranscriptionRequestBody(Session session) {
+        String hearingId = session.get("hea_id") != null ? "" + session.get("hea_id").toString() + "" : "null";
+        String caseId = session.get("cas_id") != null ? "" + session.get("cas_id").toString() + "" : "null";
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String randomComment = randomStringGenerator.generateRandomString(10);
+
         return String.format("{\"hearing_id\": \"%s\", " +
                 "\"case_id\": \"%s\", " +
-                "\"transcription_urgency_id\": \"%s\", " +
-                "\"transcription_type_id\": \"%s\", " +
+                "\"transcription_urgency_id\": \"3\", " +
+                "\"transcription_type_id\": \"999\", " +
                 "\"comment\": \"%s\"}",
-                hearingId, caseId, transcriptionUrgencyId, transcriptionTypeId, comment);
+                hearingId, caseId, randomComment);
     }
 
 
@@ -139,6 +144,17 @@ public class RequestBodyBuilder {
         "\"date_from\":%s," +
         "\"date_to\":%s}",
         caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
+    }
+
+    public static String buildChangeRetentionsBody(Session session) {
+        String caseId = session.get("getCaseId") != null ? "\"" + session.get("getCaseId").toString() + "\"" : "null";
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String randomComment = randomStringGenerator.generateRandomString(10);        
+    
+        return String.format("{\"case_id\":%s," +
+        "\"is_permanent_retention\":true," +
+        "\"comments\":Perf_Comment_%s}",
+        caseId, randomComment);
     }
     public static String buildTranscriptionsBody(Session session) {
         String hearingId = session.get("getHearingId") != null ? "" + session.get("getHearingId").toString() + "" : "null";       

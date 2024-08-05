@@ -31,5 +31,5 @@ public class AudioRequestGetSimulation extends Simulation {
     setUp(
              scn1.injectOpen(atOnceUsers(1)).protocols(httpProtocol)
         );
-}    
+    }    
 }

@@ -104,7 +104,7 @@ public final class DartsPortalRequestTranscriptionScenario {
           .exec(
             http("request_25")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions")
-              .headers(Headers.headers_6)
+              .headers(Headers.getHeaders(8))
               .body(StringBody(session -> session.get("xmlPayload"))).asJson()              
           )
           .exec(

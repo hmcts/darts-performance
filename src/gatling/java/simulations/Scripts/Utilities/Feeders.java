@@ -32,6 +32,7 @@ public class Feeders {
     public static final FeederBuilder<String> CaseHouseRoomsHearingDetails;
     public static final FeederBuilder<String> TransformedMediaDownloadIdCSV;
     public static final FeederBuilder<String> TransformedMediaPlaybackIdCSV;
+    public static final FeederBuilder<String> TranscriptionPostDetails;
 
     private static final AtomicInteger COUNTER;
     private static final Logger log = Logger.getLogger(Feeders.class.getName());
@@ -67,7 +68,9 @@ public class Feeders {
         //Transformed Media Id's
         TransformedMediaDownloadIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH).random();
         TransformedMediaPlaybackIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH).random();
-
+       
+        //Transcription Post body details
+        TranscriptionPostDetails = CoreDsl.csv(AppConfig.TRANSCRIPTION_POST_FILE_PATH).random();
 
         COUNTER = new AtomicInteger(0);
         // RANDOM_USER_FEEDER = jdbcFeeder("SELECT * FROM darts.user_account "
@@ -80,6 +83,10 @@ public class Feeders {
 
     public static FeederBuilder<String> createCaseHouseRoomsHearingDetails() {
         return CaseHouseRoomsHearingDetails;
+    }
+
+    public static FeederBuilder<String> createTranscriptionPostDetails() {
+        return TranscriptionPostDetails;
     }
     public static FeederBuilder<String> createAudioRequestCSV() {
         return AudioRequestCSV;

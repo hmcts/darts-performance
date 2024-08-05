@@ -37,6 +37,9 @@ public class TwoSmokeSimulationTest extends Simulation {
     private static final String SMOKE_DELETE_AUDIO_REQUEST = "Smoke - DARTS - Api - DELETE Audio Request";
    // private static final String SMOKE_POST_AUDIO = "Smoke - DARTS - Api - POST Audio";
 
+   private static final int TOTAL_TEST_DURATION_MINUTES = 60;
+   private static final int TOTAL_TEST_DURATION_MILLIS = TOTAL_TEST_DURATION_MINUTES * 60 * 1000;
+
     @Override
     public void before() {
         System.out.println("Simulation is about to start!");
@@ -62,18 +65,18 @@ public class TwoSmokeSimulationTest extends Simulation {
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolApi) {
         // Set up SOAP scenarios with configurable parameters
-        ScenarioBuilder baselineAddDocumentEvent = setUpAddDocumentEvent(SMOKE_ADD_DOCUMENT_EVENTS, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.EVENTS_SMOKE_REPEATS);
-        ScenarioBuilder baselineGetCases = setUpGetCases(SMOKE_GET_CASES, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.GET_CASES_SMOKE_REPEATS);
-        ScenarioBuilder baselineAddCase = setUpAddCase(SMOKE_ADD_CASES, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.ADD_CASES_SMOKE_REPEATS);
-        ScenarioBuilder baselineAddLogEntry = setUpAddLogEntry(SMOKE_ADD_LOG_ENTRY, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.ADD_LOG_ENTRY_SMOKE_REPEATS);
-        ScenarioBuilder baselineGetLogEntry = setUpGetLogEntry(SMOKE_GET_LOG_ENTRY, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.GET_LOG_ENTRY_SMOKE_REPEATS);
-       // ScenarioBuilder baselineAddAudio = setUpAddAudio(SMOKE_ADD_AUDIO, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.ADD_AUDIO_SMOKE_REPEATS);
+        ScenarioBuilder baselineAddDocumentEvent = setUpAddDocumentEvent(SMOKE_ADD_DOCUMENT_EVENTS, calculatePaceDuration(AppConfig.EVENTS_SMOKE_REPEATS), AppConfig.EVENTS_SMOKE_REPEATS);
+        ScenarioBuilder baselineGetCases = setUpGetCases(SMOKE_GET_CASES, calculatePaceDuration(AppConfig.GET_CASES_SMOKE_REPEATS), AppConfig.GET_CASES_SMOKE_REPEATS);
+        ScenarioBuilder baselineAddCase = setUpAddCase(SMOKE_ADD_CASES, calculatePaceDuration(AppConfig.ADD_CASES_SMOKE_REPEATS), AppConfig.ADD_CASES_SMOKE_REPEATS);
+        ScenarioBuilder baselineAddLogEntry = setUpAddLogEntry(SMOKE_ADD_LOG_ENTRY, calculatePaceDuration(AppConfig.ADD_LOG_ENTRY_SMOKE_REPEATS), AppConfig.ADD_LOG_ENTRY_SMOKE_REPEATS);
+        ScenarioBuilder baselineGetLogEntry = setUpGetLogEntry(SMOKE_GET_LOG_ENTRY, calculatePaceDuration(AppConfig.GET_LOG_ENTRY_SMOKE_REPEATS), AppConfig.GET_LOG_ENTRY_SMOKE_REPEATS);
+       // ScenarioBuilder baselineAddAudio = setUpAddAudio(SMOKE_ADD_AUDIO, calculatePaceDuration(AppConfig.ADD_AUDIO_SMOKE_REPEATS), AppConfig.ADD_AUDIO_SMOKE_REPEATS);
 
         // Set up API scenarios with configurable parameters
-        ScenarioBuilder baselinePostAudioRequest = setUpPostAudioRequest(SMOKE_POST_AUDIO_REQUEST, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.POST_AUDIO_REQUEST_SMOKE_REPEATS);
-        ScenarioBuilder baselineGetAudioRequest = setUpGetAudioRequest(SMOKE_GET_AUDIO_REQUEST, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.GET_AUDIO_REQUEST_SMOKE_REPEATS);
-        ScenarioBuilder baselineDeleteAudioRequest = setUpDeleteAudioRequest(SMOKE_DELETE_AUDIO_REQUEST, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.DELETE_AUDIO_REQUEST_SMOKE_REPEATS);
-       // ScenarioBuilder baselinePostAudio = setUpPostAudio(SMOKE_POST_AUDIO, AppConfig.SMOKE_PACE_DURATION_MINS, AppConfig.POST_AUDIO_SMOKE_REPEATS);
+        ScenarioBuilder baselinePostAudioRequest = setUpPostAudioRequest(SMOKE_POST_AUDIO_REQUEST, calculatePaceDuration(AppConfig.POST_AUDIO_REQUEST_SMOKE_REPEATS), AppConfig.POST_AUDIO_REQUEST_SMOKE_REPEATS);
+        ScenarioBuilder baselineGetAudioRequest = setUpGetAudioRequest(SMOKE_GET_AUDIO_REQUEST, calculatePaceDuration(AppConfig.GET_AUDIO_REQUEST_SMOKE_REPEATS), AppConfig.GET_AUDIO_REQUEST_SMOKE_REPEATS);
+        ScenarioBuilder baselineDeleteAudioRequest = setUpDeleteAudioRequest(SMOKE_DELETE_AUDIO_REQUEST, calculatePaceDuration(AppConfig.DELETE_AUDIO_REQUEST_SMOKE_REPEATS), AppConfig.DELETE_AUDIO_REQUEST_SMOKE_REPEATS);
+       // ScenarioBuilder baselinePostAudio = setUpPostAudio(SMOKE_POST_AUDIO, calculatePaceDuration(AppConfig.POST_AUDIO_SMOKE_REPEATS), AppConfig.POST_AUDIO_SMOKE_REPEATS);
 
         // Call setUp once with all scenarios
         setUp(
@@ -90,6 +93,9 @@ public class TwoSmokeSimulationTest extends Simulation {
             );
     }
 
+    private int calculatePaceDuration(int repeats) {
+        return TOTAL_TEST_DURATION_MILLIS / repeats;
+    }
     private ScenarioBuilder setUpAddDocumentEvent(String scenarioName, int paceDurationMillis, int repeats) {
         return scenario(scenarioName)        
         .group(scenarioName)
@@ -134,7 +140,7 @@ public class TwoSmokeSimulationTest extends Simulation {
                 .repeat(repeats)
                 .on(exec(GetCourtlogTokenScenario.getCourtLogToken().pace(Duration.ofMillis(paceDurationMillis)))));
     }
-
+    
     // private ScenarioBuilder setUpAddAudio(String scenarioName, int paceDurationMillis, int repeats) {
     //     return scenario(scenarioName)
     //     .group(scenarioName)
@@ -163,6 +169,8 @@ public class TwoSmokeSimulationTest extends Simulation {
                 ).pace(Duration.ofMillis(paceDurationMillis))
             );
     }
+
+    
 
     private ScenarioBuilder setUpDeleteAudioRequest(String scenarioName, int paceDurationMillis, int repeats) {
         return scenario(scenarioName)

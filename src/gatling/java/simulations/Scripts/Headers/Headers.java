@@ -221,19 +221,19 @@ public class Headers {
         Map.entry("Referer", "https://darts.test.apps.hmcts.net/work/#{getTranscriptionId}")
     ); 
     
-    public static final Map<String, String> headers_6 = Map.ofEntries(
-    Map.entry("Content-Type", "application/json"),
-    Map.entry("Origin", "https://darts.test.apps.hmcts.net"),
-    Map.entry("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128"),
-    Map.entry("Request-Id", "|597bfa8201c241449ff1bff600c82581.c6401b1f193f49e5"),
-    Map.entry("Sec-Fetch-Dest", "empty"),
-    Map.entry("Sec-Fetch-Mode", "cors"),
-    Map.entry("Sec-Fetch-Site", "same-origin"),
-    Map.entry("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123"),
-    Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("sec-ch-ua-platform", "Windows"),
-    Map.entry("traceparent", "00-597bfa8201c241449ff1bff600c82581-c6401b1f193f49e5-01")
-    );
+    // public static final Map<String, String> headers_6 = Map.ofEntries(
+    // Map.entry("Content-Type", "application/json"),
+    // Map.entry("Origin", "https://darts.test.apps.hmcts.net"),
+    // Map.entry("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128"),
+    // Map.entry("Request-Id", "|597bfa8201c241449ff1bff600c82581.c6401b1f193f49e5"),
+    // Map.entry("Sec-Fetch-Dest", "empty"),
+    // Map.entry("Sec-Fetch-Mode", "cors"),
+    // Map.entry("Sec-Fetch-Site", "same-origin"),
+    // Map.entry("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123"),
+    // Map.entry("sec-ch-ua-mobile", "?0"),
+    // Map.entry("sec-ch-ua-platform", "Windows"),
+    // Map.entry("traceparent", "00-597bfa8201c241449ff1bff600c82581-c6401b1f193f49e5-01")
+    // );
 
         // Define headers for each case
         // Method to add an additional header conditionally
@@ -362,6 +362,31 @@ public class Headers {
                     headers.put("sec-ch-ua-mobile", "?0");
                     headers.put("sec-ch-ua-platform", "Windows");
                     headers.put("Referer", "https://darts.test.apps.hmcts.net/login");
+                    break;
+                case 8:
+                    headers.put("Content-Type", "application/json");
+                    headers.put("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128");
+                    headers.put("Request-Id", "|597bfa8201c241449ff1bff600c82581.c6401b1f193f49e5");
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("traceparent", "00-597bfa8201c241449ff1bff600c82581-c6401b1f193f49e5-01");
+                    break;
+                case 9:
+                headers.put("Content-Type", "application/json");
+                headers.put("Origin", "https://darts.test.apps.hmcts.net");
+                headers.put("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128");
+                headers.put("Request-Id", "|597bfa8201c241449ff1bff600c82581.c6401b1f193f49e5");
+                headers.put("Sec-Fetch-Dest", "empty");
+                headers.put("Sec-Fetch-Mode", "cors");
+                headers.put("Sec-Fetch-Site", "same-origin");
+                headers.put("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123");
+                headers.put("sec-ch-ua-mobile", "?0");
+                headers.put("sec-ch-ua-platform", "Windows");
+                headers.put("traceparent", "00-597bfa8201c241449ff1bff600c82581-c6401b1f193f49e5-01");
             }
             return headers;
         }

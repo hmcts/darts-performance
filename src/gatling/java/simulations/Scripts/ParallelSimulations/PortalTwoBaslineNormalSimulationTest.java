@@ -4,6 +4,7 @@ import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalApproveAudioScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalChangeRetentionScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
@@ -123,6 +124,7 @@ public class PortalTwoBaslineNormalSimulationTest extends Simulation {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createJudgeUsers()))
             .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
+            .exec(DartsPortalChangeRetentionScenario.DartsPortalChangeRetention())
             .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
     }
     @Override

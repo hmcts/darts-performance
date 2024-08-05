@@ -11,33 +11,33 @@ public class AppConfig {
     //EXTERNAL Tenant
     //old public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = "test";
     public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = "test";
-    //old public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";
-    public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";
-    //old public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";
-    public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";
+    //old public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";       
+    public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";   
+    //old public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";   
+    public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";   
     
-    // Old public static final String TENANT_NAME = "hmctsstgextid";
+    // Old public static final String TENANT_NAME = "test";
 
     public static final String TENANT_NAME = "test";
 
     //INTERNAL Tenant
-    public static final String PERFORMANCE_INTERNAL_CLIENT_ID = "test";     
-    public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = "test";    
-    public static final String PERFORMANCE_INTERNAL_TENANT_ID = "test";
+    public static final String PERFORMANCE_INTERNAL_CLIENT_ID = "test";   
+    public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = "test";   
+    public static final String PERFORMANCE_INTERNAL_TENANT_ID = "test";   
 
     //Performance Env
-    public static final String PERFORMANCE_GATEWAY_BASE_URL= "test";
-    public static final String PERFORMANCE_PROXY_BASE_URL= "test";
-    public static final String PERFORMANCE_DARTS_API_BASE_URL= "test";
-    public static final String PERFORMANCE_DARTS_BASE_URL= "test";
-    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/" + TENANT_NAME+".onmicrosoft.com/B2C_1_darts_externaluser_signin/";
-    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "oauth2/v2.0/authorize";
+    public static final String PERFORMANCE_GATEWAY_BASE_URL= "test";   
+    public static final String PERFORMANCE_PROXY_BASE_URL= "test";   
+    public static final String PERFORMANCE_DARTS_API_BASE_URL= "test";   
+    public static final String PERFORMANCE_DARTS_BASE_URL= "test";   
+    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/" + TENANT_NAME+"test";   
+    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "test";   
     public static final String PERFORMANCE_B2B_Login = "https://"+TENANT_NAME+".b2clogin.com";
     public static final String PERFORMANCE_B2B_Token = "/"+TENANT_NAME+".onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
-    // Old public static final String PERFORMANCE_SCOPE = ""test";";
-    public static final String PERFORMANCE_SCOPE = "https://"+TENANT_NAME+".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "/test";
+    // Old public static final String PERFORMANCE_SCOPE = "test";   
+    public static final String PERFORMANCE_SCOPE = "https://"+TENANT_NAME+".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "test";   
 
-    public static final String PERFORMANCE_GRANT_TYPE = "password";
+    public static final String PERFORMANCE_GRANT_TYPE = "test";
  
     public static final long RANK_UP_TIME_SECONDS;
     public static final long RANK_DOWN_TIME_SECONDS;
@@ -47,7 +47,7 @@ public class AppConfig {
     public static final boolean DEBUG;
     public static final String ENVIRONMENT;
 
-    //Users
+    //Users For Portal
     public static final int USERS_PER_SECOND;
     public static final int PIPELINE_USERS_PER_SECOND;
     public static final int CONSTANT_CONCURRENT_USERS;
@@ -56,6 +56,12 @@ public class AppConfig {
     public static final int COURT_MANAGER_RAMP_UP_USERS;
     public static final int TRANSCRIBER_RAMP_UP_USERS;
     public static final int LANGUAGE_SHOP_RAMP_UP_USERS;
+   
+    //Users For API / Soap
+    public static final int SOAP_USERS_COUNT;
+    public static final int POST_AUDIO_USERS_COUNT;
+    public static final int GET_AUDIO_USERS_COUNT;
+    public static final int DELETE_AUDIO_USERS_COUNT;
 
     //Users Ramp up Duration
     public static final int RAMP_UP_DURATION_OF_JUDGES;
@@ -70,12 +76,12 @@ public class AppConfig {
     public static final long SMOKE_TEST_DURATION_MINUTES;
     public static final long BASELINE_NORMAL_DURATION_MINUTES;
     public static final long PEAK_TEST_DURATION_MINUTES;
-    
-    //Soap Requests
-    public static final int SOAP_BASELINE_REPEATS;
-    public static final int SOAP_RAMPUP_REPEATS;
-    public static final int SOAP_SPIKE_REPEATS;
-   
+       
+    //SOAP REQUESTS OLD PARAMETERS
+    public static final int SOAP_SMOKE_REPEATS;
+    public static final int SOAP_BASELINE_NORMAL_REPEATS;
+    public static final int SOAP_BASELINE_PEAK_REPEATS;
+
     //Events Requests
     public static final int EVENTS_SMOKE_REPEATS;
     public static final int EVENTS_BASELINE_NORMAL_REPEATS;
@@ -136,7 +142,7 @@ public class AppConfig {
     public static final String DB_USERNAME;
     public static final String DB_PASSWORD;
 
-    //public static final String DB_URL = "darts-api-stg.postgres.database.azure.com";
+    //public static final String DB_URL = "test";
 
     static {
         TEST_TYPE = TestType.valueOf(getProperty("TEST_URL", TestType.PERFORMANCE.name()));
@@ -146,12 +152,21 @@ public class AppConfig {
         RANK_UP_TIME_SECONDS = Long.parseLong(getProperty("RANK_UP_TIME_SECONDS", "120"));
         RANK_DOWN_TIME_SECONDS = Long.parseLong(getProperty("RANK_DOWN_TIME_SECONDS", "120"));
 
-        //Users
+        //Users for Portal
         JUDGE_RAMP_UP_USERS = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
         COURT_CLERK_RAMP_UP_USERS = Integer.parseInt(getProperty("COURT_CLERK_RAMP_UP_USERS", "1"));
         COURT_MANAGER_RAMP_UP_USERS = Integer.parseInt(getProperty("COURT_MANAGER_RAMP_UP_USERS", "1"));
         TRANSCRIBER_RAMP_UP_USERS = Integer.parseInt(getProperty("TRANSCRIBER_RAMP_UP_USERS", "1"));
         LANGUAGE_SHOP_RAMP_UP_USERS = Integer.parseInt(getProperty("LANGUAGE_SHOP_RAMP_UP_USERS", "1"));
+
+        //Users for API / SOAP
+        SOAP_USERS_COUNT = Integer.parseInt(getProperty("SOAP_USERS_COUNT", "95"));
+        SOAP_SMOKE_REPEATS = Integer.parseInt(getProperty("SOAP_SMOKE_REPEATS", "50"));
+        SOAP_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("SOAP_BASELINE_NORMAL_REPEATS", "100"));
+        SOAP_BASELINE_PEAK_REPEATS = Integer.parseInt(getProperty("SOAP_BASELINE_PEAK_REPEATS", "100"));
+        POST_AUDIO_USERS_COUNT = Integer.parseInt(getProperty("LANGUAGE_SHOP_RAMP_UP_USERS", "1"));
+        GET_AUDIO_USERS_COUNT = Integer.parseInt(getProperty("LANGUAGE_SHOP_RAMP_UP_USERS", "1"));
+        DELETE_AUDIO_USERS_COUNT = Integer.parseInt(getProperty("LANGUAGE_SHOP_RAMP_UP_USERS", "1"));
 
         //Users Ramp up Duration
         RAMP_UP_DURATION_OF_JUDGES = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
@@ -184,11 +199,6 @@ public class AppConfig {
         SMOKE_TEST_DURATION_MINUTES = Long.parseLong(getProperty("BASELINE_TEST_DURATION_MINUTES", "30"));
         BASELINE_NORMAL_DURATION_MINUTES = Long.parseLong(getProperty("RAMP_TEST_DURATION_MINUTES", "20"));
         PEAK_TEST_DURATION_MINUTES = Long.parseLong(getProperty("SPIKE_TEST_DURATION_MINUTES", "10"));
-
-        //Soap Requests
-        SOAP_BASELINE_REPEATS = Integer.parseInt(getProperty("SOAP_BASELINE_REPEATS", "100"));
-        SOAP_RAMPUP_REPEATS = Integer.parseInt(getProperty("SOAP_RAMPUP_REPEATS", "50"));
-        SOAP_SPIKE_REPEATS = Integer.parseInt(getProperty("SOAP_SPIKE_REPEATS", "100"));
         
         //Event Requests
         EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("EVENTS_SMOKE_REPEATS", "538"));
@@ -211,22 +221,22 @@ public class AppConfig {
         DELETE_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_PEAK_REPEATS", "95"));
                 
         //Add Cases Requests
-        ADD_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_CASES_SMOKE_REPEATS", "698"));
+        ADD_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_CASES_SMOKE_REPEATS", "10"));
         ADD_CASES_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("ADD_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "3490"));
         ADD_CASES_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_CASES_REQUEST_PEAK_REPEATS", "6980"));
         
         //Get Cases Requests
-        GET_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_CASES_SMOKE_REPEATS", "158"));
+        GET_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_CASES_SMOKE_REPEATS", "10"));
         GET_CASES_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("GET_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "790"));
         GET_CASES_PEAK_REPEATS = Integer.parseInt(getProperty("GET_CASES_REQUEST_PEAK_REPEATS", "1580"));
 
         //Add Log Entry Requests
-        ADD_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_SMOKE_REPEATS", "2114"));
+        ADD_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_SMOKE_REPEATS", "10"));
         ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "10571"));
         ADD_LOG_ENTRY_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_PEAK_REPEATS", "21142"));
 
         //Get Log Entry Requests
-        GET_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_SMOKE_REPEATS", "2114"));
+        GET_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_SMOKE_REPEATS", "10"));
         GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "10571"));
         GET_LOG_ENTRY_PEAK_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_PEAK_REPEATS", "21142"));
 
@@ -292,15 +302,15 @@ public class AppConfig {
 
 
         //Users
-        DARTS_API_USERNAME("test"),
-        DARTS_API_GLOBAL_USERNAME("test"),
-        DARTS_API_PASSWORD("test"),
-        DARTS_SOAP_USERNAME("test"),
-        DARTS_SOAP_PASSWORD("test"),
-        DARTS_API_USERNAME2("test"),
-        DARTS_API_PASSWORD2("test"),
-        DARTS_SOAP_EXTERNAL_USERNAME("test"),
-        DARTS_SOAP_EXTERNAL_PASSWORD("test");
+        DARTS_API_USERNAME("darts.transcriber@hmcts.net"),
+        DARTS_API_GLOBAL_USERNAME("darts_global_test_user@hmcts.net"),
+        DARTS_API_PASSWORD("PerfTester@01"),
+        DARTS_SOAP_USERNAME("xhibit_ws_user"),
+        DARTS_SOAP_PASSWORD("l0g1c@"),
+        DARTS_API_USERNAME2("darts.admin@hmcts.net"),
+        DARTS_API_PASSWORD2("PerfTester@01"),
+        DARTS_SOAP_EXTERNAL_USERNAME("viq_ws_user"),
+        DARTS_SOAP_EXTERNAL_PASSWORD("darts");
 
         private final String url;
         EnvironmentURL(String url) {
@@ -403,9 +413,9 @@ public class AppConfig {
             addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(PEAK_TEST_DURATION_MINUTES));
 
             //Soap Requests
-            addValueToBuilder(builder, "Number of repeats for the baseline Soap Request", String.valueOf(SOAP_BASELINE_REPEATS));
-            addValueToBuilder(builder, "Number of repeats for the ramp up Soap Request", String.valueOf(SOAP_RAMPUP_REPEATS));
-            addValueToBuilder(builder, "Number of repeats for the spike Soap Request", String.valueOf(SOAP_SPIKE_REPEATS));
+            addValueToBuilder(builder, "Number of repeats for the baseline Soap Request", String.valueOf(SOAP_SMOKE_REPEATS));
+            addValueToBuilder(builder, "Number of repeats for the ramp up Soap Request", String.valueOf(SOAP_BASELINE_NORMAL_REPEATS));
+            addValueToBuilder(builder, "Number of repeats for the spike Soap Request", String.valueOf(SOAP_BASELINE_PEAK_REPEATS));
 
             addValueToBuilder(builder, "The duration in minutes of pacing for the repeats within the smoke test", String.valueOf(SMOKE_PACE_DURATION_MINS));
             addValueToBuilder(builder, "The duration in minutes of pacing for the repeats within the baseline standard test", String.valueOf(BASELINE_NORMAL_PACE_DURATION_MINS));
