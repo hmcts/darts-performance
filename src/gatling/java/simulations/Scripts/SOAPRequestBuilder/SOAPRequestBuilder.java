@@ -144,6 +144,73 @@ public class SOAPRequestBuilder {
         registrationToken, courtHouseName, courtRoom, caseName, eventText);        
     }
 
+    public static String AddDocumentCPPEventTokenRequest(Session session) {
+
+        String registrationToken = session.get("registrationToken") != null ? session.get("registrationToken").toString() : "";
+
+        // Retrieve values from session or define defaults if needed
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoom = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
+
+        // Generate dynamic values
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String caseName = randomStringGenerator.generateRandomString(10);
+        String eventText = randomStringGenerator.generateRandomString(10);
+
+        // Construct SOAP request
+        return String.format("<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
+        "   <s:Header>\n" +
+        "      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n" +
+        "         <wsse:BinarySecurityToken QualificationValueType=\"http://schemas.emc.com/documentum#ResourceAccessToken\" xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"RAD\">%s</wsse:BinarySecurityToken>\n" +
+        "      </wsse:Security>\n" +
+        "   </s:Header>\n" +
+        "       <s:Body>\n" +
+        "      <ns5:addDocument xmlns:ns5=\"http://com.synapps.mojdarts.service.com\">\n" +
+        "            <messageId>2005016</messageId>\n" +
+        "            <type>2198</type>\n" +
+        "            <subType>3940</subType>\n" +
+        "            <document><![CDATA[<be:DartsEvent xmlns:be=\"urn:integration-cjsonline-gov-uk:pilot:entities\" ID=\"-2005016\" Y=\"2024\" M=\"02\" D=\"26\" H=\"17\" MIN=\"55\" S=\"15\"><be:CourtHouse>%s</be:CourtHouse><be:CourtRoom>%s</be:CourtRoom><be:CaseNumbers><be:CaseNumber>%s</be:CaseNumber></be:CaseNumbers><be:EventText>Perf_CPP Non daily test event_%</be:EventText></be:DartsEvent>]]></document>\n" +             
+    //    "            <document>&lt;be:DartsEvent xmlns:be=&quot;urn:integration-cjsonline-gov-uk:pilot:entities&quot; ID=&quot;2005012&quot; Y=&quot;2024&quot; M=&quot;02&quot; D=&quot;26&quot; H=&quot;15&quot; MIN=&quot;21&quot; S=&quot;43&quot;&gt;&lt;be:CourtHouse&gt;%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n" +
+        "            </ns5:addDocument>\n" +
+        "        </s:Body>\n" +
+        "     </s:Envelope>",
+        registrationToken, courtHouseName, courtRoom, caseName, eventText);        
+    }
+
+    public static String AddDocumentXhibitEventTokenRequest(Session session) {
+
+        String registrationToken = session.get("registrationToken") != null ? session.get("registrationToken").toString() : "";
+
+        // Retrieve values from session or define defaults if needed
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoom = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
+
+        // Generate dynamic values
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        String caseName = randomStringGenerator.generateRandomString(10);
+        String eventText = randomStringGenerator.generateRandomString(10);
+
+        // Construct SOAP request
+        return String.format("<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
+        "   <s:Header>\n" +
+        "      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n" +
+        "         <wsse:BinarySecurityToken QualificationValueType=\"http://schemas.emc.com/documentum#ResourceAccessToken\" xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"RAD\">%s</wsse:BinarySecurityToken>\n" +
+        "      </wsse:Security>\n" +
+        "   </s:Header>\n" +
+        "       <s:Body>\n" +
+        "      <ns5:addDocument xmlns:ns5=\"http://com.synapps.mojdarts.service.com\">\n" +
+        "            <messageId>2005014</messageId>\n" +
+        "            <type>2198</type>\n" +
+        "            <subType>3940</subType>\n" +
+        "              <document><![CDATA[<be:DartsEvent xmlns:be=\"urn:integration-cjsonline-gov-uk:pilot:entities\" ID=\"2005014\" Y=\"2024\" M=\"02\" D=\"26\" H=\"17\" MIN=\"28\" S=\"15\"><be:CourtHouse>%s</be:CourtHouse><be:CourtRoom>%s</be:CourtRoom><be:CaseNumbers><be:CaseNumber>%s</be:CaseNumber></be:CaseNumbers><be:EventText>Perf_Xhibit Non daily test event_%</be:EventText></be:DartsEvent>]]></document>\n" +
+    //    "            <document><![CDATA[<be:DartsEvent xmlns:be=\"urn:integration-cjsonline-gov-uk:pilot:entities\" ID=\"-2005016\" Y=\"2024\" M=\"02\" D=\"26\" H=\"17\" MIN=\"55\" S=\"15\"><be:CourtHouse>%s</be:CourtHouse><be:CourtRoom>%s</be:CourtRoom><be:CaseNumbers><be:CaseNumber>%s</be:CaseNumber></be:CaseNumbers><be:EventText>Perf_CPP Non daily test event</be:EventText></be:DartsEvent>]]></document>\n" +             
+    //    "            <document>&lt;be:DartsEvent xmlns:be=&quot;urn:integration-cjsonline-gov-uk:pilot:entities&quot; ID=&quot;2005012&quot; Y=&quot;2024&quot; M=&quot;02&quot; D=&quot;26&quot; H=&quot;15&quot; MIN=&quot;21&quot; S=&quot;43&quot;&gt;&lt;be:CourtHouse&gt;%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n" +
+        "            </ns5:addDocument>\n" +
+        "        </s:Body>\n" +
+        "     </s:Envelope>",
+        registrationToken, courtHouseName, courtRoom, caseName, eventText);        
+    }
+
     public static String GetCasesUserRequest(Session session, String USERNAME, String PASSWORD) {
         // Retrieve values from session or define defaults if needed
         String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
