@@ -11,34 +11,34 @@ public class AppConfig {
     //EXTERNAL Tenant
     //old public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = "test";
     public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = "test";
-    //old public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";       
-    public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";   
-    //old public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";   
-    public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";   
+    //old public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";
+    public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";
+    //old public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";
+    public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";
     
-    // Old public static final String TENANT_NAME = "test";
+    // Old public static final String TENANT_NAME = "hmctsstgextid";
 
     public static final String TENANT_NAME = "test";
 
     //INTERNAL Tenant
-    public static final String PERFORMANCE_INTERNAL_CLIENT_ID = "test";   
-    public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = "test";   
-    public static final String PERFORMANCE_INTERNAL_TENANT_ID = "test";   
+    public static final String PERFORMANCE_INTERNAL_CLIENT_ID = "test";
+    public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = "test";     
+    public static final String PERFORMANCE_INTERNAL_TENANT_ID = "test";
 
     //Performance Env
-    public static final String PERFORMANCE_GATEWAY_BASE_URL= "test";   
-    public static final String PERFORMANCE_PROXY_BASE_URL= "test";   
-    public static final String PERFORMANCE_DARTS_API_BASE_URL= "test";   
-    public static final String PERFORMANCE_DARTS_BASE_URL= "test";   
-    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/" + TENANT_NAME+"test";   
-    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "test";   
+    public static final String PERFORMANCE_GATEWAY_BASE_URL= "test";
+    public static final String PERFORMANCE_PROXY_BASE_URL= "test";
+    public static final String PERFORMANCE_DARTS_API_BASE_URL= "test";
+    public static final String PERFORMANCE_DARTS_BASE_URL= "test";
+    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/" + TENANT_NAME+"test";
+    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "test";
     public static final String PERFORMANCE_B2B_Login = "https://"+TENANT_NAME+".b2clogin.com";
-    public static final String PERFORMANCE_B2B_Token = "/"+TENANT_NAME+".onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
-    // Old public static final String PERFORMANCE_SCOPE = "test";   
-    public static final String PERFORMANCE_SCOPE = "https://"+TENANT_NAME+".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "test";   
+    public static final String PERFORMANCE_B2B_Token = "/"+TENANT_NAME+"test";
+    // Old public static final String PERFORMANCE_SCOPE = "test";
+    public static final String PERFORMANCE_SCOPE = "https://"+TENANT_NAME+".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "test";
 
     public static final String PERFORMANCE_GRANT_TYPE = "test";
- 
+
     public static final long RANK_UP_TIME_SECONDS;
     public static final long RANK_DOWN_TIME_SECONDS;
     public static final int REQUESTS_PER_SECOND;
@@ -83,6 +83,13 @@ public class AppConfig {
     public static final int SOAP_BASELINE_PEAK_REPEATS;
 
     //Events Requests
+
+    public static final int CPP_EVENTS_SMOKE_REPEATS;
+    public static final int CPP_BASELINE_NORMAL_REPEATS;
+    public static final int CPP_PEAK_REPEATS;
+    public static final int XHIBIT_EVENTS_SMOKE_REPEATS;
+    public static final int XHIBIT_BASELINE_NORMAL_REPEATS;
+    public static final int XHIBIT_PEAK_REPEATS;
     public static final int EVENTS_SMOKE_REPEATS;
     public static final int EVENTS_BASELINE_NORMAL_REPEATS;
     public static final int EVENTS_PEAK_REPEATS;
@@ -142,7 +149,7 @@ public class AppConfig {
     public static final String DB_USERNAME;
     public static final String DB_PASSWORD;
 
-    //public static final String DB_URL = "test";
+    //public static final String DB_URL = "darts-api-stg.postgres.database.azure.com";
 
     static {
         TEST_TYPE = TestType.valueOf(getProperty("TEST_URL", TestType.PERFORMANCE.name()));
@@ -201,6 +208,15 @@ public class AppConfig {
         PEAK_TEST_DURATION_MINUTES = Long.parseLong(getProperty("SPIKE_TEST_DURATION_MINUTES", "10"));
         
         //Event Requests
+
+        CPP_EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("CPP_EVENTS_SMOKE_REPEATS", "7"));
+        CPP_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("CPP_BASELINE_NORMAL_REPEATS", "29"));
+        CPP_PEAK_REPEATS = Integer.parseInt(getProperty("CPP_PEAK_REPEATS", "57"));
+       
+        XHIBIT_EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("XHIBIT_EVENTS_SMOKE_REPEATS", "4"));
+        XHIBIT_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("XHIBIT_BASELINE_NORMAL_REPEATS", "154"));       
+        XHIBIT_PEAK_REPEATS = Integer.parseInt(getProperty("XHIBIT_PEAK_REPEATS", "308"));
+
         EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("EVENTS_SMOKE_REPEATS", "538"));
         EVENTS_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("EVENTS_BASELINE_NORMAL_REPEATS", "2692"));
         EVENTS_PEAK_REPEATS = Integer.parseInt(getProperty("EVENTS_PEAK_REPEATS", "5384"));
@@ -221,19 +237,19 @@ public class AppConfig {
         DELETE_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_PEAK_REPEATS", "95"));
                 
         //Add Cases Requests
-        ADD_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_CASES_SMOKE_REPEATS", "10"));
-        ADD_CASES_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("ADD_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "3490"));
-        ADD_CASES_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_CASES_REQUEST_PEAK_REPEATS", "6980"));
+        ADD_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_CASES_SMOKE_REPEATS", "8"));
+        ADD_CASES_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("ADD_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "37"));
+        ADD_CASES_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_CASES_REQUEST_PEAK_REPEATS", "74"));
         
         //Get Cases Requests
-        GET_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_CASES_SMOKE_REPEATS", "10"));
-        GET_CASES_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("GET_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "790"));
-        GET_CASES_PEAK_REPEATS = Integer.parseInt(getProperty("GET_CASES_REQUEST_PEAK_REPEATS", "1580"));
+        GET_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_CASES_SMOKE_REPEATS", "2"));
+        GET_CASES_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("GET_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "9"));
+        GET_CASES_PEAK_REPEATS = Integer.parseInt(getProperty("GET_CASES_REQUEST_PEAK_REPEATS", "17"));
 
         //Add Log Entry Requests
-        ADD_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_SMOKE_REPEATS", "10"));
-        ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "10571"));
-        ADD_LOG_ENTRY_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_PEAK_REPEATS", "21142"));
+        ADD_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_SMOKE_REPEATS", "25"));
+        ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "115"));
+        ADD_LOG_ENTRY_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_PEAK_REPEATS", "225"));
 
         //Get Log Entry Requests
         GET_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_SMOKE_REPEATS", "10"));
@@ -257,9 +273,9 @@ public class AppConfig {
         PEAK_PACE_DURATION_MINS = Integer.parseInt(getProperty("PEAK_PACE_DURATION_MINS", "10"));
      
         //DataBase Connections
-        DB_URL = getProperty("DB_URL", "test");
-        DB_USERNAME = getProperty("DB_USERNAME", "test");
-        DB_PASSWORD = getProperty("DB_PASSWORD", "test");
+        DB_URL = getProperty("DB_URL", "jdbc:postgresql://darts-api-test.postgres.database.azure.com:5432/darts");
+        DB_USERNAME = getProperty("DB_USERNAME", "pgadmin");
+        DB_PASSWORD = getProperty("DB_PASSWORD", "oIYRDeLXDMLKahVUjP0D");
     
     }
 
@@ -302,15 +318,17 @@ public class AppConfig {
 
 
         //Users
-        DARTS_API_USERNAME("darts.transcriber@hmcts.net"),
-        DARTS_API_GLOBAL_USERNAME("darts_global_test_user@hmcts.net"),
-        DARTS_API_PASSWORD("PerfTester@01"),
-        DARTS_SOAP_USERNAME("xhibit_ws_user"),
-        DARTS_SOAP_PASSWORD("l0g1c@"),
-        DARTS_API_USERNAME2("darts.admin@hmcts.net"),
-        DARTS_API_PASSWORD2("PerfTester@01"),
-        DARTS_SOAP_EXTERNAL_USERNAME("viq_ws_user"),
-        DARTS_SOAP_EXTERNAL_PASSWORD("darts");
+        DARTS_API_USERNAME("test"),
+        DARTS_API_GLOBAL_USERNAME("test"),
+        DARTS_API_PASSWORD("test"),
+        DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME("test"),
+        DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD("test"),
+        DARTS_API_USERNAME2("test"),
+        DARTS_API_PASSWORD2("test"),
+        DARTS_SOAP_VIQ_EXTERNAL_USERNAME("test"),
+        DARTS_SOAP_VIQ_EXTERNAL_PASSWORD("test"),
+        DARTS_SOAP_CPP_EXTERNAL_USERNAME("test"),
+        DARTS_SOAP_CPP_EXTERNAL_PASSWORD("test");
 
         private final String url;
         EnvironmentURL(String url) {

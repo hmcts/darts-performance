@@ -8,9 +8,6 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
-
-import static io.gatling.javaapi.core.CoreDsl.regex;
-
 import java.sql.Connection;
 
 import io.gatling.javaapi.core.CoreDsl;
@@ -36,15 +33,6 @@ public class Feeders {
 
     private static final AtomicInteger COUNTER;
     private static final Logger log = Logger.getLogger(Feeders.class.getName());
-
-   
-    public static String getDartsExternalUsernameUrl() {
-        return AppConfig.EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl();
-    }
-
-    public static String getDartsExternalPasswordUrl() {
-        return AppConfig.EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl();
-    }
 
     static {        
         //Audio Files
