@@ -212,7 +212,7 @@ public final class DartsPortalRequestAudioScenario {
             return session.set("AudioXmlPayload", audioXmlPayload);             
           })      
           .exec(
-            http("Darts-Portal - Api - Audio-requests")
+            http(requestTypeSession -> "Darts-Portal - Api - Audio-requests/" + (requestTypeSession.get("requestType") != null ? requestTypeSession.get("requestType").toString().toLowerCase() : ""))
                 .post(requestTypeSession -> AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/" + (requestTypeSession.get("requestType") != null ? requestTypeSession.get("requestType").toString().toLowerCase() : ""))
                 .headers(Headers.StandardHeaders2)
                 .body(StringBody(session -> session.get("AudioXmlPayload"))).asJson()

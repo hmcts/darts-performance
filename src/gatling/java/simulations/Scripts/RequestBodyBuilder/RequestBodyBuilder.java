@@ -104,7 +104,9 @@ public class RequestBodyBuilder {
         String courtHouseName = session.get("courthouse_name") != null ? "\"" + session.get("courthouse_name").toString() + "\"" : "null";       
         String courtRoom = session.get("CourtRoom") != null ? "\"" + session.get("CourtRoom").toString() + "\"" : "null";        
        // String judgeName = session.get("JudgeName") != null ? "\"" + session.get("JudgeName").toString() + "\"" : "null";
-        String defendantName = session.get("defendant_name") != null ? "\"" + session.get("defendant_name").toString() + "\"" : "null";  
+       String defendantName = session.get("defendantFirstName") != null ? "\"" + session.get("defendantFirstName").toString() + "\"" : "null";  
+       
+       // String defendantName = session.get("defendant_name") != null ? "\"" + session.get("defendant_name").toString() + "\"" : "null";  
         String eventTextContains = session.get("EventTextContains") != null ? "\"" + session.get("EventTextContains").toString() + "\"" : "null";       
         String dateFrom = session.get("DateFrom") != null ? "\"" + session.get("DateFrom").toString() + "\"" : "null";
         String dateTo = session.get("DateTo") != null ? "\"" + session.get("DateTo").toString() + "\"" : "null";

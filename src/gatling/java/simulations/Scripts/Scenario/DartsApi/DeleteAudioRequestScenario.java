@@ -11,8 +11,8 @@ public final class DeleteAudioRequestScenario {
 
     private DeleteAudioRequestScenario() {}
     public static ChainBuilder DeleteAudioRequest() {
-        return group("Audio Request Get")
-            .on(exec(feed(Feeders.createAudioRequestCSV()))
+        return group("Audio Request Delete")
+            .on(exec(feed(Feeders.createTransformedMediaDownloadIdCSV()))
                 .exec(http("DARTS - Api - AudioRequest:DELETE")
                         .delete(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/transformed_media/#{getTransformedMediaId}")
                         .headers(Headers.AuthorizationHeaders)
