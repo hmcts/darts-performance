@@ -8,17 +8,17 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 
-public final class AddDocumentDailyListTokenScenario {
+public final class AddDocumentXhibitDailyListTokenScenario {
 
-    private AddDocumentDailyListTokenScenario() {}
-    public static ChainBuilder AddDocumentDailyListToken() {
+    private AddDocumentXhibitDailyListTokenScenario() {}
+    public static ChainBuilder AddDocumentXhibitDailyListToken() {
         return group("AddDocument SOAP Request Group")
             .on(feed(Feeders.createCourtHouseAndCourtRooms())   
             .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddDocumentDailyListTokenRequest(session);  
+                    String xmlPayload = SOAPRequestBuilder.AddDocumentXhibitDailyListTokenRequest(session);  
                     return session.set("xmlPayload", xmlPayload);  
                 })
-                .exec(http("DARTS - GateWay - Soap - AddDocument - DailyList - Token")
+                .exec(http("DARTS - GateWay - Soap - AddDocument - Xhibit DailyList - Token")
                         .post(SoapServiceEndpoint.DARTSService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))

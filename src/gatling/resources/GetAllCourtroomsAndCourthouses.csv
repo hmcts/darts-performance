@@ -1,778 +1,778 @@
 cth_id,courtroom_name,ctr_id,courthouse_name, display_name, courthouse_code
-1,3,6,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,
-1,1,1,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,
-1,14,2,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,
-1,15,3,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,
-1,16,4,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,
-1,17,5,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,
-1,99,7,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,
-2,5,9,AMERSHAM LAW COURTS,Amersham Law Courts,
-2,4,8,AMERSHAM LAW COURTS,Amersham Law Courts,
-3,3,12,AYLESBURY,Aylesbury,
-3,14,782,AYLESBURY,Aylesbury,
-3,5,14,AYLESBURY,Aylesbury,
-3,1,10,AYLESBURY,Aylesbury,
-3,2,11,AYLESBURY,Aylesbury,
-3,4,13,AYLESBURY,Aylesbury,
-4,1,15,BARNSTAPLE,Barnstaple,
-5,1,16,BARONS COURT WALSALL,Barons Court Walsall,
-6,1,17,BARROW-IN-FURNESS,Barrow-in-Furness,
-7,2,22,BASILDON,Basildon Combined Court Centre,
-7,3,23,BASILDON,Basildon Combined Court Centre,
-7,4,24,BASILDON,Basildon Combined Court Centre,
-7,5,25,BASILDON,Basildon Combined Court Centre,
-7,101,19,BASILDON,Basildon Combined Court Centre,
-7,102,20,BASILDON,Basildon Combined Court Centre,
-7,1,18,BASILDON,Basildon Combined Court Centre,
-7,199,21,BASILDON,Basildon Combined Court Centre,
-8,8,36,BIRMINGHAM,Birmingham,
-8,9,37,BIRMINGHAM,Birmingham,
-8,11,28,BIRMINGHAM,Birmingham,
-8,1,26,BIRMINGHAM,Birmingham,
-8,10,27,BIRMINGHAM,Birmingham,
-8,12,29,BIRMINGHAM,Birmingham,
-8,2,30,BIRMINGHAM,Birmingham,
-8,3,31,BIRMINGHAM,Birmingham,
-8,4,32,BIRMINGHAM,Birmingham,
-8,5,33,BIRMINGHAM,Birmingham,
-8,6,34,BIRMINGHAM,Birmingham,
-8,7,35,BIRMINGHAM,Birmingham,
-9,18,38,BIRMINGHAM LIBRARY AND REP,Birmingham Library and Rep,
-9,19,39,BIRMINGHAM LIBRARY AND REP,Birmingham Library and Rep,
-10,3,42,BLACKFRIARS,Blackfriars,
-10,1,40,BLACKFRIARS,Blackfriars,
-10,2,41,BLACKFRIARS,Blackfriars,
-10,4,43,BLACKFRIARS,Blackfriars,
-10,5,44,BLACKFRIARS,Blackfriars,
-10,6,45,BLACKFRIARS,Blackfriars,
-10,7,46,BLACKFRIARS,Blackfriars,
-10,8,47,BLACKFRIARS,Blackfriars,
-10,9,48,BLACKFRIARS,Blackfriars,
-10,BLACKFRS_08,49,BLACKFRIARS,Blackfriars,
-11,1,50,BOLTON,Bolton Combined Court Centre,
-11,2,51,BOLTON,Bolton Combined Court Centre,
-11,3,52,BOLTON,Bolton Combined Court Centre,
-11,4,53,BOLTON,Bolton Combined Court Centre,
-11,5,54,BOLTON,Bolton Combined Court Centre,
-11,10,801,BOLTON,Bolton Combined Court Centre,
-12,1,55,BOLTON STADIUM,Bolton Stadium,
-12,2,56,BOLTON STADIUM,Bolton Stadium,
-13,1,57,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-13,101,58,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-13,102,59,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-13,103,60,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-13,104,61,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-13,2,62,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-13,3,63,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-13,4,64,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-13,5,65,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-13,6,66,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-13,7,67,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-13,8,68,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,
-14,1,69,BRADFORD,Bradford Combined Court Centre,
-14,10,70,BRADFORD,Bradford Combined Court Centre,
-14,14,71,BRADFORD,Bradford Combined Court Centre,
-14,2,72,BRADFORD,Bradford Combined Court Centre,
-14,3,73,BRADFORD,Bradford Combined Court Centre,
-14,4,74,BRADFORD,Bradford Combined Court Centre,
-14,5,75,BRADFORD,Bradford Combined Court Centre,
-14,6,76,BRADFORD,Bradford Combined Court Centre,
-14,7,77,BRADFORD,Bradford Combined Court Centre,
-14,8,78,BRADFORD,Bradford Combined Court Centre,
-14,9,79,BRADFORD,Bradford Combined Court Centre,
-15,1,80,BRIGHTON MAGISTRATES COURT,Crown Court sitting at Brighton Magistrates Court,
-15,3,81,BRIGHTON MAGISTRATES COURT,Crown Court sitting at Brighton Magistrates Court,
-15,4,82,BRIGHTON MAGISTRATES COURT,Crown Court sitting at Brighton Magistrates Court,
-16,6,89,BRISTOL,Bristol,
-16,1,83,BRISTOL,Bristol,
-16,10,84,BRISTOL,Bristol,
-16,2,85,BRISTOL,Bristol,
-16,3,86,BRISTOL,Bristol,
-16,4,87,BRISTOL,Bristol,
-16,5,88,BRISTOL,Bristol,
-16,7,90,BRISTOL,Bristol,
-16,8,91,BRISTOL,Bristol,
-16,9,92,BRISTOL,Bristol,
-17,2,94,BURNLEY,Burnley Combined Court Centre,
-17,1,93,BURNLEY,Burnley Combined Court Centre,
-17,3,95,BURNLEY,Burnley Combined Court Centre,
-17,4,96,BURNLEY,Burnley Combined Court Centre,
-18,1,97,CAERNARFON,Caernarfon,
-18,2,98,CAERNARFON,Caernarfon,
-19,3,101,CAMBRIDGE,Cambridge,
-19,1,99,CAMBRIDGE,Cambridge,
-19,2,100,CAMBRIDGE,Cambridge,
-20,8,110,CANTERBURY,Canterbury Combined Court Centre,
-20,9,111,CANTERBURY,Canterbury Combined Court Centre,
-20,1,102,CANTERBURY,Canterbury Combined Court Centre,
-20,10,103,CANTERBURY,Canterbury Combined Court Centre,
-20,2,104,CANTERBURY,Canterbury Combined Court Centre,
-20,3,105,CANTERBURY,Canterbury Combined Court Centre,
-20,4,106,CANTERBURY,Canterbury Combined Court Centre,
-20,5,107,CANTERBURY,Canterbury Combined Court Centre,
-20,6,108,CANTERBURY,Canterbury Combined Court Centre,
-20,7,109,CANTERBURY,Canterbury Combined Court Centre,
-21,1,112,CARDIFF,Cardiff,
-21,106,113,CARDIFF,Cardiff,
-21,11,114,CARDIFF,Cardiff,
-21,2,115,CARDIFF,Cardiff,
-21,3,116,CARDIFF,Cardiff,
-21,4,117,CARDIFF,Cardiff,
-21,5,118,CARDIFF,Cardiff,
-21,6,119,CARDIFF,Cardiff,
-21,7,120,CARDIFF,Cardiff,
-21,8,121,CARDIFF,Cardiff,
-21,9,122,CARDIFF,Cardiff,
-21,CARDIFF_PORTABLE,123,CARDIFF,Cardiff,
-22,1,124,CARLISLE,Carlisle Combined Court Centre,
-22,2,125,CARLISLE,Carlisle Combined Court Centre,
-22,3,126,CARLISLE,Carlisle Combined Court Centre,
-22,4,127,CARLISLE,Carlisle Combined Court Centre,
-22,5,128,CARLISLE,Carlisle Combined Court Centre,
-22,6,129,CARLISLE,Carlisle Combined Court Centre,
-23,1,130,CARMARTHEN,Carmarthen,
-23,99,131,CARMARTHEN,Carmarthen,
-24,6,146,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,1,132,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,10,133,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,11,134,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,12,135,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,13,136,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,14,137,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,15,138,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,16,139,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,17,140,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,18,141,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,2,142,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,3,143,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,4,144,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,5,145,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,7,147,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,8,148,CENTRAL CRIMINAL COURT,Central Criminal Court,
-24,9,149,CENTRAL CRIMINAL COURT,Central Criminal Court,
-25,1,150,CHELMSFORD,Chelmsford,
-25,2,151,CHELMSFORD,Chelmsford,
-25,3,152,CHELMSFORD,Chelmsford,
-25,4,153,CHELMSFORD,Chelmsford,
-25,5,154,CHELMSFORD,Chelmsford,
-25,6,155,CHELMSFORD,Chelmsford,
-25,7,156,CHELMSFORD,Chelmsford,
-26,1,157,CHELMSFORD NEW MAGISTRATES,Chelmsford New Magistrates,
-26,7,158,CHELMSFORD NEW MAGISTRATES,Chelmsford New Magistrates,
-27,1,159,CHESTER,Chester,
-27,2,160,CHESTER,Chester,
-27,3,161,CHESTER,Chester,
-27,4,162,CHESTER,Chester,
-28,1,163,CHESTER CROWNE PLAZA,Chester Crowne Plaza,
-28,2,164,CHESTER CROWNE PLAZA,Chester Crowne Plaza,
-29,1,165,CHESTER MAGISTRATES COURT,Chester Magistrates Court,
-29,2,166,CHESTER MAGISTRATES COURT,Chester Magistrates Court,
-30,1,167,CHESTER TOWN HALL,Chester Town Hall,
-30,2,168,CHESTER TOWN HALL,Chester Town Hall,
-31,1,169,CHICHESTER,Chichester Combined Court Centre,
-31,2,170,CHICHESTER,Chichester Combined Court Centre,
-32,1,171,CIRENCESTER COURTHOUSE,Cirencester,
-33,2,173,COVENTRY,Coventry Combined Court Centre,
-33,4,175,COVENTRY,Coventry Combined Court Centre,
-33,3,174,COVENTRY,Coventry Combined Court Centre,
-33,1,172,COVENTRY,Coventry Combined Court Centre,
-34,1,176,COVENTRY CROWN COURT,Coventry Crown Court,
-34,4,179,COVENTRY CROWN COURT,Coventry Crown Court,
-34,3,178,COVENTRY CROWN COURT,Coventry Crown Court,
-34,2,177,COVENTRY CROWN COURT,Coventry Crown Court,
-35,7,186,COVERDALE HOUSE,Coverdale House,
-35,6,185,COVERDALE HOUSE,Coverdale House,
-35,5,184,COVERDALE HOUSE,Coverdale House,
-35,4,183,COVERDALE HOUSE,Coverdale House,
-35,3,182,COVERDALE HOUSE,Coverdale House,
-35,2,181,COVERDALE HOUSE,Coverdale House,
-35,1,180,COVERDALE HOUSE,Coverdale House,
-36,2,188,CROWN COURT AT ALDERSGATE HOUSE,Aldersgate House,
-36,1,187,CROWN COURT AT ALDERSGATE HOUSE,Aldersgate House,
-37,2,190,CROWN COURT AT HOLBORN,Crown Court at Holborn,
-37,1,189,CROWN COURT AT HOLBORN,Crown Court at Holborn,
-38,1,191,CROWN COURT AT MONUMENT,Crown Court at Monument,
-38,2,192,CROWN COURT AT MONUMENT,Crown Court at Monument,
-39,12,194,CROWN COURT SITTING AT BARCLAY ROAD,Croydon Crown Court sitting at Barclay Road,
-39,11,193,CROWN COURT SITTING AT BARCLAY ROAD,Croydon Crown Court sitting at Barclay Road,
-40,7,202,CROYDON,Croydon,
-40,8,203,CROYDON,Croydon,
-40,1,195,CROYDON,Croydon,
-40,2,196,CROYDON,Croydon,
-40,23,197,CROYDON,Croydon,
-40,3,198,CROYDON,Croydon,
-40,4,199,CROYDON,Croydon,
-40,5,200,CROYDON,Croydon,
-40,6,201,CROYDON,Croydon,
-41,11,204,CROYDON JURYS INN,Croydon Jurys Inn,
-41,12,205,CROYDON JURYS INN,Croydon Jurys Inn,
-42,1,206,DERBY,Derby Combined Court Centre,
-42,2,207,DERBY,Derby Combined Court Centre,
-42,3,208,DERBY,Derby Combined Court Centre,
-42,4,209,DERBY,Derby Combined Court Centre,
-42,5,210,DERBY,Derby Combined Court Centre,
-42,6,211,DERBY,Derby Combined Court Centre,
-43,1,212,DONCASTER,Doncaster,
-43,2,213,DONCASTER,Doncaster,
-44,1,214,DONCASTER CROWN COURT,Doncaster Crown Court,
-44,2,215,DONCASTER CROWN COURT,Doncaster Crown Court,
-45,1,216,DORCHESTER,Dorchester Combined Court Centre,
-46,1,217,DURHAM,Durham,
-46,2,218,DURHAM,Durham,
-47,8,230,EXETER,Exeter Combined Court Centre,
-47,1,219,EXETER,Exeter Combined Court Centre,
-47,10,220,EXETER,Exeter Combined Court Centre,
-47,11,221,EXETER,Exeter Combined Court Centre,
-47,12,222,EXETER,Exeter Combined Court Centre,
-47,13,223,EXETER,Exeter Combined Court Centre,
-47,2,224,EXETER,Exeter Combined Court Centre,
-47,3,225,EXETER,Exeter Combined Court Centre,
-47,4,226,EXETER,Exeter Combined Court Centre,
-47,5,227,EXETER,Exeter Combined Court Centre,
-47,6,228,EXETER,Exeter Combined Court Centre,
-47,7,229,EXETER,Exeter Combined Court Centre,
-47,9,231,EXETER,Exeter Combined Court Centre,
-48,1,232,FIELD HOUSE,Field House,
-48,10,233,FIELD HOUSE,Field House,
-48,11,234,FIELD HOUSE,Field House,
-48,12,235,FIELD HOUSE,Field House,
-48,13,236,FIELD HOUSE,Field House,
-48,14,237,FIELD HOUSE,Field House,
-48,2,238,FIELD HOUSE,Field House,
-48,3,239,FIELD HOUSE,Field House,
-48,7,243,FIELD HOUSE,Field House,
-48,5,241,FIELD HOUSE,Field House,
-48,6,242,FIELD HOUSE,Field House,
-48,FDHOUSE_10,247,FIELD HOUSE,Field House,
-48,FDHOUSE_09,246,FIELD HOUSE,Field House,
-48,9,245,FIELD HOUSE,Field House,
-48,4,240,FIELD HOUSE,Field House,
-48,8,244,FIELD HOUSE,Field House,
-49,2,249,GLOUCESTER,Gloucester,
-49,1,248,GLOUCESTER,Gloucester,
-50,3,252,GREAT GRIMSBY,Great Grimsby Combined Court Centre,
-50,2,251,GREAT GRIMSBY,Great Grimsby Combined Court Centre,
-50,1,250,GREAT GRIMSBY,Great Grimsby Combined Court Centre,
-51,1,253,GUILDFORD,Guildford,
-51,4,256,GUILDFORD,Guildford,
-51,3,255,GUILDFORD,Guildford,
-51,2,254,GUILDFORD,Guildford,
-52,5,257,GUILDFORD CROWN COURT SITE B,Guildford Crown Court Site B,
-53,1,258,HARROW,Harrow,
-53,3,260,HARROW,Harrow,
-53,2,259,HARROW,Harrow,
-53,8,265,HARROW,Harrow,
-53,7,264,HARROW,Harrow,
-53,6,263,HARROW,Harrow,
-53,5,262,HARROW,Harrow,
-53,4,261,HARROW,Harrow,
-54,7,267,HARROW CC AT WILLESDEN MC,Harrow CC at Willesden MC,
-54,6,266,HARROW CC AT WILLESDEN MC,Harrow CC at Willesden MC,
-56,2,269,HEREFORD,Hereford,
-56,1,268,HEREFORD,Hereford,
-57,3,272,HOVE TRIAL CENTRE,Hove Trial Centre,
-57,4,273,HOVE TRIAL CENTRE,Hove Trial Centre,
-57,1,270,HOVE TRIAL CENTRE,Hove Trial Centre,
-57,2,271,HOVE TRIAL CENTRE,Hove Trial Centre,
-58,1,274,HUNTINGDON LAW COURTS,Crown Court sitting at Huntingdon Law Courts,
-58,4,275,HUNTINGDON LAW COURTS,Crown Court sitting at Huntingdon Law Courts,
-58,5,276,HUNTINGDON LAW COURTS,Crown Court sitting at Huntingdon Law Courts,
-59,7,287,INNER LONDON,Inner London,
-59,9,289,INNER LONDON,Inner London,
-59,8,288,INNER LONDON,Inner London,
-59,1,277,INNER LONDON,Inner London,
-59,10,278,INNER LONDON,Inner London,
-59,11,279,INNER LONDON,Inner London,
-59,12,280,INNER LONDON,Inner London,
-59,13,281,INNER LONDON,Inner London,
-59,2,282,INNER LONDON,Inner London,
-59,3,283,INNER LONDON,Inner London,
-59,4,284,INNER LONDON,Inner London,
-59,5,285,INNER LONDON,Inner London,
-59,6,286,INNER LONDON,Inner London,
-60,28,290,INNER LONDON CC AT THE RCJ,Inner London CC at the RCJ,
-60,38,291,INNER LONDON CC AT THE RCJ,Inner London CC at the RCJ,
-61,3,294,IPSWICH,Ipswitch,
-61,5,296,IPSWICH,Ipswitch,
-61,4,295,IPSWICH,Ipswitch,
-61,2,293,IPSWICH,Ipswitch,
-61,1,292,IPSWICH,Ipswitch,
-62,9,310,ISLEWORTH,Isleworth,
-62,1,297,ISLEWORTH,Isleworth,
-62,10,298,ISLEWORTH,Isleworth,
-62,11,299,ISLEWORTH,Isleworth,
-62,12,300,ISLEWORTH,Isleworth,
-62,13,301,ISLEWORTH,Isleworth,
-62,14,302,ISLEWORTH,Isleworth,
-62,2,303,ISLEWORTH,Isleworth,
-62,3,304,ISLEWORTH,Isleworth,
-62,4,305,ISLEWORTH,Isleworth,
-62,5,306,ISLEWORTH,Isleworth,
-62,6,307,ISLEWORTH,Isleworth,
-62,7,308,ISLEWORTH,Isleworth,
-62,8,309,ISLEWORTH,Isleworth,
-63,4,314,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,
-63,1,311,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,
-63,2,312,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,
-63,3,313,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,
-63,5,315,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,
-63,6,316,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,
-63,7,317,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,
-64,7,327,KINGSTON UPON THAMES,Kingston,
-64,1,318,KINGSTON UPON THAMES,Kingston,
-64,10,319,KINGSTON UPON THAMES,Kingston,
-64,11,320,KINGSTON UPON THAMES,Kingston,
-64,12,321,KINGSTON UPON THAMES,Kingston,
-64,2,322,KINGSTON UPON THAMES,Kingston,
-64,3,323,KINGSTON UPON THAMES,Kingston,
-64,4,324,KINGSTON UPON THAMES,Kingston,
-64,5,325,KINGSTON UPON THAMES,Kingston,
-64,6,326,KINGSTON UPON THAMES,Kingston,
-64,8,328,KINGSTON UPON THAMES,Kingston,
-64,9,329,KINGSTON UPON THAMES,Kingston,
-66,2,331,LANCASTER,Lancaster,
-66,1,330,LANCASTER,Lancaster,
-67,1,332,LANCASTER ASHTON HALL,Lancaster Ashton Hall,
-68,13,337,LEEDS,Leeds Combined Court Centre,
-68,1,333,LEEDS,Leeds Combined Court Centre,
-68,10,334,LEEDS,Leeds Combined Court Centre,
-68,11,335,LEEDS,Leeds Combined Court Centre,
-68,12,336,LEEDS,Leeds Combined Court Centre,
-68,14,338,LEEDS,Leeds Combined Court Centre,
-68,15,339,LEEDS,Leeds Combined Court Centre,
-68,16,340,LEEDS,Leeds Combined Court Centre,
-68,17,341,LEEDS,Leeds Combined Court Centre,
-68,18,342,LEEDS,Leeds Combined Court Centre,
-68,19,343,LEEDS,Leeds Combined Court Centre,
-68,2,344,LEEDS,Leeds Combined Court Centre,
-68,22,345,LEEDS,Leeds Combined Court Centre,
-68,27,346,LEEDS,Leeds Combined Court Centre,
-68,3,347,LEEDS,Leeds Combined Court Centre,
-68,4,348,LEEDS,Leeds Combined Court Centre,
-68,5,349,LEEDS,Leeds Combined Court Centre,
-68,6,350,LEEDS,Leeds Combined Court Centre,
-68,7,351,LEEDS,Leeds Combined Court Centre,
-68,8,352,LEEDS,Leeds Combined Court Centre,
-68,9,353,LEEDS,Leeds Combined Court Centre,
-69,1,354,LEEDS CLOTH HALL COURT,Leeds Cloth Hall Court,
-69,2,355,LEEDS CLOTH HALL COURT,Leeds Cloth Hall Court,
-69,3,356,LEEDS CLOTH HALL COURT,Leeds Cloth Hall Court,
-71,2,359,LEICESTER,Leicester,
-71,3,360,LEICESTER,Leicester,
-71,4,361,LEICESTER,Leicester,
-71,5,362,LEICESTER,Leicester,
-71,6,363,LEICESTER,Leicester,
-71,7,364,LEICESTER,Leicester,
-71,9,366,LEICESTER,Leicester,
-71,8,365,LEICESTER,Leicester,
-71,1,357,LEICESTER,Leicester,
-71,10,358,LEICESTER,Leicester,
-72,1,367,LEICS CROWN SITTING AT LOUGH,Leics Crown Sitting At Lough,
-72,12,368,LEICS CROWN SITTING AT LOUGH,Leics Crown Sitting At Lough,
-73,11,369,LEONARDO HOTEL,Leonardo Hotel,
-73,12,370,LEONARDO HOTEL,Leonardo Hotel,
-74,1,371,LEWES CC SITTING AT CHICHESTER,Lewes CC Sitting at Chichester,
-74,2,372,LEWES CC SITTING AT CHICHESTER,Lewes CC Sitting at Chichester,
-75,4,376,LEWES COMBINED COURT,Lewes Combined Court Centre,
-75,1,373,LEWES COMBINED COURT,Lewes Combined Court Centre,
-75,2,374,LEWES COMBINED COURT,Lewes Combined Court Centre,
-75,3,375,LEWES COMBINED COURT,Lewes Combined Court Centre,
-75,5,377,LEWES COMBINED COURT,Lewes Combined Court Centre,
-77,2,379,LINCOLN,Lincoln Combined Court Centre,
-77,1,378,LINCOLN,Lincoln Combined Court Centre,
-77,3,380,LINCOLN,Lincoln Combined Court Centre,
-78,51,401,LIVERPOOL,Liverpool Crown Court,
-78,1,381,LIVERPOOL,Liverpool Crown Court,
-78,11,382,LIVERPOOL,Liverpool Crown Court,
-78,25,383,LIVERPOOL,Liverpool Crown Court,
-78,26,384,LIVERPOOL,Liverpool Crown Court,
-78,3,385,LIVERPOOL,Liverpool Crown Court,
-78,31,386,LIVERPOOL,Liverpool Crown Court,
-78,32,387,LIVERPOOL,Liverpool Crown Court,
-78,33,388,LIVERPOOL,Liverpool Crown Court,
-78,3,3,389,LIVERPOOL,Liverpool Crown Court,
-78,34,390,LIVERPOOL,Liverpool Crown Court,
-78,35,391,LIVERPOOL,Liverpool Crown Court,
-78,3.5,392,LIVERPOOL,Liverpool Crown Court,
-78,36,393,LIVERPOOL,Liverpool Crown Court,
-78,41,394,LIVERPOOL,Liverpool Crown Court,
-78,42,395,LIVERPOOL,Liverpool Crown Court,
-78,43,396,LIVERPOOL,Liverpool Crown Court,
-78,44,397,LIVERPOOL,Liverpool Crown Court,
-78,4.4,398,LIVERPOOL,Liverpool Crown Court,
-78,45,399,LIVERPOOL,Liverpool Crown Court,
-78,46,400,LIVERPOOL,Liverpool Crown Court,
-78,52,402,LIVERPOOL,Liverpool Crown Court,
-78,5.2,403,LIVERPOOL,Liverpool Crown Court,
-78,53,404,LIVERPOOL,Liverpool Crown Court,
-78,54,405,LIVERPOOL,Liverpool Crown Court,
-78,5.4,406,LIVERPOOL,Liverpool Crown Court,
-78,55,407,LIVERPOOL,Liverpool Crown Court,
-78,56,408,LIVERPOOL,Liverpool Crown Court,
-78,5.6,409,LIVERPOOL,Liverpool Crown Court,
-78,61,410,LIVERPOOL,Liverpool Crown Court,
-78,62,411,LIVERPOOL,Liverpool Crown Court,
-78,6.2,412,LIVERPOOL,Liverpool Crown Court,
-79,1,413,LIVERPOOL COMMUNITY JUSTICE CENTRE,Liverpool CJC,
-80,1,414,LIVERPOOL HILTON HOTEL,Liverpool Hilton Hotel,
-81,2,416,LUTON,Luton,
-81,3,417,LUTON,Luton,
-81,4,418,LUTON,Luton,
-81,5,419,LUTON,Luton,
-81,6,420,LUTON,Luton,
-81,1,415,LUTON,Luton,
-82,2,422,M40 J15 WARWICK HOTEL,M40 J15 Warwick Hotel,
-82,1,421,M40 J15 WARWICK HOTEL,M40 J15 Warwick Hotel,
-83,7,429,MAIDSTONE,Maidstone Combined Court,
-83,9,431,MAIDSTONE,Maidstone Combined Court,
-83,1,423,MAIDSTONE,Maidstone Combined Court,
-83,2,424,MAIDSTONE,Maidstone Combined Court,
-83,3,425,MAIDSTONE,Maidstone Combined Court,
-83,4,426,MAIDSTONE,Maidstone Combined Court,
-83,5,427,MAIDSTONE,Maidstone Combined Court,
-83,6,428,MAIDSTONE,Maidstone Combined Court,
-83,8,430,MAIDSTONE,Maidstone Combined Court,
-84,1,432,MAIDSTONE CC GREAT DANES HOTEL,Maidstone CC Great Danes Hotel,
-84,2,433,MAIDSTONE CC GREAT DANES HOTEL,Maidstone CC Great Danes Hotel,
-85,9,449,MANCHESTER,Manchester Crown Square,
-85,1,434,MANCHESTER,Manchester Crown Square,
-85,10,435,MANCHESTER,Manchester Crown Square,
-85,11,436,MANCHESTER,Manchester Crown Square,
-85,12,437,MANCHESTER,Manchester Crown Square,
-85,13,438,MANCHESTER,Manchester Crown Square,
-85,14,439,MANCHESTER,Manchester Crown Square,
-85,15,440,MANCHESTER,Manchester Crown Square,
-85,16,441,MANCHESTER,Manchester Crown Square,
-85,2,442,MANCHESTER,Manchester Crown Square,
-85,3,443,MANCHESTER,Manchester Crown Square,
-85,4,444,MANCHESTER,Manchester Crown Square,
-85,5,445,MANCHESTER,Manchester Crown Square,
-85,6,446,MANCHESTER,Manchester Crown Square,
-85,7,447,MANCHESTER,Manchester Crown Square,
-85,8,448,MANCHESTER,Manchester Crown Square,
-86,1,450,MANCHESTER HILTON DEANSGATE,Manchester Hilton Deansgate,
-86,2,451,MANCHESTER HILTON DEANSGATE,Manchester Hilton Deansgate,
-87,8,462,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-87,1,452,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-87,10,453,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-87,11,454,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-87,16,455,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-87,2,456,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-87,3,457,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-87,4,458,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-87,5,459,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-87,6,460,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-87,7,461,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-87,9,463,MANCHESTER MINSHULL STREET,Manchester Minshull Street,
-88,20,464,MAPLE HOUSE,Birmingham Maple House,
-88,21,465,MAPLE HOUSE,Birmingham Maple House,
-89,5,470,MERTHYR TYDFIL,Merthyr Tydfil Combined Court Centre,
-89,1,466,MERTHYR TYDFIL,Merthyr Tydfil Combined Court Centre,
-89,2,467,MERTHYR TYDFIL,Merthyr Tydfil Combined Court Centre,
-89,3,468,MERTHYR TYDFIL,Merthyr Tydfil Combined Court Centre,
-89,4,469,MERTHYR TYDFIL,Merthyr Tydfil Combined Court Centre,
-90,1,471,MINSHULL ST SITTING AT STOCKPORT,Minshull St Sitting at Stockport,
-91,1,472,MOLD,Mold,
-91,2,473,MOLD,Mold,
-92,1,474,MOOT HALL,Newcastle Moot hall,
-92,2,475,MOOT HALL,Newcastle Moot hall,
-92,3,476,MOOT HALL,Newcastle Moot hall,
-93,11,479,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,12,480,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,13,481,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,14,482,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,15,483,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,17,484,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,2,485,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,3,486,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,4,487,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,5,488,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,6,489,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,7,490,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,9,492,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,8,491,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,1,477,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-93,10,478,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,
-94,51,496,NEWPORT CROWN COURT,Newport Gwent,
-94,1,493,NEWPORT CROWN COURT,Newport Gwent,
-94,2,494,NEWPORT CROWN COURT,Newport Gwent,
-94,3,495,NEWPORT CROWN COURT,Newport Gwent,
-94,NEWPORT PORTABLE,497,NEWPORT CROWN COURT,Newport Gwent,
-1000,2,499,NEWPORT ISLE OF WIGHT,Newport, Isle Of Wight,
-1000,1,498,NEWPORT ISLE OF WIGHT,Newport, Isle Of Wight,
-96,2,501,NORTHAMPTON,Northampton Combined Court Centre,
-96,3,502,NORTHAMPTON,Northampton Combined Court Centre,
-96,4,503,NORTHAMPTON,Northampton Combined Court Centre,
-96,5,504,NORTHAMPTON,Northampton Combined Court Centre,
-96,6,505,NORTHAMPTON,Northampton Combined Court Centre,
-96,1,500,NORTHAMPTON,Northampton Combined Court Centre,
-97,2,507,NORWICH,Norwich Combined Court Centre,
-97,3,508,NORWICH,Norwich Combined Court Centre,
-97,4,509,NORWICH,Norwich Combined Court Centre,
-97,5,510,NORWICH,Norwich Combined Court Centre,
-97,6,511,NORWICH,Norwich Combined Court Centre,
-97,1,506,NORWICH,Norwich Combined Court Centre,
-98,2,514,NOTTINGHAM,Nottingham,
-98,9,521,NOTTINGHAM,Nottingham,
-98,8,520,NOTTINGHAM,Nottingham,
-98,7,519,NOTTINGHAM,Nottingham,
-98,6,518,NOTTINGHAM,Nottingham,
-98,5,517,NOTTINGHAM,Nottingham,
-98,4,516,NOTTINGHAM,Nottingham,
-98,3,515,NOTTINGHAM,Nottingham,
-98,10,513,NOTTINGHAM,Nottingham,
-98,1,512,NOTTINGHAM,Nottingham,
-99,1,522,NOTTINGHAM CC AT MERCURE HOTEL,Nottingham Mercure Hotel,
-99,2,523,NOTTINGHAM CC AT MERCURE HOTEL,Nottingham Mercure Hotel,
-100,7,530,OXFORD,Oxford Combined Court Centre,
-100,1,524,OXFORD,Oxford Combined Court Centre,
-100,2,525,OXFORD,Oxford Combined Court Centre,
-100,3,526,OXFORD,Oxford Combined Court Centre,
-100,4,527,OXFORD,Oxford Combined Court Centre,
-100,5,528,OXFORD,Oxford Combined Court Centre,
-100,8,531,OXFORD,Oxford Combined Court Centre,
-100,6,529,OXFORD,Oxford Combined Court Centre,
-101,1,532,PETERBOROUGH,Peterborough Combined Court Centre,
-101,2,533,PETERBOROUGH,Peterborough Combined Court Centre,
-101,4,535,PETERBOROUGH,Peterborough Combined Court Centre,
-101,3,534,PETERBOROUGH,Peterborough Combined Court Centre,
-102,1,536,PETERBOROUGH KNIGHTS CHAMBER,Peterborough Knights Chamber,
-103,7,538,PETERBOROUGH MAGISTRATES COURT,Peterborough Magistrates Court,
-103,8,539,PETERBOROUGH MAGISTRATES COURT,Peterborough Magistrates Court,
-103,199,537,PETERBOROUGH MAGISTRATES COURT,Peterborough Magistrates Court,
-104,3,542,PLYMOUTH,Plymouth,
-104,2,541,PLYMOUTH,Plymouth,
-104,4,543,PLYMOUTH,Plymouth,
-104,1,540,PLYMOUTH,Plymouth,
-105,2,544,PNE [INVINCIBLES PAVILION],Preston Invincibles Pavilion,
-106,1,545,PNE [TOM FINNEY STAND],Preston Tom Finney Stand,
-107,8,553,PORTSMOUTH,Portsmouth Combined Court Centre,
-107,7,552,PORTSMOUTH,Portsmouth Combined Court Centre,
-107,6,551,PORTSMOUTH,Portsmouth Combined Court Centre,
-107,5,550,PORTSMOUTH,Portsmouth Combined Court Centre,
-107,4,549,PORTSMOUTH,Portsmouth Combined Court Centre,
-107,3,548,PORTSMOUTH,Portsmouth Combined Court Centre,
-107,2,547,PORTSMOUTH,Portsmouth Combined Court Centre,
-107,1,546,PORTSMOUTH,Portsmouth Combined Court Centre,
-108,8,562,PRESTON,Preston Combined Court Centre,
-108,7,561,PRESTON,Preston Combined Court Centre,
-108,6,560,PRESTON,Preston Combined Court Centre,
-108,5,559,PRESTON,Preston Combined Court Centre,
-108,9,563,PRESTON,Preston Combined Court Centre,
-108,1,554,PRESTON,Preston Combined Court Centre,
-108,10,555,PRESTON,Preston Combined Court Centre,
-108,2,556,PRESTON,Preston Combined Court Centre,
-108,3,557,PRESTON,Preston Combined Court Centre,
-108,4,558,PRESTON,Preston Combined Court Centre,
-109,3,566,PRESTON [THE SESSIONS HOUSE],Preston Session House,
-109,2,565,PRESTON [THE SESSIONS HOUSE],Preston Session House,
-109,1,564,PRESTON [THE SESSIONS HOUSE],Preston Session House,
-110,3,569,PROSPERO HOUSE,Prospero House,
-110,2,568,PROSPERO HOUSE,Prospero House,
-110,1,567,PROSPERO HOUSE,Prospero House,
-115,5,574,READING,Reading Crown Court,
-115,3,572,READING,Reading Crown Court,
-115,2,571,READING,Reading Crown Court,
-115,1,570,READING,Reading Crown Court,
-115,9,576,READING,Reading Crown Court,
-115,6,575,READING,Reading Crown Court,
-115,4,573,READING,Reading Crown Court,
-116,8,580,READING MAGISTRATES COURT,Reading Magistrates Court,
-116,7,579,READING MAGISTRATES COURT,Reading Magistrates Court,
-116,1,577,READING MAGISTRATES COURT,Reading Magistrates Court,
-116,2,578,READING MAGISTRATES COURT,Reading Magistrates Court,
-117,3,583,SALISBURY,Salisbury Combined Court Centre,
-117,1,581,SALISBURY,Salisbury Combined Court Centre,
-117,4,584,SALISBURY,Salisbury Combined Court Centre,
-117,2,582,SALISBURY,Salisbury Combined Court Centre,
-117,5,585,SALISBURY,Salisbury Combined Court Centre,
-118,2,587,SHREWSBURY,Shrewsbury,
-118,1,586,SHREWSBURY,Shrewsbury,
-119,1,588,SNARESBROOK,Snaresbrook,
-119,18,597,SNARESBROOK,Snaresbrook,
-119,17,596,SNARESBROOK,Snaresbrook,
-119,16,595,SNARESBROOK,Snaresbrook,
-119,15,594,SNARESBROOK,Snaresbrook,
-119,14,593,SNARESBROOK,Snaresbrook,
-119,13,592,SNARESBROOK,Snaresbrook,
-119,12,591,SNARESBROOK,Snaresbrook,
-119,11,590,SNARESBROOK,Snaresbrook,
-119,10,589,SNARESBROOK,Snaresbrook,
-119,9,607,SNARESBROOK,Snaresbrook,
-119,8,606,SNARESBROOK,Snaresbrook,
-119,7,605,SNARESBROOK,Snaresbrook,
-119,6,604,SNARESBROOK,Snaresbrook,
-119,5,603,SNARESBROOK,Snaresbrook,
-119,4,602,SNARESBROOK,Snaresbrook,
-119,3,601,SNARESBROOK,Snaresbrook,
-119,19,598,SNARESBROOK,Snaresbrook,
-119,20,600,SNARESBROOK,Snaresbrook,
-119,2,599,SNARESBROOK,Snaresbrook,
-120,2,609,SOUTHAMPTON,Southampton Combined Court Centre,
-120,1,608,SOUTHAMPTON,Southampton Combined Court Centre,
-120,3,610,SOUTHAMPTON,Southampton Combined Court Centre,
-120,4,611,SOUTHAMPTON,Southampton Combined Court Centre,
-120,5,612,SOUTHAMPTON,Southampton Combined Court Centre,
-120,6,613,SOUTHAMPTON,Southampton Combined Court Centre,
-121,1,614,SOUTHEND,Southend,
-121,2,615,SOUTHEND,Southend,
-122,12,619,SOUTHWARK,Southwark,
-122,13,620,SOUTHWARK,Southwark,
-122,14,621,SOUTHWARK,Southwark,
-122,15,622,SOUTHWARK,Southwark,
-122,2,623,SOUTHWARK,Southwark,
-122,3,624,SOUTHWARK,Southwark,
-122,4,625,SOUTHWARK,Southwark,
-122,5,626,SOUTHWARK,Southwark,
-122,6,627,SOUTHWARK,Southwark,
-122,7,628,SOUTHWARK,Southwark,
-122,8,629,SOUTHWARK,Southwark,
-122,9,630,SOUTHWARK,Southwark,
-122,STHWARK_12,631,SOUTHWARK,Southwark,
-122,11,618,SOUTHWARK,Southwark,
-122,10,617,SOUTHWARK,Southwark,
-122,1,616,SOUTHWARK,Southwark,
-123,5,636,STAFFORD,Stafford Combined Court Centre,
-123,2,633,STAFFORD,Stafford Combined Court Centre,
-123,3,634,STAFFORD,Stafford Combined Court Centre,
-123,1,632,STAFFORD,Stafford Combined Court Centre,
-123,4,635,STAFFORD,Stafford Combined Court Centre,
-124,3,639,ST ALBANS,St Albans,
-124,1,637,ST ALBANS,St Albans,
-124,2,638,ST ALBANS,St Albans,
-124,4,640,ST ALBANS,St Albans,
-125,7,642,ST ALBANS MAGISTRATES COURT,Crown Court sitting at St Albans Magistrates Court,
-125,8,643,ST ALBANS MAGISTRATES COURT,Crown Court sitting at St Albans Magistrates Court,
-125,6,641,ST ALBANS MAGISTRATES COURT,Crown Court sitting at St Albans Magistrates Court,
-126,3,646,STOKE ON TRENT,Stoke on Trent Combined Court Centre,
-126,2,645,STOKE ON TRENT,Stoke on Trent Combined Court Centre,
-126,1,644,STOKE ON TRENT,Stoke on Trent Combined Court Centre,
-126,4,647,STOKE ON TRENT,Stoke on Trent Combined Court Centre,
-126,5,648,STOKE ON TRENT,Stoke on Trent Combined Court Centre,
-127,3,651,SWANSEA,Swansea,
-127,1,649,SWANSEA,Swansea,
-127,4,652,SWANSEA,Swansea,
-127,5,653,SWANSEA,Swansea,
-127,2,650,SWANSEA,Swansea,
-128,1,654,SWANSEA CIVIC CENTRE,Swansea Civic Centre,
-130,3,657,SWINDON,Swindon Combined Court Centre,
-130,2,656,SWINDON,Swindon Combined Court Centre,
-130,1,655,SWINDON,Swindon Combined Court Centre,
-131,1,658,TAUNTON,Taunton,
-131,2,659,TAUNTON,Taunton,
-132,5,661,TAUNTON SITTING AT WORLE,Taunton sitting at Worle,
-132,1,660,TAUNTON SITTING AT WORLE,Taunton sitting at Worle,
-134,6,670,TEESSIDE,Teesside Combined Court Centre,
-134,9,673,TEESSIDE,Teesside Combined Court Centre,
-134,1,662,TEESSIDE,Teesside Combined Court Centre,
-134,10,663,TEESSIDE,Teesside Combined Court Centre,
-134,11,664,TEESSIDE,Teesside Combined Court Centre,
-134,12,665,TEESSIDE,Teesside Combined Court Centre,
-134,2,666,TEESSIDE,Teesside Combined Court Centre,
-134,8,672,TEESSIDE,Teesside Combined Court Centre,
-134,7,671,TEESSIDE,Teesside Combined Court Centre,
-134,3,667,TEESSIDE,Teesside Combined Court Centre,
-134,4,668,TEESSIDE,Teesside Combined Court Centre,
-134,5,669,TEESSIDE,Teesside Combined Court Centre,
-135,1,674,TEESSIDE MAGISTRATES COURT,Teesside Magistrates Court,
-1001,SWNSEGH_01,677,THE CRIMINAL COURT GUILDHALL,The Criminal Court, Guildhall,
-1001,2,676,THE CRIMINAL COURT GUILDHALL,The Criminal Court, Guildhall,
-1001,1,675,THE CRIMINAL COURT GUILDHALL,The Criminal Court, Guildhall,
-137,13,682,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,9,692,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,8,691,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,7,690,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,6,689,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,5,688,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,4,687,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,3,686,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,2,685,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,19,684,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,18,683,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,12,681,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,11,680,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,10,679,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-137,1,678,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,
-138,2,695,THE LOWRY THEATRE,The Lowry Theatre,
-138,199,694,THE LOWRY THEATRE,The Lowry Theatre,
-138,1,693,THE LOWRY THEATRE,The Lowry Theatre,
-138,3,696,THE LOWRY THEATRE,The Lowry Theatre,
-139,3,699,TRURO,Truro Combined Court Centre,
-139,2,698,TRURO,Truro Combined Court Centre,
-139,1,697,TRURO,Truro Combined Court Centre,
-139,4,700,TRURO,Truro Combined Court Centre,
-140,5,705,WARRINGTON,Warrington Combined Court Centre,
-140,4,704,WARRINGTON,Warrington Combined Court Centre,
-140,3,703,WARRINGTON,Warrington Combined Court Centre,
-140,2,702,WARRINGTON,Warrington Combined Court Centre,
-140,1,701,WARRINGTON,Warrington Combined Court Centre,
-141,4,709,WARWICK,Warwick Combined Court Centre,
-141,7,712,WARWICK,Warwick Combined Court Centre,
-141,6,711,WARWICK,Warwick Combined Court Centre,
-141,1,706,WARWICK,Warwick Combined Court Centre,
-141,2,707,WARWICK,Warwick Combined Court Centre,
-141,3,708,WARWICK,Warwick Combined Court Centre,
-141,5,710,WARWICK,Warwick Combined Court Centre,
-142,1,713,WEST MIDLANDS COURT CENTRE,West Midlands Courth Centre,
-142,2,714,WEST MIDLANDS COURT CENTRE,West Midlands Courth Centre,
-142,9,716,WEST MIDLANDS COURT CENTRE,West Midlands Courth Centre,
-142,7,715,WEST MIDLANDS COURT CENTRE,West Midlands Courth Centre,
-143,5,721,WINCHESTER,Winchester Combined Court Centre,
-143,1,717,WINCHESTER,Winchester Combined Court Centre,
-143,2,718,WINCHESTER,Winchester Combined Court Centre,
-143,3,719,WINCHESTER,Winchester Combined Court Centre,
-143,4,720,WINCHESTER,Winchester Combined Court Centre,
-143,6,722,WINCHESTER,Winchester Combined Court Centre,
-143,7,723,WINCHESTER,Winchester Combined Court Centre,
-143,8,724,WINCHESTER,Winchester Combined Court Centre,
-143,9,725,WINCHESTER,Winchester Combined Court Centre,
-144,5,730,WOLVERHAMPTON,Wolverhampton Combined Court Centre,
-144,7,732,WOLVERHAMPTON,Wolverhampton Combined Court Centre,
-144,8,733,WOLVERHAMPTON,Wolverhampton Combined Court Centre,
-144,3,728,WOLVERHAMPTON,Wolverhampton Combined Court Centre,
-144,1,726,WOLVERHAMPTON,Wolverhampton Combined Court Centre,
-144,2,727,WOLVERHAMPTON,Wolverhampton Combined Court Centre,
-144,4,729,WOLVERHAMPTON,Wolverhampton Combined Court Centre,
-144,6,731,WOLVERHAMPTON,Wolverhampton Combined Court Centre,
-145,1,734,WOLVERHAMPTON CC AT PARK HALL,Wolverhampton CC at Park Hall,
-145,199,735,WOLVERHAMPTON CC AT PARK HALL,Wolverhampton CC at Park Hall,
-145,2,736,WOLVERHAMPTON CC AT PARK HALL,Wolverhampton CC at Park Hall,
-146,9,738,WOLVERHAMPTON MAGISTRATES COURT,Wolverhampton Magistrates Court,
-146,7,737,WOLVERHAMPTON MAGISTRATES COURT,Wolverhampton Magistrates Court,
-147,7,747,WOOD GREEN,Wood Green,
-147,1,739,WOOD GREEN,Wood Green,
-147,10,740,WOOD GREEN,Wood Green,
-147,11,741,WOOD GREEN,Wood Green,
-147,2,742,WOOD GREEN,Wood Green,
-147,3,743,WOOD GREEN,Wood Green,
-147,4,744,WOOD GREEN,Wood Green,
-147,5,745,WOOD GREEN,Wood Green,
-147,6,746,WOOD GREEN,Wood Green,
-147,8,748,WOOD GREEN,Wood Green,
-147,9,749,WOOD GREEN,Wood Green,
-148,2,751,WOOD GREEN CC AT HENDON MC,Wood Green at Hendon MC,
-148,6,754,WOOD GREEN CC AT HENDON MC,Wood Green at Hendon MC,
-148,1,750,WOOD GREEN CC AT HENDON MC,Wood Green at Hendon MC,
-148,4,752,WOOD GREEN CC AT HENDON MC,Wood Green at Hendon MC,
-148,5,753,WOOD GREEN CC AT HENDON MC,Wood Green at Hendon MC,
-149,11,757,WOOLWICH,Woolwich,
-149,12,758,WOOLWICH,Woolwich,
-149,199,759,WOOLWICH,Woolwich,
-149,9,767,WOOLWICH,Woolwich,
-149,8,766,WOOLWICH,Woolwich,
-149,1,755,WOOLWICH,Woolwich,
-149,10,756,WOOLWICH,Woolwich,
-149,3,761,WOOLWICH,Woolwich,
-149,2,760,WOOLWICH,Woolwich,
-149,4,762,WOOLWICH,Woolwich,
-149,5,763,WOOLWICH,Woolwich,
-149,6,764,WOOLWICH,Woolwich,
-149,7,765,WOOLWICH,Woolwich,
-150,2,769,WORCESTER SHIRE HALL,Worcester Combined Court Centre,
-150,1,768,WORCESTER SHIRE HALL,Worcester Combined Court Centre,
-150,5,772,WORCESTER SHIRE HALL,Worcester Combined Court Centre,
-150,4,771,WORCESTER SHIRE HALL,Worcester Combined Court Centre,
-150,3,770,WORCESTER SHIRE HALL,Worcester Combined Court Centre,
-151,1,773,YORK,York,
-151,2,774,YORK,York,
-151,YORK_01,775,YORK,York,
+1,3,6,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,1
+1,1,1,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,1
+1,14,2,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,1
+1,15,3,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,1
+1,16,4,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,1
+1,17,5,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,1
+1,99,7,4 NEWTON STREET,Birmingham Crown Court sitting at 4 Newton Street,1
+2,5,9,AMERSHAM LAW COURTS,Amersham Law Courts,2
+2,4,8,AMERSHAM LAW COURTS,Amersham Law Courts,2
+3,3,12,AYLESBURY,Aylesbury,3
+3,14,782,AYLESBURY,Aylesbury,3
+3,5,14,AYLESBURY,Aylesbury,3
+3,1,10,AYLESBURY,Aylesbury,3
+3,2,11,AYLESBURY,Aylesbury,3
+3,4,13,AYLESBURY,Aylesbury,3
+4,1,15,BARNSTAPLE,Barnstaple,4
+5,1,16,BARONS COURT WALSALL,Barons Court Walsall,5
+6,1,17,BARROW-IN-FURNESS,Barrow-in-Furness,6
+7,2,22,BASILDON,Basildon Combined Court Centre,7
+7,3,23,BASILDON,Basildon Combined Court Centre,7
+7,4,24,BASILDON,Basildon Combined Court Centre,7
+7,5,25,BASILDON,Basildon Combined Court Centre,7
+7,101,19,BASILDON,Basildon Combined Court Centre,7
+7,102,20,BASILDON,Basildon Combined Court Centre,7
+7,1,18,BASILDON,Basildon Combined Court Centre,7
+7,199,21,BASILDON,Basildon Combined Court Centre,7
+8,8,36,BIRMINGHAM,Birmingham,8
+8,9,37,BIRMINGHAM,Birmingham,8
+8,11,28,BIRMINGHAM,Birmingham,8
+8,1,26,BIRMINGHAM,Birmingham,8
+8,10,27,BIRMINGHAM,Birmingham,8
+8,12,29,BIRMINGHAM,Birmingham,8
+8,2,30,BIRMINGHAM,Birmingham,8
+8,3,31,BIRMINGHAM,Birmingham,8
+8,4,32,BIRMINGHAM,Birmingham,8
+8,5,33,BIRMINGHAM,Birmingham,8
+8,6,34,BIRMINGHAM,Birmingham,8
+8,7,35,BIRMINGHAM,Birmingham,8
+9,18,38,BIRMINGHAM LIBRARY AND REP,Birmingham Library and Rep,9
+9,19,39,BIRMINGHAM LIBRARY AND REP,Birmingham Library and Rep,9
+10,3,42,BLACKFRIARS,Blackfriars,10
+10,1,40,BLACKFRIARS,Blackfriars,10
+10,2,41,BLACKFRIARS,Blackfriars,10
+10,4,43,BLACKFRIARS,Blackfriars,10
+10,5,44,BLACKFRIARS,Blackfriars,10
+10,6,45,BLACKFRIARS,Blackfriars,10
+10,7,46,BLACKFRIARS,Blackfriars,10
+10,8,47,BLACKFRIARS,Blackfriars,10
+10,9,48,BLACKFRIARS,Blackfriars,10
+10,BLACKFRS_08,49,BLACKFRIARS,Blackfriars,10
+11,1,50,BOLTON,Bolton Combined Court Centre,11
+11,2,51,BOLTON,Bolton Combined Court Centre,11
+11,3,52,BOLTON,Bolton Combined Court Centre,11
+11,4,53,BOLTON,Bolton Combined Court Centre,11
+11,5,54,BOLTON,Bolton Combined Court Centre,11
+11,10,801,BOLTON,Bolton Combined Court Centre,11
+12,1,55,BOLTON STADIUM,Bolton Stadium,12
+12,2,56,BOLTON STADIUM,Bolton Stadium,12
+13,1,57,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+13,101,58,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+13,102,59,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+13,103,60,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+13,104,61,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+13,2,62,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+13,3,63,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+13,4,64,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+13,5,65,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+13,6,66,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+13,7,67,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+13,8,68,BOURNEMOUTH CROWN AND COUNTY COURTS,Bournemouth Combined Court Centre,13
+14,1,69,BRADFORD,Bradford Combined Court Centre,14
+14,10,70,BRADFORD,Bradford Combined Court Centre,14
+14,14,71,BRADFORD,Bradford Combined Court Centre,14
+14,2,72,BRADFORD,Bradford Combined Court Centre,14
+14,3,73,BRADFORD,Bradford Combined Court Centre,14
+14,4,74,BRADFORD,Bradford Combined Court Centre,14
+14,5,75,BRADFORD,Bradford Combined Court Centre,14
+14,6,76,BRADFORD,Bradford Combined Court Centre,14
+14,7,77,BRADFORD,Bradford Combined Court Centre,14
+14,8,78,BRADFORD,Bradford Combined Court Centre,14
+14,9,79,BRADFORD,Bradford Combined Court Centre,14
+15,1,80,BRIGHTON MAGISTRATES COURT,Crown Court sitting at Brighton Magistrates Court,15
+15,3,81,BRIGHTON MAGISTRATES COURT,Crown Court sitting at Brighton Magistrates Court,15
+15,4,82,BRIGHTON MAGISTRATES COURT,Crown Court sitting at Brighton Magistrates Court,15
+16,6,89,BRISTOL,Bristol,16
+16,1,83,BRISTOL,Bristol,16
+16,10,84,BRISTOL,Bristol,16
+16,2,85,BRISTOL,Bristol,16
+16,3,86,BRISTOL,Bristol,16
+16,4,87,BRISTOL,Bristol,16
+16,5,88,BRISTOL,Bristol,16
+16,7,90,BRISTOL,Bristol,16
+16,8,91,BRISTOL,Bristol,16
+16,9,92,BRISTOL,Bristol,16
+17,2,94,BURNLEY,Burnley Combined Court Centre,17
+17,1,93,BURNLEY,Burnley Combined Court Centre,17
+17,3,95,BURNLEY,Burnley Combined Court Centre,17
+17,4,96,BURNLEY,Burnley Combined Court Centre,17
+18,1,97,CAERNARFON,Caernarfon,18
+18,2,98,CAERNARFON,Caernarfon,18
+19,3,101,CAMBRIDGE,Cambridge,19
+19,1,99,CAMBRIDGE,Cambridge,19
+19,2,100,CAMBRIDGE,Cambridge,19
+20,8,110,CANTERBURY,Canterbury Combined Court Centre,20
+20,9,111,CANTERBURY,Canterbury Combined Court Centre,20
+20,1,102,CANTERBURY,Canterbury Combined Court Centre,20
+20,10,103,CANTERBURY,Canterbury Combined Court Centre,20
+20,2,104,CANTERBURY,Canterbury Combined Court Centre,20
+20,3,105,CANTERBURY,Canterbury Combined Court Centre,20
+20,4,106,CANTERBURY,Canterbury Combined Court Centre,20
+20,5,107,CANTERBURY,Canterbury Combined Court Centre,20
+20,6,108,CANTERBURY,Canterbury Combined Court Centre,20
+20,7,109,CANTERBURY,Canterbury Combined Court Centre,20
+21,1,112,CARDIFF,Cardiff,21
+21,106,113,CARDIFF,Cardiff,21
+21,11,114,CARDIFF,Cardiff,21
+21,2,115,CARDIFF,Cardiff,21
+21,3,116,CARDIFF,Cardiff,21
+21,4,117,CARDIFF,Cardiff,21
+21,5,118,CARDIFF,Cardiff,21
+21,6,119,CARDIFF,Cardiff,21
+21,7,120,CARDIFF,Cardiff,21
+21,8,121,CARDIFF,Cardiff,21
+21,9,122,CARDIFF,Cardiff,21
+21,CARDIFF_PORTABLE,123,CARDIFF,Cardiff,21
+22,1,124,CARLISLE,Carlisle Combined Court Centre,22
+22,2,125,CARLISLE,Carlisle Combined Court Centre,22
+22,3,126,CARLISLE,Carlisle Combined Court Centre,22
+22,4,127,CARLISLE,Carlisle Combined Court Centre,22
+22,5,128,CARLISLE,Carlisle Combined Court Centre,22
+22,6,129,CARLISLE,Carlisle Combined Court Centre,22
+23,1,130,CARMARTHEN,Carmarthen,23
+23,99,131,CARMARTHEN,Carmarthen,23
+24,6,146,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,1,132,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,10,133,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,11,134,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,12,135,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,13,136,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,14,137,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,15,138,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,16,139,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,17,140,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,18,141,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,2,142,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,3,143,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,4,144,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,5,145,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,7,147,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,8,148,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+24,9,149,CENTRAL CRIMINAL COURT,Central Criminal Court,24
+25,1,150,CHELMSFORD,Chelmsford,25
+25,2,151,CHELMSFORD,Chelmsford,25
+25,3,152,CHELMSFORD,Chelmsford,25
+25,4,153,CHELMSFORD,Chelmsford,25
+25,5,154,CHELMSFORD,Chelmsford,25
+25,6,155,CHELMSFORD,Chelmsford,25
+25,7,156,CHELMSFORD,Chelmsford,25
+26,1,157,CHELMSFORD NEW MAGISTRATES,Chelmsford New Magistrates,26
+26,7,158,CHELMSFORD NEW MAGISTRATES,Chelmsford New Magistrates,26
+27,1,159,CHESTER,Chester,27
+27,2,160,CHESTER,Chester,27
+27,3,161,CHESTER,Chester,27
+27,4,162,CHESTER,Chester,27
+28,1,163,CHESTER CROWNE PLAZA,Chester Crowne Plaza,28
+28,2,164,CHESTER CROWNE PLAZA,Chester Crowne Plaza,28
+29,1,165,CHESTER MAGISTRATES COURT,Chester Magistrates Court,29
+29,2,166,CHESTER MAGISTRATES COURT,Chester Magistrates Court,29
+30,1,167,CHESTER TOWN HALL,Chester Town Hall,30
+30,2,168,CHESTER TOWN HALL,Chester Town Hall,30
+31,1,169,CHICHESTER,Chichester Combined Court Centre,31
+31,2,170,CHICHESTER,Chichester Combined Court Centre,31
+32,1,171,CIRENCESTER COURTHOUSE,Cirencester,32
+33,2,173,COVENTRY,Coventry Combined Court Centre,33
+33,4,175,COVENTRY,Coventry Combined Court Centre,33
+33,3,174,COVENTRY,Coventry Combined Court Centre,33
+33,1,172,COVENTRY,Coventry Combined Court Centre,33
+34,1,176,COVENTRY CROWN COURT,Coventry Crown Court,34
+34,4,179,COVENTRY CROWN COURT,Coventry Crown Court,34
+34,3,178,COVENTRY CROWN COURT,Coventry Crown Court,34
+34,2,177,COVENTRY CROWN COURT,Coventry Crown Court,34
+35,7,186,COVERDALE HOUSE,Coverdale House,35
+35,6,185,COVERDALE HOUSE,Coverdale House,35
+35,5,184,COVERDALE HOUSE,Coverdale House,35
+35,4,183,COVERDALE HOUSE,Coverdale House,35
+35,3,182,COVERDALE HOUSE,Coverdale House,35
+35,2,181,COVERDALE HOUSE,Coverdale House,35
+35,1,180,COVERDALE HOUSE,Coverdale House,35
+36,2,188,CROWN COURT AT ALDERSGATE HOUSE,Aldersgate House,36
+36,1,187,CROWN COURT AT ALDERSGATE HOUSE,Aldersgate House,36
+37,2,190,CROWN COURT AT HOLBORN,Crown Court at Holborn,37
+37,1,189,CROWN COURT AT HOLBORN,Crown Court at Holborn,37
+38,1,191,CROWN COURT AT MONUMENT,Crown Court at Monument,38
+38,2,192,CROWN COURT AT MONUMENT,Crown Court at Monument,38
+39,12,194,CROWN COURT SITTING AT BARCLAY ROAD,Croydon Crown Court sitting at Barclay Road,39
+39,11,193,CROWN COURT SITTING AT BARCLAY ROAD,Croydon Crown Court sitting at Barclay Road,39
+40,7,202,CROYDON,Croydon,40
+40,8,203,CROYDON,Croydon,40
+40,1,195,CROYDON,Croydon,40
+40,2,196,CROYDON,Croydon,40
+40,23,197,CROYDON,Croydon,40
+40,3,198,CROYDON,Croydon,40
+40,4,199,CROYDON,Croydon,40
+40,5,200,CROYDON,Croydon,40
+40,6,201,CROYDON,Croydon,40
+41,11,204,CROYDON JURYS INN,Croydon Jurys Inn,41
+41,12,205,CROYDON JURYS INN,Croydon Jurys Inn,41
+42,1,206,DERBY,Derby Combined Court Centre,42
+42,2,207,DERBY,Derby Combined Court Centre,42
+42,3,208,DERBY,Derby Combined Court Centre,42
+42,4,209,DERBY,Derby Combined Court Centre,42
+42,5,210,DERBY,Derby Combined Court Centre,42
+42,6,211,DERBY,Derby Combined Court Centre,42
+43,1,212,DONCASTER,Doncaster,43
+43,2,213,DONCASTER,Doncaster,43
+44,1,214,DONCASTER CROWN COURT,Doncaster Crown Court,44
+44,2,215,DONCASTER CROWN COURT,Doncaster Crown Court,44
+45,1,216,DORCHESTER,Dorchester Combined Court Centre,45
+46,1,217,DURHAM,Durham,46
+46,2,218,DURHAM,Durham,46
+47,8,230,EXETER,Exeter Combined Court Centre,47
+47,1,219,EXETER,Exeter Combined Court Centre,47
+47,10,220,EXETER,Exeter Combined Court Centre,47
+47,11,221,EXETER,Exeter Combined Court Centre,47
+47,12,222,EXETER,Exeter Combined Court Centre,47
+47,13,223,EXETER,Exeter Combined Court Centre,47
+47,2,224,EXETER,Exeter Combined Court Centre,47
+47,3,225,EXETER,Exeter Combined Court Centre,47
+47,4,226,EXETER,Exeter Combined Court Centre,47
+47,5,227,EXETER,Exeter Combined Court Centre,47
+47,6,228,EXETER,Exeter Combined Court Centre,47
+47,7,229,EXETER,Exeter Combined Court Centre,47
+47,9,231,EXETER,Exeter Combined Court Centre,47
+48,1,232,FIELD HOUSE,Field House,48
+48,10,233,FIELD HOUSE,Field House,48
+48,11,234,FIELD HOUSE,Field House,48
+48,12,235,FIELD HOUSE,Field House,48
+48,13,236,FIELD HOUSE,Field House,48
+48,14,237,FIELD HOUSE,Field House,48
+48,2,238,FIELD HOUSE,Field House,48
+48,3,239,FIELD HOUSE,Field House,48
+48,7,243,FIELD HOUSE,Field House,48
+48,5,241,FIELD HOUSE,Field House,48
+48,6,242,FIELD HOUSE,Field House,48
+48,FDHOUSE_10,247,FIELD HOUSE,Field House,48
+48,FDHOUSE_09,246,FIELD HOUSE,Field House,48
+48,9,245,FIELD HOUSE,Field House,48
+48,4,240,FIELD HOUSE,Field House,48
+48,8,244,FIELD HOUSE,Field House,48
+49,2,249,GLOUCESTER,Gloucester,49
+49,1,248,GLOUCESTER,Gloucester,49
+50,3,252,GREAT GRIMSBY,Great Grimsby Combined Court Centre,50
+50,2,251,GREAT GRIMSBY,Great Grimsby Combined Court Centre,50
+50,1,250,GREAT GRIMSBY,Great Grimsby Combined Court Centre,50
+51,1,253,GUILDFORD,Guildford,51
+51,4,256,GUILDFORD,Guildford,51
+51,3,255,GUILDFORD,Guildford,51
+51,2,254,GUILDFORD,Guildford,51
+52,5,257,GUILDFORD CROWN COURT SITE B,Guildford Crown Court Site B,52
+53,1,258,HARROW,Harrow,53
+53,3,260,HARROW,Harrow,53
+53,2,259,HARROW,Harrow,53
+53,8,265,HARROW,Harrow,53
+53,7,264,HARROW,Harrow,53
+53,6,263,HARROW,Harrow,53
+53,5,262,HARROW,Harrow,53
+53,4,261,HARROW,Harrow,53
+54,7,267,HARROW CC AT WILLESDEN MC,Harrow CC at Willesden MC,54
+54,6,266,HARROW CC AT WILLESDEN MC,Harrow CC at Willesden MC,54
+56,2,269,HEREFORD,Hereford,56
+56,1,268,HEREFORD,Hereford,56
+57,3,272,HOVE TRIAL CENTRE,Hove Trial Centre,57
+57,4,273,HOVE TRIAL CENTRE,Hove Trial Centre,57
+57,1,270,HOVE TRIAL CENTRE,Hove Trial Centre,57
+57,2,271,HOVE TRIAL CENTRE,Hove Trial Centre,57
+58,1,274,HUNTINGDON LAW COURTS,Crown Court sitting at Huntingdon Law Courts,58
+58,4,275,HUNTINGDON LAW COURTS,Crown Court sitting at Huntingdon Law Courts,58
+58,5,276,HUNTINGDON LAW COURTS,Crown Court sitting at Huntingdon Law Courts,58
+59,7,287,INNER LONDON,Inner London,59
+59,9,289,INNER LONDON,Inner London,59
+59,8,288,INNER LONDON,Inner London,59
+59,1,277,INNER LONDON,Inner London,59
+59,10,278,INNER LONDON,Inner London,59
+59,11,279,INNER LONDON,Inner London,59
+59,12,280,INNER LONDON,Inner London,59
+59,13,281,INNER LONDON,Inner London,59
+59,2,282,INNER LONDON,Inner London,59
+59,3,283,INNER LONDON,Inner London,59
+59,4,284,INNER LONDON,Inner London,59
+59,5,285,INNER LONDON,Inner London,59
+59,6,286,INNER LONDON,Inner London,59
+60,28,290,INNER LONDON CC AT THE RCJ,Inner London CC at the RCJ,60
+60,38,291,INNER LONDON CC AT THE RCJ,Inner London CC at the RCJ,60
+61,3,294,IPSWICH,Ipswitch,61
+61,5,296,IPSWICH,Ipswitch,61
+61,4,295,IPSWICH,Ipswitch,61
+61,2,293,IPSWICH,Ipswitch,61
+61,1,292,IPSWICH,Ipswitch,61
+62,9,310,ISLEWORTH,Isleworth,62
+62,1,297,ISLEWORTH,Isleworth,62
+62,10,298,ISLEWORTH,Isleworth,62
+62,11,299,ISLEWORTH,Isleworth,62
+62,12,300,ISLEWORTH,Isleworth,62
+62,13,301,ISLEWORTH,Isleworth,62
+62,14,302,ISLEWORTH,Isleworth,62
+62,2,303,ISLEWORTH,Isleworth,62
+62,3,304,ISLEWORTH,Isleworth,62
+62,4,305,ISLEWORTH,Isleworth,62
+62,5,306,ISLEWORTH,Isleworth,62
+62,6,307,ISLEWORTH,Isleworth,62
+62,7,308,ISLEWORTH,Isleworth,62
+62,8,309,ISLEWORTH,Isleworth,62
+63,4,314,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,63
+63,1,311,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,63
+63,2,312,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,63
+63,3,313,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,63
+63,5,315,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,63
+63,6,316,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,63
+63,7,317,KINGSTON UPON HULL,Kingston Upon Hull Combined Court Centre,63
+64,7,327,KINGSTON UPON THAMES,Kingston,64
+64,1,318,KINGSTON UPON THAMES,Kingston,64
+64,10,319,KINGSTON UPON THAMES,Kingston,64
+64,11,320,KINGSTON UPON THAMES,Kingston,64
+64,12,321,KINGSTON UPON THAMES,Kingston,64
+64,2,322,KINGSTON UPON THAMES,Kingston,64
+64,3,323,KINGSTON UPON THAMES,Kingston,64
+64,4,324,KINGSTON UPON THAMES,Kingston,64
+64,5,325,KINGSTON UPON THAMES,Kingston,64
+64,6,326,KINGSTON UPON THAMES,Kingston,64
+64,8,328,KINGSTON UPON THAMES,Kingston,64
+64,9,329,KINGSTON UPON THAMES,Kingston,64
+66,2,331,LANCASTER,Lancaster,66
+66,1,330,LANCASTER,Lancaster,66
+67,1,332,LANCASTER ASHTON HALL,Lancaster Ashton Hall,67
+68,13,337,LEEDS,Leeds Combined Court Centre,68
+68,1,333,LEEDS,Leeds Combined Court Centre,68
+68,10,334,LEEDS,Leeds Combined Court Centre,68
+68,11,335,LEEDS,Leeds Combined Court Centre,68
+68,12,336,LEEDS,Leeds Combined Court Centre,68
+68,14,338,LEEDS,Leeds Combined Court Centre,68
+68,15,339,LEEDS,Leeds Combined Court Centre,68
+68,16,340,LEEDS,Leeds Combined Court Centre,68
+68,17,341,LEEDS,Leeds Combined Court Centre,68
+68,18,342,LEEDS,Leeds Combined Court Centre,68
+68,19,343,LEEDS,Leeds Combined Court Centre,68
+68,2,344,LEEDS,Leeds Combined Court Centre,68
+68,22,345,LEEDS,Leeds Combined Court Centre,68
+68,27,346,LEEDS,Leeds Combined Court Centre,68
+68,3,347,LEEDS,Leeds Combined Court Centre,68
+68,4,348,LEEDS,Leeds Combined Court Centre,68
+68,5,349,LEEDS,Leeds Combined Court Centre,68
+68,6,350,LEEDS,Leeds Combined Court Centre,68
+68,7,351,LEEDS,Leeds Combined Court Centre,68
+68,8,352,LEEDS,Leeds Combined Court Centre,68
+68,9,353,LEEDS,Leeds Combined Court Centre,68
+69,1,354,LEEDS CLOTH HALL COURT,Leeds Cloth Hall Court,69
+69,2,355,LEEDS CLOTH HALL COURT,Leeds Cloth Hall Court,69
+69,3,356,LEEDS CLOTH HALL COURT,Leeds Cloth Hall Court,69
+71,2,359,LEICESTER,Leicester,71
+71,3,360,LEICESTER,Leicester,71
+71,4,361,LEICESTER,Leicester,71
+71,5,362,LEICESTER,Leicester,71
+71,6,363,LEICESTER,Leicester,71
+71,7,364,LEICESTER,Leicester,71
+71,9,366,LEICESTER,Leicester,71
+71,8,365,LEICESTER,Leicester,71
+71,1,357,LEICESTER,Leicester,71
+71,10,358,LEICESTER,Leicester,71
+72,1,367,LEICS CROWN SITTING AT LOUGH,Leics Crown Sitting At Lough,72
+72,12,368,LEICS CROWN SITTING AT LOUGH,Leics Crown Sitting At Lough,72
+73,11,369,LEONARDO HOTEL,Leonardo Hotel,73
+73,12,370,LEONARDO HOTEL,Leonardo Hotel,73
+74,1,371,LEWES CC SITTING AT CHICHESTER,Lewes CC Sitting at Chichester,74
+74,2,372,LEWES CC SITTING AT CHICHESTER,Lewes CC Sitting at Chichester,74
+75,4,376,LEWES COMBINED COURT,Lewes Combined Court Centre,75
+75,1,373,LEWES COMBINED COURT,Lewes Combined Court Centre,75
+75,2,374,LEWES COMBINED COURT,Lewes Combined Court Centre,75
+75,3,375,LEWES COMBINED COURT,Lewes Combined Court Centre,75
+75,5,377,LEWES COMBINED COURT,Lewes Combined Court Centre,75
+77,2,379,LINCOLN,Lincoln Combined Court Centre,77
+77,1,378,LINCOLN,Lincoln Combined Court Centre,77
+77,3,380,LINCOLN,Lincoln Combined Court Centre,77
+78,51,401,LIVERPOOL,Liverpool Crown Court,78
+78,1,381,LIVERPOOL,Liverpool Crown Court,78
+78,11,382,LIVERPOOL,Liverpool Crown Court,78
+78,25,383,LIVERPOOL,Liverpool Crown Court,78
+78,26,384,LIVERPOOL,Liverpool Crown Court,78
+78,3,385,LIVERPOOL,Liverpool Crown Court,78
+78,31,386,LIVERPOOL,Liverpool Crown Court,78
+78,32,387,LIVERPOOL,Liverpool Crown Court,78
+78,33,388,LIVERPOOL,Liverpool Crown Court,78
+78,3,3,389,LIVERPOOL,Liverpool Crown Court,78
+78,34,390,LIVERPOOL,Liverpool Crown Court,78
+78,35,391,LIVERPOOL,Liverpool Crown Court,78
+78,3.5,392,LIVERPOOL,Liverpool Crown Court,78
+78,36,393,LIVERPOOL,Liverpool Crown Court,78
+78,41,394,LIVERPOOL,Liverpool Crown Court,78
+78,42,395,LIVERPOOL,Liverpool Crown Court,78
+78,43,396,LIVERPOOL,Liverpool Crown Court,78
+78,44,397,LIVERPOOL,Liverpool Crown Court,78
+78,4.4,398,LIVERPOOL,Liverpool Crown Court,78
+78,45,399,LIVERPOOL,Liverpool Crown Court,78
+78,46,400,LIVERPOOL,Liverpool Crown Court,78
+78,52,402,LIVERPOOL,Liverpool Crown Court,78
+78,5.2,403,LIVERPOOL,Liverpool Crown Court,78
+78,53,404,LIVERPOOL,Liverpool Crown Court,78
+78,54,405,LIVERPOOL,Liverpool Crown Court,78
+78,5.4,406,LIVERPOOL,Liverpool Crown Court,78
+78,55,407,LIVERPOOL,Liverpool Crown Court,78
+78,56,408,LIVERPOOL,Liverpool Crown Court,78
+78,5.6,409,LIVERPOOL,Liverpool Crown Court,78
+78,61,410,LIVERPOOL,Liverpool Crown Court,78
+78,62,411,LIVERPOOL,Liverpool Crown Court,78
+78,6.2,412,LIVERPOOL,Liverpool Crown Court,78
+79,1,413,LIVERPOOL COMMUNITY JUSTICE CENTRE,Liverpool CJC,79
+80,1,414,LIVERPOOL HILTON HOTEL,Liverpool Hilton Hotel,80
+81,2,416,LUTON,Luton,81
+81,3,417,LUTON,Luton,81
+81,4,418,LUTON,Luton,81
+81,5,419,LUTON,Luton,81
+81,6,420,LUTON,Luton,81
+81,1,415,LUTON,Luton,81
+82,2,422,M40 J15 WARWICK HOTEL,M40 J15 Warwick Hotel,82
+82,1,421,M40 J15 WARWICK HOTEL,M40 J15 Warwick Hotel,82
+83,7,429,MAIDSTONE,Maidstone Combined Court,83
+83,9,431,MAIDSTONE,Maidstone Combined Court,83
+83,1,423,MAIDSTONE,Maidstone Combined Court,83
+83,2,424,MAIDSTONE,Maidstone Combined Court,83
+83,3,425,MAIDSTONE,Maidstone Combined Court,83
+83,4,426,MAIDSTONE,Maidstone Combined Court,83
+83,5,427,MAIDSTONE,Maidstone Combined Court,83
+83,6,428,MAIDSTONE,Maidstone Combined Court,83
+83,8,430,MAIDSTONE,Maidstone Combined Court,83
+84,1,432,MAIDSTONE CC GREAT DANES HOTEL,Maidstone CC Great Danes Hotel,84
+84,2,433,MAIDSTONE CC GREAT DANES HOTEL,Maidstone CC Great Danes Hotel,84
+85,9,449,MANCHESTER,Manchester Crown Square,85
+85,1,434,MANCHESTER,Manchester Crown Square,85
+85,10,435,MANCHESTER,Manchester Crown Square,85
+85,11,436,MANCHESTER,Manchester Crown Square,85
+85,12,437,MANCHESTER,Manchester Crown Square,85
+85,13,438,MANCHESTER,Manchester Crown Square,85
+85,14,439,MANCHESTER,Manchester Crown Square,85
+85,15,440,MANCHESTER,Manchester Crown Square,85
+85,16,441,MANCHESTER,Manchester Crown Square,85
+85,2,442,MANCHESTER,Manchester Crown Square,85
+85,3,443,MANCHESTER,Manchester Crown Square,85
+85,4,444,MANCHESTER,Manchester Crown Square,85
+85,5,445,MANCHESTER,Manchester Crown Square,85
+85,6,446,MANCHESTER,Manchester Crown Square,85
+85,7,447,MANCHESTER,Manchester Crown Square,85
+85,8,448,MANCHESTER,Manchester Crown Square,85
+86,1,450,MANCHESTER HILTON DEANSGATE,Manchester Hilton Deansgate,86
+86,2,451,MANCHESTER HILTON DEANSGATE,Manchester Hilton Deansgate,86
+87,8,462,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+87,1,452,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+87,10,453,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+87,11,454,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+87,16,455,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+87,2,456,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+87,3,457,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+87,4,458,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+87,5,459,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+87,6,460,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+87,7,461,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+87,9,463,MANCHESTER MINSHULL STREET,Manchester Minshull Street,87
+88,20,464,MAPLE HOUSE,Birmingham Maple House,88
+88,21,465,MAPLE HOUSE,Birmingham Maple House,88
+89,5,470,MERTHYR TYDFIL,Merthyr Tydfil Combined Court Centre,89
+89,1,466,MERTHYR TYDFIL,Merthyr Tydfil Combined Court Centre,89
+89,2,467,MERTHYR TYDFIL,Merthyr Tydfil Combined Court Centre,89
+89,3,468,MERTHYR TYDFIL,Merthyr Tydfil Combined Court Centre,89
+89,4,469,MERTHYR TYDFIL,Merthyr Tydfil Combined Court Centre,89
+90,1,471,MINSHULL ST SITTING AT STOCKPORT,Minshull St Sitting at Stockport,90
+91,1,472,MOLD,Mold,91
+91,2,473,MOLD,Mold,91
+92,1,474,MOOT HALL,Newcastle Moot hall,92
+92,2,475,MOOT HALL,Newcastle Moot hall,92
+92,3,476,MOOT HALL,Newcastle Moot hall,92
+93,11,479,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,12,480,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,13,481,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,14,482,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,15,483,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,17,484,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,2,485,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,3,486,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,4,487,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,5,488,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,6,489,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,7,490,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,9,492,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,8,491,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,1,477,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+93,10,478,NEWCASTLE UPON TYNE,Newcastle Combined Court Centre,93
+94,51,496,NEWPORT CROWN COURT,Newport Gwent,94
+94,1,493,NEWPORT CROWN COURT,Newport Gwent,94
+94,2,494,NEWPORT CROWN COURT,Newport Gwent,94
+94,3,495,NEWPORT CROWN COURT,Newport Gwent,94
+94,NEWPORT PORTABLE,497,NEWPORT CROWN COURT,Newport Gwent,94
+1000,2,499,NEWPORT ISLE OF WIGHT,Newport, Isle Of Wight,156
+1000,1,498,NEWPORT ISLE OF WIGHT,Newport, Isle Of Wight,156
+96,2,501,NORTHAMPTON,Northampton Combined Court Centre,96
+96,3,502,NORTHAMPTON,Northampton Combined Court Centre,96
+96,4,503,NORTHAMPTON,Northampton Combined Court Centre,96
+96,5,504,NORTHAMPTON,Northampton Combined Court Centre,96
+96,6,505,NORTHAMPTON,Northampton Combined Court Centre,96
+96,1,500,NORTHAMPTON,Northampton Combined Court Centre,96
+97,2,507,NORWICH,Norwich Combined Court Centre,97
+97,3,508,NORWICH,Norwich Combined Court Centre,97
+97,4,509,NORWICH,Norwich Combined Court Centre,97
+97,5,510,NORWICH,Norwich Combined Court Centre,97
+97,6,511,NORWICH,Norwich Combined Court Centre,97
+97,1,506,NORWICH,Norwich Combined Court Centre,97
+98,2,514,NOTTINGHAM,Nottingham,98
+98,9,521,NOTTINGHAM,Nottingham,98
+98,8,520,NOTTINGHAM,Nottingham,98
+98,7,519,NOTTINGHAM,Nottingham,98
+98,6,518,NOTTINGHAM,Nottingham,98
+98,5,517,NOTTINGHAM,Nottingham,98
+98,4,516,NOTTINGHAM,Nottingham,98
+98,3,515,NOTTINGHAM,Nottingham,98
+98,10,513,NOTTINGHAM,Nottingham,98
+98,1,512,NOTTINGHAM,Nottingham,98
+99,1,522,NOTTINGHAM CC AT MERCURE HOTEL,Nottingham Mercure Hotel,99
+99,2,523,NOTTINGHAM CC AT MERCURE HOTEL,Nottingham Mercure Hotel,99
+100,7,530,OXFORD,Oxford Combined Court Centre,100
+100,1,524,OXFORD,Oxford Combined Court Centre,100
+100,2,525,OXFORD,Oxford Combined Court Centre,100
+100,3,526,OXFORD,Oxford Combined Court Centre,100
+100,4,527,OXFORD,Oxford Combined Court Centre,100
+100,5,528,OXFORD,Oxford Combined Court Centre,100
+100,8,531,OXFORD,Oxford Combined Court Centre,100
+100,6,529,OXFORD,Oxford Combined Court Centre,100
+101,1,532,PETERBOROUGH,Peterborough Combined Court Centre,101
+101,2,533,PETERBOROUGH,Peterborough Combined Court Centre,101
+101,4,535,PETERBOROUGH,Peterborough Combined Court Centre,101
+101,3,534,PETERBOROUGH,Peterborough Combined Court Centre,101
+102,1,536,PETERBOROUGH KNIGHTS CHAMBER,Peterborough Knights Chamber,102
+103,7,538,PETERBOROUGH MAGISTRATES COURT,Peterborough Magistrates Court,103
+103,8,539,PETERBOROUGH MAGISTRATES COURT,Peterborough Magistrates Court,103
+103,199,537,PETERBOROUGH MAGISTRATES COURT,Peterborough Magistrates Court,103
+104,3,542,PLYMOUTH,Plymouth,104
+104,2,541,PLYMOUTH,Plymouth,104
+104,4,543,PLYMOUTH,Plymouth,104
+104,1,540,PLYMOUTH,Plymouth,104
+105,2,544,PNE [INVINCIBLES PAVILION],Preston Invincibles Pavilion,105
+106,1,545,PNE [TOM FINNEY STAND],Preston Tom Finney Stand,106
+107,8,553,PORTSMOUTH,Portsmouth Combined Court Centre,107
+107,7,552,PORTSMOUTH,Portsmouth Combined Court Centre,107
+107,6,551,PORTSMOUTH,Portsmouth Combined Court Centre,107
+107,5,550,PORTSMOUTH,Portsmouth Combined Court Centre,107
+107,4,549,PORTSMOUTH,Portsmouth Combined Court Centre,107
+107,3,548,PORTSMOUTH,Portsmouth Combined Court Centre,107
+107,2,547,PORTSMOUTH,Portsmouth Combined Court Centre,107
+107,1,546,PORTSMOUTH,Portsmouth Combined Court Centre,107
+108,8,562,PRESTON,Preston Combined Court Centre,108
+108,7,561,PRESTON,Preston Combined Court Centre,108
+108,6,560,PRESTON,Preston Combined Court Centre,108
+108,5,559,PRESTON,Preston Combined Court Centre,108
+108,9,563,PRESTON,Preston Combined Court Centre,108
+108,1,554,PRESTON,Preston Combined Court Centre,108
+108,10,555,PRESTON,Preston Combined Court Centre,108
+108,2,556,PRESTON,Preston Combined Court Centre,108
+108,3,557,PRESTON,Preston Combined Court Centre,108
+108,4,558,PRESTON,Preston Combined Court Centre,108
+109,3,566,PRESTON [THE SESSIONS HOUSE],Preston Session House,109
+109,2,565,PRESTON [THE SESSIONS HOUSE],Preston Session House,109
+109,1,564,PRESTON [THE SESSIONS HOUSE],Preston Session House,109
+110,3,569,PROSPERO HOUSE,Prospero House,110
+110,2,568,PROSPERO HOUSE,Prospero House,110
+110,1,567,PROSPERO HOUSE,Prospero House,110
+115,5,574,READING,Reading Crown Court,115
+115,3,572,READING,Reading Crown Court,115
+115,2,571,READING,Reading Crown Court,115
+115,1,570,READING,Reading Crown Court,115
+115,9,576,READING,Reading Crown Court,115
+115,6,575,READING,Reading Crown Court,115
+115,4,573,READING,Reading Crown Court,115
+116,8,580,READING MAGISTRATES COURT,Reading Magistrates Court,116
+116,7,579,READING MAGISTRATES COURT,Reading Magistrates Court,116
+116,1,577,READING MAGISTRATES COURT,Reading Magistrates Court,116
+116,2,578,READING MAGISTRATES COURT,Reading Magistrates Court,116
+117,3,583,SALISBURY,Salisbury Combined Court Centre,117
+117,1,581,SALISBURY,Salisbury Combined Court Centre,117
+117,4,584,SALISBURY,Salisbury Combined Court Centre,117
+117,2,582,SALISBURY,Salisbury Combined Court Centre,117
+117,5,585,SALISBURY,Salisbury Combined Court Centre,117
+118,2,587,SHREWSBURY,Shrewsbury,118
+118,1,586,SHREWSBURY,Shrewsbury,118
+119,1,588,SNARESBROOK,Snaresbrook,119
+119,18,597,SNARESBROOK,Snaresbrook,119
+119,17,596,SNARESBROOK,Snaresbrook,119
+119,16,595,SNARESBROOK,Snaresbrook,119
+119,15,594,SNARESBROOK,Snaresbrook,119
+119,14,593,SNARESBROOK,Snaresbrook,119
+119,13,592,SNARESBROOK,Snaresbrook,119
+119,12,591,SNARESBROOK,Snaresbrook,119
+119,11,590,SNARESBROOK,Snaresbrook,119
+119,10,589,SNARESBROOK,Snaresbrook,119
+119,9,607,SNARESBROOK,Snaresbrook,119
+119,8,606,SNARESBROOK,Snaresbrook,119
+119,7,605,SNARESBROOK,Snaresbrook,119
+119,6,604,SNARESBROOK,Snaresbrook,119
+119,5,603,SNARESBROOK,Snaresbrook,119
+119,4,602,SNARESBROOK,Snaresbrook,119
+119,3,601,SNARESBROOK,Snaresbrook,119
+119,19,598,SNARESBROOK,Snaresbrook,119
+119,20,600,SNARESBROOK,Snaresbrook,119
+119,2,599,SNARESBROOK,Snaresbrook,119
+120,2,609,SOUTHAMPTON,Southampton Combined Court Centre,120
+120,1,608,SOUTHAMPTON,Southampton Combined Court Centre,120
+120,3,610,SOUTHAMPTON,Southampton Combined Court Centre,120
+120,4,611,SOUTHAMPTON,Southampton Combined Court Centre,120
+120,5,612,SOUTHAMPTON,Southampton Combined Court Centre,120
+120,6,613,SOUTHAMPTON,Southampton Combined Court Centre,120
+121,1,614,SOUTHEND,Southend,121
+121,2,615,SOUTHEND,Southend,121
+122,12,619,SOUTHWARK,Southwark,122
+122,13,620,SOUTHWARK,Southwark,122
+122,14,621,SOUTHWARK,Southwark,122
+122,15,622,SOUTHWARK,Southwark,122
+122,2,623,SOUTHWARK,Southwark,122
+122,3,624,SOUTHWARK,Southwark,122
+122,4,625,SOUTHWARK,Southwark,122
+122,5,626,SOUTHWARK,Southwark,122
+122,6,627,SOUTHWARK,Southwark,122
+122,7,628,SOUTHWARK,Southwark,122
+122,8,629,SOUTHWARK,Southwark,122
+122,9,630,SOUTHWARK,Southwark,122
+122,STHWARK_12,631,SOUTHWARK,Southwark,122
+122,11,618,SOUTHWARK,Southwark,122
+122,10,617,SOUTHWARK,Southwark,122
+122,1,616,SOUTHWARK,Southwark,122
+123,5,636,STAFFORD,Stafford Combined Court Centre,123
+123,2,633,STAFFORD,Stafford Combined Court Centre,123
+123,3,634,STAFFORD,Stafford Combined Court Centre,123
+123,1,632,STAFFORD,Stafford Combined Court Centre,123
+123,4,635,STAFFORD,Stafford Combined Court Centre,123
+124,3,639,ST ALBANS,St Albans,124
+124,1,637,ST ALBANS,St Albans,124
+124,2,638,ST ALBANS,St Albans,124
+124,4,640,ST ALBANS,St Albans,124
+125,7,642,ST ALBANS MAGISTRATES COURT,Crown Court sitting at St Albans Magistrates Court,125
+125,8,643,ST ALBANS MAGISTRATES COURT,Crown Court sitting at St Albans Magistrates Court,125
+125,6,641,ST ALBANS MAGISTRATES COURT,Crown Court sitting at St Albans Magistrates Court,125
+126,3,646,STOKE ON TRENT,Stoke on Trent Combined Court Centre,126
+126,2,645,STOKE ON TRENT,Stoke on Trent Combined Court Centre,126
+126,1,644,STOKE ON TRENT,Stoke on Trent Combined Court Centre,126
+126,4,647,STOKE ON TRENT,Stoke on Trent Combined Court Centre,126
+126,5,648,STOKE ON TRENT,Stoke on Trent Combined Court Centre,126
+127,3,651,SWANSEA,Swansea,127
+127,1,649,SWANSEA,Swansea,127
+127,4,652,SWANSEA,Swansea,127
+127,5,653,SWANSEA,Swansea,127
+127,2,650,SWANSEA,Swansea,127
+128,1,654,SWANSEA CIVIC CENTRE,Swansea Civic Centre,128
+130,3,657,SWINDON,Swindon Combined Court Centre,130
+130,2,656,SWINDON,Swindon Combined Court Centre,130
+130,1,655,SWINDON,Swindon Combined Court Centre,130
+131,1,658,TAUNTON,Taunton,131
+131,2,659,TAUNTON,Taunton,131
+132,5,661,TAUNTON SITTING AT WORLE,Taunton sitting at Worle,132
+132,1,660,TAUNTON SITTING AT WORLE,Taunton sitting at Worle,132
+134,6,670,TEESSIDE,Teesside Combined Court Centre,134
+134,9,673,TEESSIDE,Teesside Combined Court Centre,134
+134,1,662,TEESSIDE,Teesside Combined Court Centre,134
+134,10,663,TEESSIDE,Teesside Combined Court Centre,134
+134,11,664,TEESSIDE,Teesside Combined Court Centre,134
+134,12,665,TEESSIDE,Teesside Combined Court Centre,134
+134,2,666,TEESSIDE,Teesside Combined Court Centre,134
+134,8,672,TEESSIDE,Teesside Combined Court Centre,134
+134,7,671,TEESSIDE,Teesside Combined Court Centre,134
+134,3,667,TEESSIDE,Teesside Combined Court Centre,134
+134,4,668,TEESSIDE,Teesside Combined Court Centre,134
+134,5,669,TEESSIDE,Teesside Combined Court Centre,134
+135,1,674,TEESSIDE MAGISTRATES COURT,Teesside Magistrates Court,135
+1001,SWNSEGH_01,677,THE CRIMINAL COURT GUILDHALL,The Criminal Court, Guildhall,157
+1001,2,676,THE CRIMINAL COURT GUILDHALL,The Criminal Court, Guildhall,157
+1001,1,675,THE CRIMINAL COURT GUILDHALL,The Criminal Court, Guildhall,157
+137,13,682,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,9,692,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,8,691,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,7,690,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,6,689,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,5,688,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,4,687,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,3,686,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,2,685,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,19,684,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,18,683,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,12,681,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,11,680,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,10,679,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+137,1,678,THE LAW COURTS WEST BAR SHEFFIELD,Sheffield Combined Court Centre,137
+138,2,695,THE LOWRY THEATRE,The Lowry Theatre,138
+138,199,694,THE LOWRY THEATRE,The Lowry Theatre,138
+138,1,693,THE LOWRY THEATRE,The Lowry Theatre,138
+138,3,696,THE LOWRY THEATRE,The Lowry Theatre,138
+139,3,699,TRURO,Truro Combined Court Centre,139
+139,2,698,TRURO,Truro Combined Court Centre,139
+139,1,697,TRURO,Truro Combined Court Centre,139
+139,4,700,TRURO,Truro Combined Court Centre,139
+140,5,705,WARRINGTON,Warrington Combined Court Centre,140
+140,4,704,WARRINGTON,Warrington Combined Court Centre,140
+140,3,703,WARRINGTON,Warrington Combined Court Centre,140
+140,2,702,WARRINGTON,Warrington Combined Court Centre,140
+140,1,701,WARRINGTON,Warrington Combined Court Centre,140
+141,4,709,WARWICK,Warwick Combined Court Centre,141
+141,7,712,WARWICK,Warwick Combined Court Centre,141
+141,6,711,WARWICK,Warwick Combined Court Centre,141
+141,1,706,WARWICK,Warwick Combined Court Centre,141
+141,2,707,WARWICK,Warwick Combined Court Centre,141
+141,3,708,WARWICK,Warwick Combined Court Centre,141
+141,5,710,WARWICK,Warwick Combined Court Centre,141
+142,1,713,WEST MIDLANDS COURT CENTRE,West Midlands Courth Centre,142
+142,2,714,WEST MIDLANDS COURT CENTRE,West Midlands Courth Centre,142
+142,9,716,WEST MIDLANDS COURT CENTRE,West Midlands Courth Centre,142
+142,7,715,WEST MIDLANDS COURT CENTRE,West Midlands Courth Centre,142
+143,5,721,WINCHESTER,Winchester Combined Court Centre,143
+143,1,717,WINCHESTER,Winchester Combined Court Centre,143
+143,2,718,WINCHESTER,Winchester Combined Court Centre,143
+143,3,719,WINCHESTER,Winchester Combined Court Centre,143
+143,4,720,WINCHESTER,Winchester Combined Court Centre,143
+143,6,722,WINCHESTER,Winchester Combined Court Centre,143
+143,7,723,WINCHESTER,Winchester Combined Court Centre,143
+143,8,724,WINCHESTER,Winchester Combined Court Centre,143
+143,9,725,WINCHESTER,Winchester Combined Court Centre,143
+144,5,730,WOLVERHAMPTON,Wolverhampton Combined Court Centre,144
+144,7,732,WOLVERHAMPTON,Wolverhampton Combined Court Centre,144
+144,8,733,WOLVERHAMPTON,Wolverhampton Combined Court Centre,144
+144,3,728,WOLVERHAMPTON,Wolverhampton Combined Court Centre,144
+144,1,726,WOLVERHAMPTON,Wolverhampton Combined Court Centre,144
+144,2,727,WOLVERHAMPTON,Wolverhampton Combined Court Centre,144
+144,4,729,WOLVERHAMPTON,Wolverhampton Combined Court Centre,144
+144,6,731,WOLVERHAMPTON,Wolverhampton Combined Court Centre,144
+145,1,734,WOLVERHAMPTON CC AT PARK HALL,Wolverhampton CC at Park Hall,145
+145,199,735,WOLVERHAMPTON CC AT PARK HALL,Wolverhampton CC at Park Hall,145
+145,2,736,WOLVERHAMPTON CC AT PARK HALL,Wolverhampton CC at Park Hall,145
+146,9,738,WOLVERHAMPTON MAGISTRATES COURT,Wolverhampton Magistrates Court,146
+146,7,737,WOLVERHAMPTON MAGISTRATES COURT,Wolverhampton Magistrates Court,146
+147,7,747,WOOD GREEN,Wood Green,147
+147,1,739,WOOD GREEN,Wood Green,147
+147,10,740,WOOD GREEN,Wood Green,147
+147,11,741,WOOD GREEN,Wood Green,147
+147,2,742,WOOD GREEN,Wood Green,147
+147,3,743,WOOD GREEN,Wood Green,147
+147,4,744,WOOD GREEN,Wood Green,147
+147,5,745,WOOD GREEN,Wood Green,147
+147,6,746,WOOD GREEN,Wood Green,147
+147,8,748,WOOD GREEN,Wood Green,147
+147,9,749,WOOD GREEN,Wood Green,147
+148,2,751,WOOD GREEN CC AT HENDON MC,Wood Green at Hendon MC,148
+148,6,754,WOOD GREEN CC AT HENDON MC,Wood Green at Hendon MC,148
+148,1,750,WOOD GREEN CC AT HENDON MC,Wood Green at Hendon MC,148
+148,4,752,WOOD GREEN CC AT HENDON MC,Wood Green at Hendon MC,148
+148,5,753,WOOD GREEN CC AT HENDON MC,Wood Green at Hendon MC,148
+149,11,757,WOOLWICH,Woolwich,149
+149,12,758,WOOLWICH,Woolwich,149
+149,199,759,WOOLWICH,Woolwich,149
+149,9,767,WOOLWICH,Woolwich,149
+149,8,766,WOOLWICH,Woolwich,149
+149,1,755,WOOLWICH,Woolwich,149
+149,10,756,WOOLWICH,Woolwich,149
+149,3,761,WOOLWICH,Woolwich,149
+149,2,760,WOOLWICH,Woolwich,149
+149,4,762,WOOLWICH,Woolwich,149
+149,5,763,WOOLWICH,Woolwich,149
+149,6,764,WOOLWICH,Woolwich,149
+149,7,765,WOOLWICH,Woolwich,149
+150,2,769,WORCESTER SHIRE HALL,Worcester Combined Court Centre,150
+150,1,768,WORCESTER SHIRE HALL,Worcester Combined Court Centre,150
+150,5,772,WORCESTER SHIRE HALL,Worcester Combined Court Centre,150
+150,4,771,WORCESTER SHIRE HALL,Worcester Combined Court Centre,150
+150,3,770,WORCESTER SHIRE HALL,Worcester Combined Court Centre,150
+151,1,773,YORK,York,151
+151,2,774,YORK,York,151
+151,YORK_01,775,YORK,York,151
