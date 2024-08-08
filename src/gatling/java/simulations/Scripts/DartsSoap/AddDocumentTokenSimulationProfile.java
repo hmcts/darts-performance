@@ -2,7 +2,7 @@ package simulations.Scripts.DartsSoap;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import simulations.Scripts.Scenario.DartsSoap.AddDocumentDailyListTokenScenario;
+import simulations.Scripts.Scenario.DartsSoap.AddDocumentCPPDailyListTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 
@@ -30,7 +30,7 @@ public class AddDocumentTokenSimulationProfile extends ProfileAddDocumentSOAPUse
                 .exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
                 .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
                 .randomSwitchOrElse().on(
-                  percent(60.0).then(AddDocumentDailyListTokenScenario.AddDocumentDailyListToken()),
+                  percent(60.0).then(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()),
                   percent(20.0).then(AddDocumentEventTokenScenario.AddDocumentEventToken())
                 ).orElse(exitHere()
               ); 

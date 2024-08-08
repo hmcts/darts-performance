@@ -6,8 +6,10 @@ import simulations.Scripts.Scenario.DartsApi.GetAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsApi.PostAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddCaseUserScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddCourtlogUserScenario;
+import simulations.Scripts.Scenario.DartsSoap.AddDocumentCPPDailyListTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentCPPEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventTokenScenario;
+import simulations.Scripts.Scenario.DartsSoap.AddDocumentXhibitDailyListTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentXhibitEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.GetCasesUserScenario;
 import simulations.Scripts.Scenario.DartsSoap.GetCourtlogTokenScenario;
@@ -70,7 +72,10 @@ public class NEWSoapSmokeSimulationTest extends Simulation {
             exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
             .repeat(AppConfig.CPP_EVENTS_SMOKE_REPEATS)
-            .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken())))
+                .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
+            .repeat(AppConfig.CPP_DailyList_SMOKE_REPEATS)
+                .on(exec(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()))
+        )
 
         //Register with different XHIBIT
         .group("Register With XHIBIT External Username")
@@ -78,7 +83,11 @@ public class NEWSoapSmokeSimulationTest extends Simulation {
             exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
             .repeat(AppConfig.XHIBIT_EVENTS_SMOKE_REPEATS)
-            .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken())));
+                .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
+            .repeat(AppConfig.XHIBIT_DailyList_SMOKE_REPEATS)
+                .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
+        );
+
         // API scenario setups
         ScenarioBuilder postAudioScenario = scenario("Post Audio Request Scenario")
             .exec(GetApiTokenScenario.getApiToken())
