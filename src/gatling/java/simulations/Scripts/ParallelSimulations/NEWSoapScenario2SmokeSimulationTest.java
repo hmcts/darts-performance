@@ -58,10 +58,11 @@ public class NEWSoapScenario2SmokeSimulationTest extends Simulation {
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
             .repeat(1)
             .on(exec(AddCourtlogUserScenario.addCourtLogUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-            .repeat(1)
-            .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-            .repeat(1)
-            .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))))
+           .repeat(1)
+           .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
+           .repeat(1)
+           .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
+        )
             
         //Register with different CPP
         .group("Register With CPP External Username")
@@ -103,10 +104,10 @@ public class NEWSoapScenario2SmokeSimulationTest extends Simulation {
 
         // Set up all scenarios together
         setUp(
-            mainScenario.injectOpen(atOnceUsers(1)).protocols(httpProtocolSoap)
-      //      postAudioScenario.injectOpen(atOnceUsers(AppConfig.POST_AUDIO_USERS_COUNT)).protocols(httpProtocolApi),
+            mainScenario.injectOpen(atOnceUsers(1)).protocols(httpProtocolSoap),
+            postAudioScenario.injectOpen(atOnceUsers(AppConfig.POST_AUDIO_USERS_COUNT)).protocols(httpProtocolApi),
       //      getAudioScenario.injectOpen(atOnceUsers(AppConfig.GET_AUDIO_USERS_COUNT)).protocols(httpProtocolApi),
-     //       deleteAudioScenario.injectOpen(atOnceUsers(AppConfig.DELETE_AUDIO_USERS_COUNT)).protocols(httpProtocolApi)
+            deleteAudioScenario.injectOpen(atOnceUsers(AppConfig.DELETE_AUDIO_USERS_COUNT)).protocols(httpProtocolApi)
         );
     }
 
