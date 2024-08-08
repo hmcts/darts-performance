@@ -23,9 +23,9 @@ public class AudioRequestGetSimulation extends Simulation {
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(1)
         .on(
-            //uniformRandomSwitch().on(
-                exec(GetAudioRequestScenario.GetAudioRequestDownload()
-               // exec(GetAudioRequestScenario.GetAudioRequestPlayBack())
+            uniformRandomSwitch().on(
+                exec(GetAudioRequestScenario.GetAudioRequestDownload()),
+                exec(GetAudioRequestScenario.GetAudioRequestPlayBack())
             )
         );
     setUp(
