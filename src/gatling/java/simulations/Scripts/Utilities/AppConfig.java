@@ -5,24 +5,22 @@ import java.util.Random;
 import java.util.Optional;
 
 public class AppConfig {
-
-
     
     //EXTERNAL Tenant
     //old public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = "test";
     public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = "test";
-    //old public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";
+    //old public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";     
     public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";
     //old public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";
     public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";
     
     // Old public static final String TENANT_NAME = "hmctsstgextid";
 
-    public static final String TENANT_NAME = "test";
+    public static final String TENANT_NAME = "hmctstestextid";
 
     //INTERNAL Tenant
     public static final String PERFORMANCE_INTERNAL_CLIENT_ID = "test";
-    public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = "test";     
+    public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = "test";       
     public static final String PERFORMANCE_INTERNAL_TENANT_ID = "test";
 
     //Performance Env
@@ -38,7 +36,7 @@ public class AppConfig {
     public static final String PERFORMANCE_SCOPE = "https://"+TENANT_NAME+".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "test";
 
     public static final String PERFORMANCE_GRANT_TYPE = "test";
-
+ 
     public static final long RANK_UP_TIME_SECONDS;
     public static final long RANK_DOWN_TIME_SECONDS;
     public static final int REQUESTS_PER_SECOND;
@@ -85,11 +83,17 @@ public class AppConfig {
     //Events Requests
 
     public static final int CPP_EVENTS_SMOKE_REPEATS;
-    public static final int CPP_BASELINE_NORMAL_REPEATS;
-    public static final int CPP_PEAK_REPEATS;
+    public static final int CPP_EVENTS_BASELINE_NORMAL_REPEATS;
+    public static final int CPP_EVENTS_PEAK_REPEATS;
+    public static final int CPP_DailyList_SMOKE_REPEATS;
+    public static final int CPP_DailyList_BASELINE_NORMAL_REPEATS;
+    public static final int CPP_DailyList_PEAK_REPEATS;
     public static final int XHIBIT_EVENTS_SMOKE_REPEATS;
-    public static final int XHIBIT_BASELINE_NORMAL_REPEATS;
-    public static final int XHIBIT_PEAK_REPEATS;
+    public static final int XHIBIT_EVENTS_BASELINE_NORMAL_REPEATS;
+    public static final int XHIBIT_EVENTS_PEAK_REPEATS;
+    public static final int XHIBIT_DailyList_SMOKE_REPEATS;
+    public static final int XHIBIT_DailyList_BASELINE_NORMAL_REPEATS;
+    public static final int XHIBIT_DailyList_PEAK_REPEATS;
     public static final int EVENTS_SMOKE_REPEATS;
     public static final int EVENTS_BASELINE_NORMAL_REPEATS;
     public static final int EVENTS_PEAK_REPEATS;
@@ -209,13 +213,21 @@ public class AppConfig {
         
         //Event Requests
 
-        CPP_EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("CPP_EVENTS_SMOKE_REPEATS", "7"));
-        CPP_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("CPP_BASELINE_NORMAL_REPEATS", "29"));
-        CPP_PEAK_REPEATS = Integer.parseInt(getProperty("CPP_PEAK_REPEATS", "57"));
+        CPP_EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("CPP_EVENTS_SMOKE_REPEATS", "6"));
+        CPP_EVENTS_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("CPP_EVENTS_BASELINE_NORMAL_REPEATS", "30"));
+        CPP_EVENTS_PEAK_REPEATS = Integer.parseInt(getProperty("CPP_EVENTS_PEAK_REPEATS", "57"));
        
+        CPP_DailyList_SMOKE_REPEATS = Integer.parseInt(getProperty("CPP_DailyList_SMOKE_REPEATS", "1"));
+        CPP_DailyList_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("CPP_DailyList_BASELINE_NORMAL_REPEATS", "2"));
+        CPP_DailyList_PEAK_REPEATS = Integer.parseInt(getProperty("CPP_DailyList_PEAK_REPEATS", "3"));
+
         XHIBIT_EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("XHIBIT_EVENTS_SMOKE_REPEATS", "4"));
-        XHIBIT_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("XHIBIT_BASELINE_NORMAL_REPEATS", "154"));       
-        XHIBIT_PEAK_REPEATS = Integer.parseInt(getProperty("XHIBIT_PEAK_REPEATS", "308"));
+        XHIBIT_EVENTS_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("XHIBIT_EVENTS_BASELINE_NORMAL_REPEATS", "154"));       
+        XHIBIT_EVENTS_PEAK_REPEATS = Integer.parseInt(getProperty("XHIBIT_EVENTS_PEAK_REPEATS", "308"));
+        
+        XHIBIT_DailyList_SMOKE_REPEATS = Integer.parseInt(getProperty("XHIBIT_DailyList_SMOKE_REPEATS", "1"));
+        XHIBIT_DailyList_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("XHIBIT_DailyList_BASELINE_NORMAL_REPEATS", "2"));       
+        XHIBIT_DailyList_PEAK_REPEATS = Integer.parseInt(getProperty("XHIBIT_DailyList_PEAK_REPEATS", "3"));
 
         EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("EVENTS_SMOKE_REPEATS", "538"));
         EVENTS_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("EVENTS_BASELINE_NORMAL_REPEATS", "2692"));
@@ -252,7 +264,7 @@ public class AppConfig {
         ADD_LOG_ENTRY_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_PEAK_REPEATS", "225"));
 
         //Get Log Entry Requests
-        GET_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_SMOKE_REPEATS", "10"));
+        GET_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_SMOKE_REPEATS", "6"));
         GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "10571"));
         GET_LOG_ENTRY_PEAK_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_PEAK_REPEATS", "21142"));
 
@@ -273,9 +285,9 @@ public class AppConfig {
         PEAK_PACE_DURATION_MINS = Integer.parseInt(getProperty("PEAK_PACE_DURATION_MINS", "10"));
      
         //DataBase Connections
-        DB_URL = getProperty("DB_URL", "jdbc:postgresql://darts-api-test.postgres.database.azure.com:5432/darts");
-        DB_USERNAME = getProperty("DB_USERNAME", "pgadmin");
-        DB_PASSWORD = getProperty("DB_PASSWORD", "oIYRDeLXDMLKahVUjP0D");
+        DB_URL = getProperty("DB_URL", "test");
+        DB_USERNAME = getProperty("DB_USERNAME", "test");
+        DB_PASSWORD = getProperty("DB_PASSWORD", "test");
     
     }
 
