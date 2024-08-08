@@ -69,17 +69,48 @@ SELECT
     fud.Type,
     COALESCE(
         CASE 
-            WHEN POSITION(' ' IN rd.defendant_name) > 0 THEN SUBSTRING(rd.defendant_name FROM 1 FOR POSITION(' ' IN rd.defendant_name) - 1)
-            ELSE rd.defendant_name 
+            WHEN POSITION(' ' IN rd1.defendant_name) > 0 THEN SUBSTRING(rd1.defendant_name FROM 1 FOR POSITION(' ' IN rd1.defendant_name) - 1)
+            ELSE rd1.defendant_name 
         END, 'Unknown'
-    ) AS first_name  -- Ensure defendant name is populated
+    ) AS first_name1,
+    COALESCE(
+        CASE 
+            WHEN POSITION(' ' IN rd2.defendant_name) > 0 THEN SUBSTRING(rd2.defendant_name FROM 1 FOR POSITION(' ' IN rd2.defendant_name) - 1)
+            ELSE rd2.defendant_name 
+        END, 'Unknown'
+    ) AS first_name2,
+    COALESCE(
+        CASE 
+            WHEN POSITION(' ' IN rd3.defendant_name) > 0 THEN SUBSTRING(rd3.defendant_name FROM 1 FOR POSITION(' ' IN rd3.defendant_name) - 1)
+            ELSE rd3.defendant_name 
+        END, 'Unknown'
+    ) AS first_name3,
+    COALESCE(
+        CASE 
+            WHEN POSITION(' ' IN rd4.defendant_name) > 0 THEN SUBSTRING(rd4.defendant_name FROM 1 FOR POSITION(' ' IN rd4.defendant_name) - 1)
+            ELSE rd4.defendant_name 
+        END, 'Unknown'
+    ) AS first_name4,
+    COALESCE(
+        CASE 
+            WHEN POSITION(' ' IN rd5.defendant_name) > 0 THEN SUBSTRING(rd5.defendant_name FROM 1 FOR POSITION(' ' IN rd5.defendant_name) - 1)
+            ELSE rd5.defendant_name 
+        END, 'Unknown'
+    ) AS first_name5
 FROM 
     FilteredUserDetails fud
 LEFT JOIN 
-    RandomDefendant rd ON fud.usr_id = rd.usr_id AND rd.rn = 1
+    RandomDefendant rd1 ON fud.usr_id = rd1.usr_id AND rd1.rn = 1
+LEFT JOIN 
+    RandomDefendant rd2 ON fud.usr_id = rd2.usr_id AND rd2.rn = 2
+LEFT JOIN 
+    RandomDefendant rd3 ON fud.usr_id = rd3.usr_id AND rd3.rn = 3
+LEFT JOIN 
+    RandomDefendant rd4 ON fud.usr_id = rd4.usr_id AND rd4.rn = 4
+LEFT JOIN 
+    RandomDefendant rd5 ON fud.usr_id = rd5.usr_id AND rd5.rn = 5
 ORDER BY 
     fud.user_email_address;
-
 "@
 
 # Database connection parameters

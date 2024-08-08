@@ -135,18 +135,28 @@ public class RequestBodyBuilder {
         // Print out the formatted dates
         System.out.println("Random Date From: " + formattedDateFrom);
         System.out.println("Random Date To: " + formattedDateTo);
-
-    
+        
         return String.format("{\"case_number\":%s," +
         "\"courthouse\":%s," +
         "\"courtroom\":%s," +
         "\"judge_name\":null," +
         "\"defendant_name\":%s," +
         "\"event_text_contains\":%s," +
-        "\"date_from\":%s," +
-        "\"date_to\":%s}",
+        "\"date_from\":\"2024-07-01\"," +
+        "\"date_to\":\"2024-08-07\"}",
         caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
     }
+    
+    //     return String.format("{\"case_number\":%s," +
+    //     "\"courthouse\":%s," +
+    //     "\"courtroom\":%s," +
+    //     "\"judge_name\":null," +
+    //     "\"defendant_name\":%s," +
+    //     "\"event_text_contains\":%s," +
+    //     "\"date_from\":%s," +
+    //     "\"date_to\":%s}",
+    //     caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
+    // }
 
     public static String buildChangeRetentionsBody(Session session) {
         String caseId = session.get("getCaseId") != null ? "\"" + session.get("getCaseId").toString() + "\"" : "null";

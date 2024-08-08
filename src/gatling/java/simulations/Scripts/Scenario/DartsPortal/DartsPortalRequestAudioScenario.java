@@ -19,62 +19,68 @@ public final class DartsPortalRequestAudioScenario {
 
     public static ChainBuilder DartsPortalRequestAudioDownload() {
       return group("Darts Request Audio PlayBack/Download")
-      .on(exec
-            (session -> {
-              String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-              return session.set("xmlPayload", xmlPayload);
-          })
-          .pause(3)
-          .exec(http("Darts-Portal - Api - Cases - Search")
-              .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
-              .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))              
-              .body(StringBody(session -> session.get("xmlPayload"))).asJson()
-              .check(status().is(200))
-             .check(jsonPath("$[*]..case_id").count().gt(0))
-              .check(Feeders.saveCaseId())
-             .check(jsonPath("$[*].case_id").findRandom().saveAs("getCaseId"))
-              .check(jsonPath("$.title").optional().saveAs("errorTitle"))              
+      .on(
+          exec(
+              session -> {
+                  String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
+                  return session.set("xmlPayload", xmlPayload);
+              })
+              .pause(3)
+              .exec(
+                  http("Darts-Portal - Api - Cases - Search")
+                      .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
+                      .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))              
+                      .body(StringBody(session -> session.get("xmlPayload"))).asJson()
+                      .check(status().saveAs("status"))  // Save status code to session
+                      .check(jsonPath("$[*]..case_id").count().gt(0))
+                      .check(Feeders.saveCaseId())
+                      .check(jsonPath("$[*].case_id").findRandom().saveAs("getCaseId"))
+                      .check(jsonPath("$.title").optional().saveAs("errorTitle"))
               )
+              .pause(5) // Pause 5 seconds before retry          
+              .exitHereIfFailed() // Exit if the scenario fails
               .exec(session -> {
-                Object getCaseId = session.get("getCaseId");
-                if (getCaseId != null) {
-                    System.out.println("getCaseId: " + getCaseId.toString());
-                } else {
-                    System.out.println("No value saved using saveAs.");
-                }
-                
-                Object errorTitle = session.get("errorTitle");
-                if (errorTitle != null) {
-                    String errorMessage = "Request failed with error: " + errorTitle.toString();
-                    System.out.println(errorMessage);
-                    throw new RuntimeException(errorMessage); // Fail the test by throwing an exception
-                }
-                return session;
-            }
-          )
-          .exitHereIfFailed()
+                  Object getCaseId = session.get("getCaseId");
+                  if (getCaseId != null) {
+                      System.out.println("getCaseId: " + getCaseId.toString());
+                  } else {
+                      System.out.println("No value saved using saveAs.");
+                  }
+
+                  Object errorTitle = session.get("errorTitle");
+                  if (errorTitle != null) {
+                      String errorMessage = "Request failed with error: " + errorTitle.toString();
+                      System.out.println(errorMessage);
+                      throw new RuntimeException(errorMessage); // Fail the test by throwing an exception
+                  }
+                  return session;
+              })
           .pause(3)
           .exec(http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
           )
-          .exec(http("Darts-Portal - Api - Cases")
-          .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
-          .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
+          .exec(
+            http("Darts-Portal - Api - Cases")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
+              .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
           )
-          .exec(http("Darts-Portal - Api - Cases - Hearings")
-          .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
-          .headers(Headers.searchReferer(Headers.CommonHeaders))
+          .exec(
+            http("Darts-Portal - Api - Cases - Hearings")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
+              .headers(Headers.searchReferer(Headers.CommonHeaders))
           )
-          .exec(http("Darts-Portal - Api - Cases - Transcripts")
-          .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/transcripts")
-          .headers(Headers.searchReferer(Headers.CommonHeaders))
-          .check(status().in(200, 403))
+          .exec(
+            http("Darts-Portal - Api - Cases - Transcripts")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/transcripts")
+              .headers(Headers.searchReferer(Headers.CommonHeaders))
+              .check(status().in(200, 403))
           )
           .pause(3)
-          .exec(http("Darts-Portal - Auth - Is-authenticated")
-          .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-          .headers(Headers.CommonHeaders)
+          .exec(
+            http("Darts-Portal - Auth - Is-authenticated")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
+              .headers(Headers.CommonHeaders)
           )
           .exec(
             http("Darts-Portal - Api - Cases")
@@ -128,6 +134,7 @@ public final class DartsPortalRequestAudioScenario {
                 .headers(Headers.caseReferer(Headers.CommonHeaders))
                 .check(jsonPath("$[0].media_start_timestamp").saveAs("getAudioStartDate"))
                 .check(jsonPath("$[0].media_end_timestamp").saveAs("getAudioEndDate"))
+                .check(jsonPath("$[0].id").saveAs("extractedId")) 
         )
         .exec(session -> {
             String getAudioStartDate = session.getString("getAudioStartDate");
@@ -142,6 +149,13 @@ public final class DartsPortalRequestAudioScenario {
                 System.out.println("getAudioEndDate: " + getAudioEndDate);
             } else {
                 System.out.println("No value saved for getAudioEndDate using saveAs.");
+            }
+
+            String extractedId = session.getString("extractedId");
+            if (extractedId != null) {
+                System.out.println("Extracted ID: " + extractedId);
+            } else {
+                System.out.println("No value saved for extractedId using saveAs.");
             }
             return session;
         })        
