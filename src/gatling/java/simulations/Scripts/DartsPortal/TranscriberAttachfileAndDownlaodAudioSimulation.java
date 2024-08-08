@@ -53,7 +53,7 @@ public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation 
                 return session.set("loopCounter", iteration);
             })
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-         //   .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
+            .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
             .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudio()) // Execute the request
         )
         .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest());
