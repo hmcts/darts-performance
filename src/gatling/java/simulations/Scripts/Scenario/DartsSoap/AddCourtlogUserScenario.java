@@ -18,7 +18,7 @@ public final class AddCourtlogUserScenario {
                     String xmlPayload = SOAPRequestBuilder.AddCourtLogUserRequest(session, USERNAME, PASSWORD);
                     return session.set("xmlPayload", xmlPayload);
                 })
-                .exec(http("DARTS - GateWay - Soap - CourtLog - User")
+                .exec(http("DARTS - GateWay - Soap - Add CourtLog - User")
                         .post(SoapServiceEndpoint.DARTSService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
