@@ -11,20 +11,22 @@ public class UserInfoLogger {
 
     public static ChainBuilder logDetailedErrorMessage(String requestName) {
         return exec(session -> {
-            if (session.isFailed()) {
-                String email = session.getString("Email");
-                String password = session.getString("Password");
-                String userName = session.getString("user_name");
+            if (session.contains("errorStatusCode")) {
+                String errorStatusCode = session.getString("errorStatusCode");
+                String errorType = session.contains("errorType") ? session.getString("errorType") : "N/A";
+                String errorTitle = session.contains("errorTitle") ? session.getString("errorTitle") : "N/A";
+                String errorStatus = session.contains("errorStatus") ? session.getString("errorStatus") : "N/A";
+
                 String errorMessage = String.format(
-                    "Request '%s' failed for user: Email=%s, Password=%s, User Name=%s. " +
-                    "Error details are not available. Please check the request for further information.",
-                    requestName, email, password, userName
+                    "Request '%s' failed with status code: %s. " +
+                    "Error Type: %s, Error Title: %s, Error Status: %s.",
+                    requestName, errorStatusCode, errorType, errorTitle, errorStatus
                 );
                 LOGGER.error(errorMessage);
             }
             return session;
         });
-    }
+    };
     
     public static ChainBuilder logDetailedErrorMessage(String requestName, String regexName, String expectedPattern) {
         return exec(session -> {
