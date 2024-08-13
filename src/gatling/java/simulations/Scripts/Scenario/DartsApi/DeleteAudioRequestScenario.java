@@ -13,8 +13,12 @@ public final class DeleteAudioRequestScenario {
     public static ChainBuilder DeleteAudioRequest() {
         return group("Audio Request Delete")
             .on(exec(feed(Feeders.createTransformedMediaDeleteIdsCSV()))
+            .exec(session -> {
+                String transformedMediaId = session.getString("trm_id");
+                return session.set("trm_id", transformedMediaId);
+            })
                 .exec(http("DARTS - Api - AudioRequest:DELETE")
-                        .delete(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/transformed_media/#{getTransformedMediaId}")
+                        .delete(session -> AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/transformed_media/" + session.getString("trm_id"))
                         .headers(Headers.AuthorizationHeaders)
                         .check(Feeders.saveTransformedMediaId())
                         .check(status().saveAs("statusCode"))
