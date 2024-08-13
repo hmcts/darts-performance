@@ -23,9 +23,10 @@ public final class DeleteAudioRequestScenario {
                 .delete(session -> AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/transformed_media/" + session.getString("trm_id"))
                 .headers(Headers.AuthorizationHeaders)
                 .check(status().saveAs("statusCode"))
-                .check(status().is(204)) // Check if the status code is 204 (expected success)
-                .check(status().not(204).saveAs("errorStatusCode")) // Check if the status code is not 204
-                .check(
+                .check(status().is(204)) // Check if the status code is 204
+                .checkIf(session -> session.getInt("statusCode") != 204) // Proceed with error checks only if status is not 204
+                .then(
+                    status().saveAs("errorStatusCode"),
                     jsonPath("$.type").optional().saveAs("errorType"), // Extract error type if it exists
                     jsonPath("$.title").optional().saveAs("errorTitle"), // Extract error title if it exists
                     jsonPath("$.status").optional().saveAs("errorStatus") // Extract error status if it exists
