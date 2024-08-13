@@ -92,7 +92,9 @@ public class NEWSoapScenario1SmokeSimulationTest extends Simulation {
         ScenarioBuilder getAudioScenario = scenario("Get Audio Request Scenario")
             .exec(GetApiTokenScenario.getApiToken())
             .repeat(AppConfig.GET_AUDIO_REQUEST_SMOKE_REPEATS)
-            .on(exec(GetAudioRequestScenario.GetAudioRequestDownload()));
+            .on(uniformRandomSwitch().on(
+                exec(GetAudioRequestScenario.GetAudioRequestDownload()),
+                exec(GetAudioRequestScenario.GetAudioRequestPlayBack())));
 
         ScenarioBuilder deleteAudioScenario = scenario("Delete Audio Request Scenario")
             .exec(GetApiTokenScenario.getApiToken())
@@ -102,9 +104,9 @@ public class NEWSoapScenario1SmokeSimulationTest extends Simulation {
         // Set up all scenarios together
         setUp(
             mainScenario.injectOpen(atOnceUsers(1)).protocols(httpProtocolSoap),
-            postAudioScenario.injectOpen(atOnceUsers(AppConfig.POST_AUDIO_USERS_COUNT)).protocols(httpProtocolApi)
-      //      getAudioScenario.injectOpen(atOnceUsers(AppConfig.GET_AUDIO_USERS_COUNT)).protocols(httpProtocolApi),
-     //       deleteAudioScenario.injectOpen(atOnceUsers(AppConfig.DELETE_AUDIO_USERS_COUNT)).protocols(httpProtocolApi)
+            postAudioScenario.injectOpen(atOnceUsers(AppConfig.POST_AUDIO_USERS_COUNT)).protocols(httpProtocolApi),
+            getAudioScenario.injectOpen(atOnceUsers(AppConfig.GET_AUDIO_USERS_COUNT)).protocols(httpProtocolApi),
+            deleteAudioScenario.injectOpen(atOnceUsers(AppConfig.DELETE_AUDIO_USERS_COUNT)).protocols(httpProtocolApi)
         );
     }
 

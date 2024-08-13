@@ -25,6 +25,6 @@ public class AudioRequestPostSimulation extends Simulation {
         );
 
     setUp(
-        scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
+        scn1.injectOpen(constantUsersPerSec(20).during(1)).protocols(httpProtocol));
     }    
 }
