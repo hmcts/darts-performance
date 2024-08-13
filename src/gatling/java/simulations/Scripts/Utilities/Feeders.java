@@ -29,6 +29,7 @@ public class Feeders {
     public static final FeederBuilder<String> CaseHouseRoomsHearingDetails;
     public static final FeederBuilder<String> TransformedMediaDownloadIdCSV;
     public static final FeederBuilder<String> TransformedMediaPlaybackIdCSV;
+    public static final FeederBuilder<String> TransformedMediaDeleteIdsCSV;    
     public static final FeederBuilder<String> TranscriptionPostDetails;
 
     private static final AtomicInteger COUNTER;
@@ -56,7 +57,8 @@ public class Feeders {
         //Transformed Media Id's
         TransformedMediaDownloadIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH).random();
         TransformedMediaPlaybackIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH).random();
-       
+        TransformedMediaDeleteIdsCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH).random();
+
         //Transcription Post body details
         TranscriptionPostDetails = CoreDsl.csv(AppConfig.TRANSCRIPTION_POST_FILE_PATH).random();
 
@@ -85,6 +87,11 @@ public class Feeders {
     public static FeederBuilder<String> createTransformedMediaPlaybackIdCSV() {
         return TransformedMediaPlaybackIdCSV;
     }
+
+    public static FeederBuilder<String> createTransformedMediaDeleteIdsCSV() {
+        return TransformedMediaDeleteIdsCSV;
+    }
+    
     
     public static FeederBuilder<String> createJudgesFeeder() {
         return JudgesCSV;
