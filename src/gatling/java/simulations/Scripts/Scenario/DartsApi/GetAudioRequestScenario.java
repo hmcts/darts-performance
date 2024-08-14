@@ -27,7 +27,7 @@ public final class GetAudioRequestScenario {
     }   
 
     public static ChainBuilder GetAudioRequestPlayBack() {
-        return group("Audio Request Get")
+        return group("Audio Request Get - PlayBack")
             .on(exec(feed(Feeders.createTransformedMediaPlaybackIdCSV()))
                 .exec(session -> {
                     String transformedMediaId = session.getString("trm_id");
@@ -43,7 +43,7 @@ public final class GetAudioRequestScenario {
     }
 
     public static ChainBuilder GetAudioRequestDownload() {
-        return group("Audio Request Get")
+        return group("Audio Request Get - Download")
             .on(exec(feed(Feeders.createTransformedMediaDownloadIdCSV()))
             .exec(session -> {
                 String transformedMediaId = session.get("trm_id");

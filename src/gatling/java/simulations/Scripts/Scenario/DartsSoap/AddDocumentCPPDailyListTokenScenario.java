@@ -12,7 +12,7 @@ public final class AddDocumentCPPDailyListTokenScenario {
 
     private AddDocumentCPPDailyListTokenScenario() {}
     public static ChainBuilder AddDocumentCPPDailyListToken() {
-        return group("AddDocument SOAP Request Group")
+        return group("AddDocument - CPP DailyList SOAP Requests")
             .on(feed(Feeders.createCourtHouseAndCourtRooms())   
             .exec(session -> {
                     String xmlPayload = SOAPRequestBuilder.AddDocumentCPPDailyListTokenRequest(session);  

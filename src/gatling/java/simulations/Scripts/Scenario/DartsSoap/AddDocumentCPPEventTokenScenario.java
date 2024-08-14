@@ -12,7 +12,7 @@ public final class AddDocumentCPPEventTokenScenario {
 
     private AddDocumentCPPEventTokenScenario() {}
     public static ChainBuilder AddDocumentCPPEventToken() {
-        return group("AddDocument SOAP Request Group")
+        return group("AddDocument - CPP Event SOAP Requests")
             .on(feed(Feeders.createCourtHouseAndCourtRooms())   
             .exec(session -> {
                     String xmlPayload = SOAPRequestBuilder.AddDocumentCPPEventTokenRequest(session);
