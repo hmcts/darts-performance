@@ -12,7 +12,7 @@ public final class AddDocumentXhibitEventTokenScenario {
 
     private AddDocumentXhibitEventTokenScenario() {}
     public static ChainBuilder AddDocumentXhibitEventToken() {
-        return group("AddDocument SOAP Request Group")
+        return group("AddDocument - Xhibit Event SOAP Requests")
             .on(feed(Feeders.createCourtHouseAndCourtRooms())   
             .exec(session -> {
                     String xmlPayload = SOAPRequestBuilder.AddDocumentXhibitEventTokenRequest(session);
