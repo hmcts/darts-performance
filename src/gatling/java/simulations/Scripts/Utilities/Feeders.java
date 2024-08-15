@@ -37,7 +37,7 @@ public class Feeders {
 
     static {        
         //Audio Files
-        AudioRequestCSV = CoreDsl.csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
+        AudioRequestCSV = CoreDsl.csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).circular();
 
         //Judges from cases
         JudgesCSV = CoreDsl.csv(AppConfig.DARTS_PORTAL_JUDGES_FILE_PATH).random();
@@ -55,12 +55,12 @@ public class Feeders {
         CaseHouseRoomsHearingDetails = CoreDsl.csv(AppConfig.CASE_HOUSE_ROOMS_HEARING_FILE_PATH).random();
         
         //Transformed Media Id's
-        TransformedMediaDownloadIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH).random();
-        TransformedMediaPlaybackIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH).random();
-        TransformedMediaDeleteIdsCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH).random();
+        TransformedMediaDownloadIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH).circular();
+        TransformedMediaPlaybackIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH).circular();
+        TransformedMediaDeleteIdsCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH).circular();
 
         //Transcription Post body details
-        TranscriptionPostDetails = CoreDsl.csv(AppConfig.TRANSCRIPTION_POST_FILE_PATH).random();
+        TranscriptionPostDetails = CoreDsl.csv(AppConfig.TRANSCRIPTION_POST_FILE_PATH).circular();
 
         COUNTER = new AtomicInteger(0);
         // RANDOM_USER_FEEDER = jdbcFeeder("SELECT * FROM darts.user_account "

@@ -42,7 +42,7 @@ public final class AddDocumentCPPDailyListTokenScenario {
                             if (messageId != null) {
                                 System.out.println("messageId: " + messageId.toString());
                             } else {
-                                System.out.println("No value for messageId.");
+                                System.out.println("No value for messageId on the AddDocument - CPP DailyList request.");
                             }
                             return session;
                         })

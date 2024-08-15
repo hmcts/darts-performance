@@ -65,19 +65,19 @@ public class PortalLoginSimulationTest extends Simulation {
         // Call setUp once with all scenarios
         setUp(
             smokeJudgeUsers.injectOpen(
-                rampUsers(1).during(Duration.ofMinutes(1)) 
+                rampUsers(AppConfig.JUDGE_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)) 
             ).protocols(httpProtocolInternal),
             smokeCourtClerkUsers.injectOpen(
-                rampUsers(1).during(Duration.ofMinutes(1)) 
+                rampUsers(AppConfig.COURT_CLERK_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)) 
             ).protocols(httpProtocolInternal),
             smokeCourtManagerUsers.injectOpen(
-                rampUsers(1).during(Duration.ofMinutes(1)) 
+                rampUsers(AppConfig.COURT_MANAGER_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_MANAGER)) 
             ).protocols(httpProtocolInternal),
             smokeTranscriberUsers.injectOpen(
-                rampUsers(1).during(Duration.ofMinutes(1))
+                rampUsers(AppConfig.TRANSCRIBER_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_TRANSCRIBER))
             ).protocols(httpProtocolExternal),
             smokeLanguageShopUsers.injectOpen(
-                rampUsers(1).during(Duration.ofMinutes(1)) 
+                rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)) 
             ).protocols(httpProtocolExternal)
         );
     }

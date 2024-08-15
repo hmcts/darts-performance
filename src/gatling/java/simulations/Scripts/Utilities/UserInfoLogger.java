@@ -27,6 +27,26 @@ public class UserInfoLogger {
             return session;
         });
     };
+
+    public static ChainBuilder logDetailedErrorMessage(String requestName, String trmId) {
+        return exec(session -> {
+            if (session.contains("errorStatusCode")) {
+                String errorStatusCode = session.getString("errorStatusCode");
+                String errorType = session.contains("errorType") ? session.getString("errorType") : "N/A";
+                String errorTitle = session.contains("errorTitle") ? session.getString("errorTitle") : "N/A";
+                String errorStatus = session.contains("errorStatus") ? session.getString("errorStatus") : "N/A";
+
+                String errorMessage = String.format(
+                    "Request '%s' failed with status code: %s. " +
+                    "Error Type: %s, Error Title: %s, Error Status: %s. " +
+                    "Failed on trm_id: %s.",
+                    requestName, errorStatusCode, errorType, errorTitle, errorStatus, trmId
+                );
+                LOGGER.error(errorMessage);
+            }
+            return session;
+        });
+    }
     
     public static ChainBuilder logDetailedErrorMessage(String requestName, String regexName, String expectedPattern) {
         return exec(session -> {
