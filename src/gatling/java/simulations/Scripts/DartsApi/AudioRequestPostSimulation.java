@@ -20,7 +20,7 @@ public class AudioRequestPostSimulation extends Simulation {
 
     final ScenarioBuilder scn1 = scenario("Audio Requests:POST")
         .exec(GetApiTokenScenario.getApiToken())
-        .repeat(10)    
+        .repeat(20)    
         .on(exec(PostAudioRequestScenario.PostaudioRequest())    
         );
 
