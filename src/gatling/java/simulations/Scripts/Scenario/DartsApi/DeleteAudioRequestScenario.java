@@ -33,7 +33,11 @@ public final class DeleteAudioRequestScenario {
                 )
             )
             // Log error details if the request failed
-            .exec(UserInfoLogger.logDetailedErrorMessage("DARTS - Api - AudioRequest:DELETE"))
+            .exec(session -> {
+                String trmId = session.getString("trm_id");
+                UserInfoLogger.logDetailedErrorMessage("DARTS - Api - AudioRequest:DELETE", trmId);
+                return session; 
+            })
         );
     }
 }

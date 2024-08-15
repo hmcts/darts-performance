@@ -32,7 +32,7 @@ public final class AddDocumentDailyListTokenScenario {
                     if (messageId != null) {
                         System.out.println("messageId: " + messageId.toString());
                     } else {
-                        System.out.println("No value for messageId.");
+                        System.out.println("No value for messageId on the AddDocument - DailyList request.");
                     }
                     return session;
                 })
