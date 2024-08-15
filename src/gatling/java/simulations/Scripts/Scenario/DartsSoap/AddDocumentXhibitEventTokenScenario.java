@@ -11,6 +11,7 @@ import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 public final class AddDocumentXhibitEventTokenScenario {
 
     private AddDocumentXhibitEventTokenScenario() {}
+
     public static ChainBuilder AddDocumentXhibitEventToken() {
         return group("AddDocument - Xhibit Event SOAP Requests")
             .on(feed(Feeders.createCourtHouseAndCourtRooms())   
@@ -27,25 +28,47 @@ public final class AddDocumentXhibitEventTokenScenario {
                         .check(xpath("//return/code").saveAs("statusCode"))
                         .check(xpath("//return/message").saveAs("message"))
                         )
-                        .exec(session -> {
-                            String statusCode = session.getString("statusCode");
-                            String message = session.getString("message");
-                            if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
-                                // Mark the request as failed if there's an error message
-                                session.markAsFailed();
-                                System.out.println("Error detected for Xhibit Event: " + message);
-                            }
-                            return session;
-                        })
-                        .exec(session -> {
-                            Object messageId = session.get("messageId");
-                            if (messageId != null) {
-                                System.out.println("messageId: " + messageId.toString());
-                            } else {
-                                System.out.println("No value for messageId on the AddDocument - Xhibit Event request.");
-                            }
-                            return session;
-                        })
-                    );
-            } 
-        }
+                .exec(session -> {
+                    // Log raw response for debugging purposes
+                    String responseBody = session.getString("responseBody");
+                    System.out.println("Raw response body: " + responseBody);
+                    return session;
+                })
+                .exec(session -> {
+                    String statusCode = session.getString("statusCode");
+                    String message = session.getString("message");
+                    
+                    if (statusCode == null) {
+                        System.out.println("Status code is null. Response might be missing the <return/code> element.");
+                    }
+                    
+                    if (message == null) {
+                        System.out.println("Message is null. Response might be missing the <return/message> element.");
+                    }
+                    
+                    if (statusCode != null && statusCode.equals("ERROR")) {
+                        // Mark the request as failed if there's an error status code
+                        session.markAsFailed();
+                        System.out.println("Error detected with status code: " + statusCode);
+                    }
+                    
+                    if (message != null && message.toLowerCase().contains("error")) {
+                        // Mark the request as failed if there's an error message
+                        session.markAsFailed();
+                        System.out.println("Error detected with message: " + message);
+                    }
+                    
+                    return session;
+                })
+                .exec(session -> {
+                    Object messageId = session.get("messageId");
+                    if (messageId != null) {
+                        System.out.println("messageId: " + messageId.toString());
+                    } else {
+                        System.out.println("No value for messageId on the AddDocument - Xhibit Event request.");
+                    }
+                    return session;
+                })
+        );
+    }
+}
