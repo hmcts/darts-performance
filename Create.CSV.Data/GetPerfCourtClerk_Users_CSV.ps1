@@ -136,7 +136,7 @@ if (Test-Path -Path $outputFile) {
 }
 
 # Export column headers to a new CSV file
-$headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,defendant_name"
+$headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,defendantFirstName,defendantSecondName,defendantThirdName,defendantFourthName,defendantFifthName"
 $headers | Out-File -FilePath $outputFile -Encoding ASCII
 
 # Append the query results to the CSV file with comma delimiters

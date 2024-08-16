@@ -121,12 +121,12 @@ public class RequestBodyBuilder {
         LocalDate endDate = currentDate.isBefore(LocalDate.of(2024, 12, 31)) ? currentDate : LocalDate.of(2024, 12, 31);
 
         // Generate random dates using RandomDateGenerator
-        LocalDate randomDateFrom = RandomDateGenerator.getRandomDate(startDate, endDate.minusYears(2));
+        LocalDate randomDateFrom = RandomDateGenerator.getRandomDate(startDate, endDate.minusYears(1));
         
         // Ensure randomDateTo is at least 2 years after randomDateFrom
-        LocalDate minEndDate = randomDateFrom.plusYears(2);
+        LocalDate minEndDate = randomDateFrom.plusYears(1);
         LocalDate adjustedEndDate = endDate.isAfter(minEndDate) ? endDate : minEndDate;
-        LocalDate randomDateTo = RandomDateGenerator.getRandomDate(randomDateFrom.plusYears(2), adjustedEndDate);
+        LocalDate randomDateTo = RandomDateGenerator.getRandomDate(randomDateFrom.plusYears(3), adjustedEndDate);
 
         // Format dates as strings
         String formattedDateFrom = "\"" + randomDateFrom.toString() + "\"";
@@ -142,8 +142,8 @@ public class RequestBodyBuilder {
         "\"judge_name\":null," +
         "\"defendant_name\":%s," +
         "\"event_text_contains\":%s," +
-        "\"date_from\":\"2024-07-01\"," +
-        "\"date_to\":\"2024-08-07\"}",
+        "\"date_from\":%s," +
+        "\"date_to\":%s}",
         caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
     }
     
@@ -540,8 +540,8 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
-        return String.format("{ \"type\": \"30500\", " +
-        "\"event_id\": \"215\", " +
+        return String.format("{ \"type\": \"30300\", " +
+        "\"event_id\": \"218\", " +
         "\"courthouse\": \"%s\", " +
         "\"courtroom\": \"%s\"," +
         "\"case_numbers\": [ " +
