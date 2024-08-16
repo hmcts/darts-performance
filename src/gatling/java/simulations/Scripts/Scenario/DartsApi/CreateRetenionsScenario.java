@@ -15,12 +15,17 @@ public final class CreateRetenionsScenario {
     private CreateRetenionsScenario() {}
     public static ChainBuilder CreateRetenionsScenario() {
 
-        String sql = "WITH random_case AS (SELECT cas_id FROM darts.court_case ORDER BY RANDOM() LIMIT 1), " +
-        "random_courtroom AS (SELECT cr.courtroom_name FROM darts.courtroom AS cr INNER JOIN darts.court_case AS cc ON cr.cth_id = cc.cth_id " +
-        "WHERE cc.cas_id = (SELECT cas_id FROM random_case) ORDER BY RANDOM() LIMIT 1) " +
+        String sql = "WITH random_cases AS (" +
+        "SELECT cas_id FROM darts.court_case ORDER BY RANDOM() LIMIT 50), " +
+        "random_courtrooms AS (" +
+        "SELECT cr.courtroom_name FROM darts.courtroom AS cr " +
+        "INNER JOIN darts.court_case AS cc ON cr.cth_id = cc.cth_id " +
+        "WHERE cc.cas_id IN (SELECT cas_id FROM random_cases) ORDER BY RANDOM() LIMIT 50) " +
         "SELECT cc.cas_id, cc.case_number, cc.cth_id, ch.courthouse_name, rc.courtroom_name FROM darts.court_case AS cc " +
         "INNER JOIN darts.courthouse AS ch ON cc.cth_id = ch.cth_id " +
-        "INNER JOIN random_courtroom AS rc ON rc.courtroom_name IS NOT NULL WHERE cc.cas_id = (SELECT cas_id FROM random_case);";
+        "INNER JOIN random_courtrooms AS rc ON rc.courtroom_name IS NOT NULL " +
+        "WHERE cc.cas_id IN (SELECT cas_id FROM random_cases);";
+        
     
         // Create the JDBC feeder
         FeederBuilder<Object> feeder = Feeders.jdbcFeeder(sql);
@@ -63,7 +68,7 @@ public final class CreateRetenionsScenario {
                     Feeders.executeUpdate(query);
                     return session.set("Retenions_cas_id", cas_id);
                 })
-            .pause(5)
+            .pause(10)
         .exec(http("DARTS - Api - AutomatedTasksRequest:POST")
                 .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/11/run") 
                 .headers(Headers.AuthorizationHeaders)
