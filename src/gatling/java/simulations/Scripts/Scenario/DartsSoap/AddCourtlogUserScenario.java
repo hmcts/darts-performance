@@ -11,6 +11,7 @@ import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 public final class AddCourtlogUserScenario {
 
     private AddCourtlogUserScenario() {}
+
     public static ChainBuilder addCourtLogUser(String USERNAME, String PASSWORD) {
         return group("CourtLog SOAP Request Group")
             .on(feed(Feeders.createCourtHouseAndCourtRooms()) 
@@ -22,10 +23,25 @@ public final class AddCourtlogUserScenario {
                         .post(SoapServiceEndpoint.DARTSService.getEndpoint())
                         .headers(Headers.SoapHeaders)
                         .body(StringBody(session -> session.get("xmlPayload")))
-                        .check(status().is(200))
-                        .check(xpath("//return/code").saveAs("statusCode"))
-                        .check(xpath("//return/message").saveAs("message"))
+                        .check(status().is(200))  // Check only for a 200 status code since that's what you're receiving
+                        .check(xpath("//return/code").saveAs("statusCode"))  // Extract status code
+                        .check(xpath("//return/message").optional().saveAs("message"))  // Extract message, if available
                         )
+                        .exec(session -> {
+                            String statusCode = session.getString("statusCode");
+                            String message = session.getString("message");
+
+                            if (statusCode.equals("500")) {
+                                // Mark as failed if statusCode is 500
+                                session.markAsFailed();
+                                if (message == null) {
+                                    System.out.println("Error detected: 500 response Code");
+                                } else {
+                                    System.out.println("Error detected: " + message);
+                                }
+                            }
+                            return session;
+                        })
                         .exec(session -> {
                             Object messageId = session.get("messageId");
                             if (messageId != null) {
@@ -38,3 +54,4 @@ public final class AddCourtlogUserScenario {
                     );
             } 
         }
+

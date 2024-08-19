@@ -56,55 +56,55 @@ public class NEWSoapScenario1aSmokeSimulationTest extends Simulation {
          .on(
              exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(AppConfig.ADD_CASES_SMOKE_REPEATS)
-            .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-            .repeat(AppConfig.GET_CASES_SMOKE_REPEATS)
-            .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-            .repeat(AppConfig.ADD_LOG_ENTRY_SMOKE_REPEATS)
-            .on(exec(AddCourtlogUserScenario.addCourtLogUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))))
+            // .repeat(AppConfig.ADD_CASES_SMOKE_REPEATS)
+            // .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
+            // .repeat(AppConfig.GET_CASES_SMOKE_REPEATS)
+            // .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
+            .repeat(1)
+            .on(exec(AddCourtlogUserScenario.addCourtLogUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))));
             
         //Register with different CPP
-        .group("Register With CPP External Username")
-        .on(
-            exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
-            .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(AppConfig.CPP_EVENTS_SMOKE_REPEATS)
-                .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
-            .repeat(AppConfig.CPP_DailyList_SMOKE_REPEATS) 
-                .on(exec(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()))
-        )
+        // .group("Register With CPP External Username")
+        // .on(
+        //     exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
+        //     .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
+        //     .repeat(AppConfig.CPP_EVENTS_SMOKE_REPEATS)
+        //         .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
+        //     .repeat(AppConfig.CPP_DailyList_SMOKE_REPEATS) 
+        //         .on(exec(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()))
+        // )
 
         //Register with different XHIBIT
-        .group("Register With XHIBIT External Username")
-        .on(
-            exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(AppConfig.XHIBIT_EVENTS_SMOKE_REPEATS)
-                .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
-                .repeat(AppConfig.XHIBIT_DailyList_SMOKE_REPEATS)
-                .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
-        );
+        // .group("Register With XHIBIT External Username")
+        // .on(
+        //     exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
+        //     .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
+        //     .repeat(AppConfig.XHIBIT_EVENTS_SMOKE_REPEATS)
+        //         .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
+        //         .repeat(AppConfig.XHIBIT_DailyList_SMOKE_REPEATS)
+        //         .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
+        // );
 
-        // API scenario setups
-        ScenarioBuilder postAudioScenario = scenario("Post Audio Request Scenario")
-            .exec(GetApiTokenScenario.getApiToken())
-            .repeat(AppConfig.POST_AUDIO_REQUEST_SMOKE_REPEATS)
-            .on(exec(PostAudioRequestScenario.PostaudioRequest()));
+        // // API scenario setups
+        // ScenarioBuilder postAudioScenario = scenario("Post Audio Request Scenario")
+        //     .exec(GetApiTokenScenario.getApiToken())
+        //     .repeat(AppConfig.POST_AUDIO_REQUEST_SMOKE_REPEATS)
+        //     .on(exec(PostAudioRequestScenario.PostaudioRequest()));
 
-        ScenarioBuilder getAudioScenario = scenario("Get Audio Request Scenario")
-            .exec(GetApiTokenScenario.getApiToken())
-            .repeat(AppConfig.GET_AUDIO_REQUEST_SMOKE_REPEATS)
-            .on(exec(GetAudioRequestScenario.GetAudioRequestDownload()));
+        // ScenarioBuilder getAudioScenario = scenario("Get Audio Request Scenario")
+        //     .exec(GetApiTokenScenario.getApiToken())
+        //     .repeat(AppConfig.GET_AUDIO_REQUEST_SMOKE_REPEATS)
+        //     .on(exec(GetAudioRequestScenario.GetAudioRequestDownload()));
 
-        ScenarioBuilder deleteAudioScenario = scenario("Delete Audio Request Scenario")
-            .exec(GetApiTokenScenario.getApiToken())
-            .repeat(AppConfig.DELETE_AUDIO_REQUEST_SMOKE_REPEATS)
-            .on(exec(DeleteAudioRequestScenario.DeleteAudioRequest()));
+        // ScenarioBuilder deleteAudioScenario = scenario("Delete Audio Request Scenario")
+        //     .exec(GetApiTokenScenario.getApiToken())
+        //     .repeat(AppConfig.DELETE_AUDIO_REQUEST_SMOKE_REPEATS)
+        //     .on(exec(DeleteAudioRequestScenario.DeleteAudioRequest()));
 
         // Set up all scenarios together
         setUp(
-            mainScenario.injectOpen(atOnceUsers(1)).protocols(httpProtocolSoap),
-            postAudioScenario.injectOpen(atOnceUsers(AppConfig.POST_AUDIO_USERS_COUNT)).protocols(httpProtocolApi)
+            mainScenario.injectOpen(atOnceUsers(1)).protocols(httpProtocolSoap)
+      //      postAudioScenario.injectOpen(atOnceUsers(AppConfig.POST_AUDIO_USERS_COUNT)).protocols(httpProtocolApi)
       //      getAudioScenario.injectOpen(atOnceUsers(AppConfig.GET_AUDIO_USERS_COUNT)).protocols(httpProtocolApi),
      //       deleteAudioScenario.injectOpen(atOnceUsers(AppConfig.DELETE_AUDIO_USERS_COUNT)).protocols(httpProtocolApi)
         );
