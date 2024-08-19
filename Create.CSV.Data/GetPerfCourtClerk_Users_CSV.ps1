@@ -7,7 +7,7 @@ WITH UserDetails AS (
         'PerfTester@01' AS Password,
         ua.user_name, 
         sgch.cth_id,
-        '\"' || REPLACE(ch.courthouse_name, '\"', '\"\"') || '\"' AS courthouse_name,
+        '\"' || REPLACE(ch.display_name, '\"', '\"\"') || '\"' AS courthouse_name,
         ch.courthouse_code,
         'CourtClerk' AS Type,
         ROW_NUMBER() OVER (PARTITION BY ua.usr_id ORDER BY RANDOM()) AS courthouse_rn
