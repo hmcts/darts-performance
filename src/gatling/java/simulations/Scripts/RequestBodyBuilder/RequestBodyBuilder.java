@@ -140,15 +140,15 @@ public class RequestBodyBuilder {
         "\"courthouse\":%s," +
         "\"courtroom\":%s," +
         "\"judge_name\":null," +
-        "\"date_from\":%s," +
-        "\"date_to\":%s," +
         "\"defendant_name\":%s," +
-        "\"event_text_contains\":%s}",
+        "\"event_text_contains\":%s," +
+        "\"date_from\":%s," +
+        "\"date_to\":%s}",
         caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
-    }  
-
+    }
     
 
+    
     //     return String.format("{\"case_number\":%s," +
     //     "\"courthouse\":%s," +
     //     "\"courtroom\":%s," +
