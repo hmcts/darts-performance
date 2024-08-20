@@ -40,9 +40,9 @@ public final class AddDocumentCPPDailyListTokenScenario {
                         .exec(session -> {
                             Object messageId = session.get("messageId");
                             if (messageId != null) {
-                                System.out.println("messageId: " + messageId.toString());
+                                System.out.println("messageId for AddDocument - CPP DailyList request: " + messageId.toString());
                             } else {
-                                System.out.println("No value for messageId on the AddDocument - CPP DailyList request.");
+                                System.out.println("Created AddDocument - CPP DailyList request.");
                             }
                             return session;
                         })

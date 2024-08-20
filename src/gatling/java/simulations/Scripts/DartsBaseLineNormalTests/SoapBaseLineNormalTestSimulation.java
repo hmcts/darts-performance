@@ -104,9 +104,9 @@ public class SoapBaseLineNormalTestSimulation extends Simulation {
         // Set up all scenarios together
         setUp(
             mainScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoap),
-            postAudioScenario.injectOpen(atOnceUsers(2)).protocols(httpProtocolApi),
-            getAudioScenario.injectOpen(atOnceUsers(2)).protocols(httpProtocolApi),
-            deleteAudioScenario.injectOpen(atOnceUsers(2)).protocols(httpProtocolApi)
+            postAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
+            getAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
+            deleteAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi)
         );
     }
 
