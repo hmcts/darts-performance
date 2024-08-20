@@ -20,41 +20,51 @@ public final class DartsPortalRequestAudioScenario {
     public static ChainBuilder DartsPortalRequestAudioDownload() {
       return group("Darts Request Audio PlayBack/Download")
       .on(
-          exec(
-              session -> {
-                  String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                  return session.set("xmlPayload", xmlPayload);
-              })
-              .pause(3)
-              .exec(
-                  http("Darts-Portal - Api - Cases - Search")
-                      .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
-                      .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))              
-                      .body(StringBody(session -> session.get("xmlPayload"))).asJson()
-                      .check(status().saveAs("status"))  // Save status code to session
-                      .check(jsonPath("$[*]..case_id").count().gt(0))
-                      .check(Feeders.saveCaseId())
-                      .check(jsonPath("$[*].case_id").findRandom().saveAs("getCaseId"))
-                      .check(jsonPath("$.title").optional().saveAs("errorTitle"))
-              )
-              .pause(5) // Pause 5 seconds before retry          
-              .exitHereIfFailed() // Exit if the scenario fails
-              .exec(session -> {
-                  Object getCaseId = session.get("getCaseId");
-                  if (getCaseId != null) {
-                      System.out.println("getCaseId: " + getCaseId.toString());
-                  } else {
-                      System.out.println("No value saved using saveAs.");
-                  }
+        exec(session -> {
+            String xmlPayload =  RequestBodyBuilder.buildSearchCaseRequestBody(session);
+            return session.set("xmlPayload", xmlPayload);
+        })
+        .exec(http("Darts-Portal - Api - Cases - Search")
+            .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
+            .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))              
+            .body(StringBody(session -> session.get("xmlPayload"))).asJson()
+            .check(status().saveAs("status"))  // Save status code to session
+            .check(jsonPath("$[*].case_id").count().is(0).saveAs("emptyResponse"))  // Check if response is empty and save result
+        )
+        .doIf(session -> session.getBoolean("emptyResponse"))  // If response is empty
+        .then(
+            exec(session -> {
+                System.out.println("Empty response received. Retrying with new dates...");
+                // Update session with new random dates for retry
+                String xmlPayload =  RequestBodyBuilder.buildSearchCaseRequestBody(session);
+                return session.set("xmlPayload", xmlPayload);
+            })
+            .exec(http("Darts-Portal - Api - Cases - Search - Retry")
+                .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
+                .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
+                .body(StringBody(session -> session.get("xmlPayload"))).asJson()
+                .check(status().is(200))
+                .check(jsonPath("$[*].case_id").count().gt(0))  // Ensure response is not empty on retry
+                .check(Feeders.saveCaseId())
+                .check(jsonPath("$[*].case_id").findRandom().saveAs("getCaseId"))
+            )
+        )
+        .exec(session -> {
+            Object getCaseId = session.get("getCaseId");
+            if (getCaseId != null) {
+                System.out.println("getCaseId: " + getCaseId.toString());
+            } else {
+                System.out.println("No value saved using saveAs.");
+            }
 
-                  Object errorTitle = session.get("errorTitle");
-                  if (errorTitle != null) {
-                      String errorMessage = "Request failed with error: " + errorTitle.toString();
-                      System.out.println(errorMessage);
-                      throw new RuntimeException(errorMessage); // Fail the test by throwing an exception
-                  }
-                  return session;
-              })
+            Object errorTitle = session.get("errorTitle");
+            if (errorTitle != null) {
+                String errorMessage = "Request failed with error: " + errorTitle.toString();
+                System.out.println(errorMessage);
+                throw new RuntimeException(errorMessage); // Fail the test by throwing an exception
+            }
+            return session;
+        })
           .pause(3)
           .exec(http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())

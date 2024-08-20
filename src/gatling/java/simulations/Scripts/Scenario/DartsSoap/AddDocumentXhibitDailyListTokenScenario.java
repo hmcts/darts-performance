@@ -40,9 +40,9 @@ public final class AddDocumentXhibitDailyListTokenScenario {
                         .exec(session -> {
                             Object messageId = session.get("messageId");
                             if (messageId != null) {
-                                System.out.println("messageId: " + messageId.toString());
+                                System.out.println("messageId for AddDocument - Xhibit DailyList request: " + messageId.toString());
                             } else {
-                                System.out.println("No value for messageId on the AddDocument - Xhibit DailyList request.");
+                                System.out.println("Created AddDocument - Xhibit DailyList request.");
                             }
                             return session;
                         })

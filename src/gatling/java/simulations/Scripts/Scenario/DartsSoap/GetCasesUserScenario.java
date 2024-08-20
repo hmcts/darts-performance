@@ -41,7 +41,7 @@ public final class GetCasesUserScenario {
                             if (messageId != null) {
                                 System.out.println("messageId for GetCase: " + messageId.toString());
                             } else {
-                                System.out.println("No value for messageId on the GetCase request.");
+                                System.out.println("Created GetCase request.");
                             }
                             return session;
                         })

@@ -45,9 +45,9 @@ public final class AddCaseUserScenario {
                     .exec(session -> {
                         Object messageId = session.get("messageId");
                         if (messageId != null) {
-                            System.out.println("messageId: " + messageId.toString());
+                            System.out.println("messageId for AddCase request: " + messageId.toString());
                         } else {
-                            System.out.println("No value for messageId on the AddCase request.");
+                            System.out.println("Created AddCase request.");
                         }
                         return session;
                     })
