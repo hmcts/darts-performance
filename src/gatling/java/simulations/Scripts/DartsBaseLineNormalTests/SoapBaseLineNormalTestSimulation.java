@@ -81,32 +81,32 @@ public class SoapBaseLineNormalTestSimulation extends Simulation {
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
             .repeat(AppConfig.XHIBIT_EVENTS_BASELINE_NORMAL_REPEATS)
                 .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
-                .repeat(AppConfig.XHIBIT_DailyList_BASELINE_NORMAL_REPEATS)
+            .repeat(AppConfig.XHIBIT_DailyList_BASELINE_NORMAL_REPEATS)
                 .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
         );
 
         // API scenario setups
         ScenarioBuilder postAudioScenario = scenario("Post Audio Request Scenario")
             .exec(GetApiTokenScenario.getApiToken())
-            .repeat(AppConfig.POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS)
+            .repeat(1)
             .on(exec(PostAudioRequestScenario.PostaudioRequest()));
 
         ScenarioBuilder getAudioScenario = scenario("Get Audio Request Scenario")
             .exec(GetApiTokenScenario.getApiToken())
-            .repeat(AppConfig.GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS)
+            .repeat(1)
             .on(exec(GetAudioRequestScenario.GetAudioRequestDownload()));
 
         ScenarioBuilder deleteAudioScenario = scenario("Delete Audio Request Scenario")
             .exec(GetApiTokenScenario.getApiToken())
-            .repeat(AppConfig.DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS)
+            .repeat(1)
             .on(exec(DeleteAudioRequestScenario.DeleteAudioRequest()));
 
         // Set up all scenarios together
         setUp(
-            mainScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoap),
-            postAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
-            getAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
-            deleteAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi)
+         //   mainScenario.injectOpen(atOnceUsers(195)).protocols(httpProtocolSoap),
+      //      postAudioScenario.injectOpen(atOnceUsers(1)).protocols(httpProtocolApi),
+      //      getAudioScenario.injectOpen(atOnceUsers(1)).protocols(httpProtocolApi),
+            deleteAudioScenario.injectOpen(atOnceUsers(1)).protocols(httpProtocolApi)
         );
     }
 

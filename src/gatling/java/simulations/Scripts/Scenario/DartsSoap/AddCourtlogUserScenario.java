@@ -35,9 +35,9 @@ public final class AddCourtlogUserScenario {
                                 // Mark as failed if statusCode is 500
                                 session.markAsFailed();
                                 if (message == null) {
-                                    System.out.println("Error detected: 500 response Code");
+                                    System.out.println("Error detected for Add CourtLog request: 500 response Code");
                                 } else {
-                                    System.out.println("Error detected: " + message);
+                                    System.out.println("Error detected for Add CourtLog request: " + message);
                                 }
                             }
                             return session;

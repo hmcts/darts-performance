@@ -15,16 +15,19 @@ public final class CreateRetenionsScenario {
     private CreateRetenionsScenario() {}
     public static ChainBuilder CreateRetenionsScenario() {
 
-        String sql = "WITH random_cases AS (" +
-        "SELECT cas_id FROM darts.court_case ORDER BY RANDOM() LIMIT 50), " +
-        "random_courtrooms AS (" +
-        "SELECT cr.courtroom_name FROM darts.courtroom AS cr " +
-        "INNER JOIN darts.court_case AS cc ON cr.cth_id = cc.cth_id " +
-        "WHERE cc.cas_id IN (SELECT cas_id FROM random_cases) ORDER BY RANDOM() LIMIT 50) " +
-        "SELECT cc.cas_id, cc.case_number, cc.cth_id, ch.courthouse_name, rc.courtroom_name FROM darts.court_case AS cc " +
-        "INNER JOIN darts.courthouse AS ch ON cc.cth_id = ch.cth_id " +
-        "INNER JOIN random_courtrooms AS rc ON rc.courtroom_name IS NOT NULL " +
-        "WHERE cc.cas_id IN (SELECT cas_id FROM random_cases);";
+        String sql = "WITH random_cases AS (" + 
+                   " SELECT cas_id, cth_id " + 
+                   " FROM darts.court_case " + 
+                   " ORDER BY RANDOM() LIMIT 50" + 
+                "), " + 
+                "case_with_courtrooms AS (" + 
+                "    SELECT rc.cas_id, cc.case_number, rc.cth_id, ch.courthouse_name, cr.courtroom_name" + 
+                "    FROM random_cases rc JOIN darts.court_case cc ON rc.cas_id = cc.cas_id" + 
+                "    JOIN darts.courthouse ch ON rc.cth_id = ch.cth_id JOIN darts.courtroom cr ON rc.cth_id = cr.cth_id" + 
+                "    ORDER BY RANDOM()" + 
+                ")" + 
+                "SELECT cas_id, case_number, cth_id, courthouse_name, courtroom_name" + 
+                "FROM case_with_courtrooms ORDER BY cas_id LIMIT 50;";
         
     
         // Create the JDBC feeder

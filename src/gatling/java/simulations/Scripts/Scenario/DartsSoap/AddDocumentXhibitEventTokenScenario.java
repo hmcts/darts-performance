@@ -31,7 +31,7 @@ public final class AddDocumentXhibitEventTokenScenario {
                 .exec(session -> {
                     // Log raw response for debugging purposes
                     String responseBody = session.getString("responseBody");
-                    System.out.println("Raw response body: " + responseBody);
+                    System.out.println("Raw response body for AddDocument - Xhibit Event request: " + responseBody);
                     return session;
                 })
                 .exec(session -> {
@@ -39,23 +39,23 @@ public final class AddDocumentXhibitEventTokenScenario {
                     String message = session.getString("message");
                     
                     if (statusCode == null) {
-                        System.out.println("Status code is null. Response might be missing the <return/code> element.");
+                        System.out.println("Status code is null for AddDocument - Xhibit Event request. Response might be missing the <return/code> element.");
                     }
                     
                     if (message == null) {
-                        System.out.println("Message is null. Response might be missing the <return/message> element.");
+                        System.out.println("Message is null for AddDocument - Xhibit Event request. Response might be missing the <return/message> element.");
                     }
                     
                     if (statusCode != null && statusCode.equals("ERROR")) {
                         // Mark the request as failed if there's an error status code
                         session.markAsFailed();
-                        System.out.println("Error detected with status code: " + statusCode);
+                        System.out.println("Error detected with status code for AddDocument - Xhibit Event request: " + statusCode);
                     }
                     
                     if (message != null && message.toLowerCase().contains("error")) {
                         // Mark the request as failed if there's an error message
                         session.markAsFailed();
-                        System.out.println("Error detected with message: " + message);
+                        System.out.println("Error detected with message for AddDocument - Xhibit Event request: " + message);
                     }
                     
                     return session;
