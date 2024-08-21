@@ -27,6 +27,7 @@ public final class AddDocumentXhibitEventTokenScenario {
                         .check(xpath("//messageId/text()").find().optional().saveAs("messageId"))
                         .check(xpath("//return/code").saveAs("statusCode"))
                         .check(xpath("//return/message").saveAs("message"))
+                        .check(bodyString().saveAs("responseBody")) // Capture the entire response body
                         )
                 .exec(session -> {
                     // Log raw response for debugging purposes
