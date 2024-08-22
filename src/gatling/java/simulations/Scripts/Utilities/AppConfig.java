@@ -7,20 +7,15 @@ import java.util.Optional;
 public class AppConfig {
     
     //EXTERNAL Tenant
-    //old public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = "test";
     public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = "test";
-    //old public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";     
     public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";
-    //old public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";
     public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";
     
-    // Old public static final String TENANT_NAME = "hmctsstgextid";
-
-    public static final String TENANT_NAME = "hmctstestextid";
+    public static final String TENANT_NAME = "\"test\";";
 
     //INTERNAL Tenant
-    public static final String PERFORMANCE_INTERNAL_CLIENT_ID = "test";
-    public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = "test";       
+    public static final String PERFORMANCE_INTERNAL_CLIENT_ID = "test"; 
+    public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = "test";        
     public static final String PERFORMANCE_INTERNAL_TENANT_ID = "test";
 
     //Performance Env
@@ -28,11 +23,10 @@ public class AppConfig {
     public static final String PERFORMANCE_PROXY_BASE_URL= "test";
     public static final String PERFORMANCE_DARTS_API_BASE_URL= "test";
     public static final String PERFORMANCE_DARTS_BASE_URL= "test";
-    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/" + TENANT_NAME+"test";
+    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "test";
     public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "test";
-    public static final String PERFORMANCE_B2B_Login = "https://"+TENANT_NAME+".b2clogin.com";
+    public static final String PERFORMANCE_B2B_Login = "https://"+TENANT_NAME+"test";
     public static final String PERFORMANCE_B2B_Token = "/"+TENANT_NAME+"test";
-    // Old public static final String PERFORMANCE_SCOPE = "test";
     public static final String PERFORMANCE_SCOPE = "https://"+TENANT_NAME+".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "test";
 
     public static final String PERFORMANCE_GRANT_TYPE = "test";
@@ -214,7 +208,7 @@ public class AppConfig {
         //Event Requests
 
         CPP_EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("CPP_EVENTS_SMOKE_REPEATS", "6"));
-        CPP_EVENTS_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("CPP_EVENTS_BASELINE_NORMAL_REPEATS", "30"));
+        CPP_EVENTS_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("CPP_EVENTS_BASELINE_NORMAL_REPEATS", "29"));
         CPP_EVENTS_PEAK_REPEATS = Integer.parseInt(getProperty("CPP_EVENTS_PEAK_REPEATS", "57"));
        
         CPP_DailyList_SMOKE_REPEATS = Integer.parseInt(getProperty("CPP_DailyList_SMOKE_REPEATS", "1"));
@@ -235,18 +229,18 @@ public class AppConfig {
 
         //POST Audio Requests
         POST_AUDIO_REQUEST_SMOKE_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_REQUEST_SMOKE_REPEATS", "9"));
-        POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "43"));
-        POST_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_REQUEST_PEAK_REPEATS", "95"));
+        POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "15"));
+        POST_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_REQUEST_PEAK_REPEATS", "32"));
 
         //GET Audio Requests
         GET_AUDIO_REQUEST_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_AUDIO_REQUEST_SMOKE_REPEATS", "9"));
-        GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "43"));
-        GET_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("GET_AUDIO_REQUEST_PEAK_REPEATS", "95"));
+        GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "15"));
+        GET_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("GET_AUDIO_REQUEST_PEAK_REPEATS", "32"));
                 
-        //GET Audio Requests
+        //Delete Audio Requests
         DELETE_AUDIO_REQUEST_SMOKE_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_SMOKE_REPEATS", "9"));
-        DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "43"));
-        DELETE_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_PEAK_REPEATS", "95"));
+        DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "15"));
+        DELETE_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_PEAK_REPEATS", "32"));
                 
         //Add Cases Requests
         ADD_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_CASES_SMOKE_REPEATS", "8"));
@@ -260,7 +254,7 @@ public class AppConfig {
 
         //Add Log Entry Requests
         ADD_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_SMOKE_REPEATS", "25"));
-        ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "115"));
+        ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "112"));
         ADD_LOG_ENTRY_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_PEAK_REPEATS", "225"));
 
         //Get Log Entry Requests
@@ -358,7 +352,7 @@ public class AppConfig {
     // SOAP service endpoint
     public enum SoapServiceEndpoint {
         ContextRegistryService("test"),
-        DARTSService("test"),
+        DARTSService("test""),
         StandardService("test");
         private final String endpoint;
 
@@ -384,7 +378,7 @@ public class AppConfig {
     public static final String CASE_HOUSE_ROOMS_HEARING_FILE_PATH_CSV = "Case_House_Room_HearingDetails.csv";
     public static final String TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH_CSV = "Transformed_Media_Download.csv";
     public static final String TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH_CSV = "Transformed_Media_Playback.csv";
-
+    public static final String TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH_CSV = "Transformed_Media_To_Delete.csv";
     // Specific CSV file for Users
     public static final String DARTS_PORTAL_USERS_CSV = "Users.csv";
     public static final String DARTS_PORTAL_COURTCLERK_USERS_CSV = "UsersCourtClerks.csv";
@@ -411,7 +405,7 @@ public class AppConfig {
     public static final String CASE_HOUSE_ROOMS_HEARING_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, CASE_HOUSE_ROOMS_HEARING_FILE_PATH_CSV).toString();
     public static final String TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH_CSV).toString();
     public static final String TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH_CSV).toString();
-
+    public static final String TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH_CSV).toString();
 
         // List of Document files
         public static final String[] DOCUMENT_FILES = {"SampleDoc2.docx"};
