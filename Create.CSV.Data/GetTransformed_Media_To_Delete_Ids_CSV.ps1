@@ -6,9 +6,9 @@ INNER JOIN
     darts.media_request
     ON 
     darts.transformed_media.mer_id = darts.media_request.mer_id
-WHERE darts.media_request.request_type = 'PLAYBACK'
+WHERE darts.media_request.request_type = 'DOWNLOAD'
 AND darts.media_request.request_status != 'DELETED'
-ORDER BY trm_id DESC LIMIT 200;
+ORDER BY trm_id ASC LIMIT 500;
 "@
 
 # Database connection parameters

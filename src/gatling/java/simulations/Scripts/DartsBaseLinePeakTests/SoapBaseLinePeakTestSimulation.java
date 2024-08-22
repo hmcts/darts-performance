@@ -50,13 +50,13 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolApi) {
         // Main SOAP scenario setup
-        ScenarioBuilder mainScenario = scenario("Main Scenario")
+        ScenarioBuilder mainScenario = scenario("VIQ External Requests")
          //Register with different VIQ
-         .group("Register With VIQ External Username")
+         .group("VIQ External Requests")
          .on(
-             exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
-            .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(AppConfig.ADD_CASES_PEAK_REPEATS)
+         //    exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
+         //   .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
+            repeat(AppConfig.ADD_CASES_PEAK_REPEATS)
             .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
             .repeat(AppConfig.GET_CASES_PEAK_REPEATS)
             .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
@@ -65,25 +65,31 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
         )
             
         //Register with different CPP
-        .group("Register With CPP External Username")
+        .group("Register With CPP External Username and Add Document CPP")
         .on(
             exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(AppConfig.CPP_EVENTS_PEAK_REPEATS)
-                .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
-            .repeat(AppConfig.CPP_DailyList_PEAK_REPEATS) 
-                .on(exec(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()))
+            .group("Add Document CPP")
+            .on(
+                repeat(AppConfig.CPP_EVENTS_PEAK_REPEATS)
+                    .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
+                .repeat(AppConfig.CPP_DailyList_PEAK_REPEATS) 
+                    .on(exec(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()))
+            )
         )
 
         //Register with different XHIBIT
-        .group("Register With XHIBIT External Username")
+        .group("Register With XHIBIT External Username and Add Document Xhibit")
         .on(
             exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(AppConfig.XHIBIT_EVENTS_PEAK_REPEATS)
-                .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
-                .repeat(AppConfig.XHIBIT_DailyList_PEAK_REPEATS)
-                .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
+            .group("Add Document Xhibit")
+            .on(
+                repeat(AppConfig.XHIBIT_EVENTS_PEAK_REPEATS)
+                    .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
+                    .repeat(AppConfig.XHIBIT_DailyList_PEAK_REPEATS)
+                    .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
+            )
         );
 
         // API scenario setups
@@ -104,10 +110,10 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
 
         // Set up all scenarios together
         setUp(
-            mainScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoap),
-            postAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
-            getAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
-            deleteAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi)
+           mainScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoap),
+           postAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
+           getAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
+           deleteAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi)
         );
     }
 

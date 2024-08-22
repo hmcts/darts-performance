@@ -15,20 +15,38 @@ public final class CreateRetenionsScenario {
     private CreateRetenionsScenario() {}
     public static ChainBuilder CreateRetenionsScenario() {
 
-        String sql = "WITH random_cases AS (" + 
-                   " SELECT cas_id, cth_id " + 
-                   " FROM darts.court_case " + 
-                   " ORDER BY RANDOM() LIMIT 50" + 
-                "), " + 
-                "case_with_courtrooms AS (" + 
-                "    SELECT rc.cas_id, cc.case_number, rc.cth_id, ch.courthouse_name, cr.courtroom_name" + 
-                "    FROM random_cases rc JOIN darts.court_case cc ON rc.cas_id = cc.cas_id" + 
-                "    JOIN darts.courthouse ch ON rc.cth_id = ch.cth_id JOIN darts.courtroom cr ON rc.cth_id = cr.cth_id" + 
-                "    ORDER BY RANDOM()" + 
-                ")" + 
-                "SELECT cas_id, case_number, cth_id, courthouse_name, courtroom_name" + 
-                "FROM case_with_courtrooms ORDER BY cas_id LIMIT 50;";
-        
+//         String sql =                 "WITH random_cases AS (" +
+//         "SELECT cas_id, cth_id " +
+//         "FROM darts.court_case " +
+//         "ORDER BY RANDOM() LIMIT 200" +
+//    " ), " +
+//    " case_with_courtrooms AS (" +
+//     "    SELECT rc.cas_id, cc.case_number, rc.cth_id, ch.courthouse_name, cr.courtroom_name" +
+//     "    FROM random_cases rc JOIN darts.court_case cc ON rc.cas_id = cc.cas_id" +
+//     "    JOIN darts.courthouse ch ON rc.cth_id = ch.cth_id JOIN darts.courtroom cr ON rc.cth_id = cr.cth_id" +
+//     "    ORDER BY RANDOM()" +
+//    ")" +
+//     "SELECT cas_id, case_number, cth_id, courthouse_name, courtroom_name" +
+//    " FROM case_with_courtrooms ORDER BY cas_id LIMIT 200;";
+        String sql = 
+            "WITH random_cases AS (" +
+            "    SELECT DISTINCT ON (cth_id) cas_id, cth_id " +
+            "    FROM darts.court_case " +
+            "    ORDER BY cth_id, RANDOM()" +
+            "), " +
+            "case_with_courtrooms AS (" +
+            "    SELECT rc.cas_id, cc.case_number, rc.cth_id, ch.courthouse_name, " +
+            "           (SELECT cr.courtroom_name " +
+            "            FROM darts.courtroom cr " +
+            "            WHERE cr.cth_id = rc.cth_id " +
+            "            ORDER BY RANDOM() LIMIT 1) AS courtroom_name " +
+            "    FROM random_cases rc " +
+            "    JOIN darts.court_case cc ON rc.cas_id = cc.cas_id " +
+            "    JOIN darts.courthouse ch ON rc.cth_id = ch.cth_id " +
+            ") " +
+            "SELECT cas_id, case_number, cth_id, courthouse_name, courtroom_name " +
+            "FROM case_with_courtrooms " +
+            "ORDER BY cth_id;";
     
         // Create the JDBC feeder
         FeederBuilder<Object> feeder = Feeders.jdbcFeeder(sql);
@@ -70,14 +88,14 @@ public final class CreateRetenionsScenario {
                     String query = "UPDATE darts.case_retention SET created_ts = CURRENT_DATE - INTERVAL '8 days' WHERE cas_id = " + cas_id;
                     Feeders.executeUpdate(query);
                     return session.set("Retenions_cas_id", cas_id);
-                })
-            .pause(10)
-        .exec(http("DARTS - Api - AutomatedTasksRequest:POST")
-                .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/11/run") 
-                .headers(Headers.AuthorizationHeaders)
-                .check(status().saveAs("statusCode"))
-                .check(status().is(202))
-        ); 
+                });
+        //     .pause(10)
+        // .exec(http("DARTS - Api - AutomatedTasksRequest:POST")
+        //         .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/11/run") 
+        //         .headers(Headers.AuthorizationHeaders)
+        //         .check(status().saveAs("statusCode"))
+        //         .check(status().is(202))
+        // ); 
         // .exec(session -> {
         //     String xmlPayload = RequestBodyBuilder.buildRetentionsPostBody(session);
         //     System.out.println("Retentions xmlPayload: " + xmlPayload);

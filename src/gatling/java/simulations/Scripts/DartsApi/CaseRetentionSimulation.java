@@ -23,7 +23,7 @@ public class CaseRetentionSimulation extends Simulation {
     final ScenarioBuilder scn1 = scenario("CaseRetention Scenario")
         .exec(feed(Feeders.createCaseHouseRoomsHearingDetails()))
         .exec(GetApiTokenScenario.getApiToken())
-        .repeat(50)    
+        .repeat(141)    
         .on(exec(CreateRetenionsScenario.CreateRetenionsScenario()
         ));
 

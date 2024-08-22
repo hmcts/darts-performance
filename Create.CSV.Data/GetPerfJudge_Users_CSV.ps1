@@ -17,8 +17,11 @@ WITH UserDetails AS (
         darts.user_roles_courthouses urch ON ua.usr_id = urch.usr_id
     LEFT JOIN 
         darts.courthouse ch ON urch.cth_id = ch.cth_id
+    LEFT JOIN 
+        darts.court_case cc ON ch.cth_id = cc.cth_id AND cc.case_closed = true
     WHERE  
         ua.user_name LIKE '%PerfJudge%'
+        AND cc.cas_id IS NOT NULL
 ),
 FilteredUserDetails AS (
     SELECT *
@@ -42,6 +45,7 @@ UserCases AS (
         darts.court_case cc ON cc.cth_id = fud.cth_id
     WHERE
         cc.cas_id IS NOT NULL
+        AND cc.case_closed = true
 ),
 RandomDefendant AS (
     SELECT 
