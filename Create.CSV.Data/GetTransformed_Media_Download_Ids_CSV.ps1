@@ -8,7 +8,7 @@ INNER JOIN
     darts.transformed_media.mer_id = darts.media_request.mer_id
 WHERE darts.media_request.request_type = 'DOWNLOAD'
 AND darts.media_request.request_status = 'COMPLETED'
-ORDER BY trm_id DESC LIMIT 1000;
+ORDER BY trm_id DESC LIMIT 500;
 "@
 
 # Database connection parameters

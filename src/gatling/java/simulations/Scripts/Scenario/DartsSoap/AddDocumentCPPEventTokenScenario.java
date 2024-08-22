@@ -1,6 +1,7 @@
 package simulations.Scripts.Scenario.DartsSoap;
 
 import simulations.Scripts.Headers.Headers;
+import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.SoapServiceEndpoint;
 import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
@@ -45,7 +46,7 @@ public final class AddDocumentCPPEventTokenScenario {
                                 System.out.println("Created AddDocument - CPP Event request.");
                             }
                             return session;
-                        })
+                        }) 
                     );
             } 
         }
