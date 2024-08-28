@@ -40,6 +40,11 @@ public final class PostAudioScenario {
                         )                
                 .check(status().saveAs("statusCode"))
                 .check(status().is(200))
-            ));
+                ).exec(session -> {
+                    // Log the response status after receiving it
+                    System.out.println("Audio Created, response: " + session.get("statusCode"));
+                    return session;
+                })
+            );
     }
 }
