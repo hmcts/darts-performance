@@ -8,11 +8,9 @@ import simulations.Scripts.Scenario.DartsSoap.AddCaseUserScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddCourtlogUserScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentCPPDailyListTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentCPPEventTokenScenario;
-import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentXhibitDailyListTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentXhibitEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.GetCasesUserScenario;
-import simulations.Scripts.Scenario.DartsSoap.GetCourtlogTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
 import simulations.Scripts.Scenario.DartsApi.DeleteAudioRequestScenario;
@@ -25,7 +23,6 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class SoapBaseLinePeakTestSimulation extends Simulation {
-
 
     @Override
     public void before() {
@@ -45,17 +42,16 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
                 .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .inferHtmlResources()
                 .baseUrl(EnvironmentURL.B2B_Login.getUrl());
+
         setUpScenarios(httpProtocolSoap, httpProtocolApi);
     }
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolApi) {
         // Main SOAP scenario setup
         ScenarioBuilder mainScenario = scenario("VIQ External Requests")
-         //Register with different VIQ
+         // Register with different VIQ
          .group("VIQ External Requests")
          .on(
-         //    exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
-         //   .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
             repeat(AppConfig.ADD_CASES_PEAK_REPEATS)
             .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
             .repeat(AppConfig.GET_CASES_PEAK_REPEATS)
@@ -64,32 +60,32 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
             .on(exec(AddCourtlogUserScenario.addCourtLogUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
         )
             
-        //Register with different CPP
-        .group("Register With CPP External Username and Add Document CPP")
+        // Register with different CPP
+        .group("Register With CPP External Username")
         .on(
             exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
-            .group("Add Document CPP")
-            .on(
-                repeat(AppConfig.CPP_EVENTS_PEAK_REPEATS)
-                    .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
-                .repeat(AppConfig.CPP_DailyList_PEAK_REPEATS) 
-                    .on(exec(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()))
-            )
+        )
+        .group("Add Document CPP")
+        .on(
+            repeat(AppConfig.CPP_EVENTS_PEAK_REPEATS)
+                .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
+            .repeat(AppConfig.CPP_DailyList_PEAK_REPEATS) 
+                .on(exec(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()))
         )
 
-        //Register with different XHIBIT
-        .group("Register With XHIBIT External Username and Add Document Xhibit")
+        // Register with different XHIBIT
+        .group("Register With XHIBIT External Username")
         .on(
             exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .group("Add Document Xhibit")
-            .on(
-                repeat(AppConfig.XHIBIT_EVENTS_PEAK_REPEATS)
-                    .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
-                    .repeat(AppConfig.XHIBIT_DailyList_PEAK_REPEATS)
-                    .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
-            )
+        )
+        .group("Add Document Xhibit")
+        .on(
+            repeat(AppConfig.XHIBIT_EVENTS_PEAK_REPEATS)
+                .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
+            .repeat(AppConfig.XHIBIT_DailyList_PEAK_REPEATS)
+                .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
         );
 
         // API scenario setups

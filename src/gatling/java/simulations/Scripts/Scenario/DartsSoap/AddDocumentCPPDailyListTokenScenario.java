@@ -12,8 +12,10 @@ public final class AddDocumentCPPDailyListTokenScenario {
 
     private AddDocumentCPPDailyListTokenScenario() {}
     public static ChainBuilder AddDocumentCPPDailyListToken() {
-        return group("AddDocument - CPP DailyList SOAP Requests")
-            .on(feed(Feeders.createCourtHouseAndCourtRooms())   
+        return
+        // group("AddDocument - CPP DailyList SOAP Requests")
+            //.on(
+            feed(Feeders.createCourtHouseAndCourtRooms())   
             .exec(session -> {
                     String xmlPayload = SOAPRequestBuilder.AddDocumentCPPDailyListTokenRequest(session);  
                     return session.set("xmlPayload", xmlPayload);  
@@ -46,6 +48,7 @@ public final class AddDocumentCPPDailyListTokenScenario {
                             }
                             return session;
                         })
-                    );
+                    //)
+                    ;
             } 
         }

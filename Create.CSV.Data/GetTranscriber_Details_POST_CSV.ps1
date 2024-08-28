@@ -1,34 +1,60 @@
 ﻿# Define the SQL query
 $query = @"
-WITH RankedHearings AS (
-    SELECT 
-        h.hea_id, 
-        h.cas_id, 
-        cr.cth_id, 
-        h.ctr_id,
-        ROW_NUMBER() OVER (PARTITION BY cr.cth_id ORDER BY h.hea_id DESC) AS rn
-    FROM 
-        darts.hearing AS h
+WITH RankedClerks AS (
+    SELECT
+        h.hea_id,
+        cc.case_number,
+        cc.cas_id,
+        ch.cth_id,
+        ch.courthouse_name,
+        TO_CHAR(m.start_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"z"') AS start_ts,
+        TO_CHAR(m.end_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.MS"z"') AS end_ts,
+        ua.usr_id,
+        ua.user_email_address AS Email,
+        'PerfTester@01' AS Password,
+        ROW_NUMBER() OVER (PARTITION BY ua.usr_id ORDER BY RANDOM()) AS rn
+    FROM
+        darts.hearing h
     INNER JOIN 
-        darts.courtroom AS cr ON h.ctr_id = cr.ctr_id
-    WHERE 
-        cr.cth_id IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-					  11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-					  21, 22, 23, 24, 25, 28, 29, 30, 
-					  31, 33, 34, 41, 44, 45, 47, 40, 48, 
-                      78, 83, 85, 87, 93, 107)
+        darts.courtroom cr ON h.ctr_id = cr.ctr_id
+    INNER JOIN 
+        darts.courthouse ch ON cr.cth_id = ch.cth_id
+    INNER JOIN 
+        darts.court_case cc ON cc.cas_id = h.cas_id
+    INNER JOIN 
+        darts.hearing_media_ae hma ON hma.hea_id = h.hea_id
+    INNER JOIN 
+        darts.media m ON m.med_id = hma.med_id
+    INNER JOIN 
+        darts.security_group_courthouse_ae sgcae ON ch.cth_id = sgcae.cth_id
+    INNER JOIN 
+        darts.security_group_user_account_ae sguae ON sgcae.grp_id = sguae.grp_id
+    INNER JOIN 
+        darts.user_account ua ON sguae.usr_id = ua.usr_id
+    WHERE     
+        h.hearing_date BETWEEN '2023-02-26' AND '2024-05-27'
+    AND
+        sguae.usr_id NOT IN (-100,-99,-69,-68,-67,-48,-44,-4,-3,-2,-1,0,1,-101,221,241,1141)
+    AND
+        ua.user_email_address NOT LIKE '%PerfCourtManager%'
+    AND
+        ua.user_email_address NOT LIKE '%PerfTranscriber%'
+    AND
+        ua.user_email_address LIKE '%PerfCourtClerk%'
 )
 SELECT 
-    hea_id, 
-    cas_id, 
-    cth_id, 
-    ctr_id
-FROM 
-    RankedHearings
-WHERE 
-    rn <= 10
-ORDER BY 
-    cth_id ASC, rn ASC;
+    rc.hea_id,
+    rc.case_number,
+    rc.cas_id,
+    rc.cth_id,
+    rc.courthouse_name,
+    rc.usr_id,
+    rc.Email,
+    rc.Password
+FROM RankedClerks rc
+WHERE rc.rn = 1
+LIMIT 4000;
+
 
 "@
 
@@ -55,7 +81,7 @@ if (Test-Path -Path $outputFile) {
 }
 
 # Export column headers to a new CSV file
-$headers = "hea_id,cas_id,cth_id,ctr_id"
+$headers = "hea_id,case_number,cas_id,cth_id,courthouse_name,usr_id,Email,Password"
 $headers | Out-File -FilePath $outputFile -Encoding ASCII
 
 # Append the query results to the CSV file with comma delimiters

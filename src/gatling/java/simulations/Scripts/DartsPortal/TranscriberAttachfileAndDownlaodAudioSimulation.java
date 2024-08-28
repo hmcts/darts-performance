@@ -54,7 +54,7 @@ public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation 
             })
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
             .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
-            .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudio()) // Execute the request
+            .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario()) // Execute the request
         )
         .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest());
     

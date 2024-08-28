@@ -19,8 +19,7 @@ public class AddCaseTokenSimulation extends Simulation {
   private static final String SPIKE_SCENARIO_NAME = "Spike Test";
 
   public AddCaseTokenSimulation() {
-      HttpProtocolBuilder httpProtocol = http
-          .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+      HttpProtocolBuilder httpProtocol = http        
           .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
           .inferHtmlResources()
           .acceptEncodingHeader("gzip,deflate")

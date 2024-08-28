@@ -3,6 +3,7 @@ package simulations.Scripts.DartsPortal;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchSecnario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalPreviewAudioScenario;
@@ -10,6 +11,7 @@ import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestTranscriptionScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
+import java.time.Duration;
 
 
 import static io.gatling.javaapi.core.CoreDsl.*;
@@ -20,7 +22,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class CourtClerkRequestorSimulation extends Simulation {   
   {
       HttpProtocolBuilder httpProtocol = http
-        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+       // .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
        // .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
         .baseUrl("https://login.microsoftonline.com") 
 
@@ -33,14 +35,18 @@ public class CourtClerkRequestorSimulation extends Simulation {
 
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(Feeders.createCourtClerkUsers()))
-        .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())      
-        .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-        .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudio())
-        .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
+        .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) 
+
+            .exec(DartsPortalAdvanceSearchSecnario.DartsPortalAdvanceSearchSecnario())     
+            .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
+            .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
+           // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
+        
+            .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()
+        );
 
     setUp(
-        scn1.injectOpen(rampUsers(1).during(1)).protocols(httpProtocol));
-    }    
-} 
-    
+        scn1.injectOpen(rampUsers(200).during(Duration.ofMinutes(30))).protocols(httpProtocol));
+    }  
+}
 
