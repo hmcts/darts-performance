@@ -18,7 +18,7 @@ public final class DartsPortalRequestTranscriptionScenario {
     private DartsPortalRequestTranscriptionScenario() {}
 
     public static ChainBuilder DartsPortalRequestTranscription() {
-      return group("Darts Request Audio PlayBack/Download")
+      return group("Darts Request Transcription")
       .on(exec(session -> {
                 Object getCaseId = session.get("getCaseId");
                 if (getCaseId != null) {
@@ -57,42 +57,42 @@ public final class DartsPortalRequestTranscriptionScenario {
           .exitHereIfFailed()
           //Request Transcription.
           .exec(
-            http("request_16")
+            http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
           )
           .exec(
-            http("request_17")
+            http("Darts-Portal - User - Refresh - Profile")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
               .headers(Headers.CommonHeaders)
           )
           .exec(
-            http("request_18")
+            http("Darts-Portal - Api - Transcriptions - Types")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/types")
               .headers(Headers.CommonHeaders)
           )
           .exec(
-            http("request_19")
+            http("Darts-Portal - Api - Cases - Hearings")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/hearings")
               .headers(Headers.CommonHeaders)
           )
           .exec(
-            http("request_20")
+            http("Darts-Portal - Api - Transcriptions - Urgencies")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/urgencies")
               .headers(Headers.CommonHeaders)
           )
           .exec(
-            http("request_21")
+            http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.CommonHeaders)
           )
           .exec(
-            http("request_22")
+            http("Darts-Portal - Api - Hearings - Audios")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/hearings/#{getHearings.id}/audios")
               .headers(Headers.CommonHeaders)
           )
           .exec(
-            http("request_23")
+            http("Darts-Portal - Api - Hearings - Events")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
               .headers(Headers.CommonHeaders)
           )
@@ -101,19 +101,23 @@ public final class DartsPortalRequestTranscriptionScenario {
               String xmlPayload = RequestBodyBuilder.buildTranscriptionsBody(session);
               return session.set("xmlPayload", xmlPayload);
           })
+
+          //Request Transcriptions
           .exec(
-            http("request_25")
+            http("Darts-Portal - Api - Transcriptions")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions")
               .headers(Headers.getHeaders(8))
               .body(StringBody(session -> session.get("xmlPayload"))).asJson()              
           )
+
+          // Return to hearing
           .exec(
-            http("request_16")
+            http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
           )
           .exec(
-            http("request_17")
+            http("Darts-Portal - User - Refresh-Profile")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
               .headers(Headers.CommonHeaders)
           )
@@ -123,12 +127,12 @@ public final class DartsPortalRequestTranscriptionScenario {
               .headers(Headers.caseReferer(Headers.CommonHeaders))
           )
           .exec(
-            http("request_19")
+            http("Darts-Portal - Api - Cases = Hearings")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/hearings")
               .headers(Headers.CommonHeaders)
           )
           .exec(
-            http("request_22")
+            http("Darts-Portal - Api - Audio - Hearings - Audios")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/hearings/#{getHearings.id}/audios")
               .headers(Headers.CommonHeaders)
           )
@@ -138,7 +142,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .headers(Headers.CommonHeaders)
           )
           .exec(
-            http("request_23")
+            http("Darts-Portal - Api - Hearings - Events")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
               .headers(Headers.CommonHeaders)
           )

@@ -12,8 +12,10 @@ public final class AddDocumentXhibitDailyListTokenScenario {
 
     private AddDocumentXhibitDailyListTokenScenario() {}
     public static ChainBuilder AddDocumentXhibitDailyListToken() {
-        return group("AddDocument - Xhibit DailyList SOAP Requests")
-            .on(feed(Feeders.createCourtHouseAndCourtRooms())   
+        return
+       //  group("AddDocument - Xhibit DailyList SOAP Requests")
+         //   .on(
+                feed(Feeders.createCourtHouseAndCourtRooms())   
             .exec(session -> {
                     String xmlPayload = SOAPRequestBuilder.AddDocumentXhibitDailyListTokenRequest(session);  
                     return session.set("xmlPayload", xmlPayload);  
@@ -46,6 +48,7 @@ public final class AddDocumentXhibitDailyListTokenScenario {
                             }
                             return session;
                         })
-                    );
+                   // )
+                   ;
             } 
         }

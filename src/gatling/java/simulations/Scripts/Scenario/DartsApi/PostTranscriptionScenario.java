@@ -15,9 +15,9 @@ public final class PostTranscriptionScenario {
 
     public static ChainBuilder PostTranscription() {
         return group("Transcription Request Group")
-            .on(exec(feed(Feeders.createTranscriptionPostDetails()))
-                .exec(session -> {
-                    String xmlPayload = RequestBodyBuilder.buildRetentionsPostBody(session);
+                .on(exec(session -> {
+                    // Dynamically build the request body
+                    String xmlPayload = RequestBodyBuilder.buildTranscriptionRequestBody(session);
                     return session.set("xmlPayload", xmlPayload);
                 })   
                 .exec(

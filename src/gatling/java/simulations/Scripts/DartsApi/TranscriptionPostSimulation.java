@@ -4,6 +4,7 @@ import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
 import simulations.Scripts.Scenario.DartsApi.PostTranscriptionScenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
+import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -17,10 +18,11 @@ public class TranscriptionPostSimulation extends Simulation {
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
-    final ScenarioBuilder scn1 = scenario("Transcription:POST")
-        .exec(GetApiTokenScenario.getApiToken())
-        .repeat(1)    
-        .on(exec(PostTranscriptionScenario.PostTranscription())    
+    final ScenarioBuilder scn1 = scenario("Transcription:POST")        
+        .repeat(200)   
+        .on(exec(feed(Feeders.createTranscriptionPostDetails()))        
+        .exec(GetApiTokenScenario.getApiTokenDynamic()) 
+        .exec(PostTranscriptionScenario.PostTranscription())    
         );
 
     setUp(

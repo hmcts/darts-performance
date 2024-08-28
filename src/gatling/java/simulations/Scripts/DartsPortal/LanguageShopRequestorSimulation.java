@@ -28,7 +28,7 @@ public class LanguageShopRequestorSimulation extends Simulation {
         .exec(feed(Feeders.createLanguageShopUsers()))
         .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
         .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-        .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudio())
+        .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())                                              
         .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest());
 
     setUp(

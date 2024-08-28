@@ -67,7 +67,7 @@ public class RequestBodyBuilder {
                 "\"case_id\": \"%s\", " +
                 "\"transcription_urgency_id\": \"3\", " +
                 "\"transcription_type_id\": \"999\", " +
-                "\"comment\": \"%s\"}",
+                "\"comment\": \"Perf_%s\"}",
                 hearingId, caseId, randomComment);
     }
 
@@ -99,52 +99,52 @@ public class RequestBodyBuilder {
 
 
     public static String buildSearchCaseRequestBody(Session session) {
-        Optional.ofNullable(session.get("caseNumber")).orElse("null");
-        String caseNumber = session.get("caseNumber") != null ? "\"" + session.get("caseNumber").toString() + "\"" : "null";
-        String courtHouseName = session.get("courthouse_name") != null ? "\"" + session.get("courthouse_name").toString() + "\"" : "null";       
-        String courtRoom = session.get("CourtRoom") != null ? "\"" + session.get("CourtRoom").toString() + "\"" : "null";        
-       // String judgeName = session.get("JudgeName") != null ? "\"" + session.get("JudgeName").toString() + "\"" : "null";
-       String defendantName = session.get("defendantFirstName") != null ? "\"" + session.get("defendantFirstName").toString() + "\"" : "null";  
-       
-       // String defendantName = session.get("defendant_name") != null ? "\"" + session.get("defendant_name").toString() + "\"" : "null";  
-        String eventTextContains = session.get("EventTextContains") != null ? "\"" + session.get("EventTextContains").toString() + "\"" : "null";       
-        String dateFrom = session.get("DateFrom") != null ? "\"" + session.get("DateFrom").toString() + "\"" : "null";
-        String dateTo = session.get("DateTo") != null ? "\"" + session.get("DateTo").toString() + "\"" : "null";
-        
-        // Get the current date
+        String caseNumber = Optional.ofNullable(session.get("caseNumber"))
+                    .map(value -> "\"" + value.toString() + "\"")
+                    .orElse("null");
+        String courtHouseName = Optional.ofNullable(session.get("courthouse_name"))
+                    .map(value -> "\"" + value.toString() + "\"")
+                    .orElse("null");
+        String courtRoom = Optional.ofNullable(session.get("CourtRoom"))
+            .map(value -> "\"" + value.toString() + "\"")
+            .orElse("null");
+        String defendantName = Optional.ofNullable(session.get("defendantFirstName"))
+                .map(value -> "\"" + value.toString() + "\"")
+                .orElse("null");
+        String eventTextContains = Optional.ofNullable(session.get("EventTextContains"))
+                    .map(value -> "\"" + value.toString() + "\"")
+                    .orElse("null");
+    
+        // Generate random dates
         LocalDate currentDate = LocalDate.now();
-        
-        // Define the start date
         LocalDate startDate = LocalDate.of(2015, 1, 1);
-        
-        // Define the end date, constrained by the current date and not beyond 2024-12-31
         LocalDate endDate = currentDate.isBefore(LocalDate.of(2024, 12, 31)) ? currentDate : LocalDate.of(2024, 12, 31);
-
-        // Generate random dates using RandomDateGenerator
-        LocalDate randomDateFrom = RandomDateGenerator.getRandomDate(startDate, endDate.minusYears(1));
-        
-        // Ensure randomDateTo is at least 2 years after randomDateFrom
+    
+        LocalDate randomDateFrom = RandomDateGenerator.getRandomDate(startDate, endDate.minusYears(2));
         LocalDate minEndDate = randomDateFrom.plusYears(1);
         LocalDate adjustedEndDate = endDate.isAfter(minEndDate) ? endDate : minEndDate;
-        LocalDate randomDateTo = RandomDateGenerator.getRandomDate(randomDateFrom.plusYears(3), adjustedEndDate);
-
-        // Format dates as strings
+        
+        // Fix: Ensure randomDateTo is always after randomDateFrom
+        LocalDate randomDateTo = RandomDateGenerator.getRandomDate(minEndDate, adjustedEndDate);
+    
+        // Format dates as strings with quotes
         String formattedDateFrom = "\"" + randomDateFrom.toString() + "\"";
         String formattedDateTo = "\"" + randomDateTo.toString() + "\"";
-
-        // Print out the formatted dates
+    
+        // Print out the formatted dates for debugging
         System.out.println("Random Date From: " + formattedDateFrom);
         System.out.println("Random Date To: " + formattedDateTo);
-        
+    
+        // Build the JSON payload with quoted values
         return String.format("{\"case_number\":%s," +
-        "\"courthouse\":%s," +
-        "\"courtroom\":%s," +
-        "\"judge_name\":null," +
-        "\"defendant_name\":%s," +
-        "\"event_text_contains\":%s," +
-        "\"date_from\":%s," +
-        "\"date_to\":%s}",
-        caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
+                            "\"courthouse\":%s," +
+                            "\"courtroom\":%s," +
+                            "\"judge_name\":null," +
+                            "\"defendant_name\":%s," +
+                            "\"event_text_contains\":%s," +
+                            "\"date_from\":%s," +
+                            "\"date_to\":%s}",
+                            caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
     }
     
 
@@ -238,11 +238,23 @@ public class RequestBodyBuilder {
          
 
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
-        String caseName = randomStringGenerator.generateRandomString(10);
+        String caseName1 = randomStringGenerator.generateRandomString(10);
+        String caseName2 = randomStringGenerator.generateRandomString(10);
+        String caseName3 = randomStringGenerator.generateRandomString(10);
 
         return String.format(
-        "{\"started_at\": \"1972-11-25T17:28:59.936Z\", \"ended_at\": \"1972-11-25T18:28:59.936Z\", \"channel\": 1, \"total_channels\": 4, \"format\": \"mp2\", \"filename\": \"%s\", \"courthouse\": \"%s\", \"courtroom\": \"%s\", \"file_size\": 937.96, \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\", \"cases\": [\"PerfCase_%s\"] }",
-        randomAudioFile, courtHouseName, courtRoom, caseName);
+        "{\"started_at\": \"1972-11-25T17:28:59.936Z\", " +
+        " \"ended_at\": \"1972-11-25T18:28:59.936Z\", " +
+        " \"channel\": 1,  " +
+        " \"total_channels\": 4,  " +
+        " \"format\": \"mp2\",  " +
+        " \"filename\": \"%s\",  " +
+        " \"courthouse\": \"%s\",  " +
+        " \"courtroom\": \"%s\",  " +
+        " \"file_size\": 937.96,  " +
+        " \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\",  " +
+        " \"cases\": [\"PerfCase_%s\", \"PerfCase_%s\",\"PerfCase_%s\"] }",
+        randomAudioFile, courtHouseName, courtRoom, caseName1, caseName2, caseName3);
     }
 
 
