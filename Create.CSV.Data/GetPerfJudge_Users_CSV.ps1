@@ -22,6 +22,7 @@ WITH UserDetails AS (
     WHERE  
         ua.user_name LIKE '%PerfJudge%'
         AND cc.cas_id IS NOT NULL
+        AND EXISTS (SELECT 1 FROM darts.hearing h WHERE h.cas_id = cc.cas_id)
 ),
 FilteredUserDetails AS (
     SELECT *

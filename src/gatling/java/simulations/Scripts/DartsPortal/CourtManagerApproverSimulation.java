@@ -2,6 +2,7 @@ package simulations.Scripts.DartsPortal;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchSecnario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalApproveAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
@@ -12,12 +13,14 @@ import io.gatling.javaapi.http.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+import java.time.Duration;
+
 public class CourtManagerApproverSimulation extends Simulation {   
   {
 
       HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
-        //.baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
+        .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
         .baseUrl("https://login.microsoftonline.com") 
 
         .inferHtmlResources()
@@ -30,11 +33,12 @@ public class CourtManagerApproverSimulation extends Simulation {
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(Feeders.createCourtManagerUsers()))
         .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())      
-        .repeat(20).on(
-        exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio()))
+        .repeat(1).on(
+        exec(DartsPortalAdvanceSearchSecnario.DartsPortalAdvanceSearchSecnario())
+        .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio()))
         .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
     setUp(
-        scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
+        scn1.injectOpen(rampUsers(100).during(Duration.ofMinutes(30))).protocols(httpProtocol));
     }    
 } 
     
