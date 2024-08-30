@@ -11,12 +11,16 @@ public class AppConfig {
     public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = "test";
     public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = "test";
     
-    public static final String TENANT_NAME = "\"test\";";
+    public static final String TENANT_NAME = "test";
+    public static final String INTERNAL_TENANT_NAME = "test";
 
     //INTERNAL Tenant
-    public static final String PERFORMANCE_INTERNAL_CLIENT_ID = "test"; 
+    public static final String PERFORMANCE_INTERNAL_CLIENT_ID = "test";
     public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = "test";        
-    public static final String PERFORMANCE_INTERNAL_TENANT_ID = "test";
+    public static final String PERFORMANCE_INTERNAL_TENANT_ID = "test"; 
+    
+    public static final String PERFORMANCE_INTERNAL_SCOPE = "test";
+    public static final String PERFORMANCE_INTERNAL_B2B_Token = "test";
 
     //Performance Env
     public static final String PERFORMANCE_GATEWAY_BASE_URL= "test";
@@ -24,10 +28,11 @@ public class AppConfig {
     public static final String PERFORMANCE_DARTS_API_BASE_URL= "test";
     public static final String PERFORMANCE_DARTS_BASE_URL= "test";
     public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "test";
-    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "test";
-    public static final String PERFORMANCE_B2B_Login = "https://"+TENANT_NAME+"test";
-    public static final String PERFORMANCE_B2B_Token = "/"+TENANT_NAME+"test";
-    public static final String PERFORMANCE_SCOPE = "https://"+TENANT_NAME+".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "test";
+    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = "test";
+    public static final String PERFORMANCE_B2B_Login = "test";
+    public static final String PERFORMANCE_B2B_Token = "test";
+
+    public static final String PERFORMANCE_SCOPE = "test";
 
     public static final String PERFORMANCE_GRANT_TYPE = "test";
  
@@ -175,7 +180,7 @@ public class AppConfig {
 
         //Users Ramp up Duration
         RAMP_UP_DURATION_OF_JUDGES = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
-        RAMP_UP_DURATION_OF_COURT_CLERK = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
+        RAMP_UP_DURATION_OF_COURT_CLERK = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "10"));
         RAMP_UP_DURATION_OF_COURT_MANAGER = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
         RAMP_UP_DURATION_OF_TRANSCRIBER = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
         RAMP_UP_DURATION_OF_LANGUAGE_SHOP = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
@@ -309,7 +314,9 @@ public class AppConfig {
         DARTS_PORTAL_SIGNIN(PERFORMANCE_DARTS_PORTAL_SIGNIN),
         B2B_Login(PERFORMANCE_B2B_Login),
         B2B_Token(PERFORMANCE_B2B_Token),
+        INTERNAL_B2B_Token(PERFORMANCE_INTERNAL_B2B_Token),
         SCOPE(PERFORMANCE_SCOPE),
+        INTERNAL_SCOPE(PERFORMANCE_INTERNAL_SCOPE),
         GRANT_TYPE(PERFORMANCE_GRANT_TYPE),
        
         //External Tennat
@@ -352,7 +359,7 @@ public class AppConfig {
     // SOAP service endpoint
     public enum SoapServiceEndpoint {
         ContextRegistryService("test"),
-        DARTSService("test""),
+        DARTSService("test"),
         StandardService("test");
         private final String endpoint;
 
@@ -374,6 +381,7 @@ public class AppConfig {
     // Specific CSV file names
     public static final String COURT_HOUSE_AND_COURT_ROOMS_CSV = "GetAllCourtroomsAndCourthouses.csv";
     public static final String TRANSCRIPTION_POST_CSV = "Transcription_Post.csv";
+    public static final String TRANSCRIPTION_PATCH_ACCEPT_CSV = "Accept_Transcription_Patch.csv";
     public static final String AUDIO_REQUEST_POST_CSV = "Audio_Request_Post.csv";
     public static final String CASE_HOUSE_ROOMS_HEARING_FILE_PATH_CSV = "Case_House_Room_HearingDetails.csv";
     public static final String TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH_CSV = "Transformed_Media_Download.csv";
@@ -393,6 +401,7 @@ public class AppConfig {
     // Full CSV file paths
     public static final String COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, COURT_HOUSE_AND_COURT_ROOMS_CSV).toString();
     public static final String TRANSCRIPTION_POST_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSCRIPTION_POST_CSV).toString();
+    public static final String TRANSCRIPTION_PATCH_ACCEPT_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, TRANSCRIPTION_PATCH_ACCEPT_CSV).toString();
     public static final String AUDIO_REQUEST_POST_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, AUDIO_REQUEST_POST_CSV).toString();
     public static final String DARTS_PORTAL_USERS1_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_USERS_CSV).toString();
     public static final String DARTS_PORTAL_COURTCLERK_USERS_FILE_PATH = Paths.get(BASE_DIR, CSV_FILE_COMMON_PATH, DARTS_PORTAL_COURTCLERK_USERS_CSV).toString();
