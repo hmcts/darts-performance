@@ -389,15 +389,15 @@
           <stringProp name="username">pgadmin</stringProp>
         </JDBCDataSource>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Assign User Roles" enabled="false">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Assign User Roles" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
         <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Updating Courthouse and User with Roles" enabled="false">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request For Updating Courthouse and User with Roles" enabled="true">
             <stringProp name="dataSource">dbConfig</stringProp>
             <stringProp name="query">SET SEARCH_PATH TO darts;
-select darts.addsingleuserrolepermissions(&apos;${CourtHouse}&apos;, &apos;${Username}&apos;, &apos;${Email}&apos;, 4);</stringProp>
+select darts.addsingleuserrolepermissions(&apos;NEWCASTLE UPON TYNE&apos;, &apos;PerfCourtManager52&apos;, &apos;PerfCourtManager52@dev.platform.hmcts.net&apos;, 3);</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes">VARCHAR</stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -466,7 +466,7 @@ select darts.adduserpermissions(&apos;LIVERPOOL&apos;, &apos;PerfCourtClerk131&a
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller for User Creation" enabled="true">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller for User Creation" enabled="false">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">25</stringProp>
         </LoopController>
@@ -1054,7 +1054,7 @@ select darts.adduserpermissions(&apos;LIVERPOOL&apos;, &apos;PerfCourtClerk131&a
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Graph - Api - External Users - PerfTest - CreateUser - Transcriber" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Graph - Api - External Users - PerfTest - CreateUser - Transcriber" enabled="false">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">

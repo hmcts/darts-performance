@@ -42,6 +42,7 @@ UserCases AS (
         darts.court_case cc ON cc.cth_id = fud.cth_id
     WHERE
         cc.cas_id IS NOT NULL
+        AND EXISTS (SELECT 1 FROM darts.hearing h WHERE h.cas_id = cc.cas_id)
 ),
 RandomDefendant AS (
     SELECT 

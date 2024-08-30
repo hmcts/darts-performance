@@ -2,6 +2,7 @@ package simulations.Scripts.DartsPortal;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchSecnario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalPreviewAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
@@ -10,6 +11,7 @@ import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownload
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
+import java.time.Duration;
 
 
 import static io.gatling.javaapi.core.CoreDsl.*;
@@ -29,7 +31,7 @@ public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation 
         .exec(feed(Feeders.createTranscriberUsers()))
         .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
         .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
-        .repeat(5).on(
+        .repeat(1).on(
             exec(session -> {
                 // Increment the loop counter
                 int iteration = session.getInt("loopCounter") + 1;
@@ -52,15 +54,17 @@ public class TranscriberAttachfileAndDownlaodAudioSimulation extends Simulation 
                 // Update the loop counter in the session for the next iteration
                 return session.set("loopCounter", iteration);
             })
+
+            .exec(DartsPortalAdvanceSearchSecnario.DartsPortalAdvanceSearchSecnario())  
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-            .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
-            .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario()) // Execute the request
+            .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
+            .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
         )
         .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest());
     
         setUp(
-            scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol)
-        );
+            scn1.injectOpen(rampUsers(45).during(Duration.ofMinutes(20))).protocols(httpProtocol)
+            );
 
     }    
 } 

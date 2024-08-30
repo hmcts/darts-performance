@@ -31,6 +31,7 @@ public class Feeders {
     public static final FeederBuilder<String> TransformedMediaPlaybackIdCSV;
     public static final FeederBuilder<String> TransformedMediaDeleteIdsCSV;    
     public static final FeederBuilder<String> TranscriptionPostDetails;
+    public static final FeederBuilder<String> TranscriptionPatchAcceptDetails;
 
     private static final AtomicInteger COUNTER;
     private static final Logger log = Logger.getLogger(Feeders.class.getName());
@@ -61,7 +62,7 @@ public class Feeders {
 
         //Transcription Post body details
         TranscriptionPostDetails = CoreDsl.csv(AppConfig.TRANSCRIPTION_POST_FILE_PATH).circular();
-
+        TranscriptionPatchAcceptDetails = CoreDsl.csv(AppConfig.TRANSCRIPTION_PATCH_ACCEPT_FILE_PATH).circular();
         COUNTER = new AtomicInteger(0);
         // RANDOM_USER_FEEDER = jdbcFeeder("SELECT * FROM darts.user_account "
         // + "order by RANDOM()").random();
@@ -77,6 +78,9 @@ public class Feeders {
 
     public static FeederBuilder<String> createTranscriptionPostDetails() {
         return TranscriptionPostDetails;
+    }
+    public static FeederBuilder<String> createTranscriptionPatchAcceptDetails() {
+        return TranscriptionPatchAcceptDetails;
     }
     public static FeederBuilder<String> createAudioRequestCSV() {
         return AudioRequestCSV;
