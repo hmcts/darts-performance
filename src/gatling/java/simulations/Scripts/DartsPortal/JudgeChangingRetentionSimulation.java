@@ -22,7 +22,7 @@ public class JudgeChangingRetentionSimulation extends Simulation {
         .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36");
       
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
-        .exec(feed(Feeders.createLanguageShopUsers()))
+        .exec(feed(Feeders.createJudgeUsers()))
         .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
         .exec(DartsPortalChangeRetentionScenario.DartsPortalChangeRetention())
         .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest());

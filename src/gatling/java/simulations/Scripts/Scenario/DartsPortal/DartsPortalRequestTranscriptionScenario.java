@@ -96,20 +96,42 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
               .headers(Headers.CommonHeaders)
           )
-          .exec
-            (session -> {
-              String xmlPayload = RequestBodyBuilder.buildTranscriptionsBody(session);
-              return session.set("xmlPayload", xmlPayload);
+          .exec(session -> {
+            String xmlPayload = RequestBodyBuilder.buildTranscriptionsBody(session);
+            return session.set("xmlPayload", xmlPayload);
           })
-
-          //Request Transcriptions
+          // Request Transcriptions
           .exec(
-            http("Darts-Portal - Api - Transcriptions")
-              .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions")
-              .headers(Headers.getHeaders(8))
-              .body(StringBody(session -> session.get("xmlPayload"))).asJson()              
+              http("Darts-Portal - Api - Transcriptions")
+                  .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions")
+                  .headers(Headers.getHeaders(8))
+                  .body(StringBody(session -> session.get("xmlPayload"))).asJson()
+                  .check(status().saveAs("status"))
+                  .checkIf(session -> session.getInt("status") == 409).then(
+                      jsonPath("$.type").saveAs("errorType"),
+                      jsonPath("$.title").saveAs("errorTitle"),
+                      jsonPath("$.status").saveAs("errorStatus")
+                  )
           )
+          .exec(session -> {
+              int statusCode = session.getInt("status");
+              if (statusCode == 409) {
+                  String errorType = session.getString("errorType");
+                  String errorTitle = session.getString("errorTitle");
+                  int errorStatus = session.getInt("errorStatus");
 
+                  System.out.println("Received 409 Conflict. Details:");
+                  System.out.println("Type: " + errorType);
+                  System.out.println("Title: " + errorTitle);
+                  System.out.println("Status: " + errorStatus);
+
+                  // Mark the session as succeeded to prevent this from counting as a failure. 409 response is "A transcription already exists with these properties"
+                  return session.markAsSucceeded();
+              } else {
+                  // Handle other status codes if necessary
+                  return session;
+              }
+          })
           // Return to hearing
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")

@@ -51,7 +51,8 @@ public final class DartsPortalAdvanceSearchSecnario {
                             System.out.println("Title: " + errorTitle);
                             System.out.println("Status: " + errorStatus);
                             // Handle 400 Bad Request as a non-error, continue execution - This is because you may get "Too many results have been returned. Please change search criteria"
-                            return session.markAsSucceeded(); // Mark the request as succeeded
+                            String newXmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
+                            return session.set("xmlSearchPayload", newXmlPayload).markAsSucceeded();
                         } else if (session.getInt("caseCount") == 0) {
                             System.out.println("Empty response received. Retrying...");
                             String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
