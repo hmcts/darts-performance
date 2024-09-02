@@ -46,3 +46,4 @@ applicationinsights-agent-*.jar
 .fake
 .gradle/**
 build/**
+/.gradle/
