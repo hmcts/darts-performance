@@ -533,7 +533,7 @@ public class RequestBodyBuilder {
         // "\"region_id\": \"0\"}",
         courtHouseName, courtHouseName);
     }
-
+    
     public static String buildEventsPostBody(Session session) {
         
         // Generate a random court house name
@@ -552,7 +552,24 @@ public class RequestBodyBuilder {
         "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
     courtHouseName, courtRoomName, courtCaseNumber);
     }
-
+    public static String buildInterpreterUsedEventBody(Session session) {
+        
+        // Generate a random court house name
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
+        String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
+        String courtCaseId = session.get("cas_id") != null ? session.get("cas_id").toString() : "";
+//2917
+        return String.format("{\"event_id\": \"74\", " +
+        "\"type\": \"2917\", " +
+        "\"sub_type\": \"3979\", " +
+        "\"courthouse\": \"%s\", " +
+        "\"courtroom\": \"%s\", " +
+        "\"case_numbers\": [ " +
+        "\"%s\" ], " +            
+        "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
+    courtHouseName, courtRoomName, courtCaseNumber);
+    }
     public static String buildEventsRetentionsPostBody(Session session) {
         
         // Generate a random court house name
