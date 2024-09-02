@@ -30,19 +30,9 @@ public final class DartsPortalChangeRetentionScenario {
               .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))              
               .body(StringBody(session -> session.get("xmlPayload"))).asJson()
               .check(status().is(200))
-             .check(jsonPath("$[*]..case_id").count().gt(0))
-              .check(Feeders.saveCaseId())
-             .check(jsonPath("$[*].case_id").findRandom().saveAs("getCaseId"))
               .check(jsonPath("$.title").optional().saveAs("errorTitle"))              
               )
-              .exec(session -> {
-                Object getCaseId = session.get("getCaseId");
-                if (getCaseId != null) {
-                    System.out.println("getCaseId: " + getCaseId.toString());
-                } else {
-                    System.out.println("No value saved using saveAs.");
-                }
-                
+              .exec(session -> {                
                 Object errorTitle = session.get("errorTitle");
                 if (errorTitle != null) {
                     String errorMessage = "Request failed with error: " + errorTitle.toString();

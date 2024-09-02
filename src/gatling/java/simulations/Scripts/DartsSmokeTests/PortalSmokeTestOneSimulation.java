@@ -76,7 +76,32 @@ public class PortalSmokeTestOneSimulation extends Simulation {
     private ScenarioBuilder setUpCourtClerkUsers(String scenarioName) {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createCourtClerkUsers()))
-            .exec(DartsPortalAdvanceSearchSecnario.DartsPortalAdvanceSearchSecnario())     
+            
+            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
+            .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
+            .repeat(5).on(
+                exec(session -> {
+                    // Increment the loop counter
+                    int iteration = session.getInt("loopCounter") + 1;
+            
+                    // Determine the column name based on the iteration number
+                    String defendantColumn = "";
+                    switch (iteration) {
+                        case 1: defendantColumn = "defendantFirstName"; break;
+                        case 2: defendantColumn = "defendantSecondName"; break;
+                        case 3: defendantColumn = "defendantThirdName"; break;
+                        case 4: defendantColumn = "defendantFourthName"; break;
+                        case 5: defendantColumn = "defendantFifthName"; break;
+                        default: throw new RuntimeException("Unexpected iteration: " + iteration);
+                    }
+            
+                    // Retrieve the defendant name from the session and set it for use
+                    String defendantName = session.getString(defendantColumn);
+                    session = session.set("defendantFirstName", defendantName);
+            
+                    // Update the loop counter in the session for the next iteration
+                    return session.set("loopCounter", iteration);
+                }))   
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
             .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
             // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
@@ -88,6 +113,30 @@ public class PortalSmokeTestOneSimulation extends Simulation {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createLanguageShopUsers()))
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
+            .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
+            .repeat(5).on(
+                exec(session -> {
+                    // Increment the loop counter
+                    int iteration = session.getInt("loopCounter") + 1;
+            
+                    // Determine the column name based on the iteration number
+                    String defendantColumn = "";
+                    switch (iteration) {
+                        case 1: defendantColumn = "defendantFirstName"; break;
+                        case 2: defendantColumn = "defendantSecondName"; break;
+                        case 3: defendantColumn = "defendantThirdName"; break;
+                        case 4: defendantColumn = "defendantFourthName"; break;
+                        case 5: defendantColumn = "defendantFifthName"; break;
+                        default: throw new RuntimeException("Unexpected iteration: " + iteration);
+                    }
+            
+                    // Retrieve the defendant name from the session and set it for use
+                    String defendantName = session.getString(defendantColumn);
+                    session = session.set("defendantFirstName", defendantName);
+            
+                    // Update the loop counter in the session for the next iteration
+                    return session.set("loopCounter", iteration);
+                }))   
             .exec(DartsPortalAdvanceSearchSecnario.DartsPortalAdvanceSearchSecnario()) 
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
             .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
@@ -98,6 +147,30 @@ public class PortalSmokeTestOneSimulation extends Simulation {
         return scenario(scenarioName)        
             .exec(feed(Feeders.createJudgeUsers()))
             .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
+            .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
+            .repeat(5).on(
+                exec(session -> {
+                    // Increment the loop counter
+                    int iteration = session.getInt("loopCounter") + 1;
+            
+                    // Determine the column name based on the iteration number
+                    String defendantColumn = "";
+                    switch (iteration) {
+                        case 1: defendantColumn = "defendantFirstName"; break;
+                        case 2: defendantColumn = "defendantSecondName"; break;
+                        case 3: defendantColumn = "defendantThirdName"; break;
+                        case 4: defendantColumn = "defendantFourthName"; break;
+                        case 5: defendantColumn = "defendantFifthName"; break;
+                        default: throw new RuntimeException("Unexpected iteration: " + iteration);
+                    }
+            
+                    // Retrieve the defendant name from the session and set it for use
+                    String defendantName = session.getString(defendantColumn);
+                    session = session.set("defendantFirstName", defendantName);
+            
+                    // Update the loop counter in the session for the next iteration
+                    return session.set("loopCounter", iteration);
+                }))   
             .exec(DartsPortalChangeRetentionScenario.DartsPortalChangeRetention())
             .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
     }
