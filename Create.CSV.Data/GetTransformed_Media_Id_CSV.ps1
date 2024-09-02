@@ -5,11 +5,11 @@ ORDER BY trm_id ASC;
 "@
 
 # Database connection parameters
-$postgresHost = "darts-api-test.postgres.database.azure.com"
-$port = "5432" # Default is 5432
-$database = "darts"
-$user = "pgadmin"
-$password = "oIYRDeLXDMLKahVUjP0D"
+$postgresHost = "test"
+$port = "test" # Default is test
+$database = "test"
+$user = "test"
+$password = "test"
 
 # Output file path
 $outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\Transformed_Media_Id.csv"
