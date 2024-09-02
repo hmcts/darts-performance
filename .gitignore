@@ -44,3 +44,6 @@ bin/generated-sources/
 applicationinsights-agent-*.jar
 *.log
 .fake
+.gradle/**
+build/**
+/.gradle/
