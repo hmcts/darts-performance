@@ -11,7 +11,7 @@ def type = "java"
 def component = "performance"
 def branchesToSync = ['demo', 'perftest']
 def secrets = [
-        "darts-${params.ENVIRONMENT}": [
+        "darts-test": [
                 secret('PERFORMANCE-EXTERNAL-CLIENT-ID', 'PERFORMANCE_EXTERNAL_CLIENT_ID'),
                 secret('PERFORMANCE-EXTERNAL-CLIENT-SECRET', 'PERFORMANCE_EXTERNAL_CLIENT_SECRET'),
                 secret('PERFORMANCE-EXTERNAL-AZURE-AD-B2C-CLIENT-ID', 'PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID'),
