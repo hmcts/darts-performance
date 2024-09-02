@@ -5,7 +5,10 @@ plugins {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
+    maven { url 'https://jitpack.io' }
+    maven { url  'https://repo.spring.io/milestone/'}
 }
 dependencies {
     gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.3'
