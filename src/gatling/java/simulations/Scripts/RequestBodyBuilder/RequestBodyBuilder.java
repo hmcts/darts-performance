@@ -175,7 +175,7 @@ public class RequestBodyBuilder {
     
         return String.format("{\"case_id\":%s," +
         "\"is_permanent_retention\":true," +
-        "\"comments\":Perf_Comment_%s}",
+        "\"comments\":\"Perf_Comment_%s\"}",
         caseId, randomComment);
     }
     public static String buildTranscriptionsBody(Session session) {
