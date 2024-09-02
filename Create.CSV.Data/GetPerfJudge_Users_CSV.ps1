@@ -118,15 +118,14 @@ LEFT JOIN
     RandomDefendant rd5 ON fud.usr_id = rd5.usr_id AND rd5.rn = 5
 ORDER BY 
     fud.user_email_address;
-
 "@
 
 # Database connection parameters
-$postgresHost = "darts-api-test.postgres.database.azure.com"
-$port = "5432" # Default is 5432
-$database = "darts"
-$user = "pgadmin"
-$password = "oIYRDeLXDMLKahVUjP0D"
+$postgresHost = "test"
+$port = "test" # Default is test
+$database = "test"
+$user = "test"
+$password = "test"
 
 # Output file path
 $outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\UsersJudge.csv"
@@ -144,7 +143,7 @@ if (Test-Path -Path $outputFile) {
 }
 
 # Export column headers to a new CSV file
-$headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,defendantFirstName,defendantSecondName,defendantThirdName,defendantFourthName,defendantFifthName"
+$headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,cas_id1,defendantFirstName,cas_id2,defendantSecondName,cas_id3,defendantThirdName,cas_id4,defendantFourthName,cas_id5,defendantFifthName"
 $headers | Out-File -FilePath $outputFile -Encoding ASCII
 
 # Append the query results to the CSV file with comma delimiters

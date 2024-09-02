@@ -3,6 +3,8 @@ package simulations.Scripts.DartsPortal;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalChangeRetentionScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLogoutScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Utilities.*;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
@@ -14,7 +16,8 @@ public class JudgeChangingRetentionSimulation extends Simulation {
   {    
       HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
-        .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
+        .baseUrl("https://login.microsoftonline.com") 
+
         .inferHtmlResources()
         .acceptHeader("application/json, text/plain, */*")
         .acceptEncodingHeader("gzip, deflate, br")
@@ -23,7 +26,7 @@ public class JudgeChangingRetentionSimulation extends Simulation {
       
     final ScenarioBuilder scn1 = scenario("Darts Portal Login")
         .exec(feed(Feeders.createJudgeUsers()))
-        .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
+        .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
         .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
         .repeat(5).on( // Repeat 5 times, once for each cas_id and defendant name
             exec(session -> {
@@ -69,7 +72,7 @@ public class JudgeChangingRetentionSimulation extends Simulation {
                 return session.set("loopCounter", iteration);
             })
             .exec(DartsPortalChangeRetentionScenario.DartsPortalChangeRetention()))
-        .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest());
+        .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
 
     setUp(
         scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
