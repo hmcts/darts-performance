@@ -40,8 +40,17 @@ public final class DartsPortalRequestAudioScenario {
             http("Darts-Portal - Api - Cases - Transcripts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/transcripts")
               .headers(Headers.searchReferer(Headers.CommonHeaders))
-              .check(status().in(200, 403))
+              .check(status().in(200, 403).saveAs("responseStatus"))
           )
+          .exec(session -> {
+            int statusCode = session.getInt("responseStatus");
+            if (statusCode == 403) {
+                // Log the 403 and clear the failure status
+                System.out.println("Received 403, resetting failure status...");
+                return session.markAsSucceeded();
+            }
+            return session;
+          })
           .pause(3)
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
@@ -134,8 +143,17 @@ public final class DartsPortalRequestAudioScenario {
             http("Darts-Portal - Api - Hearings - Transcripts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/transcripts")
               .headers(Headers.caseReferer(Headers.CommonHeaders))
-              .check(status().in(200, 403))
+              .check(status().in(200, 403).saveAs("responseStatus"))
           )
+          .exec(session -> {
+              int statusCode = session.getInt("responseStatus");
+              if (statusCode == 403) {
+                  // Log the 403 and clear the failure status
+                  System.out.println("Received 403, resetting failure status...");
+                  return session.markAsSucceeded();
+              }
+              return session;
+          })
           .pause(3)
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")

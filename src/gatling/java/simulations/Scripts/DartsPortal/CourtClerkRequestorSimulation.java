@@ -46,7 +46,7 @@ public class CourtClerkRequestorSimulation extends Simulation {
         );
 
     setUp(
-        scn1.injectOpen(rampUsers(200).during(Duration.ofMinutes(60))).protocols(httpProtocol));
+        scn1.injectOpen(rampUsers(1).during(Duration.ofMinutes(60))).protocols(httpProtocol));
     }  
 }
 

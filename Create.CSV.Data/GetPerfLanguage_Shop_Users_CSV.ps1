@@ -19,6 +19,7 @@ WITH UserDetails AS (
         darts.courthouse ch ON urch.cth_id = ch.cth_id
     WHERE  
         ua.user_name LIKE '%PerfLanguageShop%'
+        AND urch.cth_id NOT IN (111, 153, 112, 154, 95, 55, 65, 114, 155, 152, 133, 129, 70, 136, 113) -- Exclude specific cth_id values
 ),
 FilteredUserDetails AS (
     SELECT *
@@ -43,6 +44,7 @@ UserCases AS (
     WHERE
         cc.cas_id IS NOT NULL
         AND EXISTS (SELECT 1 FROM darts.hearing h WHERE h.cas_id = cc.cas_id)
+        AND interpreter_used = true
 ),
 RandomDefendant AS (
     SELECT 
