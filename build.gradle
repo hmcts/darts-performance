@@ -12,6 +12,8 @@ repositories {
 
 dependencies {
     gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
+    //The below dependencies are only added here temporarily until they can be added to artifactory
+    gatling 'org.owasp:dependency-check-gradle:10.0.3'
 }
 
 gatlingRun {
