@@ -4,6 +4,15 @@ plugins {
     id 'io.gatling.gradle' version '3.11.2'
 }
 
+group = 'uk.gov.hmcts'
+version = '0.0.1'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 repositories {
     mavenLocal()
     mavenCentral()
@@ -16,6 +25,7 @@ dependencyCheck {
 
 dependencies {
     gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
+    gatling 'com.github.hmcts:juror-generation-support-library:1.5.4'
 }
 
 gatlingRun {
@@ -26,7 +36,7 @@ checkstyleGatling {
     maxWarnings = 3035
 }
 
-task runAllStyleChecks {
+tasks.register('runAllStyleChecks') {
     dependsOn 'checkstyleMain'
     dependsOn 'checkstyleTest'
     dependsOn 'checkstyleGatling'
