@@ -13,6 +13,7 @@ repositories {
 dependencies {
     gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
     gatling 'org.owasp:dependency-check-gradle:10.0.4'
+    gatling 'io.gatling.gradle:io.gatling.gradle.gradle.plugin:3.11.5.2'
 }
 
 gatlingRun {
