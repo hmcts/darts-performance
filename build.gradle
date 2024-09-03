@@ -5,9 +5,13 @@ plugins {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
-    gradlePluginPortal()
     maven { url 'https://jitpack.io' }
+}
+
+dependencyCheck {
+    suppressionFile = 'config/owasp/suppressions.xml'
 }
 
 dependencies {
