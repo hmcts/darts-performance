@@ -21,3 +21,13 @@ dependencies {
 gatlingRun {
     simulationClassName = 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
 }
+
+checkstyleGatling {
+    maxWarnings = 3035
+}
+
+task runAllStyleChecks {
+    dependsOn 'checkstyleMain'
+    dependsOn 'checkstyleTest'
+    dependsOn 'checkstyleGatling'
+}
