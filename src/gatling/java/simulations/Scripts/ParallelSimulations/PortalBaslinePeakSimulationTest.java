@@ -89,7 +89,7 @@ public class PortalBaslinePeakSimulationTest extends Simulation {
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
             .repeat(1)
             .on(exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()))
-            .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
+            .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio())
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest());
     }
 

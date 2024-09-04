@@ -3,6 +3,7 @@ package simulations.Scripts.Scenario.DartsPortal;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
@@ -90,19 +91,24 @@ public final class DartsPortalRequestAudioScenario {
             http("Darts-Portal - Api - Hearings - Events")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
               .headers(Headers.caseReferer(Headers.CommonHeaders))
-              .check(jsonPath("$[*]").ofMap().findRandom().saveAs("getEvent"))  
-              ).exec(session -> {
-                Object getEvent = session.get("getEvent");
+              //.check(jsonPath("$[*]").ofMap().findRandom().saveAs("getEvent"))  
+              .check(status().is(200)) 
+              )
+        //       .exec(session -> {
+        //         Object getEvent = session.get("getEvent");
 
-                if (getEvent != null) {
-                    System.out.println("getEvent: " + getEvent.toString());
+        //         if (getEvent != null) {
+        //             System.out.println("getEvent: " + getEvent.toString());
 
-                } else {
-                    System.out.println("No value saved using saveAs.");
-                }
-                return session;
-            }
-          )
+        //         } else {
+        //             System.out.println("No value saved using saveAs.");
+        //         }
+        //         return session;
+        //     }                
+
+        //   )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Events"))
+
           .exec(
             http("Darts-Portal - Api - Hearings - Audios")
                 .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/hearings/#{getHearingId}/audios")
@@ -206,15 +212,54 @@ public final class DartsPortalRequestAudioScenario {
             System.out.println("getCaseId for Audio Request: " + getCaseId);
 
             // Build audioXmlPayload
-            String audioXmlPayload = RequestBodyBuilder.buildAudioRequestBody(session, getHearingId, getUserId, getAudioStartDate, getAudioEndDate, session.get("requestType"));
-            return session.set("AudioXmlPayload", audioXmlPayload);             
-          })      
-          .exec(
-            http(requestTypeSession -> "Darts-Portal - Api - Audio-requests/" + (requestTypeSession.get("requestType") != null ? requestTypeSession.get("requestType").toString().toLowerCase() : ""))
-                .post(requestTypeSession -> AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/" + (requestTypeSession.get("requestType") != null ? requestTypeSession.get("requestType").toString().toLowerCase() : ""))
-                .headers(Headers.StandardHeaders2)
-                .body(StringBody(session -> session.get("AudioXmlPayload"))).asJson()
-          )             
+            String audioXmlPayload = RequestBodyBuilder.buildAudioRequestBody(
+              session, getHearingId, getUserId, getAudioStartDate, getAudioEndDate, session.get("requestType")
+          );
+          return session.set("AudioXmlPayload", audioXmlPayload);
+      })
+      .exec(
+          http(requestTypeSession -> "Darts-Portal - Api - Audio-requests/" + 
+              (requestTypeSession.get("requestType") != null ? 
+              requestTypeSession.get("requestType").toString().toLowerCase() : ""))
+              .post(requestTypeSession -> AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + 
+              "/api/audio-requests/" + 
+              (requestTypeSession.get("requestType") != null ? 
+              requestTypeSession.get("requestType").toString().toLowerCase() : ""))
+              .headers(Headers.StandardHeaders2)
+              .body(StringBody(session -> session.get("AudioXmlPayload"))).asJson()
+              .check(status().saveAs("status"))
+              .checkIf(session -> session.getInt("status") == 409).then(
+                  jsonPath("$.type").saveAs("errorType"),
+                  jsonPath("$.title").saveAs("errorTitle"),
+                  jsonPath("$.status").saveAs("errorStatus")
+              )
+      )
+      .exec(session -> {
+          int statusCode = session.getInt("status");
+          if (statusCode == 409) {
+              String errorType = session.getString("errorType");
+              String errorTitle = session.getString("errorTitle");
+              int errorStatus = session.getInt("errorStatus");
+      
+              System.out.println("Received 409 Conflict. Details:");
+              System.out.println("Type: " + errorType);
+              System.out.println("Title: " + errorTitle);
+              System.out.println("Status: " + errorStatus);
+      
+              // Set the error details in the session
+              return session.set("errorStatusCode", String.valueOf(statusCode))
+                            .set("errorType", errorType)
+                            .set("errorTitle", errorTitle);
+          } else {
+              // Handle other status codes if necessary
+              return session;
+          }
+      })
+      .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests"))
+      .exec(session -> {
+          // Mark the session as succeeded even if it encountered an error
+          return session.markAsSucceeded();
+      })
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")

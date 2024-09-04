@@ -19,12 +19,21 @@ public final class DartsPortalChangeRetentionScenario {
 
     public static ChainBuilder DartsPortalChangeRetention() {
       return group("Darts Change Cases Retention")
-      .on(exec
+      .on(exec(
+            http("Darts-Portal - User - Refresh-profile")
+            .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
+            .headers(Headers.CommonHeaders)
+          )
+          .exec
             (session -> {
               String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
               return session.set("xmlPayload", xmlPayload);
           })
           .pause(3)
+          
+          // Initialize `caseCount` to 0 before starting the search
+          .exec(session -> session.set("caseCount", 0))
+
           .exec(http("Darts-Portal - Api - Cases - Search")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
               .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))              

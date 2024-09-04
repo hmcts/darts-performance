@@ -60,7 +60,7 @@ public class PortalMultipleSimulationTest extends Simulation {
             .exec(feed(Feeders.createTranscriberUsers()))
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-            .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
+            .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio())
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest());
     }
 

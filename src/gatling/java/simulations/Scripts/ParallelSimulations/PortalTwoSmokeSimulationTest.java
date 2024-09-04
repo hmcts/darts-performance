@@ -3,7 +3,6 @@ package simulations.Scripts.ParallelSimulations;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalApproveAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalChangeRetentionScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
@@ -91,7 +90,7 @@ public class PortalTwoSmokeSimulationTest extends Simulation {
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
             .repeat(1)
             .on(exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()))
-            .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachfileAndDownlaodAudio())
+            .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio())
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest());
     }
 

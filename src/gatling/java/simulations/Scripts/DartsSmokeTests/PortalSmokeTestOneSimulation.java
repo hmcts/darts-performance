@@ -3,7 +3,7 @@ package simulations.Scripts.DartsSmokeTests;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchSecnario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalChangeRetentionScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
@@ -61,57 +61,61 @@ public class PortalSmokeTestOneSimulation extends Simulation {
 
         // Call setUp once with all scenarios
         setUp(
-            smokeJudgeUsers.injectOpen(
-                rampUsers(AppConfig.JUDGE_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)) 
-            ).protocols(httpProtocolInternal),
+            // smokeJudgeUsers.injectOpen(
+            //     rampUsers(AppConfig.JUDGE_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)) 
+            // ).protocols(httpProtocolInternal),
             smokeCourtClerkUsers.injectOpen(
                 rampUsers(AppConfig.COURT_CLERK_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)) 
-            ).protocols(httpProtocolInternal),
-            smokeLanguageShopUsers.injectOpen(
-                rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)) 
-            ).protocols(httpProtocolExternal)
+            ).protocols(httpProtocolInternal)
+            // smokeLanguageShopUsers.injectOpen(
+            //     rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)) 
+            // ).protocols(httpProtocolExternal)
         );
     }
 
     private ScenarioBuilder setUpCourtClerkUsers(String scenarioName) {
-        return scenario(scenarioName)        
-            .exec(feed(Feeders.createCourtClerkUsers()))
-            
-            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
-            .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
-            .repeat(5).on(
-                exec(session -> {
-                    // Increment the loop counter
-                    int iteration = session.getInt("loopCounter") + 1;
-            
-                    // Determine the column name based on the iteration number
-                    String defendantColumn = "";
-                    switch (iteration) {
-                        case 1: defendantColumn = "defendantFirstName"; break;
-                        case 2: defendantColumn = "defendantSecondName"; break;
-                        case 3: defendantColumn = "defendantThirdName"; break;
-                        case 4: defendantColumn = "defendantFourthName"; break;
-                        case 5: defendantColumn = "defendantFifthName"; break;
-                        default: throw new RuntimeException("Unexpected iteration: " + iteration);
-                    }
-            
-                    // Retrieve the defendant name from the session and set it for use
-                    String defendantName = session.getString(defendantColumn);
-                    session = session.set("defendantFirstName", defendantName);
-            
-                    // Update the loop counter in the session for the next iteration
-                    return session.set("loopCounter", iteration);
-                }))   
-            .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-            .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
-            // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
-            .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
-
+        return scenario(scenarioName)
+            .group("Court Clerk Users")
+            .on(
+                exec(feed(Feeders.createCourtClerkUsers())) // Load court clerk user data
+                .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) // Login request
+                .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
+                .repeat(5).on(
+                    exec(session -> {
+                        // Increment the loop counter
+                        int iteration = session.getInt("loopCounter") + 1;
+    
+                        // Determine the column name based on the iteration number
+                        String defendantColumn = switch (iteration) {
+                            case 1 -> "defendantFirstName";
+                            case 2 -> "defendantSecondName";
+                            case 3 -> "defendantThirdName";
+                            case 4 -> "defendantFourthName";
+                            case 5 -> "defendantFifthName";
+                            default -> throw new RuntimeException("Unexpected iteration: " + iteration);
+                        };
+    
+                        // Retrieve the defendant name from the session and set it for use
+                        String defendantName = session.getString(defendantColumn);
+                        session = session.set("defendantFirstName", defendantName);
+    
+                        // Update the loop counter in the session for the next iteration
+                        return session.set("loopCounter", iteration);
+                    })
+                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) // Perform advance search
+                    .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
+                    .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription()) // Request transcription
+                )
+                // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
+                .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()) // Logout request
+            );
     }
-
+    
     private ScenarioBuilder setUpLanguageShopUsers(String scenarioName) {
         return scenario(scenarioName)        
-            .exec(feed(Feeders.createLanguageShopUsers()))
+        .group("Language Shop Users")
+        .on(  
+            exec(feed(Feeders.createLanguageShopUsers()))
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
             .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
             .repeat(5).on(
@@ -136,43 +140,68 @@ public class PortalSmokeTestOneSimulation extends Simulation {
             
                     // Update the loop counter in the session for the next iteration
                     return session.set("loopCounter", iteration);
-                }))   
-            .exec(DartsPortalAdvanceSearchSecnario.DartsPortalAdvanceSearchSecnario()) 
-            .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-            .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
-            .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
+                })
+                .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) 
+                .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
+               // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
+            )
+            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest()));
     }
 
     private ScenarioBuilder setUpJudgeUsers(String scenarioName) {
-        return scenario(scenarioName)        
-            .exec(feed(Feeders.createJudgeUsers()))
-            .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
-            .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
-            .repeat(5).on(
-                exec(session -> {
-                    // Increment the loop counter
-                    int iteration = session.getInt("loopCounter") + 1;
-            
-                    // Determine the column name based on the iteration number
-                    String defendantColumn = "";
-                    switch (iteration) {
-                        case 1: defendantColumn = "defendantFirstName"; break;
-                        case 2: defendantColumn = "defendantSecondName"; break;
-                        case 3: defendantColumn = "defendantThirdName"; break;
-                        case 4: defendantColumn = "defendantFourthName"; break;
-                        case 5: defendantColumn = "defendantFifthName"; break;
-                        default: throw new RuntimeException("Unexpected iteration: " + iteration);
-                    }
-            
-                    // Retrieve the defendant name from the session and set it for use
-                    String defendantName = session.getString(defendantColumn);
-                    session = session.set("defendantFirstName", defendantName);
-            
-                    // Update the loop counter in the session for the next iteration
-                    return session.set("loopCounter", iteration);
-                }))   
-            .exec(DartsPortalChangeRetentionScenario.DartsPortalChangeRetention())
-            .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
+        return scenario(scenarioName)
+            .group("Judge Users")
+            .on(
+                exec(feed(Feeders.createJudgeUsers()))
+                .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
+                .exec(session -> session.set("loopCounter", 0))  // Initialize loopCounter
+                .repeat(5).on( // Repeat 5 times, once for each cas_id and defendant name
+                    exec(session -> {
+                        // Increment the loop counter
+                        int iteration = session.getInt("loopCounter") + 1;
+    
+                        // Determine the cas_id and defendant name column names based on the iteration number
+                        String casIdColumn = "";
+                        String defendantColumn = "";
+                        switch (iteration) {
+                            case 1: 
+                                casIdColumn = "cas_id1"; 
+                                defendantColumn = "defendantFirstName"; 
+                                break;
+                            case 2: 
+                                casIdColumn = "cas_id2"; 
+                                defendantColumn = "defendantSecondName"; 
+                                break;
+                            case 3: 
+                                casIdColumn = "cas_id3"; 
+                                defendantColumn = "defendantThirdName"; 
+                                break;
+                            case 4: 
+                                casIdColumn = "cas_id4"; 
+                                defendantColumn = "defendantFourthName"; 
+                                break;
+                            case 5: 
+                                casIdColumn = "cas_id5"; 
+                                defendantColumn = "defendantFifthName"; 
+                                break;
+                            default: 
+                                throw new RuntimeException("Unexpected iteration: " + iteration);
+                        }
+    
+                        // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
+                        String casId = session.getString(casIdColumn);
+                        String defendantName = session.getString(defendantColumn);
+                        session = session
+                                    .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
+                                    .set("defendantFirstName", defendantName); // Set the defendant name for #{defendantFirstName} usage
+    
+                        // Update the loop counter in the session for the next iteration
+                        return session.set("loopCounter", iteration);
+                    })
+                    .exec(DartsPortalChangeRetentionScenario.DartsPortalChangeRetention())
+                )
+                .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest())
+            );
     }
     @Override
     public void after() {

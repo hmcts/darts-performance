@@ -116,7 +116,7 @@ ORDER BY
 
 # Database connection parameters
 $postgresHost = "test"
-$port = "test" # Default is test
+$port = "test"
 $database = "test"
 $user = "test"
 $password = "test"
