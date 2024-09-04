@@ -13,10 +13,6 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 
-dependencyCheck {
-    suppressionFile = 'config/owasp/suppressions.xml'
-}
-
 dependencies {
     gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
     gatling 'com.github.hmcts:juror-generation-support-library:1.5.4'
