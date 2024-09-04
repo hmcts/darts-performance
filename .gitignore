@@ -47,3 +47,5 @@ applicationinsights-agent-*.jar
 .gradle/**
 build/**
 /.gradle/
+/lib/
+/.idea/
