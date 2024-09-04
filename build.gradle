@@ -1,19 +1,33 @@
 plugins {
     id 'java'
-    id 'org.owasp.dependencycheck' version '10.0.3'
-    id 'io.gatling.gradle' version '3.11.5.2'
+    id 'uk.gov.hmcts.java' version '0.12.63'
+    id 'io.gatling.gradle' version '3.11.2'
 }
 
+group = 'uk.gov.hmcts'
+version = '0.0.1'
+
 repositories {
+    mavenLocal()
     mavenCentral()
-    gradlePluginPortal()
     maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
+    gatling 'com.github.hmcts:juror-generation-support-library:1.5.4'
 }
 
 gatlingRun {
     simulationClassName = 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
+}
+
+checkstyleGatling {
+    maxWarnings = 3035
+}
+
+tasks.register('runAllStyleChecks') {
+    dependsOn 'checkstyleMain'
+    dependsOn 'checkstyleTest'
+    dependsOn 'checkstyleGatling'
 }
