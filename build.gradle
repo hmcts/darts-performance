@@ -23,7 +23,7 @@ dependencies {
 }
 
 gatlingRun {
-    simulationClassName = 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
+    simulationClassName = 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestOneSimulation'
 }
 
 checkstyleGatling {

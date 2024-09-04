@@ -46,6 +46,7 @@ UserCases AS (
     WHERE
         cc.cas_id IS NOT NULL
         AND EXISTS (SELECT 1 FROM darts.hearing h WHERE h.cas_id = cc.cas_id)
+        AND NOT EXISTS (SELECT 1 FROM darts.media_linked_case mlc WHERE mlc.cas_id = cc.cas_id)
 ),
 RandomDefendant AS (
     SELECT 
@@ -116,7 +117,7 @@ ORDER BY
 
 # Database connection parameters
 $postgresHost = "test"
-$port = "test" # Default is test
+$port = "test"
 $database = "test"
 $user = "test"
 $password = "test"

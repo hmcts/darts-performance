@@ -17,7 +17,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
 
     private TranscriberAttachFileAndDownloadAudioScenario() {}
 
-    public static ChainBuilder TranscriberAttachfileAndDownlaodAudio() {
+    public static ChainBuilder TranscriberAttachFileAndDownloadAudio() {
       return group("Darts Attach File And Downlaod Audio")
       .on(exec(feed(Feeders.createAudioRequestCSV()))
       .exec(session -> {

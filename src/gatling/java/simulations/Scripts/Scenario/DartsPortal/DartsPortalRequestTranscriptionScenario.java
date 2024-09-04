@@ -36,8 +36,6 @@ public final class DartsPortalRequestTranscriptionScenario {
                 return session;
             }
           )
-          .exitHereIfFailed()
-          
           .exec(session -> {
                 Object getHearings = session.get("getHearings");
                 if (getHearings != null) {
@@ -54,7 +52,6 @@ public final class DartsPortalRequestTranscriptionScenario {
                 return session;
             }
           )
-          .exitHereIfFailed()
           //Request Transcription.
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")

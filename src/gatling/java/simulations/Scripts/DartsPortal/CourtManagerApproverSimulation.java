@@ -2,7 +2,7 @@ package simulations.Scripts.DartsPortal;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchSecnario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalApproveAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
@@ -34,7 +34,7 @@ public class CourtManagerApproverSimulation extends Simulation {
         .exec(feed(Feeders.createCourtManagerUsers()))
         .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())      
         .repeat(1).on(
-        exec(DartsPortalAdvanceSearchSecnario.DartsPortalAdvanceSearchSecnario())
+         exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario())     
         .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio()))
         .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest());
     setUp(
