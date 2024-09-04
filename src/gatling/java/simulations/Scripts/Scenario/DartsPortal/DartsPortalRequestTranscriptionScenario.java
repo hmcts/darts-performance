@@ -3,6 +3,7 @@ package simulations.Scripts.Scenario.DartsPortal;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
@@ -93,6 +94,8 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
               .headers(Headers.CommonHeaders)
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Events"))
+
           .exec(session -> {
             String xmlPayload = RequestBodyBuilder.buildTranscriptionsBody(session);
             return session.set("xmlPayload", xmlPayload);
@@ -165,6 +168,8 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
               .headers(Headers.CommonHeaders)
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Events"))
+
           .exec(
             http("Darts-Portal - Api - Hearings - Transcripts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/transcripts")
