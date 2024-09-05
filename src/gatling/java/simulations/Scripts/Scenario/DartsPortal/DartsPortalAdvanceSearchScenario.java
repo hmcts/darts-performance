@@ -31,26 +31,24 @@ public final class DartsPortalAdvanceSearchScenario {
                 .asLongAs(session -> !session.contains("caseCount") || session.getInt("caseCount") == 0)
                 .on(
                     exec(http("Darts-Portal - Api - Cases - Search")
-                        .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
-                        .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
-                        .body(StringBody(session -> session.get("searchRequestPayload"))).asJson()
-                        // Check if the status is 200 to consider it as passed
-                        .check(status().is(200))
-                        .check(jsonPath("$[*].case_id").count().saveAs("caseCount"))
-                        .check(jsonPath("$[*].case_id").findRandom().optional().saveAs("getCaseId"))
-                    )
-                    .exec(session -> {
-                        int caseCount = session.getInt("caseCount");
-                        if (caseCount == 0) {
-                            // Handle empty response
-                            System.out.println("Empty response received. Marking as passed and retrying...");
-                            String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                            return session.set("searchRequestPayload", searchPayload).markAsSucceeded();
-                        } else {
-                            return session;
-                        }
-                    })
+                    .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
+                    .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
+                    .body(StringBody(session -> session.get("searchRequestPayload"))).asJson()
+                    // Check for 200 status
+                    .check(status().is(200))
+                    // Save the status code if it's not 200 to handle error codes later
+                    .check(status().saveAs("responseStatus"))
                 )
+                .exec(session -> {
+                    // Get the status from the session
+                    int status = session.getInt("responseStatus");
+
+                    // If the status is 400, 502, or 504, mark the session as failed to trigger error logging
+                    if (status == 400 || status == 502 || status == 504) {
+                        return session.markAsFailed();
+                    }
+                    return session;
+                })
                 .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search"))
 
                 .exec(session -> {
@@ -67,7 +65,7 @@ public final class DartsPortalAdvanceSearchScenario {
                     }
                     return session;
                 })
-            );
+            ));
     }
     
 }
