@@ -27,22 +27,30 @@ public final class DartsPortalRequestAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
+
           .exec(
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
+
           .exec(
             http("Darts-Portal - Api - Cases - Hearings")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.searchReferer(Headers.CommonHeaders))
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Hearings"))
+
           .exec(
             http("Darts-Portal - Api - Cases - Transcripts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/transcripts")
               .headers(Headers.searchReferer(Headers.CommonHeaders))
               .check(status().in(200, 403).saveAs("responseStatus"))
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Transcripts"))
+
           .exec(session -> {
             int statusCode = session.getInt("responseStatus");
             if (statusCode == 403) {
@@ -58,11 +66,15 @@ public final class DartsPortalRequestAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
+
           .exec(
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.caseReferer(Headers.CommonHeaders))
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
+
           .exec(
             http("Darts-Portal - Api - Cases - Hearings")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/hearings")
@@ -86,6 +98,8 @@ public final class DartsPortalRequestAudioScenario {
                 return session;
             }
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Hearings"))
+
           .exitHereIfFailed()
           .exec(
             http("Darts-Portal - Api - Hearings - Events")
@@ -117,6 +131,8 @@ public final class DartsPortalRequestAudioScenario {
                 .check(jsonPath("$[0].media_end_timestamp").saveAs("getAudioEndDate"))
                 .check(jsonPath("$[0].id").saveAs("extractedId")) 
         )
+        .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Audios"))
+
         .exec(session -> {
             String getAudioStartDate = session.getString("getAudioStartDate");
             if (getAudioStartDate != null) {
@@ -151,6 +167,8 @@ public final class DartsPortalRequestAudioScenario {
               .headers(Headers.caseReferer(Headers.CommonHeaders))
               .check(status().in(200, 403).saveAs("responseStatus"))
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Transcripts"))
+
           .exec(session -> {
               int statusCode = session.getInt("responseStatus");
               if (statusCode == 403) {
@@ -166,7 +184,8 @@ public final class DartsPortalRequestAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
               .headers(Headers.CommonHeaders)
           )  
-          
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
+
           .exec(session -> {
               // Get the user type from the session
               String userType = session.get("Type").toString();
@@ -265,6 +284,8 @@ public final class DartsPortalRequestAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
               .headers(Headers.CommonHeaders)
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
+
         );
     }
 }

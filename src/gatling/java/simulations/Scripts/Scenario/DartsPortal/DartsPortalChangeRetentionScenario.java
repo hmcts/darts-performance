@@ -3,6 +3,7 @@ package simulations.Scripts.Scenario.DartsPortal;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
@@ -58,54 +59,73 @@ public final class DartsPortalChangeRetentionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
+
           .exec(
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
+
           .exec(
             http("Darts-Portal - Api - Cases - Hearings")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.searchReferer(Headers.CommonHeaders))
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Hearings"))
+
           .exec(
             http("Darts-Portal - Api - Cases - Transcripts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/transcripts")
               .headers(Headers.searchReferer(Headers.CommonHeaders))
               .check(status().in(200, 403))
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Transcripts"))
+
           .pause(3)
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
+
           .exec(
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.caseReferer(Headers.CommonHeaders))
           )
-          
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
+
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
+
           .exec(
             http("Darts-Portal - User - Refresh-profile")
             .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
             .headers(Headers.CommonHeaders)
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - User - Refresh-profile"))
+
           .exec(
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.getHeaders(8))
-            )            
+            )   
+            .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
+         
           .exec(
             http("Darts-Portal - Api - Retentions - Case_id")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/retentions?case_id=#{getCaseId}")
               .headers(Headers.getHeaders(8))
           ) 
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions - Case_id"))
+
           .pause(19)
           .exec
             (session -> {
@@ -118,6 +138,8 @@ public final class DartsPortalChangeRetentionScenario {
             .headers(Headers.getHeaders(9))
             .body(StringBody(session -> session.get("xmlPayload"))).asJson()
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions - Validate_only"))
+
           .pause(8)
           .exec(
             http("Darts-Portal - Api - Retentions")
@@ -125,21 +147,29 @@ public final class DartsPortalChangeRetentionScenario {
               .headers(Headers.getHeaders(9))
               .body(StringBody(session -> session.get("xmlPayload"))).asJson()
             )
+            .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions"))
+
           .exec(
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.getHeaders(8))
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
+
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
               .headers(Headers.getHeaders(8))
           )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
+
           .exec(
             http("Darts-Portal - Api - Retentions - Case_id")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/retentions?case_id=#{getCaseId}")
               .headers(Headers.getHeaders(8))
             )
+            .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions - Case_id"))
+
         );
         
     }
