@@ -55,6 +55,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
@@ -62,6 +63,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Api - Transcriptions - Id")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )  
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
         
@@ -71,6 +73,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
               .patch(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
               .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
               .body(StringBody("{\"transcription_status_id\":5}")).asJson()
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
 
@@ -78,6 +81,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
@@ -85,6 +89,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Api - Transcriptions - Transcriber-view")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true")
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )  
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
         
@@ -93,6 +98,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
 
@@ -100,6 +106,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Api - Transcriptions - Transcriber-counts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-counts")
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-counts"))
 
@@ -107,6 +114,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Api - Transcriptions - Transcriber-counts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-counts")
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-count"))
 
@@ -117,13 +125,15 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Auth - Is-authenticated")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
             .headers(Headers.CommonHeaders)
+            .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
           .exec(
             http("Darts-Portal - Api - Transcriptions - Transcriber-view")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true")              
-              .headers(Headers.CommonHeaders)         
+              .headers(Headers.CommonHeaders) 
+              .check(status().is(200))        
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
 
@@ -132,6 +142,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Auth - Is-authenticated")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
@@ -139,6 +150,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Api - Transcriptions - Id")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
 
@@ -158,6 +170,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Auth - Is-authenticated")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           ) 
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
@@ -165,13 +178,15 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Auth - Is-authenticated")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
           .exec(
             http("Darts-Portal - Api - Transcriptions - Transcriber-view")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true") 
-              .headers(Headers.CommonHeaders)          
+              .headers(Headers.CommonHeaders) 
+              .check(status().is(200))         
           )          
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
           ;
