@@ -174,8 +174,6 @@ public final class DartsPortalRequestAudioScenario {
               .headers(Headers.caseReferer(Headers.CommonHeaders))
               .check(status().in(200, 403).saveAs("responseStatus"))
           )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Transcripts"))
-
           .exec(session -> {
               int statusCode = session.getInt("responseStatus");
               if (statusCode == 403) {
@@ -184,7 +182,9 @@ public final class DartsPortalRequestAudioScenario {
                   return session.markAsSucceeded();
               }
               return session;
-          })
+          })          
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Transcripts"))
+
           .pause(3)
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
