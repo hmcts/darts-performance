@@ -11,7 +11,6 @@ public class UserInfoLogger {
 
     public static ChainBuilder logDetailedErrorMessage(String requestName) {
         return exec(session -> {
-            // Existing error logging
             String statusCode = session.contains("status") ? session.getString("status") : "N/A";
             String errorType = session.contains("errorType") ? session.getString("errorType") : "N/A";
             String errorTitle = session.contains("errorTitle") ? session.getString("errorTitle") : "N/A";
@@ -19,7 +18,14 @@ public class UserInfoLogger {
     
             String email = session.contains("Email") ? session.getString("Email") : "N/A";
             String password = session.contains("Password") ? session.getString("Password") : "N/A";
-    
+
+            // New: Log success or failure based on the status code
+            if ("200".equals(statusCode)) {
+                LOGGER.info("Request '{}' was successful with status code: {}.", requestName, statusCode);
+            } else {
+                LOGGER.error("Request '{}' failed with status code: {}.", requestName, statusCode);
+            }
+
             // Log if there are any error details or the status is 502/504
             if (!"N/A".equals(errorType) || !"N/A".equals(errorTitle) || "502".equals(statusCode) || "504".equals(statusCode)) {
                 String errorMessage = String.format(
@@ -55,7 +61,6 @@ public class UserInfoLogger {
 
     public static ChainBuilder logDetailedErrorMessage(String requestName, String trmId) {
         return exec(session -> {
-            // Existing error logging
             String statusCode = session.contains("status") ? session.getString("status") : "N/A";
             String errorType = session.contains("errorType") ? session.getString("errorType") : "N/A";
             String errorTitle = session.contains("errorTitle") ? session.getString("errorTitle") : "N/A";
@@ -63,6 +68,13 @@ public class UserInfoLogger {
 
             String email = session.contains("Email") ? session.getString("Email") : "N/A";
             String password = session.contains("Password") ? session.getString("Password") : "N/A";
+
+            // New: Log success or failure based on the status code
+            if ("200".equals(statusCode)) {
+                LOGGER.info("Request '{}' was successful with status code: {}.", requestName, statusCode);
+            } else {
+                LOGGER.error("Request '{}' failed with status code: {}.", requestName, statusCode);
+            }
 
             // Log if there are any error details
             if (!"N/A".equals(errorType) || !"N/A".equals(errorTitle)) {
@@ -105,6 +117,7 @@ public class UserInfoLogger {
             // Assuming we want to log if regex didn't match the expected pattern
             boolean regexFailed = session.contains("regexFailed") && session.getBoolean("regexFailed");
 
+            // New: Log success or failure based on regex check
             if (regexFailed) {
                 String errorMessage = String.format(
                     "Request '%s' encountered a regex issue for user: Email=%s, Password=%s, User Name=%s. " +
@@ -113,6 +126,8 @@ public class UserInfoLogger {
                     requestName, email, password, userName, regexName, expectedPattern
                 );
                 LOGGER.error(errorMessage);
+            } else {
+                LOGGER.info("Request '{}' successfully matched regex '{}' with pattern '{}'.", requestName, regexName, expectedPattern);
             }
 
             // New: Full response body logging
