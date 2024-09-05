@@ -58,6 +58,7 @@ public final class DartsPortalChangeRetentionScenario {
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
@@ -65,6 +66,7 @@ public final class DartsPortalChangeRetentionScenario {
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
 
@@ -72,6 +74,7 @@ public final class DartsPortalChangeRetentionScenario {
             http("Darts-Portal - Api - Cases - Hearings")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.searchReferer(Headers.CommonHeaders))
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Hearings"))
 
@@ -88,6 +91,7 @@ public final class DartsPortalChangeRetentionScenario {
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
@@ -102,6 +106,7 @@ public final class DartsPortalChangeRetentionScenario {
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
@@ -109,6 +114,7 @@ public final class DartsPortalChangeRetentionScenario {
             http("Darts-Portal - User - Refresh-profile")
             .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
             .headers(Headers.CommonHeaders)
+            .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - User - Refresh-profile"))
 
@@ -116,6 +122,7 @@ public final class DartsPortalChangeRetentionScenario {
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.getHeaders(8))
+              .check(status().is(200))
             )   
             .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
          
@@ -123,6 +130,7 @@ public final class DartsPortalChangeRetentionScenario {
             http("Darts-Portal - Api - Retentions - Case_id")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/retentions?case_id=#{getCaseId}")
               .headers(Headers.getHeaders(8))
+              .check(status().is(200))
           ) 
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions - Case_id"))
 
@@ -137,6 +145,7 @@ public final class DartsPortalChangeRetentionScenario {
             .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/retentions?validate_only=true")
             .headers(Headers.getHeaders(9))
             .body(StringBody(session -> session.get("xmlPayload"))).asJson()
+            .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions - Validate_only"))
 
@@ -146,6 +155,7 @@ public final class DartsPortalChangeRetentionScenario {
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/retentions")
               .headers(Headers.getHeaders(9))
               .body(StringBody(session -> session.get("xmlPayload"))).asJson()
+              .check(status().is(200))
             )
             .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions"))
 
@@ -153,6 +163,7 @@ public final class DartsPortalChangeRetentionScenario {
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.getHeaders(8))
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
 
@@ -160,6 +171,7 @@ public final class DartsPortalChangeRetentionScenario {
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
               .headers(Headers.getHeaders(8))
+              .check(status().is(200))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
 
@@ -167,6 +179,7 @@ public final class DartsPortalChangeRetentionScenario {
             http("Darts-Portal - Api - Retentions - Case_id")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/retentions?case_id=#{getCaseId}")
               .headers(Headers.getHeaders(8))
+              .check(status().is(200))
             )
             .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions - Case_id"))
 
