@@ -15,12 +15,12 @@ public class UserInfoLogger {
             String errorType = session.contains("errorType") ? session.getString("errorType") : "N/A";
             String errorTitle = session.contains("errorTitle") ? session.getString("errorTitle") : "N/A";
             String errorStatus = session.contains("errorStatus") ? session.getString("errorStatus") : "N/A";
-            
+    
             String email = session.contains("Email") ? session.getString("Email") : "N/A";
             String password = session.contains("Password") ? session.getString("Password") : "N/A";
-
-            // Log if there are any error details
-            if (!"N/A".equals(errorType) || !"N/A".equals(errorTitle)) {
+    
+            // Log if there are any error details or the status is 502/504
+            if (!"N/A".equals(errorType) || !"N/A".equals(errorTitle) || "502".equals(statusCode) || "504".equals(statusCode)) {
                 String errorMessage = String.format(
                     "Request '%s' encountered an issue with status code: %s. " +
                     "Error Type: %s, Error Title: %s, Error Status: %s. " +
@@ -32,6 +32,7 @@ public class UserInfoLogger {
             return session;
         });
     }
+    
 
     public static ChainBuilder logDetailedErrorMessage(String requestName, String trmId) {
         return exec(session -> {

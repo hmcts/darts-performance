@@ -106,7 +106,7 @@ public final class DartsPortalRequestAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
               .headers(Headers.caseReferer(Headers.CommonHeaders))
               //.check(jsonPath("$[*]").ofMap().findRandom().saveAs("getEvent"))  
-              .check(status().is(200)) 
+              .check(status().in(200, 502, 504).saveAs("status"))
               )
         //       .exec(session -> {
         //         Object getEvent = session.get("getEvent");
@@ -121,6 +121,13 @@ public final class DartsPortalRequestAudioScenario {
         //     }                
 
         //   )
+        .exec(session -> {
+            int statusCode = session.getInt("status");
+            if (statusCode == 502 || statusCode == 504) {
+                return session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
+            }
+            return session;
+        })
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Events"))
 
           .exec(
