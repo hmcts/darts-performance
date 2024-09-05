@@ -15,49 +15,26 @@ public class UserInfoLogger {
             String errorType = session.contains("errorType") ? session.getString("errorType") : "N/A";
             String errorTitle = session.contains("errorTitle") ? session.getString("errorTitle") : "N/A";
             String errorStatus = session.contains("errorStatus") ? session.getString("errorStatus") : "N/A";
-    
+
             String email = session.contains("Email") ? session.getString("Email") : "N/A";
             String password = session.contains("Password") ? session.getString("Password") : "N/A";
-
-            // New: Log success or failure based on the status code
-            if ("200".equals(statusCode)) {
-                LOGGER.info("Request '{}' was successful with status code: {}.", requestName, statusCode);
-            } else {
-                LOGGER.error("Request '{}' failed with status code: {}.", requestName, statusCode);
-            }
-
-            // Log if there are any error details or the status is 502/504
-            if (!"N/A".equals(errorType) || !"N/A".equals(errorTitle) || "502".equals(statusCode) || "504".equals(statusCode)) {
+            String userName = session.contains("user_name") ? session.getString("user_name") : "N/A";
+    
+            // Log the status of the request
+            if ("N/A".equals(statusCode)) {
+                LOGGER.info("Request '{}' was successful. User Details: Email={}, User Name={}.", requestName, email, userName);
+            } else if ("502".equals(statusCode) || "504".equals(statusCode) || !"N/A".equals(errorType) || !"N/A".equals(errorTitle)) {
                 String errorMessage = String.format(
                     "Request '%s' encountered an issue with status code: %s. " +
                     "Error Type: %s, Error Title: %s, Error Status: %s. " +
-                    "User Details: Email=%s, Password=%s.",
-                    requestName, statusCode, errorType, errorTitle, errorStatus, email, password
+                    "User Details: Email=%s, Password=%s, User Name=%s.",
+                    requestName, statusCode, errorType, errorTitle, errorStatus, email, password, userName
                 );
                 LOGGER.error(errorMessage);
             }
-
-            // New: Full response body logging
-            if (session.contains("fullResponseBody")) {
-                String fullResponseBody = session.getString("fullResponseBody");
-                LOGGER.info("Request '{}': Full Response Body: {}", requestName, fullResponseBody);
-            } else {
-                LOGGER.info("Request '{}': No response body found in session.", requestName);
-            }
-
-            // New: Logging saved values (getAudioStartDate, getAudioEndDate, extractedId)
-            String getAudioStartDate = session.contains("getAudioStartDate") ? session.getString("getAudioStartDate") : "No value";
-            LOGGER.info("Request '{}': getAudioStartDate: {}", requestName, getAudioStartDate);
-
-            String getAudioEndDate = session.contains("getAudioEndDate") ? session.getString("getAudioEndDate") : "No value";
-            LOGGER.info("Request '{}': getAudioEndDate: {}", requestName, getAudioEndDate);
-
-            String extractedId = session.contains("extractedId") ? session.getString("extractedId") : "No value";
-            LOGGER.info("Request '{}': extractedId: {}", requestName, extractedId);
-
             return session;
         });
-    }
+    }    
 
     public static ChainBuilder logDetailedErrorMessage(String requestName, String trmId) {
         return exec(session -> {
@@ -65,49 +42,28 @@ public class UserInfoLogger {
             String errorType = session.contains("errorType") ? session.getString("errorType") : "N/A";
             String errorTitle = session.contains("errorTitle") ? session.getString("errorTitle") : "N/A";
             String errorStatus = session.contains("errorStatus") ? session.getString("errorStatus") : "N/A";
-
+            
             String email = session.contains("Email") ? session.getString("Email") : "N/A";
             String password = session.contains("Password") ? session.getString("Password") : "N/A";
+            String userName = session.contains("user_name") ? session.getString("user_name") : "N/A";
 
-            // New: Log success or failure based on the status code
-            if ("200".equals(statusCode)) {
-                LOGGER.info("Request '{}' was successful with status code: {}.", requestName, statusCode);
-            } else {
-                LOGGER.error("Request '{}' failed with status code: {}.", requestName, statusCode);
-            }
-
-            // Log if there are any error details
-            if (!"N/A".equals(errorType) || !"N/A".equals(errorTitle)) {
+            // Log the status of the request
+            if ("N/A".equals(statusCode)) {
+                LOGGER.info("Request '{}' was successful. User Details: Email={}, User Name={}.", requestName, email, userName);
+            } else if (!"N/A".equals(errorType) || !"N/A".equals(errorTitle)) {
                 String errorMessage = String.format(
                     "Request '%s' encountered an issue with status code: %s. " +
                     "Error Type: %s, Error Title: %s, Error Status: %s. " +
                     "Failed on trm_id: %s. " +
-                    "User Details: Email=%s, Password=%s.",
-                    requestName, statusCode, errorType, errorTitle, errorStatus, trmId, email, password
+                    "User Details: Email=%s, Password=%s, User Name=%s.",
+                    requestName, statusCode, errorType, errorTitle, errorStatus, trmId, email, password, userName
                 );
                 LOGGER.error(errorMessage);
             }
-
-            // New: Full response body logging
-            if (session.contains("fullResponseBody")) {
-                String fullResponseBody = session.getString("fullResponseBody");
-                LOGGER.info("Request '{}': Full Response Body: {}", requestName, fullResponseBody);
-            }
-
-            // New: Logging saved values
-            String getAudioStartDate = session.contains("getAudioStartDate") ? session.getString("getAudioStartDate") : "No value";
-            LOGGER.info("Request '{}': getAudioStartDate: {}", requestName, getAudioStartDate);
-
-            String getAudioEndDate = session.contains("getAudioEndDate") ? session.getString("getAudioEndDate") : "No value";
-            LOGGER.info("Request '{}': getAudioEndDate: {}", requestName, getAudioEndDate);
-
-            String extractedId = session.contains("extractedId") ? session.getString("extractedId") : "No value";
-            LOGGER.info("Request '{}': extractedId: {}", requestName, extractedId);
-
             return session;
         });
     }
-
+    
     public static ChainBuilder logDetailedErrorMessage(String requestName, String regexName, String expectedPattern) {
         return exec(session -> {
             String email = session.contains("Email") ? session.getString("Email") : "N/A";
@@ -117,7 +73,6 @@ public class UserInfoLogger {
             // Assuming we want to log if regex didn't match the expected pattern
             boolean regexFailed = session.contains("regexFailed") && session.getBoolean("regexFailed");
 
-            // New: Log success or failure based on regex check
             if (regexFailed) {
                 String errorMessage = String.format(
                     "Request '%s' encountered a regex issue for user: Email=%s, Password=%s, User Name=%s. " +
@@ -126,26 +81,7 @@ public class UserInfoLogger {
                     requestName, email, password, userName, regexName, expectedPattern
                 );
                 LOGGER.error(errorMessage);
-            } else {
-                LOGGER.info("Request '{}' successfully matched regex '{}' with pattern '{}'.", requestName, regexName, expectedPattern);
             }
-
-            // New: Full response body logging
-            if (session.contains("fullResponseBody")) {
-                String fullResponseBody = session.getString("fullResponseBody");
-                LOGGER.info("Request '{}': Full Response Body: {}", requestName, fullResponseBody);
-            }
-
-            // New: Logging saved values
-            String getAudioStartDate = session.contains("getAudioStartDate") ? session.getString("getAudioStartDate") : "No value";
-            LOGGER.info("Request '{}': getAudioStartDate: {}", requestName, getAudioStartDate);
-
-            String getAudioEndDate = session.contains("getAudioEndDate") ? session.getString("getAudioEndDate") : "No value";
-            LOGGER.info("Request '{}': getAudioEndDate: {}", requestName, getAudioEndDate);
-
-            String extractedId = session.contains("extractedId") ? session.getString("extractedId") : "No value";
-            LOGGER.info("Request '{}': extractedId: {}", requestName, extractedId);
-
             return session;
         });
     }

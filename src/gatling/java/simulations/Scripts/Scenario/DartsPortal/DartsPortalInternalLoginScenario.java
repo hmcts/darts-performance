@@ -49,6 +49,7 @@ public final class DartsPortalInternalLoginScenario {
                 .check(regex("(?s).*\"FlowToken\":\"([^\"]+)\".*").findRandom().optional().saveAs("flowToken"))
                 .check(regex("(?s).*\"canary\":\"([^\"]+)\".*").findRandom().optional().saveAs("canary"))
                 .check(status().is(200))
+                .check(status().saveAs("status"))
              )
              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Internal - Login"))
 
@@ -84,6 +85,7 @@ public final class DartsPortalInternalLoginScenario {
                 .headers(Headers.getHeaders(1))
                 .body(StringBody("#{xmlPayload}")).asJson()
                 .check(status().is(200))
+                .check(status().saveAs("status"))
             )
             .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Login Microsoftonline - Common - GetCredentialType"))
 
@@ -138,6 +140,7 @@ public final class DartsPortalInternalLoginScenario {
                     .formParam("code", "#{codeToken}")
                     .formParam("session_state", "#{sessionState}")
                     .check(status().is(200))
+                    .check(status().saveAs("status"))
             )
             .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Internal - Callback"))
 
@@ -146,6 +149,8 @@ public final class DartsPortalInternalLoginScenario {
                 http("Darts-Portal - App - Config")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
                     .headers(Headers.DartsPortalHeaders4)
+                    .check(status().is(200))
+                    .check(status().saveAs("status"))
             )
             .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - App - Config"))
 
@@ -155,7 +160,6 @@ public final class DartsPortalInternalLoginScenario {
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
                     .headers(Headers.DartsPortalHeaders4)
             )
-            .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
             .exitHereIfFailed() 
             .exec(
@@ -163,7 +167,6 @@ public final class DartsPortalInternalLoginScenario {
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
                     .headers(Headers.DartsPortalHeaders4)
             )
-            .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
             .exitHereIfFailed() 
             .exec(
@@ -172,21 +175,19 @@ public final class DartsPortalInternalLoginScenario {
                     .headers(Headers.DartsPortalHeaders4)
                     .check(Feeders.saveUserId())
             )
-            .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - User - Profile"))
-
             .exitHereIfFailed() 
             .exec(
                 http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
                     .headers(Headers.DartsPortalHeaders4)
             )
-            .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
-
             .exitHereIfFailed() 
             .exec(
                 http("Darts-Portal - Api - Courthouses")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/courthouses")
                     .headers(Headers.DartsPortalHeaders5)
+                    .check(status().is(200))
+                    .check(status().saveAs("status"))
             )
             .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Courthouses"))
 

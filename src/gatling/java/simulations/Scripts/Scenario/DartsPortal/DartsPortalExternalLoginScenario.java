@@ -88,6 +88,7 @@ public final class DartsPortalExternalLoginScenario {
                     .formParam("email", "#{Email}")
                     .formParam("password", "#{Password}")
                     .check(status().is(200))
+                    .check(status().saveAs("status"))
                 )
                 .exitHereIfFailed()
                 .exec(
@@ -105,6 +106,7 @@ public final class DartsPortalExternalLoginScenario {
                       .headers(Headers.DartsPortalHeaders3(Headers.PortalCommonHeaders))
                       .formParam("code", "#{TokenCode}")
                       .check(status().is(200))
+                      .check(status().saveAs("status"))
                 )
 
                 .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Callback"))
@@ -123,7 +125,6 @@ public final class DartsPortalExternalLoginScenario {
                       .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
                       .headers(Headers.DartsPortalHeaders4)
                 )
-                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
 
                 .exitHereIfFailed() 
                 .exec(   
@@ -131,8 +132,6 @@ public final class DartsPortalExternalLoginScenario {
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
                         .headers(Headers.DartsPortalHeaders4)
                 )
-                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
-
                 .exitHereIfFailed() 
                 .exec(    
                   http("Darts-Portal - User - Profile")
@@ -140,21 +139,19 @@ public final class DartsPortalExternalLoginScenario {
                         .headers(Headers.DartsPortalHeaders4)
                         .check(Feeders.saveUserId())
                 )
-                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - User - Profile"))
-
                 .exitHereIfFailed() 
                 .exec(
                   http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
                         .headers(Headers.DartsPortalHeaders4)
                 )
-                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
-
                 .exitHereIfFailed() 
                 .exec(    
                   http("Darts-Portal - Api - Courthouses")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/courthouses")
                         .headers(Headers.DartsPortalHeaders5)
+                        .check(status().is(200))
+                        .check(status().saveAs("status"))
                     )
                     .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Courthouses"))
                     
