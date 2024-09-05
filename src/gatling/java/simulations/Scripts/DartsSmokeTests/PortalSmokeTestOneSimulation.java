@@ -61,15 +61,15 @@ public class PortalSmokeTestOneSimulation extends Simulation {
 
         // Call setUp once with all scenarios
         setUp(
-            // smokeJudgeUsers.injectOpen(
-            //     rampUsers(AppConfig.JUDGE_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)) 
-            // ).protocols(httpProtocolInternal),
+             smokeJudgeUsers.injectOpen(
+                 rampUsers(AppConfig.JUDGE_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)) 
+             ).protocols(httpProtocolInternal),
             smokeCourtClerkUsers.injectOpen(
                 rampUsers(AppConfig.COURT_CLERK_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)) 
-            ).protocols(httpProtocolInternal)
-            // smokeLanguageShopUsers.injectOpen(
-            //     rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)) 
-            // ).protocols(httpProtocolExternal)
+            ).protocols(httpProtocolInternal),
+             smokeLanguageShopUsers.injectOpen(
+                 rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)) 
+             ).protocols(httpProtocolExternal)
         );
     }
 
