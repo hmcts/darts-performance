@@ -11,6 +11,7 @@ public class UserInfoLogger {
 
     public static ChainBuilder logDetailedErrorMessage(String requestName) {
         return exec(session -> {
+            // Existing error logging
             String statusCode = session.contains("status") ? session.getString("status") : "N/A";
             String errorType = session.contains("errorType") ? session.getString("errorType") : "N/A";
             String errorTitle = session.contains("errorTitle") ? session.getString("errorTitle") : "N/A";
@@ -29,18 +30,37 @@ public class UserInfoLogger {
                 );
                 LOGGER.error(errorMessage);
             }
+
+            // New: Full response body logging
+            if (session.contains("fullResponseBody")) {
+                String fullResponseBody = session.getString("fullResponseBody");
+                LOGGER.info("Request '{}': Full Response Body: {}", requestName, fullResponseBody);
+            } else {
+                LOGGER.info("Request '{}': No response body found in session.", requestName);
+            }
+
+            // New: Logging saved values (getAudioStartDate, getAudioEndDate, extractedId)
+            String getAudioStartDate = session.contains("getAudioStartDate") ? session.getString("getAudioStartDate") : "No value";
+            LOGGER.info("Request '{}': getAudioStartDate: {}", requestName, getAudioStartDate);
+
+            String getAudioEndDate = session.contains("getAudioEndDate") ? session.getString("getAudioEndDate") : "No value";
+            LOGGER.info("Request '{}': getAudioEndDate: {}", requestName, getAudioEndDate);
+
+            String extractedId = session.contains("extractedId") ? session.getString("extractedId") : "No value";
+            LOGGER.info("Request '{}': extractedId: {}", requestName, extractedId);
+
             return session;
         });
     }
-    
 
     public static ChainBuilder logDetailedErrorMessage(String requestName, String trmId) {
         return exec(session -> {
+            // Existing error logging
             String statusCode = session.contains("status") ? session.getString("status") : "N/A";
             String errorType = session.contains("errorType") ? session.getString("errorType") : "N/A";
             String errorTitle = session.contains("errorTitle") ? session.getString("errorTitle") : "N/A";
             String errorStatus = session.contains("errorStatus") ? session.getString("errorStatus") : "N/A";
-            
+
             String email = session.contains("Email") ? session.getString("Email") : "N/A";
             String password = session.contains("Password") ? session.getString("Password") : "N/A";
 
@@ -55,10 +75,27 @@ public class UserInfoLogger {
                 );
                 LOGGER.error(errorMessage);
             }
+
+            // New: Full response body logging
+            if (session.contains("fullResponseBody")) {
+                String fullResponseBody = session.getString("fullResponseBody");
+                LOGGER.info("Request '{}': Full Response Body: {}", requestName, fullResponseBody);
+            }
+
+            // New: Logging saved values
+            String getAudioStartDate = session.contains("getAudioStartDate") ? session.getString("getAudioStartDate") : "No value";
+            LOGGER.info("Request '{}': getAudioStartDate: {}", requestName, getAudioStartDate);
+
+            String getAudioEndDate = session.contains("getAudioEndDate") ? session.getString("getAudioEndDate") : "No value";
+            LOGGER.info("Request '{}': getAudioEndDate: {}", requestName, getAudioEndDate);
+
+            String extractedId = session.contains("extractedId") ? session.getString("extractedId") : "No value";
+            LOGGER.info("Request '{}': extractedId: {}", requestName, extractedId);
+
             return session;
         });
     }
-    
+
     public static ChainBuilder logDetailedErrorMessage(String requestName, String regexName, String expectedPattern) {
         return exec(session -> {
             String email = session.contains("Email") ? session.getString("Email") : "N/A";
@@ -77,6 +114,23 @@ public class UserInfoLogger {
                 );
                 LOGGER.error(errorMessage);
             }
+
+            // New: Full response body logging
+            if (session.contains("fullResponseBody")) {
+                String fullResponseBody = session.getString("fullResponseBody");
+                LOGGER.info("Request '{}': Full Response Body: {}", requestName, fullResponseBody);
+            }
+
+            // New: Logging saved values
+            String getAudioStartDate = session.contains("getAudioStartDate") ? session.getString("getAudioStartDate") : "No value";
+            LOGGER.info("Request '{}': getAudioStartDate: {}", requestName, getAudioStartDate);
+
+            String getAudioEndDate = session.contains("getAudioEndDate") ? session.getString("getAudioEndDate") : "No value";
+            LOGGER.info("Request '{}': getAudioEndDate: {}", requestName, getAudioEndDate);
+
+            String extractedId = session.contains("extractedId") ? session.getString("extractedId") : "No value";
+            LOGGER.info("Request '{}': extractedId: {}", requestName, extractedId);
+
             return session;
         });
     }
