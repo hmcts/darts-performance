@@ -32,6 +32,7 @@ public final class DartsPortalApproveAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
 
@@ -58,6 +59,7 @@ public final class DartsPortalApproveAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/urgencies")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )    
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Urgencies"))
       
@@ -74,6 +76,7 @@ public final class DartsPortalApproveAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )   
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
        
@@ -88,6 +91,7 @@ public final class DartsPortalApproveAudioScenario {
               .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
               .body(StringBody(session -> session.get("xmlPayload"))).asJson()
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
 
@@ -103,7 +107,8 @@ public final class DartsPortalApproveAudioScenario {
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
               .headers(Headers.CommonHeaders)   
-              .check(status().is(200))       
+              .check(status().is(200))   
+              .check(status().saveAs("status"))    
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
 
@@ -112,6 +117,7 @@ public final class DartsPortalApproveAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
               )
               .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions"))
 

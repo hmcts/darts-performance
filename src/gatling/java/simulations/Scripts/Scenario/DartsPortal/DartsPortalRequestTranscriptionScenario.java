@@ -66,6 +66,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - User - Refresh - Profile"))
 
@@ -74,6 +75,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/types")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Types"))
 
@@ -82,6 +84,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/hearings")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Hearings"))
 
@@ -90,6 +93,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/urgencies")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Urgencies"))
 
@@ -98,6 +102,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
 
@@ -106,6 +111,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/hearings/#{getHearings.id}/audios")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Audios"))
 
@@ -114,6 +120,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Events"))
 
@@ -168,6 +175,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - User - Refresh-Profile"))
 
@@ -176,6 +184,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.caseReferer(Headers.CommonHeaders))
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
 
@@ -184,6 +193,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/hearings")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases = Hearings"))
 
@@ -192,6 +202,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/hearings/#{getHearings.id}/audios")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio - Hearings - Audios"))
 
@@ -200,6 +211,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
 
@@ -208,6 +220,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Events"))
 
@@ -216,6 +229,7 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/transcripts")
               .headers(Headers.caseReferer(Headers.CommonHeaders))
               .check(status().in(200, 403))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Transcripts"))
 
