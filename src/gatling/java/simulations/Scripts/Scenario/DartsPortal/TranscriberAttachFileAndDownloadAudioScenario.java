@@ -63,6 +63,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )  
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
         
@@ -73,6 +74,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
               .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
               .body(StringBody("{\"transcription_status_id\":5}")).asJson()
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
 
@@ -88,6 +90,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )  
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
         
@@ -97,6 +100,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
 
@@ -105,6 +109,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-counts")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-counts"))
 
@@ -113,6 +118,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-counts")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-count"))
 
@@ -130,7 +136,8 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Api - Transcriptions - Transcriber-view")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true")              
               .headers(Headers.CommonHeaders) 
-              .check(status().is(200))        
+              .check(status().is(200))    
+              .check(status().saveAs("status"))    
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
 
@@ -147,6 +154,7 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
 
@@ -180,7 +188,8 @@ public final class TranscriberAttachFileAndDownloadAudioScenario {
             http("Darts-Portal - Api - Transcriptions - Transcriber-view")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true") 
               .headers(Headers.CommonHeaders) 
-              .check(status().is(200))         
+              .check(status().is(200))      
+              .check(status().saveAs("status"))   
           )          
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
           ;
