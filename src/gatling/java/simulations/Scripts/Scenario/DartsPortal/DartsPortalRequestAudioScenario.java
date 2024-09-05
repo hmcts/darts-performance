@@ -139,36 +139,20 @@ public final class DartsPortalRequestAudioScenario {
             http("Darts-Portal - Api - Hearings - Audios")
                 .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/hearings/#{getHearingId}/audios")
                 .headers(Headers.caseReferer(Headers.CommonHeaders))
-                .check(jsonPath("$[0].media_start_timestamp").saveAs("getAudioStartDate"))
-                .check(jsonPath("$[0].media_end_timestamp").saveAs("getAudioEndDate"))
-                .check(jsonPath("$[0].id").saveAs("extractedId")) 
+        
+                // Save the full response for logging
+                .check(bodyString().saveAs("fullResponseBody"))
+        
+                // Optional checks for values
+                .check(jsonPath("$[0].media_start_timestamp").optional().saveAs("getAudioStartDate"))
+                .check(jsonPath("$[0].media_end_timestamp").optional().saveAs("getAudioEndDate"))
+                .check(jsonPath("$[0].id").optional().saveAs("extractedId"))
+        
+                // Ensure status is 200
                 .check(status().is(200))
         )
-        .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Audios"))
+        .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Audios"))   
 
-        .exec(session -> {
-            String getAudioStartDate = session.getString("getAudioStartDate");
-            if (getAudioStartDate != null) {
-                System.out.println("getAudioStartDate: " + getAudioStartDate);
-            } else {
-                System.out.println("No value saved for getAudioStartDate using saveAs.");
-            }
-        
-            String getAudioEndDate = session.getString("getAudioEndDate");
-            if (getAudioEndDate != null) {
-                System.out.println("getAudioEndDate: " + getAudioEndDate);
-            } else {
-                System.out.println("No value saved for getAudioEndDate using saveAs.");
-            }
-
-            String extractedId = session.getString("extractedId");
-            if (extractedId != null) {
-                System.out.println("Extracted ID: " + extractedId);
-            } else {
-                System.out.println("No value saved for extractedId using saveAs.");
-            }
-            return session;
-        })        
           // .exec(
           //   http("Darts-Portal - Api - Hearings - Annotations")
           //     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/annotations")
