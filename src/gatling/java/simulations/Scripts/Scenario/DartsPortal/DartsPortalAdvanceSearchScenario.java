@@ -2,6 +2,7 @@ package simulations.Scripts.Scenario.DartsPortal;
 
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
@@ -50,6 +51,8 @@ public final class DartsPortalAdvanceSearchScenario {
                         }
                     })
                 )
+                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search"))
+
                 .exec(session -> {
                     // Log non-empty response
                     System.out.println("Non-empty response received.");
