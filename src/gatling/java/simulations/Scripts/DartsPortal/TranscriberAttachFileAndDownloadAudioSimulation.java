@@ -3,6 +3,9 @@ package simulations.Scripts.DartsPortal;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalDeleteAudioRequestScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
@@ -27,10 +30,10 @@ public class TranscriberAttachFileAndDownloadAudioSimulation extends Simulation 
             .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36");   
         
         final ScenarioBuilder scn1 = scenario("Darts Portal Login")
-            .exec(feed(Feeders.createCourtClerkUsers())) // Load court clerk user data
-            .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) // Login request
+            .exec(feed(Feeders.createTranscriberUsers())) // Load court clerk user data
+            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest()) // Login request
             .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
-            .repeat(5).on(
+            .repeat(1).on(
                 exec(session -> {
                     // Increment the loop counter
                     int iteration = session.getInt("loopCounter") + 1;
@@ -52,12 +55,14 @@ public class TranscriberAttachFileAndDownloadAudioSimulation extends Simulation 
                     // Update the loop counter in the session for the next iteration
                     return session.set("loopCounter", iteration);
                 })
-                .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) // Perform advance search
-                .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
-                .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription()) // Request transcription
+                //.exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) // Perform advance search
+                //.exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
+               // .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription()) // Request transcription
+                .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequestScenario()) 
+
             )
             // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
-            .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest() // Logout request
+            .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest() // Logout request
 
             );
         

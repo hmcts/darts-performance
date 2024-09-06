@@ -6,6 +6,7 @@ import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalApproveAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalChangeRetentionScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalDeleteAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalPreviewAudioScenario;
@@ -191,7 +192,8 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
                     })
                     .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) // Perform advance search
                     .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
-                    .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio())
+                    .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio()) // Add File to Transcription
+                    .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequestScenario()) // Delete a random Audio request
                 )
                 // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
                 .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()) // Logout request

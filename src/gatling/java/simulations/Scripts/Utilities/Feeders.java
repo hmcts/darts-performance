@@ -148,6 +148,9 @@ public class Feeders {
     public static CheckBuilder.Final saveTransformedMediaId() {
         return CoreDsl.jsonPath("$.transformed_media_details[*].transformed_media_id").findRandom().saveAs("getTransformedMediaId");
     }
+    public static CheckBuilder.Final saveCaseIdFromTransformedMediaId() {
+        return CoreDsl.jsonPath("$.transformed_media_details[*].case_id").findRandom().saveAs("getCaseId");
+    }
 
     public static CheckBuilder.Final saveRegistrationToken() {
         return CoreDsl.regex("<return[^>]*>([^<]+)<\\/return>").find(0).saveAs("registrationToken");
