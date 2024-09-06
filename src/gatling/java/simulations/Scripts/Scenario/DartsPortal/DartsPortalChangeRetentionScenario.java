@@ -53,9 +53,11 @@ public final class DartsPortalChangeRetentionScenario {
               )
               .exec(session -> {
                   int caseCount = session.getInt("caseCount");
+                  String email = session.getString("Email");
+
                   if (caseCount == 0) {
                       // Handle empty response
-                      System.out.println("Empty response received. Marking as passed and retrying...");
+                      System.out.println("Empty response received. Marking as passed and retrying... User:" + email);
                       String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
                       return session.set("searchRequestPayload", searchPayload).markAsSucceeded();
                   } else {

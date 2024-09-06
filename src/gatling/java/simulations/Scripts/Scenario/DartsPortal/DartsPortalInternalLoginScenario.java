@@ -58,6 +58,7 @@ public final class DartsPortalInternalLoginScenario {
                 String sessionId = session.getString("sessionId");
                 String clientRequestId = session.getString("clientRequestId");
                 String sCtx = session.getString("sCtx");
+                String email = session.getString("Email");
 
                 if (sessionId != null) {
                     System.out.println("Session ID: " + sessionId);
@@ -69,7 +70,7 @@ public final class DartsPortalInternalLoginScenario {
                     if (sCtx != null) {
                         System.out.println("sCtx: " + sCtx);
                     } else {
-                        System.out.println("sCtx not found in response. User:" + "#{Email}");
+                        System.out.println("sCtx not found in response. User:" + email);
                     }
                 } else {
                     System.out.println("No value saved for sessionId using saveAs.");
