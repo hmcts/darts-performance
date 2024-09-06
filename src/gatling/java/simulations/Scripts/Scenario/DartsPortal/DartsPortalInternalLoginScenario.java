@@ -69,7 +69,7 @@ public final class DartsPortalInternalLoginScenario {
                     if (sCtx != null) {
                         System.out.println("sCtx: " + sCtx);
                     } else {
-                        System.out.println("sCtx not found in response.");
+                        System.out.println("sCtx not found in response. User:" + "#{Email}");
                     }
                 } else {
                     System.out.println("No value saved for sessionId using saveAs.");

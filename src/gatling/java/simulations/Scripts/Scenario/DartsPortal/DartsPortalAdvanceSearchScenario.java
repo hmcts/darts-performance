@@ -44,7 +44,7 @@ public final class DartsPortalAdvanceSearchScenario {
                         int caseCount = session.getInt("caseCount");
                         if (caseCount == 0) {
                             // Handle empty response
-                            System.out.println("Empty response received. Marking as passed and retrying...");
+                            System.out.println("Empty response received. Marking as passed and retrying... User:" + "#{Email}");
                             String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
                             return session.set("searchRequestPayload", searchPayload).markAsSucceeded();
                         } else {
