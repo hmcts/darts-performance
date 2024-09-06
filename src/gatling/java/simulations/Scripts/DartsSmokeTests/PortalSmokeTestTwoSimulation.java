@@ -8,6 +8,7 @@ import simulations.Scripts.Scenario.DartsPortal.DartsPortalApproveAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalChangeRetentionScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalDeleteAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
+import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalPreviewAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
@@ -196,7 +197,7 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
                     .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequestScenario()) // Delete a random Audio request
                 )
                 // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
-                .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()) // Logout request
+                .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest()) // Logout request
             );
     }
     
