@@ -164,10 +164,10 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
 
     private ScenarioBuilder setUpTranscriberUsers(String scenarioName) {
         return scenario(scenarioName)
-            .group("Court Managers Users")
+            .group("Transcriber Users")
             .on(
                 exec(feed(Feeders.createTranscriberUsers())) // Load court clerk user data
-                .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) // Login request
+                .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
                 .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
                 .repeat(5).on(
                     exec(session -> {
