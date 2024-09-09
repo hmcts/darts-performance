@@ -21,9 +21,16 @@ public final class DartsPortalAdvanceSearchScenario {
                     .headers(Headers.CommonHeaders)
                 )
                 .pause(5)
+                .exec
+                (session -> {
+                  String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
+                  return session.set("xmlPayload", xmlPayload);
+                })
+                .pause(3)
+                
                 // Initialize `caseCount` to 0 before starting the search
                 .exec(session -> session.set("caseCount", 0))
-    
+        
                 .exec(session -> {
                     String searchRequestPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
                     return session.set("searchRequestPayload", searchRequestPayload);
@@ -43,19 +50,23 @@ public final class DartsPortalAdvanceSearchScenario {
                     .exec(session -> {
                         int caseCount = session.getInt("caseCount");
                         String email = session.getString("Email");
+                        System.out.println("Search completed. caseCount: " + caseCount + " for user: " + email);
 
+                        // If no cases are found, retry with a new search payload
                         if (caseCount == 0) {
-                            // Handle empty response
-                            System.out.println("Empty response received. Marking as passed and retrying... User:" + email);
+                            System.out.println("Empty response received. Retrying...");
                             String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                            return session.set("searchRequestPayload", searchPayload).markAsSucceeded();
+                            System.out.println("Retrying with new payload: " + searchPayload);
+                            return session.set("searchRequestPayload", searchPayload);
                         } else {
+                            System.out.println("Non-empty response received. Proceeding with caseCount: " + caseCount);
                             return session;
                         }
                     })
                     .exec(session -> {
                         int statusCode = session.getInt("status");
                         if (statusCode == 400 || statusCode == 502 || statusCode == 504) {
+                            System.out.println("Received error status code: " + statusCode + ". Marking as failed.");
                             return session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
                         }
                         return session;

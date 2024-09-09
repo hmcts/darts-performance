@@ -32,6 +32,7 @@ public final class DartsPortalPreviewAudioScenario {
             http("Darts-Portal - Api - Audio - Preview - Get")
                 .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/preview/#{extractedId}")
                 .check(status().is(200))
+                .check(status().saveAs("status"))
           )
           .exitHereIfFailed() // Exit the chain if the request fails
           .pause(3)

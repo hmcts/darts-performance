@@ -33,7 +33,7 @@ public class TranscriberAttachFileAndDownloadAudioSimulation extends Simulation 
             .exec(feed(Feeders.createTranscriberUsers())) // Load court clerk user data
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest()) // Login request
             .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
-            .repeat(1).on(
+            .repeat(5).on(
                 exec(session -> {
                     // Increment the loop counter
                     int iteration = session.getInt("loopCounter") + 1;

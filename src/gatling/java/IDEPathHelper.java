@@ -9,7 +9,6 @@ public class IDEPathHelper {
   static final Path gradleResourcesDirectory;
   static final Path gradleBinariesDirectory;
   static final Path resultsDirectory;
-  static final Path recorderConfigFile;
 
   static {
     try {
@@ -21,7 +20,6 @@ public class IDEPathHelper {
       gradleResourcesDirectory = gradleSrcDirectory.resolve("resources");
       gradleBinariesDirectory = gradleBuildDirectory.resolve("classes").resolve("java").resolve("gatling");
       resultsDirectory = gradleBuildDirectory.resolve("reports").resolve("gatling");
-      recorderConfigFile = gradleResourcesDirectory.resolve("recorder.conf");
     } catch (URISyntaxException e) {
       throw new ExceptionInInitializerError(e);
     }

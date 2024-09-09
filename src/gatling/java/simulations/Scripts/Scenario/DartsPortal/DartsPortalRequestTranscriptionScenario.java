@@ -59,8 +59,6 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
           )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
-
           .exec(
             http("Darts-Portal - User - Refresh - Profile")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
@@ -168,10 +166,8 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
           )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Is-authenticated"))
-
           .exec(
-            http("Darts-Portal - User - Refresh-Profile")
+            http("Darts-Portal - User - Refresh - Profile")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
               .headers(Headers.CommonHeaders)
               .check(status().is(200))
