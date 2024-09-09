@@ -49,7 +49,6 @@ public final class DartsPortalChangeRetentionScenario {
                   .check(status().is(200))
                   .check(status().saveAs("status"))
                   .check(jsonPath("$[*].case_id").count().saveAs("caseCount"))
-                  .check(jsonPath("$[*].case_id").findRandom().optional().saveAs("getCaseId"))
               )
               .exec(session -> {
                   int caseCount = session.getInt("caseCount");
@@ -72,23 +71,15 @@ public final class DartsPortalChangeRetentionScenario {
                   return session;
               })
           )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search"))
 
           .exec(session -> {
               // Log non-empty response
               System.out.println("Non-empty response received.");
               return session;
-          })
-          .exec(session -> {
-              Object getCaseId = session.get("getCaseId");
-              if (getCaseId != null) {
-                  System.out.println("getCaseId: " + getCaseId.toString());
-              } else {
-                  System.out.println("No value saved using saveAs.");
-              }
-              return session;
-          }
-          )          
+          })          
+          
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search"))
+         
           .exitHereIfFailed()
           .pause(3)
           .exec(
@@ -96,7 +87,16 @@ public final class DartsPortalChangeRetentionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
               .headers(Headers.CommonHeaders)
           )
-
+          .exec(session -> {
+            Object getCaseId = session.get("getCaseId");
+            if (getCaseId != null) {
+                System.out.println("getCaseId: " + getCaseId.toString());
+            } else {
+                System.out.println("No value saved using saveAs.");
+            }
+            return session;
+            }
+          ) 
           .exec(
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
