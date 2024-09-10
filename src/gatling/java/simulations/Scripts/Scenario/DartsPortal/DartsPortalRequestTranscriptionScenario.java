@@ -4,6 +4,7 @@ import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.UserInfoLogger;
+import simulations.Scripts.Utilities.NumberGenerator;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
@@ -13,7 +14,6 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class DartsPortalRequestTranscriptionScenario {
 
-    private static final Random randomNumber = new Random();
     private static final String requestType = Feeders.getRandomRequestType();
 
     private DartsPortalRequestTranscriptionScenario() {}
@@ -56,8 +56,8 @@ public final class DartsPortalRequestTranscriptionScenario {
           //Request Transcription.
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-              .headers(Headers.CommonHeaders)
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+              .headers(Headers.getHeaders(14))
           )
           .exec(
             http("Darts-Portal - User - Refresh - Profile")
@@ -163,8 +163,8 @@ public final class DartsPortalRequestTranscriptionScenario {
           // Return to hearing
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-              .headers(Headers.CommonHeaders)
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+              .headers(Headers.getHeaders(14))
           )
           .exec(
             http("Darts-Portal - User - Refresh - Profile")

@@ -58,15 +58,17 @@ public class CourtManagerApproverSimulation extends Simulation {
                 // Update the loop counter in the session for the next iteration
                 return session.set("loopCounter", iteration);
             })
-                .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario())     
-                .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio())
-            // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
-            )
-            .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()
+            .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) // Perform advance search
+            .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio()) // Request audio download
+        )
+        // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
+        .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest() // Logout request
+
         );
-    setUp(
-        scn1.injectOpen(rampUsers(1).during(Duration.ofMinutes(1))).protocols(httpProtocol));
-    }    
-} 
     
+    setUp(
+        scn1.injectOpen(rampUsers(1).during(Duration.ofMinutes(1))).protocols(httpProtocol) // Adjust user load as needed
+    );
+}    
+}
 

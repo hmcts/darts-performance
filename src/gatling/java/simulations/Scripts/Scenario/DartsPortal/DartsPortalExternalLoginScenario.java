@@ -6,6 +6,7 @@ import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
+import simulations.Scripts.Utilities.NumberGenerator;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -122,16 +123,16 @@ public final class DartsPortalExternalLoginScenario {
                 .exitHereIfFailed() 
                 .exec(
                   http("Darts-Portal - Auth - Is-authenticated")
-                      .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-                      .headers(Headers.DartsPortalHeaders4)
+                      .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+                      .headers(Headers.getHeaders(14))
                 )
 
                 .exitHereIfFailed() 
                 .exec(   
                   http("Darts-Portal - Auth - Is-authenticated")
-                        .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-                        .headers(Headers.DartsPortalHeaders4)
-                )
+                        .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+                        .headers(Headers.getHeaders(14))
+                      )
                 .exitHereIfFailed() 
                 .exec(    
                   http("Darts-Portal - User - Profile")

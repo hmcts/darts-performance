@@ -4,6 +4,7 @@ import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.UserInfoLogger;
+import simulations.Scripts.Utilities.NumberGenerator;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
@@ -24,8 +25,8 @@ public final class DartsPortalRequestAudioScenario {
 
           pause(3)
           .exec(http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-              .headers(Headers.CommonHeaders)
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+              .headers(Headers.getHeaders(14))
           )
           .exec(
             http("Darts-Portal - Api - Cases")
@@ -66,8 +67,8 @@ public final class DartsPortalRequestAudioScenario {
           .pause(3)
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-              .headers(Headers.CommonHeaders)
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+              .headers(Headers.getHeaders(14))
           )
           .exec(
             http("Darts-Portal - Api - Cases")

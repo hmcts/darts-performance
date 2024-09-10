@@ -159,15 +159,15 @@ public final class DartsPortalInternalLoginScenario {
             .exec(
                 http("Darts-Portal - Auth - Is-authenticated")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-                    .headers(Headers.DartsPortalHeaders4)
-            )
+                    .headers(Headers.getHeaders(14))
+                )
 
             .exitHereIfFailed() 
             .exec(
                 http("Darts-Portal - Auth - Is-authenticated")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-                    .headers(Headers.DartsPortalHeaders4)
-            )
+                    .headers(Headers.getHeaders(14))
+                )
 
             .exitHereIfFailed() 
             .exec(

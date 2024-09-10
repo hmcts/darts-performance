@@ -3,6 +3,7 @@ package simulations.Scripts.Scenario.DartsPortal;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Utilities.NumberGenerator;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 
@@ -10,8 +11,6 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class DartsPortalPreviewAudioScenario {
-
-    private static final Random randomNumber = new Random();
 
     private DartsPortalPreviewAudioScenario() {}
 
@@ -37,8 +36,8 @@ public final class DartsPortalPreviewAudioScenario {
           .exitHereIfFailed() // Exit the chain if the request fails
           .pause(3)
           .exec(http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-              .headers(Headers.CommonHeaders)
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+              .headers(Headers.getHeaders(14))
           ));
     }   
 }

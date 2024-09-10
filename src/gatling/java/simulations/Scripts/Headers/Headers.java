@@ -208,7 +208,6 @@ public class Headers {
         Map.entry("x-dtpc", "5$336731829_286h95vSEKMHRRHHHPUKSBIGWAIQRROWWRCFGGR-0e0")
     );  
 
-
     public static final Map<String, String> AddDocHeaders = Map.ofEntries(
         Map.entry("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122"),
         Map.entry("sec-ch-ua-platform", "Windows"),
@@ -425,7 +424,35 @@ public class Headers {
                     headers.put("sec-ch-ua-mobile", "?0");
                     headers.put("sec-ch-ua-platform", "Windows");
                     headers.put("traceparent", "00-597bfa8201c241449ff1bff600c82581-c6401b1f193f49e5-01");
-            }          
+                    break;
+                case 13:
+                    headers.put("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128");
+                    headers.put("Request-Id", "|597bfa8201c241449ff1bff600c82581.c6401b1f193f49e5");
+                    headers.put("Accept", "*/*");
+
+                    headers.put("Sec-Fetch-Dest", "audio");
+                    headers.put("Sec-Fetch-Mode", "no-cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("traceparent", "00-597bfa8201c241449ff1bff600c82581-c6401b1f193f49e5-01");
+                    headers.put("Range", "bytes=0-");
+                    break;
+                case 14:
+                    headers.put("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128");
+                    headers.put("Request-Id", "|597bfa8201c241449ff1bff600c82581.c6401b1f193f49e5");
+                    headers.put("accept", "application/json, text/plain, */*");
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("Accept-Encoding", "gzip, deflate, br, zstd");
+                    headers.put("Accept-Language", "en-US,en;q=0.9"); 
+                    headers.put("traceparent", "00-597bfa8201c241449ff1bff600c82581-c6401b1f193f49e5-01");  
+            }
             return headers;
         }
 }
