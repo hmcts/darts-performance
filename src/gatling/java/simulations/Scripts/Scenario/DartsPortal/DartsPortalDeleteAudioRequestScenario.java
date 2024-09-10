@@ -7,6 +7,7 @@ import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 import io.netty.util.internal.ThreadLocalRandom;
 import scala.util.Random;
+import simulations.Scripts.Utilities.NumberGenerator;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -15,19 +16,18 @@ import java.util.Map;
 
 public final class DartsPortalDeleteAudioRequestScenario {
 
-    private static final Random randomNumber = new Random();
     private static final String requestType = Feeders.getRandomRequestType();
 
     private DartsPortalDeleteAudioRequestScenario() {}
 
     public static ChainBuilder DartsPortalDeleteAudioRequestScenario() {
-      return group("Darts Request Transcription")
+      return group("Darts Delete Audio Request")
       .on(exec(
           //Delete Audio Request.          
             http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-              .headers(Headers.CommonHeaders)
-          )
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+              .headers(Headers.getHeaders(14))
+              )
           .exec(
             http("Darts-Portal - User - Refresh - Profile")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
@@ -38,21 +38,29 @@ public final class DartsPortalDeleteAudioRequestScenario {
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - User - Refresh - Profile"))
          
           .exec(
-            http("Darts-Portal - Api - Audio-Requests - V2")
+            http("Darts-Portal - Api - Audio-Requests - V2 - Expired - True")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/v2?expired=true")
               .headers(Headers.getHeaders(8))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - V2"))
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - V2 - Expired - True"))
           
+          .exec(session -> {
+            // Clear previously stored IDs from the session
+            session = session.remove("getTransformedMediaId");
+            session = session.remove("getCaseId");
+            session = session.remove("getHearingId");
+            return session;
+        })        
           .exec(
-            http("Darts-Portal - Api - Audio-Requests - V2")
+            http("Darts-Portal - Api - Audio-Requests - V2 - Expired - False")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/v2?expired=false")
             .headers(Headers.getHeaders(8))
             .check(jsonPath("$.transformed_media_details[*].transformed_media_id").findAll().saveAs("allTransformedMediaIds"))
             .check(jsonPath("$.transformed_media_details[*].case_id").findAll().saveAs("allCaseIds"))
             .check(jsonPath("$.transformed_media_details[*].hearing_id").findAll().saveAs("allHearingIds"))
+            .check(jsonPath("$.transformed_media_details[*].request_type").findAll().saveAs("allRequestType"))
 
             .check(status().is(200))
             .check(status().saveAs("status"))
@@ -62,31 +70,46 @@ public final class DartsPortalDeleteAudioRequestScenario {
             java.util.List<String> transformedMediaIds = session.getList("allTransformedMediaIds");
             java.util.List<String> caseIds = session.getList("allCaseIds");
             java.util.List<String> hearingIds = session.getList("allHearingIds");
+            java.util.List<String> requestType = session.getList("allRequestType");
 
             // Check if lists are not empty to avoid IndexOutOfBoundsException
             if (transformedMediaIds != null && !transformedMediaIds.isEmpty() && caseIds != null && !caseIds.isEmpty()) {
-                // Get a random index from the array
+                // Get a random index from the list
                 int randomIndex = ThreadLocalRandom.current().nextInt(transformedMediaIds.size());
         
                 // Store the selected IDs back in the session
-                session = session.set("getTransformedMediaId", transformedMediaIds.get(randomIndex));
-                session = session.set("getCaseId", caseIds.get(randomIndex));
-                session = session.set("getHearingId", hearingIds.get(randomIndex));
+                String selectedTransformedMediaId = transformedMediaIds.get(randomIndex);
+                String selectedCaseId = caseIds.get(randomIndex);
+                String selectedHearingId = hearingIds.get(randomIndex);
+                String selectedRequestType = requestType.get(randomIndex);
 
-              }
+                session = session.set("getTransformedMediaId", selectedTransformedMediaId);
+                session = session.set("getCaseId", selectedCaseId);
+                session = session.set("getHearingId", selectedHearingId);
+                session = session.set("getRequestType", selectedRequestType);
+
+                // Print the IDs
+                System.out.println("getTransformedMediaId: " + selectedTransformedMediaId);
+                System.out.println("getCaseId: " + selectedCaseId);
+                System.out.println("getHearingId: " + selectedHearingId);
+                System.out.println("getRequestType: " + selectedRequestType);
+
+            } else {
+                System.out.println("No IDs found in the response.");
+            }
         
-                return session;
+            return session;
             }
           )
           // Log detailed error message
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - V2"))
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - V2 - Expired - False"))
           
           .pause(5)
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
-            .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-            .headers(Headers.CommonHeaders)
-          )
+            .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+            .headers(Headers.getHeaders(14))
+            )
           .exec(
             http("Darts-Portal - User - Refresh - Profile")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
@@ -97,7 +120,7 @@ public final class DartsPortalDeleteAudioRequestScenario {
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - User - Refresh - Profile"))
           
           .exec(
-            http("Darts-Portal - Api - Audio-Requests - Transformed_Media")
+            http("Darts-Portal - Api - Audio-Requests - Transformed_Media - Patch")
               .patch(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/transformed_media/#{getTransformedMediaId}")
               .headers(Headers.getHeaders(9))
               .body(StringBody("{}"))
@@ -110,7 +133,6 @@ public final class DartsPortalDeleteAudioRequestScenario {
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
               .headers(Headers.getHeaders(12))
-              .body(StringBody("{}"))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
@@ -120,23 +142,49 @@ public final class DartsPortalDeleteAudioRequestScenario {
             http("Darts-Portal - Api - Hearings - Events")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearingId}/events")
               .headers(Headers.getHeaders(12))
-              .body(StringBody("{}"))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Events"))
+
+          .doIfEquals("#{getRequestType}", "PLAYBACK").then(
+              exec(
+                  http("Darts-Portal - Api - Audio-Requests - Playback - Transformed_media_id - HEAD")
+                      .head(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/playback?transformed_media_id=#{getTransformedMediaId}")
+                      .headers(Headers.getHeaders(12))
+                      .check(status().is(200))
+                      .check(status().saveAs("status"))
+              )
+              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - Playback - Transformed_media_id - HEAD"))
           
-          .exec(
-            http("Darts-Portal - Api - Audio-Requests - Playback")
-              .head(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/playback?transformed_media_id=#{getTransformedMediaId}")
-              .headers(Headers.getHeaders(12))
-              .body(StringBody("{}"))
-              .check(status().is(200))
-              .check(status().saveAs("status"))
-          )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
+              .exec(
+                  http("Darts-Portal - Api - Audio-Requests - Playback - Transformed_media_id - GET")
+                      .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/playback?transformed_media_id=#{getTransformedMediaId}")
+                      .headers(Headers.getHeaders(13))
+                      .check(status().is(206))
+                      .check(status().saveAs("status"))
+              )
+              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - Playback - Transformed_media_id - GET"))
           
-          .pause(5)
+              .exec(
+                  http("Darts-Portal - Api - Audio-Requests - Playback - Transformed_media_id - GET - Download")
+                      .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/playback?transformed_media_id=#{getTransformedMediaId}")
+                      .headers(Headers.getHeaders(14))
+                      .check(status().is(200))
+                      .check(status().saveAs("status"))
+              )
+              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - Playback - Transformed_media_id - GET - Download"))    
+          ) 
+          .doIf(session -> session.getString("getRequestType").equals("DOWNLOAD")).then(
+              exec(
+                http("Darts-Portal - Api - Audio-Requests - Download - Transformed_media_id - GET - Download")
+                .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/download?transformed_media_id=#{getTransformedMediaId}")
+                .headers(Headers.getHeaders(14))
+                .check(status().is(200))
+                .check(status().saveAs("status"))
+              )
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - Download - Transformed_media_id - GET - Download"))    
+          )       
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
@@ -157,7 +205,7 @@ public final class DartsPortalDeleteAudioRequestScenario {
           
           .pause(10)
           .exec(
-            http("Darts-Portal - Api - Audio-Requests - Transformed_Media")
+            http("Darts-Portal - Api - Audio-Requests - Transformed_Media - Delete")
               .delete(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/transformed_media/#{getTransformedMediaId}")
               .headers(Headers.getHeaders(11))
               .check(status().is(204))
@@ -167,8 +215,8 @@ public final class DartsPortalDeleteAudioRequestScenario {
           
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
-            .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
-            .headers(Headers.CommonHeaders)
+            .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+            .headers(Headers.getHeaders(14))
           )
           .exec(
             http("Darts-Portal - User - Refresh - Profile")
@@ -179,48 +227,23 @@ public final class DartsPortalDeleteAudioRequestScenario {
           )
 
           .exec(
-            http("Darts-Portal - Api - Audio-Requests - V2")
+            http("Darts-Portal - Api - Audio-Requests - V2 - Expired - True")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/v2?expired=true")
               .headers(Headers.getHeaders(8))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - V2"))
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - V2 - Expired - True"))
           
           .exec(
-            http("Darts-Portal - Api - Audio-Requests - V2")
+            http("Darts-Portal - Api - Audio-Requests - V2 - Expired - False")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/v2?expired=false")
             .headers(Headers.getHeaders(8))
-            .check(jsonPath("$.transformed_media_details[*].transformed_media_id").findAll().saveAs("allTransformedMediaIds"))
-            .check(jsonPath("$.transformed_media_details[*].case_id").findAll().saveAs("allCaseIds"))
-            .check(jsonPath("$.transformed_media_details[*].hearing_id").findAll().saveAs("allHearingIds"))
-
             .check(status().is(200))
             .check(status().saveAs("status"))
-          )
-          .exec(session -> {
-            // Get the saved lists of IDs
-            java.util.List<String> transformedMediaIds = session.getList("allTransformedMediaIds");
-            java.util.List<String> caseIds = session.getList("allCaseIds");
-            java.util.List<String> hearingIds = session.getList("allHearingIds");
-
-            // Check if lists are not empty to avoid IndexOutOfBoundsException
-            if (transformedMediaIds != null && !transformedMediaIds.isEmpty() && caseIds != null && !caseIds.isEmpty()) {
-                // Get a random index from the array
-                int randomIndex = ThreadLocalRandom.current().nextInt(transformedMediaIds.size());
-        
-                // Store the selected IDs back in the session
-                session = session.set("getTransformedMediaId", transformedMediaIds.get(randomIndex));
-                session = session.set("getCaseId", caseIds.get(randomIndex));
-                session = session.set("getHearingId", hearingIds.get(randomIndex));
-
-              }
-        
-                return session;
-            }
           )                 
           // Log detailed error message
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - V2"))
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - V2 - Expired - False"))
           
           .exec(
             http("Darts-Portal - Api - Transcriptions - Transcriber-Counts")

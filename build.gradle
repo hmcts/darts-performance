@@ -25,7 +25,7 @@ dependencies {
 gatlingRun {
    // simulationClassName = 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'
 
-    simulationClassName = 'simulations.Scripts.DartsPortal.TranscriberAttachFileAndDownloadAudioSimulation'
+    simulationClassName = 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'
 }
 
 checkstyleGatling {

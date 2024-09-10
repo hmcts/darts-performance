@@ -10,7 +10,7 @@ import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestTranscriptionScenario;
-
+import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownloadAudioScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 import java.time.Duration;
@@ -33,7 +33,7 @@ public class TranscriberAttachFileAndDownloadAudioSimulation extends Simulation 
             .exec(feed(Feeders.createTranscriberUsers())) // Load court clerk user data
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest()) // Login request
             .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
-            .repeat(5).on(
+            .repeat(2).on(
                 exec(session -> {
                     // Increment the loop counter
                     int iteration = session.getInt("loopCounter") + 1;
@@ -55,9 +55,9 @@ public class TranscriberAttachFileAndDownloadAudioSimulation extends Simulation 
                     // Update the loop counter in the session for the next iteration
                     return session.set("loopCounter", iteration);
                 })
-                //.exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) // Perform advance search
-                //.exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
-               // .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription()) // Request transcription
+                .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) // Perform advance search
+                .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
+                .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio()) // Request transcription
                 .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequestScenario()) 
 
             )

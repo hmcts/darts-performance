@@ -35,7 +35,7 @@ public class CourtClerkRequestorSimulation extends Simulation {
         .exec(feed(Feeders.createCourtClerkUsers()))
         .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) 
         .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
-        .repeat(5).on(
+        .repeat(2).on(
             exec(session -> {
                 // Increment the loop counter
                 int iteration = session.getInt("loopCounter") + 1;

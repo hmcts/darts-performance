@@ -16,23 +16,23 @@ public final class DartsPortalAdvanceSearchScenario {
     public static ChainBuilder DartsPortalAdvanceSearchScenario() {
         return group("Darts Advance Search")
             .on(
-                exec(http("Darts-Portal - User - Refresh-profile")
+
+            exec(session -> {
+                System.out.println("DartsPortalAdvanceSearchScenario is being called");
+                return session;
+            })            
+                .exec(http("Darts-Portal - User - Refresh-profile")
                     .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
                     .headers(Headers.CommonHeaders)
                 )
                 .pause(5)
-                .exec
-                (session -> {
-                  String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                  return session.set("xmlPayload", xmlPayload);
-                })
-                .pause(3)
-                
+                                
                 // Initialize `caseCount` to 0 before starting the search
                 .exec(session -> session.set("caseCount", 0))
         
                 .exec(session -> {
                     String searchRequestPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
+                    System.out.println("Generated search payload: " + searchRequestPayload);
                     return session.set("searchRequestPayload", searchRequestPayload);
                 })
                 .asLongAs(session -> !session.contains("caseCount") || session.getInt("caseCount") == 0)

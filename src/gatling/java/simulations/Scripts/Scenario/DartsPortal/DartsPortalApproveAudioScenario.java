@@ -4,6 +4,7 @@ import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.UserInfoLogger;
+import simulations.Scripts.Utilities.NumberGenerator;
 import io.gatling.javaapi.core.*;
 import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
@@ -13,16 +14,14 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class DartsPortalApproveAudioScenario {
 
-    private static final Random randomNumber = new Random();
-
     private DartsPortalApproveAudioScenario() {}    
 
     public static ChainBuilder DartsPortalApproveAudio() {    
 
       return group("Darts Approve / Reject Transcription")
-      .on(exec(feed(Feeders.createCourtClerkUsers()))
-          .exec(http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
+      .on(exec(
+              http("Darts-Portal - Auth - Is-authenticated")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
               .headers(Headers.CommonHeaders)
           )
           .exec(
@@ -64,7 +63,7 @@ public final class DartsPortalApproveAudioScenario {
           .pause(3)
           .exec(            
             http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
               .headers(Headers.CommonHeaders)
           )     
      
@@ -95,7 +94,7 @@ public final class DartsPortalApproveAudioScenario {
           .exitHereIfFailed()
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + randomNumber.nextInt())
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
               .headers(Headers.CommonHeaders)
           ) 
           .exec(

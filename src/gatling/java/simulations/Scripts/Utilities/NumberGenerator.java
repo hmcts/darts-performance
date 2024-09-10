@@ -3,7 +3,6 @@ package simulations.Scripts.Utilities;
 import java.util.Random;
 
 public class NumberGenerator {
-    // Instance variable to hold the current value of the number
     private int currentValue;
 
     // Constructor to initialize the number generator with an initial value
@@ -13,33 +12,28 @@ public class NumberGenerator {
 
     // Method to generate the next number and return it as a formatted string
     public String generateNextNumber() {
-        // Increment the current value
         currentValue++;
-        // Format the number with leading zeros
-        return String.format("%016d", currentValue);
+        return String.format("%016d", currentValue); // 16 digits with leading zeros
     }
 
-
-
-    public static void RandomNumberGenerator(String[] args) {
-        // Create a Random object
+    // Method to generate a 13-digit random number
+    public static long generateRandom13DigitNumber() {
         Random random = new Random();
+        return 1000000000000L + (long)(random.nextDouble() * 9000000000000L);
+    }
 
-        // Generate and print a random integer
+    // Random number and range methods as they were
+    public static void RandomNumberGenerator(String[] args) {
+        Random random = new Random();
         int randomNumber = random.nextInt();
         System.out.println("Random Number: " + randomNumber);
 
-        // Generate and print a random integer within a specific range (0 to 100)
         int minRange = 0;
         int maxRange = 100;
         int randomInRange = random.nextInt(maxRange - minRange + 1) + minRange;
         System.out.println("Random Number in Range (0 to 100): " + randomInRange);
 
-        // Generate and print a random double between 0.0 (inclusive) and 1.0 (exclusive)
         double randomDouble = random.nextDouble();
         System.out.println("Random Double: " + randomDouble);
     }
-
 }
-
-
