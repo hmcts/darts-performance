@@ -211,7 +211,7 @@ public final class DartsPortalDeleteAudioRequestScenario {
               .check(status().is(204))
               .check(status().saveAs("status"))
           )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - Transformed_Media"))
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - Transformed_Media - Delete"))
           
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
