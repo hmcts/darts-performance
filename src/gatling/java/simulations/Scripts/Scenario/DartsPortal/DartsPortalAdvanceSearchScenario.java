@@ -32,7 +32,8 @@ public final class DartsPortalAdvanceSearchScenario {
         
                 .exec(session -> {
                     String searchRequestPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                    System.out.println("Generated search payload: " + searchRequestPayload);
+                    String email = session.getString("Email");
+                    System.out.println("Generated search payload: " + searchRequestPayload + " for user: " + email);
                     return session.set("searchRequestPayload", searchRequestPayload);
                 })
                 .asLongAs(session -> !session.contains("caseCount") || session.getInt("caseCount") == 0)
@@ -56,13 +57,14 @@ public final class DartsPortalAdvanceSearchScenario {
                         if (caseCount == 0) {
                             System.out.println("Empty response received. Retrying...");
                             String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                            System.out.println("Retrying with new payload: " + searchPayload);
+                            System.out.println("Retrying with new payload: " + searchPayload + " for user: " + email);
                             return session.set("searchRequestPayload", searchPayload);
                         } else {
                             System.out.println("Non-empty response received. Proceeding with caseCount: " + caseCount);
                             return session;
                         }
                     })
+                    .pause(5)
                     .exec(session -> {
                         int statusCode = session.getInt("status");
                         if (statusCode == 400 || statusCode == 502 || statusCode == 504) {
