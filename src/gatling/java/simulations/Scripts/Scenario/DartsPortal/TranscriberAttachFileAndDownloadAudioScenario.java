@@ -20,8 +20,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
 
     public static ChainBuilder TranscriberAttachFileAndDownloadAudio() {
       return group("Darts Attach File And Downlaod Audio")
-      .on(exec(feed(Feeders.createAudioRequestCSV()))
-          .exec(
+      .on(exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
               .headers(Headers.getHeaders(14))
