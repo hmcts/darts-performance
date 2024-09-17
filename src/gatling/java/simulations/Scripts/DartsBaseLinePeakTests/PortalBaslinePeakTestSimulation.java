@@ -1,4 +1,4 @@
-package simulations.Scripts.DartsSmokeTests;
+package simulations.Scripts.DartsBaseLinePeakTests;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
@@ -21,20 +21,20 @@ import java.time.Duration;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public class PortalSmokeTestTwoSimulation extends Simulation {   
+public class PortalBaslinePeakTestSimulation extends Simulation {   
 
-    private static final String SMOKE_TEST_TWO_JUDGE_USERS = "Smoke Test Two - DARTS - Portal - Judge Users";
-    private static final String SMOKE_TEST_TWO_COURT_CLERK_USERS = "Smoke Test Two - DARTS - Portal - Court Clerk Users";
-    private static final String SMOKE_TEST_TWO_COURT_MANAGER_USERS = "Smoke Test Two - DARTS - Portal - Court Manager Users";
-    private static final String SMOKE_TEST_TWO_TRANSCRIBER_USERS = "Smoke Test Two - DARTS - Portal - Transcriber Users";
-    private static final String SMOKE_TEST_TWO_LANGUAGE_USERS = "Smoke Test Two - DARTS - Portal - Language Shop Users";
+    private static final String SMOKE_TEST_TWO_JUDGE_USERS = "Baseline Peak - DARTS - Portal - Judge Users";
+    private static final String SMOKE_TEST_TWO_COURT_CLERK_USERS = "Baseline Peak - DARTS - Portal - Court Clerk Users";
+    private static final String SMOKE_TEST_TWO_COURT_MANAGER_USERS = "Baseline Peak - DARTS - Portal - Court Manager Users";
+    private static final String SMOKE_TEST_TWO_TRANSCRIBER_USERS = "Baseline Peak - DARTS - Portal - Transcriber Users";
+    private static final String SMOKE_TEST_TWO_LANGUAGE_USERS = "Baseline Peak - DARTS - Portal - Language Shop Users";
 
     @Override
     public void before() {
         System.out.println("Simulation is about to start!");
     }
 
-    public PortalSmokeTestTwoSimulation() {
+    public PortalBaslinePeakTestSimulation() {
             HttpProtocolBuilder httpProtocolExternal = http
                 .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
@@ -70,19 +70,19 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
         // Call setUp once with all scenarios
         setUp(
             smokeJudgeUsers.injectOpen(
-                rampUsers(AppConfig.JUDGE_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)) 
+                rampUsers(AppConfig.JUDGE_RAMP_UP_USERS_PEAK).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)) 
             ).protocols(httpProtocolInternal),
             smokeCourtClerkUsers.injectOpen(
-                rampUsers(AppConfig.COURT_CLERK_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)) 
+                rampUsers(AppConfig.COURT_CLERK_RAMP_UP_USERS_PEAK).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)) 
             ).protocols(httpProtocolInternal),
             smokeCourtManagerUsers.injectOpen(
-                rampUsers(AppConfig.COURT_MANAGER_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_MANAGER)) 
+                rampUsers(AppConfig.COURT_MANAGER_RAMP_UP_USERS_PEAK).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_MANAGER)) 
             ).protocols(httpProtocolInternal),
             smokeTranscriberUsers.injectOpen(
-                rampUsers(AppConfig.TRANSCRIBER_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_TRANSCRIBER))
+                rampUsers(AppConfig.TRANSCRIBER_RAMP_UP_USERS_PEAK).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_TRANSCRIBER))
             ).protocols(httpProtocolExternal),
             smokeLanguageShopUsers.injectOpen(
-                rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)) 
+                rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS_PEAK).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)) 
             ).protocols(httpProtocolExternal)
         );
     }
@@ -233,7 +233,7 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
                 })
                 .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) 
                 .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-               // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
+                .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
             )
             .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest()));
     }
