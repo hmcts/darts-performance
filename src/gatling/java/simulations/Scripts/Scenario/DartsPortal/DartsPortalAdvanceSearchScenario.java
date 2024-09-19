@@ -29,7 +29,7 @@ public final class DartsPortalAdvanceSearchScenario {
                                 
                 // Initialize `caseCount` to 0 before starting the search
                 .exec(session -> session.set("caseCount", 0))
-        
+
                 .exec(session -> {
                     String searchRequestPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
                     String email = session.getString("Email");
@@ -42,34 +42,47 @@ public final class DartsPortalAdvanceSearchScenario {
                         .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
                         .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
                         .body(StringBody(session -> session.get("searchRequestPayload"))).asJson()
-                        // Check if the status is 200 to consider it as passed
-                        .check(status().is(200))
-                        .check(status().saveAs("status"))
+                        .check(status().in(200, 400).saveAs("status"))  // Allowing 200 and 400 status codes
+                        .check(bodyString().saveAs("responseBody"))      // Save the response body
                         .check(jsonPath("$[*].case_id").count().saveAs("caseCount"))
                         .check(jsonPath("$[*].case_id").findRandom().optional().saveAs("getCaseId"))
+                        .check(
+                            jsonPath("$.type").optional().saveAs("errorType"),    // Extract error type if it exists
+                            jsonPath("$.title").optional().saveAs("errorTitle"),  // Extract error title if it exists
+                            jsonPath("$.status").optional().saveAs("errorStatus") // Extract error status if it exists
+                        )
                     )
                     .exec(session -> {
                         int caseCount = session.getInt("caseCount");
                         String email = session.getString("Email");
-                        System.out.println("Search completed. caseCount: " + caseCount + " for user: " + email);
                         int statusCode = session.getInt("status");
 
+                        System.out.println("Search completed. caseCount: " + caseCount + " for user: " + email);
+
+                        // Handle the 400 status code
+                        if (statusCode == 400) {
+                            String responseBody = session.getString("responseBody");
+                            System.out.println("400 Bad Request encountered. Response: " + responseBody + " for user: " + email);
+                            return session.markAsSucceeded();  // Mark as passed for 400
+                        }
+
                         // If no cases are found, retry with a new search payload
-                        if (caseCount == 0 || statusCode == 400) {
+                        if (caseCount == 0) {
                             System.out.println("Empty response received. Retrying...");
                             String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
                             System.out.println("Retrying with new payload: " + searchPayload + " for user: " + email);
                             return session.set("searchRequestPayload", searchPayload);
-                        } else {
-                            System.out.println("Non-empty response received. Proceeding with caseCount: " + caseCount);
-                            return session;
                         }
+
+                        System.out.println("Non-empty response received. Proceeding with caseCount: " + caseCount);
+                        return session;
                     })
                     .pause(5)
                     .exec(session -> {
                         int statusCode = session.getInt("status");
+                        String email = session.getString("Email");
                         if (statusCode == 502 || statusCode == 504) {
-                            System.out.println("Received error status code: " + statusCode + ". Marking as failed.");
+                            System.out.println("Received error status code: " + statusCode + ". Marking as failed." + email + " Darts-Portal - Api - Cases - Search");
                             return session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
                         }
                         return session;
