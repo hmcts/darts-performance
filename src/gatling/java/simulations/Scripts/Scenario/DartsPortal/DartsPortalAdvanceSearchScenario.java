@@ -52,9 +52,10 @@ public final class DartsPortalAdvanceSearchScenario {
                         int caseCount = session.getInt("caseCount");
                         String email = session.getString("Email");
                         System.out.println("Search completed. caseCount: " + caseCount + " for user: " + email);
+                        int statusCode = session.getInt("status");
 
                         // If no cases are found, retry with a new search payload
-                        if (caseCount == 0) {
+                        if (caseCount == 0 || statusCode == 400) {
                             System.out.println("Empty response received. Retrying...");
                             String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
                             System.out.println("Retrying with new payload: " + searchPayload + " for user: " + email);
@@ -67,7 +68,7 @@ public final class DartsPortalAdvanceSearchScenario {
                     .pause(5)
                     .exec(session -> {
                         int statusCode = session.getInt("status");
-                        if (statusCode == 400 || statusCode == 502 || statusCode == 504) {
+                        if (statusCode == 502 || statusCode == 504) {
                             System.out.println("Received error status code: " + statusCode + ". Marking as failed.");
                             return session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
                         }
