@@ -144,8 +144,8 @@ public final class DartsPortalDeleteAudioRequestScenario {
                   System.out.println("Title: " + errorTitle);
                   System.out.println("Status: " + errorStatus);
 
-                  // Mark the session as succeeded to prevent this from counting as a failure. 409 response is "A transcription already exists with these properties"
-                  return session.markAsSucceeded();
+                  // Mark the session as a failure.
+                  return session.markAsFailed();
               } else {
                   // Handle other status codes if necessary
                   return session;
@@ -252,8 +252,8 @@ public final class DartsPortalDeleteAudioRequestScenario {
                   System.out.println("Title: " + errorTitle);
                   System.out.println("Status: " + errorStatus);
 
-                  // Mark the session as succeeded to prevent this from counting as a failure. 409 response is "A transcription already exists with these properties"
-                  return session.markAsSucceeded();
+                  // Mark the session as failure.
+                  return session.markAsFailed();
               } else {
                   // Handle other status codes if necessary
                   return session;
