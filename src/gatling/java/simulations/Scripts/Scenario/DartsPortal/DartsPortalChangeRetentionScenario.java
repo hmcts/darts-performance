@@ -123,7 +123,7 @@ public final class DartsPortalChangeRetentionScenario {
               .check(status().in(200, 403))
               .check(status().saveAs("status"))
           )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Transcripts"))
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - #{getCaseId} - Transcripts"))
 
           .pause(3)
           .exec(

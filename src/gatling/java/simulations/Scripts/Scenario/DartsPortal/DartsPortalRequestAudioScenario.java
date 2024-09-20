@@ -22,8 +22,7 @@ public final class DartsPortalRequestAudioScenario {
     public static ChainBuilder DartsPortalRequestAudioDownload() {
       return group("Darts Request Audio PlayBack/Download")
       .on(
-
-          pause(3)
+          pause(2, 5)
           .exec(http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
               .headers(Headers.getHeaders(14))
@@ -53,7 +52,7 @@ public final class DartsPortalRequestAudioScenario {
               .check(status().in(200, 403).saveAs("responseStatus"))
               .check(status().saveAs("status"))
           )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Transcripts"))
+          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - #{getCaseId} - Transcripts"))
 
           .exec(session -> {
             int statusCode = session.getInt("responseStatus");
@@ -64,7 +63,7 @@ public final class DartsPortalRequestAudioScenario {
             }
             return session;
           })
-          .pause(3)
+          .pause(2, 5)
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -177,7 +176,7 @@ public final class DartsPortalRequestAudioScenario {
           })          
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Transcripts"))
 
-          .pause(3)
+          .pause(2, 5)
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")

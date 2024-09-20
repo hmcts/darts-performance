@@ -30,6 +30,8 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=false")
               .headers(Headers.CommonHeaders)
               .check(jsonPath("$[*].transcription_id").findRandom().saveAs("getTranscriptionId"))
+              .check(status().is(200))
+              .check(status().saveAs("status"))
               ).exec(session -> {
                 Object getTranscriptionId = session.get("getTranscriptionId");
                 if (getTranscriptionId != null) {
@@ -42,7 +44,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
             .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
          
           .exitHereIfFailed()
-          .pause(3)
+          .pause(2, 5)
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -57,7 +59,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           )  
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
         
-          .pause(3)
+          .pause(2, 5)
           .exec(
             http("Darts-Portal - Api - Transcriptions - Id")
               .patch(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
@@ -82,7 +84,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           )  
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
         
-          .pause(12)
+          .pause(2, 10)
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
@@ -127,7 +129,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
 
-          .pause(3)
+          .pause(2, 5)
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -142,7 +144,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
 
-          .pause(3)
+          .pause(2, 5)
           .exec(
             http("Darts-Portal - Api - Transcriptions - Document")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}/document")
