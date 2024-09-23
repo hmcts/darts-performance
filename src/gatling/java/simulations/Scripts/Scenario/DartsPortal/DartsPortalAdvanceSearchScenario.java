@@ -15,13 +15,8 @@ public final class DartsPortalAdvanceSearchScenario {
 
     public static ChainBuilder DartsPortalAdvanceSearchScenario() {
         return group("Darts Advance Search")
-            .on(
-
-            exec(session -> {
-                System.out.println("DartsPortalAdvanceSearchScenario is being called");
-                return session;
-            })            
-                .exec(http("Darts-Portal - User - Refresh-profile")
+            .on(            
+                exec(http("Darts-Portal - User - Refresh-profile")
                     .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
                     .headers(Headers.CommonHeaders)
                 )
@@ -82,19 +77,19 @@ public final class DartsPortalAdvanceSearchScenario {
                         System.out.println("Non-empty response received. Proceeding with caseCount: " + caseCount);
                         return session;
                     })
-                   .pause(2, 5)
+                    .pause(2, 5)
                     .exec(session -> {
                         int statusCode = session.getInt("status");
                         String email = session.getString("Email");
                         if (statusCode == 502 || statusCode == 504) {
                             System.out.println("Received error status code: " + statusCode + ". Marking as failed." + email + " Darts-Portal - Api - Cases - Search");
-                            return session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
+                            session = session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
                         }
                         return session;
                     })
                 )
-                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search"))
-
+                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search")) 
+                
                 .exec(session -> {
                     // Log non-empty response
                     System.out.println("Non-empty response received.");
