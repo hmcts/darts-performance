@@ -17,11 +17,15 @@ import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownload
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 import java.time.Duration;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class PortalBaslineNormalTestSimulation extends Simulation {   
+
+    // Global counter to track 400 errors
+    public static AtomicInteger global400ErrorCounter = new AtomicInteger(0);
 
     private static final String SMOKE_TEST_TWO_JUDGE_USERS = "Baseline Normal - DARTS - Portal - Judge Users";
     private static final String SMOKE_TEST_TWO_COURT_CLERK_USERS = "Baseline Normal - DARTS - Portal - Court Clerk Users";
@@ -235,7 +239,8 @@ public class PortalBaslineNormalTestSimulation extends Simulation {
                 .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
                // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
             )
-            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest()));
+            .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest())
+        );
     }
 
     private ScenarioBuilder setUpJudgeUsers(String scenarioName) {
@@ -293,8 +298,11 @@ public class PortalBaslineNormalTestSimulation extends Simulation {
                 .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest())
             );
     }
+
     @Override
     public void after() {
+        System.out.println("Total 400 Errors Encountered: " + global400ErrorCounter.get());
+
         System.out.println("Simulation is finished!");
     }
 }
