@@ -25,10 +25,11 @@ public final class DartsPortalAdvanceSearchScenario {
                     .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
                     .headers(Headers.CommonHeaders)
                 )
-                .pause(5)
+               .pause(2, 5)
                                 
                 // Initialize `caseCount` to 0 before starting the search
                 .exec(session -> session.set("caseCount", 0))
+                .exec(session -> session.set("400Count", 0))
 
                 .exec(session -> {
                     String searchRequestPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
@@ -63,6 +64,10 @@ public final class DartsPortalAdvanceSearchScenario {
                         if (statusCode == 400) {
                             String responseBody = session.getString("responseBody");
                             System.out.println("400 Bad Request encountered. Response: " + responseBody + " for user: " + email);
+                            
+                            int currentCount400 = session.getInt("400Count");                            
+                            session.set("400Count", currentCount400 + 1);
+
                             return session.markAsSucceeded();  // Mark as passed for 400
                         }
 
@@ -77,7 +82,7 @@ public final class DartsPortalAdvanceSearchScenario {
                         System.out.println("Non-empty response received. Proceeding with caseCount: " + caseCount);
                         return session;
                     })
-                    .pause(5)
+                   .pause(2, 5)
                     .exec(session -> {
                         int statusCode = session.getInt("status");
                         String email = session.getString("Email");
