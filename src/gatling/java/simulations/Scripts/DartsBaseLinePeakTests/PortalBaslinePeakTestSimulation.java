@@ -17,11 +17,14 @@ import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownload
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 import java.time.Duration;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class PortalBaslinePeakTestSimulation extends Simulation {   
+    
+    public static AtomicInteger global400ErrorCounter = new AtomicInteger(0);
 
     private static final String SMOKE_TEST_TWO_JUDGE_USERS = "Baseline Peak - DARTS - Portal - Judge Users";
     private static final String SMOKE_TEST_TWO_COURT_CLERK_USERS = "Baseline Peak - DARTS - Portal - Court Clerk Users";
@@ -294,9 +297,11 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
                 .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest())
             );
     }
-    
+
     @Override
     public void after() {
+        System.out.println("Total 400 Errors Encountered: " + global400ErrorCounter.get());
+
         System.out.println("Simulation is finished!");
     }
 }
