@@ -35,9 +35,9 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
               ).exec(session -> {
                 Object getTranscriptionId = session.get("getTranscriptionId");
                 if (getTranscriptionId != null) {
-                    System.out.println("getTranscriptionId: " + getTranscriptionId.toString());
+                //    System.out.println("getTranscriptionId: " + getTranscriptionId.toString());
                 } else {
-                    System.out.println("No value saved using saveAs.");
+                    System.out.println("No Transcription Id value saved using saveAs.");
                 }
                 return session;
             }) 

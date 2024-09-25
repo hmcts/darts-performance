@@ -89,10 +89,10 @@ public final class DartsPortalDeleteAudioRequestScenario {
                 session = session.set("getRequestType", selectedRequestType);
 
                 // Print the IDs
-                System.out.println("getTransformedMediaId: " + selectedTransformedMediaId);
-                System.out.println("getCaseId: " + selectedCaseId);
-                System.out.println("getHearingId: " + selectedHearingId);
-                System.out.println("getRequestType: " + selectedRequestType);
+                //System.out.println("getTransformedMediaId: " + selectedTransformedMediaId);
+                //System.out.println("getCaseId: " + selectedCaseId);
+                //System.out.println("getHearingId: " + selectedHearingId);
+                //System.out.println("getRequestType: " + selectedRequestType);
 
             } else {
                 System.out.println("No IDs found in the response.");
@@ -104,7 +104,7 @@ public final class DartsPortalDeleteAudioRequestScenario {
           // Log detailed error message
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - V2 - Expired - False"))
           
-          .pause(5)
+          .pause(2, 5)
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -227,7 +227,7 @@ public final class DartsPortalDeleteAudioRequestScenario {
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-Counts"))
           
-          .pause(10)
+          .pause(5, 10)
           .exec(
             http("Darts-Portal - Api - Audio-Requests - Transformed_Media - Delete")
               .delete(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/transformed_media/#{getTransformedMediaId}")

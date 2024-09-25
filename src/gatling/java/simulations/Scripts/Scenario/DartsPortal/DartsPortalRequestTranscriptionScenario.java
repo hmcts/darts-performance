@@ -23,9 +23,9 @@ public final class DartsPortalRequestTranscriptionScenario {
       .on(exec(session -> {
                 Object getCaseId = session.get("getCaseId");
                 if (getCaseId != null) {
-                    System.out.println("getCaseId: " + getCaseId.toString());
+                //    System.out.println("getCaseId: " + getCaseId.toString());
                 } else {
-                    System.out.println("No value saved using saveAs.");
+                    System.out.println("No Case Id value saved using saveAs.");
                 }
                 
                 Object errorTitle = session.get("errorTitle");
@@ -40,15 +40,15 @@ public final class DartsPortalRequestTranscriptionScenario {
           .exec(session -> {
                 Object getHearings = session.get("getHearings");
                 if (getHearings != null) {
-                    System.out.println("getHearings from Cases - Hearings: " + getHearings.toString());
+                //    System.out.println("getHearings from Cases - Hearings: " + getHearings.toString());
                 } else {
-                    System.out.println("No value saved using saveAs.");
+                    System.out.println("No Hearing value saved using saveAs.");
                 }
                 Object getHearingId = session.get("getHearingId");
                 if (getHearingId != null) {
-                    System.out.println("getHearingId from Cases - Hearings: " + getHearingId.toString());
+                 //   System.out.println("getHearingId from Cases - Hearings: " + getHearingId.toString());
                 } else {
-                    System.out.println("No value saved using saveAs.");
+                    System.out.println("No Hearing Id value saved using saveAs.");
                 }
                 return session;
             }

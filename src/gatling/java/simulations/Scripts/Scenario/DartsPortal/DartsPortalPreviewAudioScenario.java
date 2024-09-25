@@ -34,7 +34,7 @@ public final class DartsPortalPreviewAudioScenario {
                 .check(status().saveAs("status"))
           )
           .exitHereIfFailed() // Exit the chain if the request fails
-          .pause(3)
+          .pause(2, 5)
           .exec(http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
               .headers(Headers.getHeaders(14))

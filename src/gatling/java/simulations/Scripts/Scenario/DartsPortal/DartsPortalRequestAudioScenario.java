@@ -90,13 +90,13 @@ public final class DartsPortalRequestAudioScenario {
                 if (getHearings != null) {
                     System.out.println("getHearings from Cases - Hearings: " + getHearings.toString());
                 } else {
-                    System.out.println("No value saved using saveAs.");
+                    System.out.println("No Hearing value saved using saveAs.");
                 }
                 Object getHearingId = session.get("getHearingId");
                 if (getHearingId != null) {
                     System.out.println("getHearingId from Cases - Hearings: " + getHearingId.toString());
                 } else {
-                    System.out.println("No value saved using saveAs.");
+                    System.out.println("No Hearing Id value saved using saveAs.");
                 }
                 return session;
             }
@@ -111,27 +111,14 @@ public final class DartsPortalRequestAudioScenario {
               //.check(jsonPath("$[*]").ofMap().findRandom().saveAs("getEvent"))  
               .check(status().in(200, 502, 504).saveAs("status"))
               .check(status().saveAs("status"))
-              )
-        //       .exec(session -> {
-        //         Object getEvent = session.get("getEvent");
-
-        //         if (getEvent != null) {
-        //             System.out.println("getEvent: " + getEvent.toString());
-
-        //         } else {
-        //             System.out.println("No value saved using saveAs.");
-        //         }
-        //         return session;
-        //     }                
-
-        //   )
-        .exec(session -> {
-            int statusCode = session.getInt("status");
-            if (statusCode == 502 || statusCode == 504) {
-                return session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
-            }
-            return session;
-        })
+          )
+          .exec(session -> {
+              int statusCode = session.getInt("status");
+              if (statusCode == 502 || statusCode == 504) {
+                  return session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
+              }
+              return session;
+          })
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Events"))
 
           .exec(
@@ -189,7 +176,7 @@ public final class DartsPortalRequestAudioScenario {
           .exec(session -> {
               // Get the user type from the session
               String userType = session.get("Type").toString();
-              System.out.println("userType for Audio Request: " + userType);
+             // System.out.println("userType for Audio Request: " + userType);
   
               String requestType;
   
@@ -213,22 +200,22 @@ public final class DartsPortalRequestAudioScenario {
   
               // Set request type in the session
               Session requestTypeSession = session.set("requestType", requestType);
-              System.out.println("requestType for Audio Request: " + requestType);
+             // System.out.println("requestType for Audio Request: " + requestType);
   
               return requestTypeSession;
           })
           .exec(session -> {
 
             Object getHearingId = session.get("getHearingId");
-            System.out.println("getHearingId for Audio Request: " + getHearingId);
+           // System.out.println("getHearingId for Audio Request: " + getHearingId);
             Object getUserId = session.get("getUserId");
-            System.out.println("getUserId for Audio Request: " + getUserId);
+           // System.out.println("getUserId for Audio Request: " + getUserId);
             Object getAudioStartDate = session.get("getAudioStartDate");
-            System.out.println("getAudioStartDate for Audio Request: " + getAudioStartDate);
+           // System.out.println("getAudioStartDate for Audio Request: " + getAudioStartDate);
             Object getAudioEndDate = session.get("getAudioEndDate");
-            System.out.println("getAudioEndDate for Audio Request: " + getAudioEndDate);
+           // System.out.println("getAudioEndDate for Audio Request: " + getAudioEndDate);
             Object getCaseId = session.get("getCaseId");
-            System.out.println("getCaseId for Audio Request: " + getCaseId);
+          //  System.out.println("getCaseId for Audio Request: " + getCaseId);
 
             // Build audioXmlPayload
             String audioXmlPayload = RequestBodyBuilder.buildAudioRequestBody(
