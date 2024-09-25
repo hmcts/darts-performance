@@ -42,9 +42,9 @@ public final class DartsPortalApproveAudioScenario {
               ).exec(session -> {
                 Object getTranscriptionId = session.get("getTranscriptionId");
                 if (getTranscriptionId != null) {
-                    System.out.println("getTranscriptionId: " + getTranscriptionId.toString());
+                //    System.out.println("getTranscriptionId: " + getTranscriptionId.toString());
                 } else {
-                    System.out.println("No value saved using saveAs.");
+                    System.out.println("No Transcription Id value saved using saveAs.");
                 }
                 return session;
             })
@@ -60,7 +60,7 @@ public final class DartsPortalApproveAudioScenario {
           )    
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Urgencies"))
       
-          .pause(3)
+          .pause(2, 5)
           .exec(            
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -76,7 +76,7 @@ public final class DartsPortalApproveAudioScenario {
           )   
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
        
-          .pause(3)
+          .pause(2, 5)
           .exec(session -> {
             String xmlPayload = RequestBodyBuilder.buildTranscriptionApprovalRequestBody(session);
             return session.set("xmlPayload", xmlPayload);

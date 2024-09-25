@@ -139,10 +139,6 @@ public class RequestBodyBuilder {
         String formattedDateFrom = "\"" + randomDateFrom.toString() + "\"";
         String formattedDateTo = "\"" + randomDateTo.toString() + "\"";
     
-        // Print out the formatted dates for debugging
-        System.out.println("Random Date From: " + formattedDateFrom);
-        System.out.println("Random Date To: " + formattedDateTo);
-    
         // Build the JSON payload with quoted values
         return String.format("{\"case_number\":%s," +
                             "\"courthouse\":%s," +
@@ -154,19 +150,6 @@ public class RequestBodyBuilder {
                             "\"date_to\":%s}",
                             caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
     }
-    
-
-    
-    //     return String.format("{\"case_number\":%s," +
-    //     "\"courthouse\":%s," +
-    //     "\"courtroom\":%s," +
-    //     "\"judge_name\":null," +
-    //     "\"defendant_name\":%s," +
-    //     "\"event_text_contains\":%s," +
-    //     "\"date_from\":%s," +
-    //     "\"date_to\":%s}",
-    //     caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
-    // }
 
     public static String buildChangeRetentionsBody(Session session) {
         String caseId = session.get("getCaseId") != null ? "\"" + session.get("getCaseId").toString() + "\"" : "null";
@@ -194,14 +177,6 @@ public class RequestBodyBuilder {
         caseId, hearingId, randomComment);
     }    
     public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor, Object audioStartDate, Object audioEndDate, Object requestType) {
-      
-        // System.out.println("getHearingId for RequestBody: " + getHearingId);
-        // System.out.println("requestor for RequestBody: " + requestor);
-        // System.out.println("audioStartDate for RequestBody: " + audioStartDate);
-        // System.out.println("audioEndDate for RequestBody: " + audioEndDate);
-        // System.out.println("requestType for RequestBody: " + requestType);
-
-
         return String.format("{\"hearing_id\": %s, " +
         "\"requestor\": %s, " +
         "\"start_time\": \"%s\", " +

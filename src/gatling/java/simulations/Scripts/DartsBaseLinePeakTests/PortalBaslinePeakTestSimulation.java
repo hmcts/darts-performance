@@ -192,9 +192,9 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
                         return session.set("loopCounter", iteration);
                     })
                     .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) // Perform advance search
-                    .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
+                  .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
                     .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio()) // Add File to Transcription
-                    .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequestScenario()) // Delete a random Audio request
+                   .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequestScenario()) // Delete a random Audio request
                 )
                 // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
                 .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest()) // Logout request
@@ -233,9 +233,10 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
                 })
                 .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) 
                 .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-                .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
+                //.exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
             )
-            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest()));
+            .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest())
+        );
     }
 
     private ScenarioBuilder setUpJudgeUsers(String scenarioName) {
@@ -293,6 +294,7 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
                 .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest())
             );
     }
+    
     @Override
     public void after() {
         System.out.println("Simulation is finished!");

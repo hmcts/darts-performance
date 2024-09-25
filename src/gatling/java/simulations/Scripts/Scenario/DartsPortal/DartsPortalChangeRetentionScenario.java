@@ -31,7 +31,7 @@ public final class DartsPortalChangeRetentionScenario {
               String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
               return session.set("xmlPayload", xmlPayload);
           })
-          .pause(3)
+          .pause(2, 5)
           
           // Initialize `caseCount` to 0 before starting the search
           .exec(session -> session.set("caseCount", 0))
@@ -75,14 +75,14 @@ public final class DartsPortalChangeRetentionScenario {
 
           .exec(session -> {
               // Log non-empty response
-              System.out.println("Non-empty response received.");
+              System.out.println("Response received.");
               return session;
           })          
           
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search"))
          
           .exitHereIfFailed()
-          .pause(3)
+          .pause(2, 5)
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -91,9 +91,9 @@ public final class DartsPortalChangeRetentionScenario {
           .exec(session -> {
             Object getCaseId = session.get("getCaseId");
             if (getCaseId != null) {
-                System.out.println("getCaseId: " + getCaseId.toString());
+            //    System.out.println("getCaseId: " + getCaseId.toString());
             } else {
-                System.out.println("No value saved using saveAs.");
+                System.out.println("No Case Id value saved using saveAs.");
             }
             return session;
             }
@@ -125,7 +125,7 @@ public final class DartsPortalChangeRetentionScenario {
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - #{getCaseId} - Transcripts"))
 
-          .pause(3)
+          .pause(2, 5)
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -171,7 +171,7 @@ public final class DartsPortalChangeRetentionScenario {
           ) 
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions - Case_id"))
 
-          .pause(19)
+          .pause(5, 10)
           .exec
             (session -> {
               String xmlPayload = RequestBodyBuilder.buildChangeRetentionsBody(session);
@@ -187,7 +187,7 @@ public final class DartsPortalChangeRetentionScenario {
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions - Validate_only"))
 
-          .pause(8)
+          .pause(2, 5)
           .exec(
             http("Darts-Portal - Api - Retentions")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/retentions")

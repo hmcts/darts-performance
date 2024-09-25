@@ -81,7 +81,7 @@ public final class DartsPortalAdvanceSearchScenario {
                             return session.set("searchRequestPayload", searchPayload);
                         }
     
-                        System.out.println("Non-empty response received. Proceeding with caseCount: " + caseCount);
+                        System.out.println("Response received. Proceeding with caseCount: " + caseCount);
                         return session;
                     })
                     .pause(2, 5)
@@ -99,7 +99,7 @@ public final class DartsPortalAdvanceSearchScenario {
                 
                 .exec(session -> {
                     // Log non-empty response
-                    System.out.println("Non-empty response received.");
+                    System.out.println("Response received.");
                     return session;
                 })
                 .exec(session -> {
@@ -107,7 +107,7 @@ public final class DartsPortalAdvanceSearchScenario {
                     if (getCaseId != null) {
                         System.out.println("getCaseId: " + getCaseId.toString());
                     } else {
-                        System.out.println("No value saved using saveAs.");
+                        System.out.println("No Case Id value saved using saveAs.");
                     }
                     return session;
                 })
