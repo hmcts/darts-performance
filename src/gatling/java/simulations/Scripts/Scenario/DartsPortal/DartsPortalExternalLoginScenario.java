@@ -59,7 +59,7 @@ public final class DartsPortalExternalLoginScenario {
               //   return session.set("xmlPayload", xmlPayload);
               // })
               .exitHereIfFailed() 
-              .pause(3)
+              .pause(2, 5)
               .exec(
                 http("B2C_1_darts_externaluser_signin - Client - Perftrace")
                   .post(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/client/perftrace?tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin")

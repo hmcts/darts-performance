@@ -22,11 +22,33 @@ dependencies {
     gatling 'com.github.hmcts:juror-generation-support-library:1.5.4'
 }
 
+// Default gatlingRun configuration
 gatlingRun {
-   // simulationClassName = 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'
-
-    simulationClassName = 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'
+    simulationClassName = 'simulations.Scripts.DartsApi.AudioPostSimulation' // Default simulation
 }
+
+// Task for GetCatFacts
+tasks.register('runAudioPostSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.AudioPostSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.AudioPostSimulation'
+}
+
+// Task for GetListOfCatFacts
+tasks.register('runAddCaseUserSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsSoap.AddCaseUserSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
+}
+
+
+
 
 checkstyleGatling {
     maxWarnings = 3035
