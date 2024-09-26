@@ -6,7 +6,7 @@ properties([
                 'simulations.Scripts.DartsApi.AudioPostSimulation',
                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
             ], name: 'simulationClassName'),
-            string(name: 'SOAP_USERS_COUNT', defaultValue: '', description: 'The number of users for the test')
+            string(name: 'Users', defaultValue: '', description: 'The number of users for the test')
 
     ])
 ])
@@ -60,7 +60,7 @@ withNightlyPipeline(type, product, component) {
   enableSlackNotifications('#darts-builds')
   loadVaultSecrets(secrets)
     env.simulationClassName = params.simulationClassName
-    env.SOAP_USERS_COUNT = params.SOAP_USERS_COUNT
+    env.SOAP_USERS_COUNT = params.Users
 
   afterFailure('test') {
     publishPerformanceReports()
