@@ -5,7 +5,7 @@ properties([
             choice(choices: [
                 'simulations.Scripts.DartsApi.AudioPostSimulation',
                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
-            ], name: 'simulation')
+            ], name: 'simulationClassName')
     ])
 ])
 @Library("Infrastructure") _
