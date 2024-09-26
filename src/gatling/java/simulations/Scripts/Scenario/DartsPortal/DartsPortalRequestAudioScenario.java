@@ -87,14 +87,15 @@ public final class DartsPortalRequestAudioScenario {
               .check(jsonPath("$[*].id").saveAs("getHearingId"))
               ).exec(session -> {
                 Object getHearings = session.get("getHearings");
+                String email = session.getString("Email");
                 if (getHearings != null) {
-                    System.out.println("getHearings from Cases - Hearings: " + getHearings.toString());
+                    System.out.println("getHearings from Cases - Hearings: " + getHearings.toString() + " for user: " + email);
                 } else {
                     System.out.println("No Hearing value saved using saveAs.");
                 }
                 Object getHearingId = session.get("getHearingId");
                 if (getHearingId != null) {
-                    System.out.println("getHearingId from Cases - Hearings: " + getHearingId.toString());
+                    System.out.println("getHearingId from Cases - Hearings: " + getHearingId.toString() + " for user: " + email);
                 } else {
                     System.out.println("No Hearing Id value saved using saveAs.");
                 }

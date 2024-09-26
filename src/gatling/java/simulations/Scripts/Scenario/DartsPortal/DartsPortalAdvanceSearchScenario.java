@@ -75,19 +75,23 @@ public final class DartsPortalAdvanceSearchScenario {
     
                         // If no cases are found, retry with a new search payload
                         if (caseCount == 0) {
-                            System.out.println("Empty response received. Retrying...");
+                            System.out.println("Empty response received from advanced search. Retrying...");
                             String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                            System.out.println("Retrying with new payload: " + searchPayload + " for user: " + email);
+                            System.out.println("Retrying advanced search with new payload: " + searchPayload + " for user: " + email);
                             return session.set("searchRequestPayload", searchPayload);
                         }
     
-                        System.out.println("Response received. Proceeding with caseCount: " + caseCount);
+                        System.out.println("Response received, for advance search. Proceeding with caseCount: " + caseCount + " for user: " + email);
                         return session;
                     })
                     .pause(2, 5)
                     .exec(session -> {
                         int statusCode = session.getInt("status");
                         String email = session.getString("Email");
+                        String responseBody = session.getString("responseBody");
+
+                        System.out.println("502 or 504 Bad Request encountered. Response: " + responseBody + " for user: " + email);
+                        
                         if (statusCode == 502 || statusCode == 504) {
                             System.out.println("Received error status code: " + statusCode + ". Marking as failed." + email + " Darts-Portal - Api - Cases - Search");
                             session = session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
@@ -99,13 +103,15 @@ public final class DartsPortalAdvanceSearchScenario {
                 
                 .exec(session -> {
                     // Log non-empty response
-                    System.out.println("Response received.");
+                    System.out.println("Response received, for advance search.");
                     return session;
                 })
                 .exec(session -> {
                     Object getCaseId = session.get("getCaseId");
+                    String email = session.getString("Email");
+
                     if (getCaseId != null) {
-                        System.out.println("getCaseId: " + getCaseId.toString());
+                        System.out.println("getCaseId: " + getCaseId.toString() + " for user: " + email);
                     } else {
                         System.out.println("No Case Id value saved using saveAs.");
                     }
