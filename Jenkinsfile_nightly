@@ -6,7 +6,7 @@ properties([
                 'simulations.Scripts.DartsApi.AudioPostSimulation',
                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
             ], name: 'simulationClassName')
-            text(name: 'COURT_CLERK_RAMP_UP_USERS', defaultValue: '', description: 'The number of users for the test')
+            string(name: 'COURT_CLERK_RAMP_UP_USERS', defaultValue: '', description: 'The number of users for the test')
 
     ])
 ])
