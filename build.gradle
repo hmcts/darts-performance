@@ -25,7 +25,7 @@ dependencies {
 // Default gatlingRun configuration
 gatlingRun {
     simulationClassName = System.getenv("simulationClassName")
-    doLast {
+    doFirst {
         println "Running simulation: " + System.getenv("simulationClassName")
     }
 }
