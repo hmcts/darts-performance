@@ -33,7 +33,7 @@ public final class PostAudioScenario {
                             .contentType("application/json")
                             .charset("US-ASCII")
                             .dispositionType("form-data"))
-                        .bodyPart(RawFileBodyPart("file", session -> AppConfig.CSV_FILE_COMMON_PATH + session.get("randomAudioFile"))
+                        .bodyPart(RawFileBodyPart("file", session -> session.get("randomAudioFile"))
                             .fileName(session -> session.get("randomAudioFile"))
                             .contentType("audio/mpeg")
                             .dispositionType("form-data")

@@ -89,9 +89,6 @@ public final class DartsPortalAdvanceSearchScenario {
                         int statusCode = session.getInt("status");
                         String email = session.getString("Email");
                         String responseBody = session.getString("responseBody");
-
-                        System.out.println("502 or 504 Bad Request encountered. Response: " + responseBody + " for user: " + email);
-
                         if (statusCode == 502 || statusCode == 504) {
                             System.out.println("Received error status code: " + statusCode + ". Marking as failed." + email + " Darts-Portal - Api - Cases - Search");
                             session = session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
