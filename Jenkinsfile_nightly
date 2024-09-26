@@ -5,7 +5,7 @@ properties([
             choice(choices: [
                 'simulations.Scripts.DartsApi.AudioPostSimulation',
                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
-            ], name: 'simulationClassName')
+            ], name: 'simulationClassName'),
             string(name: 'COURT_CLERK_RAMP_UP_USERS', defaultValue: '', description: 'The number of users for the test')
 
     ])
