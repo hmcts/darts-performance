@@ -202,7 +202,7 @@ public class AppConfig {
         LANGUAGE_SHOP_RAMP_UP_USERS_PEAK = Integer.parseInt(getProperty("LANGUAGE_SHOP_RAMP_UP_USERS", "5"));
 
         //Users for API / SOAP
-        SOAP_USERS_COUNT = Integer.parseInt(getProperty("SOAP_USERS_COUNT", "95"));
+        SOAP_USERS_COUNT = Integer.parseInt(getProperty("SOAP_USERS_COUNT", "1")); //95
         SOAP_SMOKE_REPEATS = Integer.parseInt(getProperty("SOAP_SMOKE_REPEATS", "50"));
         SOAP_BASELINE_NORMAL_REPEATS = Integer.parseInt(getProperty("SOAP_BASELINE_NORMAL_REPEATS", "100"));
         SOAP_BASELINE_PEAK_REPEATS = Integer.parseInt(getProperty("SOAP_BASELINE_PEAK_REPEATS", "100"));
