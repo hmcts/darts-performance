@@ -24,9 +24,9 @@ dependencies {
 
 // Default gatlingRun configuration
 gatlingRun {
-    simulationClassName = System.getenv("simulationClassName")
-    doFirst {
-        println "Running simulation: " + System.getenv("simulationClassName")
+    simulationClassName = 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsSoap.AddCaseUserSimulation"
     }
 }
 
