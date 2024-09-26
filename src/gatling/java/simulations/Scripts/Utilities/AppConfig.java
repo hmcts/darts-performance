@@ -49,7 +49,7 @@ public class AppConfig {
     public static final boolean DEBUG;
     public static final String ENVIRONMENT;
 
-    //Users For Portal
+    //Portal Users For Smoke Test
     public static final int USERS_PER_SECOND;
     public static final int PIPELINE_USERS_PER_SECOND;
     public static final int CONSTANT_CONCURRENT_USERS;
@@ -59,6 +59,19 @@ public class AppConfig {
     public static final int TRANSCRIBER_RAMP_UP_USERS;
     public static final int LANGUAGE_SHOP_RAMP_UP_USERS;
 
+    //Portal Users For Normal Test
+    public static final int JUDGE_RAMP_UP_USERS_NORMAL;
+    public static final int COURT_CLERK_RAMP_UP_USERS_NORMAL;
+    public static final int COURT_MANAGER_RAMP_UP_USERS_NORMAL;
+    public static final int TRANSCRIBER_RAMP_UP_USERS_NORMAL;
+    public static final int LANGUAGE_SHOP_RAMP_UP_USERS_NORMAL;
+
+    // Users For Peak Test 
+    public static final int JUDGE_RAMP_UP_USERS_PEAK;
+    public static final int COURT_CLERK_RAMP_UP_USERS_PEAK;
+    public static final int COURT_MANAGER_RAMP_UP_USERS_PEAK;
+    public static final int TRANSCRIBER_RAMP_UP_USERS_PEAK;
+    public static final int LANGUAGE_SHOP_RAMP_UP_USERS_PEAK;
     //Users For API / Soap
     public static final int SOAP_USERS_COUNT;
     public static final int POST_AUDIO_USERS_COUNT;
@@ -167,12 +180,26 @@ public class AppConfig {
         RANK_UP_TIME_SECONDS = Long.parseLong(getProperty("RANK_UP_TIME_SECONDS", "120"));
         RANK_DOWN_TIME_SECONDS = Long.parseLong(getProperty("RANK_DOWN_TIME_SECONDS", "120"));
 
-        //Users for Portal
-        JUDGE_RAMP_UP_USERS = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
-        COURT_CLERK_RAMP_UP_USERS = Integer.parseInt(getProperty("COURT_CLERK_RAMP_UP_USERS", "1"));
-        COURT_MANAGER_RAMP_UP_USERS = Integer.parseInt(getProperty("COURT_MANAGER_RAMP_UP_USERS", "1"));
-        TRANSCRIBER_RAMP_UP_USERS = Integer.parseInt(getProperty("TRANSCRIBER_RAMP_UP_USERS", "1"));
+        //Portal Users for smoke test
+        JUDGE_RAMP_UP_USERS = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "2"));
+        COURT_CLERK_RAMP_UP_USERS = Integer.parseInt(getProperty("COURT_CLERK_RAMP_UP_USERS", "11"));
+        COURT_MANAGER_RAMP_UP_USERS = Integer.parseInt(getProperty("COURT_MANAGER_RAMP_UP_USERS", "5"));
+        TRANSCRIBER_RAMP_UP_USERS = Integer.parseInt(getProperty("TRANSCRIBER_RAMP_UP_USERS", "2"));
         LANGUAGE_SHOP_RAMP_UP_USERS = Integer.parseInt(getProperty("LANGUAGE_SHOP_RAMP_UP_USERS", "1"));
+        
+        //Portal Users for baseline Normal test 
+        JUDGE_RAMP_UP_USERS_NORMAL = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "9"));
+        COURT_CLERK_RAMP_UP_USERS_NORMAL = Integer.parseInt(getProperty("COURT_CLERK_RAMP_UP_USERS", "50"));
+        COURT_MANAGER_RAMP_UP_USERS_NORMAL = Integer.parseInt(getProperty("COURT_MANAGER_RAMP_UP_USERS", "21"));
+        TRANSCRIBER_RAMP_UP_USERS_NORMAL = Integer.parseInt(getProperty("TRANSCRIBER_RAMP_UP_USERS", "11"));
+        LANGUAGE_SHOP_RAMP_UP_USERS_NORMAL = Integer.parseInt(getProperty("LANGUAGE_SHOP_RAMP_UP_USERS", "2"));
+
+        //Portal Users for baseline Peak test 
+        JUDGE_RAMP_UP_USERS_PEAK = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "17"));
+        COURT_CLERK_RAMP_UP_USERS_PEAK = Integer.parseInt(getProperty("COURT_CLERK_RAMP_UP_USERS", "109"));
+        COURT_MANAGER_RAMP_UP_USERS_PEAK = Integer.parseInt(getProperty("COURT_MANAGER_RAMP_UP_USERS", "47"));
+        TRANSCRIBER_RAMP_UP_USERS_PEAK = Integer.parseInt(getProperty("TRANSCRIBER_RAMP_UP_USERS", "21"));
+        LANGUAGE_SHOP_RAMP_UP_USERS_PEAK = Integer.parseInt(getProperty("LANGUAGE_SHOP_RAMP_UP_USERS", "5"));
 
         //Users for API / SOAP
         SOAP_USERS_COUNT = Integer.parseInt(getProperty("SOAP_USERS_COUNT", "95"));

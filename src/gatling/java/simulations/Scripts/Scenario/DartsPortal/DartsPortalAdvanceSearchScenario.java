@@ -20,7 +20,7 @@ public final class DartsPortalAdvanceSearchScenario {
                     .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
                     .headers(Headers.CommonHeaders)
                 )
-               .pause(2, 5)
+               .pause(2, 10)
                 
                 // Initialize `caseCount` and `400Count` to 0 before starting the search
                 .exec(session -> session.set("caseCount", 0))
@@ -91,7 +91,7 @@ public final class DartsPortalAdvanceSearchScenario {
                         String responseBody = session.getString("responseBody");
 
                         System.out.println("502 or 504 Bad Request encountered. Response: " + responseBody + " for user: " + email);
-                        
+
                         if (statusCode == 502 || statusCode == 504) {
                             System.out.println("Received error status code: " + statusCode + ". Marking as failed." + email + " Darts-Portal - Api - Cases - Search");
                             session = session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
