@@ -24,7 +24,10 @@ dependencies {
 
 // Default gatlingRun configuration
 gatlingRun {
-    simulationClassName = 'simulations.Scripts.DartsApi.AudioPostSimulation' // Default simulation
+    simulationClassName = System.getenv("simulationClassName")
+    doLast {
+        println "Running simulation: " + System.getenv("simulationClassName")
+    }
 }
 
 // Task for GetCatFacts

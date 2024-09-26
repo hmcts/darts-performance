@@ -1,9 +1,13 @@
 #!groovy
-/*
 properties([
-        pipelineTriggers([cron('00 21 * * *')])
+//        pipelineTriggers([cron('00 21 * * *')]),
+        parameters([
+                choice(choices: [
+                        'simulations.Scripts.DartsApi.AudioPostSimulation',
+                        'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
+                ], name: 'simulation')
+        ])
 ])
-*/
 @Library("Infrastructure") _
 
 def product = "darts"
@@ -55,6 +59,7 @@ withNightlyPipeline(type, product, component) {
     enablePerformanceTest()
     enableSlackNotifications('#darts-builds')
     loadVaultSecrets(secrets)
+    env.simulationClassName = params.simulationClassName
 
     afterFailure('test') {
         publishPerformanceReports()
