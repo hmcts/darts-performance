@@ -28,6 +28,10 @@ gatlingRun {
     doFirst {
         println "Running simulation: " + System.getenv("simulationClassName")
     }
+    SOAP_USERS_COUNT = System.getenv("SOAP_USERS_COUNT")
+    doFirst {
+        println "Users count: " + System.getenv("SOAP_USERS_COUNT")
+    }
 }
 
 // Task for GetCatFacts
