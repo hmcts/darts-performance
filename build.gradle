@@ -26,11 +26,10 @@ dependencies {
 gatlingRun {
     simulationClassName = System.getenv("simulationClassName")
     doFirst {
-        println "Running simulation: " + System.getenv("simulationClassName")
-    }
-    SOAP_USERS_COUNT = System.getenv("SOAP_USERS_COUNT")
-    doFirst {
-        println "Users count: " + System.getenv("SOAP_USERS_COUNT")
+        println "Running simulation: " + simulationClassName
+        def soapUsersCount = System.getenv("SOAP_USERS_COUNT") ?: '1' // Default to 1 if not provided
+        println "Users count: " + soapUsersCount
+        System.setProperty("SOAP_USERS_COUNT", soapUsersCount)
     }
 }
 
