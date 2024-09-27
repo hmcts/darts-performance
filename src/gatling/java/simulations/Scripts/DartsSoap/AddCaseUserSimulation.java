@@ -41,7 +41,7 @@ public class AddCaseUserSimulation extends Simulation {
 
         // Set up all scenarios together
         setUp(
-            mainScenario.injectOpen(atOnceUsers(1)).protocols(httpProtocolSoap)
+            mainScenario.injectOpen(atOnceUsers(AppConfig.SOAP_USERS_COUNT)).protocols(httpProtocolSoap)
           
         );
     }
