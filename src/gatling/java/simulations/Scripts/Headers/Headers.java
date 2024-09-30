@@ -83,7 +83,6 @@ public class Headers {
         Map.entry("SOAPAction", "\"\"")
     );
 
-
     public static final Map<String, String> PortalCommonHeaders = Map.ofEntries(
         Map.entry("Sec-Fetch-Dest", "empty"),
         Map.entry("Sec-Fetch-Mode", "cors"),
