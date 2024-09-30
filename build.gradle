@@ -45,11 +45,11 @@ gatlingRun {
 // Task for GetCatFacts
 tasks.register('runAudioPostSimulation') {
     doLast {
-        println "Running simulation: simulations.Scripts.NightlyRun.AudioPostSimulation"
+        println "Running simulation: simulations.Scripts.NightlyRun.AddCaseUserSimulation"
     }
     // Set the simulation class and make this task depend on gatlingRun
     finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.NightlyRun.AudioPostSimulation'
+    gatlingRun.simulationClassName = 'simulations.Scripts.NightlyRun.AddCaseUserSimulation'
 }
 
 // Task for GetListOfCatFacts
