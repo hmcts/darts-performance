@@ -40,11 +40,17 @@ public final class PostAudioScenario {
                         )                
                 .check(status().saveAs("statusCode"))
                 .check(status().is(200))
+                .check(
+                    jsonPath("$.type").optional().saveAs("errorType"), // Extract error type if it exists
+                    jsonPath("$.title").optional().saveAs("errorTitle"), // Extract error title if it exists
+                    jsonPath("$.status").optional().saveAs("errorStatus") // Extract error status if it exists
+                )
                 ).exec(session -> {
                     // Log the response status after receiving it
                     System.out.println("Audio Created, response: " + session.get("statusCode"));
                     return session;
                 })
+                .exec(UserInfoLogger.logDetailedErrorMessage("DARTS - Api - Audio-request:Post"))
             );
     }
 }
