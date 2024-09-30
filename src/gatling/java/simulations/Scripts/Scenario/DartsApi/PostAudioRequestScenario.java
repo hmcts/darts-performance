@@ -26,7 +26,7 @@ public final class PostAudioRequestScenario {
                         .headers(Headers.AuthorizationHeaders)
                         .body(StringBody(session -> session.getString("xmlPayload"))).asJson()
                         .check(status().saveAs("statusCode"))
-                        .check(status().in(200, 409)) // Only proceed if status is 200 or 409
+                        .check(status().in(200, 409))
                 )
                 // Only perform error handling if the status is not 200 or 409
                 .exec(session -> {
