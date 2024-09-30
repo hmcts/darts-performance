@@ -49,6 +49,10 @@ public class AppConfig {
     public static final boolean DEBUG;
     public static final String ENVIRONMENT;
 
+    //Nightly Run Parameters
+    public static final int NIGHTLY_RUN_REPEATS;
+    public static final int NIGHTLY_RUN_USERS;
+
     //Portal Users For Smoke Test
     public static final int USERS_PER_SECOND;
     public static final int PIPELINE_USERS_PER_SECOND;
@@ -179,6 +183,10 @@ public class AppConfig {
 
         RANK_UP_TIME_SECONDS = Long.parseLong(getProperty("RANK_UP_TIME_SECONDS", "120"));
         RANK_DOWN_TIME_SECONDS = Long.parseLong(getProperty("RANK_DOWN_TIME_SECONDS", "120"));
+
+        //Nightly Run Parameters
+        NIGHTLY_RUN_REPEATS = Integer.parseInt(getProperty("NIGHTLY_RUN_REPEATS", "1"));
+        NIGHTLY_RUN_USERS = Integer.parseInt(getProperty("NIGHTLY_RUN_USERS", "1"));
 
         //Portal Users for smoke test
         JUDGE_RAMP_UP_USERS = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "2"));
