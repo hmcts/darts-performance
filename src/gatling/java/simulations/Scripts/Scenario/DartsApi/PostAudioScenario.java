@@ -24,7 +24,6 @@ public final class PostAudioScenario {
                     System.out.println("Selected file: " + randomAudioFile);
                     return session.set("randomAudioFile", randomAudioFile)
                                   .set("xmlPayload", xmlPayload);
-
                     }
                 )
                 .exec(http(session -> "DARTS - Api - Audios:POST: File - " + session.get("randomAudioFile"))
@@ -48,10 +47,9 @@ public final class PostAudioScenario {
                 .exec(session -> {
                     if (!"200".equals(session.getString("statusCode"))) {
                         String responseBody = session.getString("responseBody");
-
                         System.err.println("Error: Non-200 status code: " + session.get("statusCode" + responseBody));
                     } else {
-                        System.out.println("Audio Created, Response Status: " + session.get("statusCode"));
+                        System.out.println("Audio Created for" + session.get("randomAudioFile") + ", Response Status: " + session.get("statusCode"));
                     }  
                     return session;
                     }

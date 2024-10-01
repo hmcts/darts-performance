@@ -35,7 +35,7 @@ public class AddCaseUserSimulation extends Simulation {
          //Register with different VIQ
          .group("DARTS - GateWay - Soap - AddCase:POST")
          .on(
-             repeat(1)
+             repeat(AppConfig.NIGHTLY_RUN_REPEATS)
             .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
          );
 
