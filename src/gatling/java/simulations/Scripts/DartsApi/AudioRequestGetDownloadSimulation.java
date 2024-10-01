@@ -20,9 +20,8 @@ public class AudioRequestGetDownloadSimulation extends Simulation {
 
     final ScenarioBuilder scn1 = scenario("Audio Requests:GET Download")
         .exec(GetApiTokenScenario.getApiToken())
-        .repeat(10)    
-        .on(exec(GetAudioRequestScenario.GetAudioRequest()) 
-        .exec(GetAudioRequestScenario.GetAudioRequestDownload())    
+        .repeat(1)    
+        .on(exec(GetAudioRequestScenario.GetAudioRequestDownload())    
         );
 
     setUp(
