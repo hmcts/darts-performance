@@ -2,7 +2,8 @@
 properties([
 //        pipelineTriggers([cron('00 21 * * *')]),
         parameters([
-            choice(choices: [
+            choice(choices: [              
+                'simulations.Scripts.NightlyRun.SoapSmokeTestTwoSimulation',
                 'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation',
                 'simulations.Scripts.NightlyRun.AddCaseUserSimulation',
                 'simulations.Scripts.DartsApi.AudioPostSimulation',
