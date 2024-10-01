@@ -41,11 +41,15 @@ public final class PostAudioScenario {
                     )
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))
+                        .check(bodyString().saveAs("responseBody"))
+
                 )
                 .exitHereIfFailed()
                 .exec(session -> {
                     if (!"200".equals(session.getString("statusCode"))) {
-                        System.err.println("Error: Non-200 status code: " + session.get("statusCode"));
+                        String responseBody = session.getString("responseBody");
+
+                        System.err.println("Error: Non-200 status code: " + session.get("statusCode" + responseBody));
                     } else {
                         System.out.println("Audio Created, Response Status: " + session.get("statusCode"));
                     }  

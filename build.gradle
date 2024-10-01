@@ -31,19 +31,29 @@ gatlingRun {
         println "Users count: " + soapUsersCount
         System.setProperty("SOAP_USERS_COUNT", soapUsersCount)
 
-        def nightlyRunRepeats = System.getenv("NIGHTLY_RUN_REPEATS") ?: '1'
+        def nightlyRunRepeats = System.getenv("NIGHTLY_RUN_REPEATS") ?: '10'
         println "Number of repeats: " + nightlyRunRepeats
         System.setProperty("NIGHTLY_RUN_REPEATS", nightlyRunRepeats)
 
-        def nightlyRunUsers = System.getenv("NIGHTLY_RUN_USERS") ?: '1'
+        def nightlyRunUsers = System.getenv("NIGHTLY_RUN_USERS") ?: '10'
         println "Users count: " + nightlyRunUsers
         System.setProperty("NIGHTLY_RUN_USERS", nightlyRunUsers)
     }
 }
 
 
-// Task for GetCatFacts
+// Task for AudioPostSimulation
 tasks.register('runAudioPostSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.AudioPostSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.AudioPostSimulation'
+}
+
+// Task for AddCaseUserSimulation
+tasks.register('runAddCaseUserSimulation') {
     doLast {
         println "Running simulation: simulations.Scripts.NightlyRun.AddCaseUserSimulation"
     }
@@ -52,18 +62,25 @@ tasks.register('runAudioPostSimulation') {
     gatlingRun.simulationClassName = 'simulations.Scripts.NightlyRun.AddCaseUserSimulation'
 }
 
-// Task for GetListOfCatFacts
-tasks.register('runAddCaseUserSimulation') {
+// Task for AudioRequestDeleteSimulation
+tasks.register('runAudioRequestDeleteSimulation') {
     doLast {
-        println "Running simulation: simulations.Scripts.DartsSoap.AddCaseUserSimulation"
+        println "Running simulation: simulations.Scripts.DartsApi.AudioRequestDeleteSimulation"
     }
     // Set the simulation class and make this task depend on gatlingRun
     finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.AudioRequestDeleteSimulation'
 }
 
-
-
+// Task for AudioRequestGetDownloadSimulation
+tasks.register('runAudioRequestGetSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.AudioRequestGetSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.AudioRequestGetSimulation'
+}
 
 checkstyleGatling {
     maxWarnings = 3035
