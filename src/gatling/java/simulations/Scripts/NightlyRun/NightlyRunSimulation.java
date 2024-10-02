@@ -25,6 +25,8 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class NightlyRunSimulation extends Simulation {
+    
+    public static Boolean isFixed = false;
 
 
     @Override
@@ -41,6 +43,7 @@ public class NightlyRunSimulation extends Simulation {
                 .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl());
 
         HttpProtocolBuilder httpProtocolApi = http
+        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .inferHtmlResources()
                 .baseUrl(EnvironmentURL.B2B_Login.getUrl());
         setUpScenarios(httpProtocolSoap, httpProtocolApi);
@@ -87,26 +90,20 @@ public class NightlyRunSimulation extends Simulation {
         ScenarioBuilder postAudioScenario = scenario("Post Audio Request Scenario")
             .exec(GetApiTokenScenario.getApiToken())
             .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
-                .on(exec(PostAudioRequestScenario.PostaudioRequest()));
+                .on(exec(PostAudioRequestScenario.PostaudioRequest())
+                .exec(GetAudioRequestScenario.GetAudioRequest())
+                .exec(DeleteAudioRequestScenario.DeleteAudioRequest())
 
-        ScenarioBuilder getAudioScenario = scenario("Get Audio Request Scenario")
-            .exec(GetApiTokenScenario.getApiToken())
-            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
-            .on(uniformRandomSwitch().on(
-                exec(GetAudioRequestScenario.GetAudioRequestDownload()),
-                exec(GetAudioRequestScenario.GetAudioRequestPlayBack())));
+                // .uniformRandomSwitch().on(
+                //     exec(GetAudioRequestScenario.GetAudioRequestDownload()),
+                //     exec(GetAudioRequestScenario.GetAudioRequestPlayBack()))
 
-        ScenarioBuilder deleteAudioScenario = scenario("Delete Audio Request Scenario")
-            .exec(GetApiTokenScenario.getApiToken())
-            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
-                .on(exec(DeleteAudioRequestScenario.DeleteAudioRequest()));
+            );      
 
         // Set up all scenarios together
         setUp(
-            mainScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolSoap),
-        //    postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolApi),
-            getAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolApi),
-            deleteAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolApi)
+         //   mainScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolSoap),
+            postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolApi)          
         );
     }
 
