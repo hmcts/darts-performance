@@ -15,7 +15,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class AudioPostSimulation extends Simulation {   
   {
     final HttpProtocolBuilder httpProtocol = http
-    //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
@@ -26,6 +26,8 @@ public class AudioPostSimulation extends Simulation {
         );
 
     setUp(
-        scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
+
+        scn1.injectOpen(constantUsersPerSec(1).during(1))).protocols(httpProtocol);
+        
     }    
 }
