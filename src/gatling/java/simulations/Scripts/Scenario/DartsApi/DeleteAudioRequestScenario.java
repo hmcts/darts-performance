@@ -13,32 +13,32 @@ public final class DeleteAudioRequestScenario {
     private DeleteAudioRequestScenario() {}
 
     public static ChainBuilder DeleteAudioRequest() {
-        String sql = 
-        "SELECT darts.transformed_media.trm_id, " +
-            "darts.transformed_media.mer_id, " +
-            "darts.media_request.hea_id, " +
-            "darts.media_request.request_status, " +
-            "darts.media_request.request_type " +
-        "FROM darts.transformed_media " +
-        "INNER JOIN " +
-            "darts.media_request " +
-        "ON " +
-            "darts.transformed_media.mer_id = darts.media_request.mer_id " +
-        "WHERE darts.media_request.request_type = 'DOWNLOAD' " +
-        "AND darts.media_request.request_status != 'DELETED' " +
-        "ORDER BY trm_id ASC LIMIT 500;"; 
+        // String sql = 
+        // "SELECT darts.transformed_media.trm_id, " +
+        //     "darts.transformed_media.mer_id, " +
+        //     "darts.media_request.hea_id, " +
+        //     "darts.media_request.request_status, " +
+        //     "darts.media_request.request_type " +
+        // "FROM darts.transformed_media " +
+        // "INNER JOIN " +
+        //     "darts.media_request " +
+        // "ON " +
+        //     "darts.transformed_media.mer_id = darts.media_request.mer_id " +
+        // "WHERE darts.media_request.request_type = 'DOWNLOAD' " +
+        // "AND darts.media_request.request_status != 'DELETED' " +
+        // "ORDER BY trm_id ASC LIMIT 500;"; 
 
-        // Create the JDBC feeder
-        FeederBuilder<Object> feeder = Feeders.jdbcFeeder(sql);
+        // // Create the JDBC feeder
+        // FeederBuilder<Object> feeder = Feeders.jdbcFeeder(sql);
 
         return group("Audio Request Delete")
-        .on(feed(feeder)
-            .exec(session -> {
-                // Retrieve the transformed media ID from the feeder
+        .on(//feed(feeder)
+            exec(session -> {
+                // Retrieve the transformed media ID from the GET request session
                 String transformedMediaId = session.getString("trm_id");
                 
-                // Log the trm_id to verify it's being populated
-                System.out.println("Fetched trm_id: " + transformedMediaId);
+                // Log to verify it's populated
+                System.out.println("Fetched trm_id for DELETE: " + transformedMediaId);
                 
                 return session.set("trm_id", transformedMediaId);
             })

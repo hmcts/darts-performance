@@ -85,7 +85,8 @@ public class Feeders {
     }
     public static FeederBuilder<String> createAudioRequestCSV() {
         return AudioRequestCSV;
-    }
+    }    
+
     public static FeederBuilder<String> createTransformedMediaDownloadIdCSV() {
         return TransformedMediaDownloadIdCSV;
     }
@@ -148,6 +149,11 @@ public class Feeders {
     public static CheckBuilder.Final saveTransformedMediaId() {
         return CoreDsl.jsonPath("$.transformed_media_details[*].transformed_media_id").findRandom().saveAs("getTransformedMediaId");
     }
+
+    public static CheckBuilder.Final saveNewCreatedTransformedMediaId() {
+        return CoreDsl.jsonPath("$.transformed_media_details[*].[?(@.media_request_id=='#{getRequestId}')].transformed_media_id").saveAs("trm_id");
+    }
+
     public static CheckBuilder.Final saveCaseIdFromTransformedMediaId() {
         return CoreDsl.jsonPath("$.transformed_media_details[*].case_id").findRandom().saveAs("getCaseId");
     }

@@ -11,19 +11,35 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class GetAudioRequestScenario {
 
-    private static final boolean expired = ThreadLocalRandom.current().nextBoolean();
+    public static Object feeder = null;
+    public static Boolean isFixed = false;
 
     private GetAudioRequestScenario() {}
+
+
     public static ChainBuilder GetAudioRequest() {
-        return group("Audio Request Get")
-            .on(exec(feed(Feeders.createAudioRequestCSV()))
-                .exec(http("DARTS - Api - AudioRequest:GET")
-                        .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/v2?expired=true") //+ expired + "")
+        return group("Audio Request Get")    
+            .on(//exec(feed(Feeders.createAudioRequestCSV()))
+                exec(http("DARTS - Api - AudioRequest:GET")
+                        .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/v2?expired=false")
                         .headers(Headers.addAdditionalHeader(Headers.AuthorizationHeaders, true, false))
-                        .check(Feeders.saveTransformedMediaId())
+                        .check(jsonPath("$.transformed_media_details[?(@.media_request_status=='COMPLETED')].transformed_media_id").saveAs("trm_id"))
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))
-            ));
+                        .check(bodyString().saveAs("responseBody"))
+            )
+            .exec(session -> {
+                    String responseBody = session.getString("responseBody");
+                    System.out.println("Response Body: " + responseBody);
+                    String transformedMediaId = session.getString("trm_id");
+                    int statusCode = session.getInt("statusCode");
+    
+                    // Log to confirm if 'trm_id' and statusCode are populated
+                    System.out.println("Fetched transformedMediaId: " + transformedMediaId + ", StatusCode: " + statusCode);
+                    
+                    return session;
+            })    
+        );
     }
 
     public static ChainBuilder GetAudioRequestPlayBack() {
@@ -42,11 +58,17 @@ public final class GetAudioRequestScenario {
         "AND darts.media_request.request_status = 'COMPLETED' " + 
         "ORDER BY trm_id DESC LIMIT 1000;"; 
         
-        // Create the JDBC feeder
-        FeederBuilder<Object> feeder = Feeders.jdbcFeeder(sql);
+        //Selecting which feeder to use based on fixed or Dynami data.
+        if (isFixed) {
+            feeder = (Object) Feeders.createTransformedMediaPlaybackIdCSV();
+        } else {
+            if (feeder == null) {
+                feeder = (Object) Feeders.jdbcFeeder(sql); 
+            }
+        }
 
         return group("Audio Request Get - PlayBack")
-            .on(feed(feeder)
+            .on(exec(feed((FeederBuilder<String>) feeder)
                 .exec(session -> {
                     String transformedMediaId = session.getString("trm_id");
                     return session.set("trm_id", transformedMediaId);
@@ -72,7 +94,7 @@ public final class GetAudioRequestScenario {
                 return session;
             })        
             .exec(UserInfoLogger.logDetailedErrorMessage("Audio Request Get - PlayBack")
-        ); 
+        )); 
     }
 
     public static ChainBuilder GetAudioRequestDownload() {
@@ -91,11 +113,17 @@ public final class GetAudioRequestScenario {
         "AND darts.media_request.request_status = 'COMPLETED' " + 
         "ORDER BY trm_id DESC LIMIT 1000;"; 
         
-        // Create the JDBC feeder
-        FeederBuilder<Object> feeder = Feeders.jdbcFeeder(sql);
+        //Selecting which feeder to use based on fixed or Dynami data.
+        if (isFixed) {
+            feeder = (Object) Feeders.createTransformedMediaDownloadIdCSV();
+        } else {
+            if (feeder == null) {
+                feeder = (Object) Feeders.jdbcFeeder(sql); 
+            }
+        }
 
         return group("Audio Request Get - Download")
-            .on(feed(feeder)
+            .on(exec(feed((FeederBuilder<String>) feeder)
                 .exec(session -> {
                     String transformedMediaId = session.getString("trm_id");
                     return session.set("trm_id", transformedMediaId);
@@ -135,7 +163,7 @@ public final class GetAudioRequestScenario {
                 )
                 // Log error details if the request failed
                 .exec(UserInfoLogger.logDetailedErrorMessage("DARTS - Api - AudioRequest:GET Download"))
-            )
+            ))
         ;
     } 
 }

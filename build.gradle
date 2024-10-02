@@ -90,6 +90,16 @@ tasks.register('runAudioRequestPostSimulation') {
     finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
     gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.AudioRequestPostSimulation'
 }
+// Task for NightlyRunSimulation
+tasks.register('runNightlyRunSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.NightlyRun.NightlyRunSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.NightlyRun.NightlyRunSimulation'
+}
+
 
 checkstyleGatling {
     maxWarnings = 3035

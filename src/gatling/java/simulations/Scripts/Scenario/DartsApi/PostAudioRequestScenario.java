@@ -12,6 +12,8 @@ import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 public final class PostAudioRequestScenario {
 
     private PostAudioRequestScenario() {}
+    public static Object feeder = null;
+    public static Boolean isFixed = false;
 
     public static ChainBuilder PostaudioRequest() {
 
@@ -49,15 +51,21 @@ public final class PostAudioRequestScenario {
         "       sguae.usr_id NOT IN (-100, -99, -69, -68, -67, -48, -44, -4, -3, -2, -1, 0, 1, -101, 221, 241, 1141) " +
         "   ORDER BY " +
         "       RANDOM() " +
-        "   LIMIT 1 " +
+        "   LIMIT 1000 " +
         ") subquery;";
     
      
-        // Create the JDBC feeder
-        FeederBuilder<Object> feeder = Feeders.jdbcFeeder(sql);
+        //Selecting which feeder to use based on fixed or Dynami data.
+        if (isFixed) {
+            feeder = (Object) Feeders.createAudioRequestCSV();
+        } else {
+            if (feeder == null) {
+                feeder = (Object) Feeders.jdbcFeeder(sql); 
+            }
+        }
 
         return group("Audio-request:Post")
-            .on(exec(feed(feeder))            
+                .on(exec(feed((FeederBuilder<String>) feeder)           
                 .exec(session -> {
                     String xmlPayload = RequestBodyBuilder.buildPOSTAudioRequestBody(session);
                     return session.set("xmlPayload", xmlPayload);
@@ -69,7 +77,16 @@ public final class PostAudioRequestScenario {
                         .body(StringBody(session -> session.getString("xmlPayload"))).asJson()
                         .check(status().saveAs("statusCode"))
                         .check(status().in(200, 409))
+                        .check(jsonPath("$.request_id").saveAs("getRequestId"))
+
                 )
+                .exec(session -> {
+                    int statusCode = session.getInt("statusCode");
+                    String requestId = session.get("getRequestId");
+    
+                    System.out.println("Get Request Id:" + requestId + ", Response Status: " + session.get("statusCode"));
+                    return session.set("getRequestId", requestId);
+                })  
                 // Only perform error handling if the status is not 200 or 409
                 .exec(session -> {
                     int statusCode = session.getInt("statusCode");
@@ -97,6 +114,6 @@ public final class PostAudioRequestScenario {
                     // Log error details if the request failed
                     .exec(UserInfoLogger.logDetailedErrorMessage("DARTS - Api - Audio-request:Post"))
                 )
-            );
+            ));
     }
 }
