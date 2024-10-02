@@ -24,7 +24,7 @@ import io.gatling.javaapi.http.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public class SoapSmokeTestTwoSimulation extends Simulation {
+public class NightlyRunSimulation extends Simulation {
 
 
     @Override
@@ -32,7 +32,7 @@ public class SoapSmokeTestTwoSimulation extends Simulation {
         System.out.println("Simulation is about to start!");
     }
 
-    public SoapSmokeTestTwoSimulation() {
+    public NightlyRunSimulation() {
         HttpProtocolBuilder httpProtocolSoap = http
                 .inferHtmlResources()
                 .acceptEncodingHeader("gzip,deflate")
@@ -103,8 +103,8 @@ public class SoapSmokeTestTwoSimulation extends Simulation {
 
         // Set up all scenarios together
         setUp(
-            mainScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoap),
-            postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolApi),
+            mainScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolSoap),
+        //    postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolApi),
             getAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolApi),
             deleteAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolApi)
         );
