@@ -4,10 +4,10 @@ properties([
         parameters([
             choice(choices: [              
                 'simulations.Scripts.NightlyRun.SoapSmokeTestTwoSimulation',
-                'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation',
-                'simulations.Scripts.NightlyRun.AddCaseUserSimulation',
-                'simulations.Scripts.DartsApi.AudioPostSimulation',
-                'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
+             //   'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation',
+             //   'simulations.Scripts.NightlyRun.AddCaseUserSimulation',
+             //   'simulations.Scripts.DartsApi.AudioPostSimulation',
+             //   'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
             ], name: 'simulationClassName'),
             text(name: 'Users', defaultValue: '1', description: 'The number of users for the test')
 
