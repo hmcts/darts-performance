@@ -24,7 +24,7 @@ dependencies {
 
 // Default gatlingRun configuration
 gatlingRun {
-    simulationClassName = System.getenv("simulationClassName")
+    simulationClassName = System.getenv("SimulationBlock")
     doFirst {
         println "Running simulation: " + simulationClassName
         def soapUsersCount = System.getenv("SOAP_USERS_COUNT") ?: '1'

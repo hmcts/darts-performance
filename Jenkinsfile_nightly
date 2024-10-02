@@ -10,6 +10,8 @@ properties([
                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
             ], name: 'simulationClassName'),
             text(name: 'Users', defaultValue: '1', description: 'The number of users for the test')
+            text(name: 'SimulationBlock', defaultValue: 'simulations.Scripts.NightlyRun.SoapSmokeTestTwoSimulation,simulations.Scripts.DartsApi.AudioPostSimulation', description: 'Comma-separated list of simulation class names to run')
+
 
     ])
 ])
