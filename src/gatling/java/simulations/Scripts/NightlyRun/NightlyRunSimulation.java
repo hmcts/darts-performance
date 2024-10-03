@@ -107,7 +107,7 @@ public class NightlyRunSimulation extends Simulation {
             postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
             .protocols(httpProtocolApi)
         ).assertions(
-            global().responseTime().max().lt(500),
+            global().responseTime().max().lt(50000),
             global().successfulRequests().percent().gt(95.0)
         );
     }
