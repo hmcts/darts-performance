@@ -101,7 +101,7 @@ public class NightlyRunSimulation extends Simulation {
 
         // Set up all scenarios together
         setUp(
-            mainScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolSoap),
+            mainScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolSoap)
          //   postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS)).protocols(httpProtocolApi)          
         );
     }
