@@ -29,8 +29,8 @@ public final class GetAudioRequestScenario {
                         .check(bodyString().saveAs("responseBody"))
             )
             .exec(session -> {
-                    String responseBody = session.getString("responseBody");
-                    System.out.println("Response Body: " + responseBody);
+                    //String responseBody = session.getString("responseBody");
+                    //System.out.println("Response Body: " + responseBody);
                     String transformedMediaId = session.getString("trm_id");
                     int statusCode = session.getInt("statusCode");
     
