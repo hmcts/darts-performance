@@ -68,6 +68,7 @@ public final class PostAudioRequestScenario {
                 .on(exec(feed((FeederBuilder<String>) feeder)           
                 .exec(session -> {
                     String xmlPayload = RequestBodyBuilder.buildPOSTAudioRequestBody(session);
+                    System.out.println("Body request:" + xmlPayload);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(
