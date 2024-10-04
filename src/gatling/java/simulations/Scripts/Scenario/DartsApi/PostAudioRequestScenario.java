@@ -79,9 +79,11 @@ public final class PostAudioRequestScenario {
                         .check(status().saveAs("statusCode"))
                         .check(status().in(200, 409))
                         .check(jsonPath("$.request_id").saveAs("getRequestId"))
-
+                        .check(bodyString().saveAs("responseBody"))
                 )
                 .exec(session -> {
+                    String responseBody = session.getString("responseBody");
+                    System.out.println("Response Body: " + responseBody);
                     int statusCode = session.getInt("statusCode");
                     String requestId = session.get("getRequestId");
     
