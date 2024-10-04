@@ -26,10 +26,14 @@ public final class AddCourtlogUserScenario {
                         .check(status().is(200))  // Check only for a 200 status code since that's what you're receiving
                         .check(xpath("//return/code").saveAs("statusCode"))  // Extract status code
                         .check(xpath("//return/message").optional().saveAs("message"))  // Extract message, if available
-                        )
+                        .check(bodyString().saveAs("responseBody")) // Capture the entire response body
+                        )  
                         .exec(session -> {
                             String statusCode = session.getString("statusCode");
                             String message = session.getString("message");
+
+                            String responseBody = session.getString("responseBody");
+                            System.out.println("Raw response body for AddDocument - Add CourtLog request: " + responseBody);
 
                             if (statusCode.equals("500")) {
                                 // Mark as failed if statusCode is 500
