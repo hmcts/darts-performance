@@ -35,7 +35,7 @@ public final class PatchAcceptTranscriptionScenario {
                     if (transcriptionId != null) {
                         System.out.println("Created Transcription Id: " + transcriptionId.toString());
                     } else {
-                        System.out.println("No value saved using saveAs.");
+                        System.out.println("No transcription Id value saved.");
                     }
                     return session;
                 }));
