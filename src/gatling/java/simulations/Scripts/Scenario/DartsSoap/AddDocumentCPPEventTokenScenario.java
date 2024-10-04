@@ -29,10 +29,15 @@ public final class AddDocumentCPPEventTokenScenario {
                         .check(xpath("//messageId/text()").find().optional().saveAs("messageId"))
                         .check(xpath("//return/code").saveAs("statusCode"))
                         .check(xpath("//return/message").saveAs("message"))
+                        .check(bodyString().saveAs("responseBody")) // Capture the entire response body
                         )
                         .exec(session -> {
                             String statusCode = session.getString("statusCode");
                             String message = session.getString("message");
+
+                            String responseBody = session.getString("responseBody");
+                            System.out.println("Raw response body for AddDocument - CPP Event request: " + responseBody);
+
                             if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
                                 // Mark the request as failed if there's an error message
                                 session.markAsFailed();
