@@ -31,7 +31,7 @@ public final class GetApiTokenScenario {
               if (bearerToken != null) {
                   System.out.println("bearerToken: " + bearerToken.toString());
               } else {
-                  System.out.println("No value saved using saveAs.");
+                  System.out.println("No bearer Token value saved.");
               }
               return session;
             })
@@ -65,7 +65,7 @@ public final class GetApiTokenScenario {
                     if (bearerToken != null) {
                         System.out.println("bearerToken: " + bearerToken.toString());
                     } else {
-                        System.out.println("No value saved using saveAs.");
+                        System.out.println("No bearer Token value saved.");
                     }
                     return session;
                 })
