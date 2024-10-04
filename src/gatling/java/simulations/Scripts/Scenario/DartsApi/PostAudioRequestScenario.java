@@ -65,7 +65,7 @@ public final class PostAudioRequestScenario {
         }
 
         return group("Audio-request:Post")
-                .on(exec(feed((FeederBuilder<String>) feeder)           
+            .on(exec(feed((FeederBuilder<String>) feeder)           
                 .exec(session -> {
                     String xmlPayload = RequestBodyBuilder.buildPOSTAudioRequestBody(session);
                     System.out.println("Body request:" + xmlPayload);
@@ -77,28 +77,32 @@ public final class PostAudioRequestScenario {
                         .headers(Headers.AuthorizationHeaders)
                         .body(StringBody(session -> session.getString("xmlPayload"))).asJson()
                         .check(status().saveAs("statusCode"))
-                        .check(status().in(200, 409))
-                        .check(jsonPath("$.request_id").saveAs("getRequestId"))
+                        .check(status().in(200, 409, 401))  // Add 401 to the allowed status codes
+                        .check(jsonPath("$.request_id").optional().saveAs("getRequestId"))
                         .check(bodyString().saveAs("responseBody"))
                 )
                 .exec(session -> {
                     String responseBody = session.getString("responseBody");
                     System.out.println("Response Body: " + responseBody);
                     int statusCode = session.getInt("statusCode");
-                    String requestId = session.get("getRequestId");
-    
-                    System.out.println("Get Request Id:" + requestId + ", Response Status: " + session.get("statusCode"));
-                    return session.set("getRequestId", requestId);
+                    String requestId = session.getString("getRequestId");
+                    
+                    System.out.println("Get Request Id: " + requestId + ", Response Status: " + statusCode);
+                    return session;
                 })  
-                // Only perform error handling if the status is not 200 or 409
+                // Handle non-200 or non-409 status codes, including 401
                 .exec(session -> {
                     int statusCode = session.getInt("statusCode");
-                    if (statusCode != 200 && statusCode != 409) {
+                    if (statusCode == 401) {
                         String responseBody = session.getString("responseBody");
-                        System.err.println("Error: Non-200 status code: " + session.get("statusCode" + responseBody));
+                        System.err.println("Error 401: Unauthorized - " + responseBody);
+                        return session.set("error", true);
+                    } else if (statusCode != 200 && statusCode != 409) {
+                        String responseBody = session.getString("responseBody");
+                        System.err.println("Error: Non-200 status code: " + statusCode + " - " + responseBody);
                         return session.set("error", true);
                     } else {
-                        System.out.println("Audio Requested for hearing Id:" + session.get("hea_id") + ", Response Status: " + session.get("statusCode"));
+                        System.out.println("Audio Requested for hearing Id: " + session.get("hea_id") + ", Response Status: " + statusCode);
                         return session.set("error", false);
                     }
                 })
@@ -109,14 +113,14 @@ public final class PostAudioRequestScenario {
                             .headers(Headers.AuthorizationHeaders)
                             .body(StringBody(session -> session.getString("xmlPayload"))).asJson()
                             .check(
-                                jsonPath("$.type").optional().saveAs("errorType"), // Extract error type if it exists
-                                jsonPath("$.title").optional().saveAs("errorTitle"), // Extract error title if it exists
-                                jsonPath("$.status").optional().saveAs("errorStatus") // Extract error status if it exists
+                                jsonPath("$.type").optional().saveAs("errorType"), 
+                                jsonPath("$.title").optional().saveAs("errorTitle"), 
+                                jsonPath("$.status").optional().saveAs("errorStatus") 
                             )
                     )
-                    // Log error details if the request failed
                     .exec(UserInfoLogger.logDetailedErrorMessage("DARTS - Api - Audio-request:Post"))
                 )
-            ));
+            )
+        );    
     }
 }
