@@ -26,7 +26,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class NightlyRunSimulation extends Simulation {
     
-    public static Boolean isFixed = false;
+    public static Boolean isFixed = true;
 
 
     @Override
@@ -43,6 +43,8 @@ public class NightlyRunSimulation extends Simulation {
                 .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl());
 
         HttpProtocolBuilder httpProtocolApi = http
+        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+
                 .inferHtmlResources()
                 .baseUrl(EnvironmentURL.B2B_Login.getUrl());
         setUpScenarios(httpProtocolSoap, httpProtocolApi);
@@ -89,13 +91,13 @@ public class NightlyRunSimulation extends Simulation {
         ScenarioBuilder postAudioScenario = scenario("Post Audio Request Scenario")
             .exec(GetApiTokenScenario.getApiToken())
             .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
-                .on(exec(PostAudioRequestScenario.PostaudioRequest())
-                .exec(GetAudioRequestScenario.GetAudioRequest())
-                .exec(DeleteAudioRequestScenario.DeleteAudioRequest())
+                .on(//exec(PostAudioRequestScenario.PostaudioRequest())
+             //   .exec(GetAudioRequestScenario.GetAudioRequest())
+             //   .exec(DeleteAudioRequestScenario.DeleteAudioRequest())
 
-                // .uniformRandomSwitch().on(
-                //     exec(GetAudioRequestScenario.GetAudioRequestDownload()),
-                //     exec(GetAudioRequestScenario.GetAudioRequestPlayBack()))
+                 uniformRandomSwitch().on(
+                     exec(GetAudioRequestScenario.GetAudioRequestDownload()),
+                    exec(GetAudioRequestScenario.GetAudioRequestPlayBack()))
 
             );      
 
