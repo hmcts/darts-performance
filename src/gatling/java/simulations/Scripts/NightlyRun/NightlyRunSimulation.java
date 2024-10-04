@@ -91,23 +91,23 @@ public class NightlyRunSimulation extends Simulation {
         ScenarioBuilder postAudioScenario = scenario("Post Audio Request Scenario")
             .exec(GetApiTokenScenario.getApiToken())
             .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
-                .on(//exec(PostAudioRequestScenario.PostaudioRequest())
-             //   .exec(GetAudioRequestScenario.GetAudioRequest())
-             //   .exec(DeleteAudioRequestScenario.DeleteAudioRequest())
+                .on(exec(PostAudioRequestScenario.PostaudioRequest())
+                .exec(GetAudioRequestScenario.GetAudioRequest())
+                .exec(DeleteAudioRequestScenario.DeleteAudioRequest())
 
-                 uniformRandomSwitch().on(
-                     exec(GetAudioRequestScenario.GetAudioRequestDownload()),
-                    exec(GetAudioRequestScenario.GetAudioRequestPlayBack()))
+                //  .uniformRandomSwitch().on(
+                //     exec(GetAudioRequestScenario.GetAudioRequestDownload()),
+                //     exec(GetAudioRequestScenario.GetAudioRequestPlayBack()))
 
             );      
 
         // Set up all scenarios together
         setUp(
-        //    mainScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
-        //    .protocols(httpProtocolSoap),
+            mainScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
+            .protocols(httpProtocolSoap)
             
-            postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
-            .protocols(httpProtocolApi)
+            // postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
+            // .protocols(httpProtocolApi)
         ).assertions(
             global().responseTime().max().lt(50000),
             global().successfulRequests().percent().gt(95.0)
