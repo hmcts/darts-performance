@@ -1,18 +1,18 @@
 #!groovy
 properties([
 //        pipelineTriggers([cron('00 21 * * *')]),
-        parameters([
-            choice(choices: [
-                'simulations.Scripts.NightlyRun.SoapSmokeTestTwoSimulation',
+parameters([
+        choice(choices: [
+                'simulations.Scripts.NightlyRun.AllSimulation',
                 'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation',
                 'simulations.Scripts.NightlyRun.AddCaseUserSimulation',
                 'simulations.Scripts.DartsApi.AudioPostSimulation',
                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
-            ], name: 'simulationClassName'),
-            text(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
-            string(name: 'SimulationBlock', defaultValue: 'simulations.Scripts.NightlyRun.NightlyRunSimulation', description: 'Run the NightlyRunSimulation')
+        ], name: 'simulationClassName'),
+        text(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
+        string(name: 'SimulationBlock', defaultValue: 'simulations.Scripts.NightlyRun.NightlyRunSimulation', description: 'Run the NightlyRunSimulation')
 
-    ])
+])
 ])
 @Library("Infrastructure")
 
@@ -51,22 +51,21 @@ def secrets = [
 ]
 
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
-  [$class     : 'AzureKeyVaultSecret',
-   secretType : 'Secret',
-   name       : secretName,
-   version    : '',
-   envVariable: envVar
-  ]
+    [$class     : 'AzureKeyVaultSecret',
+     secretType : 'Secret',
+     name       : secretName,
+     version    : '',
+     envVariable: envVar
+    ]
 }
 
 withNightlyPipeline(type, product, component) {
-  enablePerformanceTest()
-  enableSlackNotifications('#darts-builds')
-  loadVaultSecrets(secrets)
+    enableSlackNotifications('#darts-builds')
+    loadVaultSecrets(secrets)
     env.simulationClassName = params.simulationClassName
     env.SOAP_USERS_COUNT = params.Users
-
-  afterFailure('test') {
-    publishPerformanceReports()
-  }
+    enablePerformanceTest()
+    afterFailure('test') {
+        publishPerformanceReports()
+    }
 }
