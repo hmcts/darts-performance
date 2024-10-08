@@ -36,7 +36,7 @@ public final class AddDocumentCPPEventTokenScenario {
                             String message = session.getString("message");
 
                             String responseBody = session.getString("responseBody");
-                            System.out.println("Raw response body for AddDocument - CPP Event request: " + responseBody);
+                            //System.out.println("Raw response body for AddDocument - CPP Event request: " + responseBody);
 
                             if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
                                 // Mark the request as failed if there's an error message

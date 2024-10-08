@@ -34,7 +34,7 @@ public final class AddDocumentXhibitEventTokenScenario {
                 .exec(session -> {
                     // Log raw response for debugging purposes
                     String responseBody = session.getString("responseBody");
-                    System.out.println("Raw response body for AddDocument - Xhibit Event request: " + responseBody);
+                //    System.out.println("Raw response body for AddDocument - Xhibit Event request: " + responseBody);
                     return session;
                 })
                 .exec(session -> {

@@ -33,7 +33,7 @@ public final class AddCourtlogUserScenario {
                             String message = session.getString("message");
 
                             String responseBody = session.getString("responseBody");
-                            System.out.println("Raw response body for AddDocument - Add CourtLog request: " + responseBody);
+                          //  System.out.println("Raw response body for AddDocument - Add CourtLog request: " + responseBody);
 
                             if (statusCode.equals("500")) {
                                 // Mark as failed if statusCode is 500
