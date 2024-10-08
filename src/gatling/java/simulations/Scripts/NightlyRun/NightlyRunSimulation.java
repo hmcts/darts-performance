@@ -43,9 +43,9 @@ public class NightlyRunSimulation extends Simulation {
                 .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl());
 
         HttpProtocolBuilder httpProtocolApi = http
-
                 .inferHtmlResources()
                 .baseUrl(EnvironmentURL.B2B_Login.getUrl());
+                
         setUpScenarios(httpProtocolSoap, httpProtocolApi);
     }
 

@@ -19,8 +19,8 @@ public final class PostAudioScenario {
                 .exec(session -> {
                     String randomAudioFile = Feeders.getRandomAudioFile();
                     String xmlPayload = RequestBodyBuilder.buildPostAudioApiRequest(session, randomAudioFile);
-                    System.out.println("Code xmlPayload: " + xmlPayload);
-                    System.out.println("Code session: " + session);
+                  //  System.out.println("Code xmlPayload: " + xmlPayload);
+                   // System.out.println("Code session: " + session);
                     System.out.println("Selected file: " + randomAudioFile);
                     return session.set("randomAudioFile", randomAudioFile)
                                   .set("xmlPayload", xmlPayload);
