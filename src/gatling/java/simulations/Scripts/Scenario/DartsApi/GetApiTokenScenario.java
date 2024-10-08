@@ -29,7 +29,7 @@ public final class GetApiTokenScenario {
                   ).exec(session -> {
               Object bearerToken = session.get("bearerToken");
               if (bearerToken != null) {
-                  System.out.println("bearerToken: " + bearerToken.toString());
+                  System.out.println("bearerToken Created"); //+ bearerToken.toString());
               } else {
                   System.out.println("No bearer Token value saved.");
               }
@@ -63,7 +63,7 @@ public final class GetApiTokenScenario {
                 .exec(session -> {
                     Object bearerToken = session.get("bearerToken");
                     if (bearerToken != null) {
-                        System.out.println("bearerToken: " + bearerToken.toString());
+                      System.out.println("bearerToken Created"); //+ bearerToken.toString());
                     } else {
                         System.out.println("No bearer Token value saved.");
                     }
