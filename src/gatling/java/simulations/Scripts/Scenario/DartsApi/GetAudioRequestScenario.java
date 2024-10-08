@@ -3,6 +3,7 @@ package simulations.Scripts.Scenario.DartsApi;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Utilities.SQLQueryProvider;
 import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
@@ -96,22 +97,9 @@ public final class GetAudioRequestScenario {
             .exec(UserInfoLogger.logDetailedErrorMessage("Audio Request Get - PlayBack")
         )); 
     }
-
     public static ChainBuilder GetAudioRequestDownload() {
-        String sql = 
-        "SELECT darts.transformed_media.trm_id, " + 
-        "darts.transformed_media.mer_id, " + 
-        "darts.media_request.hea_id, " + 
-        "darts.media_request.request_status, " + 
-        "darts.media_request.request_type " + 
-        "FROM darts.transformed_media " + 
-        "INNER JOIN " + 
-        "    darts.media_request " +  
-        "    ON " + 
-        "    darts.transformed_media.mer_id = darts.media_request.mer_id " + 
-        "WHERE darts.media_request.request_type = 'DOWNLOAD' " + 
-        "AND darts.media_request.request_status = 'COMPLETED' " + 
-        "ORDER BY trm_id DESC LIMIT 1000;"; 
+
+        String sql = SQLQueryProvider.getTransformedMediaIdQuery();  
         
         //Selecting which feeder to use based on fixed or Dynami data.
         if (isFixed) {
