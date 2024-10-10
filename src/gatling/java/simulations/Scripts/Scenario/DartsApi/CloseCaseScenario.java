@@ -9,18 +9,18 @@ import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public final class CreateRetenionsScenario {
+public final class CloseCaseScenario {
 
     
-    private CreateRetenionsScenario() {}
-    public static ChainBuilder CreateRetenionsScenario() {
+    private CloseCaseScenario() {}
+    public static ChainBuilder CloseCase() {
         
         String sql = SQLQueryProvider.getCaseDetailsForRetentionQuery();  
 
         // Create the JDBC feeder
         FeederBuilder<Object> feeder = Feeders.jdbcFeeder(sql);
 
-        return group("Create Retenions for a Closed Case")
+        return group("Close a Case")
         .on(feed(feeder)
         .exec(session -> {
             // Extract the data from the feeder and set it to the session
@@ -59,26 +59,9 @@ public final class CreateRetenionsScenario {
                 return session.set("Retenions_cas_id", cas_id);
             }
         )
-        .pause(10)
-        .exec(http("DARTS - Api - AutomatedTasksRequest:POST")
-                .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/11/run") 
-                .headers(Headers.AuthorizationHeaders)
-                .check(status().saveAs("statusCode"))
-                .check(status().is(202))
-        )
         .exec(session -> {
-            String xmlPayload = RequestBodyBuilder.buildRetentionsPostBody(session);
-            System.out.println("Retentions xmlPayload: " + xmlPayload);
-            
-            System.out.println("Retentions session: " + session); 
-            return session.set("xmlPayload", xmlPayload);
-        })      
-        .exec(http("DARTS - Api - RetentionsRequest:POST")
-            .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/retentions?validate_only=false") 
-            .headers(Headers.CourthouseHeaders)
-            .body(StringBody(session -> session.get("xmlPayload"))).asJson()
-            .check(status().saveAs("statusCode"))
-            .check(status().is(200))
-        );
+            System.out.println("Case Closed for Id:" + session.get("cas_id"));
+            return session;
+        });
     }       
 }

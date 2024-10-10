@@ -100,6 +100,16 @@ tasks.register('runNightlyRunSimulation') {
     gatlingRun.simulationClassName = 'simulations.Scripts.NightlyRun.NightlyRunSimulation'
 }
 
+// Task for CloseCaseSimulation
+tasks.register('runCloseCaseSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.CloseCaseSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.CloseCaseSimulation'
+}
+
 
 checkstyleGatling {
     maxWarnings = 3035
