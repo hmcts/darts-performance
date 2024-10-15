@@ -24,7 +24,7 @@ public final class DartsPortalChangeRetentionScenario {
       .on(exec(
             http("Darts-Portal - User - Refresh-profile")
             .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
-            .headers(Headers.CommonHeaders)
+            .headers(Headers.getHeaders(12))
           )
           .exec
             (session -> {
@@ -44,7 +44,7 @@ public final class DartsPortalChangeRetentionScenario {
           .on(
               exec(http("Darts-Portal - Api - Cases - Search")
                   .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
-                  .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
+                  .headers(Headers.getHeaders(9))
                   .body(StringBody(session -> session.get("searchRequestPayload"))).asJson()
                   // Check if the status is 200 to consider it as passed
                   .check(status().is(200))
@@ -86,8 +86,8 @@ public final class DartsPortalChangeRetentionScenario {
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
-              .headers(Headers.CommonHeaders)
-          )
+              .headers(Headers.getHeaders(12))
+            )
           .exec(session -> {
             Object getCaseId = session.get("getCaseId");
             if (getCaseId != null) {
@@ -101,7 +101,7 @@ public final class DartsPortalChangeRetentionScenario {
           .exec(
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
-              .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
+              .headers(Headers.getHeaders(9))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
@@ -110,7 +110,7 @@ public final class DartsPortalChangeRetentionScenario {
           .exec(
             http("Darts-Portal - Api - Cases - Hearings")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
-              .headers(Headers.searchReferer(Headers.CommonHeaders))
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
@@ -119,7 +119,7 @@ public final class DartsPortalChangeRetentionScenario {
           .exec(
             http("Darts-Portal - Api - Cases - Transcripts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/transcripts")
-              .headers(Headers.searchReferer(Headers.CommonHeaders))
+              .headers(Headers.getHeaders(12))
               .check(status().in(200, 403))
               .check(status().saveAs("status"))
           )
@@ -129,25 +129,25 @@ public final class DartsPortalChangeRetentionScenario {
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
           )
 
           .exec(
             http("Darts-Portal - Api - Cases")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
-              .headers(Headers.caseReferer(Headers.CommonHeaders))
+              .headers(Headers.getHeaders(12))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
 
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               )
           .exec(
             http("Darts-Portal - User - Refresh-profile")
             .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
-            .headers(Headers.CommonHeaders)
+            .headers(Headers.getHeaders(12))
             .check(status().is(200))
             .check(status().saveAs("status"))
           )

@@ -28,7 +28,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           .exec(
             http("Darts-Portal - Api - Transcriptions - Transcriber-view")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=false")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(jsonPath("$[*].transcription_id").findRandom().saveAs("getTranscriptionId"))
               .check(status().is(200))
               .check(status().saveAs("status"))
@@ -53,7 +53,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           .exec(
             http("Darts-Portal - Api - Transcriptions - Id")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )  
@@ -78,7 +78,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           .exec(
             http("Darts-Portal - Api - Transcriptions - Transcriber-view")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )  
@@ -88,7 +88,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
@@ -97,7 +97,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           .exec(
             http("Darts-Portal - Api - Transcriptions - Transcriber-counts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-counts")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
@@ -106,7 +106,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           .exec(
             http("Darts-Portal - Api - Transcriptions - Transcriber-counts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-counts")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
@@ -123,7 +123,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           .exec(
             http("Darts-Portal - Api - Transcriptions - Transcriber-view")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true")              
-              .headers(Headers.CommonHeaders) 
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))    
               .check(status().saveAs("status"))    
           )
@@ -138,7 +138,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           .exec(
             http("Darts-Portal - Api - Transcriptions - Id")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
@@ -169,7 +169,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           .exec(
             http("Darts-Portal - Api - Transcriptions - Transcriber-view")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true") 
-              .headers(Headers.CommonHeaders) 
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))      
               .check(status().saveAs("status"))   
           )          

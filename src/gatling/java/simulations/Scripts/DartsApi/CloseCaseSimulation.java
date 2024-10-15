@@ -23,7 +23,7 @@ public class CloseCaseSimulation extends Simulation {
     final ScenarioBuilder scn1 = scenario("Close Case Scenario")
         .exec(feed(Feeders.createCaseHouseRoomsHearingDetails()))
         .exec(GetApiTokenScenario.getApiToken())
-        .repeat(1000)    
+        .repeat(1)    
         .on(exec(CloseCaseScenario.CloseCase()
         ));
 

@@ -2,7 +2,8 @@ package simulations.Scripts.DartsApi;
 
 import simulations.Scripts.Scenario.DartsApi.CreateRetenionsScenario;
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
-
+import simulations.Scripts.Scenario.DartsApi.RunAutomatedTask14Scenario;
+import simulations.Scripts.Scenario.DartsApi.RunCloseOldCasesTaskScenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Utilities.Feeders;
@@ -13,18 +14,18 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 
-public class CaseRetentionSimulation extends Simulation {   
+public class RunCloseOldCasesTaskSimulation extends Simulation {   
   {
     final HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
-    final ScenarioBuilder scn1 = scenario("CaseRetention Scenario")
-        .exec(exec(GetApiTokenScenario.getApiToken())
+    final ScenarioBuilder scn1 = scenario("Run Close Old Cases Task Scenario")
+        .exec(GetApiTokenScenario.getApiToken())
         .repeat(1)    
-        .on(exec(CreateRetenionsScenario.CreateRetenions()
-        )));
+        .on(exec(RunCloseOldCasesTaskScenario.RunCloseOldCasesTask()
+        ));
 
     setUp(
         scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));

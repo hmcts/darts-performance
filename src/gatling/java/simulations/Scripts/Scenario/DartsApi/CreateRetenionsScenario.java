@@ -13,7 +13,7 @@ public final class CreateRetenionsScenario {
 
     
     private CreateRetenionsScenario() {}
-    public static ChainBuilder CreateRetenionsScenario() {
+    public static ChainBuilder CreateRetenions() {
         
         String sql = SQLQueryProvider.getCaseDetailsForRetentionQuery();  
 
@@ -66,6 +66,7 @@ public final class CreateRetenionsScenario {
                 .check(status().saveAs("statusCode"))
                 .check(status().is(202))
         )
+        .pause(5)
         .exec(session -> {
             String xmlPayload = RequestBodyBuilder.buildRetentionsPostBody(session);
             System.out.println("Retentions xmlPayload: " + xmlPayload);
@@ -79,6 +80,11 @@ public final class CreateRetenionsScenario {
             .body(StringBody(session -> session.get("xmlPayload"))).asJson()
             .check(status().saveAs("statusCode"))
             .check(status().is(200))
-        );
+        )
+        .exec(session -> {
+            System.out.println("Case id: " + session.getString("cas_id")+ " has had a Retention added");
+        return session;
+        })
+        .pause(120); 
     }       
 }
