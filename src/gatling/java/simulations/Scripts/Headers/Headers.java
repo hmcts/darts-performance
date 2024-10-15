@@ -13,8 +13,7 @@ public class Headers {
         Map.entry("Sec-Fetch-Site", "same-origin"),
         Map.entry("sec-ch-ua", "Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24"),
         Map.entry("sec-ch-ua-mobile", "?0"),
-        Map.entry("sec-ch-ua-platform", "Windows"),
-        Map.entry("x-dtpc", "3$353367900_249h39vFJVCICPLERLNMNMRQIEOQRIAHARLRUKW-0e0")
+        Map.entry("sec-ch-ua-platform", "Windows")
     );
 
     public static final Map<CharSequence, String> StandardHeaders2 = Map.ofEntries(
@@ -44,7 +43,6 @@ public class Headers {
         AuthorizationHeaders.put("sec-ch-ua-mobile", "?0");
         AuthorizationHeaders.put("sec-ch-ua-platform", "Windows");
         AuthorizationHeaders.put("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36");
-        AuthorizationHeaders.put("x-dtpc", "3$353367900_249h39vFJVCICPLERLNMNMRQIEOQRIAHARLRUKW-0e0");
     }
 
     public static final Map<String, String> CourthouseHeaders = new HashMap<>();
@@ -178,31 +176,7 @@ public class Headers {
     Map.entry("Sec-Fetch-Site", "same-origin"),
     Map.entry("sec-ch-ua", "Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121"),
     Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("sec-ch-ua-platform", "Windows"),
-    Map.entry("x-dtpc", "1$315192570_228h2vRUPELAAMUTHGMGAVQKEMCVNGFKSNLOCP-0e0")
-    );    
-    
-    public static final Map<CharSequence, String> DartsPortalHeaders5 = Map.ofEntries(
-    Map.entry("Sec-Fetch-Dest", "empty"),
-    Map.entry("Sec-Fetch-Mode", "cors"),
-    Map.entry("Sec-Fetch-Site", "same-origin"),
-    Map.entry("sec-ch-ua", "Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121"),
-    Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("sec-ch-ua-platform", "Windows"),
-    Map.entry("x-dtpc", "1$315192570_228h10vRUPELAAMUTHGMGAVQKEMCVNGFKSNLOCP-0e0"),
-    Map.entry("x-dtreferer", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/")
-    );  
-
-
-    public static final Map<String, String> CommonHeaders = Map.ofEntries(
-        Map.entry("Request-Context", "appId=cid-v1:b3dee2d6-8fe5-407e-b65f-c7d24670531d"),
-        Map.entry("Sec-Fetch-Dest", "empty"),
-        Map.entry("Sec-Fetch-Mode", "cors"),
-        Map.entry("Sec-Fetch-Site", "same-origin"),
-        Map.entry("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122"),
-        Map.entry("sec-ch-ua-mobile", "?0"),
-        Map.entry("sec-ch-ua-platform", "Windows"),
-        Map.entry("x-dtpc", "5$336731829_286h95vSEKMHRRHHHPUKSBIGWAIQRROWWRCFGGR-0e0")
+    Map.entry("sec-ch-ua-platform", "Windows")
     );  
 
     public static final Map<String, String> AddDocHeaders = Map.ofEntries(
@@ -215,42 +189,6 @@ public class Headers {
         Map.entry("Sec-Fetch-Site", "same-origin"),
         Map.entry("Referer", "https://darts.test.apps.hmcts.net/work/#{getTranscriptionId}")
     ); 
-    
-    // public static final Map<String, String> headers_6 = Map.ofEntries(
-    // Map.entry("Content-Type", "application/json"),
-    // Map.entry("Origin", "https://darts.test.apps.hmcts.net"),
-    // Map.entry("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128"),
-    // Map.entry("Sec-Fetch-Dest", "empty"),
-    // Map.entry("Sec-Fetch-Mode", "cors"),
-    // Map.entry("Sec-Fetch-Site", "same-origin"),
-    // Map.entry("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123"),
-    // Map.entry("sec-ch-ua-mobile", "?0"),
-    // Map.entry("sec-ch-ua-platform", "Windows"),
-    // );
-
-        // Define headers for each case
-        // Method to add an additional header conditionally
-        public static Map<String, String> searchCaseHeaders(Map<String, String> headers) {
-            Map<String, String> updatedHeaders = new HashMap<>(CommonHeaders);
-                
-            updatedHeaders.put("Content-Type", "application/json");
-            updatedHeaders.put("Origin", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl());
-            return updatedHeaders;
-        }
-
-        public static Map<String, String> searchReferer(Map<String, String> headers) {
-            Map<String, String> updatedHeaders = new HashMap<>(CommonHeaders);
-                
-            updatedHeaders.put("x-dtreferer", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/search");
-            return updatedHeaders;
-        }
-        public static Map<String, String> caseReferer(Map<String, String> headers) {
-            Map<String, String> updatedHeaders = new HashMap<>(CommonHeaders);
-                
-            updatedHeaders.put("x-dtreferer", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/case/29709");
-            return updatedHeaders;
-        }   
-
         public static final Map<String, String> headers_0 = Map.ofEntries(
         Map.entry("Sec-Fetch-Dest", "empty"),
         Map.entry("Sec-Fetch-Mode", "cors"),
@@ -368,7 +306,7 @@ public class Headers {
                     break;
                 case 9:
                     headers.put("Content-Type", "application/json");
-                    headers.put("Origin", "https://darts.test.apps.hmcts.net");
+                    headers.put("Origin", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl());
                     headers.put("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128");
                     headers.put("Sec-Fetch-Dest", "empty");
                     headers.put("Sec-Fetch-Mode", "cors");
@@ -392,7 +330,7 @@ public class Headers {
                     headers.put("Accept-Language", "en-US,en;q=0.9");   
                     break;
                 case 11:
-                    headers.put("Origin", "https://darts.test.apps.hmcts.net");
+                    headers.put("Origin", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl());
                     headers.put("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128");
                     headers.put("Sec-Fetch-Dest", "empty");
                     headers.put("Sec-Fetch-Mode", "cors");
@@ -400,7 +338,7 @@ public class Headers {
                     headers.put("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123");
                     headers.put("sec-ch-ua-mobile", "?0");
                     headers.put("sec-ch-ua-platform", "Windows");
-                    break;
+                    break; 
                 case 12:
                     headers.put("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128");
                     headers.put("Sec-Fetch-Dest", "empty");
@@ -413,7 +351,6 @@ public class Headers {
                 case 13:
                     headers.put("Request-Context", "appId=cid-v1:237f3073-c217-4339-ad15-f6e9539b8128");
                     headers.put("Accept", "*/*");
-
                     headers.put("Sec-Fetch-Dest", "audio");
                     headers.put("Sec-Fetch-Mode", "no-cors");
                     headers.put("Sec-Fetch-Site", "same-origin");

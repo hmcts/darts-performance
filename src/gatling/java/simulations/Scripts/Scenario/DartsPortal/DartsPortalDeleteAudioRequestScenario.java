@@ -113,7 +113,7 @@ public final class DartsPortalDeleteAudioRequestScenario {
           .exec(
             http("Darts-Portal - User - Refresh - Profile")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
@@ -269,7 +269,7 @@ public final class DartsPortalDeleteAudioRequestScenario {
           .exec(
             http("Darts-Portal - User - Refresh - Profile")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )

@@ -9,11 +9,11 @@ import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public final class RunAutomatedTask14Scenario {
+public final class RunAutomatedTask11Scenario {
 
     
-    private RunAutomatedTask14Scenario() {}
-    public static ChainBuilder RunAutomatedTask14Scenario() {
+    private RunAutomatedTask11Scenario() {}
+    public static ChainBuilder RunAutomatedTask11Scenario() {
 
      
 

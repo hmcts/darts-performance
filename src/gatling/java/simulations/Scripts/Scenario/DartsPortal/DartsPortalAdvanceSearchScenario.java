@@ -18,7 +18,7 @@ public final class DartsPortalAdvanceSearchScenario {
             .on(
                 exec(http("Darts-Portal - User - Refresh-profile")
                     .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
-                    .headers(Headers.CommonHeaders)
+                    .headers(Headers.getHeaders(12))
                 )
                .pause(2, 10)
                 
@@ -38,7 +38,7 @@ public final class DartsPortalAdvanceSearchScenario {
                 .on(
                     exec(http("Darts-Portal - Api - Cases - Search")
                         .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
-                        .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
+                        .headers(Headers.getHeaders(9))
                         .body(StringBody(session -> session.get("searchRequestPayload"))).asJson()
                         .check(status().in(200, 400).saveAs("status"))  // Allowing 200 and 400 status codes
                         .check(bodyString().saveAs("responseBody"))      // Save the response body

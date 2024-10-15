@@ -22,12 +22,12 @@ public final class DartsPortalApproveAudioScenario {
       .on(exec(
               http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
-              .headers(Headers.CommonHeaders)
-          )
+              .headers(Headers.getHeaders(12))
+              )
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )
@@ -36,7 +36,7 @@ public final class DartsPortalApproveAudioScenario {
           .exec(
             http("Darts-Portal - Api - Transcriptions")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(jsonPath("$.approver_transcriptions[*].transcription_id").findRandom().saveAs("getTranscriptionId"))
               .check(status().is(200))
               ).exec(session -> {
@@ -54,7 +54,7 @@ public final class DartsPortalApproveAudioScenario {
           .exec(
             http("Darts-Portal - Api - Transcriptions - Urgencies")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/urgencies")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )    
@@ -64,13 +64,13 @@ public final class DartsPortalApproveAudioScenario {
           .exec(            
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
-              .headers(Headers.CommonHeaders)
-          )     
+              .headers(Headers.getHeaders(12))
+              )     
      
           .exec(
             http("Darts-Portal - Api - Transcriptions - Id")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
           )   
@@ -84,7 +84,7 @@ public final class DartsPortalApproveAudioScenario {
           .exec(
             http("Darts-Portal - Api - Transcriptions - Id")
               .patch(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
-              .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
+              .headers(Headers.getHeaders(9))
               .body(StringBody(session -> session.get("xmlPayload"))).asJson()
               .check(status().is(200))
               .check(status().saveAs("status"))
@@ -95,12 +95,12 @@ public final class DartsPortalApproveAudioScenario {
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
-              .headers(Headers.CommonHeaders)
-          ) 
+              .headers(Headers.getHeaders(12))
+              ) 
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
-              .headers(Headers.CommonHeaders)   
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))   
               .check(status().saveAs("status"))    
           )
@@ -109,7 +109,7 @@ public final class DartsPortalApproveAudioScenario {
           .exec(
             http("Darts-Portal - Api - Transcriptions")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions")
-              .headers(Headers.CommonHeaders)
+              .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
               )

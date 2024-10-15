@@ -111,6 +111,26 @@ tasks.register('runCloseCaseSimulation') {
 }
 
 
+// Task for CloseOldCasesTaskSimulation
+tasks.register('runCloseOldCasesTaskSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunCloseOldCasesTaskSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunCloseOldCasesTaskSimulation'
+}
+
+// Task for CaseRetentionSimulation
+tasks.register('runCaseRetentionSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.CaseRetentionSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.CaseRetentionSimulation'
+}
+
 checkstyleGatling {
     maxWarnings = 3035
 }

@@ -2,7 +2,7 @@ package simulations.Scripts.DartsApi;
 
 import simulations.Scripts.Scenario.DartsApi.CreateRetenionsScenario;
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
-import simulations.Scripts.Scenario.DartsApi.RunAutomatedTask14Scenario;
+import simulations.Scripts.Scenario.DartsApi.RunAutomatedTask11Scenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Utilities.Feeders;
@@ -13,7 +13,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 
-public class RunAutomatedTask14Simulation extends Simulation {   
+public class RunAutomatedTask11Simulation extends Simulation {   
   {
     final HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
@@ -23,7 +23,7 @@ public class RunAutomatedTask14Simulation extends Simulation {
     final ScenarioBuilder scn1 = scenario("CaseRetention Scenario")
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(1)    
-        .on(exec(RunAutomatedTask14Scenario.RunAutomatedTask14Scenario()
+        .on(exec(RunAutomatedTask11Scenario.RunAutomatedTask11Scenario()
         ));
 
     setUp(
