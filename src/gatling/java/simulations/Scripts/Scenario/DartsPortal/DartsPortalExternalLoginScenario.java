@@ -25,8 +25,8 @@ public final class DartsPortalExternalLoginScenario {
             exec(
                 http("Darts-Portal - Auth - Login")
                   .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/login")
-                  .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
-                )  
+                  .headers(Headers.getHeaders(0))
+                  )  
                 .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Login"))
             
               .exec(
@@ -35,7 +35,7 @@ public final class DartsPortalExternalLoginScenario {
                   "?client_id=" + AppConfig.EnvironmentURL.EXTERNAL_CLIENT_ID.getUrl() +
                   "&redirect_uri=" + AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + 
                   "/auth/callback&scope=openid&prompt=login&response_mode=form_post&response_type=code")
-                  .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
+                  .headers(Headers.getHeaders(0))
                   .check(Feeders.saveStateProperties())
                   .check(Feeders.saveCsrf())          
                 )
@@ -50,7 +50,7 @@ public final class DartsPortalExternalLoginScenario {
               .exec(
                 http("Darts-Portal - Auth - Azuread-b2c-login")
                   .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en")
-                  .headers(Headers.AzureadB2cLoginHeaders(Headers.PortalCommonHeaders))
+                  .headers(Headers.getHeaders(17))
               )
               .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Azuread-b2c-login"))
 
@@ -95,7 +95,7 @@ public final class DartsPortalExternalLoginScenario {
                 .exec(
                     http("B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed")
                       .get(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/api/CombinedSigninAndSignup/confirmed?rememberMe=false&csrf_token=#{csrf}&tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin&diags=%7B%22pageViewId%22%3A%223ec520ab-1a56-4387-a71c-8f4357eb169d%22%2C%22pageId%22%3A%22CombinedSigninAndSignup%22%2C%22trace%22%3A%5B%7B%22ac%22%3A%22T005%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A2%7D%2C%7B%22ac%22%3A%22T021%20-%20URL%3A" + AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "%2Fauth%2Fazuread-b2c-login%3FscreenName%3DloginScreen%26ui_locales%3Den%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A267%7D%2C%7B%22ac%22%3A%22T019%22%2C%22acST%22%3A1708515180%2C%22acD%22%3A3%7D%2C%7B%22ac%22%3A%22T004%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A2%7D%2C%7B%22ac%22%3A%22T003%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A1%7D%2C%7B%22ac%22%3A%22T035%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T030Online%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T035%22%2C%22acST%22%3A1708515181%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T002%22%2C%22acST%22%3A1708515190%2C%22acD%22%3A0%7D%2C%7B%22ac%22%3A%22T018T010%22%2C%22acST%22%3A1708515189%2C%22acD%22%3A608%7D%5D%7D")
-                      .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
+                      .headers(Headers.getHeaders(0))
                       .check(Feeders.saveTokenCode())
                 )
                 .exec(UserInfoLogger.logDetailedErrorMessage("B2C_1_darts_externaluser_signin - Api - CombinedSigninAndSignup - Confirmed"))
@@ -150,7 +150,7 @@ public final class DartsPortalExternalLoginScenario {
                 .exec(    
                   http("Darts-Portal - Api - Courthouses")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/courthouses")
-                        .headers(Headers.DartsPortalHeaders5)
+                        .headers(Headers.DartsPortalHeaders4)
                         .check(status().is(200))
                         .check(status().saveAs("status"))
                     )

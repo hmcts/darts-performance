@@ -7,14 +7,6 @@ import simulations.Scripts.Utilities.AppConfig;
 import java.util.HashMap;
 
 public class Headers {
-    public static final Map<CharSequence, String> StandardHeaders = Map.ofEntries(
-        Map.entry("Sec-Fetch-Dest", "empty"),
-        Map.entry("Sec-Fetch-Mode", "cors"),
-        Map.entry("Sec-Fetch-Site", "same-origin"),
-        Map.entry("sec-ch-ua", "Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24"),
-        Map.entry("sec-ch-ua-mobile", "?0"),
-        Map.entry("sec-ch-ua-platform", "Windows")
-    );
 
     public static final Map<CharSequence, String> StandardHeaders2 = Map.ofEntries(
         Map.entry("Sec-Fetch-Dest", "empty"),
@@ -74,9 +66,7 @@ public class Headers {
         Map.entry("Content-Type", "application/x-www-form-urlencoded")
       );
 
-
-
-          // SoapHeaders 
+    // SoapHeaders 
     public static final Map<CharSequence, String> SoapHeaders = Map.ofEntries(
         Map.entry("SOAPAction", "\"\"")
     );
@@ -88,43 +78,7 @@ public class Headers {
         Map.entry("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122"),
         Map.entry("sec-ch-ua-mobile", "?0"),
         Map.entry("sec-ch-ua-platform", "Windows")
-    );  
-
-    public static Map<String, String> portalLoginHeaders(Map<String, String> headers) {
-        Map<String, String> updatedHeaders = new HashMap<>(PortalCommonHeaders);
-            
-        updatedHeaders.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
-        updatedHeaders.put("Sec-Fetch-Dest", "document");
-        updatedHeaders.put("Sec-Fetch-Mode", "navigate");
-        updatedHeaders.put("Sec-Fetch-User", "?1");
-        updatedHeaders.put("Upgrade-Insecure-Requests", "1");
-        return updatedHeaders;
-    }
-
-    public static Map<String, String> portalLogOutHeaders(Map<String, String> headers) {
-        Map<String, String> updatedHeaders = new HashMap<>(PortalCommonHeaders);
-            
-        updatedHeaders.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
-        updatedHeaders.put("Sec-Fetch-Dest", "document");
-        updatedHeaders.put("Sec-Fetch-Mode", "navigate");
-        updatedHeaders.put("Sec-Fetch-User", "?1");
-        updatedHeaders.put("Upgrade-Insecure-Requests", "1");
-        updatedHeaders.put("return-client-request-id", "true");
-        updatedHeaders.put("tb-aad-device-family", "3");
-        updatedHeaders.put("tb-aad-env-id", "10.0.19041.4474");
-        updatedHeaders.put("x-ms-RefreshTokenCredential", "NA");
-        return updatedHeaders;
-    }
-
-    public static Map<String, String> AzureadB2cLoginHeaders(Map<String, String> headers) {
-        Map<String, String> updatedHeaders = new HashMap<>(PortalCommonHeaders);
-        
-        updatedHeaders.put("Accept", "*/*");
-        updatedHeaders.put("Origin", AppConfig.EnvironmentURL.B2B_Login.getUrl());
-        updatedHeaders.put("Sec-Fetch-Site", "cross-site");
-        return updatedHeaders;
-    }
-    
+    );      
     public static Map<String, String> PerftraceHeaders(Map<String, String> headers) {
         Map<String, String> updatedHeaders = new HashMap<>(PortalCommonHeaders);
         
@@ -217,6 +171,7 @@ public class Headers {
                     headers.put("Accept-Language", "en-US,en;q=0.9");
                     headers.put("Connection", "keep-alive");
                     break;
+
                 case 1:
                     headers.put("Accept", "application/json");
                     headers.put("Content-type", "application/json; charset=UTF-8");
@@ -272,8 +227,7 @@ public class Headers {
                     headers.put("sec-ch-ua", "Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126");
                     headers.put("sec-ch-ua-mobile", "?0");
                     headers.put("sec-ch-ua-platform", "Windows");
-                    break;                    
-
+                    break;
                 case 6:
                     headers.put("Accept", "application/json, text/plain, */*");
                     headers.put("Sec-Fetch-Dest", "empty");
@@ -370,6 +324,41 @@ public class Headers {
                     headers.put("sec-ch-ua-platform", "Windows");
                     headers.put("Accept-Encoding", "gzip, deflate, br, zstd");
                     headers.put("Accept-Language", "en-US,en;q=0.9");
+                    break;
+                case 15:
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    break;
+                case 16:
+                    headers.put("Sec-Fetch-Dest", "document");
+                    headers.put("Sec-Fetch-Mode", "navigate");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("Sec-Fetch-User", "?1");
+                    headers.put("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
+                    headers.put("Upgrade-Insecure-Requests", "1");
+                    headers.put("return-client-request-id", "true");
+                    headers.put("tb-aad-device-family", "3");
+                    headers.put("tb-aad-env-id", "10.0.19041.4474");
+                    headers.put("x-ms-RefreshTokenCredential", "NA");
+                    break;
+                case 17:
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "cross-site");
+                    headers.put("Sec-Fetch-User", "?1");
+                    headers.put("Sec-Fetch-User", "?1");
+                    headers.put("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("Accept", "*/*");
+                    headers.put("Origin", AppConfig.EnvironmentURL.B2B_Login.getUrl());
             }
             return headers;
         }
