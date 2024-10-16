@@ -22,16 +22,16 @@ public final class DartsPortalInternalLoginScenario {
                 exec(
                     http("Darts-Portal - Login")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/login")
-                        .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
-                )
+                        .headers(Headers.getHeaders(0))
+                        )
                 .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Login"))
                 
                 .exitHereIfFailed()
                 .exec(
                     http("Darts-Portal - App - Config")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/App/Config")
-                        .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
-                )
+                        .headers(Headers.getHeaders(0))
+                    )
                 .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - App - Config"))
                 .exitHereIfFailed() 
 
@@ -183,7 +183,7 @@ public final class DartsPortalInternalLoginScenario {
             .exec(
                 http("Darts-Portal - Api - Courthouses")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/courthouses")
-                    .headers(Headers.DartsPortalHeaders5)
+                    .headers(Headers.DartsPortalHeaders4)
                     .check(status().is(200))
                     .check(status().saveAs("status"))
             )
