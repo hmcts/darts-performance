@@ -3,6 +3,7 @@ package simulations.Scripts.Scenario.DartsSoap;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig.SoapServiceEndpoint;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Utilities.NumberGenerator;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -10,14 +11,18 @@ import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 
 public final class AddDocumentXhibitDailyListTokenScenario {
 
+
+    private static final NumberGenerator generator = new NumberGenerator(11);
+
     private AddDocumentXhibitDailyListTokenScenario() {}
     public static ChainBuilder AddDocumentXhibitDailyListToken() {
         return
        //  group("AddDocument - Xhibit DailyList SOAP Requests")
          //   .on(
                 feed(Feeders.createCourtHouseAndCourtRooms())   
+            .pause(1)
             .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddDocumentXhibitDailyListTokenRequest(session);  
+                    String xmlPayload = SOAPRequestBuilder.AddDocumentXhibitDailyListTokenRequest(session, generator);  
                     return session.set("xmlPayload", xmlPayload);  
                 })
                 .exec(http("DARTS - GateWay - Soap - AddDocument - Xhibit DailyList - Token")

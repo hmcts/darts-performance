@@ -146,7 +146,7 @@ public final class DartsPortalInternalLoginScenario {
             .exec(
                 http("Darts-Portal - App - Config")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
-                    .headers(Headers.DartsPortalHeaders4)
+                    .headers(Headers.getHeaders(15))
                     .check(status().is(200))
                     .check(status().saveAs("status"))
             )
@@ -170,20 +170,20 @@ public final class DartsPortalInternalLoginScenario {
             .exec(
                 http("Darts-Portal - User - Profile")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/profile")
-                    .headers(Headers.DartsPortalHeaders4)
+                    .headers(Headers.getHeaders(15))
                     .check(Feeders.saveUserId())
             )
             .exitHereIfFailed() 
             .exec(
                 http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
-                    .headers(Headers.DartsPortalHeaders4)
-            )
+                    .headers(Headers.getHeaders(15))
+                    )
             .exitHereIfFailed() 
             .exec(
                 http("Darts-Portal - Api - Courthouses")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/courthouses")
-                    .headers(Headers.DartsPortalHeaders4)
+                    .headers(Headers.getHeaders(15))
                     .check(status().is(200))
                     .check(status().saveAs("status"))
             )

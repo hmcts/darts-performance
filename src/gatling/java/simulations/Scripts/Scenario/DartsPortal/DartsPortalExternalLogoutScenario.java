@@ -19,16 +19,16 @@ public final class DartsPortalExternalLogoutScenario {
               exec(
                 http("Darts-Portal - Auth - Logout")
                 .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout")
-                .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))
-              )  
+                .headers(Headers.getHeaders(0))
+                )  
               .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Logout"))
 
               .exitHereIfFailed() 
               .exec(
                     http("Darts-Portal - Auth - Logout-callback")
                     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/logout-callback")
-                    .headers(Headers.portalLoginHeaders(Headers.PortalCommonHeaders))                   
-              )
+                    .headers(Headers.getHeaders(0))
+                    )
               .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Logout-callback"))
 
               .exitHereIfFailed() 

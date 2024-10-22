@@ -63,7 +63,7 @@ public final class DartsPortalExternalLoginScenario {
               .exec(
                 http("B2C_1_darts_externaluser_signin - Client - Perftrace")
                   .post(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/client/perftrace?tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin")
-                  .headers(Headers.PerftraceHeaders(Headers.PortalCommonHeaders))
+                  .headers(Headers.getHeaders(19))
                   //.body(StringBody(session -> session.get("xmlPayload"))).asJson()
                   .body(RawFileBody("perftrace/0000_request.bin"))
                 )
@@ -84,8 +84,8 @@ public final class DartsPortalExternalLoginScenario {
                   http("B2C_1_darts_externaluser_signin - SelfAsserted")
                     .post(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/SelfAsserted?tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin")
                    // .headers(Headers.DartsPortalHeaders21)
-                    .headers(Headers.headers_0)
-                    .formParam("request_type", "RESPONSE")
+                   .headers(Headers.getHeaders(21))
+                   .formParam("request_type", "RESPONSE")
                     .formParam("email", "#{Email}")
                     .formParam("password", "#{Password}")
                     .check(status().is(200))
@@ -104,7 +104,7 @@ public final class DartsPortalExternalLoginScenario {
                 .exec(
                   http("Darts-Portal - Auth - Callback")
                       .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/callback")
-                      .headers(Headers.DartsPortalHeaders3(Headers.PortalCommonHeaders))
+                      .headers(Headers.getHeaders(20))
                       .formParam("code", "#{TokenCode}")
                       .check(status().is(200))
                       .check(status().saveAs("status"))
@@ -116,7 +116,7 @@ public final class DartsPortalExternalLoginScenario {
                 .exec(
                   http("Darts-Portal - App - Config")
                       .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
-                      .headers(Headers.DartsPortalHeaders4)
+                      .headers(Headers.getHeaders(15))
                 )
                 .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - App - Config"))
 
@@ -137,20 +137,20 @@ public final class DartsPortalExternalLoginScenario {
                 .exec(    
                   http("Darts-Portal - User - Profile")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/profile")
-                        .headers(Headers.DartsPortalHeaders4)
+                        .headers(Headers.getHeaders(15))
                         .check(Feeders.saveUserId())
                 )
                 .exitHereIfFailed() 
                 .exec(
                   http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
-                        .headers(Headers.DartsPortalHeaders4)
-                )
+                        .headers(Headers.getHeaders(15))
+                  )
                 .exitHereIfFailed() 
                 .exec(    
                   http("Darts-Portal - Api - Courthouses")
                         .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/courthouses")
-                        .headers(Headers.DartsPortalHeaders4)
+                        .headers(Headers.getHeaders(15))
                         .check(status().is(200))
                         .check(status().saveAs("status"))
                     )

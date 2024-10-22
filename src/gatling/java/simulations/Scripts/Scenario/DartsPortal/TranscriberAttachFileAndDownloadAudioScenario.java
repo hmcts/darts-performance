@@ -63,7 +63,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           .exec(
             http("Darts-Portal - Api - Transcriptions - Id")
               .patch(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
-              .headers(Headers.searchCaseHeaders(Headers.CommonHeaders))
+              .headers(Headers.getHeaders(9))
               .body(StringBody("{\"transcription_status_id\":5}")).asJson()
               .check(status().is(200))
               .check(status().saveAs("status"))

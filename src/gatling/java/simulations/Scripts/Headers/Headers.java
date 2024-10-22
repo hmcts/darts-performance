@@ -8,19 +8,6 @@ import java.util.HashMap;
 
 public class Headers {
 
-    public static final Map<CharSequence, String> StandardHeaders2 = Map.ofEntries(
-        Map.entry("Sec-Fetch-Dest", "empty"),
-        Map.entry("Sec-Fetch-Mode", "cors"),
-        Map.entry("Sec-Fetch-Site", "same-origin"),
-        Map.entry("sec-ch-ua", "Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24"),
-        Map.entry("sec-ch-ua-mobile", "?0"),
-        Map.entry("sec-ch-ua-platform", "Windows"),
-        Map.entry("Accept", "application/json, text/plain, */*"),
-        Map.entry("Content-Type", "application/json"),
-        Map.entry("Origin", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl()),
-        Map.entry("Referer", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/case/#{getCaseId}/hearing/#{getHearings.id}")
-    );
-
     public static final Map<String, String> AuthorizationHeaders = new HashMap<>();
 
     // Populate AuthorizationHeaders
@@ -69,27 +56,7 @@ public class Headers {
     // SoapHeaders 
     public static final Map<CharSequence, String> SoapHeaders = Map.ofEntries(
         Map.entry("SOAPAction", "\"\"")
-    );
-
-    public static final Map<String, String> PortalCommonHeaders = Map.ofEntries(
-        Map.entry("Sec-Fetch-Dest", "empty"),
-        Map.entry("Sec-Fetch-Mode", "cors"),
-        Map.entry("Sec-Fetch-Site", "same-origin"),
-        Map.entry("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122"),
-        Map.entry("sec-ch-ua-mobile", "?0"),
-        Map.entry("sec-ch-ua-platform", "Windows")
-    );      
-    public static Map<String, String> PerftraceHeaders(Map<String, String> headers) {
-        Map<String, String> updatedHeaders = new HashMap<>(PortalCommonHeaders);
-        
-        updatedHeaders.put("Accept", "application/json, text/javascript, */*; q=0.01");
-        updatedHeaders.put("Content-Type", "application/json; charset=UTF-8");
-        updatedHeaders.put("Origin", AppConfig.EnvironmentURL.B2B_Login.getUrl());
-        updatedHeaders.put("X-CSRF-TOKEN", "#{csrf}");
-        updatedHeaders.put("X-Requested-With", "XMLHttpRequest");
-        updatedHeaders.put("Referer", "https://hmctsstgextid.b2clogin.com/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/oauth2/v2.0/authorize?client_id=363c11cb-48b9-44bf-9d06-9a3973f6f413&redirect_uri=https%3A%2F%2Fdarts.test.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code");
-        return updatedHeaders;
-    }
+    );    
 
     public static final Map<CharSequence, String> DartsPortalHeaders21 = Map.ofEntries(   
     Map.entry("Connection", "keep-alive"),
@@ -109,29 +76,7 @@ public class Headers {
     Map.entry("Referer", AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/"+ AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "?client_id="+ AppConfig.EnvironmentURL.EXTERNAL_CLIENT_ID.getUrl() +"&redirect_uri="+ AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code"),
     Map.entry("Accept-Encoding", "gzip, deflate, br, zstd"),
     Map.entry("Accept-Language", "en-US,en;q=0.9")
-    );
-
-    public static Map<String, String> DartsPortalHeaders3(Map<String, String> headers) {
-        Map<String, String> updatedHeaders = new HashMap<>(PortalCommonHeaders);
-        
-        updatedHeaders.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
-        updatedHeaders.put("Cache-Control", "max-age=0");
-        updatedHeaders.put("Origin", AppConfig.EnvironmentURL.B2B_Login.getUrl());
-        updatedHeaders.put("Sec-Fetch-Dest", "document");
-        updatedHeaders.put("Sec-Fetch-Mode", "navigate");
-        updatedHeaders.put("Sec-Fetch-Site", "cross-site");
-        updatedHeaders.put("Upgrade-Insecure-Requests", "1");
-        return updatedHeaders;
-    }
-
-    public static final Map<CharSequence, String> DartsPortalHeaders4 = Map.ofEntries(
-    Map.entry("Sec-Fetch-Dest", "empty"),
-    Map.entry("Sec-Fetch-Mode", "cors"),
-    Map.entry("Sec-Fetch-Site", "same-origin"),
-    Map.entry("sec-ch-ua", "Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121"),
-    Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("sec-ch-ua-platform", "Windows")
-    );  
+    ); 
 
     public static final Map<String, String> AddDocHeaders = Map.ofEntries(
         Map.entry("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122"),
@@ -142,18 +87,7 @@ public class Headers {
         Map.entry("Sec-Fetch-Mode", "cors"),
         Map.entry("Sec-Fetch-Site", "same-origin"),
         Map.entry("Referer", "https://darts.test.apps.hmcts.net/work/#{getTranscriptionId}")
-    ); 
-        public static final Map<String, String> headers_0 = Map.ofEntries(
-        Map.entry("Sec-Fetch-Dest", "empty"),
-        Map.entry("Sec-Fetch-Mode", "cors"),
-        Map.entry("Sec-Fetch-Site", "same-origin"),
-        Map.entry("X-CSRF-TOKEN", "#{csrf}"),
-        Map.entry("X-Requested-With", "XMLHttpRequest"),
-        Map.entry("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122"),
-        Map.entry("sec-ch-ua-mobile", "?0"),
-        Map.entry("sec-ch-ua-platform", "Windows")
-        );
-
+    );
         public static Map<String, String> getHeaders(int headerType) {
             Map<String, String> headers = new HashMap<>();
             switch (headerType) {
@@ -199,7 +133,7 @@ public class Headers {
                     headers.put("sec-ch-ua", "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\"");
                     headers.put("sec-ch-ua-mobile", "?0");
                     headers.put("sec-ch-ua-platform", "Windows");
-                    break;   
+                    break; 
                 case 3:
                     headers.put("Cache-Control", "max-age=0");
                     headers.put("Sec-Fetch-Dest", "document");
@@ -359,7 +293,68 @@ public class Headers {
                     headers.put("sec-ch-ua-platform", "Windows");
                     headers.put("Accept", "*/*");
                     headers.put("Origin", AppConfig.EnvironmentURL.B2B_Login.getUrl());
+                    break;
+                case 18:
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    break;
+                case 19:
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("Sec-Fetch-User", "?1");
+                    headers.put("Sec-Fetch-User", "?1");
+                    headers.put("sec-ch-ua", "Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("Accept", "*/*");
+                    headers.put("Content-Type", "application/json; charset=UTF-8");
+                    headers.put("Origin", AppConfig.EnvironmentURL.B2B_Login.getUrl());
+                    headers.put("X-CSRF-TOKEN", "#{csrf}");
+                    headers.put("X-Requested-With", "XMLHttpRequest");
+                    headers.put("Referer", "https://hmctsstgextid.b2clogin.com/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/oauth2/v2.0/authorize?client_id=363c11cb-48b9-44bf-9d06-9a3973f6f413&redirect_uri=https%3A%2F%2Fdarts.test.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code");
+                    break;
+                case 20:   
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
+                    headers.put("Cache-Control", "max-age=0");
+                    headers.put("Origin", AppConfig.EnvironmentURL.B2B_Login.getUrl());
+                    headers.put("Sec-Fetch-Dest", "document");
+                    headers.put("Sec-Fetch-Mode", "navigate");
+                    headers.put("Sec-Fetch-Site", "cross-site");
+                    headers.put("Upgrade-Insecure-Requests", "1");
+                    break;
+                case 21: 
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("X-CSRF-TOKEN", "#{csrf}");
+                    headers.put("X-Requested-With", "XMLHttpRequest");
+                    headers.put("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    break;
+                case 22:
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("sec-ch-ua", "Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("Accept", "application/json, text/plain, */*");
+                    headers.put("Content-Type", "application/json");
+                    headers.put("Origin", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl());
+                    headers.put("Referer", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/case/#{getCaseId}/hearing/#{getHearings.id}");
             }
             return headers;
         }
-}
+}    

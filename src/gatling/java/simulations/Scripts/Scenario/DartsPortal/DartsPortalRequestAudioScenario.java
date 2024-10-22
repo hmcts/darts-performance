@@ -232,7 +232,7 @@ public final class DartsPortalRequestAudioScenario {
               "/api/audio-requests/" + 
               (requestTypeSession.get("requestType") != null ? 
               requestTypeSession.get("requestType").toString().toLowerCase() : ""))
-              .headers(Headers.StandardHeaders2)
+              .headers(Headers.getHeaders(22))
               .body(StringBody(session -> session.get("AudioXmlPayload"))).asJson()
               .check(status().saveAs("status"))
               .checkIf(session -> session.getInt("status") == 409).then(

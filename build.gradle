@@ -131,6 +131,56 @@ tasks.register('runCaseRetentionSimulation') {
     gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.CaseRetentionSimulation'
 }
 
+// Task for ApplyRetentionTaskSimulation
+tasks.register('runApplyRetentionTaskSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunApplyRetentionTaskSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunApplyRetentionTaskSimulation'
+}
+
+// Task for UnstructuredAudioDeleterTaskSimulation
+tasks.register('runUnstructuredAudioDeleterTaskSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunUnstructuredAudioDeleterTaskSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunUnstructuredAudioDeleterTaskSimulation'
+}
+
+// Task for RunDailyListTaskSimulation
+tasks.register('runDailyListTaskSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunDailyListTaskSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunDailyListTaskSimulation'
+}
+
+// Task for DailyListsSimulation
+tasks.register('runDailyListsSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsSoap.DailyListsSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSoap.DailyListsSimulation'
+}
+
+// Task for RunDailyListHouseKeepingTaskSimulation
+tasks.register('runDailyListHouseKeepingTaskSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunDailyListHouseKeepingTaskSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunDailyListHouseKeepingTaskSimulation'
+}
+
 checkstyleGatling {
     maxWarnings = 3035
 }
