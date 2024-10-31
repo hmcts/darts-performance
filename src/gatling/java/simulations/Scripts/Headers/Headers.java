@@ -8,22 +8,6 @@ import java.util.HashMap;
 
 public class Headers {
 
-    public static final Map<String, String> AuthorizationHeaders = new HashMap<>();
-
-    // Populate AuthorizationHeaders
-    static {
-        AuthorizationHeaders.put("Sec-Fetch-Dest", "empty");
-        AuthorizationHeaders.put("Sec-Fetch-Mode", "cors");
-        AuthorizationHeaders.put("Sec-Fetch-Site", "same-origin");
-        AuthorizationHeaders.put("accept-language", "en-US,en;q=0.9");
-        AuthorizationHeaders.put("authorization", "Bearer #{bearerToken}");
-        AuthorizationHeaders.put("origin", AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl());
-        AuthorizationHeaders.put("sec-ch-ua", "Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24");
-        AuthorizationHeaders.put("sec-ch-ua-mobile", "?0");
-        AuthorizationHeaders.put("sec-ch-ua-platform", "Windows");
-        AuthorizationHeaders.put("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36");
-    }
-
     public static final Map<String, String> CourthouseHeaders = new HashMap<>();
 
     static {
@@ -44,50 +28,11 @@ public class Headers {
     
         return updatedHeaders;
     }
-
-    public static final Map<CharSequence, String> ApiHeaders = Map.ofEntries(
-        Map.entry("Accept", "*/*"),
-        Map.entry("Cache-Control", "no-cache"),
-        Map.entry("accept-encoding", "gzip, deflate, br"),
-        Map.entry("user-agent", "application/x-www-form-urlencoded"),
-        Map.entry("Content-Type", "application/x-www-form-urlencoded")
-      );
-
     // SoapHeaders 
     public static final Map<CharSequence, String> SoapHeaders = Map.ofEntries(
         Map.entry("SOAPAction", "\"\"")
     );    
 
-    public static final Map<CharSequence, String> DartsPortalHeaders21 = Map.ofEntries(   
-    Map.entry("Connection", "keep-alive"),
-    Map.entry("Content-Length", "82"),
-    Map.entry("sec-ch-ua", "\"Not A(Brand\";v=\"8\", \"Google Chrome\";v=\"126\", \"Chromium\";v=\"126\""),
-    Map.entry("X-CSRF-TOKEN", "#{csrf}"),
-    Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"),
-    Map.entry("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"),
-    Map.entry("Accept", "application/json, text/javascript, */*; q=0.01"),
-    Map.entry("X-Requested-With", "XMLHttpRequest"),
-    Map.entry("sec-ch-ua-platform", "\"Windows\""),
-    Map.entry("Origin", AppConfig.EnvironmentURL.B2B_Login.getUrl()),
-    Map.entry("Sec-Fetch-Site", "same-origin"),
-    Map.entry("Sec-Fetch-Mode", "cors"),
-    Map.entry("Sec-Fetch-Dest", "empty"),
-    Map.entry("Referer", AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/"+ AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "?client_id="+ AppConfig.EnvironmentURL.EXTERNAL_CLIENT_ID.getUrl() +"&redirect_uri="+ AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code"),
-    Map.entry("Accept-Encoding", "gzip, deflate, br, zstd"),
-    Map.entry("Accept-Language", "en-US,en;q=0.9")
-    ); 
-
-    public static final Map<String, String> AddDocHeaders = Map.ofEntries(
-        Map.entry("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122"),
-        Map.entry("sec-ch-ua-platform", "Windows"),
-        Map.entry("sec-ch-ua-mobile", "?0"),
-        Map.entry("Request-Context", "appId=cid-v1:b3dee2d6-8fe5-407e-b65f-c7d24670531d"),
-        Map.entry("Sec-Fetch-Dest", "empty"),
-        Map.entry("Sec-Fetch-Mode", "cors"),
-        Map.entry("Sec-Fetch-Site", "same-origin"),
-        Map.entry("Referer", "https://darts.test.apps.hmcts.net/work/#{getTranscriptionId}")
-    );
         public static Map<String, String> getHeaders(int headerType) {
             Map<String, String> headers = new HashMap<>();
             switch (headerType) {
@@ -354,6 +299,54 @@ public class Headers {
                     headers.put("Content-Type", "application/json");
                     headers.put("Origin", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl());
                     headers.put("Referer", AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/case/#{getCaseId}/hearing/#{getHearings.id}");
+                    break;
+                case 23:
+                    headers.put("sec-ch-ua", "Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("Request-Context", "appId=cid-v1:b3dee2d6-8fe5-407e-b65f-c7d24670531d");
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("Referer", "https://darts.test.apps.hmcts.net/work/#{getTranscriptionId}");
+                    break;
+                case 24:
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("accept-language", "en-US,en;q=0.9");
+                    headers.put("authorization", "Bearer #{bearerToken}");
+                    headers.put("origin", AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl());
+                    headers.put("sec-ch-ua", "Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36");
+                    break;
+                case 25:
+                    headers.put("Connection", "keep-alive");
+                    headers.put("Content-Length", "82");
+                    headers.put("sec-ch-ua", "\"Not A(Brand\";v=\"8\", \"Google Chrome\";v=\"126\", \"Chromium\";v=\"126\"");
+                    headers.put("X-CSRF-TOKEN", "#{csrf}");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36");
+                    headers.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+                    headers.put("Accept", "application/json, text/javascript, */*; q=0.01");
+                    headers.put("X-Requested-With", "XMLHttpRequest");
+                    headers.put("sec-ch-ua-platform", "\"Windows\"");
+                    headers.put("Origin", AppConfig.EnvironmentURL.B2B_Login.getUrl());
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("Referer", AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/"+ AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "?client_id="+ AppConfig.EnvironmentURL.EXTERNAL_CLIENT_ID.getUrl() +"&redirect_uri="+ AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code");
+                    headers.put("Accept-Encoding", "gzip, deflate, br, zstd");
+                    headers.put("Accept-Language", "en-US,en;q=0.9");
+                    break;
+                case 26:
+                    headers.put("Accept", "*/*");
+                    headers.put("Cache-Control", "no-cache");
+                    headers.put("accept-encoding", "gzip, deflate, br");
+                    headers.put("user-agent", "application/x-www-form-urlencoded");
+                    headers.put("Content-Type", "application/x-www-form-urlencoded");
             }
             return headers;
         }

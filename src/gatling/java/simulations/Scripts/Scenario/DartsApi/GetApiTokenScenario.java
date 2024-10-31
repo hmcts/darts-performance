@@ -18,7 +18,7 @@ public final class GetApiTokenScenario {
         .on(exec( 
               http("DARTS - Api - Token:GET")
                   .get(EnvironmentURL.B2B_Token.getUrl())
-                  .headers(Headers.ApiHeaders)
+                  .headers(Headers.getHeaders(26))
                   .formParam("grant_type", EnvironmentURL.GRANT_TYPE.getUrl())
                   .formParam("client_id", EnvironmentURL.EXTERNAL_CLIENT_ID.getUrl())
                   .formParam("client_secret", EnvironmentURL.EXTERNAL_CLIENT_SECRET.getUrl())
@@ -51,7 +51,7 @@ public final class GetApiTokenScenario {
               .exec( 
                 http("DARTS - Api - Token:GET")
                     .get(EnvironmentURL.INTERNAL_B2B_Token.getUrl())
-                    .headers(Headers.ApiHeaders)
+                    .headers(Headers.getHeaders(26))
                     .formParam("grant_type", EnvironmentURL.GRANT_TYPE.getUrl())
                     .formParam("client_id", EnvironmentURL.INTERNAL_CLIENT_ID.getUrl())
                     .formParam("client_secret", EnvironmentURL.INTERNAL_CLIENT_SECRET.getUrl())

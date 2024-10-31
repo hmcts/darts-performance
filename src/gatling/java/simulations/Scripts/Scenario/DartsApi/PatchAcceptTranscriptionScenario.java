@@ -23,7 +23,7 @@ public final class PatchAcceptTranscriptionScenario {
                 .exec(
                     http("DARTS - Api - Transcription:Patch - Accept")
                         .patch(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/transcriptions/#{tra_id}")
-                        .headers(Headers.AuthorizationHeaders)
+                        .headers(Headers.getHeaders(24))
                         .body(StringBody(session ->
                             RequestBodyBuilder.buildTranscriptionPatchAcceptRequestBody(session)
                         )).asJson()

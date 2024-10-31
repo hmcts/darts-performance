@@ -28,7 +28,7 @@ public final class PostAudioScenario {
                 )
                 .exec(http(session -> "DARTS - Api - Audios:POST: File - " + session.get("randomAudioFile"))
                     .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audios")
-                    .headers(Headers.AuthorizationHeaders)
+                    .headers(Headers.getHeaders(24))
                     .bodyPart(StringBodyPart("metadata", session -> session.get("xmlPayload"))
                         .contentType("application/json")
                         .charset("US-ASCII")

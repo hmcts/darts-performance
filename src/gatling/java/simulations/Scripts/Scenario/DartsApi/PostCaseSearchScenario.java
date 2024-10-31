@@ -21,8 +21,8 @@ public final class PostCaseSearchScenario {
                 })
                 .exec(http("DARTS - Api - Case:POST Search")
                         .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/cases/search")
-                        .headers(Headers.AuthorizationHeaders)
-                       // .check(Feeders.saveTransformedMediaId())
+                        .headers(Headers.getHeaders(24))
+                        // .check(Feeders.saveTransformedMediaId())
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))
             ));

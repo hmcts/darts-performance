@@ -20,7 +20,7 @@ public final class RunApplyRetentionTaskScenario {
         return group("Apply Retention for a Closed Case after 7 days")
         .on(exec(http("DARTS - Api - AutomatedTasksRequest:POST")
                 .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/11/run") 
-                .headers(Headers.AuthorizationHeaders)
+                .headers(Headers.getHeaders(24))
                 .check(status().saveAs("statusCode"))
                 .check(status().is(202))
         ))

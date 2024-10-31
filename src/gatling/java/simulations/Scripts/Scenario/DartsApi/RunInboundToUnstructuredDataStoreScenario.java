@@ -9,24 +9,24 @@ import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public final class RunDailyListTaskScenario {
+public final class RunInboundToUnstructuredDataStoreScenario {
 
     
-    private RunDailyListTaskScenario() {}
-    public static ChainBuilder RunDailyListTask() {
+    private RunInboundToUnstructuredDataStoreScenario() {}
+    public static ChainBuilder RunInboundToUnstructuredDataStore() {
 
      
 
-        return group("Process Daily List")
+        return group("Inbound To Unstructured DataStore")
         .on(exec(http("DARTS - Api - AutomatedTasksRequest:POST")
-                .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/1/run") 
+                .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/6/run") 
                 .headers(Headers.getHeaders(24))
                 .check(status().saveAs("statusCode"))
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 1 has been ran for Process Daily List");
+                System.out.println("Automated Tasks 18 has been ran for Inbound To Unstructured DataStore");
             return session;
         });       
-    }      
+    }       
 }

@@ -35,7 +35,7 @@ public final class DartsPortalExternalLogoutScenario {
               .exec(
                   http("Darts-Portal - App - Config")
                       .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/app/config")
-                      .headers(Headers.DartsPortalHeaders4)
+                      .headers(Headers.getHeaders(15))
               )
               .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - App - Config"))
 
