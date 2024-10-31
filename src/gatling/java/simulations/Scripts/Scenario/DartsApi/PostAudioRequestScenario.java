@@ -14,7 +14,7 @@ public final class PostAudioRequestScenario {
 
     private PostAudioRequestScenario() {}
     public static Object feeder = null;
-    public static Boolean isFixed = false;
+    public static Boolean isFixed = true;
 
     public static ChainBuilder PostaudioRequest() {
 
@@ -38,8 +38,8 @@ public final class PostAudioRequestScenario {
                 })
                 .exec(
                     http("DARTS - Api - Audio-request:Post")
-                        .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests")
-                        .headers(Headers.AuthorizationHeaders)
+                        .post("https://darts-api.staging.platform.hmcts.net/audio-requests")
+                        .headers(Headers.getHeaders(24))
                         .body(StringBody(session -> session.getString("xmlPayload"))).asJson()
                         .check(status().saveAs("statusCode"))
                         .check(status().in(200, 409, 401))  // Add 401 to the allowed status codes
@@ -75,7 +75,7 @@ public final class PostAudioRequestScenario {
                     exec(
                         http("DARTS - Api - Audio-request:Post Error Handling")
                             .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests")
-                            .headers(Headers.AuthorizationHeaders)
+                            .headers(Headers.getHeaders(24))
                             .body(StringBody(session -> session.getString("xmlPayload"))).asJson()
                             .check(
                                 jsonPath("$.type").optional().saveAs("errorType"), 

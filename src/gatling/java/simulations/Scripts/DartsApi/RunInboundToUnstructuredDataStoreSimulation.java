@@ -1,12 +1,10 @@
 package simulations.Scripts.DartsApi;
 
-import simulations.Scripts.Scenario.DartsApi.CreateRetenionsScenario;
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
-import simulations.Scripts.Scenario.DartsApi.RunAutomatedTask11Scenario;
-import simulations.Scripts.Scenario.DartsApi.RunCloseOldCasesTaskScenario;
+import simulations.Scripts.Scenario.DartsApi.RunCaseExpiryDeletionScenario;
+import simulations.Scripts.Scenario.DartsApi.RunInboundToUnstructuredDataStoreScenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -14,17 +12,17 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 
-public class RunCloseOldCasesTaskSimulation extends Simulation {   
+public class RunInboundToUnstructuredDataStoreSimulation extends Simulation {   
   {
     final HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
-    final ScenarioBuilder scn1 = scenario("Run Close Old Cases Task Scenario")
+    final ScenarioBuilder scn1 = scenario("Run Inbound To Unstructured DataStore Task Scenario")
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(1)    
-        .on(exec(RunCloseOldCasesTaskScenario.RunCloseOldCasesTask()
+        .on(exec(RunInboundToUnstructuredDataStoreScenario.RunInboundToUnstructuredDataStore()
         ));
 
     setUp(

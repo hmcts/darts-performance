@@ -181,6 +181,86 @@ tasks.register('runDailyListHouseKeepingTaskSimulation') {
     gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunDailyListHouseKeepingTaskSimulation'
 }
 
+// Task for RunDailyListHouseKeepingTaskSimulation
+tasks.register('runPortalSmokeTestTwoSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'
+}
+
+// Task for RunCloseOldUnfinishedTranscriptionsSimulation
+tasks.register('runCloseOldUnfinishedTranscriptionsSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunCloseOldUnfinishedTranscriptionsSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunCloseOldUnfinishedTranscriptionsSimulation'
+}
+
+// Task for RunGenerateCaseDocumentSimulation
+tasks.register('runGenerateCaseDocumentSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunGenerateCaseDocumentSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentSimulation'
+}
+
+// Task for RunGenerateCaseDocumentForRetentionDateSimulation
+tasks.register('runGenerateCaseDocumentForRetentionDateSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunGenerateCaseDocumentForRetentionDateSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentForRetentionDateSimulation'
+}
+
+// Task for RunGenerateCaseDocumentForRetentionDateSimulation
+tasks.register('runAddDocumentsSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsSoap.AddDocumentsSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSoap.AddDocumentsSimulation'
+}
+
+// Task for RunRemoveDuplicateEventsSimulation
+tasks.register('runRemoveDuplicateEventsSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunRemoveDuplicateEventsSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunRemoveDuplicateEventsSimulation'
+}
+
+// Task for RunCaseExpiryDeletionSimulation
+tasks.register('runCaseExpiryDeletionSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunCaseExpiryDeletionSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunCaseExpiryDeletionSimulation'
+}
+
+// Task for RunInboundToUnstructuredDataStoreSimulation
+tasks.register('runInboundToUnstructuredDataStoreSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunInboundToUnstructuredDataStoreSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunInboundToUnstructuredDataStoreSimulation'
+}
+
 checkstyleGatling {
     maxWarnings = 3035
 }

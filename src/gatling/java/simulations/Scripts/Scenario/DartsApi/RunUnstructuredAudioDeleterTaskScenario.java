@@ -20,7 +20,7 @@ public final class RunUnstructuredAudioDeleterTaskScenario {
         return group("Unstructured Audio Deleter")
         .on(exec(http("DARTS - Api - AutomatedTasksRequest:POST")
                 .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/7/run") 
-                .headers(Headers.AuthorizationHeaders)
+                .headers(Headers.getHeaders(24))
                 .check(status().saveAs("statusCode"))
                 .check(status().is(202))
         ))

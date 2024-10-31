@@ -23,7 +23,7 @@ public final class PostTranscriptionScenario {
                 .exec(
                     http("DARTS - Api - Transcription:POST")
                         .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/transcriptions")
-                        .headers(Headers.AuthorizationHeaders)
+                        .headers(Headers.getHeaders(24))
                         .body(StringBody(session ->
                             RequestBodyBuilder.buildTranscriptionRequestBody(session)
                         )).asJson()

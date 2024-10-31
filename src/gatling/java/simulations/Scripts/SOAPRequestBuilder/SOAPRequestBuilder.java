@@ -260,7 +260,7 @@ public class SOAPRequestBuilder {
         // Generate dynamic values
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(10);
-        String eventText = randomStringGenerator.generateRandomString(10);
+        String eventText = "This is a Perf test for tasks"; //randomStringGenerator.generateRandomString(10);
 
         // Construct SOAP request
         return String.format("<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
@@ -293,7 +293,7 @@ public class SOAPRequestBuilder {
         // Generate dynamic values
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(10);
-        String eventText = randomStringGenerator.generateRandomString(10);
+        String eventText = "This is a Perf test for tasks"; //randomStringGenerator.generateRandomString(10);
 
         // Construct SOAP request
         return String.format("<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +

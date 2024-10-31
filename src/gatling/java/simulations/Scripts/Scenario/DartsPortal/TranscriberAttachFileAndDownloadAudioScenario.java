@@ -148,7 +148,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           .exec(
             http("Darts-Portal - Api - Transcriptions - Document")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}/document")
-              .headers(Headers.AddDocHeaders)
+              .headers(Headers.getHeaders(23))
           .bodyPart(RawFileBodyPart("transcript", randomDocumentFile)
               .fileName(randomDocumentFile)
               .contentType("application/vnd.openxmlformats-officedocument.wordprocessingml.document")

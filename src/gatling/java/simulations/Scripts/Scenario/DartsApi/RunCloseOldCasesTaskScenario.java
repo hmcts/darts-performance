@@ -20,7 +20,7 @@ public final class RunCloseOldCasesTaskScenario {
         return group("Create Retenions for a Closed Case")
         .on(exec(http("DARTS - Api - AutomatedTasksRequest:POST")
                 .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/12/run") 
-                .headers(Headers.AuthorizationHeaders)
+                .headers(Headers.getHeaders(24))
                 .check(status().saveAs("statusCode"))
                 .check(status().is(202))
         ))

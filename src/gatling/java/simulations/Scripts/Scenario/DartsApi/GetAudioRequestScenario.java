@@ -23,7 +23,7 @@ public final class GetAudioRequestScenario {
             .on(//exec(feed(Feeders.createAudioRequestCSV()))
                 exec(http("DARTS - Api - AudioRequest:GET")
                         .get(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/v2?expired=false")
-                        .headers(Headers.addAdditionalHeader(Headers.AuthorizationHeaders, true, false))
+                        .headers(Headers.addAdditionalHeader(Headers.getHeaders(24), true, false))
                         .check(jsonPath("$.transformed_media_details[?(@.media_request_status=='COMPLETED')].transformed_media_id").saveAs("trm_id"))
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))
@@ -76,7 +76,7 @@ public final class GetAudioRequestScenario {
                 })
                 .exec(http("DARTS - Api - AudioRequest:GET PlayBack")
                     .get(session -> AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/playback?transformed_media_id=" + session.getString("trm_id"))
-                    .headers(Headers.AuthorizationHeaders)
+                    .headers(Headers.getHeaders(24))
                     .check(status().saveAs("statusCode"))
                     .check(status().is(200))
                     .check(bodyString().saveAs("responseBody"))
@@ -118,7 +118,7 @@ public final class GetAudioRequestScenario {
                 })
                 .exec(http("DARTS - Api - AudioRequest:GET Download")
                         .get(session -> AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/download?transformed_media_id=" + session.get("trm_id"))
-                        .headers(Headers.AuthorizationHeaders)
+                        .headers(Headers.getHeaders(24))
                         .check(status().saveAs("statusCode"))
                         .check(status().is(200))
                         .check(bodyString().saveAs("responseBody"))
@@ -141,8 +141,8 @@ public final class GetAudioRequestScenario {
                 exec(
                     http("DARTS - Api - Audio-request:GET Download Error Handling")
                     .get(session -> AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/download?transformed_media_id=" + session.get("trm_id"))
-                    .headers(Headers.AuthorizationHeaders)
-                        .body(StringBody(session -> session.getString("xmlPayload"))).asJson()
+                    .headers(Headers.getHeaders(24))
+                    .body(StringBody(session -> session.getString("xmlPayload"))).asJson()
                         .check(
                             jsonPath("$.type").optional().saveAs("errorType"), // Extract error type if it exists
                             jsonPath("$.title").optional().saveAs("errorTitle"), // Extract error title if it exists
