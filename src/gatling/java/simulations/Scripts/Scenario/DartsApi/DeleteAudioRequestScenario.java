@@ -32,8 +32,9 @@ public final class DeleteAudioRequestScenario {
         // FeederBuilder<Object> feeder = Feeders.jdbcFeeder(sql);
 
         return group("Audio Request Delete")
-        .on(//feed(feeder)
-            exec(session -> {
+        .on(exec(feed(Feeders.createTransformedMediaDeleteIdsCSV()))
+        //.on(feed(feeder)
+            .exec(session -> {
                 // Retrieve the transformed media ID from the GET request session
                 String transformedMediaId = session.getString("trm_id");
                 

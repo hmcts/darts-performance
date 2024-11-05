@@ -25,7 +25,7 @@ public final class RunInboundToUnstructuredDataStoreScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 18 has been ran for Inbound To Unstructured DataStore");
+                System.out.println("Automated Tasks 6 has been ran for Inbound To Unstructured DataStore");
             return session;
         });       
     }       
