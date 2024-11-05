@@ -261,6 +261,47 @@ tasks.register('runInboundToUnstructuredDataStoreSimulation') {
     gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunInboundToUnstructuredDataStoreSimulation'
 }
 
+// Task for RunInboundAudioDeleterTaskSimulation
+tasks.register('runInboundAudioDeleterTaskSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunInboundAudioDeleterTaskSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunInboundAudioDeleterTaskSimulation'
+}
+
+// Task for PortalSmokeTestOneSimulation
+tasks.register('runPortalSmokeTestOneSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsSmokeTests.PortalSmokeTestOneSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestOneSimulation'
+}
+
+// Task for RunExternalDataStoreDeleterTaskSimulation
+tasks.register('runExternalDataStoreDeleterTaskSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunExternalDataStoreDeleterTaskSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunExternalDataStoreDeleterTaskSimulation'
+}
+
+// Task for RunOutboundAudioDeleterTaskSimulation
+tasks.register('runOutboundAudioDeleterTaskSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunOutboundAudioDeleterTaskSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunOutboundAudioDeleterTaskSimulation'
+}
+
+
 checkstyleGatling {
     maxWarnings = 3035
 }

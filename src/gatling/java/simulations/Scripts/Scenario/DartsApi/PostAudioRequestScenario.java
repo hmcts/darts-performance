@@ -38,7 +38,7 @@ public final class PostAudioRequestScenario {
                 })
                 .exec(
                     http("DARTS - Api - Audio-request:Post")
-                        .post("https://darts-api.staging.platform.hmcts.net/audio-requests")
+                        .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests")
                         .headers(Headers.getHeaders(24))
                         .body(StringBody(session -> session.getString("xmlPayload"))).asJson()
                         .check(status().saveAs("statusCode"))

@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class GetAudioRequestScenario {
 
     public static Object feeder = null;
-    public static Boolean isFixed = false;
+    public static Boolean isFixed = true;
 
     private GetAudioRequestScenario() {}
 

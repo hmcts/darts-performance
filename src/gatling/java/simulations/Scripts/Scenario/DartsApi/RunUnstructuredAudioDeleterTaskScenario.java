@@ -16,7 +16,6 @@ public final class RunUnstructuredAudioDeleterTaskScenario {
     public static ChainBuilder RunUnstructuredAudioDeleterTask() {
 
      
-
         return group("Unstructured Audio Deleter")
         .on(exec(http("DARTS - Api - AutomatedTasksRequest:POST")
                 .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/7/run") 
