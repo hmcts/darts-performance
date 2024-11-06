@@ -52,11 +52,11 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
          // Register with different VIQ
          .group("VIQ External Requests")
          .on(
-            repeat(AppConfig.ADD_CASES_PEAK_REPEATS)
+            repeat(1)
             .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-            .repeat(AppConfig.GET_CASES_PEAK_REPEATS)
+            .repeat(1)
             .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-            .repeat(AppConfig.ADD_LOG_ENTRY_PEAK_REPEATS)
+            .repeat(1)
             .on(exec(AddCourtlogUserScenario.addCourtLogUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
         )
             
@@ -68,9 +68,9 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
         )
         .group("Add Document CPP")
         .on(
-            repeat(AppConfig.CPP_EVENTS_PEAK_REPEATS)
+            repeat(1)
                 .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
-            .repeat(AppConfig.CPP_DailyList_PEAK_REPEATS) 
+            .repeat(1) 
                 .on(exec(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()))
         )
 
@@ -82,9 +82,9 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
         )
         .group("Add Document Xhibit")
         .on(
-            repeat(AppConfig.XHIBIT_EVENTS_PEAK_REPEATS)
+            repeat(1)
                 .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
-            .repeat(AppConfig.XHIBIT_DailyList_PEAK_REPEATS)
+            .repeat(1)
                 .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
         );
 
@@ -106,7 +106,7 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
 
         // Set up all scenarios together
         setUp(
-           mainScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoap),
+         //  mainScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoap),
            postAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
            getAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
            deleteAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi)

@@ -14,6 +14,21 @@ public class TimestampGenerator {
         return now.format(formatter);
     }
 
+
+    public class NoSpaceTimestampGenerator {
+        public static String getCurrentTimestamp() {
+            LocalDateTime now = LocalDateTime.now();
+            // Format the timestamp using the desired format
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
+            return now.format(formatter);
+        }
+
+        public static void main(String[] args) {
+            System.out.println(getCurrentTimestamp());
+        }
+    }
+
+
     // Method to generate a random time within the specified range
     public static LocalDateTime getRandomTime(LocalDateTime startTime, int minHoursDifference, int maxHoursDifference) {
         int randomHoursDifference = ThreadLocalRandom.current().nextInt(minHoursDifference, maxHoursDifference + 1);

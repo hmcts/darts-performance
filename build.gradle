@@ -301,6 +301,25 @@ tasks.register('runOutboundAudioDeleterTaskSimulation') {
     gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunOutboundAudioDeleterTaskSimulation'
 }
 
+// Task for SoapBaseLinePeakTestSimulation
+tasks.register('runSoapBaseLinePeakTestSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsBaseLinePeakTests.SoapBaseLinePeakTestSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsBaseLinePeakTests.SoapBaseLinePeakTestSimulation'
+}
+
+// Task for AddDocumentEventTokenSimulation
+tasks.register('runAddDocumentEventTokenSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsSoap.AddDocumentEventTokenSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSoap.AddDocumentEventTokenSimulation'
+}
 
 checkstyleGatling {
     maxWarnings = 3035
