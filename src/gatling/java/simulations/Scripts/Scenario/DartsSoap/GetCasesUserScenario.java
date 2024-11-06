@@ -42,6 +42,24 @@ public final class GetCasesUserScenario {
                             return session;
                         })
                         .exec(session -> {
+                            String statusCode = session.getString("statusCode");
+                            String message = session.getString("message");
+
+                            String responseBody = session.getString("responseBody");
+                          //  System.out.println("Raw response body for AddDocument - Add CourtLog request: " + responseBody);
+
+                            if (statusCode.equals("500")) {
+                                // Mark as failed if statusCode is 500
+                                session.markAsFailed();
+                                if (message == null) {
+                                    System.out.println("Error detected for Add GetCase request: 500 response Code");
+                                } else {
+                                    System.out.println("Error detected for Add GetCase request: " + message);
+                                }
+                            }
+                            return session;
+                        })
+                        .exec(session -> {
                             Object messageId = session.get("messageId");
                             if (messageId != null) {
                                 System.out.println("messageId for GetCase request: " + messageId.toString());
