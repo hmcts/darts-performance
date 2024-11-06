@@ -47,7 +47,7 @@ public class AddDocumentEventTokenSimulation extends Simulation {
             .group(scenarioName)
             .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(10)
+            .repeat(1)
             .on(exec(AddDocumentEventTokenScenario.AddDocumentEventToken())));
     }
 }
