@@ -39,7 +39,7 @@ public class AddDocumentEventTokenSimulation extends Simulation {
 
         // Call setUp once with all scenarios
         setUp(
-            baselineScenario.injectOpen(rampUsers(10).during(1))).protocols(httpProtocol);    
+            baselineScenario.injectOpen(rampUsers(1).during(1))).protocols(httpProtocol);    
     }
 
     private ScenarioBuilder setUpScenario(String scenarioName) {
@@ -47,7 +47,7 @@ public class AddDocumentEventTokenSimulation extends Simulation {
             .group(scenarioName)
             .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.RegisterWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(1)
+            .repeat(10)
             .on(exec(AddDocumentEventTokenScenario.AddDocumentEventToken())));
     }
 }
