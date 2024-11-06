@@ -304,9 +304,11 @@ public class SOAPRequestBuilder {
         // Generate dynamic values
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(10);
-        String eventText = "This is a Perf test for tasks"; //randomStringGenerator.generateRandomString(10);
+        String eventText = randomStringGenerator.generateRandomString(10);
         LocalDateTime now = LocalDateTime.now();
-
+        String currentTimeMillis = String.valueOf(System.currentTimeMillis());
+        String trimmedID = currentTimeMillis.substring(4);
+        
         // Construct SOAP request
         return String.format("<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
         "   <s:Header>\n" +
@@ -321,7 +323,7 @@ public class SOAPRequestBuilder {
         "            <subType>3940</subType>\n" +
     //    "              <document><![CDATA[<be:DartsEvent xmlns:be=\"urn:integration-cjsonline-gov-uk:pilot:entities\" ID=\"2005014\" Y=\"2024\" M=\"02\" D=\"26\" H=\"17\" MIN=\"28\" S=\"15\"><be:CourtHouse>%s</be:CourtHouse><be:CourtRoom>%s</be:CourtRoom><be:CaseNumbers><be:CaseNumber>%s</be:CaseNumber></be:CaseNumbers><be:EventText>Perf_Xhibit Non daily test event_%</be:EventText></be:DartsEvent>]]></document>\n" +
     //    "            <document><![CDATA[<be:DartsEvent xmlns:be=\"urn:integration-cjsonline-gov-uk:pilot:entities\" ID=\"-2005016\" Y=\"2024\" M=\"02\" D=\"26\" H=\"17\" MIN=\"55\" S=\"15\"><be:CourtHouse>%s</be:CourtHouse><be:CourtRoom>%s</be:CourtRoom><be:CaseNumbers><be:CaseNumber>%s</be:CaseNumber></be:CaseNumbers><be:EventText>Perf_CPP Non daily test event</be:EventText></be:DartsEvent>]]></document>\n" +             
-        "            <document>&lt;be:DartsEvent xmlns:be=&quot;urn:integration-cjsonline-gov-uk:pilot:entities&quot; ID=&quot;" + System.currentTimeMillis() +" &quot; Y=&quot;"+ now.format(DateTimeFormatter.ofPattern("yyyy")) + "&quot; M=&quot;"+ now.format(DateTimeFormatter.ofPattern("MM")) +"&quot; D=&quot;"+ now.format(DateTimeFormatter.ofPattern("dd")) +"&quot; H=&quot;"+ now.format(DateTimeFormatter.ofPattern("HH")) +"&quot; MIN=&quot;"+ now.format(DateTimeFormatter.ofPattern("mm")) +"&quot; S=&quot;"+ now.format(DateTimeFormatter.ofPattern("ss")) +"&quot;&gt;&lt;be:CourtHouse&gt;%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n" +
+        "            <document>&lt;be:DartsEvent xmlns:be=&quot;urn:integration-cjsonline-gov-uk:pilot:entities&quot; ID=&quot;" + trimmedID +" &quot; Y=&quot;"+ now.format(DateTimeFormatter.ofPattern("yyyy")) + "&quot; M=&quot;"+ now.format(DateTimeFormatter.ofPattern("MM")) +"&quot; D=&quot;"+ now.format(DateTimeFormatter.ofPattern("dd")) +"&quot; H=&quot;"+ now.format(DateTimeFormatter.ofPattern("HH")) +"&quot; MIN=&quot;"+ now.format(DateTimeFormatter.ofPattern("mm")) +"&quot; S=&quot;"+ now.format(DateTimeFormatter.ofPattern("ss")) +"&quot;&gt;&lt;be:CourtHouse&gt;%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n" +
         "            </ns5:addDocument>\n" +
         "        </s:Body>\n" +
         "     </s:Envelope>",
