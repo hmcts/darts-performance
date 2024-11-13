@@ -41,7 +41,7 @@ public class SQLQueryProvider {
     }
 
 
-    public static String getTransformedMediaIdQuery() {
+    public static String getTransformedMediaIdForDownloadQuery() {
         return "SELECT darts.transformed_media.trm_id, " + 
             "darts.transformed_media.mer_id, " + 
             "darts.media_request.hea_id, " + 
@@ -55,6 +55,22 @@ public class SQLQueryProvider {
             "WHERE darts.media_request.request_type = 'DOWNLOAD' " + 
             "AND darts.media_request.request_status = 'COMPLETED' " + 
             "ORDER BY trm_id DESC LIMIT 1000;"; 
+    }
+
+    public static String getAudioRequestPlayBackQuery() {
+        return "SELECT darts.transformed_media.trm_id, " + 
+                "darts.transformed_media.mer_id, " + 
+                "darts.media_request.hea_id, " + 
+                "darts.media_request.request_status, " + 
+                "darts.media_request.request_type " + 
+                "FROM darts.transformed_media " + 
+                "INNER JOIN " + 
+                "    darts.media_request " +  
+                "    ON " + 
+                "    darts.transformed_media.mer_id = darts.media_request.mer_id " + 
+                "WHERE darts.media_request.request_type = 'PLAYBACK' " + 
+                "AND darts.media_request.request_status = 'COMPLETED' " + 
+                "ORDER BY trm_id DESC LIMIT 1000;"; 
     }
 
 
@@ -80,7 +96,7 @@ public class SQLQueryProvider {
             "ORDER BY cth_id;";
         }
 
-    public static String getCaseDetailsForRetentionQuery() {
+    public static String getTransformedMediaToDeleteQuery() {
         return  "SELECT darts.transformed_media.trm_id, " +
                 "darts.transformed_media.mer_id, " +
                 "darts.media_request.hea_id, " +
@@ -94,20 +110,5 @@ public class SQLQueryProvider {
             "WHERE darts.media_request.request_type = 'DOWNLOAD' " +
             "AND darts.media_request.request_status != 'DELETED' " +
             "ORDER BY trm_id ASC LIMIT 500;"; 
-        }
-
-        String sql = 
-        "SELECT darts.transformed_media.trm_id, " +
-            "darts.transformed_media.mer_id, " +
-            "darts.media_request.hea_id, " +
-            "darts.media_request.request_status, " +
-            "darts.media_request.request_type " +
-        "FROM darts.transformed_media " +
-        "INNER JOIN " +
-            "darts.media_request " +
-        "ON " +
-            "darts.transformed_media.mer_id = darts.media_request.mer_id " +
-        "WHERE darts.media_request.request_type = 'DOWNLOAD' " +
-        "AND darts.media_request.request_status != 'DELETED' " +
-        "ORDER BY trm_id ASC LIMIT 500;"; 
+        }       
 }
