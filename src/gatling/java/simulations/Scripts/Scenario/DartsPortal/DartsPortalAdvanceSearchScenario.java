@@ -13,7 +13,7 @@ public final class DartsPortalAdvanceSearchScenario {
 
     private DartsPortalAdvanceSearchScenario() {}
 
-    public static ChainBuilder DartsPortalAdvanceSearchScenario() {
+    public static ChainBuilder DartsPortalAdvanceSearch() {
         return group("Darts Advance Search")
             .on(
                 exec(http("Darts-Portal - User - Refresh-profile")
