@@ -13,7 +13,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class GetAudioRequestScenario {
 
     public static Object feeder = null;
-    public static Boolean isFixed = true;
 
     private GetAudioRequestScenario() {}
 
@@ -43,6 +42,7 @@ public final class GetAudioRequestScenario {
         );
     }
 
+    @SuppressWarnings("unchecked")
     public static ChainBuilder GetAudioRequestPlayBack() {
         String sql = 
         "SELECT darts.transformed_media.trm_id, " + 
@@ -60,7 +60,7 @@ public final class GetAudioRequestScenario {
         "ORDER BY trm_id DESC LIMIT 1000;"; 
         
         //Selecting which feeder to use based on fixed or Dynami data.
-        if (isFixed) {
+        if (AppConfig.isFixed) {
             feeder = (Object) Feeders.createTransformedMediaPlaybackIdCSV();
         } else {
             if (feeder == null) {
@@ -102,7 +102,7 @@ public final class GetAudioRequestScenario {
         String sql = SQLQueryProvider.getTransformedMediaIdQuery();  
         
         //Selecting which feeder to use based on fixed or Dynami data.
-        if (isFixed) {
+        if (AppConfig.isFixed) {
             feeder = (Object) Feeders.createTransformedMediaDownloadIdCSV();
         } else {
             if (feeder == null) {

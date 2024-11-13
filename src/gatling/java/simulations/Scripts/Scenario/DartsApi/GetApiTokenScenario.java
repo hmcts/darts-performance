@@ -36,7 +36,7 @@ public final class GetApiTokenScenario {
               return session;
             })
           );
-        }
+        }        
 
         public static ChainBuilder getApiTokenDynamic() {
           return group(GROUP_NAME +  "DARTS - Api - B2C - Oauth2 - Token:GET")

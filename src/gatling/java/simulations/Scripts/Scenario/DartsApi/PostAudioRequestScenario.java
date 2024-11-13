@@ -1,6 +1,7 @@
 package simulations.Scripts.Scenario.DartsApi;
 
 import simulations.Scripts.Headers.Headers;
+import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.SQLQueryProvider;
@@ -14,14 +15,14 @@ public final class PostAudioRequestScenario {
 
     private PostAudioRequestScenario() {}
     public static Object feeder = null;
-    public static Boolean isFixed = true;
 
+    @SuppressWarnings("unchecked")
     public static ChainBuilder PostaudioRequest() {
 
         String sql = SQLQueryProvider.getHearingQuery();    
      
         //Selecting which feeder to use based on fixed or Dynami data.
-        if (isFixed) {
+        if (AppConfig.isFixed) {
             feeder = (Object) Feeders.createAudioRequestCSV();
         } else {
             if (feeder == null) {
