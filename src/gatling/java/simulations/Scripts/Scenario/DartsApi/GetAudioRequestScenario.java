@@ -42,22 +42,10 @@ public final class GetAudioRequestScenario {
         );
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")    
     public static ChainBuilder GetAudioRequestPlayBack() {
-        String sql = 
-        "SELECT darts.transformed_media.trm_id, " + 
-        "darts.transformed_media.mer_id, " + 
-        "darts.media_request.hea_id, " + 
-        "darts.media_request.request_status, " + 
-        "darts.media_request.request_type " + 
-        "FROM darts.transformed_media " + 
-        "INNER JOIN " + 
-        "    darts.media_request " +  
-        "    ON " + 
-        "    darts.transformed_media.mer_id = darts.media_request.mer_id " + 
-        "WHERE darts.media_request.request_type = 'PLAYBACK' " + 
-        "AND darts.media_request.request_status = 'COMPLETED' " + 
-        "ORDER BY trm_id DESC LIMIT 1000;"; 
+
+        String sql = SQLQueryProvider.getTransformedMediaIdForPlayBackQuery();
         
         //Selecting which feeder to use based on fixed or Dynami data.
         if (AppConfig.isFixed) {
@@ -99,7 +87,7 @@ public final class GetAudioRequestScenario {
     }
     public static ChainBuilder GetAudioRequestDownload() {
 
-        String sql = SQLQueryProvider.getTransformedMediaIdQuery();  
+        String sql = SQLQueryProvider.getTransformedMediaIdForDownloadQuery();  
         
         //Selecting which feeder to use based on fixed or Dynami data.
         if (AppConfig.isFixed) {
