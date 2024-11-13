@@ -50,7 +50,7 @@ public final class DartsPortalChangeRetentionScenario {
                   .check(status().is(200))
                   .check(status().saveAs("status"))
                   .check(jsonPath("$[*].case_id").count().saveAs("caseCount"))
-              )
+              )              
               .exec(session -> {
                   int caseCount = session.getInt("caseCount");
                   String email = session.getString("Email");
@@ -77,8 +77,7 @@ public final class DartsPortalChangeRetentionScenario {
               // Log non-empty response
               System.out.println("Response received.");
               return session;
-          })          
-          
+          })                   
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search"))
          
           .exitHereIfFailed()
