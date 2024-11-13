@@ -57,7 +57,7 @@ public class SQLQueryProvider {
             "ORDER BY trm_id DESC LIMIT 1000;"; 
     }
 
-    public static String getAudioRequestPlayBackQuery() {
+    public static String getTransformedMediaIdForPlayBackQuery() {
         return "SELECT darts.transformed_media.trm_id, " + 
                 "darts.transformed_media.mer_id, " + 
                 "darts.media_request.hea_id, " + 
