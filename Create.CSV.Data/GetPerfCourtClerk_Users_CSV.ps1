@@ -121,11 +121,11 @@ ORDER BY
 "@
 
 # Database connection parameters
-$postgresHost = "test"
-$port = "test"
-$database = "test"
-$user = "test"
-$password = "test"
+$postgresHost = "darts-api-test.postgres.database.azure.com"
+$port = "5432"
+$database = "darts"
+$user = "pgadmin"
+$password = "oIYRDeLXDMLKahVUjP0D"
 
 # Output file path
 $outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\UsersCourtClerks.csv"
