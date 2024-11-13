@@ -9,6 +9,8 @@ import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+import java.io.ObjectInputFilter.Config;
+
 public final class DartsPortalAdvanceSearchScenario {
 
     private DartsPortalAdvanceSearchScenario() {}
@@ -42,14 +44,22 @@ public final class DartsPortalAdvanceSearchScenario {
                         .body(StringBody(session -> session.get("searchRequestPayload"))).asJson()
                         .check(status().in(200, 400).saveAs("status"))  // Allowing 200 and 400 status codes
                         .check(bodyString().saveAs("responseBody"))      // Save the response body
-                        .check(jsonPath("$[*].case_id").count().saveAs("caseCount"))
-                        .check(jsonPath("$[*].case_id").findRandom().optional().saveAs("getCaseId"))
+                        .check(jsonPath("$[*].case_id").count().saveAs("extractedCaseId"))
+                        .check(jsonPath("$[*].case_id").findRandom().optional().saveAs("extractedCaseId"))
                         .check(
                             jsonPath("$.type").optional().saveAs("errorType"),    // Extract error type if it exists
                             jsonPath("$.title").optional().saveAs("errorTitle"),  // Extract error title if it exists
                             jsonPath("$.status").optional().saveAs("errorStatus") // Extract error status if it exists
                         )
                     )
+                    .exec(session -> {
+                        if (AppConfig.dynamicCases) {
+                            // Set `getCaseId` from the response rather than DB query
+                            String extractedCaseId = session.getString("extractedCaseId");
+                            session = session.set("getCaseId", extractedCaseId);
+                        }
+                        return session;
+                    })
                     .exec(session -> {
                         int caseCount = session.getInt("caseCount");
                         String email = session.getString("Email");
@@ -104,11 +114,11 @@ public final class DartsPortalAdvanceSearchScenario {
                     return session;
                 })
                 .exec(session -> {
-                    Object getCaseId = session.get("getCaseId");
+                    Object getextractedCaseId = session.get("extractedCaseId");
                     String email = session.getString("Email");
 
-                    if (getCaseId != null) {
-                        System.out.println("getCaseId: " + getCaseId.toString() + " for user: " + email);
+                    if (getextractedCaseId != null) {
+                        System.out.println("getCaseId: " + getextractedCaseId.toString() + " for user: " + email);
                     } else {
                         System.out.println("No Case Id value saved using saveAs.");
                     }
