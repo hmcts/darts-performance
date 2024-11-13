@@ -240,6 +240,28 @@ public class RequestBodyBuilder {
         randomAudioFile, courtHouseName, courtRoom, caseName1, caseName2, caseName3);
     }
 
+    public static String buildPostAudioLinkingForCaseApiRequest(Session session, String randomAudioFile, String caseName) {
+        // Retrieve values from session or define defaults if needed
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoom = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";  
+         
+
+
+
+        return String.format(
+        "{\"started_at\": \"2024-11-11T12:02:00.000Z\", " +
+        " \"ended_at\": \"2024-11-11T13:02:00.000Z\", " +
+        " \"channel\": 1,  " +
+        " \"total_channels\": 4,  " +
+        " \"format\": \"mp2\",  " +
+        " \"filename\": \"%s\",  " +
+        " \"courthouse\": \"%s\",  " +
+        " \"courtroom\": \"%s\",  " +
+        " \"file_size\": 937.96,  " +
+        " \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\",  " +
+        " \"cases\": [\"PerfCase_%s\"] }",
+        randomAudioFile, courtHouseName, courtRoom, caseName);
+    }
 
     public static String buildPostCaseSearchApiRequest(Session session) {
         // Retrieve values from session or define defaults if needed
@@ -249,6 +271,77 @@ public class RequestBodyBuilder {
         return String.format(
         "{\"case_number\": \"PerfCase_\"%s\"}",
         caseName);
+    }
+
+    public static String buildPostCaseApiRequest(Session session) {
+        // Retrieve values from session or define defaults if needed
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+    
+        // Create a single instance of RandomStringGenerator
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+    
+        // Generate random strings for each field
+        String caseName = randomStringGenerator.generateRandomString(10);
+        String defendantsName = randomStringGenerator.generateRandomString(10);
+        String judgeName = randomStringGenerator.generateRandomString(10);
+        String prosecutorsName = randomStringGenerator.generateRandomString(10);
+        String defendersName = randomStringGenerator.generateRandomString(10);
+    
+        // Return formatted JSON string
+        return String.format(
+            "{" +
+                "\"courthouse\": \"%s\", " +
+                "\"case_number\": \"PerfCase_%s\", " +
+                "\"case_type\": \"1\", " +
+                "\"defendants\": [ " +
+                  "\"PerfDefendant_%s\" " +
+                "], " +
+                "\"judges\": [ " +
+                  "\"PerfJudge_%s\" " +
+                "], " +
+                "\"prosecutors\": [ " +
+                  "\"PerfProsecutors_%s\" " +
+                "], " + 
+                "\"defenders\": [ " +
+                  "\"PerfDefendersName_%s\" " +
+                "] " +
+              "}",
+              courtHouseName, caseName, defendantsName, judgeName, prosecutorsName, defendersName);
+    }
+
+    public static String buildPostCaseForLinkingAudioApiRequest(Session session, String caseName) {
+        // Retrieve values from session or define defaults if needed
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+    
+        // Create a single instance of RandomStringGenerator
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+    
+        // Generate random strings for each field
+        String defendantsName = randomStringGenerator.generateRandomString(10);
+        String judgeName = randomStringGenerator.generateRandomString(10);
+        String prosecutorsName = randomStringGenerator.generateRandomString(10);
+        String defendersName = randomStringGenerator.generateRandomString(10);
+    
+        // Return formatted JSON string
+        return String.format(
+            "{" +
+                "\"courthouse\": \"%s\", " +
+                "\"case_number\": \"PerfCase_%s\", " +
+                "\"case_type\": \"1\", " +
+                "\"defendants\": [ " +
+                  "\"PerfDefendant_%s\" " +
+                "], " +
+                "\"judges\": [ " +
+                  "\"PerfJudge_%s\" " +
+                "], " +
+                "\"prosecutors\": [ " +
+                  "\"PerfProsecutors_%s\" " +
+                "], " + 
+                "\"defenders\": [ " +
+                  "\"PerfDefendersName_%s\" " +
+                "] " +
+              "}",
+              courtHouseName, caseName, defendantsName, judgeName, prosecutorsName, defendersName);
     }
 
     public static String buildDartsPortalPerftraceRequest(Session session) {
@@ -527,6 +620,7 @@ public class RequestBodyBuilder {
         "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
     courtHouseName, courtRoomName, courtCaseNumber);
     }
+
     public static String buildInterpreterUsedEventBody(Session session) {
         
         // Generate a random court house name
@@ -583,5 +677,28 @@ public class RequestBodyBuilder {
         "\"is_permanent_retention\": \"true\", " +
         "\"comments\": \"Perf_%s\"}",
         courtCaseId, randomComment);
+    }
+
+
+    public static String buildEventsForLinkingCasePostBody(Session session, String caseName) {
+        
+        // Generate a random court house name
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
+        String currentTimeMillis = String.valueOf(System.currentTimeMillis());
+        int test = (int)NumberGenerator.generateRandom13DigitNumber();
+
+        return String.format("{\"event_id\":" + test + ", " +
+        "\"message_id\":" + currentTimeMillis + ", " +
+        "\"type\": \"30300\", " +
+        "\"sub_type\": \"\", " +
+        "\"courthouse\": \"%s\", " +
+        "\"courtroom\": \"%s\", " +
+        "\"case_numbers\": [ " +
+        "\"PerfCase_%s\" ], " +            
+        "\"date_time\": \"2024-11-11T12:02:00.000Z\", " +
+        "\"start_time\": \"2024-11-11T12:02:00.000Z\", " +
+        "\"end_time\": \"2024-11-11T13:02:00.000Z\"}",
+    courtHouseName, courtRoomName, caseName);
     }
 }

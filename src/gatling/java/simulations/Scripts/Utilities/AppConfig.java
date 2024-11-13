@@ -174,6 +174,9 @@ public class AppConfig {
     public static final String DB_USERNAME;
     public static final String DB_PASSWORD;
 
+    //Fixed Data for CSV files or none fixed for db query within test.
+    public static final Boolean isFixed;
+
     //public static final String DB_URL = "darts-api-stg.postgres.database.azure.com";
 
     static {
@@ -340,6 +343,9 @@ public class AppConfig {
         DB_URL = getProperty("DB_URL");
         DB_USERNAME = getProperty("DB_USERNAME");
         DB_PASSWORD = getProperty("DB_PASSWORD");
+
+        //Fixed Data for CSV files or none fixed for db query within test.
+        isFixed = Boolean.parseBoolean(System.getProperty("isFixed", "true"));
 
     }
 

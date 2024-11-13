@@ -1,7 +1,8 @@
 package simulations.Scripts.DartsApi;
 
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
-import simulations.Scripts.Scenario.DartsApi.RunOutboundAudioDeleterTaskScenario;
+import simulations.Scripts.Scenario.DartsApi.RunApplyRetentionTaskScenario;
+import simulations.Scripts.Scenario.DartsApi.RunAudioLinkingTaskScenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
@@ -11,17 +12,17 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 
-public class RunOutboundAudioDeleterTaskSimulation extends Simulation {   
+public class RunAudioLinkingTaskSimulation extends Simulation {   
   {
     final HttpProtocolBuilder httpProtocol = http
         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
-    final ScenarioBuilder scn1 = scenario("Run Outbound Audio Deleter Task Scenario")
+    final ScenarioBuilder scn1 = scenario("Run Audio Linking Task Scenario")
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(1)    
-        .on(exec(RunOutboundAudioDeleterTaskScenario.RunOutboundAudioDeleterTask()
+        .on(exec(RunAudioLinkingTaskScenario.RunAudioLinkingTask()
         ));
 
     setUp(

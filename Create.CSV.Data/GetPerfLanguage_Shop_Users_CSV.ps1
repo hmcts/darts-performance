@@ -74,30 +74,35 @@ SELECT
             ELSE rd1.defendant_name 
         END, 'Unknown'
     ) AS first_name1,
+    rd1.cas_id AS cas_id1,
     COALESCE(
         CASE 
             WHEN POSITION(' ' IN rd2.defendant_name) > 0 THEN SUBSTRING(rd2.defendant_name FROM 1 FOR POSITION(' ' IN rd2.defendant_name) - 1)
             ELSE rd2.defendant_name 
         END, 'Unknown'
     ) AS first_name2,
+    rd2.cas_id AS cas_id2,
     COALESCE(
         CASE 
             WHEN POSITION(' ' IN rd3.defendant_name) > 0 THEN SUBSTRING(rd3.defendant_name FROM 1 FOR POSITION(' ' IN rd3.defendant_name) - 1)
             ELSE rd3.defendant_name 
         END, 'Unknown'
     ) AS first_name3,
+    rd3.cas_id AS cas_id3,
     COALESCE(
         CASE 
             WHEN POSITION(' ' IN rd4.defendant_name) > 0 THEN SUBSTRING(rd4.defendant_name FROM 1 FOR POSITION(' ' IN rd4.defendant_name) - 1)
             ELSE rd4.defendant_name 
         END, 'Unknown'
     ) AS first_name4,
+    rd4.cas_id AS cas_id4,
     COALESCE(
         CASE 
             WHEN POSITION(' ' IN rd5.defendant_name) > 0 THEN SUBSTRING(rd5.defendant_name FROM 1 FOR POSITION(' ' IN rd5.defendant_name) - 1)
             ELSE rd5.defendant_name 
         END, 'Unknown'
-    ) AS first_name5
+    ) AS first_name5,
+    rd5.cas_id AS cas_id5
 FROM 
     FilteredUserDetails fud
 LEFT JOIN 

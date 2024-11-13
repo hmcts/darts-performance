@@ -38,9 +38,6 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class NightlyRunSimulation extends Simulation {
-    
-    public static Boolean isFixed = true;
-
 
     @Override
     public void before() {

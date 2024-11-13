@@ -18,7 +18,7 @@ public class RunExternalDataStoreDeleterTaskSimulation extends Simulation {
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
-    final ScenarioBuilder scn1 = scenario("Run Inbound Audio Deleter Task Scenario")
+    final ScenarioBuilder scn1 = scenario("Run External DataStore Deleter Task Scenario")
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(1)    
         .on(exec(RunExternalDataStoreDeleterTaskScenario.RunExternalDataStoreDeleterTask()

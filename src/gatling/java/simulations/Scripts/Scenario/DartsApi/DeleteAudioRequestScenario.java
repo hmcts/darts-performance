@@ -3,6 +3,7 @@ package simulations.Scripts.Scenario.DartsApi;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Utilities.SQLQueryProvider;
 import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
@@ -11,28 +12,25 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public final class DeleteAudioRequestScenario {
 
     private DeleteAudioRequestScenario() {}
-
+    public static Object feeder = null;
+    
+    @SuppressWarnings("unchecked")
     public static ChainBuilder DeleteAudioRequest() {
-        // String sql = 
-        // "SELECT darts.transformed_media.trm_id, " +
-        //     "darts.transformed_media.mer_id, " +
-        //     "darts.media_request.hea_id, " +
-        //     "darts.media_request.request_status, " +
-        //     "darts.media_request.request_type " +
-        // "FROM darts.transformed_media " +
-        // "INNER JOIN " +
-        //     "darts.media_request " +
-        // "ON " +
-        //     "darts.transformed_media.mer_id = darts.media_request.mer_id " +
-        // "WHERE darts.media_request.request_type = 'DOWNLOAD' " +
-        // "AND darts.media_request.request_status != 'DELETED' " +
-        // "ORDER BY trm_id ASC LIMIT 500;"; 
+        
 
-        // // Create the JDBC feeder
-        // FeederBuilder<Object> feeder = Feeders.jdbcFeeder(sql);
+        String sql = SQLQueryProvider.getTransformedMediaToDeleteQuery();  
+
+        //Selecting which feeder to use based on fixed or Dynami data.
+        if (AppConfig.isFixed) {
+            feeder = (Object) Feeders.createTransformedMediaDeleteIdsCSV();
+        } else {
+            if (feeder == null) {
+                feeder = (Object) Feeders.jdbcFeeder(sql); 
+            }
+        }
 
         return group("Audio Request Delete")
-        .on(exec(feed(Feeders.createTransformedMediaDeleteIdsCSV()))
+        .on(exec(feed((FeederBuilder<String>) feeder))
         //.on(feed(feeder)
             .exec(session -> {
                 // Retrieve the transformed media ID from the GET request session
