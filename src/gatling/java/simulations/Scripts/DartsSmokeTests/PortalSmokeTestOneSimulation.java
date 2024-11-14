@@ -102,7 +102,7 @@ public class PortalSmokeTestOneSimulation extends Simulation {
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
                     })
-                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) // Perform advance search
+                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
                     .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
                     .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription()) // Request transcription
                 )
@@ -141,7 +141,7 @@ public class PortalSmokeTestOneSimulation extends Simulation {
                     // Update the loop counter in the session for the next iteration
                     return session.set("loopCounter", iteration);
                 })
-                .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) 
+                .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) 
                 .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
                // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
             )

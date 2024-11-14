@@ -57,7 +57,7 @@ public class CourtClerkRequestorSimulation extends Simulation {
                 // Update the loop counter in the session for the next iteration
                 return session.set("loopCounter", iteration);
             })
-                .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario())     
+                .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch())     
                 .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
                 .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
             // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
