@@ -58,7 +58,7 @@ public class CourtManagerApproverSimulation extends Simulation {
                 // Update the loop counter in the session for the next iteration
                 return session.set("loopCounter", iteration);
             })
-            .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) // Perform advance search
+            .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
             .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio()) // Request audio download
         )
         // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())

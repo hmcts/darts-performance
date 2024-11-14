@@ -37,7 +37,7 @@ public class LanguageShopUserScenario {
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
                     })
-                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearchScenario()) // Perform advance search
+                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
                     .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
                     .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription()) // Request transcription
                 )
