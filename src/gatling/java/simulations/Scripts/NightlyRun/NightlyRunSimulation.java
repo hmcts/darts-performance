@@ -3,6 +3,7 @@ package simulations.Scripts.NightlyRun;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Utilities.SQLQueryProvider;
 import simulations.Scripts.Scenario.DartsApi.GetAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsApi.PostAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchScenario;
@@ -30,6 +31,8 @@ import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
 import simulations.Scripts.Scenario.DartsApi.DeleteAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
 import java.time.Duration;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
@@ -44,7 +47,35 @@ public class NightlyRunSimulation extends Simulation {
         System.out.println("Simulation is about to start!");
     }
 
+        // Load all SQL queries in parallel and store them in distinct variables
+        private static final String HEARING_QUERY;
+        private static final String TEST1_QUERY;
+        private static final String TEST2_QUERY;
+        private static final String TEST3_QUERY;
+
+        static {
+            // Load each SQL file asynchronously
+            CompletableFuture<String> hearingQueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("hearing_query.sql"));
+            CompletableFuture<String> test1QueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("test1_query.sql"));
+            CompletableFuture<String> test2QueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("test2_query.sql"));
+            CompletableFuture<String> test3QueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("test3_query.sql"));
+
+            // Wait for all queries to load
+            try {
+                HEARING_QUERY = hearingQueryFuture.get();
+                TEST1_QUERY = test1QueryFuture.get();
+                TEST2_QUERY = test2QueryFuture.get();
+                TEST3_QUERY = test3QueryFuture.get();
+            } catch (InterruptedException | ExecutionException e) {
+                throw new RuntimeException("Failed to load SQL queries", e);
+            }
+        }
+
     public NightlyRunSimulation() {
+
+
+
+
         HttpProtocolBuilder httpProtocolSoap = http
                 .inferHtmlResources()
                 .acceptEncodingHeader("gzip,deflate")

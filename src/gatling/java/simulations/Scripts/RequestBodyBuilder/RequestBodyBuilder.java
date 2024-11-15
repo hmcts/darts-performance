@@ -621,6 +621,27 @@ public class RequestBodyBuilder {
     courtHouseName, courtRoomName, courtCaseNumber);
     }
 
+    public static String buildDuplicateEventsPostBody(Session session, String eventId) {
+
+        // Generate a random court house name
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
+        String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
+        String courtCaseId = session.get("cas_id") != null ? session.get("cas_id").toString() : "";
+    
+        return String.format("{\"event_id\": \"%s\", " +
+                "\"message_id\": \"This is a Perf test for Duplication tasks\", " +
+                "\"event_text\": \"Perf_event text for Duplication\", " +
+                "\"type\": \"30300\", " +
+                "\"sub_type\": \"\", " +
+                "\"courthouse\": \"%s\", " +
+                "\"courtroom\": \"%s\", " +
+                "\"case_numbers\": [ " +
+                "\"%s\" ], " +
+                "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
+            eventId, courtHouseName, courtRoomName, courtCaseNumber);
+    }   
+
     public static String buildInterpreterUsedEventBody(Session session) {
         
         // Generate a random court house name
