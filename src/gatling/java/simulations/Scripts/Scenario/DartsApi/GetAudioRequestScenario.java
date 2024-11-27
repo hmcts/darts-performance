@@ -13,7 +13,6 @@ public final class GetAudioRequestScenario {
 
     public static Object feeder = null;
 
-
     private GetAudioRequestScenario() {}
 
 
@@ -42,6 +41,7 @@ public final class GetAudioRequestScenario {
         );
     }
 
+    @SuppressWarnings("unchecked")
     public static ChainBuilder GetAudioRequestPlayBack() {
 
         String sql = SQLQueryProvider.getTransformedMediaIdForPlayBackQuery();
@@ -56,7 +56,7 @@ public final class GetAudioRequestScenario {
         }
 
         return group("Audio Request Get - PlayBack")
-            .on(exec(feed((FeederBuilder<Object>) feeder)
+            .on(exec(feed((FeederBuilder<String>) feeder)
                 .exec(session -> {
                     String transformedMediaId = session.getString("trm_id");
                     return session.set("trm_id", transformedMediaId);
@@ -84,21 +84,22 @@ public final class GetAudioRequestScenario {
             .exec(UserInfoLogger.logDetailedErrorMessage("Audio Request Get - PlayBack")
         )); 
     }
+    @SuppressWarnings("unchecked")
     public static ChainBuilder GetAudioRequestDownload() {
 
         String sql = SQLQueryProvider.getTransformedMediaIdForDownloadQuery();  
         
-        //Selecting which feeder to use based on fixed or Dynami data.
-        if (AppConfig.isFixed) {
-            feeder = Feeders.createTransformedMediaDownloadIdCSV();
-        } else {
-            if (feeder == null) {
-                feeder = Feeders.jdbcFeeder(sql); 
-            }
+       // Selecting which feeder to use based on fixed or dynamic data
+       if (AppConfig.isFixed) {
+        feeder = Feeders.createTransformedMediaDownloadIdCSV();
+    } else {
+        if (feeder == null) {
+            feeder = Feeders.jdbcFeeder(sql); 
         }
+    }
 
         return group("Audio Request Get - Download")
-            .on(exec(feed((FeederBuilder<Object>) feeder)
+            .on(exec(feed((FeederBuilder<String>) feeder)
                 .exec(session -> {
                     String transformedMediaId = session.getString("trm_id");
                     return session.set("trm_id", transformedMediaId);
