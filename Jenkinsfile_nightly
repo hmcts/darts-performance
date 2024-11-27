@@ -5,12 +5,12 @@ parameters([
         choice(choices: [
                 'simulations.Scripts.NightlyRun.SoapSmokeTestTwoSimulation',
                 'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation',
-                'simulations.Scripts.NightlyRun.AddCaseUserSimulation',
+                'simulations.Scripts.NightlyRun.NightlyRunSimulation',
                 'simulations.Scripts.DartsApi.AudioPostSimulation',
                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
         ], name: 'simulationClassName'),
         text(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
-        string(name: 'SimulationBlock', defaultValue: 'simulations.Scripts.NightlyRun.NightlyRunSimulation', description: 'Run the NightlyRunSimulation')
+        //string(name: 'SimulationBlock', defaultValue: 'simulations.Scripts.NightlyRun.NightlyRunSimulation', description: 'Run the NightlyRunSimulation')
 ])
 ])
 @Library("Infrastructure") _
