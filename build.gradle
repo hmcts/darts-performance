@@ -24,6 +24,9 @@ dependencies {
 
 // Default gatlingRun configuration
 gatlingRun {
+
+
+    
     simulationClassName = System.getenv("SimulationBlock")
     doFirst {
         println "Running simulation: " + simulationClassName
@@ -319,6 +322,36 @@ tasks.register('runAddDocumentEventTokenSimulation') {
     // Set the simulation class and make this task depend on gatlingRun
     finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
     gatlingRun.simulationClassName = 'simulations.Scripts.DartsSoap.AddDocumentEventTokenSimulation'
+}
+
+// Task for LinkedAudioSimulation
+tasks.register('runLinkedAudioSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.LinkedAudioSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.LinkedAudioSimulation'
+}
+
+// Task for RunAudioLinkingTaskSimulation
+tasks.register('runAudioLinkingTaskSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.RunAudioLinkingTaskSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunAudioLinkingTaskSimulation'
+}
+
+// Task for PostDuplicateEventSimulation
+tasks.register('runPostDuplicateEventSimulation') {
+    doLast {
+        println "Running simulation: simulations.Scripts.DartsApi.PostDuplicateEventSimulation"
+    }
+    // Set the simulation class and make this task depend on gatlingRun
+    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.PostDuplicateEventSimulation'
 }
 
 checkstyleGatling {
