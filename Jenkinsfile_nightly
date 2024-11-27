@@ -3,9 +3,9 @@ properties([
 //        pipelineTriggers([cron('00 21 * * *')]),
 parameters([
         choice(choices: [
+                'simulations.Scripts.NightlyRun.NightlyRunSimulation',
                 'simulations.Scripts.NightlyRun.SoapSmokeTestTwoSimulation',
                 'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation',
-                'simulations.Scripts.NightlyRun.NightlyRunSimulation',
                 'simulations.Scripts.DartsApi.AudioPostSimulation',
                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
         ], name: 'simulationClassName'),
