@@ -10,7 +10,7 @@ parameters([
                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation'
         ], name: 'simulationClassName'),
         text(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
-       // string(name: 'SimulationBlock', defaultValue: 'simulations.Scripts.NightlyRun.NightlyRunSimulation', description: 'Run the NightlyRunSimulation')
+        string(name: 'SimulationBlock', defaultValue: 'simulations.Scripts.NightlyRun.NightlyRunSimulation', description: 'Run the NightlyRunSimulation')
 
 ])
 ])
