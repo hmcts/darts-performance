@@ -13,6 +13,7 @@ public final class GetAudioRequestScenario {
 
     public static Object feeder = null;
 
+
     private GetAudioRequestScenario() {}
 
 
@@ -47,15 +48,15 @@ public final class GetAudioRequestScenario {
         
         //Selecting which feeder to use based on fixed or Dynami data.
         if (AppConfig.isFixed) {
-            feeder = (Object) Feeders.createTransformedMediaPlaybackIdCSV();
+            feeder = Feeders.createTransformedMediaPlaybackIdCSV();
         } else {
             if (feeder == null) {
-                feeder = (Object) Feeders.jdbcFeeder(sql); 
+                feeder = Feeders.jdbcFeeder(sql); 
             }
         }
 
         return group("Audio Request Get - PlayBack")
-            .on(exec(feed((FeederBuilder<String>) feeder)
+            .on(exec(feed((FeederBuilder<Object>) feeder)
                 .exec(session -> {
                     String transformedMediaId = session.getString("trm_id");
                     return session.set("trm_id", transformedMediaId);
@@ -89,15 +90,15 @@ public final class GetAudioRequestScenario {
         
         //Selecting which feeder to use based on fixed or Dynami data.
         if (AppConfig.isFixed) {
-            feeder = (Object) Feeders.createTransformedMediaDownloadIdCSV();
+            feeder = Feeders.createTransformedMediaDownloadIdCSV();
         } else {
             if (feeder == null) {
-                feeder = (Object) Feeders.jdbcFeeder(sql); 
+                feeder = Feeders.jdbcFeeder(sql); 
             }
         }
 
         return group("Audio Request Get - Download")
-            .on(exec(feed((FeederBuilder<String>) feeder)
+            .on(exec(feed((FeederBuilder<Object>) feeder)
                 .exec(session -> {
                     String transformedMediaId = session.getString("trm_id");
                     return session.set("trm_id", transformedMediaId);
