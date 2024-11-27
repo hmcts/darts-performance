@@ -8,7 +8,6 @@ import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 public final class GetAudioRequestScenario {
 
@@ -42,7 +41,6 @@ public final class GetAudioRequestScenario {
         );
     }
 
-    @SuppressWarnings("unchecked")    
     public static ChainBuilder GetAudioRequestPlayBack() {
 
         String sql = SQLQueryProvider.getTransformedMediaIdForPlayBackQuery();
