@@ -47,29 +47,29 @@ public class NightlyRunSimulation extends Simulation {
         System.out.println("Simulation is about to start!");
     }
 
-        // Load all SQL queries in parallel and store them in distinct variables
-        private static final String HEARING_QUERY;
-        private static final String TEST1_QUERY;
-        private static final String TEST2_QUERY;
-        private static final String TEST3_QUERY;
+        // // Load all SQL queries in parallel and store them in distinct variables
+        // private static final String HEARING_QUERY;
+        // private static final String TEST1_QUERY;
+        // private static final String TEST2_QUERY;
+        // private static final String TEST3_QUERY;
 
-        static {
-            // Load each SQL file asynchronously
-            CompletableFuture<String> hearingQueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("hearing_query.sql"));
-            CompletableFuture<String> test1QueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("test1_query.sql"));
-            CompletableFuture<String> test2QueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("test2_query.sql"));
-            CompletableFuture<String> test3QueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("test3_query.sql"));
+        // static {
+        //     // Load each SQL file asynchronously
+        //     CompletableFuture<String> hearingQueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("hearing_query.sql"));
+        //     CompletableFuture<String> test1QueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("test1_query.sql"));
+        //     CompletableFuture<String> test2QueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("test2_query.sql"));
+        //     CompletableFuture<String> test3QueryFuture = CompletableFuture.supplyAsync(() -> SQLQueryProvider.loadSQL("test3_query.sql"));
 
-            // Wait for all queries to load
-            try {
-                HEARING_QUERY = hearingQueryFuture.get();
-                TEST1_QUERY = test1QueryFuture.get();
-                TEST2_QUERY = test2QueryFuture.get();
-                TEST3_QUERY = test3QueryFuture.get();
-            } catch (InterruptedException | ExecutionException e) {
-                throw new RuntimeException("Failed to load SQL queries", e);
-            }
-        }
+        //     // Wait for all queries to load
+        //     try {
+        //         HEARING_QUERY = hearingQueryFuture.get();
+        //         TEST1_QUERY = test1QueryFuture.get();
+        //         TEST2_QUERY = test2QueryFuture.get();
+        //         TEST3_QUERY = test3QueryFuture.get();
+        //     } catch (InterruptedException | ExecutionException e) {
+        //         throw new RuntimeException("Failed to load SQL queries", e);
+        //     }
+        // }
 
     public NightlyRunSimulation() {
 
