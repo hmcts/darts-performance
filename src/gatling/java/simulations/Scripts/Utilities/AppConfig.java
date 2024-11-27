@@ -177,6 +177,9 @@ public class AppConfig {
     //Fixed Data for CSV files or none fixed for db query within test.
     public static final Boolean isFixed;
 
+    //Get dynamic Cases ids from the Advance search response rather than fixed from DB query
+    public static final Boolean dynamicCases;
+
     //public static final String DB_URL = "darts-api-stg.postgres.database.azure.com";
 
     static {
@@ -346,6 +349,9 @@ public class AppConfig {
 
         //Fixed Data for CSV files or none fixed for db query within test.
         isFixed = Boolean.parseBoolean(System.getProperty("isFixed", "true"));
+
+        //Get dynamic Cases ids from the Advance search response rather than fixed from DB query
+        dynamicCases = Boolean.parseBoolean(System.getProperty("dynamicCases", "false"));
 
     }
 
