@@ -8,15 +8,16 @@ INNER JOIN
     darts.transformed_media.mer_id = darts.media_request.mer_id
 WHERE darts.media_request.request_type = 'DOWNLOAD'
 AND darts.media_request.request_status = 'COMPLETED'
+AND darts.media_request.request_status != 'EXPIRED'
 ORDER BY trm_id DESC LIMIT 500;
 "@
 
 # Database connection parameters
-$postgresHost = "darts-api-test.postgres.database.azure.com"
-$port = "5432" # Default is 5432
-$database = "darts"
-$user = "pgadmin"
-$password = "oIYRDeLXDMLKahVUjP0D"
+$postgresHost = "test"
+$port = "test" # Default is test
+$database = "test"
+$user = "test"
+$password = "test"
 
 # Output file path
 $outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\Transformed_Media_Download.csv"
