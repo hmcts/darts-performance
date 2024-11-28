@@ -2,20 +2,16 @@ package simulations.Scripts.Scenario.DartsPortal;
 
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
-import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.UserInfoLogger;
 import simulations.Scripts.Utilities.NumberGenerator;
 
 import io.gatling.javaapi.core.*;
-import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class DartsPortalChangeRetentionScenario {
-
-    private static final String requestType = Feeders.getRandomRequestType();
 
     private DartsPortalChangeRetentionScenario() {}
 

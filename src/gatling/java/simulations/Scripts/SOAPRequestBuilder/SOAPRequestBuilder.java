@@ -4,14 +4,8 @@ import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.NumberGenerator;
 import simulations.Scripts.Utilities.RandomStringGenerator;
 import simulations.Scripts.Utilities.TimestampGenerator;
-import simulations.Scripts.Utilities.TimestampGenerator.NoSpaceTimestampGenerator;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-
-import akka.dispatch.Envelope;
 import io.gatling.javaapi.core.Session;
 
 public class SOAPRequestBuilder {

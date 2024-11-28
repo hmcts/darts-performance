@@ -37,9 +37,6 @@ public final class AddCaseUserScenario {
                         String statusCode = session.getString("statusCode");
                         String message = session.getString("message");
                         
-                        String responseBody = session.getString("responseBody");
-                     //   System.out.println("Raw response body for AddDocument - AddCase request: " + responseBody);
-
                         if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
                             // Mark the request as failed if there's an error message
                             session.markAsFailed();

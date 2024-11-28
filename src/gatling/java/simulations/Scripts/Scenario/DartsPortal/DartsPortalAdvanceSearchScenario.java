@@ -8,9 +8,6 @@ import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-
-import java.io.ObjectInputFilter.Config;
-
 public final class DartsPortalAdvanceSearchScenario {
 
     private DartsPortalAdvanceSearchScenario() {}
@@ -98,7 +95,6 @@ public final class DartsPortalAdvanceSearchScenario {
                     .exec(session -> {
                         int statusCode = session.getInt("status");
                         String email = session.getString("Email");
-                        String responseBody = session.getString("responseBody");
                         if (statusCode == 502 || statusCode == 504) {
                             System.out.println("Received error status code: " + statusCode + ". Marking as failed." + email + " Darts-Portal - Api - Cases - Search");
                             session = session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger

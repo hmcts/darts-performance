@@ -15,6 +15,7 @@ import io.gatling.javaapi.core.FeederBuilder;
 import io.gatling.javaapi.jdbc.JdbcDsl;
 import io.gatling.javaapi.core.CheckBuilder;
 
+
 public class Feeders {
 
     public static final FeederBuilder<String> AudioRequestCSV;
@@ -93,6 +94,7 @@ public class Feeders {
     public static FeederBuilder<String> createTransformedMediaPlaybackIdCSV() {
         return TransformedMediaPlaybackIdCSV;
     }
+    
 
     public static FeederBuilder<String> createTransformedMediaDeleteIdsCSV() {
         return TransformedMediaDeleteIdsCSV;
@@ -160,9 +162,7 @@ public class Feeders {
 
     public static CheckBuilder.Final saveRegistrationToken() {
         return CoreDsl.regex("<return[^>]*>([^<]+)<\\/return>").find(0).saveAs("registrationToken");
-    }                   
-
-
+    }
 
     public static FeederBuilder<Object> listFeeder(String key, List<Object> items) {
         return CoreDsl.listFeeder(items.stream()
@@ -256,7 +256,7 @@ public class Feeders {
                 e.printStackTrace();
             }
         }
-    }
+    }    
 
     // This method can be used for SELECT queries
     public static FeederBuilder<Object> jdbcFeeder(String sql) {

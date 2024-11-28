@@ -2,7 +2,6 @@ package simulations.Scripts.DartsApi;
 
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
 import simulations.Scripts.Scenario.DartsApi.PatchAcceptTranscriptionScenario;
-import simulations.Scripts.Scenario.DartsApi.PostTranscriptionScenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Utilities.Feeders;

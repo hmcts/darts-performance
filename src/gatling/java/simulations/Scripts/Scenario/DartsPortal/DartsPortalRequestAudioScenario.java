@@ -6,16 +6,12 @@ import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.UserInfoLogger;
 import simulations.Scripts.Utilities.NumberGenerator;
 import io.gatling.javaapi.core.*;
-import scala.util.Random;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 public final class DartsPortalRequestAudioScenario {
-
-    private static final Random randomNumber = new Random();
-    private static final String requestType = Feeders.getRandomRequestType();
 
     private DartsPortalRequestAudioScenario() {}
 
@@ -214,11 +210,7 @@ public final class DartsPortalRequestAudioScenario {
             Object getAudioStartDate = session.get("getAudioStartDate");
            // System.out.println("getAudioStartDate for Audio Request: " + getAudioStartDate);
             Object getAudioEndDate = session.get("getAudioEndDate");
-           // System.out.println("getAudioEndDate for Audio Request: " + getAudioEndDate);
-            Object getCaseId = session.get("getCaseId");
-          //  System.out.println("getCaseId for Audio Request: " + getCaseId);
-
-            // Build audioXmlPayload
+           // Build audioXmlPayload
             String audioXmlPayload = RequestBodyBuilder.buildAudioRequestBody(
               session, getHearingId, getUserId, getAudioStartDate, getAudioEndDate, session.get("requestType")
           );

@@ -1,11 +1,9 @@
 package simulations.Scripts.DartsApi;
 
-import simulations.Scripts.Scenario.DartsApi.CreateRetenionsScenario;
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
 import simulations.Scripts.Scenario.DartsApi.RunAutomatedTask11Scenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 

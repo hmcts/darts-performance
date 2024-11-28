@@ -31,9 +31,6 @@ public final class GetCasesUserScenario {
                             String statusCode = session.getString("statusCode");
                             String message = session.getString("message");
 
-                            String responseBody = session.getString("responseBody");
-                      //      System.out.println("Raw response body for AddDocument - GetCase request: " + responseBody);
-
                             if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
                                 // Mark the request as failed if there's an error message
                                 session.markAsFailed();
@@ -44,9 +41,6 @@ public final class GetCasesUserScenario {
                         .exec(session -> {
                             String statusCode = session.getString("statusCode");
                             String message = session.getString("message");
-
-                            String responseBody = session.getString("responseBody");
-                          //  System.out.println("Raw response body for AddDocument - Add CourtLog request: " + responseBody);
 
                             if (statusCode.equals("500")) {
                                 // Mark as failed if statusCode is 500

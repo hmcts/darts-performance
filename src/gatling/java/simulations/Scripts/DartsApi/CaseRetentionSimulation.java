@@ -5,7 +5,6 @@ import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 

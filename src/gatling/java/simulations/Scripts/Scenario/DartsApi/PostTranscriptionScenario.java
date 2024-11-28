@@ -6,12 +6,9 @@ import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
-import simulations.Scripts.Utilities.Feeders;
 
 public final class PostTranscriptionScenario {
-    private PostTranscriptionScenario() {}
-
-   
+    private PostTranscriptionScenario() {}   
 
     public static ChainBuilder PostTranscription() {
         return group("Transcription Request Group")

@@ -2,25 +2,20 @@ package simulations.Scripts.Scenario.DartsPortal;
 
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
-import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 import io.netty.util.internal.ThreadLocalRandom;
-import scala.util.Random;
 import simulations.Scripts.Utilities.NumberGenerator;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-import java.util.Map;
 
 public final class DartsPortalDeleteAudioRequestScenario {
 
-    private static final String requestType = Feeders.getRandomRequestType();
-
     private DartsPortalDeleteAudioRequestScenario() {}
 
-    public static ChainBuilder DartsPortalDeleteAudioRequestScenario() {
+    public static ChainBuilder DartsPortalDeleteAudioRequest() {
       return group("Darts Delete Audio Request")
       .on(exec(
           //Delete Audio Request.          

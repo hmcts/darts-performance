@@ -6,8 +6,6 @@ import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
-import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownloadAudioScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 import java.time.Duration;

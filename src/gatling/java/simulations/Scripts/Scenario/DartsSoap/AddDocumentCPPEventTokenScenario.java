@@ -1,7 +1,6 @@
 package simulations.Scripts.Scenario.DartsSoap;
 
 import simulations.Scripts.Headers.Headers;
-import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.SoapServiceEndpoint;
 import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
@@ -34,9 +33,6 @@ public final class AddDocumentCPPEventTokenScenario {
                         .exec(session -> {
                             String statusCode = session.getString("statusCode");
                             String message = session.getString("message");
-
-                            String responseBody = session.getString("responseBody");
-                            //System.out.println("Raw response body for AddDocument - CPP Event request: " + responseBody);
 
                             if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
                                 // Mark the request as failed if there's an error message

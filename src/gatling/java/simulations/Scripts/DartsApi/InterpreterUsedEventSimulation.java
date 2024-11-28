@@ -2,10 +2,8 @@ package simulations.Scripts.DartsApi;
 
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
 import simulations.Scripts.Scenario.DartsApi.InterpreterUsedEventScenario;
-import simulations.Scripts.Scenario.DartsApi.PostEventsScenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -27,7 +25,7 @@ public class InterpreterUsedEventSimulation extends Simulation {
     final ScenarioBuilder scn1 = scenario("POST Events Scenario")
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(141)    
-        .on(exec(InterpreterUsedEventScenario.InterpreterUsedEventScenario()
+        .on(exec(InterpreterUsedEventScenario.InterpreterUsedEvent()
         ));
 
     setUp(
