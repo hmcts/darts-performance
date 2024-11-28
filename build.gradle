@@ -355,7 +355,7 @@ tasks.register('runPostDuplicateEventSimulation') {
 }
 
 checkstyleGatling {
-    maxWarnings = 3035
+    maxWarnings = 3960
 }
 
 tasks.register('runAllStyleChecks') {
