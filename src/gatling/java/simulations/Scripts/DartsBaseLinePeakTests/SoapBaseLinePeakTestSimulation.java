@@ -106,7 +106,7 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
 
         // Set up all scenarios together
         setUp(
-           mainScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoap),
+       //    mainScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoap),
            postAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
            getAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
            deleteAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi)

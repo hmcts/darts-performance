@@ -6,7 +6,6 @@ import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
-import simulations.Scripts.Utilities.Feeders;
 
 public final class PatchAcceptTranscriptionScenario {
     private PatchAcceptTranscriptionScenario() {}

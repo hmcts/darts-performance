@@ -6,10 +6,7 @@ import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchScenario
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalDeleteAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLogoutScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestTranscriptionScenario;
 import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownloadAudioScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
@@ -58,7 +55,7 @@ public class TranscriberAttachFileAndDownloadAudioSimulation extends Simulation 
                 .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
                 .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
                 .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio()) // Request transcription
-                .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequestScenario()) 
+                .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequest()) 
 
             )
             // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())

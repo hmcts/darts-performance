@@ -3,7 +3,6 @@ package simulations.Scripts.NightlyRun;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Utilities.Feeders;
-import simulations.Scripts.Utilities.SQLQueryProvider;
 import simulations.Scripts.Scenario.DartsApi.GetAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsApi.PostAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchScenario;
@@ -21,19 +20,14 @@ import simulations.Scripts.Scenario.DartsSoap.AddCaseUserScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddCourtlogUserScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentCPPDailyListTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentCPPEventTokenScenario;
-import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentXhibitDailyListTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentXhibitEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.GetCasesUserScenario;
-import simulations.Scripts.Scenario.DartsSoap.GetCourtlogTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
 import simulations.Scripts.Scenario.DartsApi.DeleteAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
 import java.time.Duration;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -323,7 +317,7 @@ public class NightlyRunSimulation extends Simulation {
                             .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
                             .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
                             .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio()) // Add File to Transcription
-                            .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequestScenario()) // Delete a random Audio request
+                            .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequest()) // Delete a random Audio request
                         )
                         // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
                         .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest()) // Logout request

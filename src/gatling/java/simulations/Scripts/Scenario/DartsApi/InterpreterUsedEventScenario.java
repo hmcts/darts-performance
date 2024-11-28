@@ -11,7 +11,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public final class InterpreterUsedEventScenario {
 
     private InterpreterUsedEventScenario() {}
-    public static ChainBuilder InterpreterUsedEventScenario() {
+    public static ChainBuilder InterpreterUsedEvent() {
 
         String sql = 
             "WITH random_cases AS (" +

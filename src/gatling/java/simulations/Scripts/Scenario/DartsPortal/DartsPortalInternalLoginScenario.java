@@ -1,7 +1,6 @@
 package simulations.Scripts.Scenario.DartsPortal;
 
 import io.gatling.javaapi.core.ChainBuilder;
-import scala.util.Random;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 import simulations.Scripts.Utilities.AppConfig;

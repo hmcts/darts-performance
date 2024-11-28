@@ -2,10 +2,8 @@ package simulations.Scripts.Scenario.DartsPortal;
 
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
-import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.NumberGenerator;
 import io.gatling.javaapi.core.*;
-import scala.util.Random;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -14,7 +12,7 @@ public final class DartsPortalPreviewAudioScenario {
 
     private DartsPortalPreviewAudioScenario() {}
 
-    public static ChainBuilder DartsPortalPreviewAudioScenario() {
+    public static ChainBuilder DartsPortalPreviewAudio() {
         return group("Darts Preview Audio")
         .on(exec(session -> session.set("status", 202)) // Initialize the status to 202
           .asLongAsDuring(session -> session.getInt("status") != 200, java.time.Duration.ofMinutes(20))

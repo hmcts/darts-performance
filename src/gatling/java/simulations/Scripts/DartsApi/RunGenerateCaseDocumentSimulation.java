@@ -1,7 +1,6 @@
 package simulations.Scripts.DartsApi;
 
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
-import simulations.Scripts.Scenario.DartsApi.RunCloseOldUnfinishedTranscriptionsTaskScenario;
 import simulations.Scripts.Scenario.DartsApi.RunGenerateCaseDocumentTaskScenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
