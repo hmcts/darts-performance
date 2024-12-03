@@ -20,7 +20,7 @@ public class PostEventsSimulation extends Simulation {
         .inferHtmlResources();
 
     final ScenarioBuilder scn1 = scenario("POST Events Scenario")
-        .exec(feed(Feeders.createCaseHouseRoomsHearingDetails()))
+        .exec(feed(Feeders.createCourtHouseAndCourtRooms()))
         .exec(GetApiTokenScenario.getApiToken())
         .repeat(1)    
         .on(exec(PostEventsScenario.PostEventsRequest()

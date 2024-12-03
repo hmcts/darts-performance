@@ -24,8 +24,6 @@ dependencies {
 
 // Default gatlingRun configuration
 gatlingRun {
-
-
     
     simulationClassName = System.getenv("SimulationBlock")
     doFirst {
@@ -45,317 +43,66 @@ gatlingRun {
 }
 
 
-// Task for AudioPostSimulation
-tasks.register('runAudioPostSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.AudioPostSimulation"
+// Function to register a task for a simulation
+def registerSimulationTask(taskName, simulationClassName) {
+    tasks.register(taskName) {
+        doLast {
+            println "Running simulation: ${simulationClassName}"
+        }
+        // Set the simulation class and make this task depend on gatlingRun
+        finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+        gatlingRun.simulationClassName = simulationClassName
     }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.AudioPostSimulation'
 }
 
-// Task for AddCaseUserSimulation
-tasks.register('runAddCaseUserSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.NightlyRun.AddCaseUserSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.NightlyRun.AddCaseUserSimulation'
-}
+// List of simulations with their task names and simulation class names
+def simulations = [
 
-// Task for AudioRequestDeleteSimulation
-tasks.register('runAudioRequestDeleteSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.AudioRequestDeleteSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.AudioRequestDeleteSimulation'
-}
-
-// Task for AudioRequestGetDownloadSimulation
-tasks.register('runAudioRequestGetSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.AudioRequestGetSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.AudioRequestGetSimulation'
-}
-// Task for AudioRequestPostSimulation
-tasks.register('runAudioRequestPostSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.AudioRequestPostSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.AudioRequestPostSimulation'
-}
-// Task for NightlyRunSimulation
-tasks.register('runNightlyRunSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.NightlyRun.NightlyRunSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.NightlyRun.NightlyRunSimulation'
-}
-
-// Task for CloseCaseSimulation
-tasks.register('runCloseCaseSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.CloseCaseSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.CloseCaseSimulation'
-}
+    //Main Tests
+    [task: 'runPortalSmokeTestOneSimulation', class: 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestOneSimulation'],
+    [task: 'runPortalSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'],
+    
+    //NightlyRun
+    [task: 'runNightlyRunSimulation', class: 'simulations.Scripts.NightlyRun.NightlyRunSimulation'],
 
 
-// Task for CloseOldCasesTaskSimulation
-tasks.register('runCloseOldCasesTaskSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunCloseOldCasesTaskSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunCloseOldCasesTaskSimulation'
+    [task: 'runAudioPostSimulation', class: 'simulations.Scripts.DartsApi.AudioPostSimulation'],
+    [task: 'runAddCaseUserSimulation', class: 'simulations.Scripts.NightlyRun.AddCaseUserSimulation'],
+    [task: 'runAudioRequestDeleteSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestDeleteSimulation'],
+    [task: 'runAudioRequestGetSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestGetSimulation'],
+    [task: 'runAudioRequestPostSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestPostSimulation'],
+    [task: 'runCloseCaseSimulation', class: 'simulations.Scripts.DartsApi.CloseCaseSimulation'],
+    [task: 'runCaseRetentionForChildObjectsSimulation', class: 'simulations.Scripts.DartsApi.CaseRetentionForChildObjectsSimulation'],
+    [task: 'runCaseRetentionSimulation', class: 'simulations.Scripts.DartsApi.CaseRetentionSimulation'],
+    [task: 'runDailyListsSimulation', class: 'simulations.Scripts.DartsSoap.DailyListsSimulation'],
+    [task: 'runCloseOldUnfinishedTranscriptionsSimulation', class: 'simulations.Scripts.DartsApi.RunCloseOldUnfinishedTranscriptionsSimulation'],
+    [task: 'runGenerateCaseDocumentSimulation', class: 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentSimulation'],
+    [task: 'runGenerateCaseDocumentForRetentionDateSimulation', class: 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentForRetentionDateSimulation'],
+    [task: 'runAddDocumentsSimulation', class: 'simulations.Scripts.DartsSoap.AddDocumentsSimulation'],
+    [task: 'runRemoveDuplicateEventsSimulation', class: 'simulations.Scripts.DartsApi.RunRemoveDuplicateEventsSimulation'],
+    [task: 'runCaseExpiryDeletionSimulation', class: 'simulations.Scripts.DartsApi.RunCaseExpiryDeletionSimulation'],
+    [task: 'runInboundToUnstructuredDataStoreSimulation', class: 'simulations.Scripts.DartsApi.RunInboundToUnstructuredDataStoreSimulation'],
+
+    //Automated Tasks Simulations
+    [task: 'runAutomatedTask11Simulation', class: 'simulations.Scripts.DartsApi.RunAutomatedTask11Simulation'],
+    [task: 'runCloseOldCasesTaskSimulation', class: 'simulations.Scripts.DartsApi.RunCloseOldCasesTaskSimulation'],
+    [task: 'runApplyRetentionTaskSimulation', class: 'simulations.Scripts.DartsApi.RunApplyRetentionTaskSimulation'],
+    [task: 'runUnstructuredAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunUnstructuredAudioDeleterTaskSimulation'],
+    [task: 'runDailyListTaskSimulation', class: 'simulations.Scripts.DartsApi.RunDailyListTaskSimulation'],
+    [task: 'runDailyListHouseKeepingTaskSimulation', class: 'simulations.Scripts.DartsApi.RunDailyListHouseKeepingTaskSimulation'],
+    [task: 'runInboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunInboundAudioDeleterTaskSimulation'],
+    [task: 'runExternalDataStoreDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunExternalDataStoreDeleterTaskSimulation'],
+    [task: 'runOutboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunOutboundAudioDeleterTaskSimulation']
+]
+
+// Register tasks dynamically
+simulations.each { simulation ->
+    registerSimulationTask(simulation.task, simulation.class)
 }
 
-// Task for CaseRetentionSimulation
-tasks.register('runCaseRetentionSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.CaseRetentionSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.CaseRetentionSimulation'
-}
-
-// Task for ApplyRetentionTaskSimulation
-tasks.register('runApplyRetentionTaskSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunApplyRetentionTaskSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunApplyRetentionTaskSimulation'
-}
-
-// Task for UnstructuredAudioDeleterTaskSimulation
-tasks.register('runUnstructuredAudioDeleterTaskSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunUnstructuredAudioDeleterTaskSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunUnstructuredAudioDeleterTaskSimulation'
-}
-
-// Task for RunDailyListTaskSimulation
-tasks.register('runDailyListTaskSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunDailyListTaskSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunDailyListTaskSimulation'
-}
-
-// Task for DailyListsSimulation
-tasks.register('runDailyListsSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsSoap.DailyListsSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSoap.DailyListsSimulation'
-}
-
-// Task for RunDailyListHouseKeepingTaskSimulation
-tasks.register('runDailyListHouseKeepingTaskSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunDailyListHouseKeepingTaskSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunDailyListHouseKeepingTaskSimulation'
-}
-
-// Task for RunDailyListHouseKeepingTaskSimulation
-tasks.register('runPortalSmokeTestTwoSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'
-}
-
-// Task for RunCloseOldUnfinishedTranscriptionsSimulation
-tasks.register('runCloseOldUnfinishedTranscriptionsSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunCloseOldUnfinishedTranscriptionsSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunCloseOldUnfinishedTranscriptionsSimulation'
-}
-
-// Task for RunGenerateCaseDocumentSimulation
-tasks.register('runGenerateCaseDocumentSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunGenerateCaseDocumentSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentSimulation'
-}
-
-// Task for RunGenerateCaseDocumentForRetentionDateSimulation
-tasks.register('runGenerateCaseDocumentForRetentionDateSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunGenerateCaseDocumentForRetentionDateSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentForRetentionDateSimulation'
-}
-
-// Task for RunGenerateCaseDocumentForRetentionDateSimulation
-tasks.register('runAddDocumentsSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsSoap.AddDocumentsSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSoap.AddDocumentsSimulation'
-}
-
-// Task for RunRemoveDuplicateEventsSimulation
-tasks.register('runRemoveDuplicateEventsSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunRemoveDuplicateEventsSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunRemoveDuplicateEventsSimulation'
-}
-
-// Task for RunCaseExpiryDeletionSimulation
-tasks.register('runCaseExpiryDeletionSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunCaseExpiryDeletionSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunCaseExpiryDeletionSimulation'
-}
-
-// Task for RunInboundToUnstructuredDataStoreSimulation
-tasks.register('runInboundToUnstructuredDataStoreSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunInboundToUnstructuredDataStoreSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunInboundToUnstructuredDataStoreSimulation'
-}
-
-// Task for RunInboundAudioDeleterTaskSimulation
-tasks.register('runInboundAudioDeleterTaskSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunInboundAudioDeleterTaskSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunInboundAudioDeleterTaskSimulation'
-}
-
-// Task for PortalSmokeTestOneSimulation
-tasks.register('runPortalSmokeTestOneSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsSmokeTests.PortalSmokeTestOneSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestOneSimulation'
-}
-
-// Task for RunExternalDataStoreDeleterTaskSimulation
-tasks.register('runExternalDataStoreDeleterTaskSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunExternalDataStoreDeleterTaskSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunExternalDataStoreDeleterTaskSimulation'
-}
-
-// Task for RunOutboundAudioDeleterTaskSimulation
-tasks.register('runOutboundAudioDeleterTaskSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunOutboundAudioDeleterTaskSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunOutboundAudioDeleterTaskSimulation'
-}
-
-// Task for SoapBaseLinePeakTestSimulation
-tasks.register('runSoapBaseLinePeakTestSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsBaseLinePeakTests.SoapBaseLinePeakTestSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsBaseLinePeakTests.SoapBaseLinePeakTestSimulation'
-}
-
-// Task for AddDocumentEventTokenSimulation
-tasks.register('runAddDocumentEventTokenSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsSoap.AddDocumentEventTokenSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsSoap.AddDocumentEventTokenSimulation'
-}
-
-// Task for LinkedAudioSimulation
-tasks.register('runLinkedAudioSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.LinkedAudioSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.LinkedAudioSimulation'
-}
-
-// Task for RunAudioLinkingTaskSimulation
-tasks.register('runAudioLinkingTaskSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.RunAudioLinkingTaskSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.RunAudioLinkingTaskSimulation'
-}
-
-// Task for PostDuplicateEventSimulation
-tasks.register('runPostDuplicateEventSimulation') {
-    doLast {
-        println "Running simulation: simulations.Scripts.DartsApi.PostDuplicateEventSimulation"
-    }
-    // Set the simulation class and make this task depend on gatlingRun
-    finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
-    gatlingRun.simulationClassName = 'simulations.Scripts.DartsApi.PostDuplicateEventSimulation'
-}
 
 checkstyleGatling {
-    maxWarnings = 3960
+    maxWarnings = 3035
 }
 
 tasks.register('runAllStyleChecks') {
