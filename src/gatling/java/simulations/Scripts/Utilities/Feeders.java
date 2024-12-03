@@ -2,6 +2,10 @@ package simulations.Scripts.Utilities;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -264,6 +268,22 @@ public class Feeders {
         return JdbcDsl.jdbcFeeder(AppConfig.DB_URL, AppConfig.DB_USERNAME, AppConfig.DB_PASSWORD, sql);
     }
 
+    public static FeederBuilder<Object> jdbcFeeder2() {
+        log.info("Creating jdbcFeeder dynamically...");
+        
+        // Fetch the SQL dynamically for each execution
+        String sql = SQLQueryProvider.getCaseRetentionForChildObjectQuery();  
+        log.info("Executing SQL: " + sql);
+    
+        // Create the feeder
+        FeederBuilder<Object> feeder = JdbcDsl.jdbcFeeder(AppConfig.DB_URL, AppConfig.DB_USERNAME, AppConfig.DB_PASSWORD, sql);
+
+    
+        return feeder;
+    }
+    
+    
+    
 
     public static void resetCounter() {
         COUNTER.set(0);
