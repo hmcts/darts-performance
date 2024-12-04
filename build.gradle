@@ -42,7 +42,7 @@ gatlingRun {
     }
 }
 
-
+// Run Command = & .\gradlew.bat runCaseRetentionForChildObjectsSimulation
 // Function to register a task for a simulation
 def registerSimulationTask(taskName, simulationClassName) {
     tasks.register(taskName) {
@@ -65,23 +65,24 @@ def simulations = [
     //NightlyRun
     [task: 'runNightlyRunSimulation', class: 'simulations.Scripts.NightlyRun.NightlyRunSimulation'],
 
-
-    [task: 'runAudioPostSimulation', class: 'simulations.Scripts.DartsApi.AudioPostSimulation'],
-    [task: 'runAddCaseUserSimulation', class: 'simulations.Scripts.NightlyRun.AddCaseUserSimulation'],
-    [task: 'runAudioRequestDeleteSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestDeleteSimulation'],
-    [task: 'runAudioRequestGetSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestGetSimulation'],
-    [task: 'runAudioRequestPostSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestPostSimulation'],
+    //Create Data for scripts / automated tasks
     [task: 'runCloseCaseSimulation', class: 'simulations.Scripts.DartsApi.CloseCaseSimulation'],
     [task: 'runCaseRetentionForChildObjectsSimulation', class: 'simulations.Scripts.DartsApi.CaseRetentionForChildObjectsSimulation'],
-    [task: 'runCaseRetentionSimulation', class: 'simulations.Scripts.DartsApi.CaseRetentionSimulation'],
     [task: 'runDailyListsSimulation', class: 'simulations.Scripts.DartsSoap.DailyListsSimulation'],
+    [task: 'runCaseRetentionSimulation', class: 'simulations.Scripts.DartsApi.CaseRetentionSimulation'],
     [task: 'runCloseOldUnfinishedTranscriptionsSimulation', class: 'simulations.Scripts.DartsApi.RunCloseOldUnfinishedTranscriptionsSimulation'],
     [task: 'runGenerateCaseDocumentSimulation', class: 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentSimulation'],
     [task: 'runGenerateCaseDocumentForRetentionDateSimulation', class: 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentForRetentionDateSimulation'],
-    [task: 'runAddDocumentsSimulation', class: 'simulations.Scripts.DartsSoap.AddDocumentsSimulation'],
     [task: 'runRemoveDuplicateEventsSimulation', class: 'simulations.Scripts.DartsApi.RunRemoveDuplicateEventsSimulation'],
     [task: 'runCaseExpiryDeletionSimulation', class: 'simulations.Scripts.DartsApi.RunCaseExpiryDeletionSimulation'],
     [task: 'runInboundToUnstructuredDataStoreSimulation', class: 'simulations.Scripts.DartsApi.RunInboundToUnstructuredDataStoreSimulation'],
+
+    //General Simulations
+    [task: 'runAudioPostSimulation', class: 'simulations.Scripts.DartsApi.AudioPostSimulation'],
+    [task: 'runAudioRequestDeleteSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestDeleteSimulation'],
+    [task: 'runAudioRequestGetSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestGetSimulation'],
+    [task: 'runAudioRequestPostSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestPostSimulation'],
+    [task: 'runAddDocumentsSimulation', class: 'simulations.Scripts.DartsSoap.AddDocumentsSimulation'],
 
     //Automated Tasks Simulations
     [task: 'runAutomatedTask11Simulation', class: 'simulations.Scripts.DartsApi.RunAutomatedTask11Simulation'],
