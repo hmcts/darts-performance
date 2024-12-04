@@ -43,6 +43,7 @@ gatlingRun {
 }
 
 // Run Command = & .\gradlew.bat runCaseRetentionForChildObjectsSimulation
+
 // Function to register a task for a simulation
 def registerSimulationTask(taskName, simulationClassName) {
     tasks.register(taskName) {
@@ -50,7 +51,7 @@ def registerSimulationTask(taskName, simulationClassName) {
             println "Running simulation: ${simulationClassName}"
         }
         // Set the simulation class and make this task depend on gatlingRun
-        finalizedBy(gatlingRun) // Ensure gatlingRun executes after this task
+        finalizedBy(gatlingRun)
         gatlingRun.simulationClassName = simulationClassName
     }
 }
