@@ -58,10 +58,20 @@ def registerSimulationTask(taskName, simulationClassName) {
 // List of simulations with their task names and simulation class names
 def simulations = [
 
-    //Main Tests
+    //Main Smoke Tests
     [task: 'runPortalSmokeTestOneSimulation', class: 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestOneSimulation'],
     [task: 'runPortalSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'],
-    
+    [task: 'runSoapSmokeTestOneSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestOneSimulation'],
+    [task: 'runSoapSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestTwoSimulation'],
+
+    //Main BaseLine Normal Tests
+    [task: 'runDartsBaseLineNormalTests', class: 'simulations.Scripts.DartsBaseLineNormalTests'],
+    [task: 'runSoapBaseLineNormalTestSimulation', class: 'simulations.Scripts.SoapBaseLineNormalTestSimulation'],
+
+    //Main BaseLine Peak Tests
+    [task: 'runDartsBaseLinePeakTests', class: 'simulations.Scripts.DartsBaseLinePeakTests'],
+    [task: 'runSoapBaseLinePeakTestSimulation', class: 'simulations.Scripts.SoapBaseLinePeakTestSimulation'],
+
     //NightlyRun
     [task: 'runNightlyRunSimulation', class: 'simulations.Scripts.NightlyRun.NightlyRunSimulation'],
 
@@ -93,7 +103,8 @@ def simulations = [
     [task: 'runDailyListHouseKeepingTaskSimulation', class: 'simulations.Scripts.DartsApi.RunDailyListHouseKeepingTaskSimulation'],
     [task: 'runInboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunInboundAudioDeleterTaskSimulation'],
     [task: 'runExternalDataStoreDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunExternalDataStoreDeleterTaskSimulation'],
-    [task: 'runOutboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunOutboundAudioDeleterTaskSimulation']
+    [task: 'runOutboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunOutboundAudioDeleterTaskSimulation'],
+    [task: 'runApplyRetentionCaseAssociatedObjectsTaskSimulation', class: 'simulations.Scripts.DartsApi.RunApplyRetentionCaseAssociatedObjectsTaskSimulation']
 ]
 
 // Register tasks dynamically

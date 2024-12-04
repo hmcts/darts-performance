@@ -5,4 +5,4 @@ $targetPath = "C:\darts-performance"
 Set-Location -Path $targetPath
 
 # Execute the Gradle command
-& .\gradlew.bat runPortalSmokeTestOneSimulation
+& .\gradlew.bat runSoapBaseLinePeakTestSimulation
