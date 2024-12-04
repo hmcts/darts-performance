@@ -1,71 +1,71 @@
-#!groovy
-properties([
-//        pipelineTriggers([cron('00 21 * * *')]),
-// parameters([
-//         choice(choices: [
-//                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation',
-//                 'simulations.Scripts.NightlyRun.NightlyRunSimulation',
-//                 'simulations.Scripts.NightlyRun.SoapSmokeTestTwoSimulation',
-//                 'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation',
-//                 'simulations.Scripts.DartsApi.AudioPostSimulation'
-//         ], name: 'simulationClassName'),
-//         text(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
-//         string(name: 'SimulationBlock', defaultValue: 'simulations.Scripts.NightlyRun.NightlyRunSimulation', description: 'Run the NightlyRunSimulation')
+// #!groovy
+// properties([
+// //        pipelineTriggers([cron('00 21 * * *')]),
+// // parameters([
+// //         choice(choices: [
+// //                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation',
+// //                 'simulations.Scripts.NightlyRun.NightlyRunSimulation',
+// //                 'simulations.Scripts.NightlyRun.SoapSmokeTestTwoSimulation',
+// //                 'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation',
+// //                 'simulations.Scripts.DartsApi.AudioPostSimulation'
+// //         ], name: 'simulationClassName'),
+// //         text(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
+// //         string(name: 'SimulationBlock', defaultValue: 'simulations.Scripts.NightlyRun.NightlyRunSimulation', description: 'Run the NightlyRunSimulation')
 
+// // ])
 // ])
-])
-@Library("Infrastructure")
+// @Library("Infrastructure")
 
-def product = "darts"
-def type = "java"
-def component = "performance"
-def branchesToSync = ['demo', 'perftest']
-def secrets = [
-        "darts-test": [
-                secret('PERFORMANCE-EXTERNAL-CLIENT-ID', 'PERFORMANCE_EXTERNAL_CLIENT_ID'),
-                secret('PERFORMANCE-EXTERNAL-CLIENT-SECRET', 'PERFORMANCE_EXTERNAL_CLIENT_SECRET'),
-                secret('PERFORMANCE-EXTERNAL-AZURE-AD-B2C-CLIENT-ID', 'PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID'),
-                secret('TENANT-NAME', 'TENANT_NAME'),
-                secret('INTERNAL-TENANT-NAME', 'INTERNAL_TENANT_NAME'),
-                secret('PERFORMANCE-INTERNAL-CLIENT-ID', 'PERFORMANCE_INTERNAL_CLIENT_ID'),
-                secret('PERFORMANCE-INTERNAL-CLIENT-SECRET', 'PERFORMANCE_INTERNAL_CLIENT_SECRET'),
-                secret('PERFORMANCE-INTERNAL-TENANT-ID', 'PERFORMANCE_INTERNAL_TENANT_ID'),
-                secret('PERFORMANCE-INTERNAL-SCOPE', 'PERFORMANCE_INTERNAL_SCOPE'),
+// def product = "darts"
+// def type = "java"
+// def component = "performance"
+// def branchesToSync = ['demo', 'perftest']
+// def secrets = [
+//         "darts-test": [
+//                 secret('PERFORMANCE-EXTERNAL-CLIENT-ID', 'PERFORMANCE_EXTERNAL_CLIENT_ID'),
+//                 secret('PERFORMANCE-EXTERNAL-CLIENT-SECRET', 'PERFORMANCE_EXTERNAL_CLIENT_SECRET'),
+//                 secret('PERFORMANCE-EXTERNAL-AZURE-AD-B2C-CLIENT-ID', 'PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID'),
+//                 secret('TENANT-NAME', 'TENANT_NAME'),
+//                 secret('INTERNAL-TENANT-NAME', 'INTERNAL_TENANT_NAME'),
+//                 secret('PERFORMANCE-INTERNAL-CLIENT-ID', 'PERFORMANCE_INTERNAL_CLIENT_ID'),
+//                 secret('PERFORMANCE-INTERNAL-CLIENT-SECRET', 'PERFORMANCE_INTERNAL_CLIENT_SECRET'),
+//                 secret('PERFORMANCE-INTERNAL-TENANT-ID', 'PERFORMANCE_INTERNAL_TENANT_ID'),
+//                 secret('PERFORMANCE-INTERNAL-SCOPE', 'PERFORMANCE_INTERNAL_SCOPE'),
 
-                secret('api-POSTGRES-URL', 'DB_URL'),
-                secret('api-POSTGRES-USER', 'DB_USERNAME'),
-                secret('api-POSTGRES-PASS', 'DB_PASSWORD'),
+//                 secret('api-POSTGRES-URL', 'DB_URL'),
+//                 secret('api-POSTGRES-USER', 'DB_USERNAME'),
+//                 secret('api-POSTGRES-PASS', 'DB_PASSWORD'),
 
-                secret('DARTS-API-USERNAME', 'DARTS_API_USERNAME'),
-                secret('DARTS-API-GLOBAL-USERNAME', 'DARTS_API_GLOBAL_USERNAME'),
-                secret('DARTS-API-PASSWORD', 'DARTS_API_PASSWORD'),
-                secret('DARTS-SOAP-XHIBIT-EXTERNAL-USERNAME', 'DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME'),
-                secret('DARTS-SOAP-XHIBIT-EXTERNAL-PASSWORD', 'DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD'),
-                secret('DARTS-API-USERNAME2', 'DARTS_API_USERNAME2'),
-                secret('DARTS-API-PASSWORD2', 'DARTS_API_PASSWORD2'),
-                secret('DARTS-SOAP-VIQ-EXTERNAL-USERNAME', 'DARTS_SOAP_VIQ_EXTERNAL_USERNAME'),
-                secret('DARTS-SOAP-VIQ-EXTERNAL-PASSWORD', 'DARTS_SOAP_VIQ_EXTERNAL_PASSWORD'),
-                secret('DARTS-SOAP-CPP-EXTERNAL-USERNAME', 'DARTS_SOAP_CPP_EXTERNAL_USERNAME'),
-                secret('DARTS-SOAP-CPP-EXTERNAL-PASSWORD', 'DARTS_SOAP_CPP_EXTERNAL_PASSWORD'),
-        ],
-]
+//                 secret('DARTS-API-USERNAME', 'DARTS_API_USERNAME'),
+//                 secret('DARTS-API-GLOBAL-USERNAME', 'DARTS_API_GLOBAL_USERNAME'),
+//                 secret('DARTS-API-PASSWORD', 'DARTS_API_PASSWORD'),
+//                 secret('DARTS-SOAP-XHIBIT-EXTERNAL-USERNAME', 'DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME'),
+//                 secret('DARTS-SOAP-XHIBIT-EXTERNAL-PASSWORD', 'DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD'),
+//                 secret('DARTS-API-USERNAME2', 'DARTS_API_USERNAME2'),
+//                 secret('DARTS-API-PASSWORD2', 'DARTS_API_PASSWORD2'),
+//                 secret('DARTS-SOAP-VIQ-EXTERNAL-USERNAME', 'DARTS_SOAP_VIQ_EXTERNAL_USERNAME'),
+//                 secret('DARTS-SOAP-VIQ-EXTERNAL-PASSWORD', 'DARTS_SOAP_VIQ_EXTERNAL_PASSWORD'),
+//                 secret('DARTS-SOAP-CPP-EXTERNAL-USERNAME', 'DARTS_SOAP_CPP_EXTERNAL_USERNAME'),
+//                 secret('DARTS-SOAP-CPP-EXTERNAL-PASSWORD', 'DARTS_SOAP_CPP_EXTERNAL_PASSWORD'),
+//         ],
+// ]
 
-static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
-    [$class     : 'AzureKeyVaultSecret',
-     secretType : 'Secret',
-     name       : secretName,
-     version    : '',
-     envVariable: envVar
-    ]
-}
+// static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
+//     [$class     : 'AzureKeyVaultSecret',
+//      secretType : 'Secret',
+//      name       : secretName,
+//      version    : '',
+//      envVariable: envVar
+//     ]
+// }
 
-withNightlyPipeline(type, product, component) {
-    enableSlackNotifications('#darts-builds')
-    loadVaultSecrets(secrets)
-    env.simulationClassName = params.simulationClassName
-    env.SOAP_USERS_COUNT = params.Users
-    enablePerformanceTest()
-    afterFailure('test') {
-        publishPerformanceReports()
-    }
-}
+// withNightlyPipeline(type, product, component) {
+//     enableSlackNotifications('#darts-builds')
+//     loadVaultSecrets(secrets)
+//     env.simulationClassName = params.simulationClassName
+//     env.SOAP_USERS_COUNT = params.Users
+//     enablePerformanceTest()
+//     afterFailure('test') {
+//         publishPerformanceReports()
+//     }
+// }
