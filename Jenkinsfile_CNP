@@ -1,18 +1,18 @@
 #!groovy
 properties([
 //        pipelineTriggers([cron('00 21 * * *')]),
-parameters([
-        choice(choices: [
-                'simulations.Scripts.DartsSoap.AddCaseUserSimulation',
-                'simulations.Scripts.NightlyRun.NightlyRunSimulation',
-                'simulations.Scripts.NightlyRun.SoapSmokeTestTwoSimulation',
-                'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation',
-                'simulations.Scripts.DartsApi.AudioPostSimulation'
-        ], name: 'simulationClassName'),
-        text(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
-        string(name: 'SimulationBlock', defaultValue: 'simulations.Scripts.NightlyRun.NightlyRunSimulation', description: 'Run the NightlyRunSimulation')
+// parameters([
+//         choice(choices: [
+//                 'simulations.Scripts.DartsSoap.AddCaseUserSimulation',
+//                 'simulations.Scripts.NightlyRun.NightlyRunSimulation',
+//                 'simulations.Scripts.NightlyRun.SoapSmokeTestTwoSimulation',
+//                 'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation',
+//                 'simulations.Scripts.DartsApi.AudioPostSimulation'
+//         ], name: 'simulationClassName'),
+//         text(name: 'Users', defaultValue: '1', description: 'The number of users for the test'),
+//         string(name: 'SimulationBlock', defaultValue: 'simulations.Scripts.NightlyRun.NightlyRunSimulation', description: 'Run the NightlyRunSimulation')
 
-])
+// ])
 ])
 @Library("Infrastructure")
 
