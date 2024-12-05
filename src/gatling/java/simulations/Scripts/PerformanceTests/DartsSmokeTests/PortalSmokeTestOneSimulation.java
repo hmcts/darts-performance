@@ -1,42 +1,33 @@
-package simulations.Scripts.DartsBaseLinePeakTests;
+package simulations.Scripts.PerformanceTests.DartsSmokeTests;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalAdvanceSearchScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalApproveAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalChangeRetentionScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalDeleteAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLoginScenario;
-import simulations.Scripts.Scenario.DartsPortal.DartsPortalExternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLogoutScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestAudioScenario;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalRequestTranscriptionScenario;
-import simulations.Scripts.Scenario.DartsPortal.TranscriberAttachFileAndDownloadAudioScenario;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 import java.time.Duration;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public class PortalBaslinePeakTestSimulation extends Simulation {   
-    
-    public static AtomicInteger global400ErrorCounter = new AtomicInteger(0);
+public class PortalSmokeTestOneSimulation extends Simulation {   
 
-    private static final String SMOKE_TEST_TWO_JUDGE_USERS = "Baseline Peak - DARTS - Portal - Judge Users";
-    private static final String SMOKE_TEST_TWO_COURT_CLERK_USERS = "Baseline Peak - DARTS - Portal - Court Clerk Users";
-    private static final String SMOKE_TEST_TWO_COURT_MANAGER_USERS = "Baseline Peak - DARTS - Portal - Court Manager Users";
-    private static final String SMOKE_TEST_TWO_TRANSCRIBER_USERS = "Baseline Peak - DARTS - Portal - Transcriber Users";
-    private static final String SMOKE_TEST_TWO_LANGUAGE_USERS = "Baseline Peak - DARTS - Portal - Language Shop Users";
+    private static final String BASELINE_NORMAL_JUDGE_USERS = "Baseline Normal - DARTS - Portal - Judge Users";
+    private static final String BASELINE_NORMAL_COURT_CLERK_USERS = "Baseline Normal - DARTS - Portal - Court Clerk Users";
+    private static final String BASELINE_NORMAL_LANGUAGE_USERS = "Baseline Normal - DARTS - Portal - Language Shop Users";
 
     @Override
     public void before() {
         System.out.println("Simulation is about to start!");
     }
 
-    public PortalBaslinePeakTestSimulation() {
+    public PortalSmokeTestOneSimulation() {
             HttpProtocolBuilder httpProtocolExternal = http
                 .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
@@ -63,29 +54,21 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
         
     private void setUpScenarios(HttpProtocolBuilder httpProtocolExternal, HttpProtocolBuilder httpProtocolInternal) {
         // Set up scenarios with configurable parameters
-        ScenarioBuilder smokeJudgeUsers = setUpJudgeUsers(SMOKE_TEST_TWO_JUDGE_USERS);
-        ScenarioBuilder smokeCourtClerkUsers = setUpCourtClerkUsers(SMOKE_TEST_TWO_COURT_CLERK_USERS);
-        ScenarioBuilder smokeCourtManagerUsers = setUpCourtManagerUsers(SMOKE_TEST_TWO_COURT_MANAGER_USERS);
-        ScenarioBuilder smokeTranscriberUsers = setUpTranscriberUsers(SMOKE_TEST_TWO_TRANSCRIBER_USERS);
-        ScenarioBuilder smokeLanguageShopUsers = setUpLanguageShopUsers(SMOKE_TEST_TWO_LANGUAGE_USERS);
+        ScenarioBuilder smokeJudgeUsers = setUpJudgeUsers(BASELINE_NORMAL_JUDGE_USERS);
+        ScenarioBuilder smokeCourtClerkUsers = setUpCourtClerkUsers(BASELINE_NORMAL_COURT_CLERK_USERS);
+        ScenarioBuilder smokeLanguageShopUsers = setUpLanguageShopUsers(BASELINE_NORMAL_LANGUAGE_USERS);
 
         // Call setUp once with all scenarios
         setUp(
-            smokeJudgeUsers.injectOpen(
-                rampUsers(AppConfig.JUDGE_RAMP_UP_USERS_PEAK).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)) 
-            ).protocols(httpProtocolInternal),
+             smokeJudgeUsers.injectOpen(
+                 rampUsers(AppConfig.JUDGE_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)) 
+             ).protocols(httpProtocolInternal),
             smokeCourtClerkUsers.injectOpen(
-                rampUsers(AppConfig.COURT_CLERK_RAMP_UP_USERS_PEAK).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)) 
+                rampUsers(AppConfig.COURT_CLERK_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)) 
             ).protocols(httpProtocolInternal),
-            smokeCourtManagerUsers.injectOpen(
-                rampUsers(AppConfig.COURT_MANAGER_RAMP_UP_USERS_PEAK).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_MANAGER)) 
-            ).protocols(httpProtocolInternal),
-            smokeTranscriberUsers.injectOpen(
-                rampUsers(AppConfig.TRANSCRIBER_RAMP_UP_USERS_PEAK).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_TRANSCRIBER))
-            ).protocols(httpProtocolExternal),
-            smokeLanguageShopUsers.injectOpen(
-                rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS_PEAK).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)) 
-            ).protocols(httpProtocolExternal)
+             smokeLanguageShopUsers.injectOpen(
+                 rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)) 
+             ).protocols(httpProtocolExternal)
         );
     }
 
@@ -126,82 +109,6 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
                 .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()) // Logout request
             );
     }
-
-    private ScenarioBuilder setUpCourtManagerUsers(String scenarioName) {
-        return scenario(scenarioName)
-            .group("Court Managers Users")
-            .on(
-                exec(feed(Feeders.createCourtManagerUsers())) // Load court clerk user data
-                .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) // Login request
-                .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
-                .repeat(5).on(
-                    exec(session -> {
-                        // Increment the loop counter
-                        int iteration = session.getInt("loopCounter") + 1;
-    
-                        // Determine the column name based on the iteration number
-                        String defendantColumn = switch (iteration) {
-                            case 1 -> "defendantFirstName";
-                            case 2 -> "defendantSecondName";
-                            case 3 -> "defendantThirdName";
-                            case 4 -> "defendantFourthName";
-                            case 5 -> "defendantFifthName";
-                            default -> throw new RuntimeException("Unexpected iteration: " + iteration);
-                        };
-    
-                        // Retrieve the defendant name from the session and set it for use
-                        String defendantName = session.getString(defendantColumn);
-                        session = session.set("defendantFirstName", defendantName);
-    
-                        // Update the loop counter in the session for the next iteration
-                        return session.set("loopCounter", iteration);
-                    })
-                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
-                    .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio())
-                )
-                // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
-                .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()) // Logout request
-            );
-    }
-
-    private ScenarioBuilder setUpTranscriberUsers(String scenarioName) {
-        return scenario(scenarioName)
-            .group("Transcriber Users")
-            .on(
-                exec(feed(Feeders.createTranscriberUsers())) // Load court clerk user data
-                .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
-                .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
-                .repeat(5).on(
-                    exec(session -> {
-                        // Increment the loop counter
-                        int iteration = session.getInt("loopCounter") + 1;
-    
-                        // Determine the column name based on the iteration number
-                        String defendantColumn = switch (iteration) {
-                            case 1 -> "defendantFirstName";
-                            case 2 -> "defendantSecondName";
-                            case 3 -> "defendantThirdName";
-                            case 4 -> "defendantFourthName";
-                            case 5 -> "defendantFifthName";
-                            default -> throw new RuntimeException("Unexpected iteration: " + iteration);
-                        };
-    
-                        // Retrieve the defendant name from the session and set it for use
-                        String defendantName = session.getString(defendantColumn);
-                        session = session.set("defendantFirstName", defendantName);
-    
-                        // Update the loop counter in the session for the next iteration
-                        return session.set("loopCounter", iteration);
-                    })
-                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
-                  .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
-                    .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio()) // Add File to Transcription
-                   .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequest()) // Delete a random Audio request
-                )
-                // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
-                .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest()) // Logout request
-            );
-    }
     
     private ScenarioBuilder setUpLanguageShopUsers(String scenarioName) {
         return scenario(scenarioName)        
@@ -235,10 +142,9 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
                 })
                 .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) 
                 .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-                //.exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
+               // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
             )
-            .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest())
-        );
+            .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest()));
     }
 
     private ScenarioBuilder setUpJudgeUsers(String scenarioName) {
@@ -296,11 +202,8 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
                 .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest())
             );
     }
-
     @Override
     public void after() {
-        System.out.println("Total 400 Errors Encountered: " + global400ErrorCounter.get());
-
         System.out.println("Simulation is finished!");
     }
 }

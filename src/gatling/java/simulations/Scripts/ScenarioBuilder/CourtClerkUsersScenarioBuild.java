@@ -1,18 +1,19 @@
-package simulations.Scripts.DartsGroupTest.Scenarios;
+package simulations.Scripts.ScenarioBuilder;
 
-import io.gatling.javaapi.core.ScenarioBuilder;
-import static io.gatling.javaapi.core.CoreDsl.*;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.*;
+import io.gatling.javaapi.core.*;
 
-public class TranscriberUsersScenario {
+import static io.gatling.javaapi.core.CoreDsl.*;
+
+public class CourtClerkUsersScenarioBuild {
 
     public static ScenarioBuilder build(String scenarioName) {
         return scenario(scenarioName)
-            .group("Transcriber Users")
+            .group("Court Clerk Users")
             .on(
-                exec(feed(Feeders.createTranscriberUsers())) // Load transcriber user data
-                .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
+                exec(feed(Feeders.createCourtManagerUsers())) // Load court clerk user data
+                .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) // Login request
                 .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
                 .repeat(5).on(
                     exec(session -> {
@@ -37,11 +38,9 @@ public class TranscriberUsersScenario {
                         return session.set("loopCounter", iteration);
                     })
                     .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
-                    .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
-                    .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio()) // Attach file
-                    .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequest()) // Delete audio request
+                    .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio())
                 )
-                .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest()) // Logout request
-            );
+                // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
+                .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest())); // Logout request);
     }
 }

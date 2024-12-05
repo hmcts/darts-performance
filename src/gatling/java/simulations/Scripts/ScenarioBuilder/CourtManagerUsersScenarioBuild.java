@@ -1,4 +1,4 @@
-package simulations.Scripts.DartsGroupTest.Scenarios;
+package simulations.Scripts.ScenarioBuilder;
 
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.*;
@@ -6,14 +6,14 @@ import io.gatling.javaapi.core.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 
-public class CourtClerkUsersScenario {
+public class CourtManagerUsersScenarioBuild {
 
     public static ScenarioBuilder build(String scenarioName) {
         return scenario(scenarioName)
             .group("Court Clerk Users")
             .on(
-                exec(feed(Feeders.createCourtManagerUsers())) // Load court clerk user data
-                .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) // Login request
+                exec(feed(Feeders.createCourtClerkUsers()))
+                .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
                 .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
                 .repeat(5).on(
                     exec(session -> {
@@ -37,10 +37,10 @@ public class CourtClerkUsersScenario {
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
                     })
-                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
-                    .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio())
+                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch())
+                    .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
+                    .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
                 )
-                // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
-                .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest())); // Logout request);
+                .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()));
     }
 }
