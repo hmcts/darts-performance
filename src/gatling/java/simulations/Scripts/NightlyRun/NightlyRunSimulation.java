@@ -103,7 +103,7 @@ public class NightlyRunSimulation extends Simulation {
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolApi, HttpProtocolBuilder httpProtocolExternal, HttpProtocolBuilder httpProtocolInternal) {
         // Main SOAP scenario setup
-        ScenarioBuilder mainScenario = scenario("Main Scenario")
+        ScenarioBuilder saopScenarios = scenario("Main Scenario")
          //Register with different VIQ
          .group("Register With VIQ External Username")
          .on(
@@ -150,12 +150,69 @@ public class NightlyRunSimulation extends Simulation {
                 //     exec(GetAudioRequestScenario.GetAudioRequestDownload()),
                 //     exec(GetAudioRequestScenario.GetAudioRequestPlayBack()))
 
-            );   
+        );  
 
-            ScenarioBuilder courtClerkUsers = scenario("Smoke Test Two - DARTS - Portal - Court Clerk Users")               
-                .group("Court Clerk Users")
+        ScenarioBuilder courtClerkUsers = scenario("Smoke Test Two - DARTS - Portal - Court Clerk Users")               
+            .group("Court Clerk Users")
+            .on(
+                exec(feed(Feeders.createCourtClerkUsers())) // Load court clerk user data
+                .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) // Login request
+                .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
+                .repeat(5).on( // Repeat 5 times, once for each cas_id and defendant name
+                    exec(session -> {
+                        // Increment the loop counter
+                        int iteration = session.getInt("loopCounter") + 1;
+
+                        // Determine the cas_id and defendant name column names based on the iteration number
+                        String casIdColumn = "";
+                        String defendantColumn = "";
+                        switch (iteration) {
+                            case 1: 
+                                casIdColumn = "cas_id1"; 
+                                defendantColumn = "defendantFirstName"; 
+                                break;
+                            case 2: 
+                                casIdColumn = "cas_id2"; 
+                                defendantColumn = "defendantSecondName"; 
+                                break;
+                            case 3: 
+                                casIdColumn = "cas_id3"; 
+                                defendantColumn = "defendantThirdName"; 
+                                break;
+                            case 4: 
+                                casIdColumn = "cas_id4"; 
+                                defendantColumn = "defendantFourthName"; 
+                                break;
+                            case 5: 
+                                casIdColumn = "cas_id5"; 
+                                defendantColumn = "defendantFifthName"; 
+                                break;
+                            default: 
+                                throw new RuntimeException("Unexpected iteration: " + iteration);
+                        }
+
+                        // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
+                        String casId = session.getString(casIdColumn);
+                        String defendantName = session.getString(defendantColumn);
+                        session = session
+                                    .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
+                                    .set("defendantFirstName", defendantName); // Set the defendant name for #{defendantFirstName} usage
+
+                        // Update the loop counter in the session for the next iteration
+                        return session.set("loopCounter", iteration);
+                    })
+                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
+                    .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
+                    .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription()) // Request transcription
+                )
+                // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
+                .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()) // Logout request
+        );
+            
+        ScenarioBuilder courtManagerUsers = scenario("Smoke Test Two - DARTS - Portal - Court Manager Users") 
+                .group("Court Managers Users")
                 .on(
-                    exec(feed(Feeders.createCourtClerkUsers())) // Load court clerk user data
+                    exec(feed(Feeders.createCourtManagerUsers())) // Load court clerk user data
                     .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) // Login request
                     .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
                     .repeat(5).on( // Repeat 5 times, once for each cas_id and defendant name
@@ -202,68 +259,11 @@ public class NightlyRunSimulation extends Simulation {
                             return session.set("loopCounter", iteration);
                         })
                         .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
-                        .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
-                        .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription()) // Request transcription
+                        .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio())
                     )
                     // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
                     .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()) // Logout request
-                );
-            
-            ScenarioBuilder courtManagerUsers = scenario("Smoke Test Two - DARTS - Portal - Court Manager Users") 
-                    .group("Court Managers Users")
-                    .on(
-                        exec(feed(Feeders.createCourtManagerUsers())) // Load court clerk user data
-                        .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) // Login request
-                        .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
-                        .repeat(5).on( // Repeat 5 times, once for each cas_id and defendant name
-                            exec(session -> {
-                                // Increment the loop counter
-                                int iteration = session.getInt("loopCounter") + 1;
-            
-                                // Determine the cas_id and defendant name column names based on the iteration number
-                                String casIdColumn = "";
-                                String defendantColumn = "";
-                                switch (iteration) {
-                                    case 1: 
-                                        casIdColumn = "cas_id1"; 
-                                        defendantColumn = "defendantFirstName"; 
-                                        break;
-                                    case 2: 
-                                        casIdColumn = "cas_id2"; 
-                                        defendantColumn = "defendantSecondName"; 
-                                        break;
-                                    case 3: 
-                                        casIdColumn = "cas_id3"; 
-                                        defendantColumn = "defendantThirdName"; 
-                                        break;
-                                    case 4: 
-                                        casIdColumn = "cas_id4"; 
-                                        defendantColumn = "defendantFourthName"; 
-                                        break;
-                                    case 5: 
-                                        casIdColumn = "cas_id5"; 
-                                        defendantColumn = "defendantFifthName"; 
-                                        break;
-                                    default: 
-                                        throw new RuntimeException("Unexpected iteration: " + iteration);
-                                }
-            
-                                // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
-                                String casId = session.getString(casIdColumn);
-                                String defendantName = session.getString(defendantColumn);
-                                session = session
-                                            .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
-                                            .set("defendantFirstName", defendantName); // Set the defendant name for #{defendantFirstName} usage
-            
-                                // Update the loop counter in the session for the next iteration
-                                return session.set("loopCounter", iteration);
-                            })
-                            .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
-                            .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio())
-                        )
-                        // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
-                        .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()) // Logout request
-                    );           
+            );           
         
             ScenarioBuilder transcriberUsers = scenario("Smoke Test Two - DARTS - Portal - Transcriber Users") 
                     .group("Transcriber Users")
@@ -435,7 +435,7 @@ public class NightlyRunSimulation extends Simulation {
 
         // Set up all scenarios together
         setUp(
-            mainScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
+            saopScenarios.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
                 .protocols(httpProtocolSoap),
                 
             postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
@@ -470,6 +470,7 @@ public class NightlyRunSimulation extends Simulation {
             global().responseTime().max().lt(50000),
             global().successfulRequests().percent().gt(95.0)
         );
+        
     }
         @Override
         public void after() {

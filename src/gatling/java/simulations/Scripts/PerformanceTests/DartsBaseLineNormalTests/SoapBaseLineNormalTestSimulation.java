@@ -1,4 +1,4 @@
-package simulations.Scripts.DartsBaseLineNormalTests;
+package simulations.Scripts.PerformanceTests.DartsBaseLineNormalTests;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;

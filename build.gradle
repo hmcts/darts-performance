@@ -64,6 +64,8 @@ def simulations = [
     [task: 'runPortalSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'],
     [task: 'runSoapSmokeTestOneSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestOneSimulation'],
     [task: 'runSoapSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestTwoSimulation'],
+    [task: 'runSoapBaseLinePeakTestSimulationcopy', class: 'simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests.SoapBaseLinePeakTestSimulationcopy'],
+
 
     //Main BaseLine Normal Tests
     [task: 'runDartsBaseLineNormalTests', class: 'simulations.Scripts.DartsBaseLineNormalTests'],
@@ -105,6 +107,7 @@ def simulations = [
     [task: 'runInboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunInboundAudioDeleterTaskSimulation'],
     [task: 'runExternalDataStoreDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunExternalDataStoreDeleterTaskSimulation'],
     [task: 'runOutboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunOutboundAudioDeleterTaskSimulation'],
+    [task: 'runUnstructuredToArmDataStoreSimulation', class: 'simulations.Scripts.DartsApi.RunUnstructuredToArmDataStoreSimulation'],
     [task: 'runApplyRetentionCaseAssociatedObjectsTaskSimulation', class: 'simulations.Scripts.DartsApi.RunApplyRetentionCaseAssociatedObjectsTaskSimulation']
 ]
 

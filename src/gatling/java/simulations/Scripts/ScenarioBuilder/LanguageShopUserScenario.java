@@ -1,4 +1,4 @@
-package simulations.Scripts.DartsGroupTest.Scenarios;
+package simulations.Scripts.ScenarioBuilder;
 
 import io.gatling.javaapi.core.ScenarioBuilder;
 import static io.gatling.javaapi.core.CoreDsl.*;

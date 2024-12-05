@@ -1,9 +1,8 @@
-package simulations.Scripts.DartsGroupTest.Scenarios;
+package simulations.Scripts.ScenarioBuilder;
 
 import io.gatling.javaapi.core.ScenarioBuilder;
 import static io.gatling.javaapi.core.CoreDsl.*;
 
-import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsSoap.AddCaseUserScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddCourtlogUserScenario;
@@ -16,16 +15,16 @@ import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
 
 public class SoapUsersScenario {
-
-    public static ScenarioBuilder build(String scenarioName) {
+    
+    public static ScenarioBuilder build(String scenarioName, int addCaseRepeats, int getCaseRepeats, int addLogRepeats, int addDocumentCPPEventRepeats, int addDocumentCPPDailyListRepeats, int addDocumentXhibitEventRepeats, int addDocumentXhibitDailyListRepeats) {
         return scenario(scenarioName)
         .group("VIQ External Requests")
         .on(
-            repeat(AppConfig.ADD_CASES_PEAK_REPEATS)
+            repeat(addCaseRepeats)
             .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-            .repeat(AppConfig.GET_CASES_PEAK_REPEATS)
+            .repeat(getCaseRepeats)
             .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-            .repeat(AppConfig.ADD_LOG_ENTRY_PEAK_REPEATS)
+            .repeat(addLogRepeats)
             .on(exec(AddCourtlogUserScenario.addCourtLogUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
         )
             
@@ -37,9 +36,9 @@ public class SoapUsersScenario {
         )
         .group("Add Document CPP")
         .on(
-            repeat(AppConfig.CPP_EVENTS_PEAK_REPEATS)
+            repeat(addDocumentCPPEventRepeats)
                 .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
-            .repeat(AppConfig.CPP_DailyList_PEAK_REPEATS) 
+            .repeat(addDocumentCPPDailyListRepeats) 
                 .on(exec(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()))
         )
 
@@ -51,9 +50,9 @@ public class SoapUsersScenario {
         )
         .group("Add Document Xhibit")
         .on(
-            repeat(AppConfig.XHIBIT_EVENTS_PEAK_REPEATS)
+            repeat(addDocumentXhibitEventRepeats)
                 .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
-            .repeat(AppConfig.XHIBIT_DailyList_PEAK_REPEATS)
+            .repeat(addDocumentXhibitDailyListRepeats)
                 .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
         );
 

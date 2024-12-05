@@ -1,19 +1,18 @@
-package simulations.Scripts.DartsGroupTest.Scenarios;
+package simulations.Scripts.ScenarioBuilder;
 
+import io.gatling.javaapi.core.ScenarioBuilder;
+import static io.gatling.javaapi.core.CoreDsl.*;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.*;
-import io.gatling.javaapi.core.*;
 
-import static io.gatling.javaapi.core.CoreDsl.*;
-
-public class CourtManagerUsersScenario {
+public class TranscriberUsersScenario {
 
     public static ScenarioBuilder build(String scenarioName) {
         return scenario(scenarioName)
-            .group("Court Clerk Users")
+            .group("Transcriber Users")
             .on(
-                exec(feed(Feeders.createCourtClerkUsers()))
-                .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
+                exec(feed(Feeders.createTranscriberUsers())) // Load transcriber user data
+                .exec(DartsPortalExternalLoginScenario.DartsPortalExternalLoginRequest())
                 .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
                 .repeat(5).on(
                     exec(session -> {
@@ -37,10 +36,12 @@ public class CourtManagerUsersScenario {
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
                     })
-                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch())
-                    .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-                    .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
+                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
+                    .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
+                    .exec(TranscriberAttachFileAndDownloadAudioScenario.TranscriberAttachFileAndDownloadAudio()) // Attach file
+                    .exec(DartsPortalDeleteAudioRequestScenario.DartsPortalDeleteAudioRequest()) // Delete audio request
                 )
-                .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()));
+                .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest()) // Logout request
+            );
     }
 }
