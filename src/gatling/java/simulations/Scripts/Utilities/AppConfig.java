@@ -26,7 +26,7 @@ public class AppConfig {
     //Performance Env
     public static final String PERFORMANCE_GATEWAY_BASE_URL = "http://darts-gateway.test.platform.hmcts.net";
     public static final String PERFORMANCE_PROXY_BASE_URL = "http://darts-proxy.test.platform.hmcts.net";
-    public static final String PERFORMANCE_DARTS_API_BASE_URL = "https://darts-api.test.platform.hmcts.net";
+    public static final String PERFORMANCE_DARTS_API_BASE_URL = "http://darts-api.test.platform.hmcts.net";
     public static final String PERFORMANCE_DARTS_BASE_URL = "https://darts.test.apps.hmcts.net";
     public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN =
         "/" + TENANT_NAME + ".onmicrosoft.com/B2C_1_darts_externaluser_signin/";
@@ -45,9 +45,6 @@ public class AppConfig {
     public static final long RANK_DOWN_TIME_SECONDS;
     public static final int REQUESTS_PER_SECOND;
     private static final double REQUESTS_PER_SECOND_PER_USER;
-    public static final TestType TEST_TYPE;
-    public static final boolean DEBUG;
-    public static final String ENVIRONMENT;
 
     //Nightly Run Parameters
     public static final int NIGHTLY_RUN_REPEATS;
@@ -183,10 +180,6 @@ public class AppConfig {
     //public static final String DB_URL = "darts-api-stg.postgres.database.azure.com";
 
     static {
-        TEST_TYPE = TestType.valueOf(getProperty("TEST_URL", TestType.PERFORMANCE.name()));
-        DEBUG = Boolean.parseBoolean(getProperty("DEBUG", "false"));
-        ENVIRONMENT = getProperty("ENVIRONMENT", TEST_TYPE.name());
-
         RANK_UP_TIME_SECONDS = Long.parseLong(getProperty("RANK_UP_TIME_SECONDS", "120"));
         RANK_DOWN_TIME_SECONDS = Long.parseLong(getProperty("RANK_DOWN_TIME_SECONDS", "120"));
 
@@ -348,7 +341,7 @@ public class AppConfig {
         DB_PASSWORD = getProperty("DB_PASSWORD");
 
         //Fixed Data for CSV files or none fixed for db query within test.
-        isFixed = Boolean.parseBoolean(System.getProperty("isFixed", "false"));
+        isFixed = Boolean.parseBoolean(System.getProperty("isFixed", "true"));
 
         //Get dynamic Cases ids from the Advance search response rather than fixed from DB query
         dynamicCases = Boolean.parseBoolean(System.getProperty("dynamicCases", "false"));
@@ -511,8 +504,6 @@ public class AppConfig {
 
     public static String asString() {
         StringBuilder builder = new StringBuilder();
-        addValueToBuilder(builder, "Test Type", TEST_TYPE.name());
-        addValueToBuilder(builder, "Debug", String.valueOf(DEBUG));
         addValueToBuilder(builder, "Rank Up Time Seconds", String.valueOf(RANK_UP_TIME_SECONDS));
         addValueToBuilder(builder, "Rank Down Time Seconds", String.valueOf(RANK_DOWN_TIME_SECONDS));
 
@@ -551,8 +542,176 @@ public class AppConfig {
         builder.append(key).append(": ").append(value).append("\n");
     }
 
-    public enum TestType {
-        PERFORMANCE,
-        PIPELINE;
+     public static final String TEST_TYPE = System.getProperty("testType", "normal"); // Default to "normal" if not provided
+
+    // Methods to get dynamic user values for each request type
+    public static int getJudgeUsers() {
+        return switch (TEST_TYPE) {
+            case "peak" -> JUDGE_RAMP_UP_USERS_PEAK;
+            case "smoke" -> JUDGE_RAMP_UP_USERS;
+            default -> JUDGE_RAMP_UP_USERS_NORMAL;
+        };
     }
+    
+    public static int getCourtClerkUsers() {
+        return switch (TEST_TYPE) {
+            case "peak" -> COURT_CLERK_RAMP_UP_USERS_PEAK;
+            case "smoke" -> COURT_CLERK_RAMP_UP_USERS;
+            default -> COURT_CLERK_RAMP_UP_USERS_NORMAL;
+        };
+    }
+    
+    public static int getCourtManagerUsers() {
+        return switch (TEST_TYPE) {
+            case "peak" -> COURT_MANAGER_RAMP_UP_USERS_PEAK;
+            case "smoke" -> COURT_MANAGER_RAMP_UP_USERS;
+            default -> COURT_MANAGER_RAMP_UP_USERS_NORMAL;
+        };
+    }
+    
+    public static int getTranscriberUsers() {
+        return switch (TEST_TYPE) {
+            case "peak" -> TRANSCRIBER_RAMP_UP_USERS_PEAK;
+            case "smoke" -> TRANSCRIBER_RAMP_UP_USERS;
+            default -> TRANSCRIBER_RAMP_UP_USERS_NORMAL;
+        };
+    }
+    
+    public static int getLanguageShopUsers() {
+        return switch (TEST_TYPE) {
+            case "peak" -> LANGUAGE_SHOP_RAMP_UP_USERS_PEAK;
+            case "smoke" -> LANGUAGE_SHOP_RAMP_UP_USERS;
+            default -> LANGUAGE_SHOP_RAMP_UP_USERS_NORMAL;
+        };
+    }
+
+    public static int getSoapUsers() {
+        return SOAP_USERS_COUNT;
+    }
+    
+    public static int getPostAudioUsers() {
+        return POST_AUDIO_USERS_COUNT;
+    }
+    
+    public static int getGetAudioUsers() {
+        return GET_AUDIO_USERS_COUNT;
+    }
+    
+    public static int getDeleteAudioUsers() {
+        return DELETE_AUDIO_USERS_COUNT;
+    }
+
+
+    // Methods to get dynamic repeat values for each request type
+    public static int getCppEventsRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> CPP_EVENTS_PEAK_REPEATS;
+            case "smoke" -> CPP_EVENTS_SMOKE_REPEATS;
+            default -> CPP_EVENTS_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getCppDailyListRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> CPP_DailyList_PEAK_REPEATS;
+            case "smoke" -> CPP_DailyList_SMOKE_REPEATS;
+            default -> CPP_DailyList_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getXhibitEventsRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> XHIBIT_EVENTS_PEAK_REPEATS;
+            case "smoke" -> XHIBIT_EVENTS_SMOKE_REPEATS;
+            default -> XHIBIT_EVENTS_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getXhibitDailyListRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> XHIBIT_DailyList_PEAK_REPEATS;
+            case "smoke" -> XHIBIT_DailyList_SMOKE_REPEATS;
+            default -> XHIBIT_DailyList_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getEventsRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> EVENTS_PEAK_REPEATS;
+            case "smoke" -> EVENTS_SMOKE_REPEATS;
+            default -> EVENTS_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getPostAudioRequestRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> POST_AUDIO_REQUEST_PEAK_REPEATS;
+            case "smoke" -> POST_AUDIO_REQUEST_SMOKE_REPEATS;
+            default -> POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getGetAudioRequestRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> GET_AUDIO_REQUEST_PEAK_REPEATS;
+            case "smoke" -> GET_AUDIO_REQUEST_SMOKE_REPEATS;
+            default -> GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getDeleteAudioRequestRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> DELETE_AUDIO_REQUEST_PEAK_REPEATS;
+            case "smoke" -> DELETE_AUDIO_REQUEST_SMOKE_REPEATS;
+            default -> DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getAddCasesRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> ADD_CASES_PEAK_REPEATS;
+            case "smoke" -> ADD_CASES_SMOKE_REPEATS;
+            default -> ADD_CASES_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getGetCasesRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> GET_CASES_PEAK_REPEATS;
+            case "smoke" -> GET_CASES_SMOKE_REPEATS;
+            default -> GET_CASES_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getAddLogEntryRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> ADD_LOG_ENTRY_PEAK_REPEATS;
+            case "smoke" -> ADD_LOG_ENTRY_SMOKE_REPEATS;
+            default -> ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getGetLogEntryRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> GET_LOG_ENTRY_PEAK_REPEATS;
+            case "smoke" -> GET_LOG_ENTRY_SMOKE_REPEATS;
+            default -> GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getPostAudioRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> POST_AUDIO_PEAK_REPEATS;
+            case "smoke" -> POST_AUDIO_SMOKE_REPEATS;
+            default -> POST_AUDIO_BASELINE_NORMAL_REPEATS;
+        };
+    }
+    
+    public static int getAddAudioRepeats() {
+        return switch (TEST_TYPE) {
+            case "peak" -> ADD_AUDIO_PEAK_REPEATS;
+            case "smoke" -> ADD_AUDIO_SMOKE_REPEATS;
+            default -> ADD_AUDIO_BASELINE_NORMAL_REPEATS;
+        };
+    }    
 }
