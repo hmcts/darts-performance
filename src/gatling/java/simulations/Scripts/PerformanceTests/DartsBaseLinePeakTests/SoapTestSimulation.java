@@ -12,7 +12,9 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class SoapTestSimulation extends Simulation {   
 
     private static final String SOAP_REQUESTS = "DARTS - Soap - Requests";
-    private static final String API_REQUESTS = "DARTS - API - Requests";
+    private static final String API_REQUESTS_POST_AUDIO_REQUEST = "DARTS - API - Post Audio Requests";
+    private static final String API_REQUESTS_GET_AUDIO_REQUEST = "DARTS - API - Get Audio Requests";
+    private static final String API_REQUESTS_DELETE_AUDIO_REQUEST = "DARTS - API - Delete Audio Requests";
 
 
     public SoapTestSimulation() {
@@ -25,7 +27,7 @@ public class SoapTestSimulation extends Simulation {
     private void setUpScenarios(HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolApi) {
 
         setUp(           
-            SoapUsersScenario.build(SOAP_REQUESTS,
+           SoapUsersScenario.build(SOAP_REQUESTS,
                 AppConfig.getAddCasesRepeats(),
                 AppConfig.getGetCasesRepeats(), 
                 AppConfig.getAddLogEntryRepeats(), 
@@ -35,15 +37,15 @@ public class SoapTestSimulation extends Simulation {
                 AppConfig.getXhibitDailyListRepeats())
                     .injectOpen(atOnceUsers(AppConfig.getSoapUsers()))
                     .protocols(httpProtocolSoap),
-            PostAudioRequestScenarioBuild.build(API_REQUESTS,
+            PostAudioRequestScenarioBuild.build(API_REQUESTS_POST_AUDIO_REQUEST,
                 AppConfig.getPostAudioRequestRepeats())
                     .injectOpen(atOnceUsers(AppConfig.getPostAudioUsers()))
                     .protocols(httpProtocolApi), 
-            GetAudioRequestScenarioBuild.build(API_REQUESTS,
+            GetAudioRequestScenarioBuild.build(API_REQUESTS_GET_AUDIO_REQUEST,
                 AppConfig.getGetAudioRequestRepeats())
                     .injectOpen(atOnceUsers(AppConfig.getGetAudioUsers()))
                     .protocols(httpProtocolApi), 
-            DeleteAudioRequestScenarioBuild.build(API_REQUESTS,
+            DeleteAudioRequestScenarioBuild.build(API_REQUESTS_DELETE_AUDIO_REQUEST,
                 AppConfig.getDeleteAudioRequestRepeats())
                     .injectOpen(atOnceUsers(AppConfig.getDeleteAudioUsers()))
                     .protocols(httpProtocolApi)                        
