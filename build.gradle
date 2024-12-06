@@ -64,7 +64,6 @@ def simulations = [
     [task: 'runPortalSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'],
     [task: 'runSoapSmokeTestOneSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestOneSimulation'],
     [task: 'runSoapSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestTwoSimulation'],
-    [task: 'runSoapTestSimulation', class: 'simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests.SoapTestSimulation'],
 
     //Main BaseLine Normal Tests
     [task: 'runDartsBaseLineNormalTests', class: 'simulations.Scripts.DartsBaseLineNormalTests'],
@@ -73,6 +72,13 @@ def simulations = [
     //Main BaseLine Peak Tests
     [task: 'runDartsBaseLinePeakTests', class: 'simulations.Scripts.DartsBaseLinePeakTests'],
     [task: 'runSoapBaseLinePeakTestSimulation', class: 'simulations.Scripts.SoapBaseLinePeakTestSimulation'],
+    
+    //Main BaseLine Peak Tests with Tasks
+    [task: 'runPeakTestWithTasksSimulation', class: 'simulations.Scripts.PerformanceTests.PeakTestWithTasksTest.PeakTestWithTasksSimulation'],
+
+    //New Main Soap Tests
+    [task: 'runSoapTestSimulation', class: 'simulations.Scripts.PerformanceTests.NewMainTests.SoapTestSimulation'],
+    [task: 'runPortalTestSimulation', class: 'simulations.Scripts.PerformanceTests.NewMainTests.PortalTestSimulation'],
 
     //NightlyRun
     [task: 'runNightlyRunSimulation', class: 'simulations.Scripts.NightlyRun.NightlyRunSimulation'],

@@ -31,27 +31,27 @@ public class PeakTestWithTasksSimulation extends Simulation {
     private void setUpScenarios(HttpProtocolBuilder httpProtocolExternal, HttpProtocolBuilder httpProtocolInternal, HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolApi) {
         setUp(
             CourtClerkUsersScenarioBuild.build(BASE_LINE_PEAK_COURT_CLERK_USERS)
-                .injectOpen(rampUsers(AppConfig.COURT_CLERK_RAMP_UP_USERS_PEAK)
+                .injectOpen(rampUsers(AppConfig.getCourtClerkUsers())
                 .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)))
                 .protocols(httpProtocolInternal),
 
             CourtManagerUsersScenarioBuild.build(BASE_LINE_PEAK_COURT_MANAGER_USERS)
-                .injectOpen(rampUsers(AppConfig.COURT_MANAGER_RAMP_UP_USERS_PEAK)
+                .injectOpen(rampUsers(AppConfig.getCourtManagerUsers())
                 .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_MANAGER)))
                 .protocols(httpProtocolInternal),
 
             TranscriberUsersScenario.build(BASE_LINE_PEAK_TRANSCRIBER_USERS)
-                .injectOpen(rampUsers(AppConfig.TRANSCRIBER_RAMP_UP_USERS_PEAK)
+                .injectOpen(rampUsers(AppConfig.getTranscriberUsers())
                 .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_TRANSCRIBER)))
                 .protocols(httpProtocolExternal),
 
             JudgeUserScenario.build(BASE_LINE_PEAK_JUDGE_USERS)
-                .injectOpen(rampUsers(AppConfig.JUDGE_RAMP_UP_USERS_PEAK)
+                .injectOpen(rampUsers(AppConfig.getJudgeUsers())
                 .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)))
                 .protocols(httpProtocolInternal),
 
             LanguageShopUserScenario.build(BASE_LINE_PEAK_LANGUAGE_USERS)
-                .injectOpen(rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS_PEAK)
+                .injectOpen(rampUsers(AppConfig.getLanguageShopUsers())
                 .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)))
                 .protocols(httpProtocolExternal),
 
@@ -63,7 +63,7 @@ public class PeakTestWithTasksSimulation extends Simulation {
                 AppConfig.getCppDailyListRepeats(), 
                 AppConfig.getXhibitEventsRepeats(), 
                 AppConfig.getXhibitDailyListRepeats())
-                .injectOpen(atOnceUsers(95))
+                .injectOpen(atOnceUsers(AppConfig.getSoapUsers()))
                 .protocols(httpProtocolSoap),
             
             InboundtoUnstructuredDatastoreTaskScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS)
