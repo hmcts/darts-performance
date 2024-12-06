@@ -9,13 +9,13 @@ import io.gatling.javaapi.http.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public class SoapBaseLinePeakTestSimulationcopy extends Simulation {   
+public class SoapTestSimulation extends Simulation {   
 
     private static final String SOAP_REQUESTS = "DARTS - Soap - Requests";
     private static final String API_REQUESTS = "DARTS - API - Requests";
 
 
-    public SoapBaseLinePeakTestSimulationcopy() {
+    public SoapTestSimulation() {
         HttpProtocolBuilder httpProtocolSoap = configureSoapHttp();
         HttpProtocolBuilder httpProtocolApi = configureApiHttp();
 
@@ -33,19 +33,19 @@ public class SoapBaseLinePeakTestSimulationcopy extends Simulation {
                 AppConfig.getCppDailyListRepeats(), 
                 AppConfig.getXhibitEventsRepeats(), 
                 AppConfig.getXhibitDailyListRepeats())
-                    .injectOpen(atOnceUsers(1))
+                    .injectOpen(atOnceUsers(AppConfig.getSoapUsers()))
                     .protocols(httpProtocolSoap),
             PostAudioRequestScenarioBuild.build(API_REQUESTS,
                 AppConfig.getPostAudioRequestRepeats())
-                    .injectOpen(atOnceUsers(3))
+                    .injectOpen(atOnceUsers(AppConfig.getPostAudioUsers()))
                     .protocols(httpProtocolApi), 
             GetAudioRequestScenarioBuild.build(API_REQUESTS,
                 AppConfig.getGetAudioRequestRepeats())
-                    .injectOpen(atOnceUsers(3))
+                    .injectOpen(atOnceUsers(AppConfig.getGetAudioUsers()))
                     .protocols(httpProtocolApi), 
             DeleteAudioRequestScenarioBuild.build(API_REQUESTS,
-                AppConfig.getPostAudioRequestRepeats())
-                    .injectOpen(atOnceUsers(3))
+                AppConfig.getDeleteAudioRequestRepeats())
+                    .injectOpen(atOnceUsers(AppConfig.getDeleteAudioUsers()))
                     .protocols(httpProtocolApi)                        
         );
     }   

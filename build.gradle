@@ -64,8 +64,7 @@ def simulations = [
     [task: 'runPortalSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'],
     [task: 'runSoapSmokeTestOneSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestOneSimulation'],
     [task: 'runSoapSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestTwoSimulation'],
-    [task: 'runSoapBaseLinePeakTestSimulationcopy', class: 'simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests.SoapBaseLinePeakTestSimulationcopy'],
-
+    [task: 'runSoapTestSimulation', class: 'simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests.SoapTestSimulation'],
 
     //Main BaseLine Normal Tests
     [task: 'runDartsBaseLineNormalTests', class: 'simulations.Scripts.DartsBaseLineNormalTests'],
