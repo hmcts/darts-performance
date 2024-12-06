@@ -2,7 +2,6 @@ package simulations.Scripts.ScenarioBuilder;
 
 import simulations.Scripts.Scenario.DartsApi.DeleteAudioRequestScenario;
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
-import simulations.Scripts.Utilities.AppConfig;
 import io.gatling.javaapi.core.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
@@ -12,7 +11,7 @@ public class DeleteAudioRequestScenarioBuild {
     return scenario(scenarioName)
         .group("Delete Audio Request Scenario")
         .on(exec(GetApiTokenScenario.getApiToken())
-            .repeat(AppConfig.DELETE_AUDIO_REQUEST_PEAK_REPEATS)
+            .repeat(deleteAudioRequestRepeats)
             .on(exec(DeleteAudioRequestScenario.DeleteAudioRequest())));
     }
 }

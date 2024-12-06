@@ -2,7 +2,6 @@ package simulations.Scripts.ScenarioBuilder;
 
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
 import simulations.Scripts.Scenario.DartsApi.GetAudioRequestScenario;
-import simulations.Scripts.Utilities.AppConfig;
 import io.gatling.javaapi.core.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
@@ -12,7 +11,7 @@ public class GetAudioRequestScenarioBuild {
     return scenario(scenarioName)
         .group("Get Audio Request Scenario")
         .on(exec(GetApiTokenScenario.getApiToken())
-            .repeat(AppConfig.GET_AUDIO_REQUEST_PEAK_REPEATS)
+            .repeat(getAudioRequestRepeats)
             .on(uniformRandomSwitch().on(
                 exec(GetAudioRequestScenario.GetAudioRequestDownload()),
                 exec(GetAudioRequestScenario.GetAudioRequestPlayBack()))));
