@@ -1,4 +1,4 @@
-package simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests;
+package simulations.Scripts.PerformanceTests.NewMainTests;
 
 import simulations.Scripts.ScenarioBuilder.*;
 import simulations.Scripts.Utilities.AppConfig;

@@ -15,7 +15,7 @@ public final class AddDocumentDailyListTokenScenario {
         return group("AddDocument SOAP Request Group")
             .on(feed(Feeders.createCourtHouseAndCourtRooms())   
             .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddDocumentDailyListTokenRequest(session);  
+                    String xmlPayload = SOAPRequestBuilder.addDocumentDailyListTokenRequest(session);  
                     return session.set("xmlPayload", xmlPayload);  
                 })
                 .exec(http("DARTS - GateWay - Soap - AddDocument - DailyList - Token")

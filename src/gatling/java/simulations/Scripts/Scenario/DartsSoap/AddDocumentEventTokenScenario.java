@@ -15,7 +15,7 @@ public final class AddDocumentEventTokenScenario {
         return group("AddDocument SOAP Request Group")
             .on(feed(Feeders.createCourtHouseAndCourtRooms())   
             .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddDocumentEventTokenRequest(session);
+                    String xmlPayload = SOAPRequestBuilder.addDocumentEventTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - AddDocument - Event - Token")

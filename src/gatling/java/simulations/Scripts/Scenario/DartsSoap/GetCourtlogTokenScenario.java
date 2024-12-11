@@ -13,7 +13,7 @@ public final class GetCourtlogTokenScenario {
     public static ChainBuilder getCourtLogToken() {
         return group("CourtLog SOAP Request Group")
             .on(exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.GetCourtLogTokenRequest(session);
+                    String xmlPayload = SOAPRequestBuilder.getCourtLogTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - Get CourtLog - Token")

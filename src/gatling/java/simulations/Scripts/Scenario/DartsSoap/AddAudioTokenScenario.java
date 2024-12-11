@@ -21,7 +21,7 @@ public final class AddAudioTokenScenario {
             .on(exec(feed(Feeders.createCourtHouseAndCourtRooms()))
             .exec(session -> {
                 String randomAudioFile = Feeders.getRandomAudioFile();
-                String xmlPayload = SOAPRequestBuilder.AddAudioTokenRequest(session, randomAudioFile);
+                String xmlPayload = SOAPRequestBuilder.addAudioTokenRequest(session, randomAudioFile);
                 return session.set("randomAudioFile", randomAudioFile)
                 .set("xmlPayload", xmlPayload);
             })

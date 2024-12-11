@@ -16,7 +16,7 @@ public final class AddCaseUserScenario {
             .on(exec(feed(Feeders.createCourtHouseAndCourtRooms()))
             .exec(session -> {
                 //String randomAudioFile = Feeders.getRandomAudioFile();
-                String xmlPayload = SOAPRequestBuilder.AddCaseUserRequest(session, USERNAME, PASSWORD);
+                String xmlPayload = SOAPRequestBuilder.addCaseUserRequest(session, USERNAME, PASSWORD);
                // return session.set("randomAudioFile", randomAudioFile)
                return session.set("xmlPayload", xmlPayload);
             })

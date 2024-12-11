@@ -15,7 +15,7 @@ public final class AddCaseTokenScenario {
         return group("AddCase SOAP Request Group")
             .on(feed(Feeders.createCourtHouseAndCourtRooms())
             .exec(session -> {
-                String xmlPayload = SOAPRequestBuilder.AddCaseTokenRequest(session);
+                String xmlPayload = SOAPRequestBuilder.addCaseTokenRequest(session);
                 return session.set("xmlPayload", xmlPayload);
             })
             .exec(http("DARTS - GateWay - Soap - AddCase - Token")

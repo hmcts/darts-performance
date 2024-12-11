@@ -74,7 +74,7 @@ public class PeakTestWithTasksSimulation extends Simulation {
 
     private HttpProtocolBuilder configureInternalHttp() {
         return http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+   //         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
             .baseUrl("https://login.microsoftonline.com")
             .acceptHeader("application/json, text/plain, */*")
             .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
@@ -82,7 +82,7 @@ public class PeakTestWithTasksSimulation extends Simulation {
 
     private HttpProtocolBuilder configureExternalHttp() {
         return http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+   //         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
             .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
             .acceptHeader("application/json, text/plain, */*")
             .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
@@ -90,7 +90,7 @@ public class PeakTestWithTasksSimulation extends Simulation {
 
     private HttpProtocolBuilder configureSoapHttp() {
         return http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+   //         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
             .contentTypeHeader("text/xml;charset=UTF-8")
             .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
             .baseUrl(AppConfig.EnvironmentURL.PROXY_BASE_URL.getUrl());

@@ -12,11 +12,11 @@ public final class AddCourtlogUserScenario {
 
     private AddCourtlogUserScenario() {}
 
-    public static ChainBuilder addCourtLogUser(String USERNAME, String PASSWORD) {
+    public static ChainBuilder addCourtLogUser(String userName, String password) {
         return group("CourtLog SOAP Request Group")
             .on(feed(Feeders.createCourtHouseAndCourtRooms()) 
             .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddCourtLogUserRequest(session, USERNAME, PASSWORD);
+                    String xmlPayload = SOAPRequestBuilder.addCourtLogUserRequest(session, userName, password);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - Add CourtLog - User")

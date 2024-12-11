@@ -17,7 +17,7 @@ public final class AddDocumentCPPEventTokenScenario {
            // .on(
            feed(Feeders.createCourtHouseAndCourtRooms())   
             .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddDocumentCPPEventTokenRequest(session);
+                    String xmlPayload = SOAPRequestBuilder.addDocumentCPPEventTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - AddDocument - CPP Event - Token")

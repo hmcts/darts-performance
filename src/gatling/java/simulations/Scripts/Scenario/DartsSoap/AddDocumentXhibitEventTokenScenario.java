@@ -18,7 +18,7 @@ public final class AddDocumentXhibitEventTokenScenario {
           //  .on(
                 feed(Feeders.createCourtHouseAndCourtRooms())   
             .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddDocumentXhibitEventTokenRequest(session);
+                    String xmlPayload = SOAPRequestBuilder.addDocumentXhibitEventTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - AddDocument - Xhibit Event - Token")
