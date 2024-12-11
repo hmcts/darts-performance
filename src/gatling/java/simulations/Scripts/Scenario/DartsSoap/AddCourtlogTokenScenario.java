@@ -15,7 +15,7 @@ public final class AddCourtlogTokenScenario {
         return group("Add CourtLog SOAP Request Group")
             .on(feed(Feeders.createCourtHouseAndCourtRooms()) 
             .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddCourtLogTokenRequest(session);
+                    String xmlPayload = SOAPRequestBuilder.addCourtLogTokenRequest(session);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - Add CourtLog - Token")

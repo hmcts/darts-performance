@@ -25,9 +25,9 @@ public class UserInfoLogger {
                 LOGGER.info("Request '{}' was successful. User Details: Email={}, User Name={}.", requestName, email, userName);
             } else if ("502".equals(statusCode) || "504".equals(statusCode) || !"N/A".equals(errorType) || !"N/A".equals(errorTitle)) {
                 String errorMessage = String.format(
-                    "Request '%s' encountered an issue with status code: %s. " +
-                    "Error Type: %s, Error Title: %s, Error Status: %s. " +
-                    "User Details: Email=%s, Password=%s, User Name=%s.",
+                    "Request '%s' encountered an issue with status code: %s. "
+                    + "Error Type: %s, Error Title: %s, Error Status: %s. "
+                    + "User Details: Email=%s, Password=%s, User Name=%s.",
                     requestName, statusCode, errorType, errorTitle, errorStatus, email, password, userName
                 );
                 LOGGER.error(errorMessage);
@@ -52,10 +52,10 @@ public class UserInfoLogger {
                 LOGGER.info("Request '{}' was successful. User Details: Email={}, User Name={}.", requestName, email, userName);
             } else if (!"N/A".equals(errorType) || !"N/A".equals(errorTitle)) {
                 String errorMessage = String.format(
-                    "Request '%s' encountered an issue with status code: %s. " +
-                    "Error Type: %s, Error Title: %s, Error Status: %s. " +
-                    "Failed on trm_id: %s. " +
-                    "User Details: Email=%s, Password=%s, User Name=%s.",
+                    "Request '%s' encountered an issue with status code: %s. "
+                    + "Error Type: %s, Error Title: %s, Error Status: %s. "
+                    + "Failed on trm_id: %s. "
+                    + "User Details: Email=%s, Password=%s, User Name=%s.",
                     requestName, statusCode, errorType, errorTitle, errorStatus, trmId, email, password, userName
                 );
                 LOGGER.error(errorMessage);
@@ -75,9 +75,9 @@ public class UserInfoLogger {
 
             if (regexFailed) {
                 String errorMessage = String.format(
-                    "Request '%s' encountered a regex issue for user: Email=%s, Password=%s, User Name=%s. " +
-                    "Failed to match the regex '%s' with pattern '%s'. The pattern did not find any matches. " +
-                    "Please check if the response contains the expected format and verify the regex pattern.",
+                    "Request '%s' encountered a regex issue for user: Email=%s, Password=%s, User Name=%s. "
+                    + "Failed to match the regex '%s' with pattern '%s'. The pattern did not find any matches. "
+                    + "Please check if the response contains the expected format and verify the regex pattern.",
                     requestName, email, password, userName, regexName, expectedPattern
                 );
                 LOGGER.error(errorMessage);

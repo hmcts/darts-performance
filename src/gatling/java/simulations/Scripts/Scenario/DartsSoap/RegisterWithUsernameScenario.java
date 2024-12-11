@@ -11,10 +11,10 @@ import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 public final class RegisterWithUsernameScenario {
 
     private RegisterWithUsernameScenario() {}
-    public static ChainBuilder RegisterWithUsername(String USERNAME, String PASSWORD) {
+    public static ChainBuilder RegisterWithUsername(String userName, String password) {
         return group("Register With Username SOAP Request Group")
             .on(exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.RegisterWithUsernameRequest(session, USERNAME, PASSWORD);
+                    String xmlPayload = SOAPRequestBuilder.registerWithUsernameRequest(session, userName, password);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - RegisterWithUsername")

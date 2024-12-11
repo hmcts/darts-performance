@@ -21,7 +21,7 @@ public final class AddDocumentCPPDailyListTokenScenario {
             feed(Feeders.createCourtHouseAndCourtRooms())   
             .pause(1)
             .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddDocumentCPPDailyListTokenRequest(session, generator);  
+                    String xmlPayload = SOAPRequestBuilder.addDocumentCPPDailyListTokenRequest(session, generator);  
                     return session.set("xmlPayload", xmlPayload);  
                 })
                 .exec(http("DARTS - GateWay - Soap - AddDocument - CPP DailyList - Token")

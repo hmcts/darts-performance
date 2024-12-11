@@ -22,7 +22,7 @@ public final class AddDocumentXhibitDailyListTokenScenario {
                 feed(Feeders.createCourtHouseAndCourtRooms())   
             .pause(1)
             .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.AddDocumentXhibitDailyListTokenRequest(session, generator);  
+                    String xmlPayload = SOAPRequestBuilder.addDocumentXhibitDailyListTokenRequest(session, generator);  
                     return session.set("xmlPayload", xmlPayload);  
                 })
                 .exec(http("DARTS - GateWay - Soap - AddDocument - Xhibit DailyList - Token")

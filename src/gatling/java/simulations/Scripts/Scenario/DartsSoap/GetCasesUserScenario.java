@@ -11,11 +11,11 @@ import simulations.Scripts.Utilities.*;
 public final class GetCasesUserScenario {
 
     private GetCasesUserScenario() {}
-    public static ChainBuilder GetCaseSOAPUser(String USERNAME, String PASSWORD) {
+    public static ChainBuilder GetCaseSOAPUser(String userName, String password) {
         return group("AddDocument SOAP Request Group")
             .on(exec(feed(Feeders.createCourtHouseAndCourtRooms()))
                 .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.GetCasesUserRequest(session, USERNAME, PASSWORD);
+                    String xmlPayload = SOAPRequestBuilder.getCasesUserRequest(session, userName, password);
                     return session.set("xmlPayload", xmlPayload);
                 })
                 .exec(http("DARTS - GateWay - Soap - GetCase - User")

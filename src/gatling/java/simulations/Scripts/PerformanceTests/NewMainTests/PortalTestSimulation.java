@@ -1,4 +1,4 @@
-package simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests;
+package simulations.Scripts.PerformanceTests.NewMainTests;
 
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.ScenarioBuilder.CourtClerkUsersScenarioBuild;
@@ -80,6 +80,6 @@ public class PortalTestSimulation extends Simulation {
                 .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
                 .acceptHeader("application/json, text/plain, */*")
                 .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
-        }    
+        } 
     }
     
