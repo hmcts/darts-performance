@@ -24,10 +24,10 @@ public class AppConfig {
         "https://login.microsoftonline.com/" + PERFORMANCE_INTERNAL_TENANT_ID + "/oauth2/v2.0/token";
 
     //Performance Env
-    public static final String PERFORMANCE_GATEWAY_BASE_URL = "http://darts-gateway.test.platform.hmcts.net";
-    public static final String PERFORMANCE_PROXY_BASE_URL = "http://darts-proxy.test.platform.hmcts.net";
-    public static final String PERFORMANCE_DARTS_API_BASE_URL = "http://darts-api.test.platform.hmcts.net";
-    public static final String PERFORMANCE_DARTS_BASE_URL = "https://darts.test.apps.hmcts.net";
+    public static final String PERFORMANCE_GATEWAY_BASE_URL = "http://darts-gateway.staging.platform.hmcts.net";
+    public static final String PERFORMANCE_PROXY_BASE_URL = "http://darts-proxy.staging.platform.hmcts.net";
+    public static final String PERFORMANCE_DARTS_API_BASE_URL = "http://darts-api.staging.platform.hmcts.net";
+    public static final String PERFORMANCE_DARTS_BASE_URL = "https://darts.staging.apps.hmcts.net";
     public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN =
         "/" + TENANT_NAME + ".onmicrosoft.com/B2C_1_darts_externaluser_signin/";
     public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN =
