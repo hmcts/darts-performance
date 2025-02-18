@@ -19,7 +19,7 @@ WITH UserDetails AS (
         darts.courthouse ch ON urch.cth_id = ch.cth_id
     WHERE  
         ua.user_name LIKE '%PerfLanguageShop%'
-        AND urch.cth_id NOT IN (111, 153, 112, 154, 95, 55, 65, 114, 155, 152, 133, 129, 70, 136, 113) -- Exclude specific cth_id values
+        AND urch.cth_id NOT IN (111, 153, 112, 154, 95, 55, 65, 114, 155, 152, 133, 129, 70, 136, 113, 1002, 1003, 76, 1000)
 ),
 FilteredUserDetails AS (
     SELECT *
@@ -36,29 +36,46 @@ UserCases AS (
         fud.courthouse_code,
         fud.Password,
         fud.Type,
-        cc.cas_id
+        cc.cas_id,       
+        TO_CHAR(CAST(MIN(h.hearing_date) AS DATE), 'YYYY-MM-DD') AS date_from
     FROM 
         FilteredUserDetails fud
     LEFT JOIN 
         darts.court_case cc ON cc.cth_id = fud.cth_id
+    LEFT JOIN 
+        darts.defendant d ON d.cas_id = cc.cas_id
+    INNER JOIN  
+        darts.hearing h ON h.cas_id = cc.cas_id
     WHERE
         cc.cas_id IS NOT NULL
-        AND EXISTS (SELECT 1 FROM darts.hearing h WHERE h.cas_id = cc.cas_id)
-        AND interpreter_used = true
+        AND cc.interpreter_used = true -- ✅ Ensures interpreter was used
         AND NOT EXISTS (SELECT 1 FROM darts.media_linked_case mlc WHERE mlc.cas_id = cc.cas_id)
+        AND EXISTS (
+            SELECT 1 
+            FROM darts.hearing_media_ae hm 
+            WHERE hm.hea_id = h.hea_id
+        ) -- Ensures hearing has media
+    GROUP BY 
+        fud.usr_id, fud.user_email_address, fud.user_name, fud.cth_id, 
+        fud.courthouse_name, fud.courthouse_code, fud.Password, fud.Type, cc.cas_id
 ),
 RandomDefendant AS (
-    SELECT 
-        uc.usr_id,
-        uc.cas_id,
-        d.defendant_name,
-        ROW_NUMBER() OVER (PARTITION BY uc.usr_id ORDER BY RANDOM()) AS rn
-    FROM 
-        UserCases uc
-    LEFT JOIN 
-        darts.defendant d ON d.cas_id = uc.cas_id
-    WHERE 
-        d.cas_id IS NOT NULL
+    -- Assign row numbers in a subquery
+    SELECT * FROM (
+        SELECT 
+            uc.usr_id,
+            uc.cas_id,
+            uc.date_from, 
+            d.defendant_name,
+            ROW_NUMBER() OVER (PARTITION BY uc.usr_id ORDER BY RANDOM()) AS rn
+        FROM 
+            UserCases uc
+        LEFT JOIN 
+            darts.defendant d ON d.cas_id = uc.cas_id
+        WHERE 
+            d.defendant_name IS NOT NULL
+    ) subquery
+    WHERE rn <= 5 -- Only keep up to 5 cases per user
 )
 SELECT 
     fud.user_email_address,
@@ -68,41 +85,52 @@ SELECT
     fud.courthouse_name,
     fud.courthouse_code,
     fud.Type,
-    COALESCE(
-        CASE 
-            WHEN POSITION(' ' IN rd1.defendant_name) > 0 THEN SUBSTRING(rd1.defendant_name FROM 1 FOR POSITION(' ' IN rd1.defendant_name) - 1)
-            ELSE rd1.defendant_name 
-        END, 'Unknown'
+
+    -- Case 1
+    SUBSTRING(
+        rd1.defendant_name 
+        FROM 1 
+        FOR CASE WHEN POSITION(' ' IN rd1.defendant_name) > 0 THEN POSITION(' ' IN rd1.defendant_name) - 1 ELSE LENGTH(rd1.defendant_name) END
     ) AS first_name1,
     rd1.cas_id AS cas_id1,
-    COALESCE(
-        CASE 
-            WHEN POSITION(' ' IN rd2.defendant_name) > 0 THEN SUBSTRING(rd2.defendant_name FROM 1 FOR POSITION(' ' IN rd2.defendant_name) - 1)
-            ELSE rd2.defendant_name 
-        END, 'Unknown'
+    rd1.date_from AS date_from1,
+
+    -- Case 2
+    SUBSTRING(
+        rd2.defendant_name 
+        FROM 1 
+        FOR CASE WHEN POSITION(' ' IN rd2.defendant_name) > 0 THEN POSITION(' ' IN rd2.defendant_name) - 1 ELSE LENGTH(rd2.defendant_name) END
     ) AS first_name2,
     rd2.cas_id AS cas_id2,
-    COALESCE(
-        CASE 
-            WHEN POSITION(' ' IN rd3.defendant_name) > 0 THEN SUBSTRING(rd3.defendant_name FROM 1 FOR POSITION(' ' IN rd3.defendant_name) - 1)
-            ELSE rd3.defendant_name 
-        END, 'Unknown'
+    rd2.date_from AS date_from2,
+
+    -- Case 3
+    SUBSTRING(
+        rd3.defendant_name 
+        FROM 1 
+        FOR CASE WHEN POSITION(' ' IN rd3.defendant_name) > 0 THEN POSITION(' ' IN rd3.defendant_name) - 1 ELSE LENGTH(rd3.defendant_name) END
     ) AS first_name3,
     rd3.cas_id AS cas_id3,
-    COALESCE(
-        CASE 
-            WHEN POSITION(' ' IN rd4.defendant_name) > 0 THEN SUBSTRING(rd4.defendant_name FROM 1 FOR POSITION(' ' IN rd4.defendant_name) - 1)
-            ELSE rd4.defendant_name 
-        END, 'Unknown'
+    rd3.date_from AS date_from3,
+
+    -- Case 4
+    SUBSTRING(
+        rd4.defendant_name 
+        FROM 1 
+        FOR CASE WHEN POSITION(' ' IN rd4.defendant_name) > 0 THEN POSITION(' ' IN rd4.defendant_name) - 1 ELSE LENGTH(rd4.defendant_name) END
     ) AS first_name4,
     rd4.cas_id AS cas_id4,
-    COALESCE(
-        CASE 
-            WHEN POSITION(' ' IN rd5.defendant_name) > 0 THEN SUBSTRING(rd5.defendant_name FROM 1 FOR POSITION(' ' IN rd5.defendant_name) - 1)
-            ELSE rd5.defendant_name 
-        END, 'Unknown'
+    rd4.date_from AS date_from4,
+
+    -- Case 5
+    SUBSTRING(
+        rd5.defendant_name 
+        FROM 1 
+        FOR CASE WHEN POSITION(' ' IN rd5.defendant_name) > 0 THEN POSITION(' ' IN rd5.defendant_name) - 1 ELSE LENGTH(rd5.defendant_name) END
     ) AS first_name5,
-    rd5.cas_id AS cas_id5
+    rd5.cas_id AS cas_id5,
+    rd5.date_from AS date_from5
+
 FROM 
     FilteredUserDetails fud
 LEFT JOIN 
@@ -120,11 +148,11 @@ ORDER BY
 "@
 
 # Database connection parameters
-$postgresHost = "darts-api-test.postgres.database.azure.com"
-$port = "5432"
-$database = "darts"
-$user = "pgadmin"
-$password = "oIYRDeLXDMLKahVUjP0D"
+$postgresHost = "test"
+$port = "test"
+$database = "test"
+$user = "test"
+$password = "test"
 
 # Output file path
 $outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\UsersLanguageShop.csv"
@@ -141,8 +169,8 @@ if (Test-Path -Path $outputFile) {
     Remove-Item -Path $outputFile -Force
 }
 
-# Export column headers to a new CSV file
-$headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,cas_id1,defendantFirstName,cas_id2,defendantSecondName,cas_id3,defendantThirdName,cas_id4,defendantFourthName,cas_id5,defendantFifthName"
+# Update headers to match query results
+$headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,defendantFirstName,cas_id1,date_from1,defendantSecondName,cas_id2,date_from2,defendantThirdName,cas_id3,date_from3,defendantFourthName,cas_id4,date_from4,defendantFifthName,cas_id5,date_from5"
 $headers | Out-File -FilePath $outputFile -Encoding ASCII
 
 # Append the query results to the CSV file with comma delimiters
