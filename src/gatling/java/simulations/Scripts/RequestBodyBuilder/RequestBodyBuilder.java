@@ -34,11 +34,11 @@ public class RequestBodyBuilder {
 
         String requestType = getRandomRequestType();
 
-        return String.format("{\"hearing_id\": \"%s\", " +
-                "\"requestor\": \"%s\", " +
-                "\"start_time\": \"%s\", " +
-                "\"end_time\": \"%s\", " +
-                "\"request_type\": \"%s\"}",
+        return String.format("{\"hearing_id\": \"%s\", " 
+                            + "\"requestor\": \"%s\", " 
+                            + "\"start_time\": \"%s\", " 
+                            + "\"end_time\": \"%s\", " 
+                            + "\"request_type\": \"%s\"}",
                 hearingId, userId, startTime, endTime, requestType);
     }
 
@@ -63,11 +63,11 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
-        return String.format("{\"hearing_id\": \"%s\", " +
-                "\"case_id\": \"%s\", " +
-                "\"transcription_urgency_id\": \"3\", " +
-                "\"transcription_type_id\": \"999\", " +
-                "\"comment\": \"Perf_%s\"}",
+        return String.format("{\"hearing_id\": \"%s\", " 
+              +  "\"case_id\": \"%s\", " 
+              +  "\"transcription_urgency_id\": \"3\", " 
+              +  "\"transcription_type_id\": \"999\", " 
+              +  "\"comment\": \"Perf_%s\"}",
                 hearingId, caseId, randomComment);
     }
 
@@ -86,22 +86,22 @@ public class RequestBodyBuilder {
         String flowToken = session.get("flowToken") != null ? "" + session.get("flowToken").toString() + "" : "null";
         String userName = session.get("Email") != null ? "" + session.get("Email").toString() + "" : "null";
         
-        return String.format("{\"username\":\"%s\"," +
-        "\"isOtherIdpSupported\":true," +
-        "\"checkPhones\":false," +
-        "\"isRemoteNGCSupported\":true," +
-        "\"isCookieBannerShown\":false," +
-        "\"isFidoSupported\":true," +
-        "\"originalRequest\":\"%s\"," +
-        "\"country\":\"GB\"," +
-        "\"forceotclogin\":false," +
-        "\"isExternalFederationDisallowed\":false," +
-        "\"isRemoteConnectSupported\":false," +
-        "\"federationFlags\":0," +
-        "\"isSignup\":false," +
-        "\"flowToken\":\"%s\"," +
-        "\"isAccessPassSupported\":true," +
-        "\"isQrCodePinSupported\":true}",
+        return String.format("{\"username\":\"%s\"," 
+        + "\"isOtherIdpSupported\":true," 
+        + "\"checkPhones\":false," 
+        +"\"isRemoteNGCSupported\":true," 
+        +"\"isCookieBannerShown\":false," 
+        +"\"isFidoSupported\":true," 
+        +"\"originalRequest\":\"%s\"," 
+        +"\"country\":\"GB\"," 
+        +"\"forceotclogin\":false," 
+        +"\"isExternalFederationDisallowed\":false," 
+        +"\"isRemoteConnectSupported\":false," 
+        +"\"federationFlags\":0," 
+        +"\"isSignup\":false," 
+        +"\"flowToken\":\"%s\"," 
+        +"\"isAccessPassSupported\":true,"
+        +"\"isQrCodePinSupported\":true}",
         userName, originalRequest, flowToken);
     }
 
@@ -119,6 +119,9 @@ public class RequestBodyBuilder {
         String defendantName = Optional.ofNullable(session.get("defendantFirstName"))
                 .map(value -> "\"" + value.toString() + "\"")
                 .orElse("null");
+        String fromDate = Optional.ofNullable(session.get("getfromDate"))
+                .map(value -> "\"" + value.toString() + "\"")
+                .orElse("null");
         String eventTextContains = Optional.ofNullable(session.get("EventTextContains"))
                     .map(value -> "\"" + value.toString() + "\"")
                     .orElse("null");
@@ -134,21 +137,23 @@ public class RequestBodyBuilder {
         
         // Fix: Ensure randomDateTo is always after randomDateFrom
         LocalDate randomDateTo = RandomDateGenerator.getRandomDate(minEndDate, adjustedEndDate);
-    
+
         // Format dates as strings with quotes
-        String formattedDateFrom = "\"" + randomDateFrom.toString() + "\"";
-        String formattedDateTo = "\"" + randomDateTo.toString() + "\"";
+        // String formattedDateFrom = "\"" + randomDateFrom.toString() + "\"";
+        // String formattedDateTo = "\"" + randomDateTo.toString() + "\"";
+        String formattedDateFrom = "\"2024-12-09\"";
+        String formattedDateTo = "\"2024-12-10\"";
     
         // Build the JSON payload with quoted values
-        return String.format("{\"case_number\":%s," +
-                            "\"courthouse\":%s," +
-                            "\"courtroom\":%s," +
-                            "\"judge_name\":null," +
-                            "\"defendant_name\":%s," +
-                            "\"event_text_contains\":%s," +
-                            "\"date_from\":%s," +
-                            "\"date_to\":%s}",
-                            caseNumber, courtHouseName, courtRoom, defendantName, eventTextContains, formattedDateFrom, formattedDateTo);
+        return String.format("{\"case_number\":%s," 
+                            +"\"courthouse\":%s," 
+                            +"\"courtroom\":%s," 
+                            +"\"judge_name\":null," 
+                            +"\"defendant_name\":%s," 
+                            +"\"event_text_contains\":%s," 
+                            +"\"date_from\":%s," 
+                            +"\"date_to\":%s}",
+                            caseNumber, courtHouseName.toUpperCase(), courtRoom, defendantName, eventTextContains, fromDate, formattedDateTo);
     }
 
     public static String buildChangeRetentionsBody(Session session) {
@@ -156,9 +161,9 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);        
     
-        return String.format("{\"case_id\":%s," +
-        "\"is_permanent_retention\":true," +
-        "\"comments\":\"Perf_Comment_%s\"}",
+        return String.format("{\"case_id\":%s," 
+        +"\"is_permanent_retention\":true,"
+        +"\"comments\":\"Perf_Comment_%s\"}",
         caseId, randomComment);
     }
     public static String buildTranscriptionsBody(Session session) {
@@ -167,21 +172,21 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
-        return String.format("{\"case_id\":\"%s\", " +
-        "\"hearing_id\":\"%s\", " +
-        "\"transcription_type_id\":1, " +
-        "\"transcription_urgency_id\":4, " +
-        "\"comment\":\"%s\", " +
-        "\"start_date_time\": \"\", " +
-        "\"end_date_time\": \"\"}",
+        return String.format("{\"case_id\":\"%s\", " 
+        +"\"hearing_id\":\"%s\", " 
+        +"\"transcription_type_id\":1, " 
+        +"\"transcription_urgency_id\":4, " 
+        +"\"comment\":\"%s\", " 
+        +"\"start_date_time\": \"\", " 
+        +"\"end_date_time\": \"\"}",
         caseId, hearingId, randomComment);
     }    
     public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor, Object audioStartDate, Object audioEndDate, Object requestType) {
-        return String.format("{\"hearing_id\": %s, " +
-        "\"requestor\": %s, " +
-        "\"start_time\": \"%s\", " +
-        "\"end_time\": \"%s\", " +
-        "\"request_type\": \"%s\"}",
+        return String.format("{\"hearing_id\": %s, " 
+        +"\"requestor\": %s, " 
+        +"\"start_time\": \"%s\", " 
+        +"\"end_time\": \"%s\", " 
+        +"\"request_type\": \"%s\"}",
         getHearingId, requestor, audioStartDate, audioEndDate, requestType.toString().toUpperCase());
     }
 
@@ -196,8 +201,8 @@ public class RequestBodyBuilder {
         String approve = "{\"transcription_status_id\": \"3\"}";
     
         // Define variables for Reject
-        String reject = String.format("{\"transcription_status_id\": \"4\", " +
-                "\"workflow_comment\": \"%s\"}", randomComment);
+        String reject = String.format("{\"transcription_status_id\": \"4\", " 
+                +"\"workflow_comment\": \"%s\"}", randomComment);
     
         // Create a random number generator
         Random random = new Random();
@@ -226,17 +231,17 @@ public class RequestBodyBuilder {
         String caseName3 = randomStringGenerator.generateRandomString(10);
 
         return String.format(
-        "{\"started_at\": \"1972-11-25T17:28:59.936Z\", " +
-        " \"ended_at\": \"1972-11-25T18:28:59.936Z\", " +
-        " \"channel\": 1,  " +
-        " \"total_channels\": 4,  " +
-        " \"format\": \"mp2\",  " +
-        " \"filename\": \"%s\",  " +
-        " \"courthouse\": \"%s\",  " +
-        " \"courtroom\": \"%s\",  " +
-        " \"file_size\": 937.96,  " +
-        " \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\",  " +
-        " \"cases\": [\"PerfCase_%s\", \"PerfCase_%s\",\"PerfCase_%s\"] }",
+        "{\"started_at\": \"1972-11-25T17:28:59.936Z\", " 
+        + " \"ended_at\": \"1972-11-25T18:28:59.936Z\", " 
+        +" \"channel\": 1,  " 
+        +" \"total_channels\": 4,  " 
+        +" \"format\": \"mp2\",  " 
+        +" \"filename\": \"%s\",  " 
+        +" \"courthouse\": \"%s\",  " 
+        +" \"courtroom\": \"%s\",  " 
+        +" \"file_size\": 937.96,  " 
+        +" \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\",  " 
+        +" \"cases\": [\"PerfCase_%s\", \"PerfCase_%s\",\"PerfCase_%s\"] }",
         randomAudioFile, courtHouseName, courtRoom, caseName1, caseName2, caseName3);
     }
 
@@ -249,17 +254,17 @@ public class RequestBodyBuilder {
 
 
         return String.format(
-        "{\"started_at\": \"2024-11-11T12:02:00.000Z\", " +
-        " \"ended_at\": \"2024-11-11T13:02:00.000Z\", " +
-        " \"channel\": 1,  " +
-        " \"total_channels\": 4,  " +
-        " \"format\": \"mp2\",  " +
-        " \"filename\": \"%s\",  " +
-        " \"courthouse\": \"%s\",  " +
-        " \"courtroom\": \"%s\",  " +
-        " \"file_size\": 937.96,  " +
-        " \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\",  " +
-        " \"cases\": [\"PerfCase_%s\"] }",
+        "{\"started_at\": \"2024-11-11T12:02:00.000Z\", " 
+        +" \"ended_at\": \"2024-11-11T13:02:00.000Z\", " 
+        +" \"channel\": 1,  " 
+        +" \"total_channels\": 4,  " 
+        +" \"format\": \"mp2\",  " 
+        +" \"filename\": \"%s\",  " 
+        +" \"courthouse\": \"%s\",  " 
+        +" \"courtroom\": \"%s\",  " 
+        +" \"file_size\": 937.96,  " 
+        +" \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\",  " 
+        +" \"cases\": [\"PerfCase_%s\"] }",
         randomAudioFile, courtHouseName, courtRoom, caseName);
     }
 
@@ -289,23 +294,23 @@ public class RequestBodyBuilder {
     
         // Return formatted JSON string
         return String.format(
-            "{" +
-                "\"courthouse\": \"%s\", " +
-                "\"case_number\": \"PerfCase_%s\", " +
-                "\"case_type\": \"1\", " +
-                "\"defendants\": [ " +
-                  "\"PerfDefendant_%s\" " +
-                "], " +
-                "\"judges\": [ " +
-                  "\"PerfJudge_%s\" " +
-                "], " +
-                "\"prosecutors\": [ " +
-                  "\"PerfProsecutors_%s\" " +
-                "], " + 
-                "\"defenders\": [ " +
-                  "\"PerfDefendersName_%s\" " +
-                "] " +
-              "}",
+            "{" 
+                +"\"courthouse\": \"%s\", " 
+                +"\"case_number\": \"PerfCase_%s\", " 
+                +"\"case_type\": \"1\", " 
+                +"\"defendants\": [ " 
+                +  "\"PerfDefendant_%s\" " 
+                +"], " 
+                +"\"judges\": [ " 
+                +  "\"PerfJudge_%s\" " 
+                +"], " 
+                +"\"prosecutors\": [ " 
+                +  "\"PerfProsecutors_%s\" " 
+                +"], "  
+                +"\"defenders\": [ " 
+                +  "\"PerfDefendersName_%s\" " 
+                +"] " 
+              +"}",
               courtHouseName, caseName, defendantsName, judgeName, prosecutorsName, defendersName);
     }
 
@@ -324,157 +329,157 @@ public class RequestBodyBuilder {
     
         // Return formatted JSON string
         return String.format(
-            "{" +
-                "\"courthouse\": \"%s\", " +
-                "\"case_number\": \"PerfCase_%s\", " +
-                "\"case_type\": \"1\", " +
-                "\"defendants\": [ " +
-                  "\"PerfDefendant_%s\" " +
-                "], " +
-                "\"judges\": [ " +
-                  "\"PerfJudge_%s\" " +
-                "], " +
-                "\"prosecutors\": [ " +
-                  "\"PerfProsecutors_%s\" " +
-                "], " + 
-                "\"defenders\": [ " +
-                  "\"PerfDefendersName_%s\" " +
-                "] " +
-              "}",
+            "{" 
+                +"\"courthouse\": \"%s\", " 
+                +"\"case_number\": \"PerfCase_%s\", " 
+                +"\"case_type\": \"1\", " 
+                +"\"defendants\": [ " 
+                +  "\"PerfDefendant_%s\" " 
+                +"], " 
+                +"\"judges\": [ " 
+                +  "\"PerfJudge_%s\" " 
+                +"], " 
+                +"\"prosecutors\": [ " 
+                +  "\"PerfProsecutors_%s\" " 
+                +"], " 
+                +"\"defenders\": [ " 
+                +  "\"PerfDefendersName_%s\" " 
+                +"] " 
+              +"}",
               courtHouseName, caseName, defendantsName, judgeName, prosecutorsName, defendersName);
     }
 
     public static String buildDartsPortalPerftraceRequest(Session session) {
         return String.format(
-             "{" +
-                "  \"navigation\": {" +
-                "    \"type\": 0," +
-                "    \"redirectCount\": 0" +
-                "  }," +
-                "  \"timing\": {" +
-                "    \"connectStart\": 1709047511193," +
-                "    \"navigationStart\": 1709047510670," +
-                "    \"secureConnectionStart\": 1709047511228," +
-                "    \"fetchStart\": 1709047511190," +
-                "    \"domContentLoadedEventStart\": 1709047511811," +
-                "    \"responseStart\": 1709047511729," +
-                "    \"domInteractive\": 1709047511811," +
-                "    \"domainLookupEnd\": 1709047511190," +
-                "    \"responseEnd\": 1709047511731," +
-                "    \"redirectStart\": 0," +
-                "    \"requestStart\": 1709047511489," +
-                "    \"unloadEventEnd\": 0," +
-                "    \"unloadEventStart\": 0," +
-                "    \"domLoading\": 1709047511757," +
-                "    \"domComplete\": 1709047511842," +
-                "    \"domainLookupStart\": 1709047511190," +
-                "    \"loadEventStart\": 1709047511842," +
-                "    \"domContentLoadedEventEnd\": 1709047511811," +
-                "    \"loadEventEnd\": 1709047511842," +
-                "    \"redirectEnd\": 0," +
-                "    \"connectEnd\": 1709047511489" +
-                "  }," +
-                "  \"entries\": [" +
-                "    {" +
-                "      \"name\": \"https://hmctsstgextid.b2clogin.com/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/oauth2/v2.0/authorize?client_id=363c11cb-48b9-44bf-9d06-9a3973f6f413&redirect_uri=https%3A%2F%2Fdarts.test.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\"," +
-                "      \"entryType\": \"navigation\"," +
-                "      \"startTime\": 0," +
-                "      \"duration\": 1171.7000000029802," +
-                "      \"initiatorType\": \"navigation\"," +
-                "      \"deliveryType\": \"\"," +
-                "      \"nextHopProtocol\": \"http/1.1\"," +
-                "      \"renderBlockingStatus\": \"non-blocking\"," +
-                "      \"workerStart\": 0," +
-                "      \"redirectStart\": 0," +
-                "      \"redirectEnd\": 0," +
-                "      \"fetchStart\": 520," +
-                "      \"domainLookupStart\": 520," +
-                "      \"domainLookupEnd\": 520," +
-                "      \"connectStart\": 522.2000000029802," +
-                "      \"secureConnectionStart\": 557.7999999970198," +
-                "      \"connectEnd\": 818.2000000029802," +
-                "      \"requestStart\": 818.2999999970198," +
-                "      \"responseStart\": 1059," +
-                "      \"firstInterimResponseStart\": 0," +
-                "      \"responseEnd\": 1060.7999999970198," +
-                "      \"transferSize\": 69665," +
-                "      \"encodedBodySize\": 69365," +
-                "      \"decodedBodySize\": 176293," +
-                "      \"responseStatus\": 200," +
-                "      \"serverTiming\": []," +
-                "      \"unloadEventStart\": 0," +
-                "      \"unloadEventEnd\": 0," +
-                "      \"domInteractive\": 1140.4000000059605," +
-                "      \"domContentLoadedEventStart\": 1140.4000000059605," +
-                "      \"domContentLoadedEventEnd\": 1140.7999999970198," +
-                "      \"domComplete\": 1171.5999999940395," +
-                "      \"loadEventStart\": 1171.7000000029802," +
-                "      \"loadEventEnd\": 1171.7000000029802," +
-                "      \"type\": \"navigate\"," +
-                "      \"redirectCount\": 0," +
-                "      \"activationStart\": 0," +
-                "      \"criticalCHRestart\": 0" +
-                "    }," +
-                "    {" +
-                "      \"name\": \"visible\"," +
-                "      \"entryType\": \"visibility-state\"," +
-                "      \"startTime\": 0," +
-                "      \"duration\": 0" +
-                "    }," +
-                "    {" +
-                "      \"name\": \"https://darts.test.apps.hmcts.net/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en\"," +
-                "      \"entryType\": \"resource\"," +
-                "      \"startTime\": 1132," +
-                "      \"duration\": 411.90000000596046," +
-                "      \"initiatorType\": \"xmlhttprequest\"," +
-                "      \"deliveryType\": \"\"," +
-                "      \"nextHopProtocol\": \"http/1.1\"," +
-                "      \"renderBlockingStatus\": \"non-blocking\"," +
-                "      \"workerStart\": 0," +
-                "      \"redirectStart\": 0," +
-                "      \"redirectEnd\": 0," +
-                "      \"fetchStart\": 1132," +
-                "      \"domainLookupStart\": 1132," +
-                "      \"domainLookupEnd\": 1132," +
-                "      \"connectStart\": 1133.2999999970198," +
-                "      \"secureConnectionStart\": 1159.4000000059605," +
-                "      \"connectEnd\": 1299.2000000029802," +
-                "      \"requestStart\": 1299.2999999970198," +
-                "      \"responseStart\": 1543.4000000059605," +
-                "      \"firstInterimResponseStart\": 0," +
-                "      \"responseEnd\": 1543.9000000059605," +
-                "      \"transferSize\": 5876," +
-                "      \"encodedBodySize\": 5576," +
-                "      \"decodedBodySize\": 5576," +
-                "      \"responseStatus\": 200," +
-                "      \"serverTiming\": [" +
-                "        {" +
-                "          \"name\": \"dtSInfo\"," +
-                "          \"duration\": 0," +
-                "          \"description\": \"0\"" +
-                "        }," +
-                "        {" +
-                "          \"name\": \"dtRpid\"," +
-                "          \"duration\": 0," +
-                "          \"description\": \"1087509397\"" +
-                "        }," +
-                "        {" +
-                "          \"name\": \"dtTao\"," +
-                "          \"duration\": 0," +
-                "          \"description\": \"1\"" +
-                "        }" +
-                "      ]" +
-                "    }" +
-                "  ]," +
-                "  \"connection\": {" +
-                "    \"onchange\": null," +
-                "    \"effectiveType\": \"3g\"," +
-                "    \"rtt\": 950," +
-                "    \"downlink\": 1.4," +
-                "    \"saveData\": false" +
-                "  }" +
-                "}"); 
-            }
+        "{" +
+        "  \"navigation\": {" +
+        "    \"type\": 0," +
+        "    \"redirectCount\": 0" +
+        "  }," +
+        "  \"timing\": {" +
+        "    \"connectStart\": 1709047511193," +
+        "    \"navigationStart\": 1709047510670," +
+        "    \"secureConnectionStart\": 1709047511228," +
+        "    \"fetchStart\": 1709047511190," +
+        "    \"domContentLoadedEventStart\": 1709047511811," +
+        "    \"responseStart\": 1709047511729," +
+        "    \"domInteractive\": 1709047511811," +
+        "    \"domainLookupEnd\": 1709047511190," +
+        "    \"responseEnd\": 1709047511731," +
+        "    \"redirectStart\": 0," +
+        "    \"requestStart\": 1709047511489," +
+        "    \"unloadEventEnd\": 0," +
+        "    \"unloadEventStart\": 0," +
+        "    \"domLoading\": 1709047511757," +
+        "    \"domComplete\": 1709047511842," +
+        "    \"domainLookupStart\": 1709047511190," +
+        "    \"loadEventStart\": 1709047511842," +
+        "    \"domContentLoadedEventEnd\": 1709047511811," +
+        "    \"loadEventEnd\": 1709047511842," +
+        "    \"redirectEnd\": 0," +
+        "    \"connectEnd\": 1709047511489" +
+        "  }," +
+        "  \"entries\": [" +
+        "    {" +
+        "      \"name\": \"https://hmctsstgextid.b2clogin.com/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/oauth2/v2.0/authorize?client_id=363c11cb-48b9-44bf-9d06-9a3973f6f413&redirect_uri=https%3A%2F%2Fdarts.test.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\"," +
+        "      \"entryType\": \"navigation\"," +
+        "      \"startTime\": 0," +
+        "      \"duration\": 1171.7000000029802," +
+        "      \"initiatorType\": \"navigation\"," +
+        "      \"deliveryType\": \"\"," +
+        "      \"nextHopProtocol\": \"http/1.1\"," +
+        "      \"renderBlockingStatus\": \"non-blocking\"," +
+        "      \"workerStart\": 0," +
+        "      \"redirectStart\": 0," +
+        "      \"redirectEnd\": 0," +
+        "      \"fetchStart\": 520," +
+        "      \"domainLookupStart\": 520," +
+        "      \"domainLookupEnd\": 520," +
+        "      \"connectStart\": 522.2000000029802," +
+        "      \"secureConnectionStart\": 557.7999999970198," +
+        "      \"connectEnd\": 818.2000000029802," +
+        "      \"requestStart\": 818.2999999970198," +
+        "      \"responseStart\": 1059," +
+        "      \"firstInterimResponseStart\": 0," +
+        "      \"responseEnd\": 1060.7999999970198," +
+        "      \"transferSize\": 69665," +
+        "      \"encodedBodySize\": 69365," +
+        "      \"decodedBodySize\": 176293," +
+        "      \"responseStatus\": 200," +
+        "      \"serverTiming\": []," +
+        "      \"unloadEventStart\": 0," +
+        "      \"unloadEventEnd\": 0," +
+        "      \"domInteractive\": 1140.4000000059605," +
+        "      \"domContentLoadedEventStart\": 1140.4000000059605," +
+        "      \"domContentLoadedEventEnd\": 1140.7999999970198," +
+        "      \"domComplete\": 1171.5999999940395," +
+        "      \"loadEventStart\": 1171.7000000029802," +
+        "      \"loadEventEnd\": 1171.7000000029802," +
+        "      \"type\": \"navigate\"," +
+        "      \"redirectCount\": 0," +
+        "      \"activationStart\": 0," +
+        "      \"criticalCHRestart\": 0" +
+        "    }," +
+        "    {" +
+        "      \"name\": \"visible\"," +
+        "      \"entryType\": \"visibility-state\"," +
+        "      \"startTime\": 0," +
+        "      \"duration\": 0" +
+        "    }," +
+        "    {" +
+        "      \"name\": \"https://darts.test.apps.hmcts.net/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en\"," +
+        "      \"entryType\": \"resource\"," +
+        "      \"startTime\": 1132," +
+        "      \"duration\": 411.90000000596046," +
+        "      \"initiatorType\": \"xmlhttprequest\"," +
+        "      \"deliveryType\": \"\"," +
+        "      \"nextHopProtocol\": \"http/1.1\"," +
+        "      \"renderBlockingStatus\": \"non-blocking\"," +
+        "      \"workerStart\": 0," +
+        "      \"redirectStart\": 0," +
+        "      \"redirectEnd\": 0," +
+        "      \"fetchStart\": 1132," +
+        "      \"domainLookupStart\": 1132," +
+        "      \"domainLookupEnd\": 1132," +
+        "      \"connectStart\": 1133.2999999970198," +
+        "      \"secureConnectionStart\": 1159.4000000059605," +
+        "      \"connectEnd\": 1299.2000000029802," +
+        "      \"requestStart\": 1299.2999999970198," +
+        "      \"responseStart\": 1543.4000000059605," +
+        "      \"firstInterimResponseStart\": 0," +
+        "      \"responseEnd\": 1543.9000000059605," +
+        "      \"transferSize\": 5876," +
+        "      \"encodedBodySize\": 5576," +
+        "      \"decodedBodySize\": 5576," +
+        "      \"responseStatus\": 200," +
+        "      \"serverTiming\": [" +
+        "        {" +
+        "          \"name\": \"dtSInfo\"," +
+        "          \"duration\": 0," +
+        "          \"description\": \"0\"" +
+        "        }," +
+        "        {" +
+        "          \"name\": \"dtRpid\"," +
+        "          \"duration\": 0," +
+        "          \"description\": \"1087509397\"" +
+        "        }," +
+        "        {" +
+        "          \"name\": \"dtTao\"," +
+        "          \"duration\": 0," +
+        "          \"description\": \"1\"" +
+        "        }" +
+        "      ]" +
+        "    }" +
+        "  ]," +
+        "  \"connection\": {" +
+        "    \"onchange\": null," +
+        "    \"effectiveType\": \"3g\"," +
+        "    \"rtt\": 950," +
+        "    \"downlink\": 1.4," +
+        "    \"saveData\": false" +
+        "  }" +
+        "}"); 
+    }    
     
     public static String buildDartsPortalPerftraceRequest2(Session session) {
         return String.format(
@@ -595,9 +600,9 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String courtHouseName = randomStringGenerator.generateRandomString(10);
 
-        return String.format("{\"courthouse_name\": \"PerfCourtHouse_%s\", " +
+        return String.format("{\"courthouse_name\": \"PerfCourtHouse_%s\", "
         // "\"code\": \" "+ generatorCourtHouseCode.generateNextNumber() + "\", " +
-        "\"display_name\": \"PerfCourtHouse_%s\"}",                
+        +"\"display_name\": \"PerfCourtHouse_%s\"}",                
         // "\"region_id\": \"0\"}",
         courtHouseName, courtHouseName);
     }
@@ -609,14 +614,14 @@ public class RequestBodyBuilder {
         String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
         String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
         
-        return String.format("{\"event_id\": \"1\", " +
-        "\"type\": \"30300\", " +
-        "\"sub_type\": \"\", " +
-        "\"courthouse\": \"%s\", " +
-        "\"courtroom\": \"%s\", " +
-        "\"case_numbers\": [ " +
-        "\"%s\" ], " +            
-        "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
+        return String.format("{\"event_id\": \"1\", " 
+        +"\"type\": \"30300\", " 
+        +"\"sub_type\": \"\", " 
+        +"\"courthouse\": \"%s\", " 
+        +"\"courtroom\": \"%s\", " 
+        +"\"case_numbers\": [ " 
+        +"\"%s\" ], "            
+        +"\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
     courtHouseName, courtRoomName, courtCaseNumber);
     }
 
@@ -626,16 +631,16 @@ public class RequestBodyBuilder {
         String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
         String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
         String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
-        return String.format("{\"event_id\": \"%s\", " +
-                "\"message_id\": \"This is a Perf test for Duplication tasks\", " +
-                "\"event_text\": \"Perf_event text for Duplication\", " +
-                "\"type\": \"30300\", " +
-                "\"sub_type\": \"\", " +
-                "\"courthouse\": \"%s\", " +
-                "\"courtroom\": \"%s\", " +
-                "\"case_numbers\": [ " +
-                "\"%s\" ], " +
-                "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
+        return String.format("{\"event_id\": \"%s\", " 
+                +"\"message_id\": \"This is a Perf test for Duplication tasks\", " 
+                +"\"event_text\": \"Perf_event text for Duplication\", " 
+                +"\"type\": \"30300\", " 
+                +"\"sub_type\": \"\", " 
+                +"\"courthouse\": \"%s\", " 
+                +"\"courtroom\": \"%s\", " 
+                +"\"case_numbers\": [ " 
+                +"\"%s\" ], " 
+                +"\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
             eventId, courtHouseName, courtRoomName, courtCaseNumber);
     }   
 
@@ -646,14 +651,14 @@ public class RequestBodyBuilder {
         String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
         String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
 
-        return String.format("{\"event_id\": \"74\", " +
-        "\"type\": \"2917\", " +
-        "\"sub_type\": \"3979\", " +
-        "\"courthouse\": \"%s\", " +
-        "\"courtroom\": \"%s\", " +
-        "\"case_numbers\": [ " +
-        "\"%s\" ], " +            
-        "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
+        return String.format("{\"event_id\": \"74\", " 
+        +"\"type\": \"2917\", " 
+        +"\"sub_type\": \"3979\", " 
+        +"\"courthouse\": \"%s\", " 
+        +"\"courtroom\": \"%s\", " 
+        +"\"case_numbers\": [ " 
+        +"\"%s\" ], "        
+        +"\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
     courtHouseName, courtRoomName, courtCaseNumber);
     }
     public static String buildEventsRetentionsPostBody(Session session) {
@@ -665,20 +670,20 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
-        return String.format("{ \"type\": \"30300\", " +
-        "\"event_id\": \"218\", " +
-        "\"courthouse\": \"%s\", " +
-        "\"courtroom\": \"%s\"," +
-        "\"case_numbers\": [ " +
-        "\"%s\" ], " +    
-        "\"event_text\": \"Perf_Event_%s\"," +        
-        "\"date_time\": \"2024-04-05T12:02:00.000Z\"," +
-        "\"retention_policy\": {" +
-            "\"case_retention_fixed_policy\": \"1\"," +
-            "\"case_total_sentence\": \"1\"}," +
-        "\"start_time\": \"2024-07-19T17:27:33.212Z\"," +
-        "\"end_time\": \"2024-07-19T17:27:33.212Z\"," +
-        "\"is_mid_tier\": true}",
+        return String.format("{ \"type\": \"30300\", " 
+        +"\"event_id\": \"218\", " 
+        +"\"courthouse\": \"%s\", " 
+        +"\"courtroom\": \"%s\"," 
+        +"\"case_numbers\": [ " 
+        +"\"%s\" ], "    
+        +"\"event_text\": \"Perf_Event_%s\","      
+        +"\"date_time\": \"2024-04-05T12:02:00.000Z\"," 
+        +"\"retention_policy\": {" 
+        +    "\"case_retention_fixed_policy\": \"1\"," 
+        +    "\"case_total_sentence\": \"1\"}," 
+        +"\"start_time\": \"2024-07-19T17:27:33.212Z\"," 
+        +"\"end_time\": \"2024-07-19T17:27:33.212Z\"," 
+        +"\"is_mid_tier\": true}",
     courtHouseName, courtRoomName, courtCaseNumber, randomComment);
     }
 
@@ -690,9 +695,9 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
-        return String.format("{\"case_id\": \"%s\", " +
-        "\"is_permanent_retention\": \"true\", " +
-        "\"comments\": \"Perf_%s\"}",
+        return String.format("{\"case_id\": \"%s\", " 
+        +"\"is_permanent_retention\": \"true\", " 
+        + "\"comments\": \"Perf_%s\"}",
         courtCaseId, randomComment);
     }
 
@@ -705,17 +710,17 @@ public class RequestBodyBuilder {
         String currentTimeMillis = String.valueOf(System.currentTimeMillis());
         int test = (int)NumberGenerator.generateRandom13DigitNumber();
 
-        return String.format("{\"event_id\":" + test + ", " +
-        "\"message_id\":" + currentTimeMillis + ", " +
-        "\"type\": \"30300\", " +
-        "\"sub_type\": \"\", " +
-        "\"courthouse\": \"%s\", " +
-        "\"courtroom\": \"%s\", " +
-        "\"case_numbers\": [ " +
-        "\"PerfCase_%s\" ], " +            
-        "\"date_time\": \"2024-11-11T12:02:00.000Z\", " +
-        "\"start_time\": \"2024-11-11T12:02:00.000Z\", " +
-        "\"end_time\": \"2024-11-11T13:02:00.000Z\"}",
+        return String.format("{\"event_id\":" + test + ", " 
+        +"\"message_id\":" + currentTimeMillis + ", " 
+        +"\"type\": \"30300\", " 
+        +"\"sub_type\": \"\", " 
+        +"\"courthouse\": \"%s\", " 
+        +"\"courtroom\": \"%s\", " 
+        +"\"case_numbers\": [ " 
+        +"\"PerfCase_%s\" ], "       
+        +"\"date_time\": \"2024-11-11T12:02:00.000Z\", " 
+        +"\"start_time\": \"2024-11-11T12:02:00.000Z\", " 
+        +"\"end_time\": \"2024-11-11T13:02:00.000Z\"}",
     courtHouseName, courtRoomName, caseName);
     }
 }

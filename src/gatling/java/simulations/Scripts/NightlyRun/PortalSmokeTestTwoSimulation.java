@@ -34,7 +34,9 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
     }
 
     public PortalSmokeTestTwoSimulation() {
+
             HttpProtocolBuilder httpProtocolExternal = http
+                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
                 .inferHtmlResources()
                 .acceptHeader("application/json, text/plain, */*")
@@ -44,6 +46,7 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
 
     
             HttpProtocolBuilder httpProtocolInternal = http
+                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .baseUrl("https://login.microsoftonline.com") 
                 .inferHtmlResources()
                 .acceptHeader("application/json, text/plain, */*")
@@ -65,21 +68,21 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
 
         // Call setUp once with all scenarios
         setUp(
-            smokeJudgeUsers.injectOpen(
-                rampUsers(AppConfig.NIGHTLY_RUN_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)) 
-            ).protocols(httpProtocolInternal),
+          //  smokeJudgeUsers.injectOpen(
+          //      rampUsers(1).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)) 
+          //  ).protocols(httpProtocolInternal),
             smokeCourtClerkUsers.injectOpen(
-                rampUsers(AppConfig.NIGHTLY_RUN_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)) 
-            ).protocols(httpProtocolInternal),
-            smokeCourtManagerUsers.injectOpen(
-                rampUsers(AppConfig.NIGHTLY_RUN_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_MANAGER)) 
-            ).protocols(httpProtocolInternal),
-            smokeTranscriberUsers.injectOpen(
-                rampUsers(AppConfig.NIGHTLY_RUN_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_TRANSCRIBER))
-            ).protocols(httpProtocolExternal),
-            smokeLanguageShopUsers.injectOpen(
-                rampUsers(AppConfig.NIGHTLY_RUN_USERS).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)) 
-            ).protocols(httpProtocolExternal)
+                rampUsers(1).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)) 
+            ).protocols(httpProtocolInternal)
+        //    smokeCourtManagerUsers.injectOpen(
+        //        rampUsers(1).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_MANAGER)) 
+       //     ).protocols(httpProtocolInternal),
+       //     smokeTranscriberUsers.injectOpen(
+      //          rampUsers(1).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_TRANSCRIBER))
+       //     ).protocols(httpProtocolExternal),
+      //      smokeLanguageShopUsers.injectOpen(
+      //          rampUsers(1).during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)) 
+      //      ).protocols(httpProtocolExternal)
         );
     }
 
@@ -95,19 +98,48 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
                         // Increment the loop counter
                         int iteration = session.getInt("loopCounter") + 1;
     
-                        // Determine the column name based on the iteration number
-                        String defendantColumn = switch (iteration) {
-                            case 1 -> "defendantFirstName";
-                            case 2 -> "defendantSecondName";
-                            case 3 -> "defendantThirdName";
-                            case 4 -> "defendantFourthName";
-                            case 5 -> "defendantFifthName";
-                            default -> throw new RuntimeException("Unexpected iteration: " + iteration);
-                        };
+                        // Determine the cas_id and defendant name column names based on the iteration number
+                        String casIdColumn = "";
+                        String fromDateColumn = "";
+                        String defendantColumn = "";
+                        switch (iteration) {
+                            case 1: 
+                                casIdColumn = "cas_id1"; 
+                                fromDateColumn = "date_from1";
+                                defendantColumn = "defendantFirstName"; 
+                                break;
+                            case 2: 
+                                casIdColumn = "cas_id2"; 
+                                fromDateColumn = "date_from2";
+                                defendantColumn = "defendantSecondName"; 
+                                break;
+                            case 3: 
+                                casIdColumn = "cas_id3"; 
+                                fromDateColumn = "date_from3";
+                                defendantColumn = "defendantThirdName"; 
+                                break;
+                            case 4: 
+                                casIdColumn = "cas_id4"; 
+                                fromDateColumn = "date_from4";
+                                defendantColumn = "defendantFourthName"; 
+                                break;
+                            case 5: 
+                                casIdColumn = "cas_id5"; 
+                                fromDateColumn = "date_from4";
+                                defendantColumn = "defendantFifthName"; 
+                                break;
+                            default: 
+                                throw new RuntimeException("Unexpected iteration: " + iteration);
+                        }
     
-                        // Retrieve the defendant name from the session and set it for use
+                        // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
+                        String casId = session.getString(casIdColumn);
+                        String fromDate = session.getString(fromDateColumn);
                         String defendantName = session.getString(defendantColumn);
-                        session = session.set("defendantFirstName", defendantName);
+                        session = session
+                                    .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
+                                    .set("getfromDate", fromDate)        // Set the fromDate for #{getfromDate} usage
+                                    .set("defendantFirstName", defendantName); // Set the defendant name for #{defendantFirstName} usage
     
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
@@ -133,19 +165,48 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
                         // Increment the loop counter
                         int iteration = session.getInt("loopCounter") + 1;
     
-                        // Determine the column name based on the iteration number
-                        String defendantColumn = switch (iteration) {
-                            case 1 -> "defendantFirstName";
-                            case 2 -> "defendantSecondName";
-                            case 3 -> "defendantThirdName";
-                            case 4 -> "defendantFourthName";
-                            case 5 -> "defendantFifthName";
-                            default -> throw new RuntimeException("Unexpected iteration: " + iteration);
-                        };
+                        // Determine the cas_id and defendant name column names based on the iteration number
+                        String casIdColumn = "";
+                        String fromDateColumn = "";
+                        String defendantColumn = "";
+                        switch (iteration) {
+                            case 1: 
+                                casIdColumn = "cas_id1"; 
+                                fromDateColumn = "date_from1";
+                                defendantColumn = "defendantFirstName"; 
+                                break;
+                            case 2: 
+                                casIdColumn = "cas_id2"; 
+                                fromDateColumn = "date_from2";
+                                defendantColumn = "defendantSecondName"; 
+                                break;
+                            case 3: 
+                                casIdColumn = "cas_id3"; 
+                                fromDateColumn = "date_from3";
+                                defendantColumn = "defendantThirdName"; 
+                                break;
+                            case 4: 
+                                casIdColumn = "cas_id4"; 
+                                fromDateColumn = "date_from4";
+                                defendantColumn = "defendantFourthName"; 
+                                break;
+                            case 5: 
+                                casIdColumn = "cas_id5"; 
+                                fromDateColumn = "date_from4";
+                                defendantColumn = "defendantFifthName"; 
+                                break;
+                            default: 
+                                throw new RuntimeException("Unexpected iteration: " + iteration);
+                        }
     
-                        // Retrieve the defendant name from the session and set it for use
+                        // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
+                        String casId = session.getString(casIdColumn);
+                        String fromDate = session.getString(fromDateColumn);
                         String defendantName = session.getString(defendantColumn);
-                        session = session.set("defendantFirstName", defendantName);
+                        session = session
+                                    .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
+                                    .set("getfromDate", fromDate)        // Set the fromDate for #{getfromDate} usage
+                                    .set("defendantFirstName", defendantName); // Set the defendant name for #{defendantFirstName} usage
     
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
@@ -170,19 +231,48 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
                         // Increment the loop counter
                         int iteration = session.getInt("loopCounter") + 1;
     
-                        // Determine the column name based on the iteration number
-                        String defendantColumn = switch (iteration) {
-                            case 1 -> "defendantFirstName";
-                            case 2 -> "defendantSecondName";
-                            case 3 -> "defendantThirdName";
-                            case 4 -> "defendantFourthName";
-                            case 5 -> "defendantFifthName";
-                            default -> throw new RuntimeException("Unexpected iteration: " + iteration);
-                        };
+                        // Determine the cas_id and defendant name column names based on the iteration number
+                        String casIdColumn = "";
+                        String fromDateColumn = "";
+                        String defendantColumn = "";
+                        switch (iteration) {
+                            case 1: 
+                                casIdColumn = "cas_id1"; 
+                                fromDateColumn = "date_from1";
+                                defendantColumn = "defendantFirstName"; 
+                                break;
+                            case 2: 
+                                casIdColumn = "cas_id2"; 
+                                fromDateColumn = "date_from2";
+                                defendantColumn = "defendantSecondName"; 
+                                break;
+                            case 3: 
+                                casIdColumn = "cas_id3"; 
+                                fromDateColumn = "date_from3";
+                                defendantColumn = "defendantThirdName"; 
+                                break;
+                            case 4: 
+                                casIdColumn = "cas_id4"; 
+                                fromDateColumn = "date_from4";
+                                defendantColumn = "defendantFourthName"; 
+                                break;
+                            case 5: 
+                                casIdColumn = "cas_id5"; 
+                                fromDateColumn = "date_from4";
+                                defendantColumn = "defendantFifthName"; 
+                                break;
+                            default: 
+                                throw new RuntimeException("Unexpected iteration: " + iteration);
+                        }
     
-                        // Retrieve the defendant name from the session and set it for use
+                        // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
+                        String casId = session.getString(casIdColumn);
+                        String fromDate = session.getString(fromDateColumn);
                         String defendantName = session.getString(defendantColumn);
-                        session = session.set("defendantFirstName", defendantName);
+                        session = session
+                                    .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
+                                    .set("getfromDate", fromDate)        // Set the fromDate for #{getfromDate} usage
+                                    .set("defendantFirstName", defendantName); // Set the defendant name for #{defendantFirstName} usage
     
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
@@ -209,21 +299,48 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
                     // Increment the loop counter
                     int iteration = session.getInt("loopCounter") + 1;
             
-                    // Determine the column name based on the iteration number
-                    String defendantColumn = "";
-                    switch (iteration) {
-                        case 1: defendantColumn = "defendantFirstName"; break;
-                        case 2: defendantColumn = "defendantSecondName"; break;
-                        case 3: defendantColumn = "defendantThirdName"; break;
-                        case 4: defendantColumn = "defendantFourthName"; break;
-                        case 5: defendantColumn = "defendantFifthName"; break;
-                        default: throw new RuntimeException("Unexpected iteration: " + iteration);
-                    }
-            
-                    // Retrieve the defendant name from the session and set it for use
-                    String defendantName = session.getString(defendantColumn);
-                    session = session.set("defendantFirstName", defendantName);
-            
+                        // Determine the cas_id and defendant name column names based on the iteration number
+                        String casIdColumn = "";
+                        String fromDateColumn = "";
+                        String defendantColumn = "";
+                        switch (iteration) {
+                            case 1: 
+                                casIdColumn = "cas_id1"; 
+                                fromDateColumn = "date_from1";
+                                defendantColumn = "defendantFirstName"; 
+                                break;
+                            case 2: 
+                                casIdColumn = "cas_id2"; 
+                                fromDateColumn = "date_from2";
+                                defendantColumn = "defendantSecondName"; 
+                                break;
+                            case 3: 
+                                casIdColumn = "cas_id3"; 
+                                fromDateColumn = "date_from3";
+                                defendantColumn = "defendantThirdName"; 
+                                break;
+                            case 4: 
+                                casIdColumn = "cas_id4"; 
+                                fromDateColumn = "date_from4";
+                                defendantColumn = "defendantFourthName"; 
+                                break;
+                            case 5: 
+                                casIdColumn = "cas_id5"; 
+                                fromDateColumn = "date_from4";
+                                defendantColumn = "defendantFifthName"; 
+                                break;
+                            default: 
+                                throw new RuntimeException("Unexpected iteration: " + iteration);
+                        }
+    
+                        // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
+                        String casId = session.getString(casIdColumn);
+                        String fromDate = session.getString(fromDateColumn);
+                        String defendantName = session.getString(defendantColumn);
+                        session = session
+                                    .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
+                                    .set("getfromDate", fromDate)        // Set the fromDate for #{getfromDate} usage
+                                    .set("defendantFirstName", defendantName); // Set the defendant name for #{defendantFirstName} usage
                     // Update the loop counter in the session for the next iteration
                     return session.set("loopCounter", iteration);
                 })
@@ -248,26 +365,32 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
     
                         // Determine the cas_id and defendant name column names based on the iteration number
                         String casIdColumn = "";
+                        String fromDateColumn = "";
                         String defendantColumn = "";
                         switch (iteration) {
                             case 1: 
                                 casIdColumn = "cas_id1"; 
+                                fromDateColumn = "date_from1";
                                 defendantColumn = "defendantFirstName"; 
                                 break;
                             case 2: 
                                 casIdColumn = "cas_id2"; 
+                                fromDateColumn = "date_from2";
                                 defendantColumn = "defendantSecondName"; 
                                 break;
                             case 3: 
                                 casIdColumn = "cas_id3"; 
+                                fromDateColumn = "date_from3";
                                 defendantColumn = "defendantThirdName"; 
                                 break;
                             case 4: 
                                 casIdColumn = "cas_id4"; 
+                                fromDateColumn = "date_from4";
                                 defendantColumn = "defendantFourthName"; 
                                 break;
                             case 5: 
                                 casIdColumn = "cas_id5"; 
+                                fromDateColumn = "date_from4";
                                 defendantColumn = "defendantFifthName"; 
                                 break;
                             default: 
@@ -276,9 +399,11 @@ public class PortalSmokeTestTwoSimulation extends Simulation {
     
                         // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
                         String casId = session.getString(casIdColumn);
+                        String fromDate = session.getString(fromDateColumn);
                         String defendantName = session.getString(defendantColumn);
                         session = session
                                     .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
+                                    .set("getfromDate", fromDate)        // Set the fromDate for #{getfromDate} usage
                                     .set("defendantFirstName", defendantName); // Set the defendant name for #{defendantFirstName} usage
     
                         // Update the loop counter in the session for the next iteration
