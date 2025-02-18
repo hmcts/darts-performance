@@ -97,7 +97,7 @@ public class SQLQueryProvider {
     public static String getTransformedMediaToDeleteQuery() {
         return  "SELECT darts.transformed_media.trm_id, "
                 + "darts.transformed_media.mer_id, "
-                +"darts.media_request.hea_id, "
+                + "darts.media_request.hea_id, "
                 + "darts.media_request.request_status, "
                 + "darts.media_request.request_type "
             + "FROM darts.transformed_media "

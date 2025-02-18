@@ -61,9 +61,10 @@ def simulations = [
 
     //Main Smoke Tests
     [task: 'runPortalSmokeTestOneSimulation', class: 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestOneSimulation'],
-    [task: 'runPortalSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestTwoSimulation'],
+    [task: 'runPortalSmokeTestTwoSimulation', class: ' simulations.Scripts.PerformanceTests.DartsSmokeTests.PortalSmokeTestTwoSimulation'],
     [task: 'runSoapSmokeTestOneSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestOneSimulation'],
     [task: 'runSoapSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestTwoSimulation'],
+
 
     //Advance Search Check Test
     [task: 'runPortalAdvanceSearchSimulation', class: 'simulations.Scripts.PerformanceTests.DartsSmokeTests.PortalAdvanceSearchSimulation'],
@@ -84,7 +85,7 @@ def simulations = [
     [task: 'runPortalTestSimulation', class: 'simulations.Scripts.PerformanceTests.NewMainTests.PortalTestSimulation'],
 
     //NightlyRun
-    [task: 'runNightlyRunSimulation', class: 'simulations.Scripts.NightlyRun.NightlyRunSimulation'],
+    [task: 'runNightlyRunSimulation', class: 'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation'],
 
     //Create Data for scripts / automated tasks
     [task: 'runCloseCaseSimulation', class: 'simulations.Scripts.DartsApi.CloseCaseSimulation'],
@@ -116,7 +117,11 @@ def simulations = [
     [task: 'runExternalDataStoreDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunExternalDataStoreDeleterTaskSimulation'],
     [task: 'runOutboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunOutboundAudioDeleterTaskSimulation'],
     [task: 'runUnstructuredToArmDataStoreSimulation', class: 'simulations.Scripts.DartsApi.RunUnstructuredToArmDataStoreSimulation'],
+    [task: 'runDetsToArmTaskSimulation', class: 'simulations.Scripts.DartsApi.RunDetsToArmTaskSimulation'],
+    [task: 'runProcessDETSToArmResponseTaskSimulation', class: 'simulations.Scripts.DartsApi.RunProcessDETSToArmResponseTaskSimulation'],
+    [task: 'runProcessArmResponseFilesTaskSimulation', class: 'simulations.Scripts.DartsApi.RunProcessArmResponseFilesTaskSimulation'],
     [task: 'runApplyRetentionCaseAssociatedObjectsTaskSimulation', class: 'simulations.Scripts.DartsApi.RunApplyRetentionCaseAssociatedObjectsTaskSimulation']
+
 ]
 
 // Register tasks dynamically

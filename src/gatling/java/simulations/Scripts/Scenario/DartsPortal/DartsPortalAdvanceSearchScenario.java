@@ -41,7 +41,7 @@ public final class DartsPortalAdvanceSearchScenario {
                         .body(StringBody(session -> session.get("searchRequestPayload"))).asJson()
                         .check(status().in(200, 400).saveAs("status"))  // Allowing 200 and 400 status codes
                         .check(bodyString().saveAs("responseBody"))      // Save the response body
-                        .check(jsonPath("$[*].case_id").count().saveAs("extractedCaseId"))
+                        .check(jsonPath("$[*].case_id").count().saveAs("caseCount"))
                         .check(jsonPath("$[*].case_id").findRandom().optional().saveAs("extractedCaseId"))
                         .check(
                             jsonPath("$.type").optional().saveAs("errorType"),    // Extract error type if it exists
@@ -50,7 +50,7 @@ public final class DartsPortalAdvanceSearchScenario {
                         )
                     )
                     .exec(session -> {
-                        if (AppConfig.dynamicCases) {
+                        if (AppConfig.dynamicCases == true) {
                             // Set `getCaseId` from the response rather than DB query
                             String extractedCaseId = session.getString("extractedCaseId");
                             session = session.set("getCaseId", extractedCaseId);

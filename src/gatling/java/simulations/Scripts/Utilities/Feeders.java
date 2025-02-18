@@ -2,10 +2,6 @@ package simulations.Scripts.Utilities;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -21,7 +17,6 @@ import io.gatling.javaapi.core.CheckBuilder;
 
 
 public class Feeders {
-
     public static final FeederBuilder<String> AudioRequestCSV;
     public static final FeederBuilder<String> JudgesCSV;
     public static final FeederBuilder<String> LanguageShopUsers;
@@ -49,12 +44,26 @@ public class Feeders {
         JudgesCSV = CoreDsl.csv(AppConfig.DARTS_PORTAL_JUDGES_FILE_PATH).random();
 
         //Users
-        LanguageShopUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_LANGUAGESHOP_FILE_PATH).circular();
-        CourtClerkUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV).circular();
-        TranscriberUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH).circular();
-        CourtManagerUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH).circular();
-        JudgeUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_JUDGE_USERS_FILE_PATH).circular();
-
+        try {
+            System.out.println("Loading CSV: " + AppConfig.DARTS_PORTAL_LANGUAGESHOP_FILE_PATH);
+            LanguageShopUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_LANGUAGESHOP_FILE_PATH).circular();
+        
+            System.out.println("Loading CSV: " + AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV);
+            CourtClerkUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV).circular();
+        
+            System.out.println("Loading CSV: " + AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH);
+            TranscriberUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH).circular();
+        
+            System.out.println("Loading CSV: " + AppConfig.DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH);
+            CourtManagerUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH).circular();
+        
+            System.out.println("Loading CSV: " + AppConfig.DARTS_PORTAL_JUDGE_USERS_FILE_PATH);
+            JudgeUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_JUDGE_USERS_FILE_PATH).circular();
+        } catch (Exception e) {
+            System.err.println("Error loading CSV: " + e.getMessage());
+            throw e;
+        }
+        
         
         //CourtHouseDetails
         CourtHouseAndCourtRooms = CoreDsl.csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
@@ -70,9 +79,6 @@ public class Feeders {
         TranscriptionPatchAcceptDetails = CoreDsl.csv(AppConfig.TRANSCRIPTION_PATCH_ACCEPT_FILE_PATH).circular();
     
         COUNTER = new AtomicInteger(0);
-        // RANDOM_USER_FEEDER = jdbcFeeder("SELECT * FROM darts.user_account "
-        // + "order by RANDOM()").random();
-
     }   
     public static FeederBuilder<String> createCourtHouseAndCourtRooms() {
         return CourtHouseAndCourtRooms;
@@ -97,13 +103,11 @@ public class Feeders {
     }
     public static FeederBuilder<String> createTransformedMediaPlaybackIdCSV() {
         return TransformedMediaPlaybackIdCSV;
-    }
-    
+    }    
 
     public static FeederBuilder<String> createTransformedMediaDeleteIdsCSV() {
         return TransformedMediaDeleteIdsCSV;
-    }
-    
+    }    
     
     public static FeederBuilder<String> createJudgesFeeder() {
         return JudgesCSV;
@@ -174,13 +178,13 @@ public class Feeders {
         );
     }
 
-        private static final String[] REQUEST_TYPES = {"DOWNLOAD", "PLAYBACK"};
+    private static final String[] REQUEST_TYPES = {"DOWNLOAD", "PLAYBACK"};
 
-        // Define the percentages for each request type (must sum up to 100)
-        private static final int DOWNLOAD_PERCENTAGE = 70; //% chance
-        private static final int PLAYBACK_PERCENTAGE = 30; //% chance
+    // Define the percentages for each request type (must sum up to 100)
+    private static final int DOWNLOAD_PERCENTAGE = 70; //% chance
+    private static final int PLAYBACK_PERCENTAGE = 30; //% chance
 
-        public static String getRandomRequestType() {
+    public static String getRandomRequestType() {
         int totalPercentage = DOWNLOAD_PERCENTAGE + PLAYBACK_PERCENTAGE;
         int randomNumber = ThreadLocalRandom.current().nextInt(totalPercentage) + 1; // Generate random number between 1 and the total percentage
 
@@ -191,47 +195,46 @@ public class Feeders {
         }
     }
 
-        // List of audio files
-        //public static final String[] AUDIO_FILES = {"sample.mp2", "00h10m.mp2", "00h15m.mp2","00h20m.mp2", "02h.mp2"};
-        private static final String[] AUDIO_FILES = {"1mb.mp2", "4mb.mp2", "16mb.mp2", "64mb.mp2", "256mb.mp2"};
-        //private static final String[] AUDIO_FILES = {"1mb.mp2"};
+    // List of audio files
+    //public static final String[] AUDIO_FILES = {"sample.mp2", "00h10m.mp2", "00h15m.mp2","00h20m.mp2", "02h.mp2"};
+    private static final String[] AUDIO_FILES = {"1mb.mp2", "4mb.mp2", "16mb.mp2", "64mb.mp2", "256mb.mp2"};
+    //private static final String[] AUDIO_FILES = {"1mb.mp2"};
 
-        // Corresponding percentages (must sum up to 100)
-        private static final int[] PERCENTAGES = {5, 10, 30, 40, 15};
-       // private static final int[] PERCENTAGES = {5};
+    // Corresponding percentages (must sum up to 100)
+    private static final int[] PERCENTAGES = {5, 10, 30, 40, 15};
+    // private static final int[] PERCENTAGES = {5};
 
-        // Method to select a random audio file based on percentages
-        public static String getRandomAudioFile() {
-            int totalPercentage = 0;
+    // Method to select a random audio file based on percentages
+    public static String getRandomAudioFile() {
+        int totalPercentage = 0;
 
-            // Calculate the total percentage
-            for (int percentage : PERCENTAGES) {
-                totalPercentage += percentage;
-            }
-
-            // Generate a random number between 1 and totalPercentage
-            int randomNumber = ThreadLocalRandom.current().nextInt(totalPercentage) + 1;
-
-            // Find the index of the audio file corresponding to the random number
-            int runningSum = 0;
-            for (int i = 0; i < PERCENTAGES.length; i++) {
-                runningSum += PERCENTAGES[i];
-                if (randomNumber <= runningSum) {
-                    return AUDIO_FILES[i];
-                }
-            }
-
-            // Fallback return (should not reach here)
-            return AUDIO_FILES[0];
+        // Calculate the total percentage
+        for (int percentage : PERCENTAGES) {
+            totalPercentage += percentage;
         }
 
-        // Main method for testing
-        public static void main(String[] args) {
-            // Test the getRandomAudioFile method
-            for (int i = 0; i < 100; i++) {
-                System.out.println(getRandomAudioFile());
+        // Generate a random number between 1 and totalPercentage
+        int randomNumber = ThreadLocalRandom.current().nextInt(totalPercentage) + 1;
+
+        // Find the index of the audio file corresponding to the random number
+        int runningSum = 0;
+        for (int i = 0; i < PERCENTAGES.length; i++) {
+            runningSum += PERCENTAGES[i];
+            if (randomNumber <= runningSum) {
+                return AUDIO_FILES[i];
             }
         }
+        // Fallback return (should not reach here)
+        return AUDIO_FILES[0];
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        // Test the getRandomAudioFile method
+        for (int i = 0; i < 100; i++) {
+            System.out.println(getRandomAudioFile());
+        }
+    }
 
     public static void executeUpdate(String sql) {
         Connection connection = null;
@@ -277,13 +280,9 @@ public class Feeders {
     
         // Create the feeder
         FeederBuilder<Object> feeder = JdbcDsl.jdbcFeeder(AppConfig.DB_URL, AppConfig.DB_USERNAME, AppConfig.DB_PASSWORD, sql);
-
     
         return feeder;
-    }
-    
-    
-    
+    } 
 
     public static void resetCounter() {
         COUNTER.set(0);
