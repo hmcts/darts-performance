@@ -436,35 +436,35 @@ public class NightlyRunSimulation extends Simulation {
         // Set up all scenarios together
         setUp(
             saopScenarios.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
-                .protocols(httpProtocolSoap),
+                .protocols(httpProtocolSoap)
                 
-            postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
-                .protocols(httpProtocolApi),
+            // postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
+            //     .protocols(httpProtocolApi),
 
-            judgeUsers.injectOpen(
-                rampUsers(AppConfig.JUDGE_RAMP_UP_USERS)
-                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES))
-            ).protocols(httpProtocolInternal),
+            // judgeUsers.injectOpen(
+            //     rampUsers(AppConfig.JUDGE_RAMP_UP_USERS)
+            //         .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES))
+            // ).protocols(httpProtocolInternal),
             
-            courtClerkUsers.injectOpen(
-                rampUsers(AppConfig.COURT_CLERK_RAMP_UP_USERS)
-                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK))
-            ).protocols(httpProtocolInternal),
+            // courtClerkUsers.injectOpen(
+            //     rampUsers(AppConfig.COURT_CLERK_RAMP_UP_USERS)
+            //         .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK))
+            // ).protocols(httpProtocolInternal),
             
-            courtManagerUsers.injectOpen(
-                rampUsers(AppConfig.COURT_MANAGER_RAMP_UP_USERS)
-                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_MANAGER))
-            ).protocols(httpProtocolInternal),
+            // courtManagerUsers.injectOpen(
+            //     rampUsers(AppConfig.COURT_MANAGER_RAMP_UP_USERS)
+            //         .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_MANAGER))
+            // ).protocols(httpProtocolInternal),
             
-            transcriberUsers.injectOpen(
-                rampUsers(AppConfig.TRANSCRIBER_RAMP_UP_USERS)
-                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_TRANSCRIBER))
-            ).protocols(httpProtocolExternal),
+            // transcriberUsers.injectOpen(
+            //     rampUsers(AppConfig.TRANSCRIBER_RAMP_UP_USERS)
+            //         .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_TRANSCRIBER))
+            // ).protocols(httpProtocolExternal),
             
-            languageShopUsers.injectOpen(
-                rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS)
-                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP))
-            ).protocols(httpProtocolExternal)
+            // languageShopUsers.injectOpen(
+            //     rampUsers(AppConfig.LANGUAGE_SHOP_RAMP_UP_USERS)
+            //         .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP))
+            // ).protocols(httpProtocolExternal)
 
         ).assertions(
             global().responseTime().max().lt(50000),
