@@ -1,4 +1,4 @@
-﻿# Define the SQL query
+﻿# Define the SQL query (with date formatting in SQL)
 $query = @"
 WITH UserDetails AS (
     SELECT 
@@ -38,19 +38,42 @@ UserCases AS (
         fud.courthouse_code,
         fud.Password,
         fud.Type,
-        cc.cas_id
+        cc.cas_id,
+        TO_CHAR(MIN(h.hearing_date), 'YYYY-MM-DD') AS date_from
     FROM 
         FilteredUserDetails fud
     LEFT JOIN 
         darts.court_case cc ON cc.cth_id = fud.cth_id
+    LEFT JOIN								 
+        darts.hearing h ON h.cas_id = cc.cas_id
     WHERE
         cc.cas_id IS NOT NULL
-		AND EXISTS (SELECT 1 FROM darts.hearing h WHERE h.cas_id = cc.cas_id)															 
+        AND h.cas_id IS NOT NULL
+        AND NOT EXISTS (SELECT 1 FROM darts.media_linked_case mlc WHERE mlc.cas_id = cc.cas_id)
+        AND EXISTS (
+            SELECT 1 
+            FROM darts.hearing_media_ae hm 
+            WHERE hm.hea_id = h.hea_id
+        ) 
+        AND NOT EXISTS (
+            SELECT 1 
+            FROM darts.hearing h_no_media 
+            WHERE h_no_media.hea_id = h.hea_id
+            AND NOT EXISTS (
+                SELECT 1 
+                FROM darts.hearing_media_ae hm 
+                WHERE hm.hea_id = h_no_media.hea_id
+            )
+        )
+    GROUP BY 
+        fud.usr_id, fud.user_email_address, fud.user_name, fud.cth_id, 
+        fud.courthouse_name, fud.courthouse_code, fud.Password, fud.Type, cc.cas_id
 ),
 RandomDefendant AS (
     SELECT 
         uc.usr_id,
         uc.cas_id,
+        uc.date_from, 
         d.defendant_name,
         ROW_NUMBER() OVER (PARTITION BY uc.usr_id ORDER BY RANDOM()) AS rn
     FROM 
@@ -67,42 +90,48 @@ SELECT
     fud.cth_id,
     fud.courthouse_name,
     fud.courthouse_code,
-    fud.Type,
-	rd1.cas_id AS cas_id1,					  
+    fud.Type, 
+    rd1.cas_id AS cas_id1,
+    rd1.date_from AS date_from1,
     COALESCE(
         CASE 
             WHEN POSITION(' ' IN rd1.defendant_name) > 0 THEN SUBSTRING(rd1.defendant_name FROM 1 FOR POSITION(' ' IN rd1.defendant_name) - 1)
             ELSE rd1.defendant_name 
         END, 'Unknown'
     ) AS first_name1,
-	rd2.cas_id AS cas_id2,					  
+    rd2.cas_id AS cas_id2,
+    rd2.date_from AS date_from2,
     COALESCE(
         CASE 
             WHEN POSITION(' ' IN rd2.defendant_name) > 0 THEN SUBSTRING(rd2.defendant_name FROM 1 FOR POSITION(' ' IN rd2.defendant_name) - 1)
             ELSE rd2.defendant_name 
         END, 'Unknown'
     ) AS first_name2,
-	rd3.cas_id AS cas_id3,			  
+    rd3.cas_id AS cas_id3,
+    rd3.date_from AS date_from3,
     COALESCE(
         CASE 
             WHEN POSITION(' ' IN rd3.defendant_name) > 0 THEN SUBSTRING(rd3.defendant_name FROM 1 FOR POSITION(' ' IN rd3.defendant_name) - 1)
             ELSE rd3.defendant_name 
         END, 'Unknown'
     ) AS first_name3,
-	rd4.cas_id AS cas_id4,					  
+    rd4.cas_id AS cas_id4,
+    rd4.date_from AS date_from4,
     COALESCE(
         CASE 
             WHEN POSITION(' ' IN rd4.defendant_name) > 0 THEN SUBSTRING(rd4.defendant_name FROM 1 FOR POSITION(' ' IN rd4.defendant_name) - 1)
             ELSE rd4.defendant_name 
         END, 'Unknown'
     ) AS first_name4,
-	rd5.cas_id AS cas_id5,					  
+    rd5.cas_id AS cas_id5,
+    rd5.date_from AS date_from5,
     COALESCE(
         CASE 
             WHEN POSITION(' ' IN rd5.defendant_name) > 0 THEN SUBSTRING(rd5.defendant_name FROM 1 FOR POSITION(' ' IN rd5.defendant_name) - 1)
             ELSE rd5.defendant_name 
         END, 'Unknown'
     ) AS first_name5
+
 FROM 
     FilteredUserDetails fud
 LEFT JOIN 
@@ -120,11 +149,11 @@ ORDER BY
 "@
 
 # Database connection parameters
-$postgresHost = "darts-api-test.postgres.database.azure.com"
-$port = "5432" # Default is 5432
-$database = "darts"
-$user = "pgadmin"
-$password = "oIYRDeLXDMLKahVUjP0D"
+$postgresHost = "test"
+$port = "test"
+$database = "test"
+$user = "test"
+$password = "test"
 
 # Output file path
 $outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\UsersTranscribers.csv"
@@ -132,7 +161,7 @@ $outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-perform
 # Ensure PGPASSWORD environment variable is set
 $env:PGPASSWORD = $password
 
-# Full path to psql executable (update this to the actual path if needed)
+# Full path to psql executable
 $psqlPath = "C:\Program Files\PostgreSQL\16\bin\psql.exe"
 
 # Check if the output file exists
@@ -142,7 +171,7 @@ if (Test-Path -Path $outputFile) {
 }
 
 # Export column headers to a new CSV file
-$headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,cas_id1,defendantFirstName,cas_id2,defendantSecondName,cas_id3,defendantThirdName,cas_id4,defendantFourthName,cas_id5,defendantFifthName"
+$headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,cas_id1,date_from1,defendantFirstName,cas_id2,date_from2,defendantSecondName,cas_id3,date_from3,defendantThirdName,cas_id4,date_from4,defendantFourthName,cas_id5,date_from5,defendantFifthName"
 $headers | Out-File -FilePath $outputFile -Encoding ASCII
 
 # Append the query results to the CSV file with comma delimiters
