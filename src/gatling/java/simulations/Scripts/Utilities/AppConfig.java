@@ -341,7 +341,7 @@ public class AppConfig {
         DB_PASSWORD = getProperty("DB_PASSWORD");
 
         //Fixed Data for CSV files or none fixed for db query within test.
-        isFixed = Boolean.parseBoolean(System.getProperty("isFixed", "true"));
+        isFixed = Boolean.parseBoolean(System.getProperty("isFixed", "false"));
 
         //Get dynamic Cases ids from the Advance search response rather than fixed from DB query
         dynamicCases = Boolean.parseBoolean(System.getProperty("dynamicCases", "false"));
