@@ -71,11 +71,24 @@ public class NightlyRunSimulation extends Simulation {
 
 
         HttpProtocolBuilder httpProtocolSoap = http
+                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+
                 .inferHtmlResources()
                 .acceptEncodingHeader("gzip,deflate")
                 .contentTypeHeader("text/xml;charset=UTF-8")
                 .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
                 .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl());
+
+                
+        HttpProtocolBuilder httpProtocolSoapAddDocument = http
+            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+            .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
+            .inferHtmlResources()
+            .acceptEncodingHeader("gzip,deflate")
+            .contentTypeHeader("text/xml;charset=UTF-8")
+            .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
+            
+
 
         HttpProtocolBuilder httpProtocolApi = http
                 .inferHtmlResources()
@@ -98,32 +111,35 @@ public class NightlyRunSimulation extends Simulation {
                 .acceptLanguageHeader("en-US,en;q=0.9")
                 .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36");
                 
-        setUpScenarios(httpProtocolSoap, httpProtocolApi, httpProtocolExternal, httpProtocolInternal);
+        setUpScenarios(httpProtocolSoap, httpProtocolSoapAddDocument, httpProtocolApi, httpProtocolExternal, httpProtocolInternal);
     }
 
-    private void setUpScenarios(HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolApi, HttpProtocolBuilder httpProtocolExternal, HttpProtocolBuilder httpProtocolInternal) {
+    private void setUpScenarios(HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolSoapAddDocument, HttpProtocolBuilder httpProtocolApi, HttpProtocolBuilder httpProtocolExternal, HttpProtocolBuilder httpProtocolInternal) {
         // Main SOAP scenario setup
-        ScenarioBuilder saopScenarios = scenario("Main Scenario")
+        ScenarioBuilder saopScenarios = scenario("Soap Proxy Scenario")
          //Register with different VIQ
          .group("Register With VIQ External Username")
          .on(
              exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
+            .repeat(1)
                 .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
-                .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))))
-            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
+            .repeat(1)
+                .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
+            .repeat(1)
                 .on(exec(AddCourtlogUserScenario.addCourtLogUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
+            );
             
+        ScenarioBuilder soapAddDocument = scenario("Soap Gateway Scenario")
+
         //Register with different CPP
         .group("Register With CPP External Username")
         .on(
             exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
+            .repeat(1)
                 .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
-            .repeat(AppConfig.NIGHTLY_RUN_REPEATS) 
+            .repeat(1) 
                 .on(exec(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()))
         )
 
@@ -132,9 +148,9 @@ public class NightlyRunSimulation extends Simulation {
         .on(
             exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
+            .repeat(1)
                     .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
-                .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
+                .repeat(1)
                     .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
         );
 
@@ -436,7 +452,9 @@ public class NightlyRunSimulation extends Simulation {
         // Set up all scenarios together
         setUp(
             saopScenarios.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
-                .protocols(httpProtocolSoap)
+                .protocols(httpProtocolSoap),
+            soapAddDocument.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
+                .protocols(httpProtocolSoapAddDocument)
                 
             // postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
             //     .protocols(httpProtocolApi),
