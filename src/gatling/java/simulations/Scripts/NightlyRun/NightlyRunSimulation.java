@@ -122,11 +122,11 @@ public class NightlyRunSimulation extends Simulation {
          .on(
              exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(1)
+            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
                 .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-            .repeat(1)
+            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
                 .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-            .repeat(1)
+            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
                 .on(exec(AddCourtlogUserScenario.addCourtLogUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
             );
             
@@ -137,9 +137,9 @@ public class NightlyRunSimulation extends Simulation {
         .on(
             exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(1)
+            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
                 .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
-            .repeat(1) 
+            .repeat(AppConfig.NIGHTLY_RUN_REPEATS) 
                 .on(exec(AddDocumentCPPDailyListTokenScenario.AddDocumentCPPDailyListToken()))
         )
 
@@ -148,16 +148,16 @@ public class NightlyRunSimulation extends Simulation {
         .on(
             exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
             .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(1)
+            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
                     .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
-                .repeat(1)
+                .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
                     .on(exec(AddDocumentXhibitDailyListTokenScenario.AddDocumentXhibitDailyListToken()))
         );
 
         // API scenario setups
         ScenarioBuilder postAudioScenario = scenario("Post Audio Request Scenario")
             .exec(GetApiTokenScenario.getApiToken())
-            .repeat(AppConfig.NIGHTLY_RUN_REPEATS)
+            .repeat(1)
                 .on(exec(PostAudioRequestScenario.PostaudioRequest())
                 .exec(GetAudioRequestScenario.GetAudioRequest())
                 .exec(DeleteAudioRequestScenario.DeleteAudioRequest())
@@ -451,13 +451,13 @@ public class NightlyRunSimulation extends Simulation {
 
         // Set up all scenarios together
         setUp(
-            saopScenarios.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
-                .protocols(httpProtocolSoap),
-            soapAddDocument.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
-                .protocols(httpProtocolSoapAddDocument)
+            // saopScenarios.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
+            //     .protocols(httpProtocolSoap),
+            // soapAddDocument.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
+            //     .protocols(httpProtocolSoapAddDocument),
                 
-            // postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
-            //     .protocols(httpProtocolApi),
+            postAudioScenario.injectOpen(atOnceUsers(AppConfig.NIGHTLY_RUN_USERS))
+                .protocols(httpProtocolApi)
 
             // judgeUsers.injectOpen(
             //     rampUsers(AppConfig.JUDGE_RAMP_UP_USERS)
