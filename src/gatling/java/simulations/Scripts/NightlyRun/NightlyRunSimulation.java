@@ -71,7 +71,7 @@ public class NightlyRunSimulation extends Simulation {
 
 
         HttpProtocolBuilder httpProtocolSoap = http
-                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+             //   .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
 
                 .inferHtmlResources()
                 .acceptEncodingHeader("gzip,deflate")
@@ -81,7 +81,7 @@ public class NightlyRunSimulation extends Simulation {
 
                 
         HttpProtocolBuilder httpProtocolSoapAddDocument = http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
             .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
             .inferHtmlResources()
             .acceptEncodingHeader("gzip,deflate")
