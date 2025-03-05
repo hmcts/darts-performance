@@ -75,7 +75,7 @@ def simulations = [
 
     //Main BaseLine Peak Tests
     [task: 'runDartsBaseLinePeakTests', class: 'simulations.Scripts.DartsBaseLinePeakTests'],
-    [task: 'runSoapBaseLinePeakTestSimulation', class: 'simulations.Scripts.SoapBaseLinePeakTestSimulation'],
+    [task: 'runSoapBaseLinePeakTestSimulation', class: 'simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests.SoapBaseLinePeakTestSimulation'],
     
     //Main BaseLine Peak Tests with Tasks
     [task: 'runPeakTestWithTasksSimulation', class: 'simulations.Scripts.PerformanceTests.PeakTestWithTasksTest.PeakTestWithTasksSimulation'],
@@ -85,7 +85,7 @@ def simulations = [
     [task: 'runPortalTestSimulation', class: 'simulations.Scripts.PerformanceTests.NewMainTests.PortalTestSimulation'],
 
     //NightlyRun
-    [task: 'runNightlyRunSimulation', class: 'simulations.Scripts.NightlyRun.PortalSmokeTestTwoSimulation'],
+    [task: 'runNightlyRunSimulation', class: 'simulations.Scripts.NightlyRun.NightlyRunSimulation'],
 
     //Create Data for scripts / automated tasks
     [task: 'runCloseCaseSimulation', class: 'simulations.Scripts.DartsApi.CloseCaseSimulation'],
