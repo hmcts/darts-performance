@@ -46,8 +46,13 @@ public final class AddCaseUserScenario {
                     })
                     .exec(session -> {
                         Object messageId = session.get("messageId");
+                        Object responseBody = session.get("responseBody");
+                        Object xmlPayload = session.get("xmlPayload");
+
                         if (messageId != null) {
                             System.out.println("messageId for AddCase request: " + messageId.toString());
+                            System.out.println("AddCase response Body: " + responseBody.toString());
+                            System.out.println("AddCase payload: " + xmlPayload.toString());
                         } else {
                             System.out.println("Created AddCase request.");
                         }
