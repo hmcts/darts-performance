@@ -24,7 +24,7 @@ dependencies {
 
 // Default gatlingRun configuration
 gatlingRun {
-    
+    //jvmArgs = ['-Xms2G', '-Xmx4G']
     simulationClassName = System.getenv("SimulationBlock")
     doFirst {
         println "Running simulation: " + simulationClassName
@@ -88,16 +88,18 @@ def simulations = [
     [task: 'runNightlyRunSimulation', class: 'simulations.Scripts.NightlyRun.NightlyRunSimulation'],
 
     //Create Data for scripts / automated tasks
-    [task: 'runCloseCaseSimulation', class: 'simulations.Scripts.DartsApi.CloseCaseSimulation'],
+    [task: 'runCloseCaseSimulation', class: 'simulations.Scripts.DartsApi.CreateData.CloseCaseSimulation'],
     [task: 'runCaseRetentionForChildObjectsSimulation', class: 'simulations.Scripts.DartsApi.CaseRetentionForChildObjectsSimulation'],
     [task: 'runDailyListsSimulation', class: 'simulations.Scripts.DartsSoap.DailyListsSimulation'],
-    [task: 'runCaseRetentionSimulation', class: 'simulations.Scripts.DartsApi.CaseRetentionSimulation'],
+    [task: 'runCaseRetentionSimulation', class: 'simulations.Scripts.DartsApi.CreateData.CaseRetentionSimulation'],
     [task: 'runCloseOldUnfinishedTranscriptionsSimulation', class: 'simulations.Scripts.DartsApi.RunCloseOldUnfinishedTranscriptionsSimulation'],
     [task: 'runGenerateCaseDocumentSimulation', class: 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentSimulation'],
     [task: 'runGenerateCaseDocumentForRetentionDateSimulation', class: 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentForRetentionDateSimulation'],
     [task: 'runRemoveDuplicateEventsSimulation', class: 'simulations.Scripts.DartsApi.RunRemoveDuplicateEventsSimulation'],
     [task: 'runCaseExpiryDeletionSimulation', class: 'simulations.Scripts.DartsApi.RunCaseExpiryDeletionSimulation'],
     [task: 'runInboundToUnstructuredDataStoreSimulation', class: 'simulations.Scripts.DartsApi.RunInboundToUnstructuredDataStoreSimulation'],
+    [task: 'runAddAudioToHearingSimulation', class: 'simulations.Scripts.DartsApi.CreateData.AddAudioToHearingSimulation'],
+    [task: 'runInterpreterUsedEventSimulation', class: 'simulations.Scripts.DartsApi.CreateData.InterpreterUsedEventSimulation'],
 
     //General Simulations
     [task: 'runAudioPostSimulation', class: 'simulations.Scripts.DartsApi.AudioPostSimulation'],
@@ -107,20 +109,20 @@ def simulations = [
     [task: 'runAddDocumentsSimulation', class: 'simulations.Scripts.DartsSoap.AddDocumentsSimulation'],
 
     //Automated Tasks Simulations
-    [task: 'runAutomatedTask11Simulation', class: 'simulations.Scripts.DartsApi.RunAutomatedTask11Simulation'],
-    [task: 'runCloseOldCasesTaskSimulation', class: 'simulations.Scripts.DartsApi.RunCloseOldCasesTaskSimulation'],
-    [task: 'runApplyRetentionTaskSimulation', class: 'simulations.Scripts.DartsApi.RunApplyRetentionTaskSimulation'],
-    [task: 'runUnstructuredAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunUnstructuredAudioDeleterTaskSimulation'],
-    [task: 'runDailyListTaskSimulation', class: 'simulations.Scripts.DartsApi.RunDailyListTaskSimulation'],
-    [task: 'runDailyListHouseKeepingTaskSimulation', class: 'simulations.Scripts.DartsApi.RunDailyListHouseKeepingTaskSimulation'],
-    [task: 'runInboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunInboundAudioDeleterTaskSimulation'],
-    [task: 'runExternalDataStoreDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunExternalDataStoreDeleterTaskSimulation'],
-    [task: 'runOutboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.RunOutboundAudioDeleterTaskSimulation'],
-    [task: 'runUnstructuredToArmDataStoreSimulation', class: 'simulations.Scripts.DartsApi.RunUnstructuredToArmDataStoreSimulation'],
-    [task: 'runDetsToArmTaskSimulation', class: 'simulations.Scripts.DartsApi.RunDetsToArmTaskSimulation'],
-    [task: 'runProcessDETSToArmResponseTaskSimulation', class: 'simulations.Scripts.DartsApi.RunProcessDETSToArmResponseTaskSimulation'],
-    [task: 'runProcessArmResponseFilesTaskSimulation', class: 'simulations.Scripts.DartsApi.RunProcessArmResponseFilesTaskSimulation'],
-    [task: 'runApplyRetentionCaseAssociatedObjectsTaskSimulation', class: 'simulations.Scripts.DartsApi.RunApplyRetentionCaseAssociatedObjectsTaskSimulation']
+    [task: 'runAutomatedTask11Simulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunAutomatedTask11Simulation'],
+    [task: 'runCloseOldCasesTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunCloseOldCasesTaskSimulation'],
+    [task: 'runApplyRetentionTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunApplyRetentionTaskSimulation'],
+    [task: 'runUnstructuredAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunUnstructuredAudioDeleterTaskSimulation'],
+    [task: 'runDailyListTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunDailyListTaskSimulation'],
+    [task: 'runDailyListHouseKeepingTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunDailyListHouseKeepingTaskSimulation'],
+    [task: 'runInboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunInboundAudioDeleterTaskSimulation'],
+    [task: 'runExternalDataStoreDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunExternalDataStoreDeleterTaskSimulation'],
+    [task: 'runOutboundAudioDeleterTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunOutboundAudioDeleterTaskSimulation'],
+    [task: 'runUnstructuredToArmDataStoreSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunUnstructuredToArmDataStoreSimulation'],
+    [task: 'runDetsToArmTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunDetsToArmTaskSimulation'],
+    [task: 'runProcessDETSToArmResponseTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunProcessDETSToArmResponseTaskSimulation'],
+    [task: 'runProcessArmResponseFilesTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunProcessArmResponseFilesTaskSimulation'],
+    [task: 'runApplyRetentionCaseAssociatedObjectsTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunApplyRetentionCaseAssociatedObjectsTaskSimulation']
 
 ]
 
