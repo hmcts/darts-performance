@@ -68,15 +68,14 @@ public class PortalTestSimulation extends Simulation {
     
         private HttpProtocolBuilder configureInternalHttp() {
             return http
-                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
-                .baseUrl("https://login.microsoftonline.com")
-                .acceptHeader("application/json, text/plain, */*")
-                .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+       //     .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+            .baseUrl("https://login.microsoftonline.com") 
+            .inferHtmlResources();             
         }
     
         private HttpProtocolBuilder configureExternalHttp() {
             return http
-                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+          //      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
                 .acceptHeader("application/json, text/plain, */*")
                 .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64)");

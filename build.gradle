@@ -60,7 +60,7 @@ def registerSimulationTask(taskName, simulationClassName) {
 def simulations = [
 
     //Main Smoke Tests
-    [task: 'runPortalSmokeTestOneSimulation', class: 'simulations.Scripts.DartsSmokeTests.PortalSmokeTestOneSimulation'],
+    [task: 'runPortalSmokeTestOneSimulation', class: 'simulations.Scripts.PerformanceTests.DartsSmokeTests.PortalSmokeTestOneSimulation'],
     [task: 'runPortalSmokeTestTwoSimulation', class: ' simulations.Scripts.PerformanceTests.DartsSmokeTests.PortalSmokeTestTwoSimulation'],
     [task: 'runSoapSmokeTestOneSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestOneSimulation'],
     [task: 'runSoapSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestTwoSimulation'],
@@ -83,6 +83,8 @@ def simulations = [
     //New Main Soap Tests
     [task: 'runSoapTestSimulation', class: 'simulations.Scripts.PerformanceTests.NewMainTests.SoapTestSimulation'],
     [task: 'runPortalTestSimulation', class: 'simulations.Scripts.PerformanceTests.NewMainTests.PortalTestSimulation'],
+    [task: 'runPortalTestSimulation2', class: 'simulations.Scripts.PerformanceTests.NewMainTests.PortalTestSimulation2'],
+
 
     //NightlyRun
     [task: 'runNightlyRunSimulation', class: 'simulations.Scripts.NightlyRun.NightlyRunSimulation'],
