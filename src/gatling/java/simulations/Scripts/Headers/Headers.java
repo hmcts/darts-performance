@@ -31,7 +31,9 @@ public class Headers {
     // SoapHeaders 
     public static final Map<CharSequence, String> SoapHeaders = Map.ofEntries(
         Map.entry("SOAPAction", "\"\"")
-    );    
+    ); 
+      
+
 
         public static Map<String, String> getHeaders(int headerType) {
             Map<String, String> headers = new HashMap<>();
@@ -50,7 +52,6 @@ public class Headers {
                     headers.put("Accept-Language", "en-US,en;q=0.9");
                     headers.put("Connection", "keep-alive");
                     break;
-
                 case 1:
                     headers.put("Accept", "application/json");
                     headers.put("Content-type", "application/json; charset=UTF-8");
@@ -75,7 +76,7 @@ public class Headers {
                     headers.put("Sec-Fetch-Site", "same-origin");
                     headers.put("Sec-Fetch-User", "?1");
                     headers.put("Upgrade-Insecure-Requests", "1");
-                    headers.put("sec-ch-ua", "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\"");
+                    headers.put("sec-ch-ua", "Chromium\";v=\\\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134");
                     headers.put("sec-ch-ua-mobile", "?0");
                     headers.put("sec-ch-ua-platform", "Windows");
                     break; 
@@ -347,7 +348,55 @@ public class Headers {
                     headers.put("accept-encoding", "gzip, deflate, br");
                     headers.put("user-agent", "application/x-www-form-urlencoded");
                     headers.put("Content-Type", "application/x-www-form-urlencoded");
+                case 27:
+                    headers.put("sec-ch-ua", "Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("Sec-Fetch-Dest", "document");
+                    headers.put("Upgrade-Insecure-Requests", "1");
+                    headers.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36");
+                    headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
+                    headers.put("Sec-Fetch-Mode", "navigate");
+                    headers.put("Sec-Fetch-User", "?1");                
+                    headers.put("Sec-Fetch-Dest", "document");
+                    headers.put("Sec-Fetch-Mode", "navigate");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    break;
+                case 28:
+                    headers.put("sec-ch-ua-platform", "Windows");
+                    headers.put("sec-ch-ua", "Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("client-request-id", "#{clientRequestId}");
+
+                    headers.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36");
+                    headers.put("Accept", "application/json");
+                    headers.put("hpgrequestid", "#{sessionId}");
+                    headers.put("Content-type", "application/json; charset=UTF-8");
+                    headers.put("Origin", "https://login.microsoftonline.com");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("Sec-Fetch-Mode", "cors");
+                    headers.put("Sec-Fetch-Dest", "empty");
+                    headers.put("canary", "#{canary}");
+                    break;
+                case 29:
+                    headers.put("Cache-Control", "max-age=0");
+                    headers.put("Origin", "https://login.microsoftonline.com");
+                    headers.put("Sec-Fetch-Dest", "document");
+                    headers.put("Sec-Fetch-Mode", "navigate");
+                    headers.put("Sec-Fetch-Site", "same-origin");
+                    headers.put("Sec-Fetch-User", "?1");
+                    headers.put("Upgrade-Insecure-Requests", "1");
+                    headers.put("sec-ch-ua", "Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134");
+                    headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("sec-ch-ua-platform", "Windows");
+                  //  headers.put("Content-Type", "application/x-www-form-urlencoded");
+                 //   headers.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36");
+
+                //    headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
+                    break; 
             }
             return headers;
         }
-}    
+}  
+

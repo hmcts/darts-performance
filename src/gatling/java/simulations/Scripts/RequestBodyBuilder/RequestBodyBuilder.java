@@ -87,7 +87,7 @@ public class RequestBodyBuilder {
         String userName = session.get("Email") != null ? "" + session.get("Email").toString() + "" : "null";
         
         return String.format("{\"username\":\"%s\"," 
-        + "\"isOtherIdpSupported\":true," 
+        + "\"isOtherIdpSupported\":false," 
         + "\"checkPhones\":false," 
         +"\"isRemoteNGCSupported\":true," 
         +"\"isCookieBannerShown\":false," 
