@@ -12,8 +12,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 
 public class InterpreterUsedEventSimulation extends Simulation {  
-    
-    
+        
   {
 
     

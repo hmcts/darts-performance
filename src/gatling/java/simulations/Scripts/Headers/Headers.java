@@ -320,6 +320,7 @@ public class Headers {
                     headers.put("origin", AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl());
                     headers.put("sec-ch-ua", "Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24");
                     headers.put("sec-ch-ua-mobile", "?0");
+                    headers.put("Content-Type", "application/json");
                     headers.put("sec-ch-ua-platform", "Windows");
                     headers.put("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36");
                     break;
@@ -399,4 +400,5 @@ public class Headers {
             return headers;
         }
 }  
+
 

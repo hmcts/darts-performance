@@ -55,16 +55,16 @@ public class PeakTestWithTasksSimulation extends Simulation {
                 .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)))
                 .protocols(httpProtocolExternal),
 
-                SoapUsersScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS,
-                AppConfig.getAddCasesRepeats(),
-                AppConfig.getGetCasesRepeats(), 
-                AppConfig.getAddLogEntryRepeats(), 
-                AppConfig.getCppEventsRepeats(), 
-                AppConfig.getCppDailyListRepeats(), 
-                AppConfig.getXhibitEventsRepeats(), 
-                AppConfig.getXhibitDailyListRepeats())
-                .injectOpen(atOnceUsers(AppConfig.getSoapUsers()))
-                .protocols(httpProtocolSoap),
+                // SoapProxyUsersScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS,
+                // AppConfig.getAddCasesRepeats(),
+                // AppConfig.getGetCasesRepeats(), 
+                // AppConfig.getAddLogEntryRepeats(), 
+                // AppConfig.getCppEventsRepeats(), 
+                // AppConfig.getCppDailyListRepeats(), 
+                // AppConfig.getXhibitEventsRepeats(), 
+                // AppConfig.getXhibitDailyListRepeats())
+                // .injectOpen(atOnceUsers(AppConfig.getSoapUsers()))
+                // .protocols(httpProtocolSoap),
             
             InboundtoUnstructuredDatastoreTaskScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS)
                 .injectOpen(atOnceUsers(1))

@@ -47,9 +47,9 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
             .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
 
         HttpProtocolBuilder httpProtocolApi = http
-                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
-                .inferHtmlResources()
-                .baseUrl(EnvironmentURL.B2B_Login.getUrl());
+            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+            .baseUrl(EnvironmentURL.B2B_Login.getUrl())
+            .inferHtmlResources();
 
         setUpScenarios(httpProtocolSoapProxy, httpProtocolSoapGateway, httpProtocolApi);
     }
@@ -116,11 +116,11 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
 
         // Set up all scenarios together
         setUp(
-        //   soapProxyScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoapProxy).andThen           
-        //   (soapGatewayAddDocument.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoapGateway)),
-           postAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi)
-        //   getAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
-        //   deleteAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi)
+           soapProxyScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoapProxy).andThen           
+          (soapGatewayAddDocument.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoapGateway)),
+           postAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
+           getAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
+           deleteAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi)
         );
     }
 
