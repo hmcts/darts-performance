@@ -1,4 +1,4 @@
-package simulations.Scripts.DartsApi;
+package simulations.Scripts.DartsApi.CreateData;
 
 import simulations.Scripts.Scenario.DartsApi.CloseCaseScenario;
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;

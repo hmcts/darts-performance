@@ -64,6 +64,9 @@ def simulations = [
     [task: 'runPortalSmokeTestTwoSimulation', class: ' simulations.Scripts.PerformanceTests.DartsSmokeTests.PortalSmokeTestTwoSimulation'],
     [task: 'runSoapSmokeTestOneSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestOneSimulation'],
     [task: 'runSoapSmokeTestTwoSimulation', class: 'simulations.Scripts.DartsSmokeTests.SoapSmokeTestTwoSimulation'],
+    
+    //Get Token for API
+    [task: 'runGETTokenSimulation', class: 'simulations.Scripts.DartsApi.GETTokenSimulation'],
 
 
     //Advance Search Check Test

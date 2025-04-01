@@ -1,4 +1,4 @@
-package simulations.Scripts.DartsApi;
+package simulations.Scripts.DartsApi.AutomatedTasks;
 
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
 import simulations.Scripts.Scenario.DartsApi.RunProcessArmResponseFilesTaskScenario;
