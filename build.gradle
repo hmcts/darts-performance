@@ -83,6 +83,10 @@ def simulations = [
     //Main BaseLine Peak Tests with Tasks
     [task: 'runPeakTestWithTasksSimulation', class: 'simulations.Scripts.PerformanceTests.PeakTestWithTasksTest.PeakTestWithTasksSimulation'],
 
+    //Portal Login Checks 
+    [task: 'runPortalLoginTestSimulation', class: 'simulations.Scripts.PerformanceTests.DartsPortalLoginTest.PortalLoginTestSimulation'],
+
+
     //New Main Soap Tests
     [task: 'runSoapTestSimulation', class: 'simulations.Scripts.PerformanceTests.NewMainTests.SoapTestSimulation'],
     [task: 'runPortalTestSimulation', class: 'simulations.Scripts.PerformanceTests.NewMainTests.PortalTestSimulation'],
