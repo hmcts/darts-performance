@@ -114,47 +114,48 @@ public class RequestBodyBuilder {
                     .map(value -> "\"" + value.toString() + "\"")
                     .orElse("null");
         String courtRoom = Optional.ofNullable(session.get("CourtRoom"))
-            .map(value -> "\"" + value.toString() + "\"")
-            .orElse("null");
+                    .map(value -> "\"" + value.toString() + "\"")
+                    .orElse("null");
         String defendantName = Optional.ofNullable(session.get("defendantFirstName"))
-                .map(value -> "\"" + value.toString() + "\"")
-                .orElse("null");
-        String fromDate = Optional.ofNullable(session.get("getfromDate"))
-                .map(value -> "\"" + value.toString() + "\"")
-                .orElse("null");
+                    .map(value -> "\"" + value.toString() + "\"")
+                    .orElse("null");
+    
+        // Extract fromDate from session
+        String fromDateStr = session.getString("getfromDate");
+    
+        // Ensure fromDate is not null and parse it
+        LocalDate fromDate = Optional.ofNullable(fromDateStr)
+                .map(LocalDate::parse) // Convert String to LocalDate
+                .orElse(LocalDate.now()); // Default to today if null
+    
+        // Add 14 days to fromDate
+        LocalDate formattedDateTo = fromDate.plusWeeks(2);
+    
+        // Format both dates as strings for JSON
+        String formattedFromDateStr = "\"" + fromDate.format(DateTimeFormatter.ISO_LOCAL_DATE) + "\"";
+        String formattedDateToStr = "\"" + formattedDateTo.format(DateTimeFormatter.ISO_LOCAL_DATE) + "\"";
+    
+    
+ //       System.out.println("Date at " + courtHouseName + ": " + formattedFromDateStr + " for user: " + email + " test " + defendantName);
+ //       System.out.println("From Date: " + formattedFromDateStr);
+ //       System.out.println("To Date: " + formattedDateToStr);
+    
         String eventTextContains = Optional.ofNullable(session.get("EventTextContains"))
                     .map(value -> "\"" + value.toString() + "\"")
                     .orElse("null");
     
-        // Generate random dates
-        LocalDate currentDate = LocalDate.now();
-        LocalDate startDate = LocalDate.of(2015, 1, 1);
-        LocalDate endDate = currentDate.isBefore(LocalDate.of(2024, 12, 31)) ? currentDate : LocalDate.of(2024, 12, 31);
-    
-        LocalDate randomDateFrom = RandomDateGenerator.getRandomDate(startDate, endDate.minusYears(2));
-        LocalDate minEndDate = randomDateFrom.plusYears(1);
-        LocalDate adjustedEndDate = endDate.isAfter(minEndDate) ? endDate : minEndDate;
-        
-        // Fix: Ensure randomDateTo is always after randomDateFrom
-        LocalDate randomDateTo = RandomDateGenerator.getRandomDate(minEndDate, adjustedEndDate);
-
-        // Format dates as strings with quotes
-        // String formattedDateFrom = "\"" + randomDateFrom.toString() + "\"";
-        // String formattedDateTo = "\"" + randomDateTo.toString() + "\"";
-        String formattedDateFrom = "\"2024-12-09\"";
-        String formattedDateTo = "\"2024-12-10\"";
-    
-        // Build the JSON payload with quoted values
+        // Build the JSON payload with correctly formatted date strings
         return String.format("{\"case_number\":%s," 
-                            +"\"courthouse\":%s," 
-                            +"\"courtroom\":%s," 
-                            +"\"judge_name\":null," 
-                            +"\"defendant_name\":%s," 
-                            +"\"event_text_contains\":%s," 
-                            +"\"date_from\":%s," 
-                            +"\"date_to\":%s}",
-                            caseNumber, courtHouseName.toUpperCase(), courtRoom, defendantName, eventTextContains, fromDate, formattedDateTo);
+                            + "\"courthouse\":%s," 
+                            + "\"courtroom\":%s," 
+                            + "\"judge_name\":null," 
+                            + "\"defendant_name\":%s," 
+                            + "\"event_text_contains\":%s," 
+                            + "\"date_from\":%s," 
+                            + "\"date_to\":%s}",
+                            caseNumber, courtHouseName.toUpperCase(), courtRoom, defendantName, eventTextContains, formattedFromDateStr, formattedDateToStr);
     }
+    
 
     public static String buildChangeRetentionsBody(Session session) {
         String caseId = session.get("getCaseId") != null ? "\"" + session.get("getCaseId").toString() + "\"" : "null";
