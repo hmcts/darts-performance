@@ -129,8 +129,9 @@ public class RequestBodyBuilder {
                 .orElse(LocalDate.now()); // Default to today if null
     
         // Add 14 days to fromDate
-        LocalDate formattedDateTo = fromDate.plusWeeks(2);
-    
+        LocalDate formattedDateTo = fromDate.plusWeeks(24);
+        // LocalDate formattedDateTo = fromDate.plusDays(1);
+
         // Format both dates as strings for JSON
         String formattedFromDateStr = "\"" + fromDate.format(DateTimeFormatter.ISO_LOCAL_DATE) + "\"";
         String formattedDateToStr = "\"" + formattedDateTo.format(DateTimeFormatter.ISO_LOCAL_DATE) + "\"";
@@ -149,11 +150,11 @@ public class RequestBodyBuilder {
                             + "\"courthouse\":%s," 
                             + "\"courtroom\":%s," 
                             + "\"judge_name\":null," 
-                            + "\"defendant_name\":%s," 
+                            + "\"defendant_name\":null," 
                             + "\"event_text_contains\":%s," 
-                            + "\"date_from\":%s," 
-                            + "\"date_to\":%s}",
-                            caseNumber, courtHouseName.toUpperCase(), courtRoom, defendantName, eventTextContains, formattedFromDateStr, formattedDateToStr);
+                            + "\"date_from\":\"2000-04-01\"," 
+                            + "\"date_to\":\"2025-04-07\"}",
+                            caseNumber, courtHouseName.toUpperCase(), courtRoom, courtHouseName);
     }
     
 

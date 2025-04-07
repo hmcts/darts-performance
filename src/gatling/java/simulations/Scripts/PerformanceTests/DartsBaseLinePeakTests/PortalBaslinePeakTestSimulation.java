@@ -38,7 +38,7 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
 
     public PortalBaslinePeakTestSimulation() {
             HttpProtocolBuilder httpProtocolExternal = http
-                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+            //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
                 .inferHtmlResources()
                 .acceptHeader("application/json, text/plain, */*")
@@ -48,7 +48,7 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
 
     
             HttpProtocolBuilder httpProtocolInternal = http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+           // .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 //.baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
                 .baseUrl("https://login.microsoftonline.com") 
                 .inferHtmlResources()

@@ -653,6 +653,9 @@ public class SOAPRequestBuilder {
         String defendantName = randomStringGenerator.generateRandomString(10);
         String defendantName2 = randomStringGenerator.generateRandomString(10);
         String judgeName = randomStringGenerator.generateRandomString(10);
+        String judgeName2 = randomStringGenerator.generateRandomString(10);
+        String prosecutor = randomStringGenerator.generateRandomString(10);
+        String prosecutor2 = randomStringGenerator.generateRandomString(10);
 
     // Construct SOAP request
     return String.format(
@@ -674,19 +677,19 @@ public class SOAPRequestBuilder {
         + "                   &lt;defendant&gt;%s&lt;/defendant&gt;\n"
         + "                &lt;/defendants&gt;\n"
         + "                &lt;judges&gt;\n"
-        + "                   &lt;judge&gt;Mr Judge&lt;/judge&gt;\n"
-        + "                   &lt;judge&gt;Mrs %s&lt;/judge&gt;\n"
+        + "                   &lt;judge&gt;%s&lt;/judge&gt;\n"
+        + "                   &lt;judge&gt;%s&lt;/judge&gt;\n"
         + "                &lt;/judges&gt;\n"
         + "                &lt;prosecutors&gt;\n"
-        + "                   &lt;prosecutor&gt;Mr Prosecutor&lt;/prosecutor&gt;\n"
-        + "                   &lt;prosecutor&gt;Mrs Prosecutor&lt;/prosecutor&gt;\n"
+        + "                   &lt;prosecutor&gt;%s&lt;/prosecutor&gt;\n"
+        + "                   &lt;prosecutor&gt;%s&lt;/prosecutor&gt;\n"
         + "                &lt;/prosecutors&gt;\n"
         + "            &lt;/case&gt;\n"
         + "       </document>\n"
         + "    </ns2:addCase>\n"
         + "  </s:Body>\n"
         + "</s:Envelope>",
-        userName, password, id, courtHouseName, courtRoom, defendantName, defendantName2, judgeName);
+        userName, password, id, courtHouseName, courtRoom, defendantName, defendantName2, judgeName, judgeName2, prosecutor, prosecutor2);
     }
 
     public static String addCaseTokenRequest(Session session) {
@@ -704,6 +707,9 @@ public class SOAPRequestBuilder {
         String defendantName = randomStringGenerator.generateRandomString(10);
         String defendantName2 = randomStringGenerator.generateRandomString(10);
         String judgeName = randomStringGenerator.generateRandomString(10);
+        String judgeName2 = randomStringGenerator.generateRandomString(10);
+        String prosecutor = randomStringGenerator.generateRandomString(10);
+        String prosecutor2 = randomStringGenerator.generateRandomString(10);
 
     // Construct SOAP request
     return String.format(
@@ -715,11 +721,11 @@ public class SOAPRequestBuilder {
         + "    </s:Header>\n"
         + "  <s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n"
         + "    <ns2:addCase xmlns:ns2=\"http://com.synapps.mojdarts.service.com\">\n"
-        + "      <document>&lt;case type=\\&quot;1\\&quot; id=\\&quot;U20231129-1733\\&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;defendants&gt;&lt;defendant&gt;%s&lt;/defendant&gt;&lt;defendant&gt;%s&lt;/defendant&gt;&lt;/defendants&gt;&lt;judges&gt;&lt;judge&gt;%s&lt;/judge&gt;&lt;judge&gt;Mrs Judge&lt;/judge&gt;&lt;/judges&gt;&lt;prosecutors&gt;&lt;prosecutor&gt;MrProsecutor&lt;/prosecutor&gt;&lt;prosecutor&gt;Mrs Prosecutor&lt;/prosecutor&gt;&lt;/prosecutors&gt;&lt;/case&gt;</document>\n"
+        + "      <document>&lt;case type=\\&quot;1\\&quot; id=\\&quot;U20231129-1733\\&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;defendants&gt;&lt;defendant&gt;%s&lt;/defendant&gt;&lt;defendant&gt;%s&lt;/defendant&gt;&lt;/defendants&gt;&lt;judges&gt;&lt;judge&gt;%s&lt;/judge&gt;&lt;judge&gt;%s Judge&lt;/judge&gt;&lt;/judges&gt;&lt;prosecutors&gt;&lt;prosecutor&gt;%s Prosecutor&lt;/prosecutor&gt;&lt;prosecutor&gt;%s Prosecutor&lt;/prosecutor&gt;&lt;/prosecutors&gt;&lt;/case&gt;</document>\n"
         + "    </ns2:addCase>\n"
         + "  </s:Body>\n"
         + "</s:Envelope>",
-        registrationToken, courtHouseName, courtRoom, defendantName, defendantName2, judgeName);
+        registrationToken, courtHouseName, courtRoom, defendantName, defendantName2, judgeName, judgeName2, prosecutor, prosecutor2);
     }
 
     public static String addAudioUserRequest(Session session, String userName, String password) {
