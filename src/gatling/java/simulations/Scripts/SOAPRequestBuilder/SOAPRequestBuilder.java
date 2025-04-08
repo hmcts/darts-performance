@@ -648,7 +648,7 @@ public class SOAPRequestBuilder {
 
         // Generate dynamic values
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
-        String id = randomStringGenerator.generateRandomString(10);
+        String id = randomStringGenerator.generateRandomString(5);
         String defendantName = randomStringGenerator.generateRandomString(10);
         String defendantName2 = randomStringGenerator.generateRandomString(10);
         String judgeName = randomStringGenerator.generateRandomString(10);
