@@ -98,6 +98,7 @@ def simulations = [
 
     //Create Data for scripts / automated tasks
     [task: 'runCloseCaseSimulation', class: 'simulations.Scripts.DartsApi.CreateData.CloseCaseSimulation'],
+    [task: 'runGetEventUpdateInterpereterUsed', class: 'simulations.Scripts.DartsApi.CreateData.GetEventUpdateInterpereterUsed'],    
     [task: 'runCaseRetentionForChildObjectsSimulation', class: 'simulations.Scripts.DartsApi.CaseRetentionForChildObjectsSimulation'],
     [task: 'runDailyListsSimulation', class: 'simulations.Scripts.DartsSoap.DailyListsSimulation'],
     [task: 'runCaseRetentionSimulation', class: 'simulations.Scripts.DartsApi.CreateData.CaseRetentionSimulation'],
@@ -116,6 +117,8 @@ def simulations = [
     [task: 'runAudioRequestGetSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestGetSimulation'],
     [task: 'runAudioRequestPostSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestPostSimulation'],
     [task: 'runAddDocumentsSimulation', class: 'simulations.Scripts.DartsSoap.AddDocumentsSimulation'],
+    [task: 'runPostEventsSimulation', class: 'simulations.Scripts.DartsApi.PostEventsSimulation'],
+
 
     //Automated Tasks Simulations
     [task: 'runAutomatedTask11Simulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunAutomatedTask11Simulation'],

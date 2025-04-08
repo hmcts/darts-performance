@@ -1,7 +1,8 @@
-package simulations.Scripts.DartsApi;
+package simulations.Scripts.DartsApi.CreateData;
 
 import simulations.Scripts.Scenario.DartsApi.GetApiTokenScenario;
-import simulations.Scripts.Scenario.DartsApi.GetAudioRequestScenario;
+import simulations.Scripts.Scenario.DartsApi.GetEventScenario;
+import simulations.Scripts.Scenario.DartsApi.InterpreterUsedEventScenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
@@ -11,20 +12,19 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 
-public class AudioRequestGetPlayBackSimulation extends Simulation {   
+public class GetEventUpdateInterpereterUsed extends Simulation {  
+        
   {
-    final FeederBuilder<String> feeder = csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).random();
-
+   
     final HttpProtocolBuilder httpProtocol = http
-    //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
-        .inferHtmlResources();
+        .inferHtmlResources();        
 
-    final ScenarioBuilder scn1 = scenario("Audio Requests:GET Playback")
+    final ScenarioBuilder scn1 = scenario("POST Events Scenario")
         .exec(GetApiTokenScenario.getApiToken())
-        .repeat(10)    
-        .on(exec(GetAudioRequestScenario.GetAudioRequestPlayBack().feed(feeder))    
-        );
+        .repeat(1)    
+        .on(exec(GetEventScenario.GetEvent()));
 
     setUp(
         scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
