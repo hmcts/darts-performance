@@ -482,7 +482,7 @@ public class SOAPRequestBuilder {
 
         // Generate dynamic values
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
-        String caseName = randomStringGenerator.generateRandomString(10);
+        String caseName = randomStringGenerator.generateRandomString(5);
         String eventText = "This is a Perf test for Add Document CPP Event"; //randomStringGenerator.generateRandomString(10);
         LocalDateTime now = LocalDateTime.now();
 
@@ -514,7 +514,7 @@ public class SOAPRequestBuilder {
                 + now.format(DateTimeFormatter.ofPattern("ss")) + "&quot;&gt;&lt;be:CourtHouse&gt;"
                 + "%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;"
                 + "%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;"
-                + "Perf_AddDocumentCPPEvent_%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;"
+                + "Perf_DocCPPEvent_%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;"
                 + "%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n"
                 + "            </ns5:addDocument>\n"
                 + "   </s:Body>\n"
@@ -540,7 +540,7 @@ public class SOAPRequestBuilder {
 
         // Generate dynamic values
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
-        String caseName = randomStringGenerator.generateRandomString(10);
+        String caseName = randomStringGenerator.generateRandomString(5);
         String eventText = randomStringGenerator.generateRandomString(10);
         LocalDateTime now = LocalDateTime.now();
         String currentTimeMillis = String.valueOf(System.currentTimeMillis());
@@ -567,7 +567,7 @@ public class SOAPRequestBuilder {
                 + now.format(DateTimeFormatter.ofPattern("dd")) + "&quot; H=&quot;" 
                 + now.format(DateTimeFormatter.ofPattern("HH")) + "&quot; MIN=&quot;" 
                 + now.format(DateTimeFormatter.ofPattern("mm")) + "&quot; S=&quot;" 
-                + now.format(DateTimeFormatter.ofPattern("ss")) + "&quot;&gt;&lt;be:CourtHouse&gt;%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;Perf_AddDocumentXhibitEvent_%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n"
+                + now.format(DateTimeFormatter.ofPattern("ss")) + "&quot;&gt;&lt;be:CourtHouse&gt;%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;Perf_DocXhibitEvent_%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n"
                 + "      </ns5:addDocument>\n"
                 + "   </s:Body>\n"
                 + "</s:Envelope>",
@@ -849,7 +849,7 @@ public class SOAPRequestBuilder {
             ? session.get("courtroom_name").toString() 
             : "";
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
-        String caseName = randomStringGenerator.generateRandomString(10);
+        String caseName = randomStringGenerator.generateRandomString(5);
         String randomLogText = randomStringGenerator.generateRandomString(10);
 
     // Construct SOAP request
@@ -863,7 +863,7 @@ public class SOAPRequestBuilder {
         + "   </soapenv:Header>\n"
         + "   <soapenv:Body>\n"
         + "      <addLogEntry xmlns=\"http://com.synapps.mojdarts.service.com\">\n"
-        + "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;Perf_AddLogEntry_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;%s&lt;/text&gt;&lt;/log_entry&gt;\n"
+        + "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;Perf_LogEntry_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;%s&lt;/text&gt;&lt;/log_entry&gt;\n"
         + "         </document>\n"
         + "      </addLogEntry>\n"
         + "   </soapenv:Body>\n"
