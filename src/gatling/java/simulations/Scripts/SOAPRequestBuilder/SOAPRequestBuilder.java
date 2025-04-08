@@ -188,7 +188,7 @@ public class SOAPRequestBuilder {
         + "                           xsi:schemaLocation=\"http://www.courtservice.gov.uk/schemas/courtservice DailyList-v5-2.xsd\" "
         + "                           xmlns:apd=\"http://www.govtalk.gov.uk/people/AddressAndPersonalDetails\">\n"
         + "             <cs:DocumentID>\n"
-        + "                  <cs:DocumentName>Perf_Doc_" + documentName + "</cs:DocumentName>\n"
+        + "                  <cs:DocumentName>Perf_Doc_CPP_" + documentName + "</cs:DocumentName>\n"
         + "                  <cs:UniqueID>Perf_" + uniqueIdName + "_" + uniqueId + "</cs:UniqueID>\n"
         + "                  <cs:DocumentType>CPPDL</cs:DocumentType>\n"
         + "                  <cs:TimeStamp>" + getCurrentTimestamp + "</cs:TimeStamp>\n"
@@ -373,7 +373,7 @@ public class SOAPRequestBuilder {
             + "                          xsi:schemaLocation=\"http://www.courtservice.gov.uk/schemas/courtservice DailyList-v5-2.xsd\" "
             + "                          xmlns:apd=\"http://www.govtalk.gov.uk/people/AddressAndPersonalDetails\">\n"
             + "               <cs:DocumentID>\n"
-            + "                  <cs:DocumentName>Perf_Doc_" + documentName + "</cs:DocumentName>\n"
+            + "                  <cs:DocumentName>Perf_Doc_Xhibit_" + documentName + "</cs:DocumentName>\n"
             + "                  <cs:UniqueID>Perf_" + uniqueIdName + "_" + uniqueId + "</cs:UniqueID>\n"
             + "                  <cs:DocumentType>DL</cs:DocumentType>\n"
             + "                  <cs:TimeStamp>" + getCurrentTimestamp + "</cs:TimeStamp>\n"
@@ -405,7 +405,6 @@ public class SOAPRequestBuilder {
             + "                  <cs:CourtHouseTelephone>02085300000</cs:CourtHouseTelephone>\n"
             + "                  <cs:CourtHouseFax>02085300072</cs:CourtHouseFax>\n"
             + "               </cs:CrownCourt>\n"
-            + "               <!-- Additional nested elements here -->\n"
             + "            </cs:DailyList>\n"
             + "         ]]></document>\n"
             + "      </ns5:addDocument>\n"
@@ -484,7 +483,7 @@ public class SOAPRequestBuilder {
         // Generate dynamic values
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(10);
-        String eventText = "This is a Perf test for tasks"; //randomStringGenerator.generateRandomString(10);
+        String eventText = "This is a Perf test for Add Document CPP Event"; //randomStringGenerator.generateRandomString(10);
         LocalDateTime now = LocalDateTime.now();
 
         String currentTimeMillis = String.valueOf(System.currentTimeMillis());
@@ -515,7 +514,7 @@ public class SOAPRequestBuilder {
                 + now.format(DateTimeFormatter.ofPattern("ss")) + "&quot;&gt;&lt;be:CourtHouse&gt;"
                 + "%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;"
                 + "%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;"
-                + "%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;"
+                + "Perf_AddDocumentCPPEvent_%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;"
                 + "%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n"
                 + "            </ns5:addDocument>\n"
                 + "   </s:Body>\n"
@@ -568,7 +567,7 @@ public class SOAPRequestBuilder {
                 + now.format(DateTimeFormatter.ofPattern("dd")) + "&quot; H=&quot;" 
                 + now.format(DateTimeFormatter.ofPattern("HH")) + "&quot; MIN=&quot;" 
                 + now.format(DateTimeFormatter.ofPattern("mm")) + "&quot; S=&quot;" 
-                + now.format(DateTimeFormatter.ofPattern("ss")) + "&quot;&gt;&lt;be:CourtHouse&gt;%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n"
+                + now.format(DateTimeFormatter.ofPattern("ss")) + "&quot;&gt;&lt;be:CourtHouse&gt;%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;Perf_AddDocumentXhibitEvent_%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n"
                 + "      </ns5:addDocument>\n"
                 + "   </s:Body>\n"
                 + "</s:Envelope>",
@@ -669,7 +668,7 @@ public class SOAPRequestBuilder {
         + "  <s:Body xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n"
         + "    <ns2:addCase xmlns:ns2=\"http://com.synapps.mojdarts.service.com\">\n"
         + "      <document>\n"
-        + "            &lt;case type=&quot;1&quot; id=&quot;Perf_%s&quot;&gt;\n"
+        + "            &lt;case type=&quot;1&quot; id=&quot;Perf_AddCase_%s&quot;&gt;\n"
         + "                &lt;courthouse&gt;%s&lt;/courthouse&gt;\n"
         + "                &lt;courtroom&gt;%s&lt;/courtroom&gt;\n"
         + "                &lt;defendants&gt;\n"
@@ -864,7 +863,7 @@ public class SOAPRequestBuilder {
         + "   </soapenv:Header>\n"
         + "   <soapenv:Body>\n"
         + "      <addLogEntry xmlns=\"http://com.synapps.mojdarts.service.com\">\n"
-        + "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;PerfCase_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;%s&lt;/text&gt;&lt;/log_entry&gt;\n"
+        + "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;Perf_AddLogEntry_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;%s&lt;/text&gt;&lt;/log_entry&gt;\n"
         + "         </document>\n"
         + "      </addLogEntry>\n"
         + "   </soapenv:Body>\n"
