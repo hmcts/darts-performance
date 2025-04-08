@@ -14,7 +14,7 @@ public final class PostEventsScenario {
     public static ChainBuilder PostEventsRequest() {
         return group("Events Request POST")
         .on(exec(session -> {
-            String xmlPayload = RequestBodyBuilder.buildEventsPostBody(session);
+            String xmlPayload = RequestBodyBuilder.buildUpdateCaseWithEventsPostBody(session);
             return session.set("xmlPayload", xmlPayload);
         })           
             .exec(http("DARTS - Api - EventsRequest:POST")

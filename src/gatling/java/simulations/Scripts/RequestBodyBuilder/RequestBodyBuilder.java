@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
+
+import static io.gatling.javaapi.core.CoreDsl.jsonPath;
+
 import java.time.LocalDate;
 
 //import uk.gov.hmcts.juror.support.generation.generators.value.LocalTimeGeneratorImpl;
@@ -144,18 +147,37 @@ public class RequestBodyBuilder {
         String eventTextContains = Optional.ofNullable(session.get("EventTextContains"))
                     .map(value -> "\"" + value.toString() + "\"")
                     .orElse("null");
-    
-        // Build the JSON payload with correctly formatted date strings
-        return String.format("{\"case_number\":%s," 
+
+        // Get the user type from the session
+        String userType = session.get("Type").toString();
+        // System.out.println("userType for Audio Request: " + userType);
+        
+        // Determine request type based on user type
+        if (userType.equalsIgnoreCase("LanguageShop")) {
+            // If the user type is LanguageShop, build the JSON payload
+            return String.format("{\"case_number\":%s," 
+                            + "\"courthouse\":%s," 
+                            + "\"courtroom\":%s," 
+                            + "\"judge_name\":null," 
+                            + "\"defendant_name\":null," 
+                            + "\"event_text_contains\":null," 
+                            + "\"date_from\":\"1970-04-01\"," 
+                            + "\"date_to\":\"2025-04-07\"}",
+                    caseNumber, courtHouseName.toUpperCase(), courtRoom);
+        } else {
+            // If not LanguageShop, build the JSON payload
+            return String.format("{\"case_number\":%s," 
                             + "\"courthouse\":%s," 
                             + "\"courtroom\":%s," 
                             + "\"judge_name\":null," 
                             + "\"defendant_name\":null," 
                             + "\"event_text_contains\":%s," 
-                            + "\"date_from\":\"2000-04-01\"," 
+                            + "\"date_from\":\"1970-04-01\"," 
                             + "\"date_to\":\"2025-04-07\"}",
-                            caseNumber, courtHouseName.toUpperCase(), courtRoom, courtHouseName);
+                    caseNumber, courtHouseName.toUpperCase(), courtRoom, courtHouseName);
+        }
     }
+
     
 
     public static String buildChangeRetentionsBody(Session session) {
@@ -223,28 +245,29 @@ public class RequestBodyBuilder {
     }
     public static String buildPostAudioApiRequest(Session session, String randomAudioFile) {
         // Retrieve values from session or define defaults if needed
-        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
-        String courtRoom = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";       
-         
+        String courtHouseName = session.get("courthouse_display_name") != null ? session.get("courthouse_display_name").toString() : "";
+        String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
+        String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
+        String hearingDate = session.get("hearing_date") != null ? session.get("hearing_date").toString() : "";
 
-        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
-        String caseName1 = randomStringGenerator.generateRandomString(10);
-        String caseName2 = randomStringGenerator.generateRandomString(10);
-        String caseName3 = randomStringGenerator.generateRandomString(10);
+        // RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+        // String caseName1 = randomStringGenerator.generateRandomString(10);
+        // String caseName2 = randomStringGenerator.generateRandomString(10);
+        // String caseName3 = randomStringGenerator.generateRandomString(10);
 
         return String.format(
-        "{\"started_at\": \"1972-11-25T17:28:59.936Z\", " 
-        + " \"ended_at\": \"1972-11-25T18:28:59.936Z\", " 
+        "{\"started_at\": \"%sT17:28:59.936Z\", " 
+        + " \"ended_at\": \"%sT18:28:59.936Z\", " 
         +" \"channel\": 1,  " 
         +" \"total_channels\": 4,  " 
         +" \"format\": \"mp2\",  " 
         +" \"filename\": \"%s\",  " 
         +" \"courthouse\": \"%s\",  " 
         +" \"courtroom\": \"%s\",  " 
-        +" \"file_size\": 937.96,  " 
+        +" \"file_size\": 64003968,  " 
         +" \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\",  " 
-        +" \"cases\": [\"PerfCase_%s\", \"PerfCase_%s\",\"PerfCase_%s\"] }",
-        randomAudioFile, courtHouseName, courtRoom, caseName1, caseName2, caseName3);
+        +" \"cases\": [\"%s\"] }",
+        hearingDate, hearingDate, randomAudioFile, courtHouseName, courtRoomName, courtCaseNumber);
     }
 
     public static String buildPostAudioLinkingForCaseApiRequest(Session session, String randomAudioFile, String caseName) {
@@ -627,6 +650,24 @@ public class RequestBodyBuilder {
     courtHouseName, courtRoomName, courtCaseNumber);
     }
 
+    public static String buildUpdateCaseWithEventsPostBody(Session session) {
+        
+        // Generate a random court house name
+        String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
+        String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
+        String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
+        
+        return String.format("{\"event_id\": \"1\", " 
+        +"\"type\": \"30300\", " 
+        +"\"sub_type\": \"\", " 
+        +"\"courthouse\": \"Gloucester\", " 
+        +"\"courtroom\": \"1\", " 
+        +"\"case_numbers\": [ " 
+        +"\"T202400144\" ], "            
+        +"\"date_time\": \"2024-04-11T12:02:00.000Z\"}",
+    courtHouseName, courtRoomName, courtCaseNumber);
+    }
+
     public static String buildDuplicateEventsPostBody(Session session, String eventId) {
 
         // Generate a random court house name
@@ -653,15 +694,34 @@ public class RequestBodyBuilder {
         String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
         String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
 
-        return String.format("{\"event_id\": \"74\", " 
-        +"\"type\": \"2917\", " 
-        +"\"sub_type\": \"3979\", " 
-        +"\"courthouse\": \"%s\", " 
-        +"\"courtroom\": \"%s\", " 
-        +"\"case_numbers\": [ " 
-        +"\"%s\" ], "        
-        +"\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
-    courtHouseName, courtRoomName, courtCaseNumber);
+            return String.format("{\"event_id\": \"74\", " 
+            +"\"type\": \"2917\", " 
+            +"\"sub_type\": \"3979\", " 
+            +"\"courthouse\": \"%s\", " 
+            +"\"courtroom\": \"%s\", " 
+            +"\"case_numbers\": [ " 
+            +"\"%s\" ], "        
+            +"\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
+        courtHouseName, courtRoomName, courtCaseNumber);
+    }
+    public static String buildInterpreterUsedForUpdatedEventBody(Session session) {
+        
+        // Generate a random court house name
+        String courtHouseName = session.get("courthouse_display_name") != null ? session.get("courthouse_display_name").toString() : "";
+        String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
+        String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
+        String hearing_date = session.get("hearing_date") != null ? session.get("hearing_date").toString() : "";
+
+            return String.format("{\"event_id\": \"74\", " 
+            +"\"type\": \"2917\", " 
+            +"\"sub_type\": \"3979\", " 
+            +"\"courthouse\": \"%s\", " 
+            +"\"courtroom\": \"%s\", " 
+            +"\"case_numbers\": [ " 
+            +"\"%s\" ], "        
+            +"\"date_time\": \"%sT12:02:00.000Z\"}",
+        courtHouseName, courtRoomName, courtCaseNumber, hearing_date);
+
     }
     public static String buildEventsRetentionsPostBody(Session session) {
         
