@@ -483,7 +483,7 @@ public class SOAPRequestBuilder {
         // Generate dynamic values
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(5);
-        String eventText = "This is a Perf test for Add Document CPP Event"; //randomStringGenerator.generateRandomString(10);
+        String eventText = "Add Document CPP Event -" + randomStringGenerator.generateRandomString(10);
         LocalDateTime now = LocalDateTime.now();
 
         String currentTimeMillis = String.valueOf(System.currentTimeMillis());
@@ -541,7 +541,7 @@ public class SOAPRequestBuilder {
         // Generate dynamic values
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(5);
-        String eventText = randomStringGenerator.generateRandomString(10);
+        String eventText =  "Add Document Xhibit -" + randomStringGenerator.generateRandomString(10);
         LocalDateTime now = LocalDateTime.now();
         String currentTimeMillis = String.valueOf(System.currentTimeMillis());
         String trimmedID = currentTimeMillis.substring(4);
