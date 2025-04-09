@@ -557,7 +557,7 @@ public class SOAPRequestBuilder {
                 + "   </s:Header>\n"
                 + "   <s:Body>\n"
                 + "      <ns5:addDocument xmlns:ns5=\"http://com.synapps.mojdarts.service.com\">\n"
-                + "         <messageId>2005014</messageId>\n"
+                + "         <messageId>" + trimmedID + "</messageId>\n"
                 + "         <type>2198</type>\n"
                 + "         <subType>3940</subType>\n"
                 + "         <document>&lt;be:DartsEvent xmlns:be=&quot;urn:integration-cjsonline-gov-uk:pilot:entities&quot; ID=&quot;" 
