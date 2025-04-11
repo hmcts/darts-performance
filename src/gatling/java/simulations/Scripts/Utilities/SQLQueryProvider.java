@@ -31,6 +31,7 @@ public class SQLQueryProvider {
             + "       darts.security_group_user_account_ae sguae ON sgcae.grp_id = sguae.grp_id "
             + "   WHERE "
             + "       h.hearing_date BETWEEN '2023-02-26' AND '2024-05-27' "
+            + "AND m.is_current= true "
             + "   AND "
             + "       sguae.usr_id NOT IN (-100, -99, -69, -68, -67, -48, -44, -4, -3, -2, -1, 0, 1, -101, 221, 241, 1141) "
             + "   ORDER BY "
