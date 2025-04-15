@@ -24,7 +24,7 @@ dependencies {
 
 // Default gatlingRun configuration
 gatlingRun {
-    //jvmArgs = ['-Xms2G', '-Xmx4G']
+    jvmArgs = ['-Xms4G', '-Xmx8G']
     simulationClassName = System.getenv("SimulationBlock")
     doFirst {
         println "Running simulation: " + simulationClassName
@@ -77,7 +77,7 @@ def simulations = [
     [task: 'runSoapBaseLineNormalTestSimulation', class: 'simulations.Scripts.SoapBaseLineNormalTestSimulation'],
 
     //Main BaseLine Peak Tests
-    [task: 'runDartsBaseLinePeakTests', class: 'simulations.Scripts.DartsBaseLinePeakTests'],
+    [task: 'runDartsBaseLinePeakTests', class: 'simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests.PortalBaslinePeakTestSimulation'],
     [task: 'runSoapBaseLinePeakTestSimulation', class: 'simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests.SoapBaseLinePeakTestSimulation'],
     
     //Main BaseLine Peak Tests with Tasks

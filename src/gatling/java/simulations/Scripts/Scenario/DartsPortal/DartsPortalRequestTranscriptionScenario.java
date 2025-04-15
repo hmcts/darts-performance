@@ -102,7 +102,7 @@ public final class DartsPortalRequestTranscriptionScenario {
 
           .exec(
             http("Darts-Portal - Api - Hearings - Audios")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/hearings/#{getHearings.id}/audios")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/hearings/#{getHearingId}/audios")
               .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
@@ -111,7 +111,7 @@ public final class DartsPortalRequestTranscriptionScenario {
 
           .exec(
             http("Darts-Portal - Api - Hearings - Events")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearingId}/events")
               .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
@@ -191,7 +191,7 @@ public final class DartsPortalRequestTranscriptionScenario {
 
           .exec(
             http("Darts-Portal - Api - Audio - Hearings - Audios")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/hearings/#{getHearings.id}/audios")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio/hearings/#{getHearingId}/audios")
               .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
@@ -209,7 +209,7 @@ public final class DartsPortalRequestTranscriptionScenario {
 
           .exec(
             http("Darts-Portal - Api - Hearings - Events")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearingId}/events")
               .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
@@ -218,7 +218,7 @@ public final class DartsPortalRequestTranscriptionScenario {
 
           .exec(
             http("Darts-Portal - Api - Hearings - Transcripts")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/transcripts")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearingId}/transcripts")
               .headers(Headers.getHeaders(12))
               .check(status().in(200, 403))
               .check(status().saveAs("status"))

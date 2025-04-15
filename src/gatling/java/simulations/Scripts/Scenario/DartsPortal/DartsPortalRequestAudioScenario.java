@@ -101,9 +101,28 @@ public final class DartsPortalRequestAudioScenario {
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Hearings"))
 
           .exitHereIfFailed()
+
+          .exec(session -> {
+            if (AppConfig.dynamicCases) {
+                // Attempt to get extracted hearing ID from earlier request
+                String dynamicHearingId = session.getString("extractedHearingId");
+        
+                if (dynamicHearingId != null && !dynamicHearingId.isEmpty()) {
+                    session = session.set("getHearingId", dynamicHearingId);
+                    System.out.println("Dynamic case detected. Extracted hearing ID: " + dynamicHearingId);
+                } else {
+                    System.out.println("Dynamic case detected, but no hearing ID was extracted.");
+                }
+            } else {
+                String staticHearingId = session.getString("getHearingId");
+                System.out.println("Static case. Using hearing ID from CSV: " + staticHearingId);
+            }
+            return session;
+        })
+
           .exec(
             http("Darts-Portal - Api - Hearings - Events")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/events")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearingId}/events")
               .headers(Headers.getHeaders(12))
               //.check(jsonPath("$[*]").ofMap().findRandom().saveAs("getEvent"))  
               .check(status().in(200, 502, 504).saveAs("status"))
@@ -116,7 +135,7 @@ public final class DartsPortalRequestAudioScenario {
               }
               return session;
           })
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Events"))
+         .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Events"))
 
           .exec(
             http("Darts-Portal - Api - Hearings - Audios")
@@ -144,7 +163,7 @@ public final class DartsPortalRequestAudioScenario {
           // )
           .exec(
             http("Darts-Portal - Api - Hearings - Transcripts")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/transcripts")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearingId}/transcripts")
               .headers(Headers.getHeaders(12))
               .check(status().in(200, 403).saveAs("responseStatus"))
               .check(status().saveAs("status"))
