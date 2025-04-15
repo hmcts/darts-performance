@@ -55,6 +55,8 @@ UserCases AS (
     WHERE
         cc.cas_id IS NOT NULL	   
         AND vh.hea_id IS NOT NULL
+        AND cc.case_closed = true
+        AND cc.is_retention_updated = true
 ),
  CaseCounts AS (
     SELECT 
