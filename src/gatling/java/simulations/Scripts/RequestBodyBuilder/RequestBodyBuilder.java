@@ -116,6 +116,9 @@ public class RequestBodyBuilder {
         String courtHouseName = Optional.ofNullable(session.get("courthouse_name"))
                     .map(value -> "\"" + value.toString() + "\"")
                     .orElse("null");
+        String courtHouseId = Optional.ofNullable(session.get("cth_id"))
+                    .map(value -> "\"" + value.toString() + "\"")
+                    .orElse("null");
         String courtRoom = Optional.ofNullable(session.get("CourtRoom"))
                     .map(value -> "\"" + value.toString() + "\"")
                     .orElse("null");
@@ -156,25 +159,25 @@ public class RequestBodyBuilder {
         if (userType.equalsIgnoreCase("LanguageShop")) {
             // If the user type is LanguageShop, build the JSON payload
             return String.format("{\"case_number\":%s," 
-                            + "\"courthouse\":%s," 
+                            + "\"courthouse_ids\":[%s]," 
                             + "\"courtroom\":%s," 
                             + "\"judge_name\":null," 
                             + "\"defendant_name\":null," 
                             + "\"event_text_contains\":null," 
                             + "\"date_from\":\"1970-04-01\"," 
                             + "\"date_to\":\"2025-04-07\"}",
-                    caseNumber, courtHouseName.toUpperCase(), courtRoom);
+                    caseNumber, courtHouseId, courtRoom);
         } else {
             // If not LanguageShop, build the JSON payload
             return String.format("{\"case_number\":%s," 
-                            + "\"courthouse\":%s," 
+                            + "\"courthouse_ids\":[%s]," 
                             + "\"courtroom\":%s," 
                             + "\"judge_name\":null," 
                             + "\"defendant_name\":null," 
                             + "\"event_text_contains\":%s," 
                             + "\"date_from\":\"1970-04-01\"," 
                             + "\"date_to\":\"2025-04-07\"}",
-                    caseNumber, courtHouseName.toUpperCase(), courtRoom, courtHouseName);
+                    caseNumber, courtHouseId, courtRoom, courtHouseName);
         }
     }
 

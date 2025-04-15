@@ -22,22 +22,12 @@ WITH UserDetails AS (
     WHERE  
         ua.user_name LIKE '%PerfCourtManager%'
         AND sgch.cth_id IS NOT NULL
-        AND sgch.cth_id NOT IN (
-            111, 153, 112, 154, 95, 55, 65, 114, 155, 152, 
-            133, 129, 70, 136, 113, 1002, 1003, 76, 1000
-        )
+	    AND sgch.cth_id NOT IN (111, 153, 112, 154, 95, 55, 65, 114, 155, 152, 133, 129, 70, 136, 113, 1002, 1003, 76, 1000)
 ),
 FilteredUserDetails AS (
     SELECT *
     FROM UserDetails
     WHERE courthouse_rn = 1
-),
-ValidHearings AS (
-    SELECT DISTINCT h.hea_id, h.cas_id, h.hearing_date
-    FROM darts.hearing h
-    JOIN darts.hearing_media_ae hm ON hm.hea_id = h.hea_id
-    JOIN darts.media m ON hm.med_id = m.med_id
-    WHERE m.is_current = true
 ),
 UserCases AS (
     SELECT 
@@ -50,19 +40,23 @@ UserCases AS (
         fud.Password,
         fud.Type,
         cc.cas_id,
-		vh.hea_id,
-        vh.hearing_date
+        h.hearing_date  -- Add the hearing_date from darts.hearing
     FROM 
         FilteredUserDetails fud
     LEFT JOIN 
         darts.court_case cc ON cc.cth_id = fud.cth_id
     LEFT JOIN
-        ValidHearings vh ON vh.cas_id = cc.cas_id
+        darts.hearing h ON h.cas_id = cc.cas_id -- Join with darts.hearing to get hearing_date
     WHERE
         cc.cas_id IS NOT NULL
-        AND vh.hea_id IS NOT NULL
+        AND h.hea_id IS NOT NULL
+        AND NOT EXISTS (
+            SELECT 1 FROM darts.hearing_media_ae hm
+            WHERE hm.hea_id = h.hea_id
+        )
 ),
 CaseCounts AS (
+    -- Count total cases per hearing date per courthouse
     SELECT 
         hearing_date,
         courthouse_name,
@@ -83,28 +77,38 @@ UserCasesWithCounts AS (
         fud.Password,
         fud.Type,
         uc.cas_id,
-		uc.hea_id,		  
         uc.hearing_date,
         ccc.case_count_per_date
     FROM 
         FilteredUserDetails fud
     LEFT JOIN 
-        UserCases uc ON fud.usr_id = uc.usr_id
+        UserCases uc ON fud.usr_id = uc.usr_id  -- Join UserCases to get hearing_date
     LEFT JOIN 
-        CaseCounts ccc ON ccc.hearing_date = uc.hearing_date 
-                      AND ccc.courthouse_name = fud.courthouse_name
+        CaseCounts ccc ON ccc.hearing_date = uc.hearing_date AND ccc.courthouse_name = fud.courthouse_name
     WHERE
         uc.cas_id IS NOT NULL
-        AND ccc.case_count_per_date <= 499
+        AND ccc.case_count_per_date <= 499 -- Ensure that no more than 499 cases exist on the same date
 ),
-RandomCases AS (
+RandomDefendant AS (
     SELECT 
         uc.usr_id,
         uc.cas_id,
-        uc.hea_id,
-        ROW_NUMBER() OVER (PARTITION BY uc.usr_id ORDER BY RANDOM()) AS rn
+        d.defendant_name,
+        ROW_NUMBER() OVER (PARTITION BY uc.usr_id ORDER BY RANDOM()) AS rn,
+        (SELECT MIN(h2.hearing_date) 
+         FROM darts.hearing h2 
+         WHERE h2.cas_id = uc.cas_id
+         AND NOT EXISTS (
+             SELECT 1 FROM darts.hearing_media_ae hm
+             WHERE hm.hea_id = h2.hea_id
+         )
+        ) AS from_date
     FROM 
         UserCasesWithCounts uc
+    LEFT JOIN 
+        darts.defendant d ON d.cas_id = uc.cas_id
+    WHERE 
+        d.cas_id IS NOT NULL
 )
 SELECT 
     fud.user_email_address,
@@ -114,28 +118,58 @@ SELECT
     fud.courthouse_name,
     fud.courthouse_code,
     fud.Type,
-    rc1.cas_id AS cas_id1,
-    rc1.hea_id AS hea_id1,
-    rc2.cas_id AS cas_id2,
-    rc2.hea_id AS hea_id2,
-    rc3.cas_id AS cas_id3,
-    rc3.hea_id AS hea_id3,			 
-    rc4.cas_id AS cas_id4,
-    rc4.hea_id AS hea_id4,
-    rc5.cas_id AS cas_id5,
-    rc5.hea_id AS hea_id5
+    rd1.cas_id AS cas_id1,
+    rd1.from_date AS from_date1,
+    COALESCE(
+        CASE 
+            WHEN POSITION(' ' IN rd1.defendant_name) > 0 THEN LEFT(rd1.defendant_name, POSITION(' ' IN rd1.defendant_name) - 1)
+            ELSE rd1.defendant_name 
+        END, 'Unknown'
+    ) AS first_name1,
+    rd2.cas_id AS cas_id2,
+    rd2.from_date AS from_date2,  
+    COALESCE(
+        CASE 
+            WHEN POSITION(' ' IN rd2.defendant_name) > 0 THEN LEFT(rd2.defendant_name, POSITION(' ' IN rd2.defendant_name) - 1)
+            ELSE rd2.defendant_name 
+        END, 'Unknown'
+    ) AS first_name2,
+    rd3.cas_id AS cas_id3,
+    rd3.from_date AS from_date3,  
+    COALESCE(
+        CASE 
+            WHEN POSITION(' ' IN rd3.defendant_name) > 0 THEN LEFT(rd3.defendant_name, POSITION(' ' IN rd3.defendant_name) - 1)
+            ELSE rd3.defendant_name 
+        END, 'Unknown'
+    ) AS first_name3,
+    rd4.cas_id AS cas_id4,
+    rd4.from_date AS from_date4,  
+    COALESCE(
+        CASE 
+            WHEN POSITION(' ' IN rd4.defendant_name) > 0 THEN LEFT(rd4.defendant_name, POSITION(' ' IN rd4.defendant_name) - 1)
+            ELSE rd4.defendant_name 
+        END, 'Unknown'
+    ) AS first_name4,
+    rd5.cas_id AS cas_id5,
+    rd5.from_date AS from_date5,  
+    COALESCE(
+        CASE 
+            WHEN POSITION(' ' IN rd5.defendant_name) > 0 THEN LEFT(rd5.defendant_name, POSITION(' ' IN rd5.defendant_name) - 1)
+            ELSE rd5.defendant_name 
+        END, 'Unknown'
+    ) AS first_name5
 FROM 
     FilteredUserDetails fud
 LEFT JOIN 
-    RandomCases rc1 ON fud.usr_id = rc1.usr_id AND rc1.rn = 1
+    RandomDefendant rd1 ON fud.usr_id = rd1.usr_id AND rd1.rn = 1
 LEFT JOIN 
-    RandomCases rc2 ON fud.usr_id = rc2.usr_id AND rc2.rn = 2
+    RandomDefendant rd2 ON fud.usr_id = rd2.usr_id AND rd2.rn = 2
 LEFT JOIN 
-    RandomCases rc3 ON fud.usr_id = rc3.usr_id AND rc3.rn = 3
+    RandomDefendant rd3 ON fud.usr_id = rd3.usr_id AND rd3.rn = 3
 LEFT JOIN 
-    RandomCases rc4 ON fud.usr_id = rc4.usr_id AND rc4.rn = 4
+    RandomDefendant rd4 ON fud.usr_id = rd4.usr_id AND rd4.rn = 4
 LEFT JOIN 
-    RandomCases rc5 ON fud.usr_id = rc5.usr_id AND rc5.rn = 5
+    RandomDefendant rd5 ON fud.usr_id = rd5.usr_id AND rd5.rn = 5
 ORDER BY 
     fud.user_email_address;
 "@
@@ -163,7 +197,7 @@ if (Test-Path -Path $outputFile) {
 }
 
 # Export column headers to a new CSV file
-$headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,cas_id1,hea_id1,cas_id2,hea_id2,cas_id3,hea_id3,cas_id4,hea_id4,cas_id5,hea_id5"
+$headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,cas_id1,date_from1,defendantFirstName,cas_id2,date_from2,defendantSecondName,cas_id3,date_from3,defendantThirdName,cas_id4,date_from4,defendantFourthName,cas_id5,date_from5,defendantFifthName"
 $headers | Out-File -FilePath $outputFile -Encoding ASCII
 
 # Append the query results to the CSV file with comma delimiters
