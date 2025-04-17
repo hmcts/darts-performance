@@ -212,9 +212,8 @@ public class RequestBodyBuilder {
         return String.format("{\"hearing_id\": %s, " 
         +"\"requestor\": %s, " 
         +"\"start_time\": \"%s\", " 
-        +"\"end_time\": \"%s\", " 
-        +"\"request_type\": \"%s\"}",
-        getHearingId, requestor, audioStartDate, audioEndDate, requestType.toString().toUpperCase());
+        +"\"end_time\": \"%s\"}",
+        getHearingId, requestor, audioStartDate, audioEndDate);
     }
 
 
@@ -735,6 +734,24 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
+    //     return String.format("{ \"type\": \"30300\", " 
+    //     +"\"event_id\": \"218\", " 
+    //     +"\"courthouse\": \"York\", " 
+    //     +"\"courtroom\": \"1\"," 
+    //     +"\"case_numbers\": [ " 
+    //     +"\"SHUl9Ky1AD\" ], "    
+    //     +"\"event_text\": \"Perf_Event_%s\","      
+    //     +"\"date_time\": \"2024-02-26T12:02:00.000Z\"," 
+    //     +"\"retention_policy\": {" 
+    //     +    "\"case_retention_fixed_policy\": \"1\"," 
+    //     +    "\"case_total_sentence\": \"1\"}," 
+    //     +"\"start_time\": \"2024-02-26T17:27:33.212Z\"," 
+    //     +"\"end_time\": \"2024-02-26T17:27:33.212Z\"," 
+    //     +"\"is_mid_tier\": true}",
+    // courtHouseName, courtRoomName, courtCaseNumber, randomComment);
+    // }
+
+   
         return String.format("{ \"type\": \"30300\", " 
         +"\"event_id\": \"218\", " 
         +"\"courthouse\": \"%s\", " 
