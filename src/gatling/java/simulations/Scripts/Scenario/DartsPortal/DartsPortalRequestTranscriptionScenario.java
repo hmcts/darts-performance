@@ -159,11 +159,12 @@ public final class DartsPortalRequestTranscriptionScenario {
                   String errorType = session.getString("errorType");
                   String errorTitle = session.getString("errorTitle");
                   int errorStatus = session.getInt("errorStatus");
+                  String email = session.getString("Email");
+                  Object getCaseId = session.get("getCaseId");
+                  Object getHearingId = session.get("getHearingId");
 
                   System.out.println("Received 409 Conflict. Details:");
-                  System.out.println("Type: " + errorType);
-                  System.out.println("Title: " + errorTitle);
-                  System.out.println("Status: " + errorStatus);
+                  System.out.println("Status: " + errorStatus + "Type: " + errorType + "Title: " + errorTitle + " for user: " + email +"Case Id: " + getCaseId + "Hearing Id: " + getHearingId);
 
                   // Mark the session as succeeded to prevent this from counting as a failure. 409 response is "A transcription already exists with these properties"
                   return session.markAsSucceeded();
