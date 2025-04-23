@@ -102,7 +102,7 @@ def simulations = [
     [task: 'runCaseRetentionForChildObjectsSimulation', class: 'simulations.Scripts.DartsApi.CaseRetentionForChildObjectsSimulation'],
     [task: 'runDailyListsSimulation', class: 'simulations.Scripts.DartsSoap.DailyListsSimulation'],
     [task: 'runCaseRetentionSimulation', class: 'simulations.Scripts.DartsApi.CreateData.CaseRetentionSimulation'],
-    [task: 'runCloseOldUnfinishedTranscriptionsSimulation', class: 'simulations.Scripts.DartsApi.RunCloseOldUnfinishedTranscriptionsSimulation'],
+    [task: 'runCloseOldUnfinishedTranscriptionsSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunCloseOldUnfinishedTranscriptionsSimulation'],
     [task: 'runGenerateCaseDocumentSimulation', class: 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentSimulation'],
     [task: 'runGenerateCaseDocumentForRetentionDateSimulation', class: 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentForRetentionDateSimulation'],
     [task: 'runRemoveDuplicateEventsSimulation', class: 'simulations.Scripts.DartsApi.RunRemoveDuplicateEventsSimulation'],
@@ -110,6 +110,7 @@ def simulations = [
     [task: 'runInboundToUnstructuredDataStoreSimulation', class: 'simulations.Scripts.DartsApi.RunInboundToUnstructuredDataStoreSimulation'],
     [task: 'runAddAudioToHearingSimulation', class: 'simulations.Scripts.DartsApi.CreateData.AddAudioToHearingSimulation'],
     [task: 'runInterpreterUsedEventSimulation', class: 'simulations.Scripts.DartsApi.CreateData.InterpreterUsedEventSimulation'],
+
 
     //General Simulations
     [task: 'runAudioPostSimulation', class: 'simulations.Scripts.DartsApi.AudioPostSimulation'],
