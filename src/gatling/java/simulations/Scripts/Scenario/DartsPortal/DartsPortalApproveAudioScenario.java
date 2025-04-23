@@ -37,14 +37,21 @@ public final class DartsPortalApproveAudioScenario {
               .headers(Headers.getHeaders(12))
               .check(jsonPath("$.approver_transcriptions[*].transcription_id").findRandom().saveAs("getTranscriptionId"))
               .check(status().is(200))
-              ).exec(session -> {
+            )).exec(session -> {
+
+                String email = session.getString("Email");
+                Object getCaseId = session.get("getCaseId");
+                Object getHearingId = session.get("getHearingId");
                 Object getTranscriptionId = session.get("getTranscriptionId");
                 if (getTranscriptionId != null) {
-                //    System.out.println("getTranscriptionId: " + getTranscriptionId.toString());
+                    System.out.println("getTranscriptionId: " + getTranscriptionId.toString() + " For user: " + email +"Case Id: " + getCaseId + "Hearing Id: " + getHearingId);
                 } else {
                     System.out.println("No Transcription Id value saved using saveAs.");
+                    System.out.println("No Transcription Id value saved using saveAs. For user: " + email +"Case Id: " + getCaseId + "Hearing Id: " + getHearingId);
+
                 }
                 return session;
+
             })
             .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions"))
 
