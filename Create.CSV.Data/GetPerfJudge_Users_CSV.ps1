@@ -158,12 +158,16 @@ if (Test-Path -Path $outputFile) {
     Remove-Item -Path $outputFile -Force
 }
 
-# Export column headers to a new CSV file
+# Update headers to match query results
 $headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,cas_id1,hea_id1,cas_id2,hea_id2,cas_id3,hea_id3,cas_id4,hea_id4,cas_id5,hea_id5"
 $headers | Out-File -FilePath $outputFile -Encoding ASCII
 
-# Append the query results to the CSV file with comma delimiters
-# Use psql's -t flag to suppress header and footer information
-& $psqlPath -h $postgresHost -p $port -U $user -d $database -A -F "," -t -c $query | Out-File -FilePath $outputFile -Append -Encoding ASCII
+# Measure how long the query execution takes
+$executionTime = Measure-Command {
+    & $psqlPath -h $postgresHost -p $port -U $user -d $database -A -F "," -t -c $query | Out-File -FilePath $outputFile -Append -Encoding ASCII
+}
 
-Write-Host "Query executed and results exported to $outputFile"
+# Log end time and duration
+$endTime = Get-Date
+Write-Host "[$endTime] Query executed and results exported to $outputFile"
+Write-Host "Query execution time: $($executionTime.TotalSeconds) seconds"

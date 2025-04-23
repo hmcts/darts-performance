@@ -20,7 +20,7 @@ WITH UserDetails AS (
     WHERE  
         ua.user_name LIKE '%PerfLanguageShop%'
         AND urch.cth_id NOT IN (1005, 111, 153, 112, 154, 95, 55, 65, 114, 155, 152, 
-		133, 129, 70, 136, 113, 1002, 1003, 76, 1000)
+		133, 129, 70, 136, 113, 1002, 1003, 76, 1000, 1006)
 		 
 ),
 FilteredUserDetails AS (
@@ -29,11 +29,27 @@ FilteredUserDetails AS (
     WHERE courthouse_rn = 1
 ),
 ValidHearings AS (
-    SELECT DISTINCT h.hea_id, h.cas_id, h.hearing_date
-    FROM darts.hearing h
-    JOIN darts.hearing_media_ae hm ON hm.hea_id = h.hea_id
-    JOIN darts.media m ON hm.med_id = m.med_id
-    WHERE m.is_current = true
+    SELECT hea_id, cas_id, hearing_date
+    FROM (
+        SELECT 
+            h.hea_id,
+            h.cas_id,
+            h.hearing_date,
+            cc.cth_id,
+            ROW_NUMBER() OVER (PARTITION BY cc.cth_id ORDER BY h.hearing_date DESC) AS rn
+        FROM darts.hearing h
+        JOIN darts.court_case cc ON cc.cas_id = h.cas_id
+        JOIN darts.hearing_media_ae hm ON hm.hea_id = h.hea_id
+        JOIN darts.media m ON hm.med_id = m.med_id
+        WHERE m.is_current = true
+		AND cc.interpreter_used = true -- Ensures interpreter was used
+          AND NOT EXISTS (
+              SELECT 1
+              FROM darts.media_request_aud mra
+              WHERE mra.hea_id = h.hea_id
+          )
+    ) sub
+    WHERE rn <= 100
 ),
 UserCases AS (
     SELECT 
@@ -56,7 +72,6 @@ UserCases AS (
         ValidHearings vh ON vh.cas_id = cc.cas_id
     WHERE
         cc.cas_id IS NOT NULL
-        AND cc.interpreter_used = true -- Ensures interpreter was used       							  
          AND vh.hea_id IS NOT NULL
 ),
 CaseCounts AS (
