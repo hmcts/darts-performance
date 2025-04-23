@@ -69,21 +69,26 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/types")
               .headers(Headers.getHeaders(12))
               .check(status().is(200))
-              .check(status().saveAs("status"))
-              .check(jsonPath("$[*].transcription_type_id").findRandom().saveAs("transcriptionTypeId"))
-            )
-            .exec(session -> {
+              /* keep every element whose transcription_type_id is NOT 5 or 9,
+                 then pick one of the remaining ids at random */
+              .check(
+                  jsonPath("$[?(@.transcription_type_id!=5 && @.transcription_type_id!=9)].transcription_type_id")
+                    .findRandom()
+                    .saveAs("transcriptionTypeId")
+              )
+          )
+          .exec(session -> {
               Object typeId = session.get("transcriptionTypeId");
-              String email = session.getString("Email");
-            
+              String email  = session.getString("Email");
+          
               if (typeId != null) {
-                System.out.println("Random Transcription Type ID: " + typeId + " for user: " + email);
+                  System.out.println("Random Transcription Type ID: " + typeId + " for user: " + email);
               } else {
-                System.out.println("No transcription type ID found in response.");
+                  System.out.println("No transcription type ID found in response.");
               }
-            
+          
               return session;
-            })
+          })
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Types"))
 
           .exec(
