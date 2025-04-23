@@ -1,6 +1,7 @@
 ﻿# Define the SQL query
 $query = @"
-WITH UserDetails AS (
+
+	 WITH UserDetails AS (
     SELECT 
         ua.usr_id,
         ua.user_email_address,
@@ -33,12 +34,33 @@ FilteredUserDetails AS (
     WHERE courthouse_rn = 1
 ),
 ValidHearings AS (
-    SELECT DISTINCT h.hea_id, h.cas_id, h.hearing_date
-    FROM darts.hearing h
-    JOIN darts.hearing_media_ae hm ON hm.hea_id = h.hea_id
-    JOIN darts.media m ON hm.med_id = m.med_id
-    WHERE m.is_current = true
+    SELECT hea_id, cas_id, hearing_date
+    FROM (
+        SELECT 
+            h.hea_id,
+            h.cas_id,
+            h.hearing_date,
+            cc.cth_id,
+            ROW_NUMBER() OVER (PARTITION BY cc.cth_id ORDER BY h.hearing_date DESC) AS rn
+        FROM darts.hearing h
+        JOIN darts.court_case cc ON cc.cas_id = h.cas_id
+        JOIN darts.hearing_media_ae hm ON hm.hea_id = h.hea_id
+        JOIN darts.media m ON hm.med_id = m.med_id
+        WHERE m.is_current = true
+          AND NOT EXISTS (
+              SELECT 1
+              FROM darts.media_request_aud mra
+              WHERE mra.hea_id = h.hea_id
+          )
+		AND NOT EXISTS (
+              SELECT 1
+              FROM darts.transcription_linked_case tlc
+              WHERE tlc.cas_id = cc.cas_id
+			)
+    ) sub
+    WHERE rn <= 100
 ),
+
 UserCases AS (
     SELECT 
         fud.usr_id,
@@ -106,6 +128,7 @@ RandomCases AS (
     FROM 
         UserCasesWithCounts uc
 )
+
 SELECT 
     fud.user_email_address,
     fud.Password,
@@ -156,18 +179,26 @@ $env:PGPASSWORD = $password
 # Full path to psql executable (update this to the actual path if needed)
 $psqlPath = "C:\Program Files\PostgreSQL\16\bin\psql.exe"
 
+# Log start time
+$startTime = Get-Date
+Write-Host "[$startTime] Starting query execution..."
+
 # Check if the output file exists
 if (Test-Path -Path $outputFile) {
     # Remove existing file to ensure overwrite
     Remove-Item -Path $outputFile -Force
 }
 
-# Export column headers to a new CSV file
+# Update headers to match query results
 $headers = "Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,cas_id1,hea_id1,cas_id2,hea_id2,cas_id3,hea_id3,cas_id4,hea_id4,cas_id5,hea_id5"
 $headers | Out-File -FilePath $outputFile -Encoding ASCII
 
-# Append the query results to the CSV file with comma delimiters
-# Use psql's -t flag to suppress header and footer information
-& $psqlPath -h $postgresHost -p $port -U $user -d $database -A -F "," -t -c $query | Out-File -FilePath $outputFile -Append -Encoding ASCII
+# Measure how long the query execution takes
+$executionTime = Measure-Command {
+    & $psqlPath -h $postgresHost -p $port -U $user -d $database -A -F "," -t -c $query | Out-File -FilePath $outputFile -Append -Encoding ASCII
+}
 
-Write-Host "Query executed and results exported to $outputFile"
+# Log end time and duration
+$endTime = Get-Date
+Write-Host "[$endTime] Query executed and results exported to $outputFile"
+Write-Host "Query execution time: $($executionTime.TotalSeconds) seconds"
