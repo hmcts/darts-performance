@@ -46,7 +46,6 @@ public final class DartsPortalApproveAudioScenario {
                 if (getTranscriptionId != null) {
                     System.out.println("getTranscriptionId: " + getTranscriptionId.toString() + " For user: " + email +"Case Id: " + getCaseId + "Hearing Id: " + getHearingId);
                 } else {
-                    System.out.println("No Transcription Id value saved using saveAs.");
                     System.out.println("No Transcription Id value saved using saveAs. For user: " + email +"Case Id: " + getCaseId + "Hearing Id: " + getHearingId);
 
                 }
