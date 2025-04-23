@@ -70,7 +70,20 @@ public final class DartsPortalRequestTranscriptionScenario {
               .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
-          )
+              .check(jsonPath("$[*].transcription_type_id").findRandom().saveAs("transcriptionTypeId"))
+            )
+            .exec(session -> {
+              Object typeId = session.get("transcriptionTypeId");
+              String email = session.getString("Email");
+            
+              if (typeId != null) {
+                System.out.println("Random Transcription Type ID: " + typeId + " for user: " + email);
+              } else {
+                System.out.println("No transcription type ID found in response.");
+              }
+            
+              return session;
+            })
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Types"))
 
           .exec(

@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static io.gatling.javaapi.core.CoreDsl.exec;
 import static io.gatling.javaapi.core.CoreDsl.jsonPath;
 
 import java.time.LocalDate;
@@ -194,20 +195,24 @@ public class RequestBodyBuilder {
         caseId, randomComment);
     }
     public static String buildTranscriptionsBody(Session session) {
-        String hearingId = session.get("getHearingId") != null ? "" + session.get("getHearingId").toString() + "" : "null";       
-        String caseId = session.get("getCaseId") != null ? "" + session.get("getCaseId").toString() + "" : "null";       
+        String hearingId = session.get("getHearingId") != null ? session.get("getHearingId").toString() : "null";       
+        String caseId = session.get("getCaseId") != null ? session.get("getCaseId").toString() : "null";       
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
-
+        String transcriptionTypeId = session.get("transcriptionTypeId") != null
+            ? session.get("transcriptionTypeId").toString()
+            : "null";
+    
         return String.format("{\"case_id\":\"%s\", " 
-        +"\"hearing_id\":\"%s\", " 
-        +"\"transcription_type_id\":1, " 
-        +"\"transcription_urgency_id\":4, " 
-        +"\"comment\":\"%s\", " 
-        +"\"start_date_time\": \"\", " 
-        +"\"end_date_time\": \"\"}",
-        caseId, hearingId, randomComment);
-    }    
+            + "\"hearing_id\":\"%s\", " 
+            + "\"transcription_type_id\":%s, " 
+            + "\"transcription_urgency_id\":4, " 
+            + "\"comment\":\"%s\", " 
+            + "\"start_date_time\": \"\", " 
+            + "\"end_date_time\": \"\"}",
+            caseId, hearingId, transcriptionTypeId, randomComment);
+    }
+        
     public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor, Object audioStartDate, Object audioEndDate, Object requestType) {
         return String.format("{\"hearing_id\": %s, " 
         +"\"requestor\": %s, " 
