@@ -30,10 +30,12 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
               .check(status().saveAs("status"))
               ).exec(session -> {
                 Object getTranscriptionId = session.get("getTranscriptionId");
+                String email = session.getString("Email");
+
                 if (getTranscriptionId != null) {
                 //    System.out.println("getTranscriptionId: " + getTranscriptionId.toString());
                 } else {
-                    System.out.println("No Transcription Id value saved using saveAs.");
+                    System.out.println("No Transcription Id value saved using saveAs. For User: "+ email); 
                 }
                 return session;
             }) 

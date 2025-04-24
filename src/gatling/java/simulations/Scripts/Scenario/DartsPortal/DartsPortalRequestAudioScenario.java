@@ -251,6 +251,11 @@ public final class DartsPortalRequestAudioScenario {
                             .set("errorTitle", errorTitle);
           } else {
               // Handle other status codes if necessary
+              String audioXmlPayload = session.getString("AudioXmlPayload");
+              String email = session.getString("Email");
+              
+              System.out.println("Audio Request payload: " + audioXmlPayload + " for user: " + email);
+    
               return session;
           }
       })
