@@ -131,10 +131,10 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
     
                         // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
                         String casId = session.getString(casIdColumn);
-                        String gethearingId = session.getString(heaidColumn);
+                        String getHearingId = session.getString(heaidColumn);
                         session = session
                                     .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
-                                    .set("gethearingId", gethearingId); // Set the hearing Id #{gethearingId} usage
+                                    .set("getHearingId", getHearingId); // Set the hearing Id #{getHearingId} usage
     
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
@@ -190,10 +190,10 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
     
                         // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
                         String casId = session.getString(casIdColumn);
-                        String gethearingId = session.getString(heaidColumn);
+                        String getHearingId = session.getString(heaidColumn);
                         session = session
                                     .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
-                                    .set("gethearingId", gethearingId); // Set the hearing Id #{gethearingId} usage
+                                    .set("getHearingId", getHearingId); // Set the hearing Id #{getHearingId} usage
     
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
@@ -248,10 +248,10 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
     
                         // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
                         String casId = session.getString(casIdColumn);
-                        String gethearingId = session.getString(heaidColumn);
+                        String getHearingId = session.getString(heaidColumn);
                         session = session
                                     .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
-                                    .set("gethearingId", gethearingId); // Set the hearing Id #{gethearingId} usage
+                                    .set("getHearingId", getHearingId); // Set the hearing Id #{getHearingId} usage
     
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
@@ -308,10 +308,10 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
 
                     // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
                     String casId = session.getString(casIdColumn);
-                    String gethearingId = session.getString(heaidColumn);
+                    String getHearingId = session.getString(heaidColumn);
                     session = session
                                 .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
-                                .set("gethearingId", gethearingId); // Set the hearing Id #{gethearingId} usage
+                                .set("getHearingId", getHearingId); // Set the hearing Id #{getHearingId} usage
 
                     // Update the loop counter in the session for the next iteration
                     return session.set("loopCounter", iteration);
@@ -366,10 +366,10 @@ public class PortalBaslinePeakTestSimulation extends Simulation {
     
                         // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
                         String casId = session.getString(casIdColumn);
-                        String gethearingId = session.getString(heaidColumn);
+                        String getHearingId = session.getString(heaidColumn);
                         session = session
                                     .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
-                                    .set("gethearingId", gethearingId); // Set the hearing Id #{gethearingId} usage
+                                    .set("getHearingId", getHearingId); // Set the hearing Id #{getHearingId} usage
     
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);

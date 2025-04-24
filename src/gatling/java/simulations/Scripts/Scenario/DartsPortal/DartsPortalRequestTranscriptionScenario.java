@@ -69,12 +69,10 @@ public final class DartsPortalRequestTranscriptionScenario {
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/types")
               .headers(Headers.getHeaders(12))
               .check(status().is(200))
-              /* keep every element whose transcription_type_id is NOT 5 or 9,
-                 then pick one of the remaining ids at random */
-              .check(
-                  jsonPath("$[?(@.transcription_type_id!=5 && @.transcription_type_id!=9)].transcription_type_id")
-                    .findRandom()
-                    .saveAs("transcriptionTypeId")
+                 .check(
+                  jsonPath("$[?(@.transcription_type_id == 5 || @.transcription_type_id == 9)].transcription_type_id")
+                      .findRandom()
+                      .saveAs("transcriptionTypeId")              
               )
           )
           .exec(session -> {
