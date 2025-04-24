@@ -29,14 +29,7 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
         System.out.println("Simulation is about to start!");
     }
 
-    public SoapBaseLinePeakTestSimulation() {
-        HttpProtocolBuilder httpProtocolSoapProxy = http
-            //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
-                .inferHtmlResources()
-                .acceptEncodingHeader("gzip,deflate")
-                .contentTypeHeader("text/xml;charset=UTF-8")
-                .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
-                .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl());
+    public SoapBaseLinePeakTestSimulation() {      
 
         HttpProtocolBuilder httpProtocolSoapGateway = http
         //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
@@ -51,13 +44,12 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
             .baseUrl(EnvironmentURL.B2B_Login.getUrl())
             .inferHtmlResources();
 
-        setUpScenarios(httpProtocolSoapProxy, httpProtocolSoapGateway, httpProtocolApi);
+        setUpScenarios(httpProtocolSoapGateway, httpProtocolApi);
     }
 
-    private void setUpScenarios(HttpProtocolBuilder httpProtocolSoapProxy, HttpProtocolBuilder httpProtocolSoapGateway, HttpProtocolBuilder httpProtocolApi) {
+    private void setUpScenarios(HttpProtocolBuilder httpProtocolSoapGateway, HttpProtocolBuilder httpProtocolApi) {
         // Main SOAP scenario setup
-        ScenarioBuilder soapProxyScenario = scenario("Soap Proxy Scenario")
-         // Register with different VIQ
+        ScenarioBuilder soapGatewayAddDocument = scenario("Soap Gateway Scenario")         // Register with different VIQ
          .group("VIQ External Requests")
          .on(
             repeat(AppConfig.ADD_CASES_PEAK_REPEATS)
@@ -66,9 +58,7 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
             .on(exec(GetCasesUserScenario.GetCaseSOAPUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
             .repeat(AppConfig.ADD_LOG_ENTRY_PEAK_REPEATS)
             .on(exec(AddCourtlogUserScenario.addCourtLogUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-        );
-
-        ScenarioBuilder soapGatewayAddDocument = scenario("Soap Gateway Scenario")
+        )
             
         // Register with different CPP
         .group("Register With CPP External Username")
@@ -116,8 +106,7 @@ public class SoapBaseLinePeakTestSimulation extends Simulation {
 
         // Set up all scenarios together
         setUp(
-           soapProxyScenario.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoapProxy).andThen           
-          (soapGatewayAddDocument.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoapGateway)),
+           soapGatewayAddDocument.injectOpen(atOnceUsers(95)).protocols(httpProtocolSoapGateway),
            postAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
            getAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi),
            deleteAudioScenario.injectOpen(atOnceUsers(3)).protocols(httpProtocolApi)

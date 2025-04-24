@@ -24,14 +24,24 @@ public final class DartsPortalRequestAudioScenario {
               .headers(Headers.getHeaders(14))
           )
           .exec(
-            http("Darts-Portal - Api - Cases")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
-              .headers(Headers.getHeaders(9))
-              .check(status().is(200))
-              .check(status().saveAs("status"))
-          )
+            http("Darts‑Portal - Api - Cases")
+                .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl()
+                     + "/api/cases/#{getCaseId}")
+                .headers(Headers.getHeaders(9))
+                .check(status().is(200))
+                .check(status().saveAs("status"))
+        )
+        .exec(session -> {
+            String email      = session.getString("Email"); 
+            String caseId     = session.getString("getCaseId");  
+            Integer status    = session.getInt("status");        
+        
+            System.out.printf("Get Cases Id: %s | Status: %d | User: %s%n",
+                              caseId, status, email);        
+            return session;
+        })
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases"))
-
+         
           .exec(
             http("Darts-Portal - Api - Cases - Hearings")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
@@ -134,7 +144,8 @@ public final class DartsPortalRequestAudioScenario {
                 // Ensure status is 200
                 .check(status().is(200))
                 .check(status().saveAs("status"))
-        )
+        )        
+
         .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Audios"))   
 
           // .exec(
@@ -253,7 +264,7 @@ public final class DartsPortalRequestAudioScenario {
               // Handle other status codes if necessary
               String audioXmlPayload = session.getString("AudioXmlPayload");
               String email = session.getString("Email");
-              
+
               System.out.println("Audio Request payload: " + audioXmlPayload + " for user: " + email);
     
               return session;
