@@ -40,7 +40,6 @@ public final class DartsPortalRequestAudioScenario {
               .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Hearings"))
-
           .exec(
             http("Darts-Portal - Api - Cases - Transcripts")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/transcripts")
@@ -48,6 +47,7 @@ public final class DartsPortalRequestAudioScenario {
               .check(status().in(200, 403).saveAs("responseStatus"))
               .check(status().saveAs("status"))
           )
+                   
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - #{getCaseId} - Transcripts"))
 
           .exec(session -> {
@@ -80,46 +80,27 @@ public final class DartsPortalRequestAudioScenario {
               .headers(Headers.getHeaders(12))
               .check(status().saveAs("statusCode"))
               .check(jsonPath("$[*]").ofMap().findRandom().saveAs("getHearings")) 
-              .check(jsonPath("$[*].id").saveAs("getHearingId"))
-              ).exec(session -> {
-                Object getHearings = session.get("getHearings");
-                String email = session.getString("Email");
-                if (getHearings != null) {
-                    System.out.println("getHearings from Cases - Hearings: " + getHearings.toString() + " for user: " + email);
-                } else {
-                    System.out.println("No Hearing value saved using saveAs.");
-                }
-                Object getHearingId = session.get("getHearingId");
-                if (getHearingId != null) {
-                    System.out.println("getHearingId from Cases - Hearings: " + getHearingId.toString() + " for user: " + email);
-                } else {
-                    System.out.println("No Hearing Id value saved using saveAs.");
-                }
-                return session;
-            }
-          )
+              .check(jsonPath("$[*].id").saveAs("extractedHearingId")) 
+              .check(jsonPath("$[?(@.id == #{getHearingId})].date").find().saveAs("getHearingdate"))
+              )
+              .exec(session -> {
+                  System.out.println("DEBUG getHearingId = " + session.getString("getHearingId"));
+                  return session;
+              })
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Hearings"))
-
-          .exitHereIfFailed()
-
+          
           .exec(session -> {
-            if (AppConfig.dynamicCases) {
-                // Attempt to get extracted hearing ID from earlier request
-                String dynamicHearingId = session.getString("extractedHearingId");
-        
-                if (dynamicHearingId != null && !dynamicHearingId.isEmpty()) {
-                    session = session.set("getHearingId", dynamicHearingId);
-                    System.out.println("Dynamic case detected. Extracted hearing ID: " + dynamicHearingId);
-                } else {
-                    System.out.println("Dynamic case detected, but no hearing ID was extracted.");
-                }
+            String email = session.getString("Email");
+            Object getHearingId = session.get("getHearingId");
+            if (getHearingId != null) {
+                System.out.println("getHearingId from Cases - Hearings: " + getHearingId.toString() + " for user: " + email);
             } else {
-                String staticHearingId = session.getString("getHearingId");
-                System.out.println("Static case. Using hearing ID from CSV: " + staticHearingId);
+                System.out.println("No Hearing Id value saved using saveAs.");
             }
             return session;
-        })
-
+            }
+          )
+          .exitHereIfFailed()
           .exec(
             http("Darts-Portal - Api - Hearings - Events")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearingId}/events")
@@ -158,7 +139,7 @@ public final class DartsPortalRequestAudioScenario {
 
           // .exec(
           //   http("Darts-Portal - Api - Hearings - Annotations")
-          //     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearings.id}/annotations")
+          //     .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/hearings/#{getHearingId.id}/annotations")
           //     .headers(Headers.caseReferer(Headers.CommonHeaders))
           // )
           .exec(

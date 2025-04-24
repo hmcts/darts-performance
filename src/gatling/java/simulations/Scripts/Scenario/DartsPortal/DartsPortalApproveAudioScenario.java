@@ -41,7 +41,7 @@ public final class DartsPortalApproveAudioScenario {
 
                 String email = session.getString("Email");
                 Object getCaseId = session.get("getCaseId");
-                Object getHearingId = session.get("getHearingId");
+                Object getHearingId = session.get("gethearingId");
                 Object getTranscriptionId = session.get("getTranscriptionId");
                 if (getTranscriptionId != null) {
                     System.out.println("getTranscriptionId: " + getTranscriptionId.toString() + " For user: " + email +"Case Id: " + getCaseId + "Hearing Id: " + getHearingId);

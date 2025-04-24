@@ -1,6 +1,9 @@
 package simulations.Scripts.RequestBodyBuilder;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
@@ -197,22 +200,43 @@ public class RequestBodyBuilder {
     public static String buildTranscriptionsBody(Session session) {
         String hearingId = session.get("getHearingId") != null ? session.get("getHearingId").toString() : "null";       
         String caseId = session.get("getCaseId") != null ? session.get("getCaseId").toString() : "null";       
+        String transcriptionTypeId = session.get("transcriptionTypeId") != null ? session.get("transcriptionTypeId").toString() : "null";
+        String getHearingdate = session.get("getHearingdate") != null ? session.get("getHearingdate").toString() : "null";
+
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
-        String transcriptionTypeId = session.get("transcriptionTypeId") != null
-            ? session.get("transcriptionTypeId").toString()
-            : "null";
+
+      LocalDate hearingDate = LocalDate.parse(getHearingdate);
+
+        /* ── 2. generate a random time of day (0‑23h, 0‑59m, 0‑59s) ───────── */
+        ThreadLocalRandom r = ThreadLocalRandom.current();
+        int h = r.nextInt(0, 24);
+        int m = r.nextInt(0, 60);
+        int s = r.nextInt(0, 60);
+        LocalTime randomTime = LocalTime.of(h, m, s);   
+
+        /* ── 3. fuse into an OffsetDateTime in UTC (Z) ─────────────────────── */
+        OffsetDateTime startUtc = OffsetDateTime.of(hearingDate, randomTime, ZoneOffset.UTC);
+
+        /* ── 4. add +1 hour to get the end time ───────────────────────────── */
+        OffsetDateTime endUtc   = startUtc.plusHours(1);
+
+        /* ── 5. format both as ISO‑8601 with trailing Z ───────────────────── */
+        DateTimeFormatter isoZ = DateTimeFormatter.ISO_INSTANT; // 2025‑01‑12T09:09:09Z
+        String startTime = isoZ.format(startUtc);
+        String endTime   = isoZ.format(endUtc);
     
         return String.format("{\"case_id\":\"%s\", " 
             + "\"hearing_id\":\"%s\", " 
             + "\"transcription_type_id\":%s, " 
             + "\"transcription_urgency_id\":4, " 
             + "\"comment\":\"%s\", " 
-            + "\"start_date_time\": \"\", " 
-            + "\"end_date_time\": \"\"}",
-            caseId, hearingId, transcriptionTypeId, randomComment);
+            + "\"start_date_time\":\"%s\","
+            + "\"end_date_time\":\"%s\""
+            + "}",
+            caseId, hearingId, transcriptionTypeId, randomComment, startTime, endTime);
     }
-        
+
     public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor, Object audioStartDate, Object audioEndDate, Object requestType) {
         return String.format("{\"hearing_id\": %s, " 
         +"\"requestor\": %s, " 
