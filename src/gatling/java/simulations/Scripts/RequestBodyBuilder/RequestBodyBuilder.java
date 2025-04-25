@@ -44,9 +44,8 @@ public class RequestBodyBuilder {
         return String.format("{\"hearing_id\": \"%s\", " 
                             + "\"requestor\": \"%s\", " 
                             + "\"start_time\": \"%s\", " 
-                            + "\"end_time\": \"%s\", " 
-                            + "\"request_type\": \"%s\"}",
-                hearingId, userId, startTime, endTime, requestType);
+                            + "\"end_time\": \"%s\"}",
+                hearingId, userId, startTime, endTime);
     }
 
     private static String formatTime(LocalDateTime time) {

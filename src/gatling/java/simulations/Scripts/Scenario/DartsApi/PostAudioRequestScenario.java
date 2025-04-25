@@ -4,11 +4,15 @@ import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Utilities.Feeders;
+import simulations.Scripts.Utilities.NumberGenerator;
 import simulations.Scripts.Utilities.SQLQueryProvider;
 import io.gatling.javaapi.core.*;
 import simulations.Scripts.Utilities.UserInfoLogger;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+
+import java.util.concurrent.ThreadLocalRandom;
+
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
 public final class PostAudioRequestScenario {
@@ -16,36 +20,61 @@ public final class PostAudioRequestScenario {
     private PostAudioRequestScenario() {}
     public static Object feeder = null;
 
-    @SuppressWarnings("unchecked")
-    public static ChainBuilder PostaudioRequest() {
+    private static final String[] REQUEST_TYPES = {"download", "playback"};
 
-        String sql = SQLQueryProvider.getHearingQuery();    
-     
-        //Selecting which feeder to use based on fixed or Dynami data.
-        if (AppConfig.isFixed) {
-            feeder = (Object) Feeders.createAudioRequestCSV();
-        } else {
-            if (feeder == null) {
-                feeder = (Object) Feeders.jdbcFeeder(sql); 
+    // Define the percentages for each request type (must sum up to 100)
+    private static final int DOWNLOAD_PERCENTAGE = 70; //% chance
+    private static final int PLAYBACK_PERCENTAGE = 30; //% chance
+
+    private static String getRandomRequestType() {
+            int totalPercentage = DOWNLOAD_PERCENTAGE + PLAYBACK_PERCENTAGE;
+            int randomNumber = ThreadLocalRandom.current().nextInt(totalPercentage) + 1;
+        
+            if (randomNumber <= DOWNLOAD_PERCENTAGE) {
+                return REQUEST_TYPES[0]; // "DOWNLOAD"
+            } else {
+                return REQUEST_TYPES[1]; // "PLAYBACK"
             }
         }
-
-        return group("Audio-request:Post")
-            .on(exec(feed((FeederBuilder<String>) feeder)           
+    
+        @SuppressWarnings("unchecked")
+        public static ChainBuilder PostaudioRequest() {
+    
+            String sql = SQLQueryProvider.getHearingQuery();    
+         
+            //Selecting which feeder to use based on fixed or Dynami data.
+            if (AppConfig.isFixed) {
+                feeder = (Object) Feeders.createAudioRequestCSV();
+            } else {
+                if (feeder == null) {
+                    feeder = (Object) Feeders.jdbcFeeder(sql); 
+                }
+            }
+    
+            
+            return group("Audio-request:Post")
+            .on(
+                exec(feed((FeederBuilder<String>) feeder)
                 .exec(session -> {
                     String xmlPayload = RequestBodyBuilder.buildPOSTAudioRequestBody(session);
-                    System.out.println("Body request:" + xmlPayload);
-                    return session.set("xmlPayload", xmlPayload);
-                })
-                .exec(
-                    http("DARTS - Api - Audio-request:Post")
-                        .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests")
-                        .headers(Headers.getHeaders(24))
-                        .body(StringBody(session -> session.getString("xmlPayload"))).asJson()
-                        .check(status().saveAs("statusCode"))
-                        .check(status().in(200, 409, 401))  // Add 401 to the allowed status codes
-                        .check(jsonPath("$.request_id").optional().saveAs("getRequestId"))
-                        .check(bodyString().saveAs("responseBody"))
+                    String requestType = getRandomRequestType();
+    
+                System.out.println("Body request: " + xmlPayload);
+                System.out.println("Chosen request type: " + requestType);
+    
+                return session
+                    .set("xmlPayload", xmlPayload)
+                    .set("requestType", requestType);
+            })
+            .exec(
+                http("DARTS - Api - Audio-request:Post")
+                    .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/audio-requests/#{requestType}")
+                    .headers(Headers.getHeaders(24))
+                    .body(StringBody(session -> session.getString("xmlPayload"))).asJson()
+                    .check(status().saveAs("statusCode"))
+                    .check(status().in(200, 409, 401))
+                    .check(jsonPath("$.request_id").optional().saveAs("getRequestId"))
+                    .check(bodyString().saveAs("responseBody"))
                 )
                 .exec(session -> {
                     String responseBody = session.getString("responseBody");
