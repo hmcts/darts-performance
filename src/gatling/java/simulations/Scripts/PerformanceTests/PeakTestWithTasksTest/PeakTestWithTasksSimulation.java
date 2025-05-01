@@ -18,6 +18,10 @@ public class PeakTestWithTasksSimulation extends Simulation {
     private static final String BASE_LINE_PEAK_TRANSCRIBER_USERS = "Baseline Peak - DARTS - Portal - Transcriber Users";
     private static final String BASE_LINE_PEAK_LANGUAGE_USERS = "Baseline Peak - DARTS - Portal - Language Shop Users";
     private static final String BASE_LINE_PEAK_SOAP_REQUESTS = "Baseline Peak - DARTS - Soap - Requests";
+    private static final String API_REQUESTS_POST_AUDIO_REQUEST = "Baseline Peak - DARTS - Api - Post Audio Requests";
+    private static final String API_REQUESTS_GET_AUDIO_REQUEST = "Baseline Peak - DARTS - Api - Get Audio Requests";
+    private static final String API_REQUESTS_DELETE_AUDIO_REQUEST = "Baseline Peak - DARTS - Api - Delete Audio Requests";
+
 
     public PeakTestWithTasksSimulation() {
         HttpProtocolBuilder httpProtocolInternal = configureInternalHttp();
@@ -55,16 +59,21 @@ public class PeakTestWithTasksSimulation extends Simulation {
                 .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)))
                 .protocols(httpProtocolExternal),
 
-                // SoapProxyUsersScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS,
-                // AppConfig.getAddCasesRepeats(),
-                // AppConfig.getGetCasesRepeats(), 
-                // AppConfig.getAddLogEntryRepeats(), 
-                // AppConfig.getCppEventsRepeats(), 
-                // AppConfig.getCppDailyListRepeats(), 
-                // AppConfig.getXhibitEventsRepeats(), 
-                // AppConfig.getXhibitDailyListRepeats())
-                // .injectOpen(atOnceUsers(AppConfig.getSoapUsers()))
-                // .protocols(httpProtocolSoap),
+            SoapGatewayUsersScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS)
+                .injectOpen(atOnceUsers(AppConfig.getSoapUsers()))
+                .protocols(httpProtocolSoap),
+
+            PostAudioRequestScenarioBuild.build(API_REQUESTS_POST_AUDIO_REQUEST)
+                .injectOpen(atOnceUsers(AppConfig.getPostAudioUsers()))
+                .protocols(httpProtocolApi), 
+            
+            GetAudioRequestScenarioBuild.build(API_REQUESTS_GET_AUDIO_REQUEST)
+                .injectOpen(atOnceUsers(AppConfig.getGetAudioUsers()))
+                .protocols(httpProtocolApi), 
+
+            DeleteAudioRequestScenarioBuild.build(API_REQUESTS_DELETE_AUDIO_REQUEST)
+                .injectOpen(atOnceUsers(AppConfig.getDeleteAudioUsers()))
+                .protocols(httpProtocolApi),
             
             InboundtoUnstructuredDatastoreTaskScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS)
                 .injectOpen(atOnceUsers(1))
@@ -93,12 +102,12 @@ public class PeakTestWithTasksSimulation extends Simulation {
    //         .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
             .contentTypeHeader("text/xml;charset=UTF-8")
             .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
-            .baseUrl(AppConfig.EnvironmentURL.PROXY_BASE_URL.getUrl());
+            .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl());
     }
 
     private HttpProtocolBuilder configureApiHttp() {
         return http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+    //        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
             .contentTypeHeader("text/xml;charset=UTF-8")
             .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
             .baseUrl(EnvironmentURL.B2B_Login.getUrl())
