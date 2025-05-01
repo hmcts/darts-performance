@@ -11,7 +11,6 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class SoapTestSimulation extends Simulation {   
 
-    private static final String SOAP_PROXY_REQUESTS = "DARTS - Soap - Proxy Requests";
     private static final String SOAP_GATEWAY_REQUESTS = "DARTS - Soap - Gateway Requests";
 
     private static final String API_REQUESTS_POST_AUDIO_REQUEST = "DARTS - API - Post Audio Requests";
@@ -30,19 +29,9 @@ public class SoapTestSimulation extends Simulation {
     private void setUpScenarios(HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolSoapAddDocument, HttpProtocolBuilder httpProtocolApi) {
 
         setUp(           
-            SoapProxyUsersScenario.build(SOAP_PROXY_REQUESTS,
-            AppConfig.getAddCasesRepeats(),
-            AppConfig.getGetCasesRepeats(), 
-            AppConfig.getAddLogEntryRepeats())
-                .injectOpen(atOnceUsers(1))
-                .protocols(httpProtocolSoap).andThen
-                (SoapGatewayUsersScenario.build(SOAP_GATEWAY_REQUESTS,                   
-                AppConfig.getCppEventsRepeats(),
-                AppConfig.getCppDailyListRepeats(),
-                AppConfig.getXhibitEventsRepeats(),
-                AppConfig.getXhibitDailyListRepeats())
-                .injectOpen(atOnceUsers(1))
-                .protocols(httpProtocolSoapAddDocument)),
+            SoapGatewayUsersScenario.build(SOAP_GATEWAY_REQUESTS)
+                .injectOpen(atOnceUsers(AppConfig.getSoapUsers()))
+                .protocols(httpProtocolSoap),
     
             PostAudioRequestScenarioBuild.build(API_REQUESTS_POST_AUDIO_REQUEST,
                     AppConfig.getPostAudioRequestRepeats())
