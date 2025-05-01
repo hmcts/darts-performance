@@ -21,33 +21,27 @@ public class TranscriberUsersScenario {
     
                         // Determine the column name based on the iteration number
                         String casIdColumn = "";
-                        String getfromDate = "";
-                        String defendantColumn = "";
+                        String heaidColumn = "";
                         switch (iteration) {
                             case 1: 
                                 casIdColumn = "cas_id1"; 
-                                getfromDate = "date_from1";
-                                defendantColumn = "defendantFirstName"; 
+                                heaidColumn = "hea_id1";                               
                                 break;
                             case 2: 
                                 casIdColumn = "cas_id2"; 
-                                getfromDate = "date_from2";
-                                defendantColumn = "defendantSecondName"; 
+                                heaidColumn = "hea_id2";
                                 break;
                             case 3: 
                                 casIdColumn = "cas_id3"; 
-                                getfromDate = "date_from3";
-                                defendantColumn = "defendantThirdName"; 
+                                heaidColumn = "hea_id3"; 
                                 break;
                             case 4: 
                                 casIdColumn = "cas_id4"; 
-                                getfromDate = "date_from4";
-                                defendantColumn = "defendantFourthName"; 
+                                heaidColumn = "hea_id4"; 
                                 break;
                             case 5: 
                                 casIdColumn = "cas_id5"; 
-                                getfromDate = "date_from5";
-                                defendantColumn = "defendantFifthName"; 
+                                heaidColumn = "hea_id5";
                                 break;
                             default: 
                                 throw new RuntimeException("Unexpected iteration: " + iteration);
@@ -55,11 +49,10 @@ public class TranscriberUsersScenario {
     
                         // Retrieve the cas_id and defendant name from the session and set them for use in the scenario
                         String casId = session.getString(casIdColumn);
-                        String defendantName = session.getString(defendantColumn);
+                        String getHearingId = session.getString(heaidColumn);
                         session = session
                                     .set("getCaseId", casId)         // Set the case_id for #{case_id} usage
-                                    .set("defendantFirstName", defendantName) // Set the defendant name for #{defendantFirstName} usage
-                                    .set("getfromDate", getfromDate); // Set the from Date
+                                    .set("getHearingId", getHearingId); // Set the hearing Id #{getHearingId} usage
     
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
