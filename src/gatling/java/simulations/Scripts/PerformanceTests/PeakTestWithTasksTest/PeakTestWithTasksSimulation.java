@@ -75,7 +75,7 @@ public class PeakTestWithTasksSimulation extends Simulation {
                 .injectOpen(atOnceUsers(AppConfig.getDeleteAudioUsers()))
                 .protocols(httpProtocolApi),
             
-            InboundtoUnstructuredDatastoreTaskScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS)
+            AutomatedTaskScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS)
                 .injectOpen(atOnceUsers(1))
                 .protocols(httpProtocolApi)            
         );
