@@ -44,7 +44,7 @@ public final class DartsPortalRequestAudioScenario {
          
           .exec(
             http("Darts-Portal - Api - Cases - Hearings")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}")
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/#{getCaseId}/hearings")
               .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
