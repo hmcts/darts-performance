@@ -33,18 +33,15 @@ public class SoapTestSimulation extends Simulation {
                 .injectOpen(atOnceUsers(AppConfig.getSoapUsers()))
                 .protocols(httpProtocolSoap),
     
-            PostAudioRequestScenarioBuild.build(API_REQUESTS_POST_AUDIO_REQUEST,
-                    AppConfig.getPostAudioRequestRepeats())
+            PostAudioRequestScenarioBuild.build(API_REQUESTS_POST_AUDIO_REQUEST)
                 .injectOpen(atOnceUsers(AppConfig.getPostAudioUsers()))
                 .protocols(httpProtocolApi), 
             
-            GetAudioRequestScenarioBuild.build(API_REQUESTS_GET_AUDIO_REQUEST,
-                    AppConfig.getGetAudioRequestRepeats())
+            GetAudioRequestScenarioBuild.build(API_REQUESTS_GET_AUDIO_REQUEST)
                 .injectOpen(atOnceUsers(AppConfig.getGetAudioUsers()))
                 .protocols(httpProtocolApi), 
     
-            DeleteAudioRequestScenarioBuild.build(API_REQUESTS_DELETE_AUDIO_REQUEST,
-                    AppConfig.getDeleteAudioRequestRepeats())
+            DeleteAudioRequestScenarioBuild.build(API_REQUESTS_DELETE_AUDIO_REQUEST)
                 .injectOpen(atOnceUsers(AppConfig.getDeleteAudioUsers()))
                 .protocols(httpProtocolApi)                        
         );
