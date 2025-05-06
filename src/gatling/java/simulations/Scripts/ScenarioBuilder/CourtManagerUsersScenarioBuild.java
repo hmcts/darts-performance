@@ -58,9 +58,8 @@ public class CourtManagerUsersScenarioBuild {
                         // Update the loop counter in the session for the next iteration
                         return session.set("loopCounter", iteration);
                     })
-                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch())
-                    .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload())
-                    .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription())
+                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
+                    .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio())
                 )
                 .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()));
     }

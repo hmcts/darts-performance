@@ -80,9 +80,6 @@ def simulations = [
     [task: 'runDartsBaseLinePeakTests', class: 'simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests.PortalBaslinePeakTestSimulation'],
     [task: 'runSoapBaseLinePeakTestSimulation', class: 'simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests.SoapBaseLinePeakTestSimulation'],
     
-    //Main BaseLine Peak Tests with Tasks
-    [task: 'runPeakTestWithTasksSimulation', class: 'simulations.Scripts.PerformanceTests.PeakTestWithTasksTest.PeakTestWithTasksSimulation'],
-
     //Portal Login Checks 
     [task: 'runPortalLoginTestSimulation', class: 'simulations.Scripts.PerformanceTests.DartsPortalLoginTest.PortalLoginTestSimulation'],
 
@@ -91,6 +88,10 @@ def simulations = [
     [task: 'runSoapTestSimulation', class: 'simulations.Scripts.PerformanceTests.NewMainTests.SoapTestSimulation'],
     [task: 'runPortalTestSimulation', class: 'simulations.Scripts.PerformanceTests.NewMainTests.PortalTestSimulation'],
     [task: 'runPortalTestSimulation2', class: 'simulations.Scripts.PerformanceTests.NewMainTests.PortalTestSimulation2'],
+    
+    //E2E Performanec Tests
+    [task: 'runPeakTestWithTasksSimulation', class: 'simulations.Scripts.PerformanceTests.PeakTestWithTasksTest.PeakTestWithTasksSimulation'],
+
 
 
     //NightlyRun
