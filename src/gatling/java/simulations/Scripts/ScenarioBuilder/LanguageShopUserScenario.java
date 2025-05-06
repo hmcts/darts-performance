@@ -59,7 +59,6 @@ public class LanguageShopUserScenario {
                     })
                     .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
                     .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
-                    .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription()) // Request transcription
                 )
                 .exec(DartsPortalExternalLogoutScenario.DartsPortalExternalLogoutRequest()) // Logout request
             );

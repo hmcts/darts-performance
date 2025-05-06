@@ -59,7 +59,8 @@ public class CourtClerkUsersScenarioBuild {
                         return session.set("loopCounter", iteration);
                     })
                     .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
-                    .exec(DartsPortalApproveAudioScenario.DartsPortalApproveAudio())
+                    .exec(DartsPortalRequestAudioScenario.DartsPortalRequestAudioDownload()) // Request audio download
+                    .exec(DartsPortalRequestTranscriptionScenario.DartsPortalRequestTranscription()) // Request transcription
                 )
                 // .exec(DartsPortalPreviewAudioScenario.DartsPortalPreviewAudioScenario())
                 .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest())); // Logout request);
