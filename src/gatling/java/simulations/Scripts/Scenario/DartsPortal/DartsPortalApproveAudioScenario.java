@@ -41,12 +41,12 @@ public final class DartsPortalApproveAudioScenario {
 
                 String email = session.getString("Email");
                 Object getCaseId = session.get("getCaseId");
-                Object getHearingId = session.get("gethearingId");
+                Object getHearingId = session.get("getHearingId");
                 Object getTranscriptionId = session.get("getTranscriptionId");
                 if (getTranscriptionId != null) {
-                    System.out.println("getTranscriptionId: " + getTranscriptionId.toString() + " For user: " + email +"Case Id: " + getCaseId + "Hearing Id: " + getHearingId);
+                    System.out.println("getTranscriptionId: " + getTranscriptionId.toString() + " For user: " + email +"Case Id: " + getCaseId + " Hearing Id: " + getHearingId);
                 } else {
-                    System.out.println("No Transcription Id value saved using saveAs. For user: " + email +"Case Id: " + getCaseId + "Hearing Id: " + getHearingId);
+                    System.out.println("No Transcription Id value saved using saveAs (Issue with $.approver_transcriptions[*].transcription_id). For user: " + email +"Case Id: " + getCaseId + " Hearing Id: " + getHearingId);
                 }
                 return session;
             })
