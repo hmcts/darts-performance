@@ -108,7 +108,7 @@ def simulations = [
     [task: 'runGenerateCaseDocumentForRetentionDateSimulation', class: 'simulations.Scripts.DartsApi.RunGenerateCaseDocumentForRetentionDateSimulation'],
     [task: 'runRemoveDuplicateEventsSimulation', class: 'simulations.Scripts.DartsApi.RunRemoveDuplicateEventsSimulation'],
     [task: 'runCaseExpiryDeletionSimulation', class: 'simulations.Scripts.DartsApi.RunCaseExpiryDeletionSimulation'],
-    [task: 'runInboundToUnstructuredDataStoreSimulation', class: 'simulations.Scripts.DartsApi.RunInboundToUnstructuredDataStoreSimulation'],
+    [task: 'runInboundToUnstructuredDataStoreSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunInboundToUnstructuredDataStoreSimulation'],
     [task: 'runAddAudioToHearingSimulation', class: 'simulations.Scripts.DartsApi.CreateData.AddAudioToHearingSimulation'],
     [task: 'runInterpreterUsedEventSimulation', class: 'simulations.Scripts.DartsApi.CreateData.InterpreterUsedEventSimulation'],
 
