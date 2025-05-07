@@ -1,26 +1,26 @@
 Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,cas_id1,hea_id1,cas_id2,hea_id2,cas_id3,hea_id3,cas_id4,hea_id4,cas_id5,hea_id5
-PerfJudge01@dev.platform.hmcts.net,PerfTester@01,PerfJudge01,131,"Taunton",131,Judge,763885,28856316,10777658,26419858,772083,1930956,769560,28856295,756686,1892464
-PerfJudge02@dev.platform.hmcts.net,PerfTester@01,PerfJudge02,4,"Barnstaple",4,Judge,129996,324761,128436,320876,128436,320878,131373,328197,130027,324830
-PerfJudge03@dev.platform.hmcts.net,PerfTester@01,PerfJudge03,52,"Guildford Crown Court Site B",52,Judge,86499,216147,84649,211570,85391,28855922,77780,194491,86304,215678
-PerfJudge04@dev.platform.hmcts.net,PerfTester@01,PerfJudge04,150,"Worcester Combined Court Centre",150,Judge,10505663,26186812,10525126,26196938,10505015,26185890,1180869,2954369,1177762,26578442
-PerfJudge05@dev.platform.hmcts.net,PerfTester@01,PerfJudge05,127,"Swansea",127,Judge,5608079,14025745,10518103,26192112,5626351,14071313,5616095,14045763,5643590,14114378
-PerfJudge06@dev.platform.hmcts.net,PerfTester@01,PerfJudge06,86,"Manchester Hilton Deansgate",86,Judge,1304238,3262777,1299828,3251787,1297869,3246947,1302748,3259055,1280417,3203514
-PerfJudge07@dev.platform.hmcts.net,PerfTester@01,PerfJudge07,77,"Lincoln Combined Court Centre",77,Judge,2444027,6112896,2443820,6112395,2478681,6199471,10778020,26420220,2465727,6166883
-PerfJudge08@dev.platform.hmcts.net,PerfTester@01,PerfJudge08,45,"Dorchester Combined Court Centre",45,Judge,103325,257998,111342,278139,110128,275094,105884,264383,108863,271882
-PerfJudge09@dev.platform.hmcts.net,PerfTester@01,PerfJudge09,102,"Peterborough Knights Chamber",102,Judge,350738,877343,347327,868821,348203,871047,344730,862252,345366,863846
-PerfJudge10@dev.platform.hmcts.net,PerfTester@01,PerfJudge10,51,"Guildford",51,Judge,10518086,26190395,2395973,5992773,2399762,6002298,2371052,5930382,2398847,5999974
-PerfJudge11@dev.platform.hmcts.net,PerfTester@01,PerfJudge11,83,"Maidstone Combined Court",83,Judge,7360830,18407042,10522426,26195286,7391103,18482784,7361489,18408709,10515361,26188814
-PerfJudge12@dev.platform.hmcts.net,PerfTester@01,PerfJudge12,92,"Newcastle Moot Hall",92,Judge,4307672,10774656,10529473,26202490,4291014,10733096,4295444,10744192,4316753,10797335
-PerfJudge13@dev.platform.hmcts.net,PerfTester@01,PerfJudge13,67,"Lancaster Ashton Hall",67,Judge,195095,487912,192452,481378,198879,497377,194465,486365,10519603,26192914
-PerfJudge14@dev.platform.hmcts.net,PerfTester@01,PerfJudge14,47,"Exeter Combined Court Centre",47,Judge,10780934,26423134,9562011,23910633,9532158,23835844,9683676,24215050,9581872,23960296
-PerfJudge15@dev.platform.hmcts.net,PerfTester@01,PerfJudge15,143,"Winchester Combined Court Centre",143,Judge,8640723,28861505,10520027,26192827,10522138,26194878,10530940,26203424,10536462,26209955
-PerfJudge16@dev.platform.hmcts.net,PerfTester@01,PerfJudge16,150,"Worcester Combined Court Centre",150,Judge,10537664,26212985,10500154,26182572,10507404,26187751,1211199,3030227,10507000,26187426
-PerfJudge17@dev.platform.hmcts.net,PerfTester@01,PerfJudge17,80,"Liverpool Hilton Hotel",80,Judge,10520087,26191200,215969,540284,213530,534191,214175,535806,205612,514431
-PerfJudge18@dev.platform.hmcts.net,PerfTester@01,PerfJudge18,68,"Leeds Combined Court Centre",68,Judge,10775257,26417457,10499603,26183093,3259953,8153760,3377974,8448917,10775039,26417239
-PerfJudge19@dev.platform.hmcts.net,PerfTester@01,PerfJudge19,99,"Nottingham Mercure Hotel",99,Judge,1589703,3976271,10517086,26189700,1587552,3970915,1609019,28861137,1589223,3975066
-PerfJudge20@dev.platform.hmcts.net,PerfTester@01,PerfJudge20,47,"Exeter Combined Court Centre",47,Judge,9606374,24021506,9575813,23945052,9605245,24018796,9683617,28857187,10763616,26405976
-PerfJudge21@dev.platform.hmcts.net,PerfTester@01,PerfJudge21,69,"Leeds Cloth Hall Court",69,Judge,2586172,6468264,2577329,6446330,10507279,26187201,10518710,26191530,2575936,26576976
-PerfJudge22@dev.platform.hmcts.net,PerfTester@01,PerfJudge22,44,"Doncaster Crown Court",44,Judge,408032,28851604,403905,1010175,416505,1041909,10537634,26209679,416902,1042889
-PerfJudge23@dev.platform.hmcts.net,PerfTester@01,PerfJudge23,93,"Newcastle Combined Court Centre",93,Judge,1860074,28840059,10774049,26416249,10525776,26198636,1860074,4652525,10515684,26188357
-PerfJudge24@dev.platform.hmcts.net,PerfTester@01,PerfJudge24,105,"Preston Invincibles Pavilion",105,Judge,319789,799944,330561,826925,320537,801799,320008,800497,319563,799386
-PerfJudge25@dev.platform.hmcts.net,PerfTester@01,PerfJudge25,1001,"The Criminal Court, Guildhall",157,Judge,2684844,6715476,10526091,26198911,2685837,6718029,2699516,6752177,2698321,6749201
+PerfJudge01@dev.platform.hmcts.net,PerfTester@01,PerfJudge01,71,"Leicester",71,Judge,10536592,26210245,10529368,26202108,9417181,23547448,10519489,26192565,9401964,23509342
+PerfJudge02@dev.platform.hmcts.net,PerfTester@01,PerfJudge02,53,"Harrow",53,Judge,8402816,21013352,8412286,21036892,8461176,21158945,10525809,26198669,8482719,28857245
+PerfJudge03@dev.platform.hmcts.net,PerfTester@01,PerfJudge03,63,"Kingston upon Hull Combined Court Centre (including Beverley)",63,Judge,6731951,16834768,6720660,16806447,10517691,26190788,6682690,16711569,6708845,16776941
+PerfJudge04@dev.platform.hmcts.net,PerfTester@01,PerfJudge04,9,"Birmingham Library and Rep",9,Judge,734662,1837233,10505547,26186042,733257,1833741,746899,1867921,739857,1850209
+PerfJudge05@dev.platform.hmcts.net,PerfTester@01,PerfJudge05,5,"Barons Court Walsall",5,Judge,163506,408800,153311,383252,156386,390940,152430,381054,156290,390699
+PerfJudge06@dev.platform.hmcts.net,PerfTester@01,PerfJudge06,15,"Crown Court sitting at Brighton Magistrates Court",15,Judge,2771856,6932716,2786117,6968615,2767053,6920838,2775892,6942909,2775381,6941558
+PerfJudge07@dev.platform.hmcts.net,PerfTester@01,PerfJudge07,97,"Norwich Combined Court Centre",97,Judge,5913183,14788241,10519698,26192852,5952142,26577009,10529206,26201846,10521772,26193359
+PerfJudge08@dev.platform.hmcts.net,PerfTester@01,PerfJudge08,30,"Chester Town Hall",30,Judge,572274,1430979,552174,1380743,10520777,26194967,568159,26576033,561631,1404374
+PerfJudge09@dev.platform.hmcts.net,PerfTester@01,PerfJudge09,42,"Derby Combined Court Centre",42,Judge,5851616,14634175,5844115,14615501,5858231,14650598,5824186,28864721,5847477,14623839
+PerfJudge10@dev.platform.hmcts.net,PerfTester@01,PerfJudge10,150,"Worcester Combined Court Centre",150,Judge,1156249,2892721,1167006,2919808,10500154,26182572,1195602,2991299,10537798,26210718
+PerfJudge11@dev.platform.hmcts.net,PerfTester@01,PerfJudge11,147,"Wood Green",147,Judge,10507630,26187517,6891441,17233310,10520094,26193787,10517681,26190421,6771416,16933293
+PerfJudge12@dev.platform.hmcts.net,PerfTester@01,PerfJudge12,138,"The Lowry Theatre",138,Judge,10516298,26189629,10523375,26196255,5055936,12645447,5007767,12524745,10504819,26185911
+PerfJudge13@dev.platform.hmcts.net,PerfTester@01,PerfJudge13,44,"Doncaster Crown Court",44,Judge,10766536,26408876,409456,1024185,412900,1032836,405040,1013040,416934,1042965
+PerfJudge14@dev.platform.hmcts.net,PerfTester@01,PerfJudge14,135,"Teesside Magistrates Court",135,Judge,10516994,26190465,178400,446208,10776996,26419196,187932,470059,10532957,26206829
+PerfJudge15@dev.platform.hmcts.net,PerfTester@01,PerfJudge15,11,"Bolton Combined Court Centre",11,Judge,5693108,28851043,5716468,14296516,5729342,14328791,5728518,14326654,5706106,14270682
+PerfJudge16@dev.platform.hmcts.net,PerfTester@01,PerfJudge16,3,"Aylesbury",3,Judge,10778093,26420293,6338395,15851208,6356175,15895435,6384647,15966549,6332306,15835907
+PerfJudge17@dev.platform.hmcts.net,PerfTester@01,PerfJudge17,121,"Southend",121,Judge,969405,2425356,959902,2401598,967476,26577574,969194,2424861,960084,2402057
+PerfJudge18@dev.platform.hmcts.net,PerfTester@01,PerfJudge18,20,"Canterbury Combined Court Centre",20,Judge,10515676,26188349,10530202,26202864,10505676,26186243,10525357,26199288,9081238,22707517
+PerfJudge19@dev.platform.hmcts.net,PerfTester@01,PerfJudge19,48,"Field House",48,Judge,10531872,26203322,6134127,15340375,6187525,15473757,6294002,15740059,6224134,28856930
+PerfJudge20@dev.platform.hmcts.net,PerfTester@01,PerfJudge20,19,"Cambridge",19,Judge,4358470,10901024,10531609,26204269,4358427,10900933,10518093,26190402,4332345,28843345
+PerfJudge21@dev.platform.hmcts.net,PerfTester@01,PerfJudge21,72,"Leics Crown Sitting At Lough",72,Judge,456746,1142616,10533296,26206136,466891,1167941,450235,1126406,454955,1138142
+PerfJudge22@dev.platform.hmcts.net,PerfTester@01,PerfJudge22,29,"Chester Magistrates Court",29,Judge,603931,1510130,604010,1510326,603188,1508305,623841,1560037,612580,1531915
+PerfJudge23@dev.platform.hmcts.net,PerfTester@01,PerfJudge23,11,"Bolton Combined Court Centre",11,Judge,5680954,28851211,10537395,26209262,5717495,14299116,5708470,14276574,5676984,14197614
+PerfJudge24@dev.platform.hmcts.net,PerfTester@01,PerfJudge24,8,"Birmingham",8,Judge,10517601,26190260,10532818,26206967,9816880,24548140,10525150,26196442,10500587,26183307
+PerfJudge25@dev.platform.hmcts.net,PerfTester@01,PerfJudge25,69,"Leeds Cloth Hall Court",69,Judge,2586172,6468264,2563690,6412193,2566780,6419876,2571591,6432060,10535863,26208763
