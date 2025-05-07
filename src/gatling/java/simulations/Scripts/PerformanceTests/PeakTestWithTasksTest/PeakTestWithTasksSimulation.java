@@ -44,9 +44,9 @@ public class PeakTestWithTasksSimulation extends Simulation {
             .injectOpen(
              //   nothingFor(Duration.ofMinutes(5)),
                 rampUsers(AppConfig.COURT_CLERK_RAMP_UP_USERS_PEAK)
-                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK))
-            ),
-    
+                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)))
+                    .protocols(httpProtocolInternal),
+                            
             CourtManagerUsersScenarioBuild.build(BASE_LINE_PEAK_COURT_MANAGER_USERS)
                 .injectOpen(
                 //    nothingFor(Duration.ofMinutes(5)),
