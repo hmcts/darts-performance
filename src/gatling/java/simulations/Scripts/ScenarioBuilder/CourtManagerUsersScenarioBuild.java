@@ -12,7 +12,7 @@ public class CourtManagerUsersScenarioBuild {
         return scenario(scenarioName)
             .group("Court Clerk Users")
             .on(
-                exec(feed(Feeders.createCourtClerkUsers()))
+                exec(feed(Feeders.createCourtManagerUsers()))
                 .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
                 .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
                 .repeat(5).on(
