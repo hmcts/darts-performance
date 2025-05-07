@@ -12,7 +12,7 @@ public class CourtClerkUsersScenarioBuild {
         return scenario(scenarioName)
             .group("Court Clerk Users")
             .on(
-                exec(feed(Feeders.createCourtManagerUsers())) // Load court clerk user data
+                exec(feed(Feeders.createCourtClerkUsers())) // Load court clerk user data
                 .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest()) // Login request
                 .exec(session -> session.set("loopCounter", 0)) // Initialize loop counter
                 .repeat(5).on(
