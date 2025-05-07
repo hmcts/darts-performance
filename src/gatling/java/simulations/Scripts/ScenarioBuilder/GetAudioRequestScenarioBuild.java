@@ -13,8 +13,10 @@ public class GetAudioRequestScenarioBuild {
         .group("Get Audio Request Scenario")
         .on(exec(GetApiTokenScenario.getApiToken())
             .repeat(AppConfig.GET_AUDIO_REQUEST_PEAK_REPEATS)
-            .on(uniformRandomSwitch().on(
-                exec(GetAudioRequestScenario.GetAudioRequestDownload()),
-                exec(GetAudioRequestScenario.GetAudioRequestPlayBack()))));
+            .on(exec(GetAudioRequestScenario.GetAudioRequestDownload())));
+
+            // .on(uniformRandomSwitch().on(
+            //     exec(GetAudioRequestScenario.GetAudioRequestDownload()),
+            //     exec(GetAudioRequestScenario.GetAudioRequestPlayBack()))));
     }
 }

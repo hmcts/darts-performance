@@ -34,65 +34,73 @@ public class PeakTestWithTasksSimulation extends Simulation {
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocolExternal, HttpProtocolBuilder httpProtocolInternal, HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolApi) {
         setUp(
-            CourtClerkUsersScenarioBuild.build(BASE_LINE_PEAK_COURT_CLERK_USERS)
-            .injectOpen(rampUsers(1)
+            // Delay the AutomatedTaskScenario by 5 minutes (300 seconds)
+            AutomatedTaskScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS)
+                .injectOpen(atOnceUsers(1))
+                .protocols(httpProtocolApi),                
     
-            //.injectOpen(rampUsers(AppConfig.getCourtClerkUsers())
-                .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK)))
-                .protocols(httpProtocolInternal),
-
+            // The rest of the scenarios will start immediately after the delay
+            CourtClerkUsersScenarioBuild.build(BASE_LINE_PEAK_COURT_CLERK_USERS)
+            .injectOpen(
+                nothingFor(Duration.ofMinutes(5)),
+                rampUsers(AppConfig.getCourtClerkUsers())
+                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_CLERK))
+            ),
+    
             CourtManagerUsersScenarioBuild.build(BASE_LINE_PEAK_COURT_MANAGER_USERS)
-            .injectOpen(rampUsers(1)
-   
-            // .injectOpen(rampUsers(AppConfig.getCourtManagerUsers())
-                .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_MANAGER)))
+                .injectOpen(
+                    nothingFor(Duration.ofMinutes(5)),
+                    rampUsers(AppConfig.getCourtManagerUsers())
+                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_COURT_MANAGER)))
                 .protocols(httpProtocolInternal),
-
+    
             TranscriberUsersScenario.build(BASE_LINE_PEAK_TRANSCRIBER_USERS)
-            .injectOpen(rampUsers(1)
-            //.injectOpen(rampUsers(AppConfig.getTranscriberUsers())
-                .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_TRANSCRIBER)))
+                .injectOpen(
+                    nothingFor(Duration.ofMinutes(5)),
+                    rampUsers(AppConfig.getTranscriberUsers())
+                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_TRANSCRIBER)))
                 .protocols(httpProtocolExternal),
-
+    
             JudgeUserScenario.build(BASE_LINE_PEAK_JUDGE_USERS)
-                //.injectOpen(rampUsers(AppConfig.getJudgeUsers())                
-                .injectOpen(rampUsers(1)
-
-                .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)))
+                .injectOpen(
+                    nothingFor(Duration.ofMinutes(5)),
+                    rampUsers(AppConfig.getJudgeUsers())                
+                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_JUDGES)))
                 .protocols(httpProtocolInternal),
-
+    
             LanguageShopUserScenario.build(BASE_LINE_PEAK_LANGUAGE_USERS)
-            //    .injectOpen(rampUsers(AppConfig.getLanguageShopUsers())
-                .injectOpen(rampUsers(1)
-
-                .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)))
+                .injectOpen(
+                    nothingFor(Duration.ofMinutes(5)),
+                    rampUsers(AppConfig.getLanguageShopUsers())
+                    .during(Duration.ofMinutes(AppConfig.RAMP_UP_DURATION_OF_LANGUAGE_SHOP)))
                 .protocols(httpProtocolExternal),
-
+    
             SoapGatewayUsersScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS)
-            .injectOpen(atOnceUsers(1))
-
-           //     .injectOpen(atOnceUsers(AppConfig.getSoapUsers()))
+                .injectOpen(
+                    nothingFor(Duration.ofMinutes(5)),
+                    atOnceUsers(AppConfig.getSoapUsers()))
                 .protocols(httpProtocolSoap),
-
+    
             PostAudioRequestScenarioBuild.build(API_REQUESTS_POST_AUDIO_REQUEST)
-            .injectOpen(atOnceUsers(1))
-            //.injectOpen(atOnceUsers(AppConfig.getPostAudioUsers()))
+                .injectOpen(
+                    nothingFor(Duration.ofMinutes(5)),
+                    atOnceUsers(AppConfig.getPostAudioUsers()))
                 .protocols(httpProtocolApi), 
             
             GetAudioRequestScenarioBuild.build(API_REQUESTS_GET_AUDIO_REQUEST)
-            .injectOpen(atOnceUsers(1))
-           // .injectOpen(atOnceUsers(AppConfig.getGetAudioUsers()))
-                .protocols(httpProtocolApi), 
-
+                .injectOpen(
+                    nothingFor(Duration.ofMinutes(5)),
+                    atOnceUsers(AppConfig.getGetAudioUsers()))
+                .protocols(httpProtocolApi),
+    
             DeleteAudioRequestScenarioBuild.build(API_REQUESTS_DELETE_AUDIO_REQUEST)
-                .injectOpen(atOnceUsers(AppConfig.getDeleteAudioUsers()))
+                .injectOpen(
+                    nothingFor(Duration.ofMinutes(5)),
+                    atOnceUsers(AppConfig.getDeleteAudioUsers()))
                 .protocols(httpProtocolApi)
-            
-            // AutomatedTaskScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS)
-            //     .injectOpen(atOnceUsers(1))
-            //     .protocols(httpProtocolApi)            
         );
     }
+    
 
     private HttpProtocolBuilder configureInternalHttp() {
         return http
