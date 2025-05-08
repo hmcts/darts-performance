@@ -17,9 +17,10 @@ public class AutomatedTaskScenario {
         .on(exec(GetApiTokenScenario.getApiToken())
                 .repeat(1)    
                 .on(exec(RunInboundToUnstructuredDataStoreScenario.RunInboundToUnstructuredDataStore())
-              //  .exec(RunApplyRetentionTaskScenario.RunApplyRetentionTask())
-               // .exec(RunApplyRetentionCaseAssociatedObjectsTaskScenario.RunApplyRetentionCaseAssociatedObjectsTask())
-             //   .exec(RunUnstructuredToArmDataStoreScenario.RunUnstructuredToArmDataStore())
+                .exec(RunUnstructuredToArmDataStoreScenario.RunUnstructuredToArmDataStore())
+                .pause(300)
+                .exec(RunApplyRetentionTaskScenario.RunApplyRetentionTask())
+                .exec(RunApplyRetentionCaseAssociatedObjectsTaskScenario.RunApplyRetentionCaseAssociatedObjectsTask())
              //   .exec(RunProcessArmResponseFilesTaskScenario.RunProcessArmResponseFilesTask())
             )
         );

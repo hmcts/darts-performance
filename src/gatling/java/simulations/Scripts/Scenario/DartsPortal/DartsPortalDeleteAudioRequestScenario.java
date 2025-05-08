@@ -237,6 +237,8 @@ public final class DartsPortalDeleteAudioRequestScenario {
           )
           .exec(session -> {
               int statusCode = session.getInt("status");
+              String transformedMediaId = session.getString("getTransformedMediaId");
+              String email = session.getString("Email");
               if (statusCode == 403) {
                   String errorType = session.getString("errorType");
                   String errorTitle = session.getString("errorTitle");
@@ -250,8 +252,8 @@ public final class DartsPortalDeleteAudioRequestScenario {
                   // Mark the session as failure.
                   return session.markAsFailed();
               } else {
-                  // Handle other status codes if necessary
-                  return session;
+                  System.out.println("Deleted TransformedMediaId: " + transformedMediaId + " from user " + email);
+                return session;
               }
           })          
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - Transformed_Media - Delete"))
