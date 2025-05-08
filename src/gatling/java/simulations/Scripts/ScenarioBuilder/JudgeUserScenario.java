@@ -57,7 +57,7 @@ public class JudgeUserScenario {
                     // Update the loop counter in the session for the next iteration
                     return session.set("loopCounter", iteration);
                 })
-                    .exec(DartsPortalAdvanceSearchScenario.DartsPortalAdvanceSearch()) // Perform advance search
+                    .exec(DartsPortalChangeRetentionScenario.DartsPortalChangeRetention())
                 )
                 .exec(DartsPortalInternalLogoutScenario.DartsPortalInternalLogoutRequest()) // Logout request
             );

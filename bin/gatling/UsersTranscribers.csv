@@ -1,46 +1,46 @@
 Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,cas_id1,hea_id1,cas_id2,hea_id2,cas_id3,hea_id3,cas_id4,hea_id4,cas_id5,hea_id5
-PerfTranscriber01@hmcts.net,PerfTester@01,PerfTranscriberOne,1,"Birmingham Crown Court sitting at 4 Newton Street",1,Transcriber,234792,587311,249944,625264,282760,707726,232664,581988,279208,698799
-PerfTranscriber02@hmcts.net,PerfTester@01,PerfTranscriberTwo,93,"Newcastle Combined Court Centre",93,Transcriber,1835175,4590272,1984071,4963054,1960407,4903881,1811239,4530258,1859399,4650846
-PerfTranscriber03@hmcts.net,PerfTester@01,PerfTranscriber03,7,"Basildon Combined Court Centre",7,Transcriber,1562227,3907905,1519651,3801396,1560195,3902942,1562787,3909312,1533939,3837127
-PerfTranscriber04@hmcts.net,PerfTester@01,PerfTranscriber04,8,"Birmingham",8,Transcriber,9841171,24608794,9702547,24262411,9728819,24328007,9819907,24555760,9811075,24533664
-PerfTranscriber05@hmcts.net,PerfTester@01,PerfTranscriber05,10,"Blackfriars",10,Transcriber,9179858,22953938,9165682,22918525,9240758,23106137,9207446,23022751,9157586,22898287
-PerfTranscriber06@hmcts.net,PerfTester@01,PerfTranscriber06,13,"Bournemouth Combined Court Centre",13,Transcriber,9987402,24974424,10027338,25074198,10055226,25143658,10065786,25169964,10016602,25047457
-PerfTranscriber07@hmcts.net,PerfTester@01,PerfTranscriber07,14,"Bradford Combined Court Centre",14,Transcriber,6912208,17285044,7026304,17570268,6966928,17421663,6914320,17290282,6931696,17333720
-PerfTranscriber08@hmcts.net,PerfTester@01,PerfTranscriber08,64,"Kingston",64,Transcriber,10127419,25323590,10128795,25327016,10225835,25569662,10256315,25645935,10233835,25589769
-PerfTranscriber09@hmcts.net,PerfTester@01,PerfTranscriber09,122,"Southwark",122,Transcriber,7452675,18636547,7531779,18834361,7616179,19045855,7526867,18822138,7455475,18643465
-PerfTranscriber10@hmcts.net,PerfTester@01,PerfTranscriber10,21,"Cardiff",21,Transcriber,10377452,25948459,10398076,25999747,10429900,26079067,10396204,25995141,10386524,25971127
-PerfTranscriber11@hmcts.net,PerfTester@01,PerfTranscriber11,137,"Sheffield Combined Court Centre",137,Transcriber,7891316,19733463,7914244,19790695,7975556,19943410,7835940,19595181,7885700,19719540
-PerfTranscriber12@hmcts.net,PerfTester@01,PerfTranscriber12,47,"Exeter Combined Court Centre",47,Transcriber,9628337,24076384,9670049,24180876,9670801,24182730,9682321,24211608,9653969,24140563
-PerfTranscriber13@hmcts.net,PerfTester@01,PerfTranscriber13,96,"Northampton Combined Court Centre",96,Transcriber,5771699,14434614,5799347,14503692,5778899,14452589,5795043,14492844,5747731,14374728
-PerfTranscriber14@hmcts.net,PerfTester@01,PerfTranscriber14,78,"Liverpool Crown Court",78,Transcriber,4089088,10227613,4071552,10183728,3865888,9669240,4026608,10071229,3831136,9582065
-PerfTranscriber15@hmcts.net,PerfTester@01,PerfTranscriber15,93,"Newcastle Combined Court Centre",93,Transcriber,1862519,4658703,1801447,4505755,1893975,4737428,1852631,4633966,1924103,4812800
-PerfTranscriber16@hmcts.net,PerfTester@01,PerfTranscriber16,85,"Manchester Crown Square",85,Transcriber,7794356,19491438,7751124,19383347,7679396,19203663,7694260,19240811,7751284,19383751
-PerfTranscriber17@hmcts.net,PerfTester@01,PerfTranscriber17,87,"Manchester Minshull Street",87,Transcriber,8794348,21991511,8755852,21895372,8756636,21897314,8831740,22084722,8807708,22024925
-PerfTranscriber18@hmcts.net,PerfTester@01,PerfTranscriber18,93,"Newcastle Combined Court Centre",93,Transcriber,1983479,4961578,1883127,4710369,1928519,4823865,1816119,4542615,1937751,4846923
-PerfTranscriber19@hmcts.net,PerfTester@01,PerfTranscriber19,93,"Newcastle Combined Court Centre",93,Transcriber,1875527,4691232,1962343,4908711,1960407,4903881,1993959,4987709,1817255,4545520
-PerfTranscriber20@hmcts.net,PerfTester@01,PerfTranscriber20,107,"Portsmouth Combined Court Centre",107,Transcriber,8196852,20498513,8275300,20695024,8225172,20569529,8232564,20588132,8205588,20520437
-PerfTranscriber21@hmcts.net,PerfTester@01,PerfTranscriber21,17,"Burnley Combined Court Centre",17,Transcriber,4518386,11300601,4500834,11256730,4515138,11292522,4511170,11282545,4490898,11231955
-PerfTranscriber22@hmcts.net,PerfTester@01,PerfTranscriber22,32,"Cirencester",32,Transcriber,64056,160260,66632,166648,64952,162428,74088,185361,66136,165385
-PerfTranscriber23@hmcts.net,PerfTester@01,PerfTranscriber23,53,"Harrow",53,Transcriber,8479785,21205225,8477225,21198767,8424329,21066960,8463833,21165420,8423369,21064597
-PerfTranscriber24@hmcts.net,PerfTester@01,PerfTranscriber24,59,"Inner London",59,Transcriber,2819405,7052058,2873325,7187391,2941485,7357745,2952813,7386023,2939181,7352009
-PerfTranscriber25@hmcts.net,PerfTester@01,PerfTranscriber25,62,"Isleworth",62,Transcriber,8127940,20325819,8165076,20418999,8068148,20175665,8075988,20195390,8182276,20462007
-PerfTranscriber26@hmcts.net,PerfTester@01,PerfTranscriber26,26,"Chelmsford New Magistrates",26,Transcriber,999580,2500954,1005916,2516760,1010700,2528649,1001612,2506037,1020540,2553420
-PerfTranscriber27@hmcts.net,PerfTester@01,PerfTranscriber27,45,"Dorchester Combined Court Centre",45,Transcriber,109624,273788,106776,266616,108776,271668,105592,263622,103496,258425
-PerfTranscriber28@hmcts.net,PerfTester@01,PerfTranscriber28,9,"Birmingham Library and Rep",9,Transcriber,739429,1849148,746357,1866580,731637,1829545,730421,1826534,742469,1856797
-PerfTranscriber29@hmcts.net,PerfTester@01,PerfTranscriber29,28,"Chester Crowne Plaza",28,Transcriber,1426291,3568149,1431603,3581265,1429155,3575218,1428579,3573770,1421523,3556257
-PerfTranscriber30@hmcts.net,PerfTester@01,PerfTranscriber30,78,"Liverpool Crown Court",78,Transcriber,3859248,9652795,4062352,10160688,4024608,10066193,4104304,10265656,4023856,10064323
-PerfTranscriber31@hmcts.net,PerfTester@01,PerfTranscriber31,11,"Bolton Combined Court Centre",11,Transcriber,5696066,14245523,5711970,14285294,5679490,14203823,5692866,14237504,5665714,14169544
-PerfTranscriber32@hmcts.net,PerfTester@01,PerfTranscriber32,12,"Bolton Stadium",12,Transcriber,507292,1268972,503612,1259770,506924,1268051,510044,1275834,499820,1250272
-PerfTranscriber33@hmcts.net,PerfTester@01,PerfTranscriber33,29,"Chester Magistrates Court",29,Transcriber,604432,1511342,619888,1550132,624400,1561395,609120,1523191,603792,1509795
-PerfTranscriber34@hmcts.net,PerfTester@01,PerfTranscriber34,97,"Norwich Combined Court Centre",97,Transcriber,5930485,14831565,5889813,14729754,5940613,14856927,5920533,14806709,5922565,14811839
-PerfTranscriber35@hmcts.net,PerfTester@01,PerfTranscriber35,89,"Merthyr Tydfil Combined Court Centre",89,Transcriber,17846098,33185009,17929030,33260958,17842403,33181250,17849791,33188660,17931905,33263780
-PerfTranscriber36@hmcts.net,PerfTester@01,PerfTranscriber36,31,"Chichester Combined Court Centre",31,Transcriber,1769734,4426416,1781670,4456333,1781462,4455803,1782438,4458218,1779958,4452033
-PerfTranscriber37@hmcts.net,PerfTester@01,PerfTranscriber37,17,"Burnley Combined Court Centre",17,Transcriber,4482466,11210914,4497810,11249156,4478482,11200850,4500834,11256730,4498610,11251196
-PerfTranscriber38@hmcts.net,PerfTester@01,PerfTranscriber38,71,"Leicester",71,Transcriber,9470108,23680433,9472860,23687373,9455852,23644579,9477420,23698854,9430188,23580087
-PerfTranscriber39@hmcts.net,PerfTester@01,PerfTranscriber39,119,"Snaresbrook",119,Transcriber,2102279,5258164,2206295,5518045,2058999,5150214,2126503,5318663,2150871,5379628
-PerfTranscriber40@hmcts.net,PerfTester@01,PerfTranscriber40,41,"Croydon Jurys Inn",41,Transcriber,1347842,3371610,1333826,3336641,1353778,3386419,1332258,3332683,1337618,3346137
-PerfTranscriber41@hmcts.net,PerfTester@01,PerfTranscriber41,33,"Coventry Combined Court Centre",33,Transcriber,4584947,11467126,4605203,11517794,4595427,11493211,4591331,11482972,4571475,11433484
-PerfTranscriber42@hmcts.net,PerfTester@01,PerfTranscriber42,134,"Teesside Combined Court Centre",134,Transcriber,7046864,17621797,7125728,17819158,7167616,17924044,7058736,17651606,7164544,17916326
-PerfTranscriber43@hmcts.net,PerfTester@01,PerfTranscriber43,23,"Carmarthen",23,Transcriber,1631251,4080050,1621507,4055868,1623699,4061215,1636963,4094442,1637107,4094796
-PerfTranscriber44@hmcts.net,PerfTester@01,PerfTranscriber44,101,"Peterborough Combined Court Centre",101,Transcriber,2353473,5886529,2351761,5882232,2318497,5798829,2330641,5829399,2314465,5788785
-PerfTranscriber45@hmcts.net,PerfTester@01,PerfTranscriber45,81,"Luton",81,Transcriber,3113681,7788268,3058817,7651411,3093217,7737328,3045921,7618987,3107137,7771904
+PerfTranscriber01@hmcts.net,PerfTester@01,PerfTranscriberOne,1,"Birmingham Crown Court sitting at 4 Newton Street",1,Transcriber,255480,639249,239896,600020,302680,757212,282152,706230,301016,753050
+PerfTranscriber02@hmcts.net,PerfTester@01,PerfTranscriberTwo,93,"Newcastle Combined Court Centre",93,Transcriber,1961495,4906561,1899863,4752186,1933655,4836669,1931703,4831848,1967607,4921801
+PerfTranscriber03@hmcts.net,PerfTester@01,PerfTranscriber03,7,"Basildon Combined Court Centre",7,Transcriber,1490835,3729589,1498979,3749918,1504323,3763217,1496259,3743126,1487683,3721716
+PerfTranscriber04@hmcts.net,PerfTester@01,PerfTranscriber04,8,"Birmingham",8,Transcriber,9843267,24614039,9799667,24505142,9825459,24569750,9814547,24542319,9765859,24420486
+PerfTranscriber05@hmcts.net,PerfTester@01,PerfTranscriber05,10,"Blackfriars",10,Transcriber,9154066,22889458,9160834,22906397,9188742,22975981,9188214,22974647,9167074,22922014
+PerfTranscriber06@hmcts.net,PerfTester@01,PerfTranscriber06,13,"Bournemouth Combined Court Centre",13,Transcriber,10082746,25212051,9976154,24946204,10045418,25119302,10005162,25018766,9978586,24952287
+PerfTranscriber07@hmcts.net,PerfTester@01,PerfTranscriber07,14,"Bradford Combined Court Centre",14,Transcriber,6941536,17358297,6963248,17412478,6908832,17276659,6947488,17373187,7013968,17539063
+PerfTranscriber08@hmcts.net,PerfTester@01,PerfTranscriber08,64,"Kingston",64,Transcriber,10161915,25409827,10163499,25413780,10227611,25574129,10191659,25484259,10163499,25413779
+PerfTranscriber09@hmcts.net,PerfTester@01,PerfTranscriber09,122,"Southwark",122,Transcriber,7538675,18851564,7555971,18894887,7449859,18629482,7468067,18674852,7600835,19007393
+PerfTranscriber10@hmcts.net,PerfTester@01,PerfTranscriber10,21,"Cardiff",21,Transcriber,10308812,25777250,10297916,25749884,10310060,25780319,10416812,26046581,10414332,26040502
+PerfTranscriber11@hmcts.net,PerfTester@01,PerfTranscriber11,137,"Sheffield Combined Court Centre",137,Transcriber,7879716,19704574,7863636,19664379,7932724,19836827,7899572,19754149,7831444,19584110
+PerfTranscriber12@hmcts.net,PerfTester@01,PerfTranscriber12,47,"Exeter Combined Court Centre",47,Transcriber,9657937,24150506,9609521,24029322,9648017,24125659,9605425,24019223,9670097,24181002
+PerfTranscriber13@hmcts.net,PerfTester@01,PerfTranscriber13,96,"Northampton Combined Court Centre",96,Transcriber,5802659,14511958,5800851,14507446,5778259,14450961,5752067,14385498,5803363,14513692
+PerfTranscriber14@hmcts.net,PerfTester@01,PerfTranscriber14,78,"Liverpool Crown Court",78,Transcriber,4204656,10516948,4070112,10180032,3805120,9517007,3856448,9645712,3932336,9835697
+PerfTranscriber15@hmcts.net,PerfTester@01,PerfTranscriber15,93,"Newcastle Combined Court Centre",93,Transcriber,1883319,4710872,1867959,4672303,1877095,4695174,1795287,4490362,1930135,4827970
+PerfTranscriber16@hmcts.net,PerfTester@01,PerfTranscriber16,93,"Newcastle Combined Court Centre",93,Transcriber,1885623,4716596,1948695,4874476,1831303,4580588,1881927,4707358,1916663,4794138
+PerfTranscriber17@hmcts.net,PerfTester@01,PerfTranscriber17,93,"Newcastle Combined Court Centre",93,Transcriber,1916839,4794580,1933959,4837439,1900487,4753765,1933655,4836668,1835047,4589951
+PerfTranscriber18@hmcts.net,PerfTester@01,PerfTranscriber18,93,"Newcastle Combined Court Centre",93,Transcriber,1829015,4574869,1795287,4490362,1970695,4929662,1865351,4665742,1957319,4896128
+PerfTranscriber19@hmcts.net,PerfTester@01,PerfTranscriber19,100,"Oxford Combined Court Centre",100,Transcriber,7283617,18213712,7263969,18164444,7238785,18101606,7237585,18098547,7241105,18107359
+PerfTranscriber20@hmcts.net,PerfTester@01,PerfTranscriber20,93,"Newcastle Combined Court Centre",93,Transcriber,1916839,4794580,1930503,4828916,1863319,4660758,1895063,4740077,1835047,4589951
+PerfTranscriber21@hmcts.net,PerfTester@01,PerfTranscriber21,17,"Burnley Combined Court Centre",17,Transcriber,4478562,11201060,4512994,11287149,4487490,11223405,4470994,11182136,4478162,11200029
+PerfTranscriber22@hmcts.net,PerfTester@01,PerfTranscriber22,32,"Cirencester",32,Transcriber,70312,175876,68488,171278,64920,162344,74104,185405,70600,176646
+PerfTranscriber23@hmcts.net,PerfTester@01,PerfTranscriber23,53,"Harrow",53,Transcriber,8432553,21087516,8440457,21107387,8482857,21212856,8421337,21059529,8435257,21094284
+PerfTranscriber24@hmcts.net,PerfTester@01,PerfTranscriber24,59,"Inner London",59,Transcriber,2893277,7237462,2882269,7209862,2840589,7105307,2812013,7033605,2822317,7059353
+PerfTranscriber25@hmcts.net,PerfTester@01,PerfTranscriber25,62,"Isleworth",62,Transcriber,8104596,20267219,8130372,20331948,8167252,20424417,8095892,20245349,8019588,20053685
+PerfTranscriber26@hmcts.net,PerfTester@01,PerfTranscriber26,26,"Chelmsford New Magistrates",26,Transcriber,1011244,2530042,1020540,2553420,1022444,2558207,1016716,2543787,1020908,2554356
+PerfTranscriber27@hmcts.net,PerfTester@01,PerfTranscriber27,36,"Aldersgate House",36,Transcriber,538093,1345715,536941,1342844,540973,1352834,545597,1364311,528525,1322045
+PerfTranscriber28@hmcts.net,PerfTester@01,PerfTranscriber28,9,"Birmingham Library and Rep",9,Transcriber,751829,1880229,752517,1882005,736469,1841759,737749,1844941,746101,1865957
+PerfTranscriber29@hmcts.net,PerfTester@01,PerfTranscriber29,28,"Chester Crowne Plaza",28,Transcriber,1425315,3565736,1416531,3543661,1431603,3581263,1432035,3582375,1408739,3524218
+PerfTranscriber30@hmcts.net,PerfTester@01,PerfTranscriber30,78,"Liverpool Crown Court",78,Transcriber,3807712,9523430,4151984,10384979,4188016,10475146,3963280,9913136,4178768,10451944
+PerfTranscriber31@hmcts.net,PerfTester@01,PerfTranscriber31,11,"Bolton Combined Court Centre",11,Transcriber,5693778,14239807,5731458,14334131,5717618,14299428,5676994,14197640,5674802,14192229
+PerfTranscriber32@hmcts.net,PerfTester@01,PerfTranscriber32,12,"Bolton Stadium",12,Transcriber,507292,1268972,516444,1291673,510268,1276382,520124,1300958,498300,1246440
+PerfTranscriber33@hmcts.net,PerfTester@01,PerfTranscriber33,38,"Crown Court at Monument",38,Transcriber,1481187,3705424,1467171,3670366,1472627,3683895,1483443,3711119,1464211,3662919
+PerfTranscriber34@hmcts.net,PerfTester@01,PerfTranscriber34,97,"Norwich Combined Court Centre",97,Transcriber,5953317,14888872,5907765,14774784,5891973,14735215,5957717,14899967,5914917,14792506
+PerfTranscriber35@hmcts.net,PerfTester@01,PerfTranscriber35,89,"Merthyr Tydfil Combined Court Centre",89,Transcriber,18022990,33347878,18025835,33350702,18095658,33413508,18024158,33349034,18048562,33366404
+PerfTranscriber36@hmcts.net,PerfTester@01,PerfTranscriber36,31,"Chichester Combined Court Centre",31,Transcriber,1773238,4435205,1787702,4471447,1780646,4453765,1781542,4456012,1776470,4443316
+PerfTranscriber37@hmcts.net,PerfTester@01,PerfTranscriber37,17,"Burnley Combined Court Centre",17,Transcriber,4475842,11194231,4514146,11290034,4515762,11294061,4510466,11280728,4510930,11281934
+PerfTranscriber38@hmcts.net,PerfTester@01,PerfTranscriber38,71,"Leicester",71,Transcriber,9492988,23737845,9439708,23603921,9421180,23557492,9432396,23585544,9476268,23695951
+PerfTranscriber39@hmcts.net,PerfTester@01,PerfTranscriber39,119,"Snaresbrook",119,Transcriber,2061895,5157464,2056071,5142972,2207399,5520798,2102279,5258164,2237319,5595514
+PerfTranscriber40@hmcts.net,PerfTester@01,PerfTranscriber40,32,"Cirencester",32,Transcriber,67880,169747,68872,172205,64920,162344,70312,175874,73224,183209
+PerfTranscriber41@hmcts.net,PerfTester@01,PerfTranscriber41,33,"Coventry Combined Court Centre",33,Transcriber,4615251,11542790,4605331,11518096,4592467,11485780,4611635,11533737,4617011,11547180
+PerfTranscriber42@hmcts.net,PerfTester@01,PerfTranscriber42,134,"Teesside Combined Court Centre",134,Transcriber,7062848,17661949,7166064,17920198,7043072,17612279,7057712,17649010,7057712,17649009
+PerfTranscriber43@hmcts.net,PerfTester@01,PerfTranscriber43,23,"Carmarthen",23,Transcriber,1623795,4061467,1631603,4080933,1629539,4075753,1623283,4060251,1623283,4060250
+PerfTranscriber44@hmcts.net,PerfTester@01,PerfTranscriber44,101,"Peterborough Combined Court Centre",101,Transcriber,2313425,5786159,2342257,5858316,2304929,5764865,2338529,5848937,2342033,5857733
+PerfTranscriber45@hmcts.net,PerfTester@01,PerfTranscriber45,81,"Luton",81,Transcriber,3110593,7780607,3113681,7788269,3072945,7686673,3077809,7698837,3048465,7625449
