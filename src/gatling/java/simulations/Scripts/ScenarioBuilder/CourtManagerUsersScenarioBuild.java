@@ -10,7 +10,7 @@ public class CourtManagerUsersScenarioBuild {
 
     public static ScenarioBuilder build(String scenarioName) {
         return scenario(scenarioName)
-            .group("Court Clerk Users")
+            .group("Court Managers Users")
             .on(
                 exec(feed(Feeders.createCourtManagerUsers()))
                 .exec(DartsPortalInternalLoginScenario.DartsPortalInternalLoginRequest())
