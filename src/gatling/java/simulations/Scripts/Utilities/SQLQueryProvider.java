@@ -6,28 +6,43 @@ import jodd.csselly.selector.PseudoFunctions.NOT;
 public class SQLQueryProvider {
 
     public static String getHearingQuery() {
-        return "WITH filtered_hearings AS ("
-            + " SELECT h.hea_id, m.start_ts, m.end_ts, sguae.usr_id "
-            + " FROM darts.hearing h "
-            + " INNER JOIN darts.courtroom cr ON h.ctr_id = cr.ctr_id "
-            + " INNER JOIN darts.courthouse ch ON cr.cth_id = ch.cth_id "
-            + " INNER JOIN darts.court_case cc ON cc.cas_id = h.cas_id "
-            + " INNER JOIN darts.hearing_media_ae hma ON hma.hea_id = h.hea_id "
-            + " INNER JOIN darts.media m ON m.med_id = hma.med_id "
-            + " INNER JOIN darts.security_group_courthouse_ae sgcae ON ch.cth_id = sgcae.cth_id "
-            + " INNER JOIN darts.security_group_user_account_ae sguae ON sgcae.grp_id = sguae.grp_id "
-            + " WHERE h.hearing_date BETWEEN DATE '2023-02-26' AND DATE '2024-05-27' "
-            + "   AND m.is_current = true "
-            + "   AND sguae.usr_id NOT IN (-100, -99, -69, -68, -67, -48, -44, -4, -3, -2, -1, 0, 1, -101, 221, 241, 1141) "
-            + " LIMIT 1000 "
-            + ") "
-            + "SELECT "
-            + " hea_id, "
-            + " TO_CHAR(start_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.MS\"z\"') AS start_ts, "
-            + " TO_CHAR(end_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.MS\"z\"') AS end_ts, "
-            + " usr_id "
-            + "FROM filtered_hearings;";
+        return """
+            WITH deduplicated_hearings AS (
+                SELECT
+                    h.hea_id,
+                    m.start_ts,
+                    m.end_ts,
+                    sguae.usr_id,
+                    ROW_NUMBER() OVER (PARTITION BY h.hea_id ORDER BY RANDOM()) AS row_num
+                FROM darts.hearing h
+                INNER JOIN darts.courtroom cr ON h.ctr_id = cr.ctr_id
+                INNER JOIN darts.courthouse ch ON cr.cth_id = ch.cth_id
+                INNER JOIN darts.court_case cc ON cc.cas_id = h.cas_id
+                INNER JOIN darts.hearing_media_ae hma ON hma.hea_id = h.hea_id
+                INNER JOIN darts.media m ON m.med_id = hma.med_id
+                INNER JOIN darts.security_group_courthouse_ae sgcae ON ch.cth_id = sgcae.cth_id
+                INNER JOIN darts.security_group_user_account_ae sguae ON sgcae.grp_id = sguae.grp_id
+                WHERE h.hearing_date BETWEEN DATE '2023-02-26' AND DATE '2024-05-27'
+                    AND m.is_current = true
+                    AND sguae.usr_id NOT IN (-100, -99, -69, -68, -67, -48, -44, -4, -3, -2, -1, 0, 1, -101, 221, 241, 1141)
+                    AND NOT EXISTS (
+                        SELECT 1
+                        FROM darts.media_request_aud mra
+                        WHERE mra.hea_id = h.hea_id
+                    )
+            )
+            SELECT
+                hea_id,
+                TO_CHAR(start_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.MS\"z\"') AS start_ts,
+                TO_CHAR(end_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.MS\"z\"') AS end_ts,
+                usr_id
+            FROM deduplicated_hearings
+            WHERE row_num = 1
+            ORDER BY RANDOM()
+            LIMIT 1000;
+        """;
     }
+    
 
 
     public static String getTransformedMediaIdForDownloadQuery() {
