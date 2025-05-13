@@ -112,7 +112,6 @@ def simulations = [
     [task: 'runAddAudioToHearingSimulation', class: 'simulations.Scripts.DartsApi.CreateData.AddAudioToHearingSimulation'],
     [task: 'runInterpreterUsedEventSimulation', class: 'simulations.Scripts.DartsApi.CreateData.InterpreterUsedEventSimulation'],
 
-
     //General Simulations
     [task: 'runAudioPostSimulation', class: 'simulations.Scripts.DartsApi.AudioPostSimulation'],
     [task: 'runAudioRequestDeleteSimulation', class: 'simulations.Scripts.DartsApi.AudioRequestDeleteSimulation'],
@@ -136,7 +135,9 @@ def simulations = [
     [task: 'runDetsToArmTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunDetsToArmTaskSimulation'],
     [task: 'runProcessDETSToArmResponseTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunProcessDETSToArmResponseTaskSimulation'],
     [task: 'runProcessArmResponseFilesTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunProcessArmResponseFilesTaskSimulation'],
-    [task: 'runApplyRetentionCaseAssociatedObjectsTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunApplyRetentionCaseAssociatedObjectsTaskSimulation']
+    [task: 'runApplyRetentionCaseAssociatedObjectsTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunApplyRetentionCaseAssociatedObjectsTaskSimulation'],
+    [task: 'runProcessE2EArmRpoPendingTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunProcessE2EArmRpoPendingTaskSimulation'],
+    [task: 'runArmRpoPollingTaskSimulation', class: 'simulations.Scripts.DartsApi.AutomatedTasks.RunArmRpoPollingTaskSimulation']
 
 ]
 

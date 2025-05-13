@@ -1,200 +1,200 @@
 Email,Password,user_name,cth_id,courthouse_name,courthouse_code,Type,cas_id1,hea_id1,cas_id2,hea_id2,cas_id3,hea_id3,cas_id4,hea_id4,cas_id5,hea_id5
-PerfCourtClerk01@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk01,85,"Manchester Crown Square",85,CourtClerk,7619844,19054999,7744116,19365955,7791380,19484026,7804052,19515770,7733748,19340017
-PerfCourtClerk02@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk02,4,"Barnstaple",4,CourtClerk,134248,335404,128792,321770,130392,325723,132728,331551,135752,339183
-PerfCourtClerk03@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk03,10,"Blackfriars",10,CourtClerk,9145698,22868445,9226678,23071065,9178306,22950064,9227718,23073677,9200902,23006399
-PerfCourtClerk04@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk04,7,"Basildon Combined Court Centre",7,CourtClerk,1514067,3787510,1504323,3763217,1577763,3946552,1510643,3779003,1514803,3789360
-PerfCourtClerk05@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk05,1,"Birmingham Crown Court sitting at 4 Newton Street",1,CourtClerk,285960,715637,257944,645357,235960,590172,302680,757212,274376,686622
-PerfCourtClerk06@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk06,39,"Croydon Crown Court sitting at Barclay Road",39,CourtClerk,901225,2254578,906601,2268083,900089,2251684,906329,2267395,906441,2267677
-PerfCourtClerk07@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk07,46,"Durham",46,CourtClerk,10436125,26094627,10457165,26147275,10440445,26105484,10456621,26145886,10446477,26120469
-PerfCourtClerk08@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk08,15,"Crown Court sitting at Brighton Magistrates Court",15,CourtClerk,2784923,6965539,2770443,6929207,2770443,6929208,2773723,6937409,2768779,6925086
-PerfCourtClerk09@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk09,52,"Guildford Crown Court Site B",52,CourtClerk,13186473,28768671,78712,196813,78264,195684,81720,204268,77384,193525
-PerfCourtClerk100@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk100,94,"Newport Gwent",94,CourtClerk,5254253,13141082,5297485,13249473,5289709,13229980,5296797,13247768,5267005,13173056
-PerfCourtClerk101@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk101,105,"Preston Invincibles Pavilion",105,CourtClerk,324330,811297,13273085,28872065,13227356,28800974,329450,824173,330122,825818
-PerfCourtClerk102@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk102,106,"Preston Tom Finney Stand",106,CourtClerk,13244048,28817468,170920,427430,177896,444934,171944,429997,176792,442171
-PerfCourtClerk103@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk103,107,"Portsmouth Combined Court Centre",107,CourtClerk,8207476,20525157,8271364,20685125,8274612,20693305,8291060,20734339,8277988,20701801
-PerfCourtClerk104@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk104,108,"Preston Combined Court Centre",108,CourtClerk,9965816,24920221,9912664,24787489,9891736,24735078,9874392,24691585,9931976,24835717
-PerfCourtClerk105@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk105,109,"Preston Session House",109,CourtClerk,2485444,6216430,2517412,6296210,2482532,6209134,2498148,6248152,2497588,6246755
-PerfCourtClerk106@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk106,110,"Prospero House",110,CourtClerk,4216384,10546328,4225952,10570342,4231584,10584422,4212896,10537590,4232512,10586767
-PerfCourtClerk107@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk107,14,"Bradford Combined Court Centre",14,CourtClerk,6956576,17395857,6916912,17296691,6914320,17290281,6960176,17404827,7026000,17569493
-PerfCourtClerk108@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk108,13,"Bournemouth Combined Court Centre",13,CourtClerk,10097258,25248459,10067274,25173667,10072986,25187799,10087530,25224052,9985194,24968898
-PerfCourtClerk109@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk109,21,"Cardiff",21,CourtClerk,10314812,25792152,10327372,25823394,10289660,25729132,10402860,26011601,10356988,25897422
-PerfCourtClerk10@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk10,57,"Hove Trial Centre",57,CourtClerk,4981406,12459024,4965454,12419176,4995182,12493398,4994622,12492004,4961838,12410072
-PerfCourtClerk110@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk110,24,"Central Criminal Court",24,CourtClerk,4888628,12227276,4754788,11891968,4761172,11908094,4884996,12218132,4725428,11818460
-PerfCourtClerk111@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk111,115,"Reading Crown Court",115,CourtClerk,6478459,16200629,6421595,16058660,6417947,16049567,6424523,16066004,6449467,16128194
-PerfCourtClerk112@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk112,116,"Reading Magistrates Court",116,CourtClerk,4367762,10924250,4399474,11003612,4407874,11024655,4370946,10932280,4376466,10945967
-PerfCourtClerk113@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk113,117,"Salisbury Combined Court Centre",117,CourtClerk,871001,2178533,876393,2192104,892233,2231957,892569,2232817,888073,2221459
-PerfCourtClerk114@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk114,118,"Shrewsbury",118,CourtClerk,809608,2025220,822888,2058516,820232,2051871,818488,2047435,822264,2056944
-PerfCourtClerk115@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk115,119,"Snaresbrook",119,CourtClerk,2108375,5273511,2247751,5621640,2041783,5107364,2117719,5296908,2010039,5027863
-PerfCourtClerk116@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk116,120,"Southampton Combined Court Centre",120,CourtClerk,5987990,14975387,5990134,14980645,5981862,14960091,5997238,14998292,6036022,15095279
-PerfCourtClerk117@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk117,121,"Southend",121,CourtClerk,949834,2376433,966906,2419092,956282,2392496,957178,2394714,946090,2366987
-PerfCourtClerk118@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk118,122,"Southwark",122,CourtClerk,7603827,19014949,7551395,18883526,7496131,18745212,7477715,18699064,7500387,18755806
-PerfCourtClerk119@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk119,123,"Stafford Combined Court Centre",123,CourtClerk,1137166,2844845,1104174,2762510,1128814,2823889,1127454,2820505,1120974,2804293
-PerfCourtClerk11@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk11,21,"Cardiff",21,CourtClerk,10316252,25795742,10363148,25912819,10421228,26057637,10358636,25901564,10349516,25878852
-PerfCourtClerk120@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk120,134,"Teesside Combined Court Centre",134,CourtClerk,7184672,17966377,7050928,17632021,7164752,17916878,7155120,17892828,7118016,17799934
-PerfCourtClerk121@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk121,144,"Wolverhampton Combined Court Centre",144,CourtClerk,8383720,20965701,8341800,20861042,8313224,20789672,8393672,20990614,8334248,20842206
-PerfCourtClerk122@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk122,87,"Manchester Minshull Street",87,CourtClerk,8840684,22107208,8846172,22120909,8801340,22009011,8840108,22105739,8895132,22243062
-PerfCourtClerk123@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk123,94,"Newport Gwent",94,CourtClerk,5280525,13206895,5272429,13186588,5245981,13120388,5288253,13226284,5288253,13226285
-PerfCourtClerk124@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk124,119,"Snaresbrook",119,CourtClerk,2236215,5592775,2108375,5273511,2076423,5193650,2060439,5153812,1996919,4994977
-PerfCourtClerk125@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk125,122,"Southwark",122,CourtClerk,7603827,19014949,7560723,18906869,7484003,18714681,7529059,18827516,7477715,18699064
-PerfCourtClerk126@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk126,124,"St Albans",124,CourtClerk,4519938,11304505,4520370,11305599,4549650,11378861,4524882,11316803,4537154,11347481
-PerfCourtClerk127@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk127,134,"Teesside Combined Court Centre",134,CourtClerk,7131376,17833335,7083776,17714097,7113408,17788471,7179360,17953137,7142208,17860305
-PerfCourtClerk128@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk128,145,"Wolverhampton CC at Park Hall",145,CourtClerk,2670184,6678983,2661544,6657247,2663064,6661081,2654104,6638475,2657272,6646454
-PerfCourtClerk129@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk129,135,"Teesside Magistrates Court",135,CourtClerk,13178528,28760448,13244822,28818302,183560,459153,183560,459152,13229894,28803334
-PerfCourtClerk12@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk12,40,"Croydon",40,CourtClerk,8550603,21382490,8587323,21474147,8593115,21488568,8607947,21525636,8510283,21281531
-PerfCourtClerk130@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk130,137,"Sheffield Combined Court Centre",137,CourtClerk,7947588,19873770,7933492,19838685,7889684,19729418,7842996,19612876,7849412,19628905
-PerfCourtClerk131@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk131,87,"Manchester Minshull Street",87,CourtClerk,8832172,22085809,8734540,21842220,8762044,21910725,8776412,21946660,8829212,22078398
-PerfCourtClerk132@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk132,7,"Basildon Combined Court Centre",7,CourtClerk,1547587,3871172,1574147,3937605,1578355,3948044,1496259,3743125,1514019,3787378
-PerfCourtClerk133@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk133,134,"Teesside Combined Court Centre",134,CourtClerk,7178400,17950754,7123792,17814329,7167728,17924311,7155120,17892828,7070384,17680723
-PerfCourtClerk134@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk134,125,"Crown Court Sitting At St Albans Magistrates Court",125,CourtClerk,2597895,6497365,2633303,6586362,2625511,6566701,2633303,6586361,2598343,6498537
-PerfCourtClerk135@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk135,47,"Exeter Combined Court Centre",47,CourtClerk,9610129,24030860,9591265,23983740,9568545,23926924,9587041,23973106,9605969,24020538
-PerfCourtClerk136@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk136,146,"Wolverhampton Magistrates Court",146,CourtClerk,1395299,3490695,1384883,3464508,1400787,3504359,1399235,3500585,1402179,3507845
-PerfCourtClerk137@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk137,47,"Exeter Combined Court Centre",47,CourtClerk,9591265,23983740,9594001,23990662,9561249,23908759,9567809,23925010,9682545,24212194
-PerfCourtClerk138@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk138,68,"Leeds Combined Court Centre",68,CourtClerk,3289442,8227371,3277362,8197122,3350978,8381389,3223842,8063677,3358594,8400443
-PerfCourtClerk139@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk139,87,"Manchester Minshull Street",87,CourtClerk,8827132,22073241,8829212,22078398,8794972,21993054,8776732,21947444,8794876,21992817
-PerfCourtClerk13@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk13,2,"Amersham Law Courts",2,CourtClerk,1365267,3415162,1360483,3403120,1368019,3422096,1371475,3430733,1362195,3407376
-PerfCourtClerk140@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk140,8,"Birmingham",8,CourtClerk,9777683,24450218,9714979,24293302,9751859,24385434,9812259,24536603,9734579,24342304
-PerfCourtClerk141@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk141,137,"Sheffield Combined Court Centre",137,CourtClerk,7870116,19680611,7862292,19661050,7975796,19944027,7937332,19848272,7849412,19628905
-PerfCourtClerk142@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk142,126,"Stoke on Trent Combined Court Centre",126,CourtClerk,1262223,3158021,1275375,3190890,1261951,3157357,1245839,3116986,1269711,3176681
-PerfCourtClerk143@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk143,48,"Field House",48,CourtClerk,6121353,15308600,6189561,15478902,6306905,15772372,6261545,15659025,6278873,15702315
-PerfCourtClerk144@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk144,147,"Wood Green",147,CourtClerk,6825231,17067875,6761631,16908829,6812511,17036219,6843759,17114061,6824735,17066597
-PerfCourtClerk145@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk145,137,"Sheffield Combined Court Centre",137,CourtClerk,8004804,20016545,7862292,19661050,7996420,19995521,7835908,19595101,7916372,19796064
-PerfCourtClerk146@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk146,68,"Leeds Combined Court Centre",68,CourtClerk,3202098,8009311,3387266,8472217,3374066,8439235,3359170,8401886,3290114,8229010
-PerfCourtClerk147@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk147,93,"Newcastle Combined Court Centre",93,CourtClerk,1991319,4981068,1872183,4682922,1884855,4714696,1895063,4740077,1968231,4923413
-PerfCourtClerk148@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk148,10,"Blackfriars",10,CourtClerk,9215750,23043436,9249158,23127077,9234502,23090566,9189078,22976815,9160562,22905713
-PerfCourtClerk149@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk149,137,"Sheffield Combined Court Centre",137,CourtClerk,7935124,19842774,7870052,19680466,7823588,19564467,7851732,19634678,7965588,19918601
-PerfCourtClerk14@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk14,16,"Bristol",16,CourtClerk,9377180,23447629,9289756,23229154,9321532,23308449,9286428,23220627,9279852,23204108
-PerfCourtClerk150@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk150,127,"Swansea",127,CourtClerk,5607298,14023798,5616226,14046094,5598690,14002241,5596386,13996460,5637490,14099164
-PerfCourtClerk151@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk151,47,"Exeter Combined Court Centre",47,CourtClerk,9587121,23973314,9636769,24097450,9567185,23923471,9581041,23958149,9547537,23874284
-PerfCourtClerk152@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk152,148,"Wood Green at Hendon MC",148,CourtClerk,1057965,2647071,1042845,2609216,1076333,2692930,1082221,2707451,1069437,2675625
-PerfCourtClerk153@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk153,138,"The Lowry Theatre",138,CourtClerk,5055632,12644647,5033744,12589828,5035968,12595392,5050592,12631976,5007120,12523127
-PerfCourtClerk154@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk154,71,"Leicester",71,CourtClerk,9503740,23764897,9499788,23754983,9476268,23695951,9420940,23556878,9484588,23716768
-PerfCourtClerk155@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk155,93,"Newcastle Combined Court Centre",93,CourtClerk,1889095,4725304,1980375,4953836,1930503,4828916,1807031,4519735,1867511,4671184
-PerfCourtClerk156@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk156,108,"Preston Combined Court Centre",108,CourtClerk,9937640,24849937,9940856,24857985,9966584,24922170,9908040,24775960,9944152,24866388
-PerfCourtClerk157@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk157,13,"Bournemouth Combined Court Centre",13,CourtClerk,10058138,25150830,10115370,25293537,10122218,25310559,10003402,25014402,10018058,25051075
-PerfCourtClerk158@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk158,48,"Field House",48,CourtClerk,6172985,15437433,6187961,15474861,6138393,15351009,6182857,15462073,6204057,15515061
-PerfCourtClerk159@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk159,128,"Swansea Civic Centre",128,CourtClerk,97320,243102,13233823,28807263,89848,224530,96536,241169,95528,238627
-PerfCourtClerk15@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk15,47,"Exeter Combined Court Centre",47,CourtClerk,9587857,23975169,9593073,23988333,9592513,23986881,9592513,23986880,9644337,24116461
-PerfCourtClerk160@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk160,139,"Truro Combined Court Centre",139,CourtClerk,4661107,11657621,4627635,11573795,4647987,11624877,4634627,11591258,4631699,11583961
-PerfCourtClerk161@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk161,149,"Woolwich",149,CourtClerk,5502737,13762327,5541377,13858942,5474001,13690359,5585585,13969318,5591729,13984788
-PerfCourtClerk162@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk162,93,"Newcastle Combined Court Centre",93,CourtClerk,1936295,4843278,1916839,4794580,1957319,4896128,1936551,4843899,1851895,4632147
-PerfCourtClerk163@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk163,71,"Leicester",71,CourtClerk,9442684,23611466,9499548,23754365,9441564,23608642,9485516,23719105,9484588,23716768
-PerfCourtClerk164@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk164,108,"Preston Combined Court Centre",108,CourtClerk,9944152,24866388,9942472,24862109,9921544,24809708,9939848,24855477,9849560,24629665
-PerfCourtClerk165@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk165,14,"Bradford Combined Court Centre",14,CourtClerk,6931472,17333142,6963520,17413143,7001120,17506753,6910016,17279597,6989344,17477441
-PerfCourtClerk166@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk166,21,"Cardiff",21,CourtClerk,10395612,25993608,10310060,25780319,10363148,25912819,10337020,25847532,10323724,25814346
-PerfCourtClerk167@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk167,48,"Field House",48,CourtClerk,6299097,15752803,6148633,15376350,6214073,15540067,6138393,15351009,6232153,15585168
-PerfCourtClerk168@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk168,140,"Warrington Combined Court Centre",140,CourtClerk,5141131,12858385,5168411,12926431,5149963,12880372,5118459,12801730,5145915,12870301
-PerfCourtClerk169@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk169,150,"Worcester Combined Court Centre",150,CourtClerk,1172526,2933501,1159422,2900699,1194398,2988304,1186590,2968616,1154622,2888640
-PerfCourtClerk16@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk16,53,"Harrow",53,CourtClerk,8434697,21092876,8435257,21094284,8404569,21017740,8468505,21177144,8482297,21211419
-PerfCourtClerk170@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk170,119,"Snaresbrook",119,CourtClerk,2041783,5107364,2168727,5424279,2074103,5187862,2041975,5107845,2089207,5225738
-PerfCourtClerk171@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk171,78,"Liverpool Crown Court",78,CourtClerk,3849760,9628976,3825968,9569163,3855664,9643769,3934560,9841257,3817584,9548074
-PerfCourtClerk172@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk172,78,"Liverpool Crown Court",78,CourtClerk,4091568,10233888,3877488,9698272,4104304,10265656,3885952,9719355,4105136,10267759
-PerfCourtClerk173@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk173,16,"Bristol",16,CourtClerk,9361788,23409025,9373116,23437500,9302300,23260391,9391244,23482595,9329148,23327417
-PerfCourtClerk174@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk174,24,"Central Criminal Court",24,CourtClerk,4807636,12024713,4850756,12132753,4888628,12227276,4888548,12227084,4775476,11943810
-PerfCourtClerk175@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk175,130,"Swindon Combined Court Centre",130,CourtClerk,4277009,10698055,4253713,10639836,4280145,10705903,4259089,10653300,4275745,10694946
-PerfCourtClerk176@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk176,141,"Warwick Combined Court Centre",141,CourtClerk,3028592,7575713,2961968,7408838,3007968,7523723,3024368,7565157,2959040,7401487
-PerfCourtClerk177@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk177,151,"York",151,CourtClerk,2738842,6850341,2715338,6791657,2729114,6826284,2742442,6859353,2725994,6818519
-PerfCourtClerk178@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk178,119,"Snaresbrook",119,CourtClerk,2117479,5296312,2144247,5363079,2243111,5609929,2238727,5599008,2204967,5514783
-PerfCourtClerk179@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk179,78,"Liverpool Crown Court",78,CourtClerk,3825968,9569163,3934560,9841257,4200080,10505414,4015792,10044237,4006864,10021780
-PerfCourtClerk17@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk17,58,"Crown Court sitting at Huntingdon Law Courts",58,CourtClerk,2529093,6325533,2546677,6369634,2522981,6310208,2537125,6345606,2538805,6349790
-PerfCourtClerk180@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk180,78,"Liverpool Crown Court",78,CourtClerk,4108064,10275095,4156912,10397247,3956816,9897004,4017616,10048750,3994224,9990456
-PerfCourtClerk181@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk181,20,"Canterbury Combined Court Centre",20,CourtClerk,9098977,22751781,9133025,22836840,9087457,22723025,9092033,22734423,9070449,22680547
-PerfCourtClerk182@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk182,62,"Isleworth",62,CourtClerk,8045956,20119842,8065524,20169138,8076356,20196278,8114564,20292249,8167252,20424417
-PerfCourtClerk183@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk183,131,"Taunton",131,CourtClerk,764214,1911254,777894,1945624,768454,1921782,759190,1898746,777894,1945625
-PerfCourtClerk184@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk184,142,"West Midlands Court Centre",142,CourtClerk,5089336,12728897,5088584,12727049,5060600,12657147,5070072,12680721,5084344,12716425
-PerfCourtClerk186@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk186,122,"Southwark",122,CourtClerk,7612275,19036144,7465171,18667642,7532467,18836083,7555747,18894343,7452195,18635355
-PerfCourtClerk187@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk187,85,"Manchester Crown Square",85,CourtClerk,7818020,19550677,7744116,19365955,7740436,19356786,7816820,19547674,7771396,19433754
-PerfCourtClerk188@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk188,68,"Leeds Combined Court Centre",68,CourtClerk,3352450,8385119,3176546,7945590,3290114,8229010,3351426,8382503,3209058,8026658
-PerfCourtClerk189@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk189,21,"Cardiff",21,CourtClerk,10300156,25755518,10335468,25843698,10300700,25756890,10407484,26023228,10422876,26061755
-PerfCourtClerk18@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk18,3,"Aylesbury",3,CourtClerk,6355786,15894461,6325034,15817809,6371370,15933267,6369978,15929796,6384458,15966063
-PerfCourtClerk190@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk190,64,"Kingston",64,CourtClerk,10180203,25455645,10139083,25352879,10211467,25533798,10184763,25467067,10186091,25470408
-PerfCourtClerk191@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk191,132,"Taunton Sitting at Worle",132,CourtClerk,588127,1470618,577343,1443652,596831,1492498,582319,1456197,585583,1464320
-PerfCourtClerk192@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk192,143,"Winchester Combined Court Centre",143,CourtClerk,8641596,21609834,8668924,21678408,8696156,21746100,8656940,21648247,8665372,21669556
-PerfCourtClerk193@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk193,1001,"The Criminal Court, Guildhall",157,CourtClerk,2706585,6769809,2685481,6717116,2680057,6703664,2697129,6746196,2704425,6764411
-PerfCourtClerk194@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk194,122,"Southwark",122,CourtClerk,7426675,18571527,7523363,18813421,7552627,18886573,7584995,18967711,7515059,18792566
-PerfCourtClerk195@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk195,85,"Manchester Crown Square",85,CourtClerk,7804052,19515770,7795444,19494174,7690340,19231013,7792564,19486953,7771396,19433754
-PerfCourtClerk196@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk196,68,"Leeds Combined Court Centre",68,CourtClerk,3174818,7941248,3353634,8388102,3140290,7854854,3181586,7958226,3209058,8026658
-PerfCourtClerk197@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk197,24,"Central Criminal Court",24,CourtClerk,4847508,12124582,4773348,11938484,4888548,12227084,4754788,11891967,4855732,12145116
-PerfCourtClerk198@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk198,62,"Isleworth",62,CourtClerk,8182164,20461756,8034980,20092357,8141732,20360555,8130932,20333395,8017476,20048321
-PerfCourtClerk199@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk199,64,"Kingston",64,CourtClerk,10219595,25554046,10200043,25505325,10224651,25566662,10247275,25623295,10128939,25327371
-PerfCourtClerk19@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk19,41,"Croydon Jurys Inn",41,CourtClerk,1340466,3353242,1341938,3356900,1353778,3386416,1344066,3362181,1345746,3366342
-PerfCourtClerk200@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk200,134,"Teesside Combined Court Centre",134,CourtClerk,7077344,17698184,7079104,17702558,7116192,17795332,7121344,17808265,7172432,17935839
-PerfCourtClerk20@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk20,48,"Field House",48,CourtClerk,6196921,15497245,6123577,15314194,6187289,15473187,6238505,15601073,6228009,15574835
-PerfCourtClerk21@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk21,34,"Coventry Crown Court",34,CourtClerk,4907742,12274849,4928462,12326713,4941198,12358817,4928366,12326466,4946590,12372317
-PerfCourtClerk22@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk22,22,"Carlisle Combined Court Centre",22,CourtClerk,6110854,15282433,6104902,15267595,6055862,15145187,6069638,15179740,6091254,15233635
-PerfCourtClerk23@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk23,17,"Burnley Combined Court Centre",17,CourtClerk,4510930,11281934,4487778,11224115,4506914,11271901,4518626,11301231,4512898,11286907
-PerfCourtClerk24@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk24,54,"Harrow CC at Willesden MC",54,CourtClerk,639504,1598979,630032,1575444,645424,1613849,650720,1627094,634576,1586824
-PerfCourtClerk25@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk25,42,"Derby Combined Court Centre",42,CourtClerk,5845892,14619881,5845924,14619966,5872004,14685052,5861108,14657828,5821332,14558701
-PerfCourtClerk26@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk26,6,"Barrow-in-Furness",6,CourtClerk,142584,356384,146984,367413,151896,379722,149352,373338,146984,367414
-PerfCourtClerk27@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk27,35,"Coverdale House",35,CourtClerk,6540716,16356308,6538220,16350026,6579324,16452966,6529020,16327061,6499308,16252761
-PerfCourtClerk28@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk28,49,"Gloucester",49,CourtClerk,1703140,4260218,1690500,4228605,1709684,4276476,1709684,4276475,1695924,4242164
-PerfCourtClerk29@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk29,18,"Caernarfon",18,CourtClerk,1663827,4161993,1670579,4178784,1673683,4186508,1676755,4194152,1681427,4205891
-PerfCourtClerk30@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk30,23,"Carmarthen",23,CourtClerk,1631075,4079602,1620403,4053159,1632387,4082924,1629923,4076712,1623795,4061468
-PerfCourtClerk31@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk31,43,"Doncaster",43,CourtClerk,1735700,4341422,1722516,4308412,1719364,4300510,1717652,4296212,1720548,4303485
-PerfCourtClerk32@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk32,59,"Inner London",59,CourtClerk,2873309,7187349,2937661,7348192,2796781,6995286,2884653,7215860,2887645,7223301
-PerfCourtClerk33@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk33,36,"Aldersgate House",36,CourtClerk,546253,1365942,528525,1322044,543965,1360279,539165,1348392,527853,1320378
-PerfCourtClerk34@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk34,13,"Bournemouth Combined Court Centre",13,CourtClerk,10108298,25275876,10092954,25237615,10065786,25169963,10014106,25041219,10112138,25285456
-PerfCourtClerk35@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk35,19,"Cambridge",19,CourtClerk,4336386,10846201,4348466,10876248,4358642,10901485,4344434,10866206,4358402,10900869
-PerfCourtClerk36@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk36,50,"Great Grimsby Combined Court Centre",50,CourtClerk,3792688,9486155,3786384,9470247,3766400,9420125,3767104,9421923,3784688,9466021
-PerfCourtClerk37@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk37,44,"Doncaster Crown Court",44,CourtClerk,416892,1042861,410124,1025878,415740,1039966,401004,1002842,395628,989389
-PerfCourtClerk38@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk38,24,"Central Criminal Court",24,CourtClerk,4884996,12218132,4779524,11954098,4812884,12037836,4761172,11908094,4709012,11777414
-PerfCourtClerk39@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk39,37,"Crown Court at Holborn",37,CourtClerk,1447011,3619862,1439907,3602069,1434131,3587619,1438275,3597991,1436499,3593554
-PerfCourtClerk40@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk40,56,"Hereford",56,CourtClerk,57368,143506,55688,139313,55688,139314,53960,135024,39752,99619
-PerfCourtClerk41@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk41,20,"Canterbury Combined Court Centre",20,CourtClerk,9070449,22680547,9026289,22570183,9058465,22650458,9046545,22620663,9100017,22754360
-PerfCourtClerk42@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk42,14,"Bradford Combined Court Centre",14,CourtClerk,7011888,17533813,6931472,17333142,6953280,17387703,7007408,17522606,6982992,17461522
-PerfCourtClerk43@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk43,45,"Dorchester Combined Court Centre",45,CourtClerk,108840,271830,109992,274753,108760,271632,104088,259916,106952,267092
-PerfCourtClerk44@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk44,51,"Guildford",51,CourtClerk,2367474,5921361,2362610,5909332,2392626,5984371,2395330,5991191,2384466,5963759
-PerfCourtClerk45@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk45,38,"Crown Court at Monument",38,CourtClerk,1483443,3711118,1467171,3670365,1472627,3683894,1464707,3664165,1464707,3664163
-PerfCourtClerk46@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,59,"Inner London",59,CourtClerk,2939981,7354060,2819949,7053447,2858637,7150659,2808925,7025730,2803821,7012941
-PerfCourtClerk47@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk47,28,"Chester Crowne Plaza",28,CourtClerk,1408851,3524514,1423683,3561599,1410547,3528784,1421411,3555978,1413795,3536857
-PerfCourtClerk48@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk48,77,"Lincoln Combined Court Centre",77,CourtClerk,2478851,6199908,2478291,6198470,2455811,6142162,2450243,6128282,2476915,6195022
-PerfCourtClerk49@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk49,29,"Chester Magistrates Court",29,CourtClerk,604224,1510852,606080,1515576,624880,1562608,617696,1544701,603792,1509795
-PerfCourtClerk50@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk50,86,"Manchester Hilton Deansgate",86,CourtClerk,1291104,3230031,1297072,3244941,1303504,3260956,1291104,3230033,1281696,3206731
-PerfCourtClerk51@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk51,62,"Isleworth",62,CourtClerk,8034980,20092357,8137300,20349490,8162948,20413597,8060468,20156498,8124852,20318063
-PerfCourtClerk52@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk52,63,"Kingston upon Hull Combined Court Centre (including Beverley)",63,CourtClerk,6671790,16684380,6744302,16865434,6735470,16843503,6673390,16688431,6682334,16710734
-PerfCourtClerk53@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk53,102,"Peterborough Knights Chamber",102,CourtClerk,346666,867113,353898,885247,348938,872886,348202,871046,346666,867111
-PerfCourtClerk54@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk54,78,"Liverpool Crown Court",78,CourtClerk,3891088,9732170,3900736,9756128,4017056,10047362,4130800,10332042,3906736,9771310
-PerfCourtClerk55@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk55,64,"Kingston",64,CourtClerk,10164379,25416031,10211467,25533798,10231467,25583852,10126635,25321609,10228395,25576154
-PerfCourtClerk56@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk56,87,"Manchester Minshull Street",87,CourtClerk,8749148,21878726,8853628,22139441,8738732,21852631,8756556,21897118,8852060,22135489
-PerfCourtClerk57@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk57,30,"Chester Town Hall",30,CourtClerk,552110,1380583,565230,1413437,552974,1382770,560062,1400406,571790,1429728
-PerfCourtClerk58@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk58,64,"Kingston",64,CourtClerk,10198843,25502302,10192443,25486259,10180203,25455645,10258811,25652203,10202971,25512618
-PerfCourtClerk59@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk59,96,"Northampton Combined Court Centre",96,CourtClerk,5802659,14511958,5793763,14489677,5740323,14356235,5774291,14440971,5767251,14423487
-PerfCourtClerk60@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,60,"Inner London CC at the RCJ",60,CourtClerk,990395,2477884,980475,2452997,995035,2489575,991355,2480351,987371,2470239
-PerfCourtClerk61@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk61,103,"Peterborough Magistrates Court",103,CourtClerk,2427474,6071460,2424162,6063181,2419890,6052621,2427410,6071293,2425554,6066662
-PerfCourtClerk62@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk62,79,"Liverpool CJC",79,CourtClerk,228056,570499,217288,543609,221624,554435,218376,546380,221576,554309
-PerfCourtClerk63@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk63,66,"Lancaster",66,CourtClerk,1313617,3286319,1327025,3319679,1317697,3296593,1327793,3321543,1307953,3272086
-PerfCourtClerk64@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk64,88,"Birmingham Maple House",88,CourtClerk,685219,1713220,697203,1743242,677555,1694145,683283,1708420,680435,1701364
-PerfCourtClerk65@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk65,31,"Chichester Combined Court Centre",31,CourtClerk,1779142,4450005,1781542,4456013,1769270,4425279,1785046,4464708,1776470,4443316
-PerfCourtClerk66@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,61,"Ipswich",61,CourtClerk,5423455,13563917,5413983,13540328,5408111,13525536,5379599,13453890,5410335,13531140
-PerfCourtClerk67@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk67,97,"Norwich Combined Court Centre",97,CourtClerk,5943397,14863852,5889813,14729755,5942885,14862545,5920565,14806788,5912789,14787278
-PerfCourtClerk68@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk68,80,"Liverpool Hilton Hotel",80,CourtClerk,215688,539618,216312,541171,209336,523654,206232,516010,212664,532054
-PerfCourtClerk69@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk69,104,"Plymouth",104,CourtClerk,2291104,5730202,2295088,5740128,2259184,5650420,2297568,5746384,2252832,5634435
-PerfCourtClerk70@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk70,89,"Merthyr Tydfil Combined Court Centre",89,CourtClerk,18023080,33347952,18050497,33368554,18098417,33416281,18098207,33416068,18025663,33350528
-PerfCourtClerk71@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk71,32,"Cirencester",32,CourtClerk,68872,172205,74104,185404,67880,169747,67880,169746,74104,185405
-PerfCourtClerk72@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,62,"Isleworth",62,CourtClerk,8068148,20175665,8155476,20394921,8170772,20433262,8189124,20479066,8067796,20174781
-PerfCourtClerk73@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk73,98,"Nottingham",98,CourtClerk,8942528,22361731,8939456,22354048,8978032,22449826,8969648,22429017,8951168,22383288
-PerfCourtClerk74@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk74,81,"Luton",81,CourtClerk,3060065,7654507,3093217,7737329,3056625,7645979,3048225,7624852,3054049,7639476
-PerfCourtClerk75@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk75,67,"Lancaster Ashton Hall",67,CourtClerk,197592,494109,195928,489971,203528,509217,199608,499278,190872,477441
-PerfCourtClerk76@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk76,90,"Minshull St Sitting at Stockport",90,CourtClerk,359514,899279,368554,921859,367546,919344,369082,923164,358330,896359
-PerfCourtClerk77@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,25,"Chelmsford",25,CourtClerk,6594125,16490044,6587341,16473077,6594125,16490045,6586413,16470731,6656605,16646443
-PerfCourtClerk78@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk78,71,"Leicester",71,CourtClerk,9493340,23738759,9411324,23532893,9396604,23495967,9447020,23622360,9474236,23690830
-PerfCourtClerk79@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk79,33,"Coventry Combined Court Centre",33,CourtClerk,4612483,11535871,4605555,11518683,4606499,11521068,4571475,11433485,4570803,11431822
-PerfCourtClerk80@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk80,82,"M40 J15 Warwick Hotel",82,CourtClerk,1650979,4129588,1648019,4122235,1648403,4123176,1652419,4133194,1649699,4126439
-PerfCourtClerk81@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk81,99,"Nottingham Mercure Hotel",99,CourtClerk,1607923,4021913,1598227,3997546,1597491,3995698,1597347,3995337,1606947,4019434
-PerfCourtClerk82@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk82,91,"Mold",91,CourtClerk,797223,1994073,785783,1965437,791031,1978508,797831,1995576,782599,1957479
-PerfCourtClerk83@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk83,68,"Leeds Combined Court Centre",68,CourtClerk,3171954,7934135,3194370,7990159,3361122,8406805,3385602,8468050,3272578,8185302
-PerfCourtClerk84@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk84,72,"Leics Crown Sitting At Lough",72,CourtClerk,466332,1166496,459148,1148630,448348,1121760,454876,1137937,448348,1121761
-PerfCourtClerk85@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,26,"Chelmsford New Magistrates",26,CourtClerk,1005628,2516025,1012108,2532239,997260,2495148,1013132,2534842,1019180,2550029
-PerfCourtClerk86@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk86,83,"Maidstone Combined Court",83,CourtClerk,7308706,18276676,7404210,18515603,7319938,18304648,7348162,18375206,7374226,18440710
-PerfCourtClerk87@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk87,75,"Lewes Combined Court Centre",75,CourtClerk,5355150,13393181,5311278,13283807,5313726,13289883,5357982,13400266,5357982,13400265
-PerfCourtClerk88@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk88,92,"Newcastle Moot Hall",92,CourtClerk,4313841,10790075,4317729,10799752,4318113,10800711,4288897,10727782,4311489,10784288
-PerfCourtClerk89@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk89,100,"Oxford Combined Court Centre",100,CourtClerk,7296033,18244856,7262321,18160274,7231361,18082907,7238785,18101606,7222401,18060312
-PerfCourtClerk90@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk90,73,"Leonardo Hotel",73,CourtClerk,932537,2333073,923337,2310025,936393,2342646,934169,2337129,933673,2335895
-PerfCourtClerk91@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk91,69,"Leeds Cloth Hall Court",69,CourtClerk,2571382,6431535,2582006,6457949,2559350,6401290,2586566,6469277,2593782,6487212
-PerfCourtClerk92@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk92,84,"Maidstone CC Great Danes Hotel",84,CourtClerk,483164,1208677,477884,1195500,487452,1219476,472860,1182960,480172,1201222
-PerfCourtClerk93@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk93,27,"Chester",27,CourtClerk,4460434,11155715,4435778,11094217,4448898,11127056,4456674,11146286,4432962,11087304
-PerfCourtClerk94@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk94,1,"Birmingham Crown Court sitting at 4 Newton Street",1,CourtClerk,285960,715637,274376,686622,236504,591553,262936,657814,296552,741975
-PerfCourtClerk95@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk95,68,"Leeds Combined Court Centre",68,CourtClerk,3184994,7966789,3272578,8185302,3361122,8406805,3200290,8004823,3364210,8414612
-PerfCourtClerk96@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk96,74,"Lewes CC Sitting at Chichester",74,CourtClerk,726595,1816944,726579,1816899,711331,1778661,716131,1790614,728019,1820534
-PerfCourtClerk97@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk97,101,"Peterborough Combined Court Centre",101,CourtClerk,2313489,5786322,2328865,5824944,2313121,5785397,2347729,5872060,2324705,5814471
-PerfCourtClerk98@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk98,85,"Manchester Crown Square",85,CourtClerk,7805924,19520455,7782196,19460981,7718724,19302312,7771204,19433297,7804052,19515770
-PerfCourtClerk99@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk99,78,"Liverpool Crown Court",78,CourtClerk,4017616,10048750,3815376,9542492,4026496,10070919,3882768,9711395,3907840,9774172
+PerfCourtClerk01@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk01,85,"Manchester Crown Square",85,CourtClerk,7743620,19364755,7711076,19282981,7620868,19057541,7690340,19231012,7799412,19504197
+PerfCourtClerk02@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk02,9,"Birmingham Library and Rep",9,CourtClerk,744005,1860682,744117,1860974,734917,1837866,753701,1884948,747573,1869587
+PerfCourtClerk03@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk03,10,"Blackfriars",10,CourtClerk,9218262,23049806,9229846,23079017,9143874,22863830,9154354,22890186,9267574,23173195
+PerfCourtClerk04@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk04,12,"Bolton Stadium",12,CourtClerk,503916,1260544,515164,1288471,506204,1266221,518412,1296630,517452,1294250
+PerfCourtClerk05@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk05,1,"Birmingham Crown Court sitting at 4 Newton Street",1,CourtClerk,265352,663901,248904,622645,257352,643857,306920,767843,258840,647588
+PerfCourtClerk06@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk06,39,"Croydon Crown Court sitting at Barclay Road",39,CourtClerk,915433,2290213,901881,2256152,911753,2281074,919385,2300039,896377,2242441
+PerfCourtClerk07@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk07,46,"Durham",46,CourtClerk,10440653,26106009,10450733,26131272,10433997,26089333,10455981,26144318,10446461,26120427
+PerfCourtClerk08@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk08,15,"Crown Court sitting at Brighton Magistrates Court",15,CourtClerk,2785163,6966170,2783099,6960984,2757211,6896333,2783067,6960909,2775227,6941177
+PerfCourtClerk09@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk09,52,"Guildford Crown Court Site B",52,CourtClerk,13236453,28809913,86376,215859,76792,192065,88120,220200,79736,199396
+PerfCourtClerk100@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk100,94,"Newport Gwent",94,CourtClerk,5279213,13203538,5239149,13103294,5239565,13104289,5253405,13138912,5290173,13231122
+PerfCourtClerk101@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk101,105,"Preston Invincibles Pavilion",105,CourtClerk,322858,807581,331210,828533,13186180,28768745,329690,824756,320986,802919
+PerfCourtClerk102@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk102,106,"Preston Tom Finney Stand",106,CourtClerk,166936,417395,13227705,28801165,169528,423985,169080,422839,170616,426683
+PerfCourtClerk103@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk103,107,"Portsmouth Combined Court Centre",107,CourtClerk,8195508,20495140,8213380,20539928,8231620,20585746,8294324,20742484,8195652,20495505
+PerfCourtClerk104@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk104,108,"Preston Combined Court Centre",108,CourtClerk,9941528,24859687,9897576,24749633,9924360,24816675,9852264,24636377,9888792,24727707
+PerfCourtClerk105@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk105,109,"Preston Session House",109,CourtClerk,2517940,6297540,2498644,6249373,2517684,6296885,2485572,6216746,2498516,6249061
+PerfCourtClerk106@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk106,110,"Prospero House",110,CourtClerk,4242928,10612919,4220944,10557683,4249872,10630327,4217808,10549877,4223040,10562976
+PerfCourtClerk107@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk107,14,"Bradford Combined Court Centre",14,CourtClerk,6968896,17426583,6950672,17381157,6980528,17455340,7015712,17543470,7007408,17522606
+PerfCourtClerk108@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk108,13,"Bournemouth Combined Court Centre",13,CourtClerk,10004586,25017309,10121290,25308221,10038698,25102477,10091674,25234405,10042554,25112115
+PerfCourtClerk109@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk109,21,"Cardiff",21,CourtClerk,10294124,25740295,10324556,25816424,10308588,25776711,10413340,26037970,10382268,25960510
+PerfCourtClerk10@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk10,57,"Hove Trial Centre",57,CourtClerk,4957838,12400311,5001022,12507901,4971550,12434468,4963758,12414908,4968686,12427270
+PerfCourtClerk110@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk110,24,"Central Criminal Court",24,CourtClerk,4877300,12198846,4724564,11816323,4775172,11943059,4685092,11717784,4749380,11878500
+PerfCourtClerk111@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk111,115,"Reading Crown Court",115,CourtClerk,6432011,16084520,6402731,16011521,6445003,16117076,6419563,16053636,6415611,16043700
+PerfCourtClerk112@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk112,116,"Reading Magistrates Court",116,CourtClerk,4385730,10969211,4385730,10969212,4398370,11000858,4412514,11036139,4373874,10939415
+PerfCourtClerk113@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk113,117,"Salisbury Combined Court Centre",117,CourtClerk,872329,2181936,839849,2100746,835577,2090104,861081,2153708,870345,2176930
+PerfCourtClerk114@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk114,118,"Shrewsbury",118,CourtClerk,807752,2020537,810072,2026357,823304,2059575,818328,2047053,822120,2056604
+PerfCourtClerk115@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk115,119,"Snaresbrook",119,CourtClerk,2063015,5160264,2171095,5430158,2218535,5548710,2085527,5216442,2244871,5614383
+PerfCourtClerk116@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk116,120,"Southampton Combined Court Centre",120,CourtClerk,5993430,14988849,6007622,15024236,5977174,14948529,6022630,15061605,5978582,14951958
+PerfCourtClerk117@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk117,121,"Southend",121,CourtClerk,963946,2411702,962362,2407769,958474,2397977,953738,2386166,961402,2405348
+PerfCourtClerk118@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk118,122,"Southwark",122,CourtClerk,7498403,18750872,7607731,19024742,7516147,18795289,7518707,18801705,7438643,18601531
+PerfCourtClerk119@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk119,123,"Stafford Combined Court Centre",123,CourtClerk,1128478,2823084,1114414,2787889,1113518,2785616,1133070,2834618,1122190,2807322
+PerfCourtClerk11@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk11,21,"Cardiff",21,CourtClerk,10395772,25994012,10392748,25986624,10329132,25827846,10326748,25821872,10319292,25803289
+PerfCourtClerk120@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk120,134,"Teesside Combined Court Centre",134,CourtClerk,7095744,17744176,7048416,17625689,7181360,17958154,7154832,17892083,7170688,17931596
+PerfCourtClerk121@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk121,144,"Wolverhampton Combined Court Centre",144,CourtClerk,8351272,20884700,8334664,20843256,8349224,20879566,8371944,20936287,8344952,20868929
+PerfCourtClerk122@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk122,87,"Manchester Minshull Street",87,CourtClerk,8735068,21843543,8763004,21913141,8805036,22018284,8792972,21988049,8891952,22235092
+PerfCourtClerk123@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk123,94,"Newport Gwent",94,CourtClerk,5291549,13234527,5241885,13110116,5277581,13199475,5266333,13171407,5282029,13210637
+PerfCourtClerk124@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk124,119,"Snaresbrook",119,CourtClerk,2214679,5539003,2124183,5312943,2088711,5224463,1996903,4994946,2061959,5157633
+PerfCourtClerk125@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk125,122,"Southwark",122,CourtClerk,7445843,18619550,7466611,18671231,7516147,18795289,7496003,18744902,7546563,18871316
+PerfCourtClerk126@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk126,124,"St Albans",124,CourtClerk,4565362,11418232,4546146,11370057,4564562,11416174,4536434,11345704,4546050,11369827
+PerfCourtClerk127@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk127,134,"Teesside Combined Court Centre",134,CourtClerk,7045104,17617399,7188560,17976067,7181360,17958154,7158752,17901849,7058016,17649766
+PerfCourtClerk128@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk128,145,"Wolverhampton CC at Park Hall",145,CourtClerk,2667000,6670960,2661896,6658110,2649816,6627645,2666632,6670015,2646344,6618929
+PerfCourtClerk129@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk129,135,"Teesside Magistrates Court",135,CourtClerk,13245501,28818921,13236789,28810266,187528,469035,190040,475370,181608,454325
+PerfCourtClerk12@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk12,40,"Croydon",40,CourtClerk,8511115,21283626,8604571,21517194,8549291,21379137,8518075,21301146,8524779,21317923
+PerfCourtClerk130@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk130,137,"Sheffield Combined Court Centre",137,CourtClerk,7938276,19850649,7859108,19653025,7902836,19762355,7874004,19690356,7933412,19838487
+PerfCourtClerk131@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk131,87,"Manchester Minshull Street",87,CourtClerk,8810236,22031380,8797804,22000193,8862336,22161107,8782876,21962661,8845612,22119476
+PerfCourtClerk132@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk132,7,"Basildon Combined Court Centre",7,CourtClerk,1566883,3919476,1580627,3953698,1508851,3774537,1570947,3929595,1528099,3822479
+PerfCourtClerk133@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk133,134,"Teesside Combined Court Centre",134,CourtClerk,7164544,17916326,7139680,17854014,7100832,17756928,7045808,17619139,7103696,17764125
+PerfCourtClerk134@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk134,125,"Crown Court Sitting At St Albans Magistrates Court",125,CourtClerk,2632343,6583952,2598631,6499268,2606727,6519564,2634039,6588202,2619063,6550460
+PerfCourtClerk135@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk135,47,"Exeter Combined Court Centre",47,CourtClerk,9668337,24176580,9661665,24159867,9606609,24022103,9675361,24194205,9668113,24176015
+PerfCourtClerk136@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk136,146,"Wolverhampton Magistrates Court",146,CourtClerk,1405235,3515462,1400467,3503582,1403955,3512230,1396003,3492514,1400291,3503156
+PerfCourtClerk137@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk137,47,"Exeter Combined Court Centre",47,CourtClerk,9659457,24154307,9654945,24143063,9573169,23938462,9630129,24080836,9549409,23878966
+PerfCourtClerk138@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk138,68,"Leeds Combined Court Centre",68,CourtClerk,3153090,7886825,3261042,8156456,3230898,8081247,3328786,8325821,3208850,8026118
+PerfCourtClerk139@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk139,87,"Manchester Minshull Street",87,CourtClerk,8806412,22021689,8763036,21913219,8731420,21834328,8730860,21832899,8797420,21999226
+PerfCourtClerk13@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk13,2,"Amersham Law Courts",2,CourtClerk,1373299,3435298,1376483,3443321,1367059,3419700,1371763,3431453,1375731,3441369
+PerfCourtClerk140@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk140,8,"Birmingham",8,CourtClerk,9768803,24427875,9720899,24308208,9764819,24417881,9833395,24589373,9758899,24403012
+PerfCourtClerk141@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk141,137,"Sheffield Combined Court Centre",137,CourtClerk,7849124,19628160,7840676,19607032,7925844,19819488,7882468,19711442,7868788,19677312
+PerfCourtClerk142@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk142,126,"Stoke on Trent Combined Court Centre",126,CourtClerk,1221711,3056565,1236463,3093497,1233695,3086570,1277343,3195833,1255711,3141733
+PerfCourtClerk143@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk143,48,"Field House",48,CourtClerk,6302185,15760549,6306569,15771503,6298889,15752286,6173481,15438649,6221049,15557397
+PerfCourtClerk144@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk144,147,"Wood Green",147,CourtClerk,6887567,17223788,6779855,16954549,6791583,16983770,6893103,17237471,6846559,17121007
+PerfCourtClerk145@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk145,137,"Sheffield Combined Court Centre",137,CourtClerk,7868788,19677313,7874004,19690356,7882468,19711442,7885012,19717799,7925844,19819488
+PerfCourtClerk146@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk146,68,"Leeds Combined Court Centre",68,CourtClerk,3186274,7970037,3242850,8111110,3211650,8033177,3385602,8468050,3291634,8232869
+PerfCourtClerk147@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk147,93,"Newcastle Combined Court Centre",93,CourtClerk,1827543,4571241,1866151,4667795,1961767,4907221,1901991,4757463,1945911,4867461
+PerfCourtClerk148@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk148,10,"Blackfriars",10,CourtClerk,9267574,23173195,9194758,22990983,9195846,22993716,9146146,22869590,9218262,23049806
+PerfCourtClerk149@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk149,137,"Sheffield Combined Court Centre",137,CourtClerk,7902836,19762355,7912180,19785488,7925844,19819488,7966788,19921619,7885012,19717798
+PerfCourtClerk14@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk14,16,"Bristol",16,CourtClerk,9355116,23392429,9277404,23197988,9332796,23336521,9273852,23189077,9276988,23196948
+PerfCourtClerk150@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk150,127,"Swansea",127,CourtClerk,5601986,14010498,5639794,14104865,5655106,14143056,5613042,14038176,5606898,14022767
+PerfCourtClerk151@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk151,47,"Exeter Combined Court Centre",47,CourtClerk,9620625,24057167,9581249,23958695,9528769,23827364,9647585,24124590,9641937,24110434
+PerfCourtClerk152@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk152,148,"Wood Green at Hendon MC",148,CourtClerk,1050909,2629423,1076893,2694289,1049565,2626049,1044045,2612242,1033901,2586894
+PerfCourtClerk153@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk153,138,"The Lowry Theatre",138,CourtClerk,5023824,12564943,5053264,12638740,5033216,12588546,5033296,12588725,5023776,12564816
+PerfCourtClerk154@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk154,71,"Leicester",71,CourtClerk,9422940,23561870,9476972,23697741,9456284,23645662,9467804,23674610,9488860,23727510
+PerfCourtClerk155@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk155,93,"Newcastle Combined Court Centre",93,CourtClerk,1866151,4667795,1972199,4933425,1837319,4595700,1938039,4847639,1861991,4657373
+PerfCourtClerk156@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk156,108,"Preston Combined Court Centre",108,CourtClerk,9874456,24691742,9897576,24749632,9920264,24806445,9940968,24858266,9906200,24771374
+PerfCourtClerk157@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk157,13,"Bournemouth Combined Court Centre",13,CourtClerk,10032842,25087851,10020314,25056677,10065786,25169963,9996458,24997136,10038698,25102477
+PerfCourtClerk158@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk158,48,"Field House",48,CourtClerk,6275321,15693415,6190345,15480875,6123577,15314193,6276377,15696081,6150777,15381727
+PerfCourtClerk159@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk159,128,"Swansea Civic Centre",128,CourtClerk,98248,245408,91528,228674,97560,243673,13249339,28822799,13229596,28803056
+PerfCourtClerk15@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk15,47,"Exeter Combined Court Centre",47,CourtClerk,9663921,24165461,9687297,24224099,9649953,24130450,9662257,24161340,9641937,24110435
+PerfCourtClerk160@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk160,139,"Truro Combined Court Centre",139,CourtClerk,4671459,11683499,4669299,11678163,4647331,11623206,4664963,11667324,4670275,11680541
+PerfCourtClerk161@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk161,149,"Woolwich",149,CourtClerk,5577025,13947893,5480833,13707481,5466945,13672692,5509729,13779665,5542129,13860801
+PerfCourtClerk162@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk162,93,"Newcastle Combined Court Centre",93,CourtClerk,1926071,4817716,1918679,4799163,1840855,4604476,1813783,4536618,1837319,4595700
+PerfCourtClerk163@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk163,71,"Leicester",71,CourtClerk,9410380,23530504,9484876,23717514,9471212,23683259,9466460,23671256,9439708,23603920
+PerfCourtClerk164@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk164,108,"Preston Combined Court Centre",108,CourtClerk,9932072,24835955,9900648,24757218,9844328,24616725,9907560,24774755,9924360,24816675
+PerfCourtClerk165@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk165,14,"Bradford Combined Court Centre",14,CourtClerk,7014752,17541066,6955360,17392867,6980560,17455427,6937216,17347526,6932480,17335683
+PerfCourtClerk166@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk166,21,"Cardiff",21,CourtClerk,10413612,26038659,10374668,25941556,10428252,26075074,10285644,25719054,10287676,25724131
+PerfCourtClerk167@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk167,48,"Field House",48,CourtClerk,6317401,15798534,6275993,15695129,6161001,15407434,6236377,15595735,6149769,15379178
+PerfCourtClerk168@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk168,140,"Warrington Combined Court Centre",140,CourtClerk,5115275,12793679,5152635,12887140,5143083,12863112,5159211,12903532,5149883,12880151
+PerfCourtClerk169@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk169,150,"Worcester Combined Court Centre",150,CourtClerk,1180558,2953583,1174638,2938759,1206878,3019441,1188238,2972714,1170942,2929506
+PerfCourtClerk16@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk16,53,"Harrow",53,CourtClerk,8465897,21170577,8405897,21021074,8491465,21234347,8410873,21033429,8418201,21051711
+PerfCourtClerk170@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk170,119,"Snaresbrook",119,CourtClerk,2137671,5346603,2056071,5142972,2164215,5413055,2166567,5418857,2033191,5085709
+PerfCourtClerk171@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk171,78,"Liverpool Crown Court",78,CourtClerk,3881888,9709282,4135456,10343691,4051264,10132854,4002240,10010263,4178768,10451944
+PerfCourtClerk172@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk172,78,"Liverpool Crown Court",78,CourtClerk,3804016,9514298,3807552,9522998,3908640,9776184,4135456,10343691,3903904,9764057
+PerfCourtClerk173@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk173,16,"Bristol",16,CourtClerk,9315964,23294500,9312940,23286947,9331612,23333584,9286252,23220177,9329084,23327260
+PerfCourtClerk174@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk174,24,"Central Criminal Court",24,CourtClerk,4750932,11882407,4847508,12124582,4874116,12190950,4896692,12247385,4843268,12113932
+PerfCourtClerk175@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk175,130,"Swindon Combined Court Centre",130,CourtClerk,4255681,10644800,4274289,10691307,4250577,10632101,4268481,10676872,4280865,10707684
+PerfCourtClerk176@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk176,141,"Warwick Combined Court Centre",141,CourtClerk,3025344,7567567,3005264,7516977,2965712,7418292,2956064,7394071,3044304,7614985
+PerfCourtClerk177@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk177,151,"York",151,CourtClerk,2742314,6859033,2713690,6787535,2723386,6811986,2713690,6787533,2733610,6837424
+PerfCourtClerk178@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk178,119,"Snaresbrook",119,CourtClerk,2157543,5396393,2240503,5603427,2023287,5060930,2086743,5219527,2216087,5542530
+PerfCourtClerk179@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk179,78,"Liverpool Crown Court",78,CourtClerk,3834944,9591648,4142800,10362141,3906736,9771310,4057616,10148782,3859248,9652795
+PerfCourtClerk17@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk17,58,"Crown Court sitting at Huntingdon Law Courts",58,CourtClerk,2538389,6348726,2552421,6384013,2551957,6382834,2548085,6373082,2527717,6322074
+PerfCourtClerk180@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk180,78,"Liverpool Crown Court",78,CourtClerk,4041888,10109389,4112128,10285171,4103536,10263712,3881872,9709240,4046544,10121095
+PerfCourtClerk181@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk181,20,"Canterbury Combined Court Centre",20,CourtClerk,9072369,22685234,9074817,22691442,9060161,22654680,9137377,22847695,9046273,22620002
+PerfCourtClerk182@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk182,62,"Isleworth",62,CourtClerk,8161508,20409971,8164468,20417474,8034980,20092357,8112660,20287588,8087364,20223833
+PerfCourtClerk183@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk183,131,"Taunton",131,CourtClerk,755526,1889552,761238,1903872,772630,1932348,755558,1889635,756614,1892284
+PerfCourtClerk184@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk184,142,"West Midlands Court Centre",142,CourtClerk,5097064,12748092,5091672,12734687,5091672,12734686,5081832,12710223,5102104,12760732
+PerfCourtClerk186@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk186,122,"Southwark",122,CourtClerk,7470707,18681535,7535235,18842962,7523795,18814506,7554147,18890352,7415203,18542982
+PerfCourtClerk187@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk187,85,"Manchester Crown Square",85,CourtClerk,7634900,19092530,7666228,19170683,7651748,19134556,7700580,19256606,7755732,19394811
+PerfCourtClerk188@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk188,68,"Leeds Combined Court Centre",68,CourtClerk,3229906,8078692,3285954,8218684,3364210,8414612,3153090,7886825,3374402,8440079
+PerfCourtClerk189@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk189,21,"Cardiff",21,CourtClerk,10384316,25965602,10392028,25984820,10387516,25973557,10409628,26028578,10343548,25863917
+PerfCourtClerk18@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk18,3,"Aylesbury",3,CourtClerk,6336906,15847395,6334730,15841942,6399962,16004627,6372698,15936568,6343578,15864090
+PerfCourtClerk190@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk190,64,"Kingston",64,CourtClerk,10262347,25661143,10156859,25397269,10239723,25604468,10171467,25433828,10201643,25509286
+PerfCourtClerk191@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk191,132,"Taunton Sitting at Worle",132,CourtClerk,586927,1467677,580543,1451698,577455,1443944,580031,1450432,594335,1486244
+PerfCourtClerk192@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk192,143,"Winchester Combined Court Centre",143,CourtClerk,8630572,21582124,8633084,21588428,8655292,21644057,8700748,21757696,8693180,21738643
+PerfCourtClerk193@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk193,1001,"The Criminal Court, Guildhall",157,CourtClerk,2685497,6717164,2684921,6715680,2687241,6721577,2688681,6725070,2703241,6761495
+PerfCourtClerk194@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk194,122,"Southwark",122,CourtClerk,7414147,18540338,7413171,18537913,7540019,18854952,7545555,18868814,7460995,18657268
+PerfCourtClerk195@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk195,85,"Manchester Crown Square",85,CourtClerk,7657652,19149285,7668628,19176702,7782180,19460933,7644244,19115919,7643508,19114036
+PerfCourtClerk196@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk196,68,"Leeds Combined Court Centre",68,CourtClerk,3172274,7934903,3328786,8325821,3151586,7883047,3359170,8401886,3128082,7824164
+PerfCourtClerk197@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk197,24,"Central Criminal Court",24,CourtClerk,4681572,11708888,4705828,11769526,4747636,11874119,4710228,11780447,4695428,11743485
+PerfCourtClerk198@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk198,62,"Isleworth",62,CourtClerk,8127940,20325819,8156164,20396680,8088980,20227914,8191876,20486039,8158820,20403310
+PerfCourtClerk199@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk199,64,"Kingston",64,CourtClerk,10229435,25578765,10126635,25321609,10136235,25345657,10220603,25556534,10200043,25505325
+PerfCourtClerk19@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk19,41,"Croydon Jurys Inn",41,CourtClerk,1350194,3377467,1352258,3382633,1349874,3376682,1332818,3334087,1348882,3374201
+PerfCourtClerk200@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk200,134,"Teesside Combined Court Centre",134,CourtClerk,7168368,17925863,7161648,17909103,7062896,17662066,7053056,17637410,7188560,17976067
+PerfCourtClerk20@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk20,48,"Field House",48,CourtClerk,6250745,15631813,6201785,15509383,6275993,15695129,6256169,15645509,6259241,15653155
+PerfCourtClerk21@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk21,34,"Coventry Crown Court",34,CourtClerk,4938126,12351009,4915358,12293823,4909982,12280443,4942334,12361658,4937534,12349502
+PerfCourtClerk22@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk22,22,"Carlisle Combined Court Centre",22,CourtClerk,6072566,15187093,6113478,15288960,6064566,15167066,6062054,15160786,6112166,15285745
+PerfCourtClerk23@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk23,17,"Burnley Combined Court Centre",17,CourtClerk,4513666,11288808,4484338,11215521,4482466,11210914,4504450,11265773,4511810,11284190
+PerfCourtClerk24@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk24,54,"Harrow CC at Willesden MC",54,CourtClerk,636768,1592222,642208,1605801,637536,1594056,643872,1609984,642960,1607674
+PerfCourtClerk25@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk25,42,"Derby Combined Court Centre",42,CourtClerk,5876532,14696393,5841444,14608843,5830852,14582478,5826564,14571769,5873044,14687678
+PerfCourtClerk26@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk26,11,"Bolton Combined Court Centre",11,CourtClerk,5701986,14260375,5732178,14335902,5720802,14307393,5705842,14270024,5692866,14237505
+PerfCourtClerk27@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk27,35,"Coverdale House",35,CourtClerk,6551404,16383079,6540716,16356308,6529628,16328570,6559580,16403405,6549212,16377586
+PerfCourtClerk28@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk28,49,"Gloucester",49,CourtClerk,1688548,4223784,1690260,4228018,1694740,4239205,1708548,4273656,1697076,4245070
+PerfCourtClerk29@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk29,18,"Caernarfon",18,CourtClerk,1686659,4219167,1679667,4201494,1679347,4200691,1678899,4199557,1679443,4200933
+PerfCourtClerk30@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk30,23,"Carmarthen",23,CourtClerk,1629395,4075406,1615987,4042036,1636963,4094441,1624003,4061975,1626755,4068843
+PerfCourtClerk31@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk31,43,"Doncaster",43,CourtClerk,1716900,4294401,1721860,4306772,1721044,4304750,1716900,4294400,1724020,4312175
+PerfCourtClerk32@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk32,59,"Inner London",59,CourtClerk,2893725,7238582,2944349,7364852,2812013,7033605,2858637,7150658,2808925,7025731
+PerfCourtClerk33@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk33,36,"Aldersgate House",36,CourtClerk,547453,1368900,543821,1359924,540317,1351230,540973,1352835,546525,1366632
+PerfCourtClerk34@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk34,13,"Bournemouth Combined Court Centre",13,CourtClerk,10014394,25041965,10035466,25094405,9974314,24941628,9979178,24953757,10124138,25315384
+PerfCourtClerk35@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk35,19,"Cambridge",19,CourtClerk,4363634,10913973,4357890,10899585,4358530,10901186,4351554,10883904,4355490,10893635
+PerfCourtClerk36@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk36,50,"Great Grimsby Combined Court Centre",50,CourtClerk,3777120,9446900,3763904,9413941,3790416,9480452,3800848,9506414,3776144,9444480
+PerfCourtClerk37@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk37,44,"Doncaster Crown Court",44,CourtClerk,409100,1023291,417372,1044077,405612,1014491,420364,1051654,416220,1041167
+PerfCourtClerk38@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk38,24,"Central Criminal Court",24,CourtClerk,4890148,12231060,4816308,12046417,4839172,12103559,4684388,11715970,4707380,11773362
+PerfCourtClerk39@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk39,37,"Crown Court at Holborn",37,CourtClerk,1441459,3605972,1438947,3599692,1453443,3635931,1451955,3632197,1449667,3626499
+PerfCourtClerk40@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk40,56,"Hereford",56,CourtClerk,39288,98508,62056,155293,52232,130783,57432,143664,56488,141283
+PerfCourtClerk41@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk41,20,"Canterbury Combined Court Centre",20,CourtClerk,9100065,22754466,9124609,22815881,9031457,22583082,9073745,22688755,9060161,22654680
+PerfCourtClerk42@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk42,14,"Bradford Combined Court Centre",14,CourtClerk,6981360,17457395,6971648,17433432,6931872,17334153,7014752,17541066,6993968,17488916
+PerfCourtClerk43@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk43,45,"Dorchester Combined Court Centre",45,CourtClerk,102472,255874,105848,264282,104920,261976,102024,254793,108696,271485
+PerfCourtClerk44@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk44,51,"Guildford",51,CourtClerk,2401042,6005517,2379490,5951226,2378514,5948780,2398834,5999942,2391458,5981457
+PerfCourtClerk45@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk45,38,"Crown Court at Monument",38,CourtClerk,1481187,3705425,1458963,3649671,1459267,3650449,1459491,3651012,1467603,3671514
+PerfCourtClerk46@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,59,"Inner London",59,CourtClerk,2795661,6992450,2944349,7364852,2882269,7209861,2858637,7150658,2837181,7096862
+PerfCourtClerk47@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk47,28,"Chester Crowne Plaza",28,CourtClerk,1428579,3573770,1429155,3575218,1414387,3538321,1425315,3565736,1431603,3581265
+PerfCourtClerk48@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk48,77,"Lincoln Combined Court Centre",77,CourtClerk,2473459,6186319,2476483,6193907,2460307,6153320,2460291,6153281,2464819,6164565
+PerfCourtClerk49@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk49,29,"Chester Magistrates Court",29,CourtClerk,603936,1510143,616112,1540733,624384,1561354,603936,1510142,600656,1501976
+PerfCourtClerk50@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk50,86,"Manchester Hilton Deansgate",86,CourtClerk,1299072,3249933,1283296,3210751,1297776,3246718,1300400,3253256,1294368,3238110
+PerfCourtClerk51@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk51,62,"Isleworth",62,CourtClerk,8133988,20341139,8017860,20049283,8165076,20418999,8078596,20201866,8095892,20245349
+PerfCourtClerk52@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk52,63,"Kingston upon Hull Combined Court Centre (including Beverley)",63,CourtClerk,6701774,16759261,6739294,16852914,6682782,16711775,6690414,16730841,6727566,16823865
+PerfCourtClerk53@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk53,102,"Peterborough Knights Chamber",102,CourtClerk,347146,868363,355562,889466,346394,866442,346394,866440,345242,863519
+PerfCourtClerk54@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk54,78,"Liverpool Crown Court",78,CourtClerk,4117264,10298065,4113296,10288077,3867936,9674388,3908640,9776184,4137632,10349165
+PerfCourtClerk55@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk55,64,"Kingston",64,CourtClerk,10226203,25570569,10185051,25467769,10269883,25679916,10261803,25659739,10171355,25433544
+PerfCourtClerk56@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk56,87,"Manchester Minshull Street",87,CourtClerk,8791852,21985237,8807964,22025551,8828620,22076935,8758396,21901594,8880480,22206309
+PerfCourtClerk57@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk57,30,"Chester Town Hall",30,CourtClerk,565230,1413437,554638,1386926,560062,1400406,561054,1402905,552110,1380583
+PerfCourtClerk58@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk58,64,"Kingston",64,CourtClerk,10126635,25321609,10152091,25385397,10256859,25647323,10183707,25464417,10200043,25505325
+PerfCourtClerk59@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk59,96,"Northampton Combined Court Centre",96,CourtClerk,5787331,14473589,5768899,14427577,5798147,14500682,5778595,14451784,5786131,14470647
+PerfCourtClerk60@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,60,"Inner London CC at the RCJ",60,CourtClerk,990395,2477883,984779,2463723,981339,2455184,981691,2456041,992299,2482750
+PerfCourtClerk61@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk61,103,"Peterborough Magistrates Court",103,CourtClerk,2413586,6036912,2423938,6062632,2439058,6100482,2413698,6037191,2427474,6071461
+PerfCourtClerk62@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk62,79,"Liverpool CJC",79,CourtClerk,219992,550414,222984,557894,228408,571390,223256,558586,222392,556391
+PerfCourtClerk63@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk63,66,"Lancaster",66,CourtClerk,1314529,3288599,1313457,3285911,1308401,3273217,1320945,3304614,1317009,3294874
+PerfCourtClerk64@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk64,88,"Birmingham Maple House",88,CourtClerk,694899,1737515,698387,1746233,685075,1712881,688867,1722431,693331,1733579
+PerfCourtClerk65@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk65,31,"Chichester Combined Court Centre",31,CourtClerk,1773238,4435203,1769270,4425278,1777334,4445476,1776470,4443314,1769750,4426461
+PerfCourtClerk66@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,61,"Ipswich",61,CourtClerk,5415487,13544124,5407663,13524379,5413983,13540327,5420895,13557561,5427103,13573085
+PerfCourtClerk67@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk67,97,"Norwich Combined Court Centre",97,CourtClerk,5917301,14798487,5907461,14774020,5907765,14774784,5930485,14831565,5912789,14787278
+PerfCourtClerk68@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk68,80,"Liverpool Hilton Hotel",80,CourtClerk,204728,512215,212040,530471,212424,531449,216312,541172,210552,526788
+PerfCourtClerk69@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk69,104,"Plymouth",104,CourtClerk,2272080,5682437,2266608,5668912,2301056,5755165,2265952,5667234,2254720,5639215
+PerfCourtClerk70@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk70,89,"Merthyr Tydfil Combined Court Centre",89,CourtClerk,18042353,33360494,18059865,33377709,18098055,33415936,18021960,33346824,18101637,33419489
+PerfCourtClerk71@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk71,32,"Cirencester",32,CourtClerk,72984,182622,65720,164325,71576,179061,72248,180796,65048,162661
+PerfCourtClerk72@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,62,"Isleworth",62,CourtClerk,8191876,20486039,8036644,20096561,8084180,20215924,8088980,20227913,8160596,20407689
+PerfCourtClerk73@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk73,98,"Nottingham",98,CourtClerk,8897428,22248774,9002848,22511669,8954128,22390580,8898104,22250482,8941952,22360295
+PerfCourtClerk74@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk74,81,"Luton",81,CourtClerk,3082545,7710697,3099761,7753574,3050481,7630498,3072257,7684944,3073025,7686886
+PerfCourtClerk75@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk75,67,"Lancaster Ashton Hall",67,CourtClerk,198392,496156,201816,504838,197240,493207,190872,477441,197592,494110
+PerfCourtClerk76@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk76,90,"Minshull St Sitting at Stockport",90,CourtClerk,359274,898675,368122,920773,369130,923267,364442,911575,362170,905964
+PerfCourtClerk77@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,25,"Chelmsford",25,CourtClerk,6581261,16457831,6584829,16466764,6605149,16517760,6614669,16541569,6608477,16526143
+PerfCourtClerk78@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk78,71,"Leicester",71,CourtClerk,9421180,23557491,9424652,23566164,9477420,23698854,9461228,23658161,9498748,23752328
+PerfCourtClerk79@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk79,33,"Coventry Combined Court Centre",33,CourtClerk,4583411,11463225,4608803,11526793,4570867,11431978,4619891,11554438,4613555,11538550
+PerfCourtClerk80@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk80,82,"M40 J15 Warwick Hotel",82,CourtClerk,1638643,4098609,1661075,4155091,1655315,4140514,1650755,4129047,1654083,4137388
+PerfCourtClerk81@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk81,99,"Nottingham Mercure Hotel",99,CourtClerk,1599651,4001120,1591459,3980722,1608323,4022911,1602723,4008819,1605539,4015912
+PerfCourtClerk82@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk82,91,"Mold",91,CourtClerk,782199,1956499,801671,2005240,779927,1950768,797831,1995576,793015,1983520
+PerfCourtClerk83@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk83,68,"Leeds Combined Court Centre",68,CourtClerk,3331986,8333794,3361122,8406805,3353634,8388102,3168466,7925337,3184994,7966789
+PerfCourtClerk84@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk84,72,"Leics Crown Sitting At Lough",72,CourtClerk,455628,1139775,455628,1139774,452140,1131094,471948,1180636,466332,1166496
+PerfCourtClerk85@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk46,26,"Chelmsford New Magistrates",26,CourtClerk,1020556,2553460,1001468,2505669,1016716,2543787,1000380,2502990,1019180,2550030
+PerfCourtClerk86@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk86,83,"Maidstone Combined Court",83,CourtClerk,7398914,18502323,7408338,18525834,7362018,18410067,7354098,18390013,7322178,18310282
+PerfCourtClerk87@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk87,75,"Lewes Combined Court Centre",75,CourtClerk,5311902,13285360,5349278,13378508,5336206,13346001,5349758,13379782,5321502,13309326
+PerfCourtClerk88@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk88,92,"Newcastle Moot Hall",92,CourtClerk,4300977,10758129,4291489,10734316,4309361,10778907,4292705,10737386,4310401,10781487
+PerfCourtClerk89@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk89,100,"Oxford Combined Court Centre",100,CourtClerk,7245329,18117775,7194849,17991722,7273153,18187391,7278177,18199968,7293121,18237565
+PerfCourtClerk90@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk90,73,"Leonardo Hotel",73,CourtClerk,934057,2336846,936649,2343293,933673,2335896,932281,2332447,939545,2350619
+PerfCourtClerk91@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk91,69,"Leeds Cloth Hall Court",69,CourtClerk,2569510,6426777,2560934,6405264,2570182,6428457,2562982,6410470,2590166,6478212
+PerfCourtClerk92@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk92,84,"Maidstone CC Great Danes Hotel",84,CourtClerk,476268,1191422,472860,1182959,487932,1220704,481084,1203510,487004,1218346
+PerfCourtClerk93@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk93,27,"Chester",27,CourtClerk,4443410,11113246,4432674,11086552,4444786,11116733,4432962,11087304,4441138,11107564
+PerfCourtClerk94@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk94,1,"Birmingham Crown Court sitting at 4 Newton Street",1,CourtClerk,293528,734393,258840,647588,317704,794707,296360,741483,261464,654167
+PerfCourtClerk95@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk95,68,"Leeds Combined Court Centre",68,CourtClerk,3298002,8248684,3151314,7882346,3147042,7871761,3184994,7966789,3200290,8004823
+PerfCourtClerk96@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk96,74,"Lewes CC Sitting at Chichester",74,CourtClerk,711155,1778207,716131,1790615,706195,1765790,717267,1793469,706099,1765560
+PerfCourtClerk97@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk97,101,"Peterborough Combined Court Centre",101,CourtClerk,2304129,5762882,2338881,5849818,2346385,5868601,2315777,5792081,2334481,5838887
+PerfCourtClerk98@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk98,85,"Manchester Crown Square",85,CourtClerk,7786884,19472724,7788500,19476806,7738052,19350828,7814372,19541595,7721812,19310065
+PerfCourtClerk99@dev.platform.hmcts.net,PerfTester@01,PerfCourtClerk99,78,"Liverpool Crown Court",78,CourtClerk,3881888,9709282,4090000,10229947,3938016,9849835,4073248,10187864,4046544,10121095
