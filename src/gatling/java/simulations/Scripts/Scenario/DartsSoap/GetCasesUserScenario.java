@@ -12,7 +12,7 @@ public final class GetCasesUserScenario {
 
     private GetCasesUserScenario() {}
     public static ChainBuilder GetCaseSOAPUser(String userName, String password) {
-        return group("AddDocument SOAP Request Group")
+        return group("GetCase SOAP Request Group")
             .on(exec(feed(Feeders.createCourtHouseAndCourtRooms()))
                 .exec(session -> {
                     String xmlPayload = SOAPRequestBuilder.getCasesUserRequest(session, userName, password);
