@@ -1,44 +1,34 @@
 package simulations.Scripts.Utilities;
+
+import io.burt.jmespath.antlr.v4.runtime.atn.SemanticContext.AND;
+import jodd.csselly.selector.PseudoFunctions.NOT;
+
 public class SQLQueryProvider {
 
     public static String getHearingQuery() {
-        return "SELECT "
-            + "   subquery.hea_id, "
-            + "   subquery.start_ts, "
-            + "   subquery.end_ts, "
-            + "   subquery.usr_id "
-            + "FROM ( "
-            + "   SELECT "
-            + "       h.hea_id, "
-            + "       TO_CHAR(m.start_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.MS\"z\"') AS start_ts, "
-            + "       TO_CHAR(m.end_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.MS\"z\"') AS end_ts, "
-            + "       sguae.usr_id "
-            + "   FROM "
-            + "       darts.hearing h "
-            + "   INNER JOIN "
-            +             "       darts.courtroom cr ON h.ctr_id = cr.ctr_id "
-            + "   INNER JOIN "
-            + "       darts.courthouse ch ON cr.cth_id = ch.cth_id "
-            + "   INNER JOIN "
-            + "       darts.court_case cc ON cc.cas_id = h.cas_id "
-            + "   INNER JOIN "
-            + "       darts.hearing_media_ae hma ON hma.hea_id = h.hea_id "
-            + "   INNER JOIN "
-            + "       darts.media m ON m.med_id = hma.med_id "
-            + "   INNER JOIN "
-            + "       darts.security_group_courthouse_ae sgcae ON ch.cth_id = sgcae.cth_id "
-            + "   INNER JOIN "
-            + "       darts.security_group_user_account_ae sguae ON sgcae.grp_id = sguae.grp_id "
-            + "   WHERE "
-            + "       h.hearing_date BETWEEN '2023-02-26' AND '2024-05-27' "
-            + "AND m.is_current= true "
-            + "   AND "
-            + "       sguae.usr_id NOT IN (-100, -99, -69, -68, -67, -48, -44, -4, -3, -2, -1, 0, 1, -101, 221, 241, 1141) "
-            + "   ORDER BY "
-            + "       RANDOM() "
-            + "   LIMIT 1000 "
-            + ") subquery;";
+        return "WITH filtered_hearings AS ("
+            + " SELECT h.hea_id, m.start_ts, m.end_ts, sguae.usr_id "
+            + " FROM darts.hearing h "
+            + " INNER JOIN darts.courtroom cr ON h.ctr_id = cr.ctr_id "
+            + " INNER JOIN darts.courthouse ch ON cr.cth_id = ch.cth_id "
+            + " INNER JOIN darts.court_case cc ON cc.cas_id = h.cas_id "
+            + " INNER JOIN darts.hearing_media_ae hma ON hma.hea_id = h.hea_id "
+            + " INNER JOIN darts.media m ON m.med_id = hma.med_id "
+            + " INNER JOIN darts.security_group_courthouse_ae sgcae ON ch.cth_id = sgcae.cth_id "
+            + " INNER JOIN darts.security_group_user_account_ae sguae ON sgcae.grp_id = sguae.grp_id "
+            + " WHERE h.hearing_date BETWEEN DATE '2023-02-26' AND DATE '2024-05-27' "
+            + "   AND m.is_current = true "
+            + "   AND sguae.usr_id NOT IN (-100, -99, -69, -68, -67, -48, -44, -4, -3, -2, -1, 0, 1, -101, 221, 241, 1141) "
+            + " LIMIT 1000 "
+            + ") "
+            + "SELECT "
+            + " hea_id, "
+            + " TO_CHAR(start_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.MS\"z\"') AS start_ts, "
+            + " TO_CHAR(end_ts AT TIME ZONE 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.MS\"z\"') AS end_ts, "
+            + " usr_id "
+            + "FROM filtered_hearings;";
     }
+
 
     public static String getTransformedMediaIdForDownloadQuery() {
         return "SELECT darts.transformed_media.trm_id, "
@@ -51,12 +41,18 @@ public class SQLQueryProvider {
             + "    darts.media_request "
             + "    ON "
             + "    darts.transformed_media.mer_id = darts.media_request.mer_id "
+            + "INNER JOIN " 
+            + "        darts.transient_object_directory "
+            + "        ON 	 "
+            + "        darts.transformed_media.trm_id = darts.transient_object_directory.trm_id "
             + "WHERE darts.media_request.request_type = 'DOWNLOAD' "
             + "AND darts.media_request.request_status = 'COMPLETED' "
             + "AND darts.media_request.request_status != 'EXPIRED' "
+            + "AND darts.transient_object_directory.ors_id = 2 "
+            + "AND darts.transient_object_directory.external_location IS NOT NULL "
             + "ORDER BY trm_id ASC LIMIT 1000;";
     }
-
+    
     public static String getTransformedMediaIdForPlayBackQuery() {
         return "SELECT darts.transformed_media.trm_id, "
             + "darts.transformed_media.mer_id, "
@@ -68,11 +64,18 @@ public class SQLQueryProvider {
             + "    darts.media_request "
             + "    ON "
             + "    darts.transformed_media.mer_id = darts.media_request.mer_id "
+            + "INNER JOIN " 
+            + "        darts.transient_object_directory "
+            + "        ON 	 "
+            + "        darts.transformed_media.trm_id = darts.transient_object_directory.trm_id "
             + "WHERE darts.media_request.request_type = 'PLAYBACK' "
             + "AND darts.media_request.request_status = 'COMPLETED' "
             + "AND darts.media_request.request_status != 'EXPIRED' "
+            + "AND darts.transient_object_directory.ors_id = 2 "
+            + "AND darts.transient_object_directory.external_location IS NOT NULL "
             + "ORDER BY trm_id ASC LIMIT 1000;";
     }
+
 
     public static String getCaseDetailsForRetentionQuery() {
         return "WITH random_cases AS ("
