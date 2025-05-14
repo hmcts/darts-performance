@@ -23,7 +23,7 @@ public final class RunApplyRetentionCaseAssociatedObjectsTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 13 has been ran for Apply Retention Case Associated Objects");
+                System.out.println("Automated Tasks 15 has been ran for Apply Retention Case Associated Objects");
             return session;
         });       
     }      
