@@ -117,7 +117,7 @@ public final class GetAudioRequestScenario {
                 int statusCode = session.getInt("statusCode");
                 String transformedMediaId = session.get("trm_id");
 
-                System.out.println("Audio Request, Response Status: " + session.get("statusCode") + ", Download Id: " + transformedMediaId);
+                System.out.println("Audio Request, Response Status: " + session.get("statusCode") + ", Download transformed Media Id: " + transformedMediaId);
 
                 if (statusCode != 200 && statusCode != 409) {
                     return session.set("error", true);

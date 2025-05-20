@@ -43,10 +43,13 @@ public final class AddDocumentCPPEventTokenScenario {
                         })
                         .exec(session -> {
                             Object messageId = session.get("messageId");
+                            String xmlPayload = session.get("xmlPayload");
                             if (messageId != null) {
-                                System.out.println("messageId for AddDocument - CPP Event request: " + messageId.toString());
+                                System.out.println("messageId for AddDocument - CPP Event request: " + messageId.toString());                                
                             } else {
                                 System.out.println("Created AddDocument - CPP Event request.");
+                                System.out.println("messageId for AddDocument - CPP Event request: " + xmlPayload);
+
                             }
                             return session;
                         }) 
