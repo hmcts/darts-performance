@@ -91,8 +91,7 @@ def simulations = [
     
     //E2E Performanec Tests
     [task: 'runPeakTestWithTasksSimulation', class: 'simulations.Scripts.PerformanceTests.PeakTestWithTasksTest.PeakTestWithTasksSimulation'],
-
-
+    [task: 'runAddDocumnetPeakTestSimulation', class: 'simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests.AddDocumnetPeakTestSimulation'],
 
     //NightlyRun
     [task: 'runNightlyRunSimulation', class: 'simulations.Scripts.NightlyRun.NightlyRunSimulation'],
