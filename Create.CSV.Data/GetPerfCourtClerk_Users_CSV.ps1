@@ -1,38 +1,37 @@
 ﻿# Define the SQL query
 $query = @"
-
-	 WITH UserDetails AS (
+WITH UserDetails AS (
     SELECT 
         ua.usr_id,
         ua.user_email_address,
-        'PerfTester@01' AS Password,
+        'PerfTester@01'               AS Password,
         ua.user_name, 
         sgch.cth_id,
         '\"' || REPLACE(ch.display_name, '\"', '\"\"') || '\"' AS courthouse_name,
         ch.courthouse_code,
-        'CourtClerk' AS Type,
+        'CourtClerk'                 AS Type,
         ROW_NUMBER() OVER (PARTITION BY ua.usr_id ORDER BY RANDOM()) AS courthouse_rn
-    FROM 
-        darts.user_account ua
-    LEFT JOIN 
-        darts.security_group_user_account_ae sgua ON sgua.usr_id = ua.usr_id
-    LEFT JOIN 
-        darts.security_group_courthouse_ae sgch ON sgch.grp_id = sgua.grp_id
-    LEFT JOIN 
-        darts.courthouse ch ON sgch.cth_id = ch.cth_id
-    WHERE  
-        ua.user_name LIKE '%PerfCourtClerk%'
-        AND sgch.cth_id IS NOT NULL
-        AND sgch.cth_id NOT IN (
-            111, 153, 112, 154, 95, 55, 65, 114, 155, 152, 
-            133, 129, 70, 136, 113, 1002, 1003, 76, 1000
-        )
+    FROM darts.user_account ua
+    LEFT JOIN darts.security_group_user_account_ae sgua
+           ON sgua.usr_id = ua.usr_id
+    LEFT JOIN darts.security_group_courthouse_ae sgch
+           ON sgch.grp_id = sgua.grp_id
+    LEFT JOIN darts.courthouse ch
+           ON sgch.cth_id = ch.cth_id
+    WHERE ua.user_name LIKE '%PerfCourtClerk%'
+      AND sgch.cth_id IS NOT NULL
+      AND sgch.cth_id NOT IN (
+            111,153,112,154,95,55,65,114,155,152,
+            133,129,70,136,113,1002,1003,76,1000
+      )
 ),
+
 FilteredUserDetails AS (
     SELECT *
     FROM UserDetails
     WHERE courthouse_rn = 1
 ),
+
 ValidHearings AS (
     SELECT hea_id, cas_id, hearing_date
     FROM (
@@ -45,18 +44,14 @@ ValidHearings AS (
         FROM darts.hearing h
         JOIN darts.court_case cc ON cc.cas_id = h.cas_id
         JOIN darts.hearing_media_ae hm ON hm.hea_id = h.hea_id
-        JOIN darts.media m ON hm.med_id = m.med_id
+        JOIN darts.media m ON hm.med_id = m.med_id  AND m.channel = 1 AND m.is_hidden = false
         WHERE m.is_current = true
-          AND NOT EXISTS (
-              SELECT 1
-              FROM darts.media_request_aud mra
-              WHERE mra.hea_id = h.hea_id
-          )
-		AND NOT EXISTS (
-              SELECT 1
-              FROM darts.transcription_linked_case tlc
-              WHERE tlc.cas_id = cc.cas_id
-			)
+          AND NOT EXISTS (SELECT 1
+                            FROM darts.media_request_aud mra
+                           WHERE mra.hea_id = h.hea_id)
+          AND NOT EXISTS (SELECT 1
+                            FROM darts.transcription_linked_case tlc
+                           WHERE tlc.cas_id = cc.cas_id)
     ) sub
     WHERE rn <= 100
 ),
@@ -74,26 +69,22 @@ UserCases AS (
         cc.cas_id,
         vh.hea_id,
         vh.hearing_date
-    FROM 
-        FilteredUserDetails fud
-    LEFT JOIN 
-        darts.court_case cc ON cc.cth_id = fud.cth_id
-    LEFT JOIN 
-        ValidHearings vh ON vh.cas_id = cc.cas_id
-    WHERE
-        cc.cas_id IS NOT NULL
-        AND vh.hea_id IS NOT NULL
+    FROM FilteredUserDetails fud
+    LEFT JOIN darts.court_case cc ON cc.cth_id = fud.cth_id
+    LEFT JOIN ValidHearings  vh  ON vh.cas_id = cc.cas_id
+    WHERE cc.cas_id IS NOT NULL
+      AND vh.hea_id IS NOT NULL
 ),
+
 CaseCounts AS (
     SELECT 
         hearing_date,
         courthouse_name,
         COUNT(cas_id) AS case_count_per_date
-    FROM 
-        UserCases
-    GROUP BY 
-        hearing_date, courthouse_name
+    FROM UserCases
+    GROUP BY hearing_date, courthouse_name
 ),
+
 UserCasesWithCounts AS (
     SELECT 
         fud.usr_id,
@@ -108,25 +99,31 @@ UserCasesWithCounts AS (
         uc.hea_id,
         uc.hearing_date,
         ccc.case_count_per_date
-    FROM 
-        FilteredUserDetails fud
-    LEFT JOIN 
-        UserCases uc ON fud.usr_id = uc.usr_id
-    LEFT JOIN 
-        CaseCounts ccc ON ccc.hearing_date = uc.hearing_date 
-                      AND ccc.courthouse_name = fud.courthouse_name
-    WHERE
-        uc.cas_id IS NOT NULL
-        AND ccc.case_count_per_date <= 499
+    FROM FilteredUserDetails fud
+    LEFT JOIN UserCases uc
+           ON fud.usr_id = uc.usr_id
+    LEFT JOIN CaseCounts ccc
+           ON ccc.hearing_date   = uc.hearing_date
+          AND ccc.courthouse_name = fud.courthouse_name
+    WHERE uc.cas_id IS NOT NULL
+      AND ccc.case_count_per_date <= 499
 ),
+
+DedupUserCases AS (
+    SELECT DISTINCT
+           usr_id,
+           cas_id,
+           hea_id
+    FROM UserCasesWithCounts
+),
+
 RandomCases AS (
     SELECT 
-        uc.usr_id,
-        uc.cas_id,
-        uc.hea_id,
-        ROW_NUMBER() OVER (PARTITION BY uc.usr_id ORDER BY RANDOM()) AS rn
-    FROM 
-        UserCasesWithCounts uc
+        duc.usr_id,
+        duc.cas_id,
+        duc.hea_id,
+        ROW_NUMBER() OVER (PARTITION BY duc.usr_id ORDER BY RANDOM()) AS rn
+    FROM DedupUserCases duc
 )
 
 SELECT 
@@ -147,20 +144,13 @@ SELECT
     rc4.hea_id AS hea_id4,
     rc5.cas_id AS cas_id5,
     rc5.hea_id AS hea_id5
-FROM 
-    FilteredUserDetails fud
-LEFT JOIN 
-    RandomCases rc1 ON fud.usr_id = rc1.usr_id AND rc1.rn = 1
-LEFT JOIN 
-    RandomCases rc2 ON fud.usr_id = rc2.usr_id AND rc2.rn = 2
-LEFT JOIN 
-    RandomCases rc3 ON fud.usr_id = rc3.usr_id AND rc3.rn = 3
-LEFT JOIN 
-    RandomCases rc4 ON fud.usr_id = rc4.usr_id AND rc4.rn = 4
-LEFT JOIN 
-    RandomCases rc5 ON fud.usr_id = rc5.usr_id AND rc5.rn = 5
-ORDER BY 
-    fud.user_email_address;
+FROM FilteredUserDetails fud
+LEFT JOIN RandomCases rc1 ON fud.usr_id = rc1.usr_id AND rc1.rn = 1
+LEFT JOIN RandomCases rc2 ON fud.usr_id = rc2.usr_id AND rc2.rn = 2
+LEFT JOIN RandomCases rc3 ON fud.usr_id = rc3.usr_id AND rc3.rn = 3
+LEFT JOIN RandomCases rc4 ON fud.usr_id = rc4.usr_id AND rc4.rn = 4
+LEFT JOIN RandomCases rc5 ON fud.usr_id = rc5.usr_id AND rc5.rn = 5
+ORDER BY fud.user_email_address;
 "@
 
 # Database connection parameters

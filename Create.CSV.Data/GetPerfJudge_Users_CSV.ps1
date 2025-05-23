@@ -18,8 +18,8 @@ WITH UserDetails AS (
     LEFT JOIN 
         darts.courthouse ch ON urch.cth_id = ch.cth_id
     WHERE  
-        ua.user_name LIKE '%PerfJudge%'
-        AND urch.cth_id NOT IN (111, 153, 112, 154, 95, 55, 65, 114, 155, 152, 133, 129, 70, 136, 113, 1002, 1003, 76, 1000)	 
+        ua.user_name LIKE '%PerfJudge%' 
+        AND urch.cth_id NOT IN (111, 153, 112, 154, 95, 55, 65, 114, 155, 152, 133, 129, 70, 136, 113, 1002, 1003, 76, 1000, 1005, 1006)	 
 ), 
 FilteredUserDetails AS (
     SELECT *

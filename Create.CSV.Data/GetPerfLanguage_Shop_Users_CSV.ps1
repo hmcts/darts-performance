@@ -16,18 +16,23 @@ WITH UserDetails AS (
     LEFT JOIN 
         darts.user_roles_courthouses urch ON ua.usr_id = urch.usr_id		
     LEFT JOIN
+									   
+								 
         darts.courthouse ch ON urch.cth_id = ch.cth_id
     WHERE  
         ua.user_name LIKE '%PerfLanguageShop%'
+							  
         AND urch.cth_id NOT IN (1005, 111, 153, 112, 154, 95, 55, 65, 114, 155, 152, 
-		133, 129, 70, 136, 113, 1002, 1003, 76, 1000, 1006)
+		133, 129, 70, 136, 113, 1002, 1003, 76, 1000, 1006, 103)
 		 
 ),
+
 FilteredUserDetails AS (
     SELECT *
     FROM UserDetails
     WHERE courthouse_rn = 1
 ),
+
 ValidHearings AS (
     SELECT hea_id, cas_id, hearing_date
     FROM (
@@ -40,9 +45,11 @@ ValidHearings AS (
         FROM darts.hearing h
         JOIN darts.court_case cc ON cc.cas_id = h.cas_id
         JOIN darts.hearing_media_ae hm ON hm.hea_id = h.hea_id
-        JOIN darts.media m ON hm.med_id = m.med_id
+        JOIN darts.media m ON hm.med_id = m.med_id AND m.channel = 1 AND m.is_hidden = false
         WHERE m.is_current = true
 		AND cc.interpreter_used = true -- Ensures interpreter was used
+															
+													   
           AND NOT EXISTS (
               SELECT 1
               FROM darts.media_request_aud mra
@@ -51,6 +58,7 @@ ValidHearings AS (
     ) sub
     WHERE rn <= 100
 ),
+
 UserCases AS (
     SELECT 
         fud.usr_id,
@@ -74,6 +82,7 @@ UserCases AS (
         cc.cas_id IS NOT NULL
          AND vh.hea_id IS NOT NULL
 ),
+
 CaseCounts AS (
     SELECT 
         hearing_date,
@@ -84,6 +93,7 @@ CaseCounts AS (
     GROUP BY 
         hearing_date, courthouse_name
 ),
+
 UserCasesWithCounts AS (
     SELECT 
         fud.usr_id,
@@ -104,20 +114,31 @@ UserCasesWithCounts AS (
         UserCases uc ON fud.usr_id = uc.usr_id
     LEFT JOIN 
         CaseCounts ccc ON ccc.hearing_date = uc.hearing_date 
+												  
                       AND ccc.courthouse_name = fud.courthouse_name
     WHERE
         uc.cas_id IS NOT NULL
         AND ccc.case_count_per_date <= 499
 ),								  
-RandomCases AS (			
-    SELECT 	  
-        uc.usr_id,
-        uc.cas_id,
-        uc.hea_id,		
-        ROW_NUMBER() OVER (PARTITION BY uc.usr_id ORDER BY RANDOM()) AS rn
-    FROM 
-        UserCasesWithCounts uc
+
+DedupUserCases AS (
+    SELECT DISTINCT
+           usr_id,
+           cas_id,
+           hea_id
+    FROM UserCasesWithCounts
+),
+
+RandomCases AS (
+    SELECT 
+        duc.usr_id,
+        duc.cas_id,
+        duc.hea_id,
+        ROW_NUMBER() OVER (PARTITION BY duc.usr_id ORDER BY RANDOM()) AS rn
+    FROM DedupUserCases duc
+							  
 )
+
 SELECT 
     fud.user_email_address,
     fud.Password,
@@ -150,6 +171,7 @@ LEFT JOIN
     RandomCases rc5 ON fud.usr_id = rc5.usr_id AND rc5.rn = 5
 ORDER BY 
     fud.user_email_address;
+
 "@
 
 # Database connection parameters
