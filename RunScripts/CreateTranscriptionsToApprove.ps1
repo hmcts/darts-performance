@@ -143,7 +143,7 @@ $postgresHost = "darts-api-test.postgres.database.azure.com"
 $port = "5432" # Default is 5432
 $database = "darts"
 $user = "pgadmin"
-$password = "oIYRDeLXDMLKahVUjP0D"
+$password = ""
 
 # Ensure PGPASSWORD environment variable is set
 $env:PGPASSWORD = $password
