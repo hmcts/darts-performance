@@ -18,7 +18,7 @@ dependencyCheck {
 }
 
 dependencies {
-    gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
+    gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.7'
     gatling 'com.github.hmcts:juror-generation-support-library:1.5.4'
 }
 
