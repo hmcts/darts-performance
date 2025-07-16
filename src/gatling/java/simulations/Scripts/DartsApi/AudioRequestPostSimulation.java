@@ -14,7 +14,7 @@ public class AudioRequestPostSimulation extends Simulation {
   {
 
     final HttpProtocolBuilder httpProtocol = http
-        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        //.proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 
@@ -25,7 +25,7 @@ public class AudioRequestPostSimulation extends Simulation {
         );
 
     setUp(
-        scn1.injectOpen(constantUsersPerSec(1).during(1)).protocols(httpProtocol));
+         scn1.injectOpen(atOnceUsers(1)).protocols(httpProtocol));
 
     }    
 }

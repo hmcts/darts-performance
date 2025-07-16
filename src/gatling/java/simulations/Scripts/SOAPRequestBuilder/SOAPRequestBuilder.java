@@ -525,55 +525,108 @@ public class SOAPRequestBuilder {
     }
 
     public static String addDocumentXhibitEventTokenRequest(Session session) {
-
         String registrationToken = session.get("registrationToken") != null
             ? session.get("registrationToken").toString()
             : "";
-
-        // Retrieve values from session or define defaults if needed
+    
         String courtHouseName = session.get("courthouse_name") != null
             ? session.get("courthouse_name").toString()
             : "";
         String courtRoom = session.get("courtroom_name") != null
             ? session.get("courtroom_name").toString()
             : "";
-
-        // Generate dynamic values
+    
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(5);
-        String eventText =  "Add Document Xhibit -" + randomStringGenerator.generateRandomString(10);
+        String eventText = "Add Document Xhibit -" + randomStringGenerator.generateRandomString(10);
         LocalDateTime now = LocalDateTime.now();
         String currentTimeMillis = String.valueOf(System.currentTimeMillis());
         String trimmedID = currentTimeMillis.substring(4);
-        
-        // Construct SOAP request
-        return String.format(
-            "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
-                + "   <s:Header>\n"
-                + "      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n"
-                + "         <wsse:BinarySecurityToken QualificationValueType=\"http://schemas.emc.com/documentum#ResourceAccessToken\" "
-                + "xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"RAD\">%s</wsse:BinarySecurityToken>\n"
-                + "      </wsse:Security>\n"
-                + "   </s:Header>\n"
-                + "   <s:Body>\n"
-                + "      <ns5:addDocument xmlns:ns5=\"http://com.synapps.mojdarts.service.com\">\n"
-                + "         <messageId>" + trimmedID + "</messageId>\n"
-                + "         <type>2198</type>\n"
-                + "         <subType>3940</subType>\n"
-                + "         <document>&lt;be:DartsEvent xmlns:be=&quot;urn:integration-cjsonline-gov-uk:pilot:entities&quot; ID=&quot;" 
-                + trimmedID + "&quot; Y=&quot;" 
-                + now.format(DateTimeFormatter.ofPattern("yyyy")) + "&quot; M=&quot;" 
-                + now.format(DateTimeFormatter.ofPattern("MM")) + "&quot; D=&quot;" 
-                + now.format(DateTimeFormatter.ofPattern("dd")) + "&quot; H=&quot;" 
-                + now.format(DateTimeFormatter.ofPattern("HH")) + "&quot; MIN=&quot;" 
-                + now.format(DateTimeFormatter.ofPattern("mm")) + "&quot; S=&quot;" 
-                + now.format(DateTimeFormatter.ofPattern("ss")) + "&quot;&gt;&lt;be:CourtHouse&gt;%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;Perf_DocXhibitEvent_%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n"
-                + "      </ns5:addDocument>\n"
-                + "   </s:Body>\n"
-                + "</s:Envelope>",
-            registrationToken, courtHouseName, courtRoom, caseName, eventText
-        );              
+    
+        // Use StringBuilder for better control over formatting
+        StringBuilder soapRequest = new StringBuilder();
+        soapRequest.append("<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n")
+            .append("   <s:Header>\n")
+            .append("      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n")
+            .append("         <wsse:BinarySecurityToken QualificationValueType=\"http://schemas.emc.com/documentum#ResourceAccessToken\" ")
+            .append("xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"RAD\">")
+            .append(registrationToken).append("</wsse:BinarySecurityToken>\n")
+            .append("      </wsse:Security>\n")
+            .append("   </s:Header>\n")
+            .append("   <s:Body>\n")
+            .append("      <ns5:addDocument xmlns:ns5=\"http://com.synapps.mojdarts.service.com\">\n")
+            .append("         <messageId>").append(trimmedID).append("</messageId>\n")
+            .append("         <type>2198</type>\n")
+            .append("         <subType>3940</subType>\n")
+            .append("         <document>&lt;be:DartsEvent xmlns:be=&quot;urn:integration-cjsonline-gov-uk:pilot:entities&quot; ID=&quot;")
+            .append(trimmedID).append("&quot; Y=&quot;").append(now.format(DateTimeFormatter.ofPattern("yyyy")))
+            .append("&quot; M=&quot;").append(now.format(DateTimeFormatter.ofPattern("MM")))
+            .append("&quot; D=&quot;").append(now.format(DateTimeFormatter.ofPattern("dd")))
+            .append("&quot; H=&quot;").append(now.format(DateTimeFormatter.ofPattern("HH")))
+            .append("&quot; MIN=&quot;").append(now.format(DateTimeFormatter.ofPattern("mm")))
+            .append("&quot; S=&quot;").append(now.format(DateTimeFormatter.ofPattern("ss")))
+            .append("&quot;&gt;&lt;be:CourtHouse&gt;").append(courtHouseName)
+            .append("&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;").append(courtRoom)
+            .append("&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;Perf_DocXhibitEvent_")
+            .append(caseName).append("&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;")
+            .append(eventText).append("&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n")
+            .append("      </ns5:addDocument>\n")
+            .append("   </s:Body>\n")
+            .append("</s:Envelope>");
+    
+        return soapRequest.toString();
     }
+
+    // public static String addDocumentXhibitEventTokenRequest(Session session) {
+
+    //     String registrationToken = session.get("registrationToken") != null
+    //         ? session.get("registrationToken").toString()
+    //         : "";
+
+    //     // Retrieve values from session or define defaults if needed
+    //     String courtHouseName = session.get("courthouse_name") != null
+    //         ? session.get("courthouse_name").toString()
+    //         : "";
+    //     String courtRoom = session.get("courtroom_name") != null
+    //         ? session.get("courtroom_name").toString()
+    //         : "";
+
+    //     // Generate dynamic values
+    //     RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+    //     String caseName = randomStringGenerator.generateRandomString(5);
+    //     String eventText =  "Add Document Xhibit -" + randomStringGenerator.generateRandomString(10);
+    //     LocalDateTime now = LocalDateTime.now();
+    //     String currentTimeMillis = String.valueOf(System.currentTimeMillis());
+    //     String trimmedID = currentTimeMillis.substring(4);
+        
+    //     // Construct SOAP request
+    //     return String.format(
+    //         "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+    //             + "   <s:Header>\n"
+    //             + "      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n"
+    //             + "         <wsse:BinarySecurityToken QualificationValueType=\"http://schemas.emc.com/documentum#ResourceAccessToken\" "
+    //             + "xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"RAD\">%s</wsse:BinarySecurityToken>\n"
+    //             + "      </wsse:Security>\n"
+    //             + "   </s:Header>\n"
+    //             + "   <s:Body>\n"
+    //             + "      <ns5:addDocument xmlns:ns5=\"http://com.synapps.mojdarts.service.com\">\n"
+    //             + "         <messageId>" + trimmedID + "</messageId>\n"
+    //             + "         <type>2198</type>\n"
+    //             + "         <subType>3940</subType>\n"
+    //             + "         <document>&lt;be:DartsEvent xmlns:be=&quot;urn:integration-cjsonline-gov-uk:pilot:entities&quot; ID=&quot;" 
+    //             + trimmedID + "&quot; Y=&quot;" 
+    //             + now.format(DateTimeFormatter.ofPattern("yyyy")) + "&quot; M=&quot;" 
+    //             + now.format(DateTimeFormatter.ofPattern("MM")) + "&quot; D=&quot;" 
+    //             + now.format(DateTimeFormatter.ofPattern("dd")) + "&quot; H=&quot;" 
+    //             + now.format(DateTimeFormatter.ofPattern("HH")) + "&quot; MIN=&quot;" 
+    //             + now.format(DateTimeFormatter.ofPattern("mm")) + "&quot; S=&quot;" 
+    //             + now.format(DateTimeFormatter.ofPattern("ss")) + "&quot;&gt;&lt;be:CourtHouse&gt;%s&lt;/be:CourtHouse&gt;&lt;be:CourtRoom&gt;%s&lt;/be:CourtRoom&gt;&lt;be:CaseNumbers&gt;&lt;be:CaseNumber&gt;Perf_DocXhibitEvent_%s&lt;/be:CaseNumber&gt;&lt;/be:CaseNumbers&gt;&lt;be:EventText&gt;%s&lt;/be:EventText&gt;&lt;/be:DartsEvent&gt;</document>\n"
+    //             + "      </ns5:addDocument>\n"
+    //             + "   </s:Body>\n"
+    //             + "</s:Envelope>",
+    //         registrationToken, courtHouseName, courtRoom, caseName, eventText
+    //     );              
+    // }
 
     public static String getCasesUserRequest(Session session, String userName, String password) {
         // Retrieve values from session or define defaults if needed
@@ -840,36 +893,72 @@ public class SOAPRequestBuilder {
         }
         
 
+    // public static String addCourtLogUserRequest(Session session, String userName, String password) {
+    //     // Retrieve values from session or define defaults if needed
+    //     String courtHouseName = session.get("courthouse_name") != null
+    //         ? session.get("courthouse_name").toString() 
+    //         : "";
+    //     String courtRoom = session.get("courtroom_name") != null
+    //         ? session.get("courtroom_name").toString() 
+    //         : "";
+    //     RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
+    //     String caseName = randomStringGenerator.generateRandomString(5);
+    //     String randomLogText = randomStringGenerator.generateRandomString(10);
+
+    // // Construct SOAP request
+    // return String.format(
+    //     "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:com=\"http://com.synapps.mojdarts.service.com\">\n"
+    //     + "   <soapenv:Header>\n"
+    //     + "      <ServiceContext token=\"temporary/127.0.0.1-1694086218480-789961425\" xmlns=\"http://context.core.datamodel.fs.documentum.emc.com/\">\n"
+    //     + "         <Identities xsi:type=\"RepositoryIdentity\" userName=\"%s\" password=\"%s\" repositoryName=\"moj_darts\" domain=\"\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"/>\n"
+    //     + "         <RuntimeProperties/>\n"
+    //     + "      </ServiceContext>\n"
+    //     + "   </soapenv:Header>\n"
+    //     + "   <soapenv:Body>\n"
+    //     + "      <addLogEntry xmlns=\"http://com.synapps.mojdarts.service.com\">\n"
+    //     + "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;Perf_LogEntry_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;%s&lt;/text&gt;&lt;/log_entry&gt;\n"
+    //     + "         </document>\n"
+    //     + "      </addLogEntry>\n"
+    //     + "   </soapenv:Body>\n"
+    //     + "</soapenv:Envelope>",
+    //     userName, password, courtHouseName, courtRoom, caseName, randomLogText);
+    // } 
+
     public static String addCourtLogUserRequest(Session session, String userName, String password) {
         // Retrieve values from session or define defaults if needed
         String courtHouseName = session.get("courthouse_name") != null
-            ? session.get("courthouse_name").toString() 
+            ? session.get("courthouse_name").toString()
             : "";
         String courtRoom = session.get("courtroom_name") != null
-            ? session.get("courtroom_name").toString() 
+            ? session.get("courtroom_name").toString()
             : "";
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(5);
         String randomLogText = randomStringGenerator.generateRandomString(10);
-
-    // Construct SOAP request
-    return String.format(
-        "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:com=\"http://com.synapps.mojdarts.service.com\">\n"
-        + "   <soapenv:Header>\n"
-        + "      <ServiceContext token=\"temporary/127.0.0.1-1694086218480-789961425\" xmlns=\"http://context.core.datamodel.fs.documentum.emc.com/\">\n"
-        + "         <Identities xsi:type=\"RepositoryIdentity\" userName=\"%s\" password=\"%s\" repositoryName=\"moj_darts\" domain=\"\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"/>\n"
-        + "         <RuntimeProperties/>\n"
-        + "      </ServiceContext>\n"
-        + "   </soapenv:Header>\n"
-        + "   <soapenv:Body>\n"
-        + "      <addLogEntry xmlns=\"http://com.synapps.mojdarts.service.com\">\n"
-        + "         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;%s&lt;/courthouse&gt;&lt;courtroom&gt;%s&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;Perf_LogEntry_%s&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;%s&lt;/text&gt;&lt;/log_entry&gt;\n"
-        + "         </document>\n"
-        + "      </addLogEntry>\n"
-        + "   </soapenv:Body>\n"
-        + "</soapenv:Envelope>",
-        userName, password, courtHouseName, courtRoom, caseName, randomLogText);
-    } 
+    
+        // Use StringBuilder for better control over formatting
+        StringBuilder soapRequest = new StringBuilder();
+        soapRequest.append("<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:com=\"http://com.synapps.mojdarts.service.com\">\n")
+            .append("   <soapenv:Header>\n")
+            .append("      <ServiceContext token=\"temporary/127.0.0.1-1694086218480-789961425\" xmlns=\"http://context.core.datamodel.fs.documentum.emc.com/\">\n")
+            .append("         <Identities xsi:type=\"RepositoryIdentity\" userName=\"").append(userName).append("\" password=\"").append(password).append("\" repositoryName=\"moj_darts\" domain=\"\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"/>\n")
+            .append("         <RuntimeProperties/>\n")
+            .append("      </ServiceContext>\n")
+            .append("   </soapenv:Header>\n")
+            .append("   <soapenv:Body>\n")
+            .append("      <addLogEntry xmlns=\"http://com.synapps.mojdarts.service.com\">\n")
+            .append("         <document xmlns=\"\">&lt;log_entry Y=&quot;2023&quot; M=&quot;01&quot; D=&quot;01&quot; H=&quot;10&quot; MIN=&quot;00&quot; S=&quot;00&quot;&gt;&lt;courthouse&gt;")
+            .append(courtHouseName).append("&lt;/courthouse&gt;&lt;courtroom&gt;").append(courtRoom)
+            .append("&lt;/courtroom&gt;&lt;case_numbers&gt;&lt;case_number&gt;Perf_LogEntry_").append(caseName)
+            .append("&lt;/case_number&gt;&lt;/case_numbers&gt;&lt;text&gt;").append(randomLogText)
+            .append("&lt;/text&gt;&lt;/log_entry&gt;\n")
+            .append("         </document>\n")
+            .append("      </addLogEntry>\n")
+            .append("   </soapenv:Body>\n")
+            .append("</soapenv:Envelope>");
+    
+        return soapRequest.toString();
+    }
 
     public static String addCourtLogTokenRequest(Session session) {
         // Retrieve values from session or define defaults if needed

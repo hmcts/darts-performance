@@ -68,7 +68,7 @@ public final class AddDocumentXhibitEventTokenScenario {
                         System.out.println("messageId for AddDocument - Xhibit Event request: " + messageId.toString());
                     } else {
                         System.out.println("Created AddDocument - Xhibit Event request.");
-                        System.out.println("messageId for AddDocument - CPP Event request: " + xmlPayload);
+                        System.out.println("AddDocument - Xhibit Event payload: " + xmlPayload);
                     }
                     return session;
                 });

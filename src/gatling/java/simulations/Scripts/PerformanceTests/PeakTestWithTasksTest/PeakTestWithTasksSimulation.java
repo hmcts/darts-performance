@@ -35,9 +35,9 @@ public class PeakTestWithTasksSimulation extends Simulation {
     private void setUpScenarios(HttpProtocolBuilder httpProtocolExternal, HttpProtocolBuilder httpProtocolInternal, HttpProtocolBuilder httpProtocolSoap, HttpProtocolBuilder httpProtocolApi) {
         setUp(
             // Delay the AutomatedTaskScenario by 5 minutes (300 seconds)
-            AutomatedTaskScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS)
-                .injectOpen(atOnceUsers(1))
-                .protocols(httpProtocolApi),                
+            // AutomatedTaskScenario.build(BASE_LINE_PEAK_SOAP_REQUESTS)
+            //     .injectOpen(atOnceUsers(1))
+            //     .protocols(httpProtocolApi),                
     
             // The rest of the scenarios will start immediately after the delay
             CourtClerkUsersScenarioBuild.build(BASE_LINE_PEAK_COURT_CLERK_USERS)
