@@ -16,12 +16,20 @@ repositories {
 dependencyCheck {
     suppressionFile = 'config/owasp/suppressions.xml'
 }
-
+ext {
+    log4JVersion = "2.25.2"
+}
 dependencies {
     gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
     gatling 'com.github.hmcts:juror-generation-support-library:1.5.4'
     gatlingCompileOnly 'org.projectlombok:lombok:1.18.42'
     gatlingAnnotationProcessor 'org.projectlombok:lombok:1.18.42'
+
+
+    gatling group: 'com.github.hmcts.java-logging', name: 'logging', version: '6.1.9'
+
+    gatling group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4JVersion
+    gatling group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: log4JVersion
 }
 
 // Default gatlingRun configuration
