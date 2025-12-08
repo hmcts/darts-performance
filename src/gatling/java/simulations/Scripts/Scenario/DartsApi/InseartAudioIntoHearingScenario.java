@@ -1,6 +1,7 @@
 package simulations.Scripts.Scenario.DartsApi;
 
 import io.gatling.javaapi.core.*;
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.AppConfig;
 
@@ -10,6 +11,7 @@ import java.sql.PreparedStatement;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 
+@Slf4j
 public final class InseartAudioIntoHearingScenario {
 
     private InseartAudioIntoHearingScenario() {}

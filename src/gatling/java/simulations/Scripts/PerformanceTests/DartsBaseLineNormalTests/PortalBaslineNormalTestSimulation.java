@@ -1,5 +1,6 @@
 package simulations.Scripts.PerformanceTests.DartsBaseLineNormalTests;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
@@ -21,6 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+@Slf4j
 public class PortalBaslineNormalTestSimulation extends Simulation {   
 
     // Global counter to track 400 errors

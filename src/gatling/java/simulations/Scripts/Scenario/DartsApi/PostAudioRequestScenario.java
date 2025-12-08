@@ -1,5 +1,6 @@
 package simulations.Scripts.Scenario.DartsApi;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
@@ -15,6 +16,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
+@Slf4j
 public final class PostAudioRequestScenario {
 
     private PostAudioRequestScenario() {}

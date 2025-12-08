@@ -1,5 +1,6 @@
 package simulations.Scripts.Scenario.DartsApi;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 import simulations.Scripts.Utilities.AppConfig;
@@ -8,6 +9,7 @@ import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+@Slf4j
 public final class PostRetentionsScenario {
 
     private PostRetentionsScenario() {}

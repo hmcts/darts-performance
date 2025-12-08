@@ -14,8 +14,10 @@ import io.gatling.javaapi.core.CoreDsl;
 import io.gatling.javaapi.core.FeederBuilder;
 import io.gatling.javaapi.jdbc.JdbcDsl;
 import io.gatling.javaapi.core.CheckBuilder;
+import lombok.extern.slf4j.Slf4j;
 
 
+@Slf4j
 public class Feeders {
     public static final FeederBuilder<String> AudioRequestCSV;
     public static final FeederBuilder<String> JudgesCSV;

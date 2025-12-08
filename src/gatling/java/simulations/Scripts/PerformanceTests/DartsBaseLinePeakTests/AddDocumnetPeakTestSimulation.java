@@ -1,5 +1,6 @@
 package simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentCPPDailyListTokenScenario;
@@ -17,6 +18,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 
 import java.time.Duration;
 
+@Slf4j
 public class AddDocumnetPeakTestSimulation extends Simulation {
 
     @Override

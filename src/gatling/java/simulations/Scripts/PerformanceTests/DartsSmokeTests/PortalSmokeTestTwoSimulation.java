@@ -1,5 +1,6 @@
 package simulations.Scripts.PerformanceTests.DartsSmokeTests;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
@@ -20,6 +21,7 @@ import java.time.Duration;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+@Slf4j
 public class PortalSmokeTestTwoSimulation extends Simulation {   
 
     private static final String SMOKE_TEST_TWO_JUDGE_USERS = "Smoke Test Two - DARTS - Portal - Judge Users";

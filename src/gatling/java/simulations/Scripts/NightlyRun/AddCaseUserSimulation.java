@@ -1,5 +1,6 @@
 package simulations.Scripts.NightlyRun;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 
@@ -11,6 +12,7 @@ import io.gatling.javaapi.http.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+@Slf4j
 public class AddCaseUserSimulation extends Simulation {
 
 

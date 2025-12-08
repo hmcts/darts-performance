@@ -1,5 +1,6 @@
 package simulations.Scripts.Scenario.DartsApi;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.*;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
@@ -8,6 +9,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
+@Slf4j
 public final class PostAudioScenario {
 
     private PostAudioScenario() {}

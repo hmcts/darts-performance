@@ -1,5 +1,6 @@
 package simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsApi.GetAudioRequestScenario;
@@ -22,6 +23,7 @@ import io.gatling.javaapi.http.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+@Slf4j
 public class SoapBaseLinePeakTestSimulation extends Simulation {
 
     @Override

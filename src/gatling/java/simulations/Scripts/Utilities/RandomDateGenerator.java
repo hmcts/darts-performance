@@ -1,7 +1,10 @@
 package simulations.Scripts.Utilities;
+import lombok.extern.slf4j.Slf4j;
+
 import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;
 
+@Slf4j
 public class RandomDateGenerator {
 
     public static void main(String[] args) {

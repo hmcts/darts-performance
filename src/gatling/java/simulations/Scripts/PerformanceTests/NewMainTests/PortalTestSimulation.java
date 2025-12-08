@@ -1,5 +1,6 @@
 package simulations.Scripts.PerformanceTests.NewMainTests;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.ScenarioBuilder.CourtClerkUsersScenarioBuild;
 import simulations.Scripts.ScenarioBuilder.CourtManagerUsersScenarioBuild;
@@ -14,6 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+@Slf4j
 public class PortalTestSimulation extends Simulation {   
     
     public static AtomicInteger global400ErrorCounter = new AtomicInteger(0);

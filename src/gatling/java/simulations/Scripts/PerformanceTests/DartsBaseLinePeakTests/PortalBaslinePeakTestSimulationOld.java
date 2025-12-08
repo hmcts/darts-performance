@@ -1,5 +1,6 @@
 package simulations.Scripts.PerformanceTests.DartsBaseLinePeakTests;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Scenario.DartsPortal.DartsPortalInternalLoginScenario;
@@ -21,6 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+@Slf4j
 public class PortalBaslinePeakTestSimulationOld extends Simulation {   
     
     public static AtomicInteger global400ErrorCounter = new AtomicInteger(0);

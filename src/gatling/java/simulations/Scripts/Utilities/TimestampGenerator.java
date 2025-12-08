@@ -1,9 +1,12 @@
 package simulations.Scripts.Utilities;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ThreadLocalRandom;
 
+@Slf4j
 public class TimestampGenerator {
 
     // Method to generate a timestamp representing the current time
