@@ -6,16 +6,18 @@ import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 
 public class AudioGETPreviewSimulation extends Simulation {   
   {
 
-    final HttpProtocolBuilder httpProtocol = http
-        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+    final HttpProtocolBuilder httpProtocol =
+        HttpUtil.getHttpProtocol()
         .baseUrl(EnvironmentURL.B2B_Login.getUrl())
         .inferHtmlResources();
 

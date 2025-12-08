@@ -9,6 +9,7 @@ import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 @Slf4j
 public final class GetEventScenario {

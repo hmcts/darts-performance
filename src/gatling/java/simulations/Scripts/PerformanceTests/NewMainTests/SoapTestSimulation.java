@@ -8,6 +8,7 @@ import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 public class SoapTestSimulation extends Simulation {   
 
@@ -48,16 +49,15 @@ public class SoapTestSimulation extends Simulation {
     }   
 
     private HttpProtocolBuilder configureSoapHttp() {
-        return http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        return HttpUtil.getHttpProtocol()
             .contentTypeHeader("text/xml;charset=UTF-8")
             .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
             .baseUrl(AppConfig.EnvironmentURL.PROXY_BASE_URL.getUrl());
     }
 
     private HttpProtocolBuilder configureSoapAddDocumentHttp() {
-        return http
-       .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        return
+       HttpUtil.getHttpProtocol()
             .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
             .inferHtmlResources()
             .acceptEncodingHeader("gzip,deflate")
@@ -65,8 +65,8 @@ public class SoapTestSimulation extends Simulation {
             .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
     }
     private HttpProtocolBuilder configureApiHttp() {
-        return http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        return
+            HttpUtil.getHttpProtocol()
             .contentTypeHeader("text/xml;charset=UTF-8")
             .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
             .baseUrl(EnvironmentURL.B2B_Login.getUrl())

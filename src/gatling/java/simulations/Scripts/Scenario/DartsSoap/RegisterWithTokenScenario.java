@@ -7,6 +7,7 @@ import io.gatling.javaapi.core.ChainBuilder;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 
 public final class RegisterWithTokenScenario 

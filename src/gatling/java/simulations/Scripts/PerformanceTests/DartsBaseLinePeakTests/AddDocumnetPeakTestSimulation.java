@@ -15,6 +15,7 @@ import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 import java.time.Duration;
 
@@ -28,8 +29,8 @@ public class AddDocumnetPeakTestSimulation extends Simulation {
 
     public AddDocumnetPeakTestSimulation() {      
 
-        HttpProtocolBuilder httpProtocolSoapGateway = http
-        //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        HttpProtocolBuilder httpProtocolSoapGateway =
+        HttpUtil.getHttpProtocol()
             .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
             .inferHtmlResources()
             .acceptEncodingHeader("gzip,deflate")

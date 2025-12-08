@@ -11,6 +11,7 @@ import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 @Slf4j
 public class AddDocumentEventTokenSimulation extends Simulation {
@@ -24,8 +25,8 @@ public class AddDocumentEventTokenSimulation extends Simulation {
     }
 
     public AddDocumentEventTokenSimulation() {
-        HttpProtocolBuilder httpProtocol = http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        HttpProtocolBuilder httpProtocol =
+            HttpUtil.getHttpProtocol()
             .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
             .inferHtmlResources()
             .acceptEncodingHeader("gzip,deflate")

@@ -12,6 +12,7 @@ import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 @Slf4j
 public class DailyListsSimulation extends Simulation {
@@ -22,8 +23,8 @@ public class DailyListsSimulation extends Simulation {
     }
 
     public DailyListsSimulation() {
-        HttpProtocolBuilder httpProtocolSoap = http
-                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        HttpProtocolBuilder httpProtocolSoap =
+                HttpUtil.getHttpProtocol()
                 .inferHtmlResources()
                 .acceptEncodingHeader("gzip,deflate")
                 .contentTypeHeader("text/xml;charset=UTF-8")

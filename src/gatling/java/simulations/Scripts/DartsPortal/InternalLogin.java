@@ -8,12 +8,13 @@ import simulations.Scripts.Utilities.Feeders;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 public class InternalLogin extends Simulation {
 
   {
-    HttpProtocolBuilder httpProtocol = http
-     .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+    HttpProtocolBuilder httpProtocol =
+     HttpUtil.getHttpProtocol()
       .baseUrl("https://login.microsoftonline.com")
       .inferHtmlResources()
       .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7")

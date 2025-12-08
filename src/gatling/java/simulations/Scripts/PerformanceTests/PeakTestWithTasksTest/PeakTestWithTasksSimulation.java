@@ -9,6 +9,7 @@ import java.time.Duration;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 public class PeakTestWithTasksSimulation extends Simulation {   
 
@@ -103,32 +104,32 @@ public class PeakTestWithTasksSimulation extends Simulation {
     
 
     private HttpProtocolBuilder configureInternalHttp() {
-        return http
-        //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        return
+        HttpUtil.getHttpProtocol()
             .baseUrl("https://login.microsoftonline.com")
             .acceptHeader("application/json, text/plain, */*")
             .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
     }
 
     private HttpProtocolBuilder configureExternalHttp() {
-        return http
-        //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        return
+        HttpUtil.getHttpProtocol()
             .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
             .acceptHeader("application/json, text/plain, */*")
             .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
     }
 
     private HttpProtocolBuilder configureSoapHttp() {
-        return http
-        //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        return
+        HttpUtil.getHttpProtocol()
             .contentTypeHeader("text/xml;charset=UTF-8")
             .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
             .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl());
     }
 
     private HttpProtocolBuilder configureApiHttp() {
-        return http
-        //    .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        return
+        HttpUtil.getHttpProtocol()
             .contentTypeHeader("text/xml;charset=UTF-8")
             .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
             .baseUrl(EnvironmentURL.B2B_Login.getUrl())

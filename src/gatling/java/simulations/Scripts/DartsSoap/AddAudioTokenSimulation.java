@@ -12,6 +12,7 @@ import java.time.Duration;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 public class AddAudioTokenSimulation extends Simulation {
 
@@ -21,8 +22,7 @@ public class AddAudioTokenSimulation extends Simulation {
   private static final String SPIKE_SCENARIO_NAME = "Spike - DARTS - GateWay - Soap - AddAudio:POST";
 
   public AddAudioTokenSimulation() {
-      HttpProtocolBuilder httpProtocol = http
-      .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+      HttpProtocolBuilder httpProtocol =HttpUtil.getHttpProtocol()
       .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
       .inferHtmlResources();
 

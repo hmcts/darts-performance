@@ -14,11 +14,12 @@ import java.time.Duration;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 public class TranscriberAttachFileAndDownloadAudioSimulation extends Simulation { // Corrected class name
     {
-        HttpProtocolBuilder httpProtocol = http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        HttpProtocolBuilder httpProtocol =
+            HttpUtil.getHttpProtocol()
             .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
             .inferHtmlResources()
             .acceptHeader("application/json, text/plain, */*")

@@ -10,6 +10,7 @@ import java.time.Duration;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 
 public class GetCasesUserSimulation extends Simulation {
@@ -19,8 +20,8 @@ public class GetCasesUserSimulation extends Simulation {
   private static final String SPIKE_SCENARIO_NAME = "Spike Test";
 
   public GetCasesUserSimulation() {
-      HttpProtocolBuilder httpProtocol = http
-          .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+      HttpProtocolBuilder httpProtocol =
+          HttpUtil.getHttpProtocol()
           .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
           .inferHtmlResources()
           .acceptEncodingHeader("gzip,deflate")

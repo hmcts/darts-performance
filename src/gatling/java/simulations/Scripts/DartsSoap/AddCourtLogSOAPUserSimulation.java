@@ -10,6 +10,7 @@ import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 import java.time.Duration;
 
 public class AddCourtLogSOAPUserSimulation extends Simulation {
@@ -20,8 +21,8 @@ public class AddCourtLogSOAPUserSimulation extends Simulation {
   private static final String SPIKE_SCENARIO_NAME = "Spike Test";
 
   public AddCourtLogSOAPUserSimulation() {
-      HttpProtocolBuilder httpProtocol = http
-       //   .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+      HttpProtocolBuilder httpProtocol =
+          HttpUtil.getHttpProtocol()
           .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
           .inferHtmlResources()
           .acceptEncodingHeader("gzip,deflate")

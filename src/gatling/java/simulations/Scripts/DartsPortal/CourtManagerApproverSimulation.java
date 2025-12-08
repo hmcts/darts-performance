@@ -12,14 +12,15 @@ import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 import java.time.Duration;
 
 public class CourtManagerApproverSimulation extends Simulation {   
   {
 
-      HttpProtocolBuilder httpProtocol = http
-        .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+      HttpProtocolBuilder httpProtocol =
+        HttpUtil.getHttpProtocol()
         .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
         .baseUrl("https://login.microsoftonline.com") 
 

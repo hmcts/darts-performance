@@ -8,13 +8,14 @@ import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 public class RegisterWithTokenSOAPSimulation extends Simulation {
 
   FeederBuilder<String> feeder = csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
   {
-    HttpProtocolBuilder httpProtocol = http
-    //  .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+    HttpProtocolBuilder httpProtocol =
+      HttpUtil.getHttpProtocol()
       .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
       .inferHtmlResources()
       .acceptEncodingHeader("gzip,deflate")

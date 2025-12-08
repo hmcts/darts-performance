@@ -14,6 +14,7 @@ import java.time.Duration;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 @Slf4j
 public class PortalAdvanceSearchSimulation extends Simulation {   
@@ -29,8 +30,8 @@ public class PortalAdvanceSearchSimulation extends Simulation {
     }
 
     public PortalAdvanceSearchSimulation() {
-            HttpProtocolBuilder httpProtocolExternal = http
-                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+            HttpProtocolBuilder httpProtocolExternal =
+                HttpUtil.getHttpProtocol()
                 .baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
                 .inferHtmlResources()
                 .acceptHeader("application/json, text/plain, */*")
@@ -39,8 +40,8 @@ public class PortalAdvanceSearchSimulation extends Simulation {
                 .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36");   
 
     
-            HttpProtocolBuilder httpProtocolInternal = http
-            .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+            HttpProtocolBuilder httpProtocolInternal =
+            HttpUtil.getHttpProtocol()
                 //.baseUrl(AppConfig.EnvironmentURL.B2B_Login.getUrl())
                 .baseUrl("https://login.microsoftonline.com") 
                 .inferHtmlResources()

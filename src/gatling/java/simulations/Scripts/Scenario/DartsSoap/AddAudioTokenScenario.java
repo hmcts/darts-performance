@@ -7,6 +7,7 @@ import simulations.Scripts.Utilities.Feeders;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 import java.util.UUID;
 

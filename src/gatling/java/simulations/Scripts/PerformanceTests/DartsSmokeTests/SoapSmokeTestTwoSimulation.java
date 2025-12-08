@@ -22,6 +22,7 @@ import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 @Slf4j
 public class SoapSmokeTestTwoSimulation extends Simulation {
@@ -33,16 +34,16 @@ public class SoapSmokeTestTwoSimulation extends Simulation {
     }
 
     public SoapSmokeTestTwoSimulation() {
-        HttpProtocolBuilder httpProtocolSoap = http
-                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        HttpProtocolBuilder httpProtocolSoap =
+                HttpUtil.getHttpProtocol()
                 .inferHtmlResources()
                 .acceptEncodingHeader("gzip,deflate")
                 .contentTypeHeader("text/xml;charset=UTF-8")
                 .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
                 .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl());
 
-        HttpProtocolBuilder httpProtocolApi = http
-                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        HttpProtocolBuilder httpProtocolApi =
+                HttpUtil.getHttpProtocol()
                 .inferHtmlResources()
                 .baseUrl(EnvironmentURL.B2B_Login.getUrl());
         setUpScenarios(httpProtocolSoap, httpProtocolApi);

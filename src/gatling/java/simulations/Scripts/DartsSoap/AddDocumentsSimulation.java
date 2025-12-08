@@ -13,6 +13,7 @@ import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
+import simulations.Scripts.Utilities.HttpUtil;
 
 @Slf4j
 public class AddDocumentsSimulation extends Simulation {
@@ -24,8 +25,8 @@ public class AddDocumentsSimulation extends Simulation {
     }
 
     public AddDocumentsSimulation() {
-        HttpProtocolBuilder httpProtocolSoap = http
-                .proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
+        HttpProtocolBuilder httpProtocolSoap =
+                HttpUtil.getHttpProtocol()
                 .inferHtmlResources()
                 .acceptEncodingHeader("gzip,deflate")
                 .contentTypeHeader("text/xml;charset=UTF-8")

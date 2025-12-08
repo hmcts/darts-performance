@@ -6,6 +6,7 @@ import java.util.Optional;
 
 public class AppConfig {
 
+    public static final boolean ENABLE_PROXY = false;
     //EXTERNAL Tenant
     public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = getProperty("PERFORMANCE_EXTERNAL_CLIENT_ID");
     public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = getProperty("PERFORMANCE_EXTERNAL_CLIENT_SECRET");
