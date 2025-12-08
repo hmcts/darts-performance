@@ -36,9 +36,9 @@ public final class AddCourtlogUserScenario {
                                 // Mark as failed if statusCode is 500
                                 session.markAsFailed();
                                 if (message == null) {
-                                    System.out.println("Error detected for Add CourtLog request: 500 response Code");
+                                    log.info("Error detected for Add CourtLog request: 500 response Code");
                                 } else {
-                                    System.out.println("Error detected for Add CourtLog request: " + message);
+                                    log.info("Error detected for Add CourtLog request: " + message);
                                 }
                             }
                             return session;
@@ -46,9 +46,9 @@ public final class AddCourtlogUserScenario {
                         .exec(session -> {
                             Object messageId = session.get("messageId");
                             if (messageId != null) {
-                                System.out.println("messageId for Add CourtLog request: " + messageId.toString());
+                                log.info("messageId for Add CourtLog request: " + messageId.toString());
                             } else {
-                                System.out.println("Created Add CourtLog request.");
+                                log.info("Created Add CourtLog request.");
                             }
                             return session;
                         })

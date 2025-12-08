@@ -59,8 +59,8 @@ public final class PostAudioRequestScenario {
                     String xmlPayload = RequestBodyBuilder.buildPOSTAudioRequestBody(session);
                     String requestType = getRandomRequestType();
     
-                System.out.println("Body request: " + xmlPayload);
-                System.out.println("Chosen request type: " + requestType);
+                log.info("Body request: " + xmlPayload);
+                log.info("Chosen request type: " + requestType);
     
                 return session
                     .set("xmlPayload", xmlPayload)
@@ -78,11 +78,11 @@ public final class PostAudioRequestScenario {
                 )
                 .exec(session -> {
                     String responseBody = session.getString("responseBody");
-                    System.out.println("Response Body: " + responseBody);
+                    log.info("Response Body: " + responseBody);
                     int statusCode = session.getInt("statusCode");
                     String requestId = session.getString("getRequestId");
                     
-                    System.out.println("Get Request Id: " + requestId + ", Response Status: " + statusCode);
+                    log.info("Get Request Id: " + requestId + ", Response Status: " + statusCode);
                     return session;
                 })  
                 // Handle non-200 or non-409 status codes, including 401
@@ -97,7 +97,7 @@ public final class PostAudioRequestScenario {
                         System.err.println("Error: Non-200 status code: " + statusCode + " - " + responseBody);
                         return session.set("error", true);
                     } else {
-                        System.out.println("Audio Requested for hearing Id: " + session.get("hea_id") + ", Response Status: " + statusCode);
+                        log.info("Audio Requested for hearing Id: " + session.get("hea_id") + ", Response Status: " + statusCode);
                         return session.set("error", false);
                     }
                 })

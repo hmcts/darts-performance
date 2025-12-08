@@ -33,9 +33,9 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
                 String email = session.getString("Email");
 
                 if (getTranscriptionId != null) {
-                //    System.out.println("getTranscriptionId: " + getTranscriptionId.toString());
+                //    log.info("getTranscriptionId: " + getTranscriptionId.toString());
                 } else {
-                    System.out.println("No Transcription Id value saved using saveAs (Issue with $[*].transcription_id). For User: "+ email); 
+                    log.info("No Transcription Id value saved using saveAs (Issue with $[*].transcription_id). For User: "+ email); 
                 }
                 return session;
             }) 

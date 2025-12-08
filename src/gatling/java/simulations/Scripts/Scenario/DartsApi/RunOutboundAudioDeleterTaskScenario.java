@@ -21,7 +21,7 @@ public final class RunOutboundAudioDeleterTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 3 has been ran for Outbound Audio Deleter");
+                log.info("Automated Tasks 3 has been ran for Outbound Audio Deleter");
             return session;
         });       
     }       

@@ -16,8 +16,8 @@ public final class PostRetentionsScenario {
         .on(//exec(feed(Feeders.createCaseHouseRoomsHearingDetails())).
             exec(session -> {
                     String xmlPayload = RequestBodyBuilder.buildRetentionsPostBody(session);
-                    System.out.println("Retentions xmlPayload: " + xmlPayload);
-                    System.out.println("Retentions session: " + session); 
+                    log.info("Retentions xmlPayload: " + xmlPayload);
+                    log.info("Retentions session: " + session); 
                     return session.set("xmlPayload", xmlPayload);
             })            
             .exec(http("DARTS - Api - RetentionsRequest:POST")

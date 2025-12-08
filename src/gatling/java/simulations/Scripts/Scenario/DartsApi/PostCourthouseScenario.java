@@ -16,8 +16,8 @@ public final class PostCourthouseScenario {
             .on(exec(session -> {
                     String xmlPayload = RequestBodyBuilder.buildCourtHousePostBody(session);
 
-                    System.out.println("Code xmlPayload: " + xmlPayload);
-                    System.out.println("Code session: " + session);
+                    log.info("Code xmlPayload: " + xmlPayload);
+                    log.info("Code session: " + session);
 
 
                     return session.set("xmlPayload", xmlPayload);

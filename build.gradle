@@ -20,6 +20,8 @@ dependencyCheck {
 dependencies {
     gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
     gatling 'com.github.hmcts:juror-generation-support-library:1.5.4'
+    gatlingCompileOnly 'org.projectlombok:lombok:1.18.42'
+    gatlingAnnotationProcessor 'org.projectlombok:lombok:1.18.42'
 }
 
 // Default gatlingRun configuration

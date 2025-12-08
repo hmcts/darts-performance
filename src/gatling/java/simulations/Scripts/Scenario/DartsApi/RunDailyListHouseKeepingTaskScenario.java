@@ -23,7 +23,7 @@ public final class RunDailyListHouseKeepingTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 13 has been ran for Daily List Housekeeping");
+                log.info("Automated Tasks 13 has been ran for Daily List Housekeeping");
             return session;
         });       
     }      

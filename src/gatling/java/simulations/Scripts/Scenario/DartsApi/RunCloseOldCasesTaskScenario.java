@@ -22,7 +22,7 @@ public final class RunCloseOldCasesTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 12 has been ran for closing cases");
+                log.info("Automated Tasks 12 has been ran for closing cases");
             return session;
         });       
     }       

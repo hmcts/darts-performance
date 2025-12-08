@@ -40,7 +40,7 @@ public final class AddCaseUserScenario {
                         if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
                             // Mark the request as failed if there's an error message
                             session.markAsFailed();
-                            System.out.println("Error detected for AddCase: " + message);
+                            log.info("Error detected for AddCase: " + message);
                         }
                         return session;
                     })
@@ -50,11 +50,11 @@ public final class AddCaseUserScenario {
                         Object xmlPayload = session.get("xmlPayload");
 
                         if (messageId != null) {
-                            System.out.println("messageId for AddCase request: " + messageId.toString());
-                            System.out.println("AddCase response Body: " + responseBody.toString());
-                            System.out.println("AddCase payload: " + xmlPayload.toString());
+                            log.info("messageId for AddCase request: " + messageId.toString());
+                            log.info("AddCase response Body: " + responseBody.toString());
+                            log.info("AddCase payload: " + xmlPayload.toString());
                         } else {
-                            System.out.println("Created AddCase request.");
+                            log.info("Created AddCase request.");
                         }
                         return session;
                     })

@@ -60,7 +60,7 @@ public final class CloseCaseScenario {
             }
         )
         .exec(session -> {
-            System.out.println("Case Closed for Id:" + session.get("cas_id"));
+            log.info("Case Closed for Id:" + session.get("cas_id"));
             return session;
         });
     }       

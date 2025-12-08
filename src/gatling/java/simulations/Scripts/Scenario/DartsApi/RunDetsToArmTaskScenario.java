@@ -23,7 +23,7 @@ public final class RunDetsToArmTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 18 has been ran for Dets To Arm Task");
+                log.info("Automated Tasks 18 has been ran for Dets To Arm Task");
             return session;
         });       
     }       

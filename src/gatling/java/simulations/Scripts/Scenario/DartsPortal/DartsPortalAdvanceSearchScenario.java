@@ -28,7 +28,7 @@ public final class DartsPortalAdvanceSearchScenario {
                 .exec(session -> {
                     String searchRequestPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
                     String email = session.getString("Email");
-                    System.out.println("Generated search payload: " + searchRequestPayload + " for user: " + email);
+                    log.info("Generated search payload: " + searchRequestPayload + " for user: " + email);
                     return session.set("searchRequestPayload", searchRequestPayload);
                 })
                 
@@ -62,33 +62,33 @@ public final class DartsPortalAdvanceSearchScenario {
                         String email = session.getString("Email");
                         int statusCode = session.getInt("status");
     
-                        System.out.println("Search completed. caseCount: " + caseCount + " for user: " + email);
+                        log.info("Search completed. caseCount: " + caseCount + " for user: " + email);
     
                         // Handle the 400 status code
                         if (statusCode == 400) {
                             String responseBody = session.getString("responseBody");
-                            System.out.println("400 Bad Request encountered. Response: " + responseBody + " for user: " + email);
+                            log.info("400 Bad Request encountered. Response: " + responseBody + " for user: " + email);
     
                             // Increment 400 count
                             int currentCount400 = session.getInt("400Count");
                             session.set("400Count", currentCount400 + 1);
     
                             // Retry with a new search payload
-                            System.out.println("Retrying after 400 error...");
+                            log.info("Retrying after 400 error...");
                             String newSearchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                            System.out.println("Retrying with new payload after 400: " + newSearchPayload + " for user: " + email);
+                            log.info("Retrying with new payload after 400: " + newSearchPayload + " for user: " + email);
                             return session.set("searchRequestPayload", newSearchPayload);
                         }
     
                         // If no cases are found, retry with a new search payload
                         if (caseCount == 0) {
-                            System.out.println("Empty response received from advanced search. Retrying...");
+                            log.info("Empty response received from advanced search. Retrying...");
                             String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                            System.out.println("Retrying advanced search with new payload: " + searchPayload + " for user: " + email);
+                            log.info("Retrying advanced search with new payload: " + searchPayload + " for user: " + email);
                             return session.set("searchRequestPayload", searchPayload);
                         }
     
-                        System.out.println("Response received, for advance search. Proceeding with caseCount: " + caseCount + " for user: " + email);
+                        log.info("Response received, for advance search. Proceeding with caseCount: " + caseCount + " for user: " + email);
                         return session;
                     })
                     .pause(2, 5)
@@ -96,7 +96,7 @@ public final class DartsPortalAdvanceSearchScenario {
                         int statusCode = session.getInt("status");
                         String email = session.getString("Email");
                         if (statusCode == 502 || statusCode == 504) {
-                            System.out.println("Received error status code: " + statusCode + ". Marking as failed." + email + " Darts-Portal - Api - Cases - Search");
+                            log.info("Received error status code: " + statusCode + ". Marking as failed." + email + " Darts-Portal - Api - Cases - Search");
                             session = session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
                         }
                         return session;
@@ -106,7 +106,7 @@ public final class DartsPortalAdvanceSearchScenario {
                 
                 .exec(session -> {
                     // Log non-empty response
-                    System.out.println("Response received, for advance search.");
+                    log.info("Response received, for advance search.");
                     return session;
                 })
                 .exec(session -> {
@@ -114,9 +114,9 @@ public final class DartsPortalAdvanceSearchScenario {
                     String email = session.getString("Email");
 
                     if (getextractedCaseId != null) {
-                        System.out.println("getCaseId: " + getextractedCaseId.toString() + " for user: " + email);
+                        log.info("getCaseId: " + getextractedCaseId.toString() + " for user: " + email);
                     } else {
-                        System.out.println("No Case Id value saved using saveAs.");
+                        log.info("No Case Id value saved using saveAs.");
                     }
                     return session;
                 })

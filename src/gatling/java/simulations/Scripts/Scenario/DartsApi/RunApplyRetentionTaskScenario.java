@@ -22,7 +22,7 @@ public final class RunApplyRetentionTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 11 has been ran for applying a retention");
+                log.info("Automated Tasks 11 has been ran for applying a retention");
             return session;
         });       
     }       

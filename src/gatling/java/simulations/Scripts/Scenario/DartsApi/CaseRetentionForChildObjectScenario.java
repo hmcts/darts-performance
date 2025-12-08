@@ -65,11 +65,11 @@ public final class CaseRetentionForChildObjectScenario {
             }
         )
         .exec(session -> {
-            System.out.println("Case Closed for Id:" + session.get("cas_id"));
-            System.out.println("Case Closed with audio count:" + session.get("audio_count"));
-            System.out.println("Case Closed with transcription doc count:" + session.get("transcription_doc_count"));
-            System.out.println("Case Closed with annotation doc count:" + session.get("annotation_doc_count"));
-            System.out.println("Case Closed with case doc count:" + session.get("case_doc_count"));
+            log.info("Case Closed for Id:" + session.get("cas_id"));
+            log.info("Case Closed with audio count:" + session.get("audio_count"));
+            log.info("Case Closed with transcription doc count:" + session.get("transcription_doc_count"));
+            log.info("Case Closed with annotation doc count:" + session.get("annotation_doc_count"));
+            log.info("Case Closed with case doc count:" + session.get("case_doc_count"));
             return session;
         });
     }       

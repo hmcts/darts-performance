@@ -73,25 +73,25 @@ public final class DartsPortalInternalLoginScenario {
                 String flowToken = session.getString("flowToken");
 
                 if (sessionId != null) {
-                    System.out.println("Session ID: " + sessionId);
+                    log.info("Session ID: " + sessionId);
                     if (clientRequestId != null) {
-                        System.out.println("Client Request ID: " + clientRequestId);
+                        log.info("Client Request ID: " + clientRequestId);
                     } else {
-                        System.out.println("Client Request ID not found in response.");
+                        log.info("Client Request ID not found in response.");
                     }
                     if (sCtx != null) {
-                        System.out.println("sCtx: " + sCtx);
+                        log.info("sCtx: " + sCtx);
                     }
                      else {
-                        System.out.println("sCtx not found in response. User:" + email);
+                        log.info("sCtx not found in response. User:" + email);
                     }
                     if (flowToken != null) {
-                        System.out.println("Flow Token: " + flowToken);
+                        log.info("Flow Token: " + flowToken);
                     } else {
-                        System.out.println("Flow Token not found in response.");
+                        log.info("Flow Token not found in response.");
                     }
                 } else {
-                    System.out.println("No value saved for sessionId using saveAs.");
+                    log.info("No value saved for sessionId using saveAs.");
                 }
                 return session;
             })

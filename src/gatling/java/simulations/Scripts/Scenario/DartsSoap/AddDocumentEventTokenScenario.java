@@ -30,9 +30,9 @@ public final class AddDocumentEventTokenScenario {
                 .exec(session -> {
                     Object messageId = session.get("messageId");
                     if (messageId != null) {
-                        System.out.println("messageId for AddDocument - Event request: " + messageId.toString());
+                        log.info("messageId for AddDocument - Event request: " + messageId.toString());
                     } else {
-                        System.out.println("Created AddDocument - Event.");
+                        log.info("Created AddDocument - Event.");
                     }
                     return session;
                 })

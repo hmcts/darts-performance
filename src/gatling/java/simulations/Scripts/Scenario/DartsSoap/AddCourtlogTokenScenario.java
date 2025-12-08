@@ -29,9 +29,9 @@ public final class AddCourtlogTokenScenario {
                         .exec(session -> {
                             Object messageId = session.get("messageId");
                             if (messageId != null) {
-                                System.out.println("messageId for Add CourtLog request: " + messageId.toString());
+                                log.info("messageId for Add CourtLog request: " + messageId.toString());
                             } else {
-                                System.out.println("Created Add CourtLog request.");
+                                log.info("Created Add CourtLog request.");
                             }
                             return session;
                         })

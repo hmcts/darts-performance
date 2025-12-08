@@ -32,9 +32,9 @@ public final class AddCaseTokenScenario {
         .exec(session -> {
             Object messageId = session.get("messageId");
             if (messageId != null) {
-                System.out.println("messageId for AddCase request: " + messageId.toString());
+                log.info("messageId for AddCase request: " + messageId.toString());
             } else {
-                System.out.println("Created AddCase request.");
+                log.info("Created AddCase request.");
             }
             return session;
             })

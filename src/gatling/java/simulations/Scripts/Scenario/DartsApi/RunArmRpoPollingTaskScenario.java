@@ -23,7 +23,7 @@ public final class RunArmRpoPollingTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 29 has been ran for Arm Rpo Polling Task");
+                log.info("Automated Tasks 29 has been ran for Arm Rpo Polling Task");
             return session;
         });       
     }       

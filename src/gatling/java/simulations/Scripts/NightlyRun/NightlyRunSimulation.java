@@ -38,7 +38,7 @@ public class NightlyRunSimulation extends Simulation {
 
     @Override
     public void before() {
-        System.out.println("Simulation is about to start!");
+        log.info("Simulation is about to start!");
     }
 
         // // Load all SQL queries in parallel and store them in distinct variables
@@ -492,6 +492,6 @@ public class NightlyRunSimulation extends Simulation {
     }
         @Override
         public void after() {
-            System.out.println("Simulation is finished!");
+            log.info("Simulation is finished!");
         }
 }

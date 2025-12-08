@@ -37,7 +37,7 @@ public final class AddDocumentCPPEventTokenScenario {
                             if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
                                 // Mark the request as failed if there's an error message
                                 session.markAsFailed();
-                                System.out.println("Error detected for CPP Event: " + message);
+                                log.info("Error detected for CPP Event: " + message);
                             }
                             return session;
                         })
@@ -45,10 +45,10 @@ public final class AddDocumentCPPEventTokenScenario {
                             Object messageId = session.get("messageId");
                             String xmlPayload = session.get("xmlPayload");
                             if (messageId != null) {
-                                System.out.println("messageId for AddDocument - CPP Event request: " + messageId.toString());                                
+                                log.info("messageId for AddDocument - CPP Event request: " + messageId.toString());                                
                             } else {
-                                System.out.println("Created AddDocument - CPP Event request.");
-                                System.out.println("messageId for AddDocument - CPP Event request: " + xmlPayload);
+                                log.info("Created AddDocument - CPP Event request.");
+                                log.info("messageId for AddDocument - CPP Event request: " + xmlPayload);
 
                             }
                             return session;

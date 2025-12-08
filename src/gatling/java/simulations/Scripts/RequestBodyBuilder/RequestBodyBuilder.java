@@ -146,9 +146,9 @@ public class RequestBodyBuilder {
         String formattedDateToStr = "\"" + formattedDateTo.format(DateTimeFormatter.ISO_LOCAL_DATE) + "\"";
     
     
- //       System.out.println("Date at " + courtHouseName + ": " + formattedFromDateStr + " for user: " + email + " test " + defendantName);
- //       System.out.println("From Date: " + formattedFromDateStr);
- //       System.out.println("To Date: " + formattedDateToStr);
+ //       log.info("Date at " + courtHouseName + ": " + formattedFromDateStr + " for user: " + email + " test " + defendantName);
+ //       log.info("From Date: " + formattedFromDateStr);
+ //       log.info("To Date: " + formattedDateToStr);
     
         String eventTextContains = Optional.ofNullable(session.get("EventTextContains"))
                     .map(value -> "\"" + value.toString() + "\"")
@@ -156,7 +156,7 @@ public class RequestBodyBuilder {
 
         // Get the user type from the session
         String userType = session.get("Type").toString();
-        // System.out.println("userType for Audio Request: " + userType);
+        // log.info("userType for Audio Request: " + userType);
         
         // Determine request type based on user type
         if (userType.equalsIgnoreCase("LanguageShop")) {

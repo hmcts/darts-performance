@@ -20,7 +20,7 @@ public final class RunExternalDataStoreDeleterTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 5 has been ran for External DataStore Deleter");
+                log.info("Automated Tasks 5 has been ran for External DataStore Deleter");
             return session;
         });       
     }       

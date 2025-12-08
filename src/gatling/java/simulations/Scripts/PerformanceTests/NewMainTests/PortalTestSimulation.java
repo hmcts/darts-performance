@@ -26,7 +26,7 @@ public class PortalTestSimulation extends Simulation {
 
     @Override
     public void before() {
-        System.out.println("Simulation is about to start!");
+        log.info("Simulation is about to start!");
     }    
    
     

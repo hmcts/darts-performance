@@ -23,7 +23,7 @@ public final class RunProcessE2EArmRpoPendingTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 28 has been ran for Process E2E Arm Rpo Pending Task");
+                log.info("Automated Tasks 28 has been ran for Process E2E Arm Rpo Pending Task");
             return session;
         });       
     }       

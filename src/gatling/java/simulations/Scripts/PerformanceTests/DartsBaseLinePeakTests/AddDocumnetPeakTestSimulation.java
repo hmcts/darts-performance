@@ -21,7 +21,7 @@ public class AddDocumnetPeakTestSimulation extends Simulation {
 
     @Override
     public void before() {
-        System.out.println("Simulation is about to start!");
+        log.info("Simulation is about to start!");
     }
 
     public AddDocumnetPeakTestSimulation() {      
@@ -111,6 +111,6 @@ public class AddDocumnetPeakTestSimulation extends Simulation {
 
     @Override
     public void after() {
-        System.out.println("Simulation is finished!");
+        log.info("Simulation is finished!");
     }
 }

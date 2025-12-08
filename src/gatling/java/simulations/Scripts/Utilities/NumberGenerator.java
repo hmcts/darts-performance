@@ -26,14 +26,14 @@ public class NumberGenerator {
     public static void RandomNumberGenerator(String[] args) {
         Random random = new Random();
         int randomNumber = random.nextInt();
-        System.out.println("Random Number: " + randomNumber);
+        log.info("Random Number: " + randomNumber);
 
         int minRange = 0;
         int maxRange = 100;
         int randomInRange = random.nextInt(maxRange - minRange + 1) + minRange;
-        System.out.println("Random Number in Range (0 to 100): " + randomInRange);
+        log.info("Random Number in Range (0 to 100): " + randomInRange);
 
         double randomDouble = random.nextDouble();
-        System.out.println("Random Double: " + randomDouble);
+        log.info("Random Double: " + randomDouble);
     }
 }

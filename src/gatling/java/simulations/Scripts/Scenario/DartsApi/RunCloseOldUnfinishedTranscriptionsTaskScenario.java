@@ -22,7 +22,7 @@ public final class RunCloseOldUnfinishedTranscriptionsTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 2 has been ran for Close Old Unfinished Transcriptions");
+                log.info("Automated Tasks 2 has been ran for Close Old Unfinished Transcriptions");
             return session;
         });       
     }      

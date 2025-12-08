@@ -41,16 +41,16 @@ public final class AddDocumentCPPDailyListTokenScenario {
                             if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
                                 // Mark the request as failed if there's an error message
                                 session.markAsFailed();
-                                System.out.println("Error detected for CPP DailyList: " + message);
+                                log.info("Error detected for CPP DailyList: " + message);
                             }
                             return session;
                         })
                         .exec(session -> {
                             Object messageId = session.get("messageId");
                             if (messageId != null) {
-                                System.out.println("messageId for AddDocument - CPP DailyList request: " + messageId.toString());
+                                log.info("messageId for AddDocument - CPP DailyList request: " + messageId.toString());
                             } else {
-                                System.out.println("Created AddDocument - CPP DailyList request.");
+                                log.info("Created AddDocument - CPP DailyList request.");
                             }
                             return session;
                         })

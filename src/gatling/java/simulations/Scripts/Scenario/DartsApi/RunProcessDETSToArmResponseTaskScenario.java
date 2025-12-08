@@ -23,7 +23,7 @@ public final class RunProcessDETSToArmResponseTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 18 has been ran for Process DETS To Arm Response Task");
+                log.info("Automated Tasks 18 has been ran for Process DETS To Arm Response Task");
             return session;
         });       
     }       

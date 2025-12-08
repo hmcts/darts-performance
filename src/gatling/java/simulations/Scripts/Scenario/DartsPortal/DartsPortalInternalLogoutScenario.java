@@ -26,7 +26,7 @@ public final class DartsPortalInternalLogoutScenario {
               .exec(session -> {
                 // Print the extracted UUID
                 String uuid = session.getString("extractedUUID");
-                System.out.println("Extracted UUID: " + uuid);
+                log.info("Extracted UUID: " + uuid);
                 return session;
             })
               .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Auth - Logout"))

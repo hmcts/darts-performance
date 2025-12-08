@@ -69,9 +69,9 @@ public final class CreateRetenionsScenario {
         .pause(5)
         .exec(session -> {
             String xmlPayload = RequestBodyBuilder.buildRetentionsPostBody(session);
-            System.out.println("Retentions xmlPayload: " + xmlPayload);
+            log.info("Retentions xmlPayload: " + xmlPayload);
             
-            System.out.println("Retentions session: " + session); 
+            log.info("Retentions session: " + session); 
             return session.set("xmlPayload", xmlPayload);
         })      
         .exec(http("DARTS - Api - RetentionsRequest:POST")
@@ -82,7 +82,7 @@ public final class CreateRetenionsScenario {
             .check(status().is(200))
         )
         .exec(session -> {
-            System.out.println("Case id: " + session.getString("cas_id")+ " has had a Retention added");
+            log.info("Case id: " + session.getString("cas_id")+ " has had a Retention added");
         return session;
         })
         .pause(120); 

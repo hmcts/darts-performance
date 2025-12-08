@@ -23,7 +23,7 @@ public final class RunCaseExpiryDeletionScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 18 has been ran for Case Expiry Deletion");
+                log.info("Automated Tasks 18 has been ran for Case Expiry Deletion");
             return session;
         });       
     }       

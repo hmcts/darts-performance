@@ -30,9 +30,9 @@ public final class AddDocumentDailyListTokenScenario {
                 .exec(session -> {
                     Object messageId = session.get("messageId");
                     if (messageId != null) {
-                        System.out.println("messageId for AddDocument - DailyList request: " + messageId.toString());
+                        log.info("messageId for AddDocument - DailyList request: " + messageId.toString());
                     } else {
-                        System.out.println("Created AddDocument - DailyList request.");
+                        log.info("Created AddDocument - DailyList request.");
                     }
                     return session;
                 })

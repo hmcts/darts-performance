@@ -38,7 +38,7 @@ public final class DartsPortalExternalLoginScenario {
               .exitHereIfFailed() 
               .exec(session -> {
                 Object stateProperties = session.get("stateProperties");
-                System.out.println("Extracted StateProperties: " + stateProperties);
+                log.info("Extracted StateProperties: " + stateProperties);
                 return session;
               })
               .exec(
@@ -67,9 +67,9 @@ public final class DartsPortalExternalLoginScenario {
                   String email = session.getString("Email");
                   String password = session.getString("Password");
                   String userName = session.getString("user_name");
-                  System.out.println("Email: " + email);
-                  System.out.println("Password: " + password);
-                  System.out.println("User Name: " + userName);
+                  log.info("Email: " + email);
+                  log.info("Password: " + password);
+                  log.info("User Name: " + userName);
                   return session;
               })
               .exec(UserInfoLogger.logDetailedErrorMessage("B2C_1_darts_externaluser_signin - SelfAsserted"))

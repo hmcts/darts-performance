@@ -23,7 +23,7 @@ public final class RunProcessArmResponseFilesTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 9 has been ran for Process Arm Response Files Task");
+                log.info("Automated Tasks 9 has been ran for Process Arm Response Files Task");
             return session;
         });       
     }       

@@ -23,7 +23,7 @@ public final class RunGenerateCaseDocumentTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 17 has been ran for Generate Case Documents for closed cases");
+                log.info("Automated Tasks 17 has been ran for Generate Case Documents for closed cases");
             return session;
         });       
     }       

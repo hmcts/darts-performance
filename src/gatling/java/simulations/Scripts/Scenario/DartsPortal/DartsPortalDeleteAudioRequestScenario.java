@@ -84,13 +84,13 @@ public final class DartsPortalDeleteAudioRequestScenario {
                 session = session.set("getRequestType", selectedRequestType);
 
                 // Print the IDs
-                //System.out.println("getTransformedMediaId: " + selectedTransformedMediaId);
-                //System.out.println("getCaseId: " + selectedCaseId);
-                //System.out.println("getHearingId: " + selectedHearingId);
-                //System.out.println("getRequestType: " + selectedRequestType);
+                //log.info("getTransformedMediaId: " + selectedTransformedMediaId);
+                //log.info("getCaseId: " + selectedCaseId);
+                //log.info("getHearingId: " + selectedHearingId);
+                //log.info("getRequestType: " + selectedRequestType);
 
             } else {
-                System.out.println("No IDs found in the response.");
+                log.info("No IDs found in the response.");
             }
         
             return session;
@@ -134,10 +134,10 @@ public final class DartsPortalDeleteAudioRequestScenario {
                   String errorTitle = session.getString("errorTitle");
                   int errorStatus = session.getInt("errorStatus");
 
-                  System.out.println("Received 403 Conflict. Details:");
-                  System.out.println("Type: " + errorType);
-                  System.out.println("Title: " + errorTitle);
-                  System.out.println("Status: " + errorStatus);
+                  log.info("Received 403 Conflict. Details:");
+                  log.info("Type: " + errorType);
+                  log.info("Title: " + errorTitle);
+                  log.info("Status: " + errorStatus);
 
                   // Mark the session as a failure.
                   return session.markAsFailed();
@@ -244,15 +244,15 @@ public final class DartsPortalDeleteAudioRequestScenario {
                   String errorTitle = session.getString("errorTitle");
                   int errorStatus = session.getInt("errorStatus");
 
-                  System.out.println("Received 403 Conflict. Details:");
-                  System.out.println("Type: " + errorType);
-                  System.out.println("Title: " + errorTitle);
-                  System.out.println("Status: " + errorStatus);
+                  log.info("Received 403 Conflict. Details:");
+                  log.info("Type: " + errorType);
+                  log.info("Title: " + errorTitle);
+                  log.info("Status: " + errorStatus);
 
                   // Mark the session as failure.
                   return session.markAsFailed();
               } else {
-                  System.out.println("Deleted TransformedMediaId: " + transformedMediaId + " from user " + email);
+                  log.info("Deleted TransformedMediaId: " + transformedMediaId + " from user " + email);
                 return session;
               }
           })          

@@ -23,7 +23,7 @@ public final class RunUnstructuredToArmDataStoreScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 8 has been ran for Unstructured To Arm DataStore");
+                log.info("Automated Tasks 8 has been ran for Unstructured To Arm DataStore");
             return session;
         });       
     }       

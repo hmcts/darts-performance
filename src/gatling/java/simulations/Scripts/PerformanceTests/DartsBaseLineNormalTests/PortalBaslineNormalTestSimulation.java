@@ -34,7 +34,7 @@ public class PortalBaslineNormalTestSimulation extends Simulation {
 
     @Override
     public void before() {
-        System.out.println("Simulation is about to start!");
+        log.info("Simulation is about to start!");
     }
 
     public PortalBaslineNormalTestSimulation() {
@@ -300,8 +300,8 @@ public class PortalBaslineNormalTestSimulation extends Simulation {
 
     @Override
     public void after() {
-        System.out.println("Total 400 Errors Encountered: " + global400ErrorCounter.get());
+        log.info("Total 400 Errors Encountered: " + global400ErrorCounter.get());
 
-        System.out.println("Simulation is finished!");
+        log.info("Simulation is finished!");
     }
 }

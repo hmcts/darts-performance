@@ -38,9 +38,9 @@ public final class LinkingAudioToCaseScenario {
             .exec(session -> {
                 String randomAudioFile = Feeders.getRandomAudioFile();
                 String xmlPayload = RequestBodyBuilder.buildPostAudioLinkingForCaseApiRequest(session, randomAudioFile, caseName);
-              //  System.out.println("Code xmlPayload: " + xmlPayload);
-               // System.out.println("Code session: " + session);
-                System.out.println("Selected file: " + randomAudioFile);
+              //  log.info("Code xmlPayload: " + xmlPayload);
+               // log.info("Code session: " + session);
+                log.info("Selected file: " + randomAudioFile);
                 return session.set("randomAudioFile", randomAudioFile)
                               .set("xmlPayload", xmlPayload);
                 }
@@ -68,7 +68,7 @@ public final class LinkingAudioToCaseScenario {
                     String responseBody = session.getString("responseBody");
                     System.err.println("Error: Non-200 status code: " + session.get("statusCode" + responseBody));
                 } else {
-                    System.out.println("Audio Created for" + session.get("randomAudioFile") + ", Response Status: " + session.get("statusCode"));
+                    log.info("Audio Created for" + session.get("randomAudioFile") + ", Response Status: " + session.get("statusCode"));
                 }  
                 return session;
                 }
@@ -93,9 +93,9 @@ public final class LinkingAudioToCaseScenario {
             .exec(session -> {
                 String randomAudioFile = Feeders.getRandomAudioFile();
                 String xmlPayload = RequestBodyBuilder.buildPostAudioLinkingForCaseApiRequest(session, randomAudioFile, caseName2);
-              //  System.out.println("Code xmlPayload: " + xmlPayload);
-               // System.out.println("Code session: " + session);
-                System.out.println("Selected file: " + randomAudioFile);
+              //  log.info("Code xmlPayload: " + xmlPayload);
+               // log.info("Code session: " + session);
+                log.info("Selected file: " + randomAudioFile);
                 return session.set("randomAudioFile", randomAudioFile)
                               .set("xmlPayload", xmlPayload);
                 }
@@ -123,7 +123,7 @@ public final class LinkingAudioToCaseScenario {
                     String responseBody = session.getString("responseBody");
                     System.err.println("Error: Non-200 status code: " + session.get("statusCode" + responseBody));
                 } else {
-                    System.out.println("Audio Created for" + session.get("randomAudioFile") + ", Response Status: " + session.get("statusCode"));
+                    log.info("Audio Created for" + session.get("randomAudioFile") + ", Response Status: " + session.get("statusCode"));
                 }  
                 return session;
                 }

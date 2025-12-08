@@ -47,19 +47,19 @@ public class Feeders {
 
         //Users
         try {
-            System.out.println("Loading CSV: " + AppConfig.DARTS_PORTAL_LANGUAGESHOP_FILE_PATH);
+            log.info("Loading CSV: " + AppConfig.DARTS_PORTAL_LANGUAGESHOP_FILE_PATH);
             LanguageShopUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_LANGUAGESHOP_FILE_PATH).circular();
         
-            System.out.println("Loading CSV: " + AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV);
+            log.info("Loading CSV: " + AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV);
             CourtClerkUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV).circular();
         
-            System.out.println("Loading CSV: " + AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH);
+            log.info("Loading CSV: " + AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH);
             TranscriberUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH).circular();
         
-            System.out.println("Loading CSV: " + AppConfig.DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH);
+            log.info("Loading CSV: " + AppConfig.DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH);
             CourtManagerUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH).circular();
         
-            System.out.println("Loading CSV: " + AppConfig.DARTS_PORTAL_JUDGE_USERS_FILE_PATH);
+            log.info("Loading CSV: " + AppConfig.DARTS_PORTAL_JUDGE_USERS_FILE_PATH);
             JudgeUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_JUDGE_USERS_FILE_PATH).circular();
         } catch (Exception e) {
             System.err.println("Error loading CSV: " + e.getMessage());
@@ -240,7 +240,7 @@ public class Feeders {
     public static void main(String[] args) {
         // Test the getRandomAudioFile method
         for (int i = 0; i < 100; i++) {
-            System.out.println(getRandomAudioFile());
+            log.info(getRandomAudioFile());
         }
     }
 

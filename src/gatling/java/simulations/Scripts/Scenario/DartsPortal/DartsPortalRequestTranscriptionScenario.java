@@ -19,15 +19,15 @@ public final class DartsPortalRequestTranscriptionScenario {
       .on(exec(session -> {
                 Object getCaseId = session.get("getCaseId");
                 if (getCaseId != null) {
-                //    System.out.println("getCaseId: " + getCaseId.toString());
+                //    log.info("getCaseId: " + getCaseId.toString());
                 } else {
-                    System.out.println("No Case Id value saved using saveAs.");
+                    log.info("No Case Id value saved using saveAs.");
                 }
                 
                 Object errorTitle = session.get("errorTitle");
                 if (errorTitle != null) {
                     String errorMessage = "Request failed with error: " + errorTitle.toString();
-                    System.out.println(errorMessage);
+                    log.info(errorMessage);
                     throw new RuntimeException(errorMessage); // Fail the test by throwing an exception
                 }
                 return session;
@@ -36,15 +36,15 @@ public final class DartsPortalRequestTranscriptionScenario {
           .exec(session -> {
                 Object getHearings = session.get("getHearings");
                 if (getHearings != null) {
-                //    System.out.println("getHearings from Cases - Hearings: " + getHearings.toString());
+                //    log.info("getHearings from Cases - Hearings: " + getHearings.toString());
                 } else {
-                    System.out.println("No Hearing value saved using saveAs.");
+                    log.info("No Hearing value saved using saveAs.");
                 }
                 Object getHearingId = session.get("getHearingId");
                 if (getHearingId != null) {
-                 //   System.out.println("getHearingId from Cases - Hearings: " + getHearingId.toString());
+                 //   log.info("getHearingId from Cases - Hearings: " + getHearingId.toString());
                 } else {
-                    System.out.println("No Hearing Id value saved using saveAs.");
+                    log.info("No Hearing Id value saved using saveAs.");
                 }
                 return session;
             }
@@ -80,9 +80,9 @@ public final class DartsPortalRequestTranscriptionScenario {
               String email  = session.getString("Email");
           
               if (typeId != null) {
-                  System.out.println("Random Transcription Type ID: " + typeId + " for user: " + email);
+                  log.info("Random Transcription Type ID: " + typeId + " for user: " + email);
               } else {
-                  System.out.println("No transcription type ID found in response.");
+                  log.info("No transcription type ID found in response.");
               }
           
               return session;
@@ -161,8 +161,8 @@ public final class DartsPortalRequestTranscriptionScenario {
                   Object getCaseId = session.get("getCaseId");
                   Object getHearingId = session.get("getHearingId");
 
-                  System.out.println("Received 409 Conflict. Details:");
-                  System.out.println("Status: " + errorStatus + "Type: " + errorType + "Title: " + errorTitle + " for user: " + email +"Case Id: " + getCaseId + "Hearing Id: " + getHearingId);
+                  log.info("Received 409 Conflict. Details:");
+                  log.info("Status: " + errorStatus + "Type: " + errorType + "Title: " + errorTitle + " for user: " + email +"Case Id: " + getCaseId + "Hearing Id: " + getHearingId);
 
                   // Mark the session as succeeded to prevent this from counting as a failure. 409 response is "A transcription already exists with these properties"
                   return session.markAsSucceeded();

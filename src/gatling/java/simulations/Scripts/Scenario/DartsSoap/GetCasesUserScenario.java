@@ -34,7 +34,7 @@ public final class GetCasesUserScenario {
                             if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
                                 // Mark the request as failed if there's an error message
                                 session.markAsFailed();
-                                System.out.println("Error detected for GetCase request: " + message);
+                                log.info("Error detected for GetCase request: " + message);
                             }
                             return session;
                         })
@@ -46,9 +46,9 @@ public final class GetCasesUserScenario {
                                 // Mark as failed if statusCode is 500
                                 session.markAsFailed();
                                 if (message == null) {
-                                    System.out.println("Error detected for Add GetCase request: 500 response Code");
+                                    log.info("Error detected for Add GetCase request: 500 response Code");
                                 } else {
-                                    System.out.println("Error detected for Add GetCase request: " + message);
+                                    log.info("Error detected for Add GetCase request: " + message);
                                 }
                             }
                             return session;
@@ -56,9 +56,9 @@ public final class GetCasesUserScenario {
                         .exec(session -> {
                             Object messageId = session.get("messageId");
                             if (messageId != null) {
-                                System.out.println("messageId for GetCase request: " + messageId.toString());
+                                log.info("messageId for GetCase request: " + messageId.toString());
                             } else {
-                                System.out.println("Created GetCase request.");
+                                log.info("Created GetCase request.");
                             }
                             return session;
                         })

@@ -42,16 +42,16 @@ public final class AddDocumentXhibitDailyListTokenScenario {
                             if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
                                 // Mark the request as failed if there's an error message
                                 session.markAsFailed();
-                                System.out.println("Error detected for Xhibit DailyList: " + message);
+                                log.info("Error detected for Xhibit DailyList: " + message);
                             }
                             return session;
                         })
                         .exec(session -> {
                             Object messageId = session.get("messageId");
                             if (messageId != null) {
-                                System.out.println("messageId for AddDocument - Xhibit DailyList request: " + messageId.toString());
+                                log.info("messageId for AddDocument - Xhibit DailyList request: " + messageId.toString());
                             } else {
-                                System.out.println("Created AddDocument - Xhibit DailyList request.");
+                                log.info("Created AddDocument - Xhibit DailyList request.");
                             }
                             return session;
                         })

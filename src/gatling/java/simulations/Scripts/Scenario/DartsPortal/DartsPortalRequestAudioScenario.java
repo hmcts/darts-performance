@@ -64,7 +64,7 @@ public final class DartsPortalRequestAudioScenario {
             int statusCode = session.getInt("responseStatus");
             if (statusCode == 403) {
                 // Log the 403 and clear the failure status
-                System.out.println("Received 403, resetting failure status...");
+                log.info("Received 403, resetting failure status...");
                 return session.markAsSucceeded();
             }
             return session;
@@ -94,7 +94,7 @@ public final class DartsPortalRequestAudioScenario {
               .check(jsonPath("$[?(@.id == #{getHearingId})].date").find().saveAs("getHearingdate"))
               )
               .exec(session -> {
-                  System.out.println("DEBUG getHearingId = " + session.getString("getHearingId"));
+                  log.info("DEBUG getHearingId = " + session.getString("getHearingId"));
                   return session;
               })
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Hearings"))
@@ -103,9 +103,9 @@ public final class DartsPortalRequestAudioScenario {
             String email = session.getString("Email");
             Object getHearingId = session.get("getHearingId");
             if (getHearingId != null) {
-                System.out.println("getHearingId from Cases - Hearings: " + getHearingId.toString() + " for user: " + email);
+                log.info("getHearingId from Cases - Hearings: " + getHearingId.toString() + " for user: " + email);
             } else {
-                System.out.println("No Hearing Id value saved using saveAs.");
+                log.info("No Hearing Id value saved using saveAs.");
             }
             return session;
             }
@@ -164,7 +164,7 @@ public final class DartsPortalRequestAudioScenario {
               int statusCode = session.getInt("responseStatus");
               if (statusCode == 403) {
                   // Log the 403 and clear the failure status
-                  System.out.println("Received 403, resetting failure status...");
+                  log.info("Received 403, resetting failure status...");
                   return session.markAsSucceeded();
               }
               return session;
@@ -184,7 +184,7 @@ public final class DartsPortalRequestAudioScenario {
           .exec(session -> {
               // Get the user type from the session
               String userType = session.get("Type").toString();
-             // System.out.println("userType for Audio Request: " + userType);
+             // log.info("userType for Audio Request: " + userType);
   
               String requestType;
   
@@ -208,18 +208,18 @@ public final class DartsPortalRequestAudioScenario {
   
               // Set request type in the session
               Session requestTypeSession = session.set("requestType", requestType);
-             // System.out.println("requestType for Audio Request: " + requestType);
+             // log.info("requestType for Audio Request: " + requestType);
   
               return requestTypeSession;
           })
           .exec(session -> {
 
             Object getHearingId = session.get("getHearingId");
-           // System.out.println("getHearingId for Audio Request: " + getHearingId);
+           // log.info("getHearingId for Audio Request: " + getHearingId);
             Object getUserId = session.get("getUserId");
-           // System.out.println("getUserId for Audio Request: " + getUserId);
+           // log.info("getUserId for Audio Request: " + getUserId);
             Object getAudioStartDate = session.get("getAudioStartDate");
-           // System.out.println("getAudioStartDate for Audio Request: " + getAudioStartDate);
+           // log.info("getAudioStartDate for Audio Request: " + getAudioStartDate);
             Object getAudioEndDate = session.get("getAudioEndDate");
            // Build audioXmlPayload
             String audioXmlPayload = RequestBodyBuilder.buildAudioRequestBody(
@@ -251,10 +251,10 @@ public final class DartsPortalRequestAudioScenario {
               String errorTitle = session.getString("errorTitle");
               int errorStatus = session.getInt("errorStatus");
       
-              System.out.println("Received 409 Conflict. Details:");
-              System.out.println("Type: " + errorType);
-              System.out.println("Title: " + errorTitle);
-              System.out.println("Status: " + errorStatus);
+              log.info("Received 409 Conflict. Details:");
+              log.info("Type: " + errorType);
+              log.info("Title: " + errorTitle);
+              log.info("Status: " + errorStatus);
       
               // Set the error details in the session
               return session.set("errorStatusCode", String.valueOf(statusCode))
@@ -265,7 +265,7 @@ public final class DartsPortalRequestAudioScenario {
               String audioXmlPayload = session.getString("AudioXmlPayload");
               String email = session.getString("Email");
 
-              System.out.println("Audio Request payload: " + audioXmlPayload + " for user: " + email);
+              log.info("Audio Request payload: " + audioXmlPayload + " for user: " + email);
     
               return session;
           }

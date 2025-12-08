@@ -32,7 +32,7 @@ public final class AddDocumentXhibitEventTokenScenario {
                         .check(bodyString().saveAs("responseBody")) // Capture the entire response body
                         )
                 .exec(session -> {
-                    //    System.out.println("Raw response body for AddDocument - Xhibit Event request: " + responseBody);
+                    //    log.info("Raw response body for AddDocument - Xhibit Event request: " + responseBody);
                     return session;
                 })
                 .exec(session -> {
@@ -40,23 +40,23 @@ public final class AddDocumentXhibitEventTokenScenario {
                     String message = session.getString("message");
                     
                     if (statusCode == null) {
-                        System.out.println("Status code is null for AddDocument - Xhibit Event request. Response might be missing the <return/code> element.");
+                        log.info("Status code is null for AddDocument - Xhibit Event request. Response might be missing the <return/code> element.");
                     }
                     
                     if (message == null) {
-                        System.out.println("Message is null for AddDocument - Xhibit Event request. Response might be missing the <return/message> element.");
+                        log.info("Message is null for AddDocument - Xhibit Event request. Response might be missing the <return/message> element.");
                     }
                     
                     if (statusCode != null && statusCode.equals("ERROR")) {
                         // Mark the request as failed if there's an error status code
                         session.markAsFailed();
-                        System.out.println("Error detected with status code for AddDocument - Xhibit Event request: " + statusCode);
+                        log.info("Error detected with status code for AddDocument - Xhibit Event request: " + statusCode);
                     }
                     
                     if (message != null && message.toLowerCase().contains("error")) {
                         // Mark the request as failed if there's an error message
                         session.markAsFailed();
-                        System.out.println("Error detected with message for AddDocument - Xhibit Event request: " + message);
+                        log.info("Error detected with message for AddDocument - Xhibit Event request: " + message);
                     }
                     
                     return session;
@@ -65,10 +65,10 @@ public final class AddDocumentXhibitEventTokenScenario {
                     Object messageId = session.get("messageId");
                     String xmlPayload = session.get("xmlPayload");
                     if (messageId != null) {
-                        System.out.println("messageId for AddDocument - Xhibit Event request: " + messageId.toString());
+                        log.info("messageId for AddDocument - Xhibit Event request: " + messageId.toString());
                     } else {
-                        System.out.println("Created AddDocument - Xhibit Event request.");
-                        System.out.println("AddDocument - Xhibit Event payload: " + xmlPayload);
+                        log.info("Created AddDocument - Xhibit Event request.");
+                        log.info("AddDocument - Xhibit Event payload: " + xmlPayload);
                     }
                     return session;
                 });

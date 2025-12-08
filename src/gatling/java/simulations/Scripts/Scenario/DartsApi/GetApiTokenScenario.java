@@ -1,5 +1,6 @@
 package simulations.Scripts.Scenario.DartsApi;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
@@ -8,6 +9,7 @@ import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+@Slf4j
 public final class GetApiTokenScenario {
 
   private static final String GROUP_NAME = "B2C_1_Ropc_Darts_Signin - Token";
@@ -29,9 +31,9 @@ public final class GetApiTokenScenario {
                   ).exec(session -> {
               Object bearerToken = session.get("bearerToken");
               if (bearerToken != null) {
-                  System.out.println("bearerToken Created"); //+ bearerToken.toString());
+                  log.info("bearerToken Created"); //+ bearerToken.toString());
               } else {
-                  System.out.println("No bearer Token value saved.");
+                  log.info("No bearer Token value saved.");
               }
               return session;
             })
@@ -44,8 +46,8 @@ public final class GetApiTokenScenario {
                   // Retrieve Email and Password from the session
                   String email = session.getString("Email");
                   String password = session.getString("Password");
-                  System.out.println("Email: " + email);
-                  System.out.println("Password: " + password);
+                  log.info("Email: " + email);
+                  log.info("Password: " + password);
                   return session;
               })
               .exec( 
@@ -63,9 +65,9 @@ public final class GetApiTokenScenario {
                 .exec(session -> {
                     Object bearerToken = session.get("bearerToken");
                     if (bearerToken != null) {
-                      System.out.println("bearerToken Created"); //+ bearerToken.toString());
+                      log.info("bearerToken Created"); //+ bearerToken.toString());
                     } else {
-                        System.out.println("No bearer Token value saved.");
+                        log.info("No bearer Token value saved.");
                     }
                     return session;
                 })

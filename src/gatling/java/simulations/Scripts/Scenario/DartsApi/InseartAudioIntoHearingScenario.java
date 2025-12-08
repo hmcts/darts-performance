@@ -42,9 +42,9 @@ public final class InseartAudioIntoHearingScenario {
     
                     // ✅ Output the inserted values
                     if (result > 0) {
-                        System.out.println("Inserted hea_id: " + heaId + ", med_id: " + medId);
+                        log.info("Inserted hea_id: " + heaId + ", med_id: " + medId);
                     } else {
-                        System.out.println("Insert skipped or failed for hea_id: " + heaId + ", med_id: " + medId);
+                        log.info("Insert skipped or failed for hea_id: " + heaId + ", med_id: " + medId);
                     }
                 }
     

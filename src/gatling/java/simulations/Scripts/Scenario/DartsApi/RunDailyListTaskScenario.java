@@ -22,7 +22,7 @@ public final class RunDailyListTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 1 has been ran for Process Daily List");
+                log.info("Automated Tasks 1 has been ran for Process Daily List");
             return session;
         });       
     }      

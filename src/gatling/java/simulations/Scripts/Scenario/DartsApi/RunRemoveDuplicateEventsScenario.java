@@ -23,7 +23,7 @@ public final class RunRemoveDuplicateEventsScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 18 has been ran for Remove Duplicate Events");
+                log.info("Automated Tasks 18 has been ran for Remove Duplicate Events");
             return session;
         });       
     }       

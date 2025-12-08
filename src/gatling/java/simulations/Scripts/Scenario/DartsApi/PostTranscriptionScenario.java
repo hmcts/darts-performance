@@ -30,9 +30,9 @@ public final class PostTranscriptionScenario {
                 .exec(session -> {
                     Object transcriptionId = session.get("transcriptionId");
                     if (transcriptionId != null) {
-                        System.out.println("Created Transcription Id: " + transcriptionId.toString());
+                        log.info("Created Transcription Id: " + transcriptionId.toString());
                     } else {
-                        System.out.println("No transcription Id value saved.");
+                        log.info("No transcription Id value saved.");
                     }
                     return session;
                 }));

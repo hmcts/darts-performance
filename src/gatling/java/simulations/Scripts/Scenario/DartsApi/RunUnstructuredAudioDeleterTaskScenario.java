@@ -22,7 +22,7 @@ public final class RunUnstructuredAudioDeleterTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 7 has been ran for Unstructured Audio Deleter");
+                log.info("Automated Tasks 7 has been ran for Unstructured Audio Deleter");
             return session;
         });       
     }       

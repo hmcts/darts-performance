@@ -23,7 +23,7 @@ public final class RunGenerateCaseDocumentForRetentionDateScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 21 has been ran for Generate Case Documents for For Retention Date");
+                log.info("Automated Tasks 21 has been ran for Generate Case Documents for For Retention Date");
             return session;
         });       
     }       

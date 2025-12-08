@@ -24,7 +24,7 @@ public class TimestampGenerator {
         }
 
         public static void main(String[] args) {
-            System.out.println(getCurrentTimestamp());
+            log.info(getCurrentTimestamp());
         }
     }
 
@@ -45,7 +45,7 @@ public class TimestampGenerator {
         LocalDateTime endTime = getRandomTime(startTime, minHoursDifference, maxHoursDifference);
 
         // Output the results
-        System.out.println("Start Time: " + startTime);
-        System.out.println("End Time: " + endTime);
+        log.info("Start Time: " + startTime);
+        log.info("End Time: " + endTime);
     }
 }

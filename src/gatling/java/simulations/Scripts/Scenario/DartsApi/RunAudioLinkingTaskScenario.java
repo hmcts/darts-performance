@@ -22,7 +22,7 @@ public final class RunAudioLinkingTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 27 has been ran for Audio Linking");
+                log.info("Automated Tasks 27 has been ran for Audio Linking");
             return session;
         });       
     }       

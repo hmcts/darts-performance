@@ -37,7 +37,7 @@ public final class DeleteAudioRequestScenario {
                 String transformedMediaId = session.getString("trm_id");
                 
                 // Log to verify it's populated
-                System.out.println("Fetched trm_id for DELETE: " + transformedMediaId);
+                log.info("Fetched trm_id for DELETE: " + transformedMediaId);
                 
                 return session.set("trm_id", transformedMediaId);
             })
@@ -59,7 +59,7 @@ public final class DeleteAudioRequestScenario {
             } else {
                 // Log the trm_id used in the DELETE request
                 String transformedMediaId = session.getString("trm_id");
-                System.out.println("Audio Delete, Response Status: " + session.get("statusCode") + ", trm_id deleted: " + transformedMediaId);
+                log.info("Audio Delete, Response Status: " + session.get("statusCode") + ", trm_id deleted: " + transformedMediaId);
             }
             return session;
         })        

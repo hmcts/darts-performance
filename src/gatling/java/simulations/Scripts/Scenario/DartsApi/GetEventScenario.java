@@ -19,7 +19,7 @@ public final class GetEventScenario {
         .on(
             feed(Feeders.createEventsToUpdate())
             .exec(session -> {
-                System.out.println("EVE_ID in session: " + session.getString("eve_id"));
+                log.info("EVE_ID in session: " + session.getString("eve_id"));
                 return session;
             })
             .exec(
@@ -35,8 +35,8 @@ public final class GetEventScenario {
                     .check(status().is(201))
             )
             .exec(session -> {
-                System.out.println("case_number in session: " + session.getString("case_number"));
-                System.out.println("hearing_date in session: " + session.getString("hearing_date"));
+                log.info("case_number in session: " + session.getString("case_number"));
+                log.info("hearing_date in session: " + session.getString("hearing_date"));
 
                 return session;
             })
@@ -56,7 +56,7 @@ public final class GetEventScenario {
         .exec(session -> {
             String randomAudioFile = Feeders.getRandomAudioFile();
             String xmlPayload = RequestBodyBuilder.buildPostAudioApiRequest(session, randomAudioFile);
-            System.out.println("Selected file: " + randomAudioFile);
+            log.info("Selected file: " + randomAudioFile);
             return session.set("randomAudioFile", randomAudioFile)
                           .set("xmlPayload", xmlPayload);
             }
@@ -84,7 +84,7 @@ public final class GetEventScenario {
                 String responseBody = session.getString("responseBody");
                 System.err.println("Error: Non-200 status code: " + session.get("statusCode" + responseBody));
             } else {
-                System.out.println("Audio Created for" + session.get("randomAudioFile") + ", Response Status: " + session.get("statusCode"));
+                log.info("Audio Created for" + session.get("randomAudioFile") + ", Response Status: " + session.get("statusCode"));
             }  
             return session;
             }

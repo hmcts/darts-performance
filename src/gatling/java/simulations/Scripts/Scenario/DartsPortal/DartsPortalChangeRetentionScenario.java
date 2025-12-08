@@ -53,7 +53,7 @@ public final class DartsPortalChangeRetentionScenario {
 
                   if (caseCount == 0) {
                       // Handle empty response
-                      System.out.println("Empty response received. Marking as passed and retrying... User:" + email);
+                      log.info("Empty response received. Marking as passed and retrying... User:" + email);
                       String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
                       return session.set("searchRequestPayload", searchPayload).markAsSucceeded();
                   } else {
@@ -71,7 +71,7 @@ public final class DartsPortalChangeRetentionScenario {
 
           .exec(session -> {
               // Log non-empty response
-              System.out.println("Response received.");
+              log.info("Response received.");
               return session;
           })                   
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search"))
@@ -86,9 +86,9 @@ public final class DartsPortalChangeRetentionScenario {
           .exec(session -> {
             Object getCaseId = session.get("getCaseId");
             if (getCaseId != null) {
-            //    System.out.println("getCaseId: " + getCaseId.toString());
+            //    log.info("getCaseId: " + getCaseId.toString());
             } else {
-                System.out.println("No Case Id value saved using saveAs.");
+                log.info("No Case Id value saved using saveAs.");
             }
             return session;
             }

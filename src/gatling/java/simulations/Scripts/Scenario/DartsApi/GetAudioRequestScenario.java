@@ -29,12 +29,12 @@ public final class GetAudioRequestScenario {
             )
             .exec(session -> {
                     //String responseBody = session.getString("responseBody");
-                    //System.out.println("Response Body: " + responseBody);
+                    //log.info("Response Body: " + responseBody);
                     String transformedMediaId = session.getString("trm_id");
                     int statusCode = session.getInt("statusCode");
     
                     // Log to confirm if 'trm_id' and statusCode are populated
-                    System.out.println("Fetched transformedMediaId: " + transformedMediaId + ", StatusCode: " + statusCode);
+                    log.info("Fetched transformedMediaId: " + transformedMediaId + ", StatusCode: " + statusCode);
                     
                     return session;
             })    
@@ -77,7 +77,7 @@ public final class GetAudioRequestScenario {
                 } else {
                     // Log the trm_id used in the DELETE request
                     String transformedMediaId = session.getString("trm_id");
-                    System.out.println("Audio Request, Response Status: " + session.get("statusCode") + ", PlayBack Id: " + transformedMediaId);
+                    log.info("Audio Request, Response Status: " + session.get("statusCode") + ", PlayBack Id: " + transformedMediaId);
                 }
                 return session;
             })        
@@ -117,7 +117,7 @@ public final class GetAudioRequestScenario {
                 int statusCode = session.getInt("statusCode");
                 String transformedMediaId = session.get("trm_id");
 
-                System.out.println("Audio Request, Response Status: " + session.get("statusCode") + ", Download transformed Media Id: " + transformedMediaId);
+                log.info("Audio Request, Response Status: " + session.get("statusCode") + ", Download transformed Media Id: " + transformedMediaId);
 
                 if (statusCode != 200 && statusCode != 409) {
                     return session.set("error", true);

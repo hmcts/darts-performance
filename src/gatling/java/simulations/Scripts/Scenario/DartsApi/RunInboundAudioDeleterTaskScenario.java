@@ -20,7 +20,7 @@ public final class RunInboundAudioDeleterTaskScenario {
                 .check(status().is(202))
         ))
         .exec(session -> {
-                System.out.println("Automated Tasks 4 has been ran for Inbound Audio Deleter");
+                log.info("Automated Tasks 4 has been ran for Inbound Audio Deleter");
             return session;
         });       
     }       

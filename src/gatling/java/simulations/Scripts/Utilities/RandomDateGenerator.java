@@ -29,8 +29,8 @@ public class RandomDateGenerator {
         randomDateTo = randomDateTo.isAfter(currentDate) ? currentDate : randomDateTo;
 
         // Print the random dates
-        System.out.println("Random Date From: " + randomDateFrom);
-        System.out.println("Random Date To: " + randomDateTo);
+        log.info("Random Date From: " + randomDateFrom);
+        log.info("Random Date To: " + randomDateTo);
     }
 
     public static LocalDate getRandomDate(LocalDate startDate, LocalDate endDate) {
