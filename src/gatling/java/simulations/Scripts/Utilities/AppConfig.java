@@ -44,6 +44,7 @@ public class AppConfig {
     public static final long RANK_UP_TIME_SECONDS;
     public static final long RANK_DOWN_TIME_SECONDS;
     public static final int REQUESTS_PER_SECOND;
+    public static final String EVENTS_TO_UPDATE_FILE_PATH = "";
     private static final double REQUESTS_PER_SECOND_PER_USER;
 
     //Nightly Run Parameters

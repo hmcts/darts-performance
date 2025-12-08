@@ -38,7 +38,6 @@ public class Feeders {
 
 
     private static final AtomicInteger COUNTER;
-    private static final Logger log = Logger.getLogger(Feeders.class.getName());
 
     static {        
         //Audio Files

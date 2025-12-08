@@ -1,5 +1,6 @@
 package simulations.Scripts.Scenario.DartsPortal;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.UserInfoLogger;
@@ -8,6 +9,7 @@ import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
+@Slf4j
 public final class DartsPortalInternalLogoutScenario {
 
 

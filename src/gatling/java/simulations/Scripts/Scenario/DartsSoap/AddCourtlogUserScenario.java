@@ -1,5 +1,6 @@
 package simulations.Scripts.Scenario.DartsSoap;
 
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig.SoapServiceEndpoint;
 import simulations.Scripts.Utilities.Feeders;
@@ -8,6 +9,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 
+@Slf4j
 public final class AddCourtlogUserScenario {
 
     private AddCourtlogUserScenario() {}
