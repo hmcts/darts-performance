@@ -8,21 +8,26 @@ import lombok.Data;
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class TranscriptionRequestBody {
-
-    @JsonProperty("hearing_id")
-    private String hearingId;
+public class TranscriptionsRequestBody {
 
     @JsonProperty("case_id")
     private String caseId;
 
-    @JsonProperty("transcription_urgency_id")
-    private String transcriptionUrgencyId;
+    @JsonProperty("hearing_id")
+    private String hearingId;
 
     @JsonProperty("transcription_type_id")
-    private String transcriptionTypeId;
+    private Integer transcriptionTypeId;
+
+    @JsonProperty("transcription_urgency_id")
+    private Integer transcriptionUrgencyId;
 
     @JsonProperty("comment")
     private String comment;
-}
 
+    @JsonProperty("start_date_time")
+    private String startDateTime;
+
+    @JsonProperty("end_date_time")
+    private String endDateTime;
+}

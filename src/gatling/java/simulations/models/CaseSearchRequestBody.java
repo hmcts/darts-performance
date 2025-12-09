@@ -8,11 +8,8 @@ import lombok.Data;
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class TranscriptionPatchAcceptRequestBody {
+public class CaseSearchRequestBody {
 
-    @JsonProperty("transcription_status_id")
-    private String transcriptionStatusId;
-
-    @JsonProperty("workflow_comment")
-    private String workflowComment;
+    @JsonProperty("case_number")
+    private String caseNumber;
 }

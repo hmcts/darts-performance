@@ -8,10 +8,21 @@ import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.NumberGenerator;
 import simulations.Scripts.Utilities.RandomStringGenerator;
 import simulations.models.AdvancedSearchPayload;
+import simulations.models.AudioRequestBody;
+import simulations.models.AudioUploadRequestBody;
+import simulations.models.CaseRequestBody;
+import simulations.models.CaseSearchRequestBody;
+import simulations.models.CourtHouseRequestBody;
+import simulations.models.EventRequestBody;
 import simulations.models.GetCredentialType;
+import simulations.models.PerfTraceRequest;
 import simulations.models.PostAudioRequestBody;
+import simulations.models.RetentionPolicy;
+import simulations.models.RetentionRequestBody;
+import simulations.models.TranscriptionApprovalRequestBody;
 import simulations.models.TranscriptionPatchAcceptRequestBody;
 import simulations.models.TranscriptionRequestBody;
+import simulations.models.TranscriptionsRequestBody;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -35,6 +46,17 @@ public class RequestBodyBuilder {
     @SneakyThrows
     public static String toJson(Object value) {
         return MAPPER.writeValueAsString(value);
+    }
+
+    private static Integer parseInteger(Object value) {
+        if (value == null) {
+            return null;
+        }
+        try {
+            return Integer.valueOf(value.toString());
+        } catch (NumberFormatException ignored) {
+            return null;
+        }
     }
 
     public static String buildPOSTAudioRequestBody(Session session) {
@@ -69,8 +91,8 @@ public class RequestBodyBuilder {
     }
 
     public static String buildTranscriptionRequestBody(Session session) {
-        String hearingId = session.get("hea_id") != null ? "" + session.get("hea_id").toString() + "" : "null";
-        String caseId = session.get("cas_id") != null ? "" + session.get("cas_id").toString() + "" : "null";
+        String hearingId = session.get("hea_id") != null ? "" + session.get("hea_id").toString() + "" : null;
+        String caseId = session.get("cas_id") != null ? "" + session.get("cas_id").toString() + "" : null;
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
@@ -87,7 +109,7 @@ public class RequestBodyBuilder {
     }
 
     public static String buildTranscriptionPatchAcceptRequestBody(Session session) {
-        String transcriptionId = session.get("tra_id") != null ? "" + session.get("tra_id").toString() + "" : "null";
+        String transcriptionId = session.get("tra_id") != null ? "" + session.get("tra_id").toString() + "" : null;
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
@@ -97,7 +119,6 @@ public class RequestBodyBuilder {
                 .workflowComment("Moved to Accepted_" + randomComment)
                 .build()
         );
-
     }
 
     public static String buildGetCredentialType(Session session) {
@@ -106,8 +127,8 @@ public class RequestBodyBuilder {
             "rQQIARAA02I20jOwUjFLsTQ2SDFJ1E1LTUzWNTFMTtW1SDGw0E00TbJMMzNOs7S0MCgS4hJ416We_lKtyH32q6pu_S"
                 +
                 "-3Tq1itMgoKSkottLXT0ksKinWK0ktLtFLLCgo1svITQby81JL9BNLSzL0M_NKUovyEnP0kxNzcpISk7N3MDJeYGR8wch4i4nf3xGoxAhE5BdlVqW-YmL4xMSZll-UG1-QX1yyiVkl1dTcNM3MzFg3ydggUdfE3MJM18IyMUXX2NDSwsQoJS3VwtT4FDNbfkFqXmbKBRbGVyw8BsxWHBxcAgwSDAoMP1gYF7ECnc91LZXBes4Cp7X_GOPsdBQZTrHqF6cbFISl-zs7JZqZmfkUeziahmSVVkZWZqfnROaEBOdn-haZeRVoJ0Y6utoaWRlOYGP8wMbYwc6wi5Nsnx_gZfjBt-rzqSmfWla883jFr5MRVRFpZublnellVulb4eUSGlngnBQUaVIQFhTsblmYHOGtHRJRVpkaYWlhu0GA4YEAAwA1";
-        String flowToken = session.get("flowToken") != null ? "" + session.get("flowToken").toString() + "" : "null";
-        String userName = session.get("Email") != null ? "" + session.get("Email").toString() + "" : "null";
+        String flowToken = session.get("flowToken") != null ? "" + session.get("flowToken").toString() + "" : null;
+        String userName = session.get("Email") != null ? "" + session.get("Email").toString() + "" : null;
 
         return toJson(
             GetCredentialType.builder()
@@ -136,16 +157,16 @@ public class RequestBodyBuilder {
     public static String buildSearchCaseRequestBody(Session session) {
         String caseNumber = Optional.ofNullable(session.get("caseNumber"))
             .map(Object::toString)
-            .orElse("null");
+            .orElse(null);
         String courtHouseName = Optional.ofNullable(session.get("courthouse_name"))
             .map(Object::toString)
-            .orElse("null");
+            .orElse(null);
         Integer courtHouseId = Optional.ofNullable(session.get("cth_id"))
             .map(value -> Integer.valueOf(value.toString()))
             .orElse(null);
         String courtRoom = Optional.ofNullable(session.get("CourtRoom"))
             .map(Object::toString)
-            .orElse("null");
+            .orElse(null);
         String defendantName = Optional.ofNullable(session.get("defendantFirstName"))
             .map(value -> value.toString())
             .orElse(null);
@@ -180,23 +201,25 @@ public class RequestBodyBuilder {
 
 
     public static String buildChangeRetentionsBody(Session session) {
-        String caseId = session.get("getCaseId") != null ? "\"" + session.get("getCaseId").toString() + "\"" : "null";
+        String caseId = Optional.ofNullable(session.get("getCaseId"))
+            .map(Object::toString)
+            .orElse(null);
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
-        return String.format("{\"case_id\":%s,"
-                + "\"is_permanent_retention\":true,"
-                + "\"comments\":\"Perf_Comment_%s\"}",
-            caseId, randomComment);
+        return toJson(RetentionRequestBody.builder()
+            .caseId(caseId)
+            .isPermanentRetention(true)
+            .comments("Perf_Comment_" + randomComment)
+            .build());
     }
 
     public static String buildTranscriptionsBody(Session session) {
-        String hearingId = session.get("getHearingId") != null ? session.get("getHearingId").toString() : "null";
-        String caseId = session.get("getCaseId") != null ? session.get("getCaseId").toString() : "null";
-        String transcriptionTypeId =
-            session.get("transcriptionTypeId") != null ? session.get("transcriptionTypeId").toString() : "null";
+        String hearingId = session.get("getHearingId") != null ? session.get("getHearingId").toString() : null;
+        String caseId = session.get("getCaseId") != null ? session.get("getCaseId").toString() : null;
+        Integer transcriptionTypeId = parseInteger(session.get("transcriptionTypeId"));
         String getHearingdate =
-            session.get("getHearingdate") != null ? session.get("getHearingdate").toString() : "null";
+            session.get("getHearingdate") != null ? session.get("getHearingdate").toString() : null;
 
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
@@ -221,24 +244,25 @@ public class RequestBodyBuilder {
         String startTime = isoZ.format(startUtc);
         String endTime = isoZ.format(endUtc);
 
-        return String.format("{\"case_id\":\"%s\", "
-                + "\"hearing_id\":\"%s\", "
-                + "\"transcription_type_id\":%s, "
-                + "\"transcription_urgency_id\":4, "
-                + "\"comment\":\"%s\", "
-                + "\"start_date_time\":\"%s\","
-                + "\"end_date_time\":\"%s\""
-                + "}",
-            caseId, hearingId, transcriptionTypeId, randomComment, startTime, endTime);
+        return toJson(TranscriptionsRequestBody.builder()
+            .caseId(caseId)
+            .hearingId(hearingId)
+            .transcriptionTypeId(transcriptionTypeId)
+            .transcriptionUrgencyId(4)
+            .comment(randomComment)
+            .startDateTime(startTime)
+            .endDateTime(endTime)
+            .build());
     }
 
     public static String buildAudioRequestBody(Session session, Object getHearingId, Object requestor,
                                                Object audioStartDate, Object audioEndDate, Object requestType) {
-        return String.format("{\"hearing_id\": %s, "
-                + "\"requestor\": %s, "
-                + "\"start_time\": \"%s\", "
-                + "\"end_time\": \"%s\"}",
-            getHearingId, requestor, audioStartDate, audioEndDate);
+        return toJson(AudioRequestBody.builder()
+            .hearingId(getHearingId)
+            .requestor(requestor)
+            .startTime(String.valueOf(audioStartDate))
+            .endTime(String.valueOf(audioEndDate))
+            .build());
     }
 
 
@@ -247,12 +271,14 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
-        // Define variables for Approve
-        String approve = "{\"transcription_status_id\": \"3\"}";
+        TranscriptionApprovalRequestBody approve = TranscriptionApprovalRequestBody.builder()
+            .transcriptionStatusId("3")
+            .build();
 
-        // Define variables for Reject
-        String reject = String.format("{\"transcription_status_id\": \"4\", "
-            + "\"workflow_comment\": \"%s\"}", randomComment);
+        TranscriptionApprovalRequestBody reject = TranscriptionApprovalRequestBody.builder()
+            .transcriptionStatusId("4")
+            .workflowComment(randomComment)
+            .build();
 
         // Create a random number generator
         Random random = new Random();
@@ -261,9 +287,9 @@ public class RequestBodyBuilder {
         // If the generated number is less than 0.5, select Approve, otherwise select Reject
         String selectedAction;
         if (random.nextDouble() < 0.5) {
-            selectedAction = approve;
+            selectedAction = toJson(approve);
         } else {
-            selectedAction = reject;
+            selectedAction = toJson(reject);
         }
 
         // Return the selected string
@@ -283,19 +309,19 @@ public class RequestBodyBuilder {
         // String caseName2 = randomStringGenerator.generateRandomString(10);
         // String caseName3 = randomStringGenerator.generateRandomString(10);
 
-        return String.format(
-            "{\"started_at\": \"%sT17:28:59.936Z\", "
-                + " \"ended_at\": \"%sT18:28:59.936Z\", "
-                + " \"channel\": 1,  "
-                + " \"total_channels\": 4,  "
-                + " \"format\": \"mp2\",  "
-                + " \"filename\": \"%s\",  "
-                + " \"courthouse\": \"%s\",  "
-                + " \"courtroom\": \"%s\",  "
-                + " \"file_size\": 64003968,  "
-                + " \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\",  "
-                + " \"cases\": [\"%s\"] }",
-            hearingDate, hearingDate, randomAudioFile, courtHouseName, courtRoomName, courtCaseNumber);
+        return toJson(AudioUploadRequestBody.builder()
+            .startedAt(hearingDate + "T17:28:59.936Z")
+            .endedAt(hearingDate + "T18:28:59.936Z")
+            .channel(1)
+            .totalChannels(4)
+            .format("mp2")
+            .filename(randomAudioFile)
+            .courthouse(courtHouseName)
+            .courtroom(courtRoomName)
+            .fileSize(64003968d)
+            .checksum("TVRMwq16b4mcZwPSlZj/iQ==")
+            .cases(List.of(courtCaseNumber))
+            .build());
     }
 
     public static String buildPostAudioLinkingForCaseApiRequest(Session session, String randomAudioFile,
@@ -305,19 +331,19 @@ public class RequestBodyBuilder {
         String courtRoom = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
 
 
-        return String.format(
-            "{\"started_at\": \"2024-11-11T12:02:00.000Z\", "
-                + " \"ended_at\": \"2024-11-11T13:02:00.000Z\", "
-                + " \"channel\": 1,  "
-                + " \"total_channels\": 4,  "
-                + " \"format\": \"mp2\",  "
-                + " \"filename\": \"%s\",  "
-                + " \"courthouse\": \"%s\",  "
-                + " \"courtroom\": \"%s\",  "
-                + " \"file_size\": 937.96,  "
-                + " \"checksum\": \"TVRMwq16b4mcZwPSlZj/iQ==\",  "
-                + " \"cases\": [\"PerfCase_%s\"] }",
-            randomAudioFile, courtHouseName, courtRoom, caseName);
+        return toJson(AudioUploadRequestBody.builder()
+            .startedAt("2024-11-11T12:02:00.000Z")
+            .endedAt("2024-11-11T13:02:00.000Z")
+            .channel(1)
+            .totalChannels(4)
+            .format("mp2")
+            .filename(randomAudioFile)
+            .courthouse(courtHouseName)
+            .courtroom(courtRoom)
+            .fileSize(937.96)
+            .checksum("TVRMwq16b4mcZwPSlZj/iQ==")
+            .cases(List.of("PerfCase_" + caseName))
+            .build());
     }
 
     public static String buildPostCaseSearchApiRequest(Session session) {
@@ -325,9 +351,9 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String caseName = randomStringGenerator.generateRandomString(10);
 
-        return String.format(
-            "{\"case_number\": \"PerfCase_\"%s\"}",
-            caseName);
+        return toJson(CaseSearchRequestBody.builder()
+            .caseNumber("PerfCase_" + caseName)
+            .build());
     }
 
     public static String buildPostCaseApiRequest(Session session) {
@@ -344,26 +370,15 @@ public class RequestBodyBuilder {
         String prosecutorsName = randomStringGenerator.generateRandomString(10);
         String defendersName = randomStringGenerator.generateRandomString(10);
 
-        // Return formatted JSON string
-        return String.format(
-            "{"
-                + "\"courthouse\": \"%s\", "
-                + "\"case_number\": \"PerfCase_%s\", "
-                + "\"case_type\": \"1\", "
-                + "\"defendants\": [ "
-                + "\"PerfDefendant_%s\" "
-                + "], "
-                + "\"judges\": [ "
-                + "\"PerfJudge_%s\" "
-                + "], "
-                + "\"prosecutors\": [ "
-                + "\"PerfProsecutors_%s\" "
-                + "], "
-                + "\"defenders\": [ "
-                + "\"PerfDefendersName_%s\" "
-                + "] "
-                + "}",
-            courtHouseName, caseName, defendantsName, judgeName, prosecutorsName, defendersName);
+        return toJson(CaseRequestBody.builder()
+            .courthouse(courtHouseName)
+            .caseNumber("PerfCase_" + caseName)
+            .caseType("1")
+            .defendants(List.of("PerfDefendant_" + defendantsName))
+            .judges(List.of("PerfJudge_" + judgeName))
+            .prosecutors(List.of("PerfProsecutors_" + prosecutorsName))
+            .defenders(List.of("PerfDefendersName_" + defendersName))
+            .build());
     }
 
     public static String buildPostCaseForLinkingAudioApiRequest(Session session, String caseName) {
@@ -379,284 +394,270 @@ public class RequestBodyBuilder {
         String prosecutorsName = randomStringGenerator.generateRandomString(10);
         String defendersName = randomStringGenerator.generateRandomString(10);
 
-        // Return formatted JSON string
-        return String.format(
-            "{"
-                + "\"courthouse\": \"%s\", "
-                + "\"case_number\": \"PerfCase_%s\", "
-                + "\"case_type\": \"1\", "
-                + "\"defendants\": [ "
-                + "\"PerfDefendant_%s\" "
-                + "], "
-                + "\"judges\": [ "
-                + "\"PerfJudge_%s\" "
-                + "], "
-                + "\"prosecutors\": [ "
-                + "\"PerfProsecutors_%s\" "
-                + "], "
-                + "\"defenders\": [ "
-                + "\"PerfDefendersName_%s\" "
-                + "] "
-                + "}",
-            courtHouseName, caseName, defendantsName, judgeName, prosecutorsName, defendersName);
+        return toJson(CaseRequestBody.builder()
+            .courthouse(courtHouseName)
+            .caseNumber("PerfCase_" + caseName)
+            .caseType("1")
+            .defendants(List.of("PerfDefendant_" + defendantsName))
+            .judges(List.of("PerfJudge_" + judgeName))
+            .prosecutors(List.of("PerfProsecutors_" + prosecutorsName))
+            .defenders(List.of("PerfDefendersName_" + defendersName))
+            .build());
     }
 
     public static String buildDartsPortalPerftraceRequest(Session session) {
-        return String.format(
-            "{" +
-                "  \"navigation\": {" +
-                "    \"type\": 0," +
-                "    \"redirectCount\": 0" +
-                "  }," +
-                "  \"timing\": {" +
-                "    \"connectStart\": 1709047511193," +
-                "    \"navigationStart\": 1709047510670," +
-                "    \"secureConnectionStart\": 1709047511228," +
-                "    \"fetchStart\": 1709047511190," +
-                "    \"domContentLoadedEventStart\": 1709047511811," +
-                "    \"responseStart\": 1709047511729," +
-                "    \"domInteractive\": 1709047511811," +
-                "    \"domainLookupEnd\": 1709047511190," +
-                "    \"responseEnd\": 1709047511731," +
-                "    \"redirectStart\": 0," +
-                "    \"requestStart\": 1709047511489," +
-                "    \"unloadEventEnd\": 0," +
-                "    \"unloadEventStart\": 0," +
-                "    \"domLoading\": 1709047511757," +
-                "    \"domComplete\": 1709047511842," +
-                "    \"domainLookupStart\": 1709047511190," +
-                "    \"loadEventStart\": 1709047511842," +
-                "    \"domContentLoadedEventEnd\": 1709047511811," +
-                "    \"loadEventEnd\": 1709047511842," +
-                "    \"redirectEnd\": 0," +
-                "    \"connectEnd\": 1709047511489" +
-                "  }," +
-                "  \"entries\": [" +
-                "    {" +
-                "      \"name\": \"https://hmctsstgextid.b2clogin.com/hmctsstgextid.onmicrosoft"
-                + ".com/B2C_1_darts_externaluser_signin/oauth2/v2"
-                + ".0/authorize?client_id=363c11cb-48b9-44bf-9d06-9a3973f6f413&redirect_uri=https%3A%2F%2Fdarts.test"
-                + ".apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type"
-                + "=code\","
-                +
-                "      \"entryType\": \"navigation\"," +
-                "      \"startTime\": 0," +
-                "      \"duration\": 1171.7000000029802," +
-                "      \"initiatorType\": \"navigation\"," +
-                "      \"deliveryType\": \"\"," +
-                "      \"nextHopProtocol\": \"http/1.1\"," +
-                "      \"renderBlockingStatus\": \"non-blocking\"," +
-                "      \"workerStart\": 0," +
-                "      \"redirectStart\": 0," +
-                "      \"redirectEnd\": 0," +
-                "      \"fetchStart\": 520," +
-                "      \"domainLookupStart\": 520," +
-                "      \"domainLookupEnd\": 520," +
-                "      \"connectStart\": 522.2000000029802," +
-                "      \"secureConnectionStart\": 557.7999999970198," +
-                "      \"connectEnd\": 818.2000000029802," +
-                "      \"requestStart\": 818.2999999970198," +
-                "      \"responseStart\": 1059," +
-                "      \"firstInterimResponseStart\": 0," +
-                "      \"responseEnd\": 1060.7999999970198," +
-                "      \"transferSize\": 69665," +
-                "      \"encodedBodySize\": 69365," +
-                "      \"decodedBodySize\": 176293," +
-                "      \"responseStatus\": 200," +
-                "      \"serverTiming\": []," +
-                "      \"unloadEventStart\": 0," +
-                "      \"unloadEventEnd\": 0," +
-                "      \"domInteractive\": 1140.4000000059605," +
-                "      \"domContentLoadedEventStart\": 1140.4000000059605," +
-                "      \"domContentLoadedEventEnd\": 1140.7999999970198," +
-                "      \"domComplete\": 1171.5999999940395," +
-                "      \"loadEventStart\": 1171.7000000029802," +
-                "      \"loadEventEnd\": 1171.7000000029802," +
-                "      \"type\": \"navigate\"," +
-                "      \"redirectCount\": 0," +
-                "      \"activationStart\": 0," +
-                "      \"criticalCHRestart\": 0" +
-                "    }," +
-                "    {" +
-                "      \"name\": \"visible\"," +
-                "      \"entryType\": \"visibility-state\"," +
-                "      \"startTime\": 0," +
-                "      \"duration\": 0" +
-                "    }," +
-                "    {" +
-                "      \"name\": \"https://darts.test.apps.hmcts"
-                + ".net/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en\","
-                +
-                "      \"entryType\": \"resource\"," +
-                "      \"startTime\": 1132," +
-                "      \"duration\": 411.90000000596046," +
-                "      \"initiatorType\": \"xmlhttprequest\"," +
-                "      \"deliveryType\": \"\"," +
-                "      \"nextHopProtocol\": \"http/1.1\"," +
-                "      \"renderBlockingStatus\": \"non-blocking\"," +
-                "      \"workerStart\": 0," +
-                "      \"redirectStart\": 0," +
-                "      \"redirectEnd\": 0," +
-                "      \"fetchStart\": 1132," +
-                "      \"domainLookupStart\": 1132," +
-                "      \"domainLookupEnd\": 1132," +
-                "      \"connectStart\": 1133.2999999970198," +
-                "      \"secureConnectionStart\": 1159.4000000059605," +
-                "      \"connectEnd\": 1299.2000000029802," +
-                "      \"requestStart\": 1299.2999999970198," +
-                "      \"responseStart\": 1543.4000000059605," +
-                "      \"firstInterimResponseStart\": 0," +
-                "      \"responseEnd\": 1543.9000000059605," +
-                "      \"transferSize\": 5876," +
-                "      \"encodedBodySize\": 5576," +
-                "      \"decodedBodySize\": 5576," +
-                "      \"responseStatus\": 200," +
-                "      \"serverTiming\": [" +
-                "        {" +
-                "          \"name\": \"dtSInfo\"," +
-                "          \"duration\": 0," +
-                "          \"description\": \"0\"" +
-                "        }," +
-                "        {" +
-                "          \"name\": \"dtRpid\"," +
-                "          \"duration\": 0," +
-                "          \"description\": \"1087509397\"" +
-                "        }," +
-                "        {" +
-                "          \"name\": \"dtTao\"," +
-                "          \"duration\": 0," +
-                "          \"description\": \"1\"" +
-                "        }" +
-                "      ]" +
-                "    }" +
-                "  ]," +
-                "  \"connection\": {" +
-                "    \"onchange\": null," +
-                "    \"effectiveType\": \"3g\"," +
-                "    \"rtt\": 950," +
-                "    \"downlink\": 1.4," +
-                "    \"saveData\": false" +
-                "  }" +
-                "}");
+        PerfTraceRequest.PerfTraceNavigation navigation = PerfTraceRequest.PerfTraceNavigation.builder()
+            .type(0)
+            .redirectCount(0)
+            .build();
+
+        PerfTraceRequest.PerfTraceTiming timing = PerfTraceRequest.PerfTraceTiming.builder()
+            .connectStart(1709047511193d)
+            .navigationStart(1709047510670d)
+            .secureConnectionStart(1709047511228d)
+            .fetchStart(1709047511190d)
+            .domContentLoadedEventStart(1709047511811d)
+            .responseStart(1709047511729d)
+            .domInteractive(1709047511811d)
+            .domainLookupEnd(1709047511190d)
+            .responseEnd(1709047511731d)
+            .redirectStart(0d)
+            .requestStart(1709047511489d)
+            .unloadEventEnd(0d)
+            .unloadEventStart(0d)
+            .domLoading(1709047511757d)
+            .domComplete(1709047511842d)
+            .domainLookupStart(1709047511190d)
+            .loadEventStart(1709047511842d)
+            .domContentLoadedEventEnd(1709047511811d)
+            .loadEventEnd(1709047511842d)
+            .redirectEnd(0d)
+            .connectEnd(1709047511489d)
+            .build();
+
+        PerfTraceRequest.PerfTraceEntry navigationEntry = PerfTraceRequest.PerfTraceEntry.builder()
+            .name("https://hmctsstgextid.b2clogin.com/hmctsstgextid.onmicrosoft.com/B2C_1_darts_externaluser_signin/oauth2/v2.0/authorize?client_id=363c11cb-48b9-44bf-9d06-9a3973f6f413&redirect_uri=https%3A%2F%2Fdarts.test.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code")
+            .entryType("navigation")
+            .startTime(0d)
+            .duration(1171.7000000029802)
+            .initiatorType("navigation")
+            .deliveryType("")
+            .nextHopProtocol("http/1.1")
+            .renderBlockingStatus("non-blocking")
+            .workerStart(0d)
+            .redirectStart(0d)
+            .redirectEnd(0d)
+            .fetchStart(520d)
+            .domainLookupStart(520d)
+            .domainLookupEnd(520d)
+            .connectStart(522.2000000029802)
+            .secureConnectionStart(557.7999999970198)
+            .connectEnd(818.2000000029802)
+            .requestStart(818.2999999970198)
+            .responseStart(1059d)
+            .firstInterimResponseStart(0d)
+            .responseEnd(1060.7999999970198)
+            .transferSize(69665)
+            .encodedBodySize(69365)
+            .decodedBodySize(176293)
+            .responseStatus(200)
+            .serverTiming(List.of())
+            .unloadEventStart(0d)
+            .unloadEventEnd(0d)
+            .domInteractive(1140.4000000059605)
+            .domContentLoadedEventStart(1140.4000000059605)
+            .domContentLoadedEventEnd(1140.7999999970198)
+            .domComplete(1171.5999999940395)
+            .loadEventStart(1171.7000000029802)
+            .loadEventEnd(1171.7000000029802)
+            .type("navigate")
+            .redirectCount(0)
+            .activationStart(0)
+            .criticalCHRestart(0)
+            .build();
+
+        PerfTraceRequest.PerfTraceEntry visibilityEntry = PerfTraceRequest.PerfTraceEntry.builder()
+            .name("visible")
+            .entryType("visibility-state")
+            .startTime(0d)
+            .duration(0d)
+            .build();
+
+        List<PerfTraceRequest.PerfTraceServerTiming> serverTimings = List.of(
+            PerfTraceRequest.PerfTraceServerTiming.builder().name("dtSInfo").duration(0d).description("0").build(),
+            PerfTraceRequest.PerfTraceServerTiming.builder().name("dtRpid").duration(0d).description("1087509397")
+                .build(),
+            PerfTraceRequest.PerfTraceServerTiming.builder().name("dtTao").duration(0d).description("1").build()
+        );
+
+        PerfTraceRequest.PerfTraceEntry resourceEntry = PerfTraceRequest.PerfTraceEntry.builder()
+            .name("https://darts.test.apps.hmcts.net/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en")
+            .entryType("resource")
+            .startTime(1132d)
+            .duration(411.90000000596046)
+            .initiatorType("xmlhttprequest")
+            .deliveryType("")
+            .nextHopProtocol("http/1.1")
+            .renderBlockingStatus("non-blocking")
+            .workerStart(0d)
+            .redirectStart(0d)
+            .redirectEnd(0d)
+            .fetchStart(1132d)
+            .domainLookupStart(1132d)
+            .domainLookupEnd(1132d)
+            .connectStart(1133.2999999970198)
+            .secureConnectionStart(1159.4000000059605)
+            .connectEnd(1299.2000000029802)
+            .requestStart(1299.2999999970198)
+            .responseStart(1543.4000000059605)
+            .firstInterimResponseStart(0d)
+            .responseEnd(1543.9000000059605)
+            .transferSize(5876)
+            .encodedBodySize(5576)
+            .decodedBodySize(5576)
+            .responseStatus(200)
+            .serverTiming(serverTimings)
+            .build();
+
+        PerfTraceRequest.PerfTraceConnection connection = PerfTraceRequest.PerfTraceConnection.builder()
+            .onchange(null)
+            .effectiveType("3g")
+            .rtt(950d)
+            .downlink(1.4)
+            .saveData(false)
+            .build();
+
+        return toJson(PerfTraceRequest.builder()
+            .navigation(navigation)
+            .timing(timing)
+            .entries(List.of(navigationEntry, visibilityEntry, resourceEntry))
+            .connection(connection)
+            .build());
     }
 
     public static String buildDartsPortalPerftraceRequest2(Session session) {
-        return String.format(
-            "{" +
-                "   \"navigation\": {" +
-                "       \"type\": 0," +
-                "       \"redirectCount\": 0" +
-                "   }," +
-                "   \"timing\": {" +
-                "       \"connectStart\": 522.20000000298," +
-                "       \"navigationStart\": 522.20000000298," +
-                "       \"secureConnectionStart\": 557.79999999702," +
-                "       \"fetchStart\": 520," +
-                "       \"domContentLoadedEventStart\": 1140.40000000596," +
-                "       \"responseStart\": 0," +
-                "       \"domInteractive\": 1140.40000000596," +
-                "       \"domainLookupEnd\": 520," +
-                "       \"responseEnd\": 1060.79999999702," +
-                "       \"redirectStart\": 0," +
-                "       \"requestStart\": 818.29999999702," +
-                "       \"unloadEventEnd\": 0," +
-                "       \"unloadEventStart\": 0," +
-                "       \"domLoading\": 1709047511757," +
-                "       \"domComplete\": 1709047511842," +
-                "       \"domainLookupStart\": 520," +
-                "       \"loadEventStart\": 1709047511842," +
-                "       \"domContentLoadedEventEnd\": 1140.79999999702," +
-                "       \"loadEventEnd\": 1171.70000000298," +
-                "       \"redirectEnd\": 0," +
-                "       \"connectEnd\": 818.20000000298," +
-                "   }," +
-                "   \"entries\": [" +
-                "       {" +
-                "           \"name\": \"" + AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/"
+        PerfTraceRequest.PerfTraceNavigation navigation = PerfTraceRequest.PerfTraceNavigation.builder()
+            .type(0)
+            .redirectCount(0)
+            .build();
+
+        PerfTraceRequest.PerfTraceTiming timing = PerfTraceRequest.PerfTraceTiming.builder()
+            .connectStart(522.20000000298)
+            .navigationStart(522.20000000298)
+            .secureConnectionStart(557.79999999702)
+            .fetchStart(520d)
+            .domContentLoadedEventStart(1140.40000000596)
+            .responseStart(0d)
+            .domInteractive(1140.40000000596)
+            .domainLookupEnd(520d)
+            .responseEnd(1060.79999999702)
+            .redirectStart(0d)
+            .requestStart(818.29999999702)
+            .unloadEventEnd(0d)
+            .unloadEventStart(0d)
+            .domLoading(1709047511757d)
+            .domComplete(1709047511842d)
+            .domainLookupStart(520d)
+            .loadEventStart(1709047511842d)
+            .domContentLoadedEventEnd(1140.79999999702)
+            .loadEventEnd(1171.70000000298)
+            .redirectEnd(0d)
+            .connectEnd(818.20000000298)
+            .build();
+
+        PerfTraceRequest.PerfTraceEntry navigationEntry = PerfTraceRequest.PerfTraceEntry.builder()
+            .name(AppConfig.EnvironmentURL.B2B_Login.getUrl() + "/"
                 + AppConfig.EnvironmentURL.DARTS_PORTAL_Auth_LOGIN.getUrl() + "?client_id="
                 + AppConfig.EnvironmentURL.EXTERNAL_AZURE_AD_B2C_CLIENT_ID.getUrl()
-                + "&redirect_uri=https%3A%2F%2Fdarts.test.apps.hmcts"
-                + ".net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code\","
-                +
-                "           \"entryType\": \"navigation\"," +
-                "           \"startTime\": 0," +
-                "           \"duration\": 2919.9000000953674," +
-                "           \"initiatorType\": \"navigation\"," +
-                "           \"deliveryType\": \"\"," +
-                "           \"nextHopProtocol\": \"http/1.1\"," +
-                "           \"renderBlockingStatus\": \"non-blocking\"," +
-                "           \"workerStart\": 0," +
-                "           \"redirectStart\": 0," +
-                "           \"redirectEnd\": 0," +
-                "           \"fetchStart\": 670.7000000476837," +
-                "           \"domainLookupStart\": 670.7000000476837," +
-                "           \"domainLookupEnd\": 670.7000000476837," +
-                "           \"connectStart\": 672.2000000476837," +
-                "           \"secureConnectionStart\": 843.5," +
-                "           \"connectEnd\": 1729.7000000476837," +
-                "           \"requestStart\": 1729.7000000476837," +
-                "           \"responseStart\": 2786.7999999523163," +
-                "           \"firstInterimResponseStart\": 0," +
-                "           \"responseEnd\": 2788.7000000476837," +
-                "           \"transferSize\": 69668," +
-                "           \"encodedBodySize\": 69368," +
-                "           \"decodedBodySize\": 176293," +
-                "           \"responseStatus\": 200," +
-                "           \"serverTiming\": []," +
-                "           \"unloadEventStart\": 0," +
-                "           \"unloadEventEnd\": 0," +
-                "           \"domInteractive\": 2879.4000000953674," +
-                "           \"domContentLoadedEventStart\": 2879.4000000953674," +
-                "           \"domContentLoadedEventEnd\": 2879.7000000476837," +
-                "           \"domComplete\": 2919.7999999523163," +
-                "           \"loadEventStart\": 2919.9000000953674," +
-                "           \"loadEventEnd\": 2919.9000000953674," +
-                "           \"type\": \"navigate\"," +
-                "           \"redirectCount\": 0," +
-                "           \"activationStart\": 0," +
-                "           \"criticalCHRestart\": 0" +
-                "       }," +
-                "       {" +
-                "           \"name\": \"visible\"," +
-                "           \"entryType\": \"visibility-state\"," +
-                "           \"startTime\": 0," +
-                "           \"duration\": 0" +
-                "       }," +
-                "       {" +
-                "           \"name\": \"" + AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl()
-                + "/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en\"," +
-                "           \"entryType\": \"resource\"," +
-                "           \"startTime\": 2869.7999999523163," +
-                "           \"duration\": 265," +
-                "           \"initiatorType\": \"xmlhttprequest\"," +
-                "           \"deliveryType\": \"\"," +
-                "           \"nextHopProtocol\": \"http/1.1\"," +
-                "           \"renderBlockingStatus\": \"non-blocking\"," +
-                "           \"workerStart\": 0," +
-                "           \"redirectStart\": 0," +
-                "           \"redirectEnd\": 0," +
-                "           \"fetchStart\": 2869.7999999523163," +
-                "           \"domainLookupStart\": 2869.7999999523163," +
-                "           \"domainLookupEnd\": 2869.7999999523163," +
-                "           \"connectStart\": 2871.4000000953674," +
-                "           \"secureConnectionStart\": 2893," +
-                "           \"connectEnd\": 2983," +
-                "           \"requestStart\": 2983.0999999046326," +
-                "           \"responseStart\": 3134.5," +
-                "           \"firstInterimResponseStart\": 0," +
-                "           \"responseEnd\": 3134.7999999523163," +
-                "           \"transferSize\": 5875," +
-                "           \"encodedBodySize\": 5575," +
-                "           \"decodedBodySize\": 5575," +
-                "           \"responseStatus\": 200," +
-                "           \"serverTiming\": [" +
-                "               {\"name\": \"dtSInfo\",\"duration\": 0,\"description\": \"0\"}," +
-                "               {\"name\": \"dtRpid\",\"duration\": 0,\"description\": \"454511542\"}," +
-                "               {\"name\": \"dtTao\",\"duration\": 0,\"description\": \"1\"}" +
-                "           ]" +
-                "       }," +
-                "   ]" +
-                "}");
+                + "&redirect_uri=https%3A%2F%2Fdarts.test.apps.hmcts.net%2Fauth%2Fcallback&scope=openid&prompt=login&response_mode=form_post&response_type=code")
+            .entryType("navigation")
+            .startTime(0d)
+            .duration(2919.9000000953674)
+            .initiatorType("navigation")
+            .deliveryType("")
+            .nextHopProtocol("http/1.1")
+            .renderBlockingStatus("non-blocking")
+            .workerStart(0d)
+            .redirectStart(0d)
+            .redirectEnd(0d)
+            .fetchStart(670.7000000476837)
+            .domainLookupStart(670.7000000476837)
+            .domainLookupEnd(670.7000000476837)
+            .connectStart(672.2000000476837)
+            .secureConnectionStart(843.5)
+            .connectEnd(1729.7000000476837)
+            .requestStart(1729.7000000476837)
+            .responseStart(2786.7999999523163)
+            .firstInterimResponseStart(0d)
+            .responseEnd(2788.7000000476837)
+            .transferSize(69668)
+            .encodedBodySize(69368)
+            .decodedBodySize(176293)
+            .responseStatus(200)
+            .serverTiming(List.of())
+            .unloadEventStart(0d)
+            .unloadEventEnd(0d)
+            .domInteractive(2879.4000000953674)
+            .domContentLoadedEventStart(2879.4000000953674)
+            .domContentLoadedEventEnd(2879.7000000476837)
+            .domComplete(2919.7999999523163)
+            .loadEventStart(2919.9000000953674)
+            .loadEventEnd(2919.9000000953674)
+            .type("navigate")
+            .redirectCount(0)
+            .activationStart(0)
+            .criticalCHRestart(0)
+            .build();
+
+        PerfTraceRequest.PerfTraceEntry visibilityEntry = PerfTraceRequest.PerfTraceEntry.builder()
+            .name("visible")
+            .entryType("visibility-state")
+            .startTime(0d)
+            .duration(0d)
+            .build();
+
+        List<PerfTraceRequest.PerfTraceServerTiming> serverTimings = List.of(
+            PerfTraceRequest.PerfTraceServerTiming.builder().name("dtSInfo").duration(0d).description("0").build(),
+            PerfTraceRequest.PerfTraceServerTiming.builder().name("dtRpid").duration(0d).description("454511542")
+                .build(),
+            PerfTraceRequest.PerfTraceServerTiming.builder().name("dtTao").duration(0d).description("1").build()
+        );
+
+        PerfTraceRequest.PerfTraceEntry resourceEntry = PerfTraceRequest.PerfTraceEntry.builder()
+            .name(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl()
+                + "/auth/azuread-b2c-login?screenName=loginScreen&ui_locales=en")
+            .entryType("resource")
+            .startTime(2869.7999999523163)
+            .duration(265d)
+            .initiatorType("xmlhttprequest")
+            .deliveryType("")
+            .nextHopProtocol("http/1.1")
+            .renderBlockingStatus("non-blocking")
+            .workerStart(0d)
+            .redirectStart(0d)
+            .redirectEnd(0d)
+            .fetchStart(2869.7999999523163)
+            .domainLookupStart(2869.7999999523163)
+            .domainLookupEnd(2869.7999999523163)
+            .connectStart(2871.4000000953674)
+            .secureConnectionStart(2893d)
+            .connectEnd(2983d)
+            .requestStart(2983.0999999046326)
+            .responseStart(3134.5)
+            .firstInterimResponseStart(0d)
+            .responseEnd(3134.7999999523163)
+            .transferSize(5875)
+            .encodedBodySize(5575)
+            .decodedBodySize(5575)
+            .responseStatus(200)
+            .serverTiming(serverTimings)
+            .build();
+
+        return toJson(PerfTraceRequest.builder()
+            .navigation(navigation)
+            .timing(timing)
+            .entries(List.of(navigationEntry, visibilityEntry, resourceEntry))
+            .build());
     }
 
     public static String buildCourtHousePostBody(Session session) {
@@ -665,11 +666,10 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String courtHouseName = randomStringGenerator.generateRandomString(10);
 
-        return String.format("{\"courthouse_name\": \"PerfCourtHouse_%s\", "
-                // "\"code\": \" "+ generatorCourtHouseCode.generateNextNumber() + "\", " +
-                + "\"display_name\": \"PerfCourtHouse_%s\"}",
-            // "\"region_id\": \"0\"}",
-            courtHouseName, courtHouseName);
+        return toJson(CourtHouseRequestBody.builder()
+            .courthouseName("PerfCourtHouse_" + courtHouseName)
+            .displayName("PerfCourtHouse_" + courtHouseName)
+            .build());
     }
 
     public static String buildEventsPostBody(Session session) {
@@ -679,15 +679,15 @@ public class RequestBodyBuilder {
         String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
         String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
 
-        return String.format("{\"event_id\": \"1\", "
-                + "\"type\": \"30300\", "
-                + "\"sub_type\": \"\", "
-                + "\"courthouse\": \"%s\", "
-                + "\"courtroom\": \"%s\", "
-                + "\"case_numbers\": [ "
-                + "\"%s\" ], "
-                + "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
-            courtHouseName, courtRoomName, courtCaseNumber);
+        return toJson(EventRequestBody.builder()
+            .eventId("1")
+            .type("30300")
+            .subType("")
+            .courthouse(courtHouseName)
+            .courtroom(courtRoomName)
+            .caseNumbers(List.of(courtCaseNumber))
+            .dateTime("2024-04-05T12:02:00.000Z")
+            .build());
     }
 
     public static String buildUpdateCaseWithEventsPostBody(Session session) {
@@ -697,15 +697,15 @@ public class RequestBodyBuilder {
         String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
         String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
 
-        return String.format("{\"event_id\": \"1\", "
-                + "\"type\": \"30300\", "
-                + "\"sub_type\": \"\", "
-                + "\"courthouse\": \"Gloucester\", "
-                + "\"courtroom\": \"1\", "
-                + "\"case_numbers\": [ "
-                + "\"T202400144\" ], "
-                + "\"date_time\": \"2024-04-11T12:02:00.000Z\"}",
-            courtHouseName, courtRoomName, courtCaseNumber);
+        return toJson(EventRequestBody.builder()
+            .eventId("1")
+            .type("30300")
+            .subType("")
+            .courthouse("Gloucester")
+            .courtroom("1")
+            .caseNumbers(List.of("T202400144"))
+            .dateTime("2024-04-11T12:02:00.000Z")
+            .build());
     }
 
     public static String buildDuplicateEventsPostBody(Session session, String eventId) {
@@ -714,17 +714,17 @@ public class RequestBodyBuilder {
         String courtHouseName = session.get("courthouse_name") != null ? session.get("courthouse_name").toString() : "";
         String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
         String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
-        return String.format("{\"event_id\": \"%s\", "
-                + "\"message_id\": \"This is a Perf test for Duplication tasks\", "
-                + "\"event_text\": \"Perf_event text for Duplication\", "
-                + "\"type\": \"30300\", "
-                + "\"sub_type\": \"\", "
-                + "\"courthouse\": \"%s\", "
-                + "\"courtroom\": \"%s\", "
-                + "\"case_numbers\": [ "
-                + "\"%s\" ], "
-                + "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
-            eventId, courtHouseName, courtRoomName, courtCaseNumber);
+        return toJson(EventRequestBody.builder()
+            .eventId(eventId)
+            .messageId("This is a Perf test for Duplication tasks")
+            .eventText("Perf_event text for Duplication")
+            .type("30300")
+            .subType("")
+            .courthouse(courtHouseName)
+            .courtroom(courtRoomName)
+            .caseNumbers(List.of(courtCaseNumber))
+            .dateTime("2024-04-05T12:02:00.000Z")
+            .build());
     }
 
     public static String buildInterpreterUsedEventBody(Session session) {
@@ -734,15 +734,15 @@ public class RequestBodyBuilder {
         String courtRoomName = session.get("courtroom_name") != null ? session.get("courtroom_name").toString() : "";
         String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
 
-        return String.format("{\"event_id\": \"74\", "
-                + "\"type\": \"2917\", "
-                + "\"sub_type\": \"3979\", "
-                + "\"courthouse\": \"%s\", "
-                + "\"courtroom\": \"%s\", "
-                + "\"case_numbers\": [ "
-                + "\"%s\" ], "
-                + "\"date_time\": \"2024-04-05T12:02:00.000Z\"}",
-            courtHouseName, courtRoomName, courtCaseNumber);
+        return toJson(EventRequestBody.builder()
+            .eventId("74")
+            .type("2917")
+            .subType("3979")
+            .courthouse(courtHouseName)
+            .courtroom(courtRoomName)
+            .caseNumbers(List.of(courtCaseNumber))
+            .dateTime("2024-04-05T12:02:00.000Z")
+            .build());
     }
 
     public static String buildInterpreterUsedForUpdatedEventBody(Session session) {
@@ -754,15 +754,15 @@ public class RequestBodyBuilder {
         String courtCaseNumber = session.get("case_number") != null ? session.get("case_number").toString() : "";
         String hearing_date = session.get("hearing_date") != null ? session.get("hearing_date").toString() : "";
 
-        return String.format("{\"event_id\": \"74\", "
-                + "\"type\": \"2917\", "
-                + "\"sub_type\": \"3979\", "
-                + "\"courthouse\": \"%s\", "
-                + "\"courtroom\": \"%s\", "
-                + "\"case_numbers\": [ "
-                + "\"%s\" ], "
-                + "\"date_time\": \"%sT12:02:00.000Z\"}",
-            courtHouseName, courtRoomName, courtCaseNumber, hearing_date);
+        return toJson(EventRequestBody.builder()
+            .eventId("74")
+            .type("2917")
+            .subType("3979")
+            .courthouse(courtHouseName)
+            .courtroom(courtRoomName)
+            .caseNumbers(List.of(courtCaseNumber))
+            .dateTime(hearing_date + "T12:02:00.000Z")
+            .build());
 
     }
 
@@ -775,39 +775,24 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
-        //     return String.format("{ \"type\": \"30300\", "
-        //     +"\"event_id\": \"218\", "
-        //     +"\"courthouse\": \"York\", "
-        //     +"\"courtroom\": \"1\","
-        //     +"\"case_numbers\": [ "
-        //     +"\"SHUl9Ky1AD\" ], "
-        //     +"\"event_text\": \"Perf_Event_%s\","
-        //     +"\"date_time\": \"2024-02-26T12:02:00.000Z\","
-        //     +"\"retention_policy\": {"
-        //     +    "\"case_retention_fixed_policy\": \"1\","
-        //     +    "\"case_total_sentence\": \"1\"},"
-        //     +"\"start_time\": \"2024-02-26T17:27:33.212Z\","
-        //     +"\"end_time\": \"2024-02-26T17:27:33.212Z\","
-        //     +"\"is_mid_tier\": true}",
-        // courtHouseName, courtRoomName, courtCaseNumber, randomComment);
-        // }
+        RetentionPolicy retentionPolicy = RetentionPolicy.builder()
+            .caseRetentionFixedPolicy("1")
+            .caseTotalSentence("1")
+            .build();
 
-
-        return String.format("{ \"type\": \"30300\", "
-                + "\"event_id\": \"218\", "
-                + "\"courthouse\": \"%s\", "
-                + "\"courtroom\": \"%s\","
-                + "\"case_numbers\": [ "
-                + "\"%s\" ], "
-                + "\"event_text\": \"Perf_Event_%s\","
-                + "\"date_time\": \"2024-04-05T12:02:00.000Z\","
-                + "\"retention_policy\": {"
-                + "\"case_retention_fixed_policy\": \"1\","
-                + "\"case_total_sentence\": \"1\"},"
-                + "\"start_time\": \"2024-07-19T17:27:33.212Z\","
-                + "\"end_time\": \"2024-07-19T17:27:33.212Z\","
-                + "\"is_mid_tier\": true}",
-            courtHouseName, courtRoomName, courtCaseNumber, randomComment);
+        return toJson(EventRequestBody.builder()
+            .type("30300")
+            .eventId("218")
+            .courthouse(courtHouseName)
+            .courtroom(courtRoomName)
+            .caseNumbers(List.of(courtCaseNumber))
+            .eventText("Perf_Event_" + randomComment)
+            .dateTime("2024-04-05T12:02:00.000Z")
+            .retentionPolicy(retentionPolicy)
+            .startTime("2024-07-19T17:27:33.212Z")
+            .endTime("2024-07-19T17:27:33.212Z")
+            .isMidTier(true)
+            .build());
     }
 
     public static String buildRetentionsPostBody(Session session) {
@@ -818,10 +803,11 @@ public class RequestBodyBuilder {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
         String randomComment = randomStringGenerator.generateRandomString(10);
 
-        return String.format("{\"case_id\": \"%s\", "
-                + "\"is_permanent_retention\": \"true\", "
-                + "\"comments\": \"Perf_%s\"}",
-            courtCaseId, randomComment);
+        return toJson(RetentionRequestBody.builder()
+            .caseId(courtCaseId)
+            .isPermanentRetention(true)
+            .comments("Perf_" + randomComment)
+            .build());
     }
 
 
@@ -833,17 +819,17 @@ public class RequestBodyBuilder {
         String currentTimeMillis = String.valueOf(System.currentTimeMillis());
         int test = (int) NumberGenerator.generateRandom13DigitNumber();
 
-        return String.format("{\"event_id\":" + test + ", "
-                + "\"message_id\":" + currentTimeMillis + ", "
-                + "\"type\": \"30300\", "
-                + "\"sub_type\": \"\", "
-                + "\"courthouse\": \"%s\", "
-                + "\"courtroom\": \"%s\", "
-                + "\"case_numbers\": [ "
-                + "\"PerfCase_%s\" ], "
-                + "\"date_time\": \"2024-11-11T12:02:00.000Z\", "
-                + "\"start_time\": \"2024-11-11T12:02:00.000Z\", "
-                + "\"end_time\": \"2024-11-11T13:02:00.000Z\"}",
-            courtHouseName, courtRoomName, caseName);
+        return toJson(EventRequestBody.builder()
+            .eventId(test)
+            .messageId(Long.parseLong(currentTimeMillis))
+            .type("30300")
+            .subType("")
+            .courthouse(courtHouseName)
+            .courtroom(courtRoomName)
+            .caseNumbers(List.of("PerfCase_" + caseName))
+            .dateTime("2024-11-11T12:02:00.000Z")
+            .startTime("2024-11-11T12:02:00.000Z")
+            .endTime("2024-11-11T13:02:00.000Z")
+            .build());
     }
 }

@@ -8,13 +8,13 @@ import lombok.Data;
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PostAudioRequestBody {
+public class AudioRequestBody {
 
     @JsonProperty("hearing_id")
-    private String hearingId;
+    private Object hearingId;
 
     @JsonProperty("requestor")
-    private String requestor;
+    private Object requestor;
 
     @JsonProperty("start_time")
     private String startTime;

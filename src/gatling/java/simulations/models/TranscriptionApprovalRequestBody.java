@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class TranscriptionPatchAcceptRequestBody {
+public class TranscriptionApprovalRequestBody {
 
     @JsonProperty("transcription_status_id")
     private String transcriptionStatusId;
