@@ -10,7 +10,8 @@ import simulations.Scripts.Utilities.NumberGenerator;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+
+import simulations.Scripts.Utilities.Util;
 
 @Slf4j
 public final class DartsPortalExternalLoginScenario {
@@ -57,7 +58,7 @@ public final class DartsPortalExternalLoginScenario {
               //   return session.set("xmlPayload", xmlPayload);
               // })
               .exitHereIfFailed() 
-              .pause(2, 5)
+              .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
               .exec(
                 http("B2C_1_darts_externaluser_signin - Client - Perftrace")
                   .post(AppConfig.EnvironmentURL.DARTS_PORTAL_SIGNIN.getUrl() + "/client/perftrace?tx=StateProperties=#{stateProperties}&p=B2C_1_darts_externaluser_signin")

@@ -13,6 +13,7 @@ import java.time.Duration;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.Utilities.HttpUtil;
+import simulations.Scripts.Utilities.Util;
 
 import java.util.UUID;
 
@@ -52,8 +53,9 @@ public class AddAudioUserSimulation extends Simulation {
       return scenario(scenarioName)
       .group(scenarioName)
         .on(repeat(1)
-          .on(exec(AddAudioUserScenario.addAudioUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()).pace(Duration.ofMillis(paceDurationMillis))
-          // exec(AddAudioUserScenario.addAudioUserBinary(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()).pace(Duration.ofMillis(paceDurationMillis)))
+          .on(exec(AddAudioUserScenario.addAudioUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())
+                  .pace(Util.getDurationFromMillis(paceDurationMillis))
+          // exec(AddAudioUserScenario.addAudioUserBinary(EnvironmentURL.DARTS_SOAP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_EXTERNAL_PASSWORD.getUrl()) .pace(Util.getDurationFromMillis(paceDurationMillis)))
         )));
   }
 }

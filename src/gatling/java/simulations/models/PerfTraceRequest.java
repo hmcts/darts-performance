@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.ALWAYS)
 public class PerfTraceRequest {
 
     @JsonProperty("navigation")
@@ -26,7 +26,7 @@ public class PerfTraceRequest {
 
     @Data
     @Builder
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     public static class PerfTraceNavigation {
         @JsonProperty("type")
         private Integer type;
@@ -37,7 +37,7 @@ public class PerfTraceRequest {
 
     @Data
     @Builder
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     public static class PerfTraceTiming {
         @JsonProperty("connectStart")
         private Double connectStart;
@@ -105,7 +105,7 @@ public class PerfTraceRequest {
 
     @Data
     @Builder
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     public static class PerfTraceEntry {
         @JsonProperty("name")
         private String name;
@@ -224,7 +224,7 @@ public class PerfTraceRequest {
 
     @Data
     @Builder
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     public static class PerfTraceServerTiming {
         @JsonProperty("name")
         private String name;
@@ -238,7 +238,7 @@ public class PerfTraceRequest {
 
     @Data
     @Builder
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     public static class PerfTraceConnection {
         @JsonProperty("onchange")
         private Object onchange;

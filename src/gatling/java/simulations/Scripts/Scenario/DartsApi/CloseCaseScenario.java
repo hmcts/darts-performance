@@ -9,7 +9,8 @@ import simulations.Scripts.Utilities.SQLQueryProvider;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+
+import simulations.Scripts.Utilities.Util;
 
 @Slf4j
 public final class CloseCaseScenario {
@@ -51,7 +52,7 @@ public final class CloseCaseScenario {
             .check(status().saveAs("statusCode"))
             .check(status().is(201))
         ))
-        .pause(5)          
+        .pause(Util.getDurationFromSeconds(5))
             // Step 3: Change date from Database
             .exec(session -> {
                 String cas_id = session.getString("cas_id");

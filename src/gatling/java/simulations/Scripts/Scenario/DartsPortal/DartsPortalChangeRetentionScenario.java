@@ -11,7 +11,8 @@ import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+
+import simulations.Scripts.Utilities.Util;
 
 @Slf4j
 public final class DartsPortalChangeRetentionScenario {
@@ -30,7 +31,7 @@ public final class DartsPortalChangeRetentionScenario {
               String xmlPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
               return session.set("xmlPayload", xmlPayload);
           })
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           
           // Initialize `caseCount` to 0 before starting the search
           .exec(session -> session.set("caseCount", 0))
@@ -80,7 +81,7 @@ public final class DartsPortalChangeRetentionScenario {
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search"))
          
           .exitHereIfFailed()
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -123,7 +124,7 @@ public final class DartsPortalChangeRetentionScenario {
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - #{getCaseId} - Transcripts"))
 
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -169,7 +170,7 @@ public final class DartsPortalChangeRetentionScenario {
           ) 
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions - Case_id"))
 
-          .pause(5, 10)
+          .pause(Util.getDurationFromSeconds(5), Util.getDurationFromSeconds(10))
           .exec
             (session -> {
               String xmlPayload = RequestBodyBuilder.buildChangeRetentionsBody(session);
@@ -185,7 +186,7 @@ public final class DartsPortalChangeRetentionScenario {
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Retentions - Validate_only"))
 
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(
             http("Darts-Portal - Api - Retentions")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/retentions")

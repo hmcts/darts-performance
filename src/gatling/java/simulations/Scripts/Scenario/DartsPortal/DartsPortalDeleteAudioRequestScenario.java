@@ -10,7 +10,8 @@ import simulations.Scripts.Utilities.NumberGenerator;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+
+import simulations.Scripts.Utilities.Util;
 
 
 @Slf4j
@@ -102,7 +103,7 @@ public final class DartsPortalDeleteAudioRequestScenario {
           // Log detailed error message
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-Requests - V2 - Expired - False"))
           
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -225,7 +226,7 @@ public final class DartsPortalDeleteAudioRequestScenario {
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-Counts"))
           
-          .pause(5, 10)
+          .pause(Util.getDurationFromSeconds(5), Util.getDurationFromSeconds(10))
           .exec(
             http("Darts-Portal - Api - Audio-Requests - Transformed_Media - Delete")
               .delete(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/transformed_media/#{getTransformedMediaId}")

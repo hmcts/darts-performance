@@ -8,8 +8,9 @@ import simulations.Scripts.Utilities.NumberGenerator;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+
 import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
+import simulations.Scripts.Utilities.Util;
 
 @Slf4j
 public final class AddDocumentXhibitDailyListTokenScenario {
@@ -23,7 +24,7 @@ public final class AddDocumentXhibitDailyListTokenScenario {
        //  group("AddDocument - Xhibit DailyList SOAP Requests")
          //   .on(
                 feed(Feeders.createCourtHouseAndCourtRooms())   
-            .pause(1)
+            .pause(Util.getDurationFromSeconds(1))
             .exec(session -> {
                     String xmlPayload = SOAPRequestBuilder.addDocumentXhibitDailyListTokenRequest(session, generator);  
                     return session.set("xmlPayload", xmlPayload);  

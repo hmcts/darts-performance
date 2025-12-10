@@ -13,6 +13,7 @@ import java.time.Duration;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.Utilities.HttpUtil;
+import simulations.Scripts.Utilities.Util;
 
 public class GetCourtLogTokenSimulation extends Simulation {
 
@@ -52,6 +53,7 @@ public class GetCourtLogTokenSimulation extends Simulation {
       .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
           .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl()))
           .repeat(repeats)
-          .on(exec(GetCourtlogTokenScenario.getCourtLogToken().pace(Duration.ofMillis(paceDurationMillis)))));
+          .on(exec(GetCourtlogTokenScenario.getCourtLogToken()
+               .pace(Util.getDurationFromMillis(paceDurationMillis)))));
   }
 }

@@ -10,7 +10,8 @@ import simulations.Scripts.Utilities.UserInfoLogger;
 import simulations.Scripts.Utilities.NumberGenerator;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+
+import simulations.Scripts.Utilities.Util;
 
 @Slf4j
 public final class DartsPortalInternalLoginScenario {
@@ -113,7 +114,7 @@ public final class DartsPortalInternalLoginScenario {
             .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Login Microsoftonline - Common - GetCredentialType"))
 
             .exitHereIfFailed() 
-            .pause(2, 10)
+            .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(10))
 
             .exec(
                     addCookie(Cookie("brcap",

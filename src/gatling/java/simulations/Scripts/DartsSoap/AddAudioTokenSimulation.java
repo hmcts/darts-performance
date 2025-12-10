@@ -13,6 +13,7 @@ import java.time.Duration;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.Utilities.HttpUtil;
+import simulations.Scripts.Utilities.Util;
 
 public class AddAudioTokenSimulation extends Simulation {
 
@@ -49,6 +50,6 @@ public class AddAudioTokenSimulation extends Simulation {
       .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
           .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
           .repeat(repeats)
-          .on(exec(AddAudioTokenScenario.addAudioToken().pace(Duration.ofMillis(paceDurationMillis)))));
+          .on(exec(AddAudioTokenScenario.addAudioToken() .pace(Util.getDurationFromMillis(paceDurationMillis)))));
   }
 }

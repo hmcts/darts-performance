@@ -7,7 +7,8 @@ import io.gatling.javaapi.core.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+
+import simulations.Scripts.Utilities.Util;
 
 public final class DartsPortalPreviewAudioScenario {
 
@@ -33,7 +34,7 @@ public final class DartsPortalPreviewAudioScenario {
                 .check(status().saveAs("status"))
           )
           .exitHereIfFailed() // Exit the chain if the request fails
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
               .headers(Headers.getHeaders(14))

@@ -12,6 +12,7 @@ import java.time.Duration;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import simulations.Scripts.Utilities.HttpUtil;
+import simulations.Scripts.Utilities.Util;
 
 public class AddCaseTokenSimulation extends Simulation {
 
@@ -50,6 +51,7 @@ public class AddCaseTokenSimulation extends Simulation {
       .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
           .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
           .repeat(1)
-          .on(exec(AddCaseTokenScenario.addCaseToken().pace(Duration.ofMillis(paceDurationMillis)))));
+          .on(exec(AddCaseTokenScenario.addCaseToken()
+              .pace(Util.getDurationFromMillis(paceDurationMillis)))));
   }
 }

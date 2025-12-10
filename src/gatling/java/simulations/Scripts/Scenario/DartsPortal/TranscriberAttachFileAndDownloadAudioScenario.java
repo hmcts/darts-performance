@@ -8,7 +8,8 @@ import simulations.Scripts.Utilities.UserInfoLogger;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+
+import simulations.Scripts.Utilities.Util;
 
 @Slf4j
 public final class TranscriberAttachFileAndDownloadAudioScenario {
@@ -38,14 +39,14 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
                 if (getTranscriptionId != null) {
                 //    log.info("getTranscriptionId: " + getTranscriptionId.toString());
                 } else {
-                    log.info("No Transcription Id value saved using saveAs (Issue with $[*].transcription_id). For User: "+ email); 
+                    log.info("No Transcription Id value saved using saveAs (Issue with $[*].transcription_id). For User: "+ email);
                 }
                 return session;
-            }) 
+            })
             .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
-         
+
           .exitHereIfFailed()
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -57,10 +58,10 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
               .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
-          )  
+          )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
-        
-          .pause(2, 5)
+
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(
             http("Darts-Portal - Api - Transcriptions - Id")
               .patch(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
@@ -82,10 +83,10 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
               .headers(Headers.getHeaders(12))
               .check(status().is(200))
               .check(status().saveAs("status"))
-          )  
+          )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
-        
-          .pause(2, 10)
+
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(10))
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
@@ -123,14 +124,14 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
             )
           .exec(
             http("Darts-Portal - Api - Transcriptions - Transcriber-view")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true")              
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true")
               .headers(Headers.getHeaders(12))
-              .check(status().is(200))    
-              .check(status().saveAs("status"))    
+              .check(status().is(200))
+              .check(status().saveAs("status"))
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
 
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -145,7 +146,7 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
           )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
 
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(
             http("Darts-Portal - Api - Transcriptions - Document")
               .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}/document")
@@ -154,14 +155,14 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
               .fileName(randomDocumentFile)
               .contentType("application/vnd.openxmlformats-officedocument.wordprocessingml.document")
               .dispositionType("form-data"))
-          ) 
+          )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Document"))
 
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
             .headers(Headers.getHeaders(14))
-            ) 
+            )
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
             .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -169,11 +170,11 @@ private static final String randomDocumentFile = AppConfig.getRandomDocumentFile
             )
           .exec(
             http("Darts-Portal - Api - Transcriptions - Transcriber-view")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true") 
+              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/transcriber-view?assigned=true")
               .headers(Headers.getHeaders(12))
-              .check(status().is(200))      
-              .check(status().saveAs("status"))   
-          )          
+              .check(status().is(200))
+              .check(status().saveAs("status"))
+          )
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Transcriber-view"))
        );
     }

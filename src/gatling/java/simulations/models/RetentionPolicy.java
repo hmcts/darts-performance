@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.ALWAYS)
 public class RetentionPolicy {
 
     @JsonProperty("case_retention_fixed_policy")

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.ALWAYS)
 public class AudioUploadRequestBody {
 
     @JsonProperty("started_at")

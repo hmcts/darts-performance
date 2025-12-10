@@ -11,7 +11,8 @@ import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+
+import simulations.Scripts.Utilities.Util;
 
 @Slf4j
 public final class DartsPortalRequestAudioScenario {
@@ -21,7 +22,7 @@ public final class DartsPortalRequestAudioScenario {
     public static ChainBuilder DartsPortalRequestAudioDownload() {
       return group("Darts Request Audio PlayBack/Download")
       .on(
-          pause(2, 5)
+          pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
               .headers(Headers.getHeaders(14))
@@ -72,7 +73,7 @@ public final class DartsPortalRequestAudioScenario {
             }
             return session;
           })
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -174,7 +175,7 @@ public final class DartsPortalRequestAudioScenario {
           })          
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Hearings - Transcripts"))
 
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(
             http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")

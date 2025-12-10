@@ -10,7 +10,8 @@ import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+
+import simulations.Scripts.Utilities.Util;
 
 @Slf4j
 public final class DartsPortalApproveAudioScenario {
@@ -65,7 +66,7 @@ public final class DartsPortalApproveAudioScenario {
           )    
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Urgencies"))
       
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(            
             http("Darts-Portal - Auth - Is-authenticated")
               .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
@@ -81,7 +82,7 @@ public final class DartsPortalApproveAudioScenario {
           )   
           .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
        
-          .pause(2, 5)
+          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
           .exec(session -> {
             String xmlPayload = RequestBodyBuilder.buildTranscriptionApprovalRequestBody(session);
             return session.set("xmlPayload", xmlPayload);

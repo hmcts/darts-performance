@@ -9,7 +9,8 @@ import simulations.Scripts.Utilities.SQLQueryProvider;
 import io.gatling.javaapi.core.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+
+import simulations.Scripts.Utilities.Util;
 
 @Slf4j
 public final class CreateRetenionsScenario {
@@ -51,7 +52,7 @@ public final class CreateRetenionsScenario {
             .check(status().saveAs("statusCode"))
             .check(status().is(201))
         ))
-        .pause(5)          
+        .pause(Util.getDurationFromSeconds(5))
             // Step 3: Change date from Database
             .exec(session -> {
                 String cas_id = session.getString("cas_id");
@@ -62,14 +63,14 @@ public final class CreateRetenionsScenario {
                 return session.set("Retenions_cas_id", cas_id);
             }
         )
-        .pause(15)
+        .pause(Util.getDurationFromSeconds(15))
         .exec(http("DARTS - Api - AutomatedTasksRequest:POST")
                 .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/11/run") 
                 .headers(Headers.getHeaders(24))
                 .check(status().saveAs("statusCode"))
                 .check(status().is(202))
         )
-        .pause(5)
+        .pause(Util.getDurationFromSeconds(5))
         .exec(session -> {
             String xmlPayload = RequestBodyBuilder.buildRetentionsPostBody(session);
             log.info("Retentions xmlPayload: " + xmlPayload);
@@ -88,6 +89,6 @@ public final class CreateRetenionsScenario {
             log.info("Case id: " + session.getString("cas_id")+ " has had a Retention added");
         return session;
         })
-        .pause(120); 
+        .pause(Util.getDurationFromSeconds(120));
     }       
 }
