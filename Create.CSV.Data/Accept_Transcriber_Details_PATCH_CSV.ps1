@@ -5,7 +5,7 @@ WITH RankedTranscriptions AS (
         transcription.tra_id,
         transcription.created_by,
         courthouse.cth_id,
-        '\"' || REPLACE(courthouse.display_name, '\"', '\"\"') || '\"' AS courthouse_name,
+        courthouse.display_name AS courthouse_name,
         user_account.usr_id,        
         user_account.user_email_address,
         'PerfTester@01' AS "Password",
