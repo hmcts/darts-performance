@@ -493,6 +493,7 @@ public class AppConfig {
         Paths.get(TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH_CSV).toString();
     public static final String TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH =
         Paths.get(TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH_CSV).toString();
+    public static final String EVENTS_TO_UPDATE_FILE_PATH = Paths.get(EVENTS_TO_UPDATE_CSV).toString();
 
     // List of Document files
     public static final String[] DOCUMENT_FILES = {"SampleDoc2.docx"};
