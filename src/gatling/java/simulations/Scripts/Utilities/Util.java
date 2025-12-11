@@ -20,8 +20,8 @@ public class Util {
     }
 
     public static Duration getDurationFromSeconds(int seconds) {
-//        return Duration.ofSeconds(seconds);
-        return Duration.ofSeconds(0);
+        return Duration.ofSeconds(seconds);
+//        return Duration.ofSeconds(0);
     }
 
     public static Duration getDurationFromMillis(int millis) {
