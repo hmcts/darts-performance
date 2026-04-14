@@ -8,44 +8,49 @@ public class AppConfig {
 
     public static final boolean ENABLE_PROXY = false;
     //EXTERNAL Tenant
-    public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = getProperty("PERFORMANCE_EXTERNAL_CLIENT_ID");
-    public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = getProperty("PERFORMANCE_EXTERNAL_CLIENT_SECRET");
-    public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = getProperty("PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID");
-
-    public static final String TENANT_NAME = getProperty("TENANT_NAME");
-    public static final String INTERNAL_TENANT_NAME = getProperty("INTERNAL_TENANT_NAME");
-
+    public static final String PERFORMANCE_EXTERNAL_CLIENT_ID = getProperty("PERFORMANCE_EXTERNAL_CLIENT_ID", null);
+    public static final String PERFORMANCE_EXTERNAL_CLIENT_SECRET = getProperty("PERFORMANCE_EXTERNAL_CLIENT_SECRET", null);
+    public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = getProperty("PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID", null);
+    public static final String TENANT_NAME = getProperty("TENANT_NAME", null);
+    public static final String INTERNAL_TENANT_NAME = getProperty("INTERNAL_TENANT_NAME", null);
+ 
     //INTERNAL Tenant
-    public static final String PERFORMANCE_INTERNAL_CLIENT_ID = getProperty("PERFORMANCE_INTERNAL_CLIENT_ID");
-    public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = getProperty("PERFORMANCE_INTERNAL_CLIENT_SECRET");
-    public static final String PERFORMANCE_INTERNAL_TENANT_ID = getProperty("PERFORMANCE_INTERNAL_TENANT_ID");
-
-    public static final String PERFORMANCE_INTERNAL_SCOPE = getProperty("PERFORMANCE_INTERNAL_SCOPE");
-    public static final String PERFORMANCE_INTERNAL_B2B_Token =
-        "https://login.microsoftonline.com/" + PERFORMANCE_INTERNAL_TENANT_ID + "/oauth2/v2.0/token";
+    public static final String PERFORMANCE_INTERNAL_CLIENT_ID = getProperty("PERFORMANCE_INTERNAL_CLIENT_ID", null);
+    public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = getProperty("PERFORMANCE_INTERNAL_CLIENT_SECRET", null);
+    public static final String PERFORMANCE_INTERNAL_TENANT_ID = getProperty("PERFORMANCE_INTERNAL_TENANT_ID", null);
+    
+    public static final String PERFORMANCE_INTERNAL_SCOPE = getProperty("PERFORMANCE_INTERNAL_SCOPE", null);
+    public static final String PERFORMANCE_INTERNAL_B2B_Token = "https://login.microsoftonline.com/"+ PERFORMANCE_INTERNAL_TENANT_ID +"/oauth2/v2.0/token";
+ 
+    // Performance Users
+    public static final String PERFORMANCE_API_USERNAME = getProperty("DARTS_TRANSCRIBER_TEST_USERNAME", null);
+    public static final String PERFORMANCE_DARTS_API_GLOBAL_USERNAME = getProperty("DARTS_API_GLOBAL_USERNAME", null);
+    public static final String PERFORMANCE_DARTS_API_PASSWORD = getProperty("DARTS_API_PASSWORD", null);
+    public static final String PERFORMANCE_DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME = getProperty("DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME", null);
+    public static final String PERFORMANCE_DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD = getProperty("DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD", null);
+    public static final String PERFORMANCE_DARTS_API_USERNAME2 = getProperty("DARTS_API_USERNAME2", null);
+    public static final String PERFORMANCE_DARTS_API_PASSWORD2 = getProperty("DARTS_API_PASSWORD2", null);
+    public static final String PERFORMANCE_DARTS_SOAP_VIQ_EXTERNAL_USERNAME = getProperty("DARTS_SOAP_VIQ_EXTERNAL_USERNAME", null);
+    public static final String PERFORMANCE_DARTS_SOAP_VIQ_EXTERNAL_PASSWORD = getProperty("DARTS_SOAP_VIQ_EXTERNAL_PASSWORD", null);
+    public static final String PERFORMANCE_DARTS_SOAP_CPP_EXTERNAL_USERNAME = getProperty("DARTS_SOAP_CPP_EXTERNAL_USERNAME", null);
+    public static final String PERFORMANCE_DARTS_SOAP_CPP_EXTERNAL_PASSWORD = getProperty("DARTS_SOAP_CPP_EXTERNAL_PASSWORD", null);
 
     //Performance Env
-    public static final String PERFORMANCE_GATEWAY_BASE_URL = "http://darts-gateway.staging.platform.hmcts.net";
-    public static final String PERFORMANCE_PROXY_BASE_URL = "http://darts-proxy.staging.platform.hmcts.net";
-    public static final String PERFORMANCE_DARTS_API_BASE_URL = "http://darts-api.staging.platform.hmcts.net";
-    public static final String PERFORMANCE_DARTS_BASE_URL = "https://darts.staging.apps.hmcts.net";
-    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN =
-        "/" + TENANT_NAME + ".onmicrosoft.com/B2C_1_darts_externaluser_signin/";
-    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN =
-        PERFORMANCE_DARTS_PORTAL_SIGNIN + "oauth2/v2.0/authorize";
-    public static final String PERFORMANCE_B2B_Login = "https://" + TENANT_NAME + ".b2clogin.com";
-    public static final String PERFORMANCE_B2B_Token =
-        "/" + TENANT_NAME + ".onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
+    public static final String PERFORMANCE_GATEWAY_BASE_URL = "http://darts-gateway.test.platform.hmcts.net";
+    public static final String PERFORMANCE_PROXY_BASE_URL = "http://darts-proxy.test.platform.hmcts.net";
+    public static final String PERFORMANCE_DARTS_API_BASE_URL = "https://darts-api.test.platform.hmcts.net";
+    public static final String PERFORMANCE_DARTS_BASE_URL = "https://darts.test.apps.hmcts.net";
+    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/" + TENANT_NAME+".onmicrosoft.com/B2C_1_darts_externaluser_signin/";
+    public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "oauth2/v2.0/authorize";
+    public static final String PERFORMANCE_B2B_Login = "https://"+TENANT_NAME+".b2clogin.com";
+    public static final String PERFORMANCE_B2B_Token = "/"+TENANT_NAME+".onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
 
-    public static final String PERFORMANCE_SCOPE =
-        "https://" + TENANT_NAME + ".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "/Darts.ExternalService";
+    public static final String PERFORMANCE_SCOPE = "https://"+TENANT_NAME+".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "/Darts.ExternalService";
 
     public static final String PERFORMANCE_GRANT_TYPE = "password";
-
     public static final long RANK_UP_TIME_SECONDS;
     public static final long RANK_DOWN_TIME_SECONDS;
     public static final int REQUESTS_PER_SECOND;
-    public static final String EVENTS_TO_UPDATE_FILE_PATH = "";
     private static final double REQUESTS_PER_SECOND_PER_USER;
 
     //Nightly Run Parameters
@@ -229,7 +234,7 @@ public class AppConfig {
         RAMP_UP_DURATION_OF_LANGUAGE_SHOP = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "1"));
 
         //Pipeline users
-        PIPELINE_USERS_PER_SECOND = Integer.parseInt(getProperty("PIPELINE_USERS_PER_SECOND", "1"));
+        PIPELINE_USERS_PER_SECOND = Integer.parseInt(getProperty("PIPELINE_USERS_PER_SECOND", "95"));
         if (hasProperty("USERS_PER_HOUR")) {
             USERS_PER_SECOND = Integer.parseInt((Double.parseDouble(getProperty("USERS_PER_HOUR", "3600")) / 3600.0) +
                 "");
@@ -338,10 +343,10 @@ public class AppConfig {
         PEAK_PACE_DURATION_MINS = Integer.parseInt(getProperty("PEAK_PACE_DURATION_MINS", "10"));
 
         //DataBase Connections
-        DB_URL = getProperty("DB_URL");
-        DB_USERNAME = getProperty("DB_USERNAME");
-        DB_PASSWORD = getProperty("DB_PASSWORD");
-
+        DB_URL = getProperty("DB_URL", null);
+        DB_USERNAME = getProperty("DB_USERNAME", null);
+        DB_PASSWORD = getProperty("DB_PASSWORD", null);
+ 
         //Fixed Data for CSV files or none fixed for db query within test.
         isFixed = Boolean.parseBoolean(System.getProperty("isFixed", "false"));
 
@@ -397,17 +402,17 @@ public class AppConfig {
 
 
         //Users
-        DARTS_API_USERNAME(getProperty("DARTS_API_USERNAME")),
-        DARTS_API_GLOBAL_USERNAME(getProperty("DARTS_API_GLOBAL_USERNAME")),
-        DARTS_API_PASSWORD(getProperty("DARTS_API_PASSWORD")),
-        DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME(getProperty("DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME")),
-        DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD(getProperty("DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD")),
-        DARTS_API_USERNAME2(getProperty("DARTS_API_USERNAME2")),
-        DARTS_API_PASSWORD2(getProperty("DARTS_API_PASSWORD2")),
-        DARTS_SOAP_VIQ_EXTERNAL_USERNAME(getProperty("DARTS_SOAP_VIQ_EXTERNAL_USERNAME")),
-        DARTS_SOAP_VIQ_EXTERNAL_PASSWORD(getProperty("DARTS_SOAP_VIQ_EXTERNAL_PASSWORD")),
-        DARTS_SOAP_CPP_EXTERNAL_USERNAME(getProperty("DARTS_SOAP_CPP_EXTERNAL_USERNAME")),
-        DARTS_SOAP_CPP_EXTERNAL_PASSWORD(getProperty("DARTS_SOAP_CPP_EXTERNAL_PASSWORD"));
+        DARTS_API_USERNAME(getProperty("DARTS_API_USERNAME", null)),
+        DARTS_API_GLOBAL_USERNAME(getProperty("DARTS_API_GLOBAL_USERNAME", null)),
+        DARTS_API_PASSWORD(getProperty("DARTS_API_PASSWORD", null)),
+        DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME(getProperty("DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME", null)),
+        DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD(getProperty("DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD", null)),
+        DARTS_API_USERNAME2(getProperty("DARTS_API_USERNAME2", null)),
+        DARTS_API_PASSWORD2(getProperty("DARTS_API_PASSWORD2", null)),
+        DARTS_SOAP_VIQ_EXTERNAL_USERNAME(getProperty("DARTS_SOAP_VIQ_EXTERNAL_USERNAME", null)),
+        DARTS_SOAP_VIQ_EXTERNAL_PASSWORD(getProperty("DARTS_SOAP_VIQ_EXTERNAL_PASSWORD", null)),
+        DARTS_SOAP_CPP_EXTERNAL_USERNAME(getProperty("DARTS_SOAP_CPP_EXTERNAL_USERNAME", null)),
+        DARTS_SOAP_CPP_EXTERNAL_PASSWORD(getProperty("DARTS_SOAP_CPP_EXTERNAL_PASSWORD", null));
 
         private final String url;
 
@@ -455,6 +460,9 @@ public class AppConfig {
     public static final String TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH_CSV = "Transformed_Media_Download.csv";
     public static final String TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH_CSV = "Transformed_Media_Playback.csv";
     public static final String TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH_CSV = "Transformed_Media_To_Delete.csv";
+    public static final String CASE_ID_RETENTIONS_FILE_PATH_CSV = "Cas_id_Retentions.csv";
+    public static final String EVENTS_TO_UPDATE_CSV = "EventsToUpdate.csv";
+ 
     // Specific CSV file for Users
     public static final String DARTS_PORTAL_USERS_CSV = "Users.csv";
     public static final String DARTS_PORTAL_COURTCLERK_USERS_CSV = "UsersCourtClerks.csv";
@@ -467,36 +475,27 @@ public class AppConfig {
     public static final String DARTS_PORTAL_JUDGES_CSV = "JudgeName2.csv";
 
     // Full CSV file paths
-    public static final String COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH =
-        Paths.get(COURT_HOUSE_AND_COURT_ROOMS_CSV).toString();
+    public static final String COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH = Paths.get(COURT_HOUSE_AND_COURT_ROOMS_CSV).toString();
     public static final String TRANSCRIPTION_POST_FILE_PATH = Paths.get(TRANSCRIPTION_POST_CSV).toString();
-    public static final String TRANSCRIPTION_PATCH_ACCEPT_FILE_PATH =
-        Paths.get(TRANSCRIPTION_PATCH_ACCEPT_CSV).toString();
+    public static final String TRANSCRIPTION_PATCH_ACCEPT_FILE_PATH = Paths.get(TRANSCRIPTION_PATCH_ACCEPT_CSV).toString();
+    public static final String CASE_ID_RETENTIONS_FILE_PATH = Paths.get(CASE_ID_RETENTIONS_FILE_PATH_CSV).toString();   
     public static final String AUDIO_REQUEST_POST_FILE_PATH = Paths.get(AUDIO_REQUEST_POST_CSV).toString();
     public static final String DARTS_PORTAL_USERS1_FILE_PATH = Paths.get(DARTS_PORTAL_USERS_CSV).toString();
-    public static final String DARTS_PORTAL_COURTCLERK_USERS_FILE_PATH =
-        Paths.get(DARTS_PORTAL_COURTCLERK_USERS_CSV).toString();
-    public static final String DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH =
-        Paths.get(DARTS_PORTAL_COURTMANAGER_USERS_CSV).toString();
-    public static final String DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH =
-        Paths.get(DARTS_PORTAL_TRANSCRIBERS_USERS_CSV).toString();
-    public static final String DARTS_PORTAL_LANGUAGESHOP_FILE_PATH =
-        Paths.get(DARTS_PORTAL_LANGUAGESHOP_USERS_CSV).toString();
+    public static final String DARTS_PORTAL_COURTCLERK_USERS_FILE_PATH = Paths.get(DARTS_PORTAL_COURTCLERK_USERS_CSV).toString();
+    public static final String DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH = Paths.get(DARTS_PORTAL_COURTMANAGER_USERS_CSV).toString();
+    public static final String DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH = Paths.get(DARTS_PORTAL_TRANSCRIBERS_USERS_CSV).toString();
+    public static final String DARTS_PORTAL_LANGUAGESHOP_FILE_PATH = Paths.get(DARTS_PORTAL_LANGUAGESHOP_USERS_CSV).toString();
     public static final String DARTS_PORTAL_JUDGE_USERS_FILE_PATH = Paths.get(DARTS_PORTAL_JUDGE_USERS_CSV).toString();
 
     public static final String DARTS_PORTAL_JUDGES_FILE_PATH = Paths.get(DARTS_PORTAL_JUDGES_CSV).toString();
-    public static final String CASE_HOUSE_ROOMS_HEARING_FILE_PATH =
-        Paths.get(CASE_HOUSE_ROOMS_HEARING_FILE_PATH_CSV).toString();
-    public static final String TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH =
-        Paths.get(TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH_CSV).toString();
-    public static final String TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH =
-        Paths.get(TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH_CSV).toString();
-    public static final String TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH =
-        Paths.get(TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH_CSV).toString();
+    public static final String CASE_HOUSE_ROOMS_HEARING_FILE_PATH = Paths.get(CASE_HOUSE_ROOMS_HEARING_FILE_PATH_CSV).toString();
+    public static final String TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH = Paths.get(TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH_CSV).toString();
+    public static final String TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH = Paths.get(TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH_CSV).toString();
+    public static final String TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH = Paths.get(TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH_CSV).toString();
     public static final String EVENTS_TO_UPDATE_FILE_PATH = Paths.get(EVENTS_TO_UPDATE_CSV).toString();
 
     // List of Document files
-    public static final String[] DOCUMENT_FILES = {"SampleDoc2.docx"};
+    public static final String[] DOCUMENT_FILES = {"SampleDoc2.docx"}; //{"SampleDoc2.docx", "32MBdocxfile.docx"};
 
     // Method to select a random audio file
     public static String getRandomDocumentFile() {
@@ -504,87 +503,47 @@ public class AppConfig {
         int index = random.nextInt(DOCUMENT_FILES.length);
         return DOCUMENT_FILES[index];
     }
-
-    public static String asString() {
-        StringBuilder builder = new StringBuilder();
-        addValueToBuilder(builder, "Rank Up Time Seconds", String.valueOf(RANK_UP_TIME_SECONDS));
-        addValueToBuilder(builder, "Rank Down Time Seconds", String.valueOf(RANK_DOWN_TIME_SECONDS));
-
-        //Users
-        addValueToBuilder(builder, "Users Per Second", String.valueOf(USERS_PER_SECOND));
-        addValueToBuilder(builder, "Constant concurrent users", String.valueOf(CONSTANT_CONCURRENT_USERS));
-        addValueToBuilder(builder, "Pipeline Users Per Second", String.valueOf(PIPELINE_USERS_PER_SECOND));
-
-        //Test Times Set up
-        addValueToBuilder(builder, "Test Duration Seconds", String.valueOf(TEST_DURATION_SECONDS));
-        addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(TEST_DURATION_MINUTES));
-        addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(SMOKE_TEST_DURATION_MINUTES));
-        addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(BASELINE_NORMAL_DURATION_MINUTES));
-        addValueToBuilder(builder, "Test Duration Minutes", String.valueOf(PEAK_TEST_DURATION_MINUTES));
-
-        //Soap Requests
-        addValueToBuilder(builder, "Number of repeats for the baseline Soap Request",
-            String.valueOf(SOAP_SMOKE_REPEATS));
-        addValueToBuilder(builder, "Number of repeats for the ramp up Soap Request",
-            String.valueOf(SOAP_BASELINE_NORMAL_REPEATS));
-        addValueToBuilder(builder, "Number of repeats for the spike Soap Request",
-            String.valueOf(SOAP_BASELINE_PEAK_REPEATS));
-
-        addValueToBuilder(builder, "The duration in minutes of pacing for the repeats within the smoke test",
-            String.valueOf(SMOKE_PACE_DURATION_MINS));
-        addValueToBuilder(builder,
-            "The duration in minutes of pacing for the repeats within the baseline standard test",
-            String.valueOf(BASELINE_NORMAL_PACE_DURATION_MINS));
-        addValueToBuilder(builder, "The duration in minutes of pacing for the repeats within the peak test",
-            String.valueOf(PEAK_PACE_DURATION_MINS));
-
-        return builder.toString();
-    }
-
-    private static void addValueToBuilder(StringBuilder builder, String key, String value) {
-        builder.append(key).append(": ").append(value).append("\n");
-    }
-
-     public static final String TEST_TYPE = System.getProperty("testType", "normal"); // Default to "normal" if not provided
-
+ 
+    public static final String TEST_TYPE = System.getProperty("testType", "normal"); // Default to "normal" if not provided
+ 
     // Methods to get dynamic user values for each request type
     public static int getJudgeUsers() {
         return switch (TEST_TYPE) {
-            case "peak" -> JUDGE_RAMP_UP_USERS_PEAK;
+            case "normal" -> JUDGE_RAMP_UP_USERS_NORMAL;
             case "smoke" -> JUDGE_RAMP_UP_USERS;
-            default -> JUDGE_RAMP_UP_USERS_NORMAL;
+            default -> JUDGE_RAMP_UP_USERS_PEAK;
         };
     }
-    
+   
     public static int getCourtClerkUsers() {
         return switch (TEST_TYPE) {
-            case "peak" -> COURT_CLERK_RAMP_UP_USERS_PEAK;
+            case "normal" -> COURT_CLERK_RAMP_UP_USERS_NORMAL;
             case "smoke" -> COURT_CLERK_RAMP_UP_USERS;
-            default -> COURT_CLERK_RAMP_UP_USERS_NORMAL;
+            default -> COURT_CLERK_RAMP_UP_USERS_PEAK;
         };
     }
-    
+   
     public static int getCourtManagerUsers() {
         return switch (TEST_TYPE) {
-            case "peak" -> COURT_MANAGER_RAMP_UP_USERS_PEAK;
+            case "normal"  -> COURT_MANAGER_RAMP_UP_USERS_NORMAL;
             case "smoke" -> COURT_MANAGER_RAMP_UP_USERS;
-            default -> COURT_MANAGER_RAMP_UP_USERS_NORMAL;
+            default      -> COURT_MANAGER_RAMP_UP_USERS_PEAK;
         };
     }
-    
+   
     public static int getTranscriberUsers() {
         return switch (TEST_TYPE) {
-            case "peak" -> TRANSCRIBER_RAMP_UP_USERS_PEAK;
+            case "normal" -> TRANSCRIBER_RAMP_UP_USERS_NORMAL;
             case "smoke" -> TRANSCRIBER_RAMP_UP_USERS;
-            default -> TRANSCRIBER_RAMP_UP_USERS_NORMAL;
+            default -> TRANSCRIBER_RAMP_UP_USERS_PEAK;
         };
     }
-    
+   
     public static int getLanguageShopUsers() {
         return switch (TEST_TYPE) {
-            case "peak" -> LANGUAGE_SHOP_RAMP_UP_USERS_PEAK;
+            case "normal" -> LANGUAGE_SHOP_RAMP_UP_USERS_NORMAL;
             case "smoke" -> LANGUAGE_SHOP_RAMP_UP_USERS;
-            default -> LANGUAGE_SHOP_RAMP_UP_USERS_NORMAL;
+            default -> LANGUAGE_SHOP_RAMP_UP_USERS_PEAK;
         };
     }
 
