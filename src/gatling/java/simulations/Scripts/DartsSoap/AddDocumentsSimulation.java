@@ -24,14 +24,14 @@ public class AddDocumentsSimulation extends Simulation {
         log.info("Simulation is about to start!");
     }
 
-    public AddDocumentsSimulation() {
-        HttpProtocolBuilder httpProtocolSoap =
-                HttpUtil.getHttpProtocol()
+     public AddDocumentsSimulation() {
+        HttpProtocolBuilder httpProtocolSoap = http
+                //.proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .inferHtmlResources()
                 .acceptEncodingHeader("gzip,deflate")
                 .contentTypeHeader("text/xml;charset=UTF-8")
                 .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
-                .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl());
+                .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl());
     
                 setUpScenarios(httpProtocolSoap);
 
