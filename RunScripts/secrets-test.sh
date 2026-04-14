@@ -7,6 +7,7 @@ echo "Exporting secrets from Azure keyvault (darts-test), please ensure you have
 export AAD_B2C_TENANT_ID="$(az keyvault secret show --vault-name darts-test --name AzureAdB2CTenantId | jq .value -r)"
 export AAD_B2C_CLIENT_ID="$(az keyvault secret show --vault-name darts-test --name AzureAdB2CClientId | jq .value -r)"
 export PERFORMANCE_EXTERNAL_CLIENT_SECRET="$(az keyvault secret show --vault-name darts-test --name PERFORMANCE-EXTERNAL-CLIENT-SECRET | jq .value -r)"
+export PERFORMANCE_EXTERNAL_CLIENT_ID="$(az keyvault secret show --vault-name darts-test --name PERFORMANCE-EXTERNAL-CLIENT-ID | jq .value -r)"
 export PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID="$(az keyvault secret show --vault-name darts-test --name PERFORMANCE-EXTERNAL-AZURE-AD-B2C-CLIENT-ID | jq .value -r)"
 export TENANT_NAME="$(az keyvault secret show --vault-name darts-test --name TENANT-NAME | jq .value -r)"
 export INTERNAL_TENANT_NAME="$(az keyvault secret show --vault-name darts-test --name INTERNAL-TENANT-NAME | jq .value -r)"
