@@ -1,5 +1,5 @@
 ﻿# Define the directory where Gatling is installed
-$gatlingDir = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\RunScripts"
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # Navigate to the Gatling directory
 Set-Location $gatlingDir

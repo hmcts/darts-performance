@@ -149,7 +149,7 @@ $password = ""
 $env:PGPASSWORD = $password
 
 # Full path to psql executable (update this to the actual path if needed)
-$psqlPath = "C:\Program Files\PostgreSQL\16\bin\psql.exe"
+$psqlPath = "psql"
 
 
 Write-Host "Query executed and completed"
