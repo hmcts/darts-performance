@@ -1,126 +1,127 @@
 package simulations.Scripts.Scenario.DartsPortal;
 
+import io.gatling.javaapi.core.ChainBuilder;
 import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Headers.Headers;
-import simulations.Scripts.Utilities.AppConfig;
-import simulations.Scripts.Utilities.UserInfoLogger;
-import simulations.Scripts.Utilities.NumberGenerator;
-import io.gatling.javaapi.core.*;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
+import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.NumberGenerator;
+import simulations.Scripts.Utilities.UserInfoLogger;
+import simulations.Scripts.Utilities.Util;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
-import static io.gatling.javaapi.http.HttpDsl.*;
-
-import simulations.Scripts.Utilities.Util;
+import static io.gatling.javaapi.http.HttpDsl.http;
+import static io.gatling.javaapi.http.HttpDsl.status;
 
 @Slf4j
 public final class DartsPortalApproveAudioScenario {
 
-    private DartsPortalApproveAudioScenario() {}    
+    private DartsPortalApproveAudioScenario() {
+    }
 
-    public static ChainBuilder DartsPortalApproveAudio() {    
+    public static ChainBuilder DartsPortalApproveAudio() {
 
-      return group("Darts Approve / Reject Transcription")
-      .on(exec(
-              http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
-              .headers(Headers.getHeaders(12))
-              )
-          .exec(
-            http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
-              .headers(Headers.getHeaders(12))
-              .check(status().is(200))
-              .check(status().saveAs("status"))
-          )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
+        return group("Darts Approve / Reject Transcription")
+                .on(exec(
+                                http("Darts-Portal - Auth - Is-authenticated")
+                                        .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+                                        .headers(Headers.getHeaders(12))
+                        )
+                                .exec(
+                                        http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
+                                                .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
+                                                .headers(Headers.getHeaders(12))
+                                                .check(status().is(200))
+                                                .check(status().saveAs("status"))
+                                )
+                                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
 
-          .exec(
-            http("Darts-Portal - Api - Transcriptions")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions")
-              .headers(Headers.getHeaders(12))
-              .check(jsonPath("$.approver_transcriptions[*].transcription_id").findRandom().saveAs("getTranscriptionId"))
-              .check(status().is(200))
-            ).exec(session -> {
+                                .exec(
+                                        http("Darts-Portal - Api - Transcriptions")
+                                                .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions")
+                                                .headers(Headers.getHeaders(12))
+                                                .check(jsonPath("$.approver_transcriptions[*].transcription_id").findRandom().saveAs("getTranscriptionId"))
+                                                .check(status().is(200))
+                                ).exec(session -> {
 
-                String email = session.getString("Email");
-                Object getCaseId = session.get("getCaseId");
-                Object getHearingId = session.get("getHearingId");
-                Object getTranscriptionId = session.get("getTranscriptionId");
-                if (getTranscriptionId != null) {
-                    log.info("getTranscriptionId: " + getTranscriptionId.toString() + " For user: " + email +" Case Id: " + getCaseId + " Hearing Id: " + getHearingId);
-                } else {
-                    log.info("No Transcription Id value saved using saveAs (Issue with $.approver_transcriptions[*].transcription_id). For user: " + email +"Case Id: " + getCaseId + " Hearing Id: " + getHearingId);
-                }
-                return session;
-            })
-            .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions"))
+                                    String email = session.getString("Email");
+                                    Object getCaseId = session.get("getCaseId");
+                                    Object getHearingId = session.get("getHearingId");
+                                    Object getTranscriptionId = session.get("getTranscriptionId");
+                                    if (getTranscriptionId != null) {
+                                        log.info("getTranscriptionId: " + getTranscriptionId + " For user: " + email + " Case Id: " + getCaseId + " Hearing Id: " + getHearingId);
+                                    } else {
+                                        log.info("No Transcription Id value saved using saveAs (Issue with $.approver_transcriptions[*].transcription_id). For user: " + email + "Case Id: " + getCaseId + " Hearing Id: " + getHearingId);
+                                    }
+                                    return session;
+                                })
+                                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions"))
 
-          .exitHereIfFailed()
-          .exec(
-            http("Darts-Portal - Api - Transcriptions - Urgencies")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/urgencies")
-              .headers(Headers.getHeaders(12))
-              .check(status().is(200))
-              .check(status().saveAs("status"))
-          )    
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Urgencies"))
-      
-          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
-          .exec(            
-            http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
-              .headers(Headers.getHeaders(12))
-              )     
-     
-          .exec(
-            http("Darts-Portal - Api - Transcriptions - Id")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
-              .headers(Headers.getHeaders(12))
-              .check(status().is(200))
-              .check(status().saveAs("status"))
-          )   
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
-       
-          .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
-          .exec(session -> {
-            String xmlPayload = RequestBodyBuilder.buildTranscriptionApprovalRequestBody(session);
-            return session.set("xmlPayload", xmlPayload);
-        })
-          .exec(
-            http("Darts-Portal - Api - Transcriptions - Id")
-              .patch(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
-              .headers(Headers.getHeaders(9))
-              .body(StringBody(session -> session.get("xmlPayload"))).asJson()
-              .check(status().is(200))
-              .check(status().saveAs("status"))
-          )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
+                                .exitHereIfFailed()
+                                .exec(
+                                        http("Darts-Portal - Api - Transcriptions - Urgencies")
+                                                .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/urgencies")
+                                                .headers(Headers.getHeaders(12))
+                                                .check(status().is(200))
+                                                .check(status().saveAs("status"))
+                                )
+                                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Urgencies"))
 
-          .exitHereIfFailed()
-          .exec(
-            http("Darts-Portal - Auth - Is-authenticated")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
-              .headers(Headers.getHeaders(12))
-              ) 
-          .exec(
-            http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
-              .headers(Headers.getHeaders(12))
-              .check(status().is(200))   
-              .check(status().saveAs("status"))    
-          )
-          .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
+                                .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
+                                .exec(
+                                        http("Darts-Portal - Auth - Is-authenticated")
+                                                .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+                                                .headers(Headers.getHeaders(12))
+                                )
 
-          .exec(
-            http("Darts-Portal - Api - Transcriptions")
-              .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions")
-              .headers(Headers.getHeaders(12))
-              .check(status().is(200))
-              .check(status().saveAs("status"))
-              )
-              .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions"))
+                                .exec(
+                                        http("Darts-Portal - Api - Transcriptions - Id")
+                                                .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
+                                                .headers(Headers.getHeaders(12))
+                                                .check(status().is(200))
+                                                .check(status().saveAs("status"))
+                                )
+                                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
 
-          ); 
-        }
+                                .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
+                                .exec(session -> {
+                                    String xmlPayload = RequestBodyBuilder.buildTranscriptionApprovalRequestBody(session);
+                                    return session.set("xmlPayload", xmlPayload);
+                                })
+                                .exec(
+                                        http("Darts-Portal - Api - Transcriptions - Id")
+                                                .patch(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions/#{getTranscriptionId}")
+                                                .headers(Headers.getHeaders(9))
+                                                .body(StringBody(session -> session.get("xmlPayload"))).asJson()
+                                                .check(status().is(200))
+                                                .check(status().saveAs("status"))
+                                )
+                                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions - Id"))
+
+                                .exitHereIfFailed()
+                                .exec(
+                                        http("Darts-Portal - Auth - Is-authenticated")
+                                                .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/auth/is-authenticated?t=" + NumberGenerator.generateRandom13DigitNumber())
+                                                .headers(Headers.getHeaders(12))
+                                )
+                                .exec(
+                                        http("Darts-Portal - Api - Audio-requests - Not-accessed-count")
+                                                .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/audio-requests/not-accessed-count")
+                                                .headers(Headers.getHeaders(12))
+                                                .check(status().is(200))
+                                                .check(status().saveAs("status"))
+                                )
+                                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Audio-requests - Not-accessed-count"))
+
+                                .exec(
+                                        http("Darts-Portal - Api - Transcriptions")
+                                                .get(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/transcriptions")
+                                                .headers(Headers.getHeaders(12))
+                                                .check(status().is(200))
+                                                .check(status().saveAs("status"))
+                                )
+                                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Transcriptions"))
+
+                );
+    }
 }

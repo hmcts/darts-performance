@@ -1,17 +1,15 @@
 package simulations.Scripts.DartsSoap;
 
+import io.gatling.javaapi.core.ScenarioBuilder;
+import io.gatling.javaapi.core.Simulation;
+import io.gatling.javaapi.http.HttpProtocolBuilder;
 import lombok.extern.slf4j.Slf4j;
+import simulations.Scripts.Scenario.DartsSoap.AddCaseUserScenario;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 
-import simulations.Scripts.Scenario.DartsSoap.AddCaseUserScenario;
-
-import io.gatling.javaapi.core.*;
-import io.gatling.javaapi.http.*;
-
 import static io.gatling.javaapi.core.CoreDsl.*;
-import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+import static io.gatling.javaapi.http.HttpDsl.http;
 
 @Slf4j
 public class AddCaseUserSimulation extends Simulation {
@@ -29,23 +27,23 @@ public class AddCaseUserSimulation extends Simulation {
                 .contentTypeHeader("text/xml;charset=UTF-8")
                 .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
                 .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl());
-                setUpScenarios(httpProtocolSoap);
+        setUpScenarios(httpProtocolSoap);
     }
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocolSoap) {
         // Main SOAP scenario setup
         ScenarioBuilder mainScenario = scenario("DARTS - GateWay - Soap - AddCase:POST")
-         //Register with different VIQ
-         .group("DARTS - GateWay - Soap - AddCase:POST")
-         .on(
-             repeat(AppConfig.NIGHTLY_RUN_REPEATS)
-            .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
-         );
+                //Register with different VIQ
+                .group("DARTS - GateWay - Soap - AddCase:POST")
+                .on(
+                        repeat(AppConfig.NIGHTLY_RUN_REPEATS)
+                                .on(exec(AddCaseUserScenario.addCaseUser(EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_VIQ_EXTERNAL_PASSWORD.getUrl())))
+                );
 
         // Set up all scenarios together
         setUp(
-            mainScenario.injectOpen(atOnceUsers(AppConfig.SOAP_USERS_COUNT)).protocols(httpProtocolSoap)
-          
+                mainScenario.injectOpen(atOnceUsers(AppConfig.SOAP_USERS_COUNT)).protocols(httpProtocolSoap)
+
         );
     }
 

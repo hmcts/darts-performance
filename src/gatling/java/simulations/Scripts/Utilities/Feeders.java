@@ -1,5 +1,12 @@
 package simulations.Scripts.Utilities;
 
+import io.gatling.javaapi.core.CheckBuilder;
+import io.gatling.javaapi.core.CoreDsl;
+import io.gatling.javaapi.core.FeederBuilder;
+import io.gatling.javaapi.jdbc.JdbcDsl;
+import lombok.extern.slf4j.Slf4j;
+
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -7,14 +14,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Logger;
-import java.sql.Connection;
-
-import io.gatling.javaapi.core.CoreDsl;
-import io.gatling.javaapi.core.FeederBuilder;
-import io.gatling.javaapi.jdbc.JdbcDsl;
-import io.gatling.javaapi.core.CheckBuilder;
-import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j
@@ -31,7 +30,7 @@ public class Feeders {
     public static final FeederBuilder<String> CaseHouseRoomsHearingDetails;
     public static final FeederBuilder<String> TransformedMediaDownloadIdCSV;
     public static final FeederBuilder<String> TransformedMediaPlaybackIdCSV;
-    public static final FeederBuilder<String> TransformedMediaDeleteIdsCSV;    
+    public static final FeederBuilder<String> TransformedMediaDeleteIdsCSV;
     public static final FeederBuilder<String> TranscriptionPostDetails;
     public static final FeederBuilder<String> TranscriptionPatchAcceptDetails;
     public static final FeederBuilder<String> CreateEventsToUpdate;
@@ -39,7 +38,7 @@ public class Feeders {
 
     private static final AtomicInteger COUNTER;
 
-    static {        
+    static {
         //Audio Files
         AudioRequestCSV = CoreDsl.csv(AppConfig.AUDIO_REQUEST_POST_FILE_PATH).circular();
 
@@ -50,28 +49,28 @@ public class Feeders {
         try {
             log.info("Loading CSV: " + AppConfig.DARTS_PORTAL_LANGUAGESHOP_FILE_PATH);
             LanguageShopUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_LANGUAGESHOP_FILE_PATH).circular();
-        
+
             log.info("Loading CSV: " + AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV);
             CourtClerkUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTCLERK_USERS_CSV).circular();
-        
+
             log.info("Loading CSV: " + AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH);
             TranscriberUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_TRANSCRIBERS_USERS_FILE_PATH).circular();
-        
+
             log.info("Loading CSV: " + AppConfig.DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH);
             CourtManagerUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_COURTMANAGER_USERS_FILE_PATH).circular();
-        
+
             log.info("Loading CSV: " + AppConfig.DARTS_PORTAL_JUDGE_USERS_FILE_PATH);
             JudgeUsers = CoreDsl.csv(AppConfig.DARTS_PORTAL_JUDGE_USERS_FILE_PATH).circular();
         } catch (Exception e) {
             System.err.println("Error loading CSV: " + e.getMessage());
             throw e;
         }
-        
-        
+
+
         //CourtHouseDetails
         CourtHouseAndCourtRooms = CoreDsl.csv(AppConfig.COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH).random();
         CaseHouseRoomsHearingDetails = CoreDsl.csv(AppConfig.CASE_HOUSE_ROOMS_HEARING_FILE_PATH).random();
-        
+
         //Transformed Media Id's
         TransformedMediaDownloadIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_DOWNLOAD_IDS_FILE_PATH).circular();
         TransformedMediaPlaybackIdCSV = CoreDsl.csv(AppConfig.TRANSFORMED_MEDIA_PLAYBACK_IDS_FILE_PATH).circular();
@@ -83,7 +82,8 @@ public class Feeders {
         CreateEventsToUpdate = CoreDsl.csv(AppConfig.EVENTS_TO_UPDATE_FILE_PATH).circular();
 
         COUNTER = new AtomicInteger(0);
-    }   
+    }
+
     public static FeederBuilder<String> createCourtHouseAndCourtRooms() {
         return CourtHouseAndCourtRooms;
     }
@@ -95,27 +95,31 @@ public class Feeders {
     public static FeederBuilder<String> createTranscriptionPostDetails() {
         return TranscriptionPostDetails;
     }
+
     public static FeederBuilder<String> createTranscriptionPatchAcceptDetails() {
         return TranscriptionPatchAcceptDetails;
     }
+
     public static FeederBuilder<String> createAudioRequestCSV() {
         return AudioRequestCSV;
-    }    
+    }
+
     public static FeederBuilder<String> createEventsToUpdate() {
         return CreateEventsToUpdate;
-    }  
+    }
 
     public static FeederBuilder<String> createTransformedMediaDownloadIdCSV() {
         return TransformedMediaDownloadIdCSV;
     }
+
     public static FeederBuilder<String> createTransformedMediaPlaybackIdCSV() {
         return TransformedMediaPlaybackIdCSV;
-    }    
+    }
 
     public static FeederBuilder<String> createTransformedMediaDeleteIdsCSV() {
         return TransformedMediaDeleteIdsCSV;
-    }    
-    
+    }
+
     public static FeederBuilder<String> createJudgesFeeder() {
         return JudgesCSV;
     }
@@ -123,6 +127,7 @@ public class Feeders {
     public static FeederBuilder<String> createTranscriberUsers() {
         return TranscriberUsers;
     }
+
     public static FeederBuilder<String> createJudgeUsers() {
         return JudgeUsers;
     }
@@ -134,10 +139,11 @@ public class Feeders {
     public static FeederBuilder<String> createCourtClerkUsers() {
         return CourtClerkUsers;
     }
+
     public static FeederBuilder<String> createCourtManagerUsers() {
         return CourtManagerUsers;
     }
-    
+
     public static String getRandomEventCode() {
         List<String> eventCodes = List.of("DL", "DL", "DL");
         return eventCodes.get(new Random().nextInt(eventCodes.size()));
@@ -146,15 +152,19 @@ public class Feeders {
     public static CheckBuilder.Final saveBearerToken() {
         return CoreDsl.jsonPath("$.access_token").saveAs("bearerToken");
     }
+
     public static CheckBuilder.Final saveStateProperties() {
         return CoreDsl.regex("StateProperties=(.*?)\"").find().saveAs("stateProperties");
     }
+
     public static CheckBuilder.Final saveCsrf() {
         return CoreDsl.regex("csrf\":\"(.*?)\"").find().saveAs("csrf");
     }
+
     public static CheckBuilder.Final saveCaseId() {
         return CoreDsl.jsonPath("$[*].case_id").findRandom().saveAs("getCaseId");
     }
+
     public static CheckBuilder.Final saveUserId() {
         return CoreDsl.jsonPath("$.userId").saveAs("getUserId");
     }
@@ -162,7 +172,7 @@ public class Feeders {
     public static CheckBuilder.Final saveTokenCode() {
         return CoreDsl.css("input[name='code']", "value").saveAs("TokenCode");
     }
-   
+
     public static CheckBuilder.Final saveTransformedMediaId() {
         return CoreDsl.jsonPath("$.transformed_media_details[*].transformed_media_id").findRandom().saveAs("getTransformedMediaId");
     }
@@ -181,7 +191,7 @@ public class Feeders {
 
     public static FeederBuilder<Object> listFeeder(String key, List<Object> items) {
         return CoreDsl.listFeeder(items.stream()
-            .map(item -> Map.of(key, item)).toList()
+                .map(item -> Map.of(key, item)).toList()
         );
     }
 
@@ -204,14 +214,14 @@ public class Feeders {
 
     // List of audio files
     //public static final String[] AUDIO_FILES = {"sample.mp2", "00h10m.mp2", "00h15m.mp2","00h20m.mp2", "02h.mp2"};
-   // private static final String[] AUDIO_FILES = {"1mb.mp2", "4mb.mp2", "16mb.mp2", "64mb.mp2", "256mb.mp2"};
-      private static final String[] AUDIO_FILES = {"64mb.mp2"};
+    // private static final String[] AUDIO_FILES = {"1mb.mp2", "4mb.mp2", "16mb.mp2", "64mb.mp2", "256mb.mp2"};
+    private static final String[] AUDIO_FILES = {"64mb.mp2"};
 
     //private static final String[] AUDIO_FILES = {"1mb.mp2"};
 
     // Corresponding percentages (must sum up to 100)
-   // private static final int[] PERCENTAGES = {5, 10, 30, 40, 15};
-     private static final int[] PERCENTAGES = {100};
+    // private static final int[] PERCENTAGES = {5, 10, 30, 40, 15};
+    private static final int[] PERCENTAGES = {100};
 
     // Method to select a random audio file based on percentages
     public static String getRandomAudioFile() {
@@ -272,7 +282,7 @@ public class Feeders {
                 e.printStackTrace();
             }
         }
-    }    
+    }
 
     // This method can be used for SELECT queries
     public static FeederBuilder<Object> jdbcFeeder(String sql) {
@@ -282,16 +292,16 @@ public class Feeders {
 
     public static FeederBuilder<Object> jdbcFeeder2() {
         log.info("Creating jdbcFeeder dynamically...");
-        
+
         // Fetch the SQL dynamically for each execution
-        String sql = SQLQueryProvider.getCaseRetentionForChildObjectQuery();  
+        String sql = SQLQueryProvider.getCaseRetentionForChildObjectQuery();
         log.info("Executing SQL: " + sql);
-    
+
         // Create the feeder
         FeederBuilder<Object> feeder = JdbcDsl.jdbcFeeder(AppConfig.DB_URL, AppConfig.DB_USERNAME, AppConfig.DB_PASSWORD, sql);
-    
+
         return feeder;
-    } 
+    }
 
     public static void resetCounter() {
         COUNTER.set(0);

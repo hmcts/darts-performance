@@ -1,55 +1,55 @@
 package simulations.Scripts.DartsSoap;
 
-import simulations.Scripts.Utilities.AppConfig;
-import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
+import io.gatling.javaapi.core.ScenarioBuilder;
+import io.gatling.javaapi.core.Simulation;
+import io.gatling.javaapi.http.HttpProtocolBuilder;
 import simulations.Scripts.Scenario.DartsSoap.AddAudioTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
+import simulations.Scripts.Utilities.AppConfig;
+import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
+import simulations.Scripts.Utilities.HttpUtil;
+import simulations.Scripts.Utilities.Util;
 
-import io.gatling.javaapi.core.*;
-import io.gatling.javaapi.http.*;
 import java.time.Duration;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
-import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
-import simulations.Scripts.Utilities.Util;
 
 public class AddAudioTokenSimulation extends Simulation {
 
 
-  private static final String BASELINE_SCENARIO_NAME = "BaseLine - DARTS - GateWay - Soap - AddAudio:POST";
-  private static final String RAMP_UP_SCENARIO_NAME = "Ramp Up - DARTS - GateWay - Soap - AddAudio:POST";
-  private static final String SPIKE_SCENARIO_NAME = "Spike - DARTS - GateWay - Soap - AddAudio:POST";
+    private static final String BASELINE_SCENARIO_NAME = "BaseLine - DARTS - GateWay - Soap - AddAudio:POST";
+    private static final String RAMP_UP_SCENARIO_NAME = "Ramp Up - DARTS - GateWay - Soap - AddAudio:POST";
+    private static final String SPIKE_SCENARIO_NAME = "Spike - DARTS - GateWay - Soap - AddAudio:POST";
 
-  public AddAudioTokenSimulation() {
-      HttpProtocolBuilder httpProtocol =HttpUtil.getHttpProtocol()
-      .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
-      .inferHtmlResources();
+    public AddAudioTokenSimulation() {
+        HttpProtocolBuilder httpProtocol = HttpUtil.getHttpProtocol()
+                .baseUrl(EnvironmentURL.PROXY_BASE_URL.getUrl())
+                .inferHtmlResources();
 
-      setUpScenarios(httpProtocol);
-  }
+        setUpScenarios(httpProtocol);
+    }
 
-  private void setUpScenarios(HttpProtocolBuilder httpProtocol) {
-      // Set up scenarios with configurable parameters
-      ScenarioBuilder baselineScenario = setUpScenario(BASELINE_SCENARIO_NAME, AppConfig.SMOKE_PACE_DURATION_MINS, 1);
-      ScenarioBuilder rampUpScenario = setUpScenario(RAMP_UP_SCENARIO_NAME, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, 1);
-      ScenarioBuilder spikeScenario = setUpScenario(SPIKE_SCENARIO_NAME, AppConfig.PEAK_PACE_DURATION_MINS, 1);
+    private void setUpScenarios(HttpProtocolBuilder httpProtocol) {
+        // Set up scenarios with configurable parameters
+        ScenarioBuilder baselineScenario = setUpScenario(BASELINE_SCENARIO_NAME, AppConfig.SMOKE_PACE_DURATION_MINS, 1);
+        ScenarioBuilder rampUpScenario = setUpScenario(RAMP_UP_SCENARIO_NAME, AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS, 1);
+        ScenarioBuilder spikeScenario = setUpScenario(SPIKE_SCENARIO_NAME, AppConfig.PEAK_PACE_DURATION_MINS, 1);
 
-      // Call setUp once with all scenarios
-      setUp(
-          baselineScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)
-          .andThen(rampUpScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS))).protocols(httpProtocol))
-          .andThen(spikeScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.PEAK_PACE_DURATION_MINS))).protocols(httpProtocol))
-      );
-  }
+        // Call setUp once with all scenarios
+        setUp(
+                baselineScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.SMOKE_PACE_DURATION_MINS))).protocols(httpProtocol)
+                        .andThen(rampUpScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.BASELINE_NORMAL_PACE_DURATION_MINS))).protocols(httpProtocol))
+                        .andThen(spikeScenario.injectOpen(rampUsers(AppConfig.USERS_PER_SECOND).during(Duration.ofMinutes(AppConfig.PEAK_PACE_DURATION_MINS))).protocols(httpProtocol))
+        );
+    }
 
-  private ScenarioBuilder setUpScenario(String scenarioName, int paceDurationMillis, int repeats) {
-      return scenario(scenarioName)
-      .group(scenarioName)
-      .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-          .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-          .repeat(repeats)
-          .on(exec(AddAudioTokenScenario.addAudioToken() .pace(Util.getDurationFromMillis(paceDurationMillis)))));
-  }
+    private ScenarioBuilder setUpScenario(String scenarioName, int paceDurationMillis, int repeats) {
+        return scenario(scenarioName)
+                .group(scenarioName)
+                .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
+                        .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
+                        .repeat(repeats)
+                        .on(exec(AddAudioTokenScenario.addAudioToken().pace(Util.getDurationFromMillis(paceDurationMillis)))));
+    }
 }

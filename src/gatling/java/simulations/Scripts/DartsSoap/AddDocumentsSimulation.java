@@ -1,19 +1,17 @@
 package simulations.Scripts.DartsSoap;
 
+import io.gatling.javaapi.core.ScenarioBuilder;
+import io.gatling.javaapi.core.Simulation;
+import io.gatling.javaapi.http.HttpProtocolBuilder;
 import lombok.extern.slf4j.Slf4j;
-import simulations.Scripts.Utilities.AppConfig;
-import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentCPPEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentXhibitEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
-
-import io.gatling.javaapi.core.*;
-import io.gatling.javaapi.http.*;
+import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
-import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
+import static io.gatling.javaapi.http.HttpDsl.http;
 
 @Slf4j
 public class AddDocumentsSimulation extends Simulation {
@@ -24,7 +22,7 @@ public class AddDocumentsSimulation extends Simulation {
         log.info("Simulation is about to start!");
     }
 
-     public AddDocumentsSimulation() {
+    public AddDocumentsSimulation() {
         HttpProtocolBuilder httpProtocolSoap = http
                 //.proxy(Proxy(AppConfig.PROXY_HOST, AppConfig.PROXY_PORT))
                 .inferHtmlResources()
@@ -32,36 +30,36 @@ public class AddDocumentsSimulation extends Simulation {
                 .contentTypeHeader("text/xml;charset=UTF-8")
                 .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)")
                 .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl());
-    
-                setUpScenarios(httpProtocolSoap);
+
+        setUpScenarios(httpProtocolSoap);
 
     }
 
     private void setUpScenarios(HttpProtocolBuilder httpProtocolSoap) {
         // Main SOAP scenario setup
         ScenarioBuilder mainScenario = scenario("Main Scenario")
-        //Register with different CPP
-        .group("Register With CPP External Username")
-        .on(
-            exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
-            .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(1)
-                .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))                
-        )
+                //Register with different CPP
+                .group("Register With CPP External Username")
+                .on(
+                        exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
+                                .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_CPP_EXTERNAL_PASSWORD.getUrl()))
+                                .repeat(1)
+                                .on(exec(AddDocumentCPPEventTokenScenario.AddDocumentCPPEventToken()))
+                )
 
-        //Register with different XHIBIT
-        .group("Register With XHIBIT External Username")
-        .on(
-            exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(1)
-                    .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
-        );
-      
+                //Register with different XHIBIT
+                .group("Register With XHIBIT External Username")
+                .on(
+                        exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
+                                .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
+                                .repeat(1)
+                                .on(exec(AddDocumentXhibitEventTokenScenario.AddDocumentXhibitEventToken()))
+                );
+
 
         // Set up all scenarios together
         setUp(
-            mainScenario.injectOpen(atOnceUsers(50)).protocols(httpProtocolSoap)
+                mainScenario.injectOpen(atOnceUsers(50)).protocols(httpProtocolSoap)
         );
     }
 

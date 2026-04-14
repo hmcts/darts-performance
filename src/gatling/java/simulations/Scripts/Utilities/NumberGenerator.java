@@ -22,7 +22,7 @@ public class NumberGenerator {
     // Method to generate a 13-digit random number
     public static long generateRandom13DigitNumber() {
         Random random = new Random();
-        return 1000000000000L + (long)(random.nextDouble() * 9000000000000L);
+        return 1000000000000L + (long) (random.nextDouble() * 9000000000000L);
     }
 
     // Random number and range methods as they were

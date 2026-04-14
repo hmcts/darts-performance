@@ -1,16 +1,16 @@
 package simulations.Scripts.Scenario.DartsPortal;
 
+import io.gatling.javaapi.core.ChainBuilder;
 import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Headers.Headers;
+import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
 import simulations.Scripts.Utilities.AppConfig;
 import simulations.Scripts.Utilities.UserInfoLogger;
-import io.gatling.javaapi.core.*;
-import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
+import simulations.Scripts.Utilities.Util;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
-import static io.gatling.javaapi.http.HttpDsl.*;
-
-import simulations.Scripts.Utilities.Util;
+import static io.gatling.javaapi.http.HttpDsl.http;
+import static io.gatling.javaapi.http.HttpDsl.status;
 
 @Slf4j
 public final class DartsPortalAdvanceSearchScenario {
@@ -20,125 +20,125 @@ public final class DartsPortalAdvanceSearchScenario {
 
     public static ChainBuilder DartsPortalAdvanceSearch() {
         return group("Darts Advance Search")
-            .on(
-                exec(http("Darts-Portal - User - Refresh-profile")
-                    .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
-                    .headers(Headers.getHeaders(12))
-                )
-                    .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(10))
-
-                    // Initialize `caseCount` and `400Count` to 0 before starting the search
-                    .exec(session -> session.set("caseCount", 0))
-                    .exec(session -> session.set("400Count", 0))
-
-                    .exec(session -> {
-                        String searchRequestPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                        String email = session.getString("Email");
-                        log.info("Generated search payload: " + searchRequestPayload + " for user: " + email);
-                        return session.set("searchRequestPayload", searchRequestPayload);
-                    })
-
-                    // Retry if caseCount is 0 or if status is 400
-                    .asLongAs(session -> session.getInt("caseCount") == 0 || session.getInt("status") == 400)
-                    .on(
-                        exec(http("Darts-Portal - Api - Cases - Search")
-                            .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
-                            .headers(Headers.getHeaders(9))
-                            .body(StringBody(session -> session.get("searchRequestPayload"))).asJson()
-                            .check(bodyString().saveAs("responseBody"))      // Save the response body
-                            .check(status().in(200, 400).saveAs("status"))  // Allowing 200 and 400 status codes
-
-                            .check(jsonPath("$[*].case_id").count().saveAs("caseCount"))
-                            .check(jsonPath("$[*].case_id").findRandom().optional().saveAs("extractedCaseId"))
-                            .check(
-                                jsonPath("$.type").optional().saveAs("errorType"),    // Extract error type if it exists
-                                jsonPath("$.title").optional().saveAs("errorTitle"),
-                                // Extract error title if it exists
-                                jsonPath("$.status").optional().saveAs("errorStatus")
-                                // Extract error status if it exists
-                            )
+                .on(
+                        exec(http("Darts-Portal - User - Refresh-profile")
+                                .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/user/refresh-profile")
+                                .headers(Headers.getHeaders(12))
                         )
-                            .exec(session -> {
-                                if (AppConfig.dynamicCases == true) {
-                                    // Set `getCaseId` from the response rather than DB query
-                                    String extractedCaseId = session.getString("extractedCaseId");
-                                    session = session.set("getCaseId", extractedCaseId);
-                                }
-                                return session;
-                            })
-                            .exec(session -> {
-                                int caseCount = session.getInt("caseCount");
-                                String email = session.getString("Email");
-                                int statusCode = session.getInt("status");
+                                .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(10))
 
-                                log.info("Search completed. caseCount: " + caseCount + " for user: " + email);
+                                // Initialize `caseCount` and `400Count` to 0 before starting the search
+                                .exec(session -> session.set("caseCount", 0))
+                                .exec(session -> session.set("400Count", 0))
 
-                                // Handle the 400 status code
-                                if (statusCode == 400) {
-                                    String responseBody = session.getString("responseBody");
-                                    log.info("400 Bad Request encountered. Response: " + responseBody + " for user: "
-                                        + email);
+                                .exec(session -> {
+                                    String searchRequestPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
+                                    String email = session.getString("Email");
+                                    log.info("Generated search payload: " + searchRequestPayload + " for user: " + email);
+                                    return session.set("searchRequestPayload", searchRequestPayload);
+                                })
 
-                                    // Increment 400 count
-                                    int currentCount400 = session.getInt("400Count");
-                                    session.set("400Count", currentCount400 + 1);
+                                // Retry if caseCount is 0 or if status is 400
+                                .asLongAs(session -> session.getInt("caseCount") == 0 || session.getInt("status") == 400)
+                                .on(
+                                        exec(http("Darts-Portal - Api - Cases - Search")
+                                                .post(AppConfig.EnvironmentURL.DARTS_PORTAL_BASE_URL.getUrl() + "/api/cases/search")
+                                                .headers(Headers.getHeaders(9))
+                                                .body(StringBody(session -> session.get("searchRequestPayload"))).asJson()
+                                                .check(bodyString().saveAs("responseBody"))      // Save the response body
+                                                .check(status().in(200, 400).saveAs("status"))  // Allowing 200 and 400 status codes
 
-                                    // Retry with a new search payload
-                                    log.info("Retrying after 400 error...");
-                                    String newSearchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                                    log.info("Retrying with new payload after 400: " + newSearchPayload + " for user: "
-                                        + email);
-                                    return session.set("searchRequestPayload", newSearchPayload);
-                                }
+                                                .check(jsonPath("$[*].case_id").count().saveAs("caseCount"))
+                                                .check(jsonPath("$[*].case_id").findRandom().optional().saveAs("extractedCaseId"))
+                                                .check(
+                                                        jsonPath("$.type").optional().saveAs("errorType"),    // Extract error type if it exists
+                                                        jsonPath("$.title").optional().saveAs("errorTitle"),
+                                                        // Extract error title if it exists
+                                                        jsonPath("$.status").optional().saveAs("errorStatus")
+                                                        // Extract error status if it exists
+                                                )
+                                        )
+                                                .exec(session -> {
+                                                    if (AppConfig.dynamicCases == true) {
+                                                        // Set `getCaseId` from the response rather than DB query
+                                                        String extractedCaseId = session.getString("extractedCaseId");
+                                                        session = session.set("getCaseId", extractedCaseId);
+                                                    }
+                                                    return session;
+                                                })
+                                                .exec(session -> {
+                                                    int caseCount = session.getInt("caseCount");
+                                                    String email = session.getString("Email");
+                                                    int statusCode = session.getInt("status");
 
-                                // If no cases are found, retry with a new search payload
-                                if (caseCount == 0) {
-                                    log.info("Empty response received from advanced search. Retrying...");
-                                    String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
-                                    log.info(
-                                        "Retrying advanced search with new payload: " + searchPayload + " for user: "
-                                            + email);
-                                    return session.set("searchRequestPayload", searchPayload);
-                                }
+                                                    log.info("Search completed. caseCount: " + caseCount + " for user: " + email);
 
-                                log.info(
-                                    "Response received, for advance search. Proceeding with caseCount: " + caseCount
-                                        + " for user: " + email);
-                                return session;
-                            })
-                            .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
-                            .exec(session -> {
-                                int statusCode = session.getInt("status");
-                                String email = session.getString("Email");
-                                if (statusCode == 502 || statusCode == 504) {
-                                    log.info(
-                                        "Received error status code: " + statusCode + ". Marking as failed." + email
-                                            + " Darts-Portal - Api - Cases - Search");
-                                    session =
-                                        session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
-                                }
-                                return session;
-                            })
-                    )
-                    .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search"))
+                                                    // Handle the 400 status code
+                                                    if (statusCode == 400) {
+                                                        String responseBody = session.getString("responseBody");
+                                                        log.info("400 Bad Request encountered. Response: " + responseBody + " for user: "
+                                                                + email);
 
-                    .exec(session -> {
-                        // Log non-empty response
-                        log.info("Response received, for advance search.");
-                        return session;
-                    })
-                    .exec(session -> {
-                        Object getextractedCaseId = session.get("extractedCaseId");
-                        String email = session.getString("Email");
+                                                        // Increment 400 count
+                                                        int currentCount400 = session.getInt("400Count");
+                                                        session.set("400Count", currentCount400 + 1);
 
-                        if (getextractedCaseId != null) {
-                            log.info("getCaseId: " + getextractedCaseId.toString() + " for user: " + email);
-                        } else {
-                            log.info("No Case Id value saved using saveAs.");
-                        }
-                        return session;
-                    })
-            );
+                                                        // Retry with a new search payload
+                                                        log.info("Retrying after 400 error...");
+                                                        String newSearchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
+                                                        log.info("Retrying with new payload after 400: " + newSearchPayload + " for user: "
+                                                                + email);
+                                                        return session.set("searchRequestPayload", newSearchPayload);
+                                                    }
+
+                                                    // If no cases are found, retry with a new search payload
+                                                    if (caseCount == 0) {
+                                                        log.info("Empty response received from advanced search. Retrying...");
+                                                        String searchPayload = RequestBodyBuilder.buildSearchCaseRequestBody(session);
+                                                        log.info(
+                                                                "Retrying advanced search with new payload: " + searchPayload + " for user: "
+                                                                        + email);
+                                                        return session.set("searchRequestPayload", searchPayload);
+                                                    }
+
+                                                    log.info(
+                                                            "Response received, for advance search. Proceeding with caseCount: " + caseCount
+                                                                    + " for user: " + email);
+                                                    return session;
+                                                })
+                                                .pause(Util.getDurationFromSeconds(2), Util.getDurationFromSeconds(5))
+                                                .exec(session -> {
+                                                    int statusCode = session.getInt("status");
+                                                    String email = session.getString("Email");
+                                                    if (statusCode == 502 || statusCode == 504) {
+                                                        log.info(
+                                                                "Received error status code: " + statusCode + ". Marking as failed." + email
+                                                                        + " Darts-Portal - Api - Cases - Search");
+                                                        session =
+                                                                session.markAsFailed();  // Mark as failed to trigger logging in UserInfoLogger
+                                                    }
+                                                    return session;
+                                                })
+                                )
+                                .exec(UserInfoLogger.logDetailedErrorMessage("Darts-Portal - Api - Cases - Search"))
+
+                                .exec(session -> {
+                                    // Log non-empty response
+                                    log.info("Response received, for advance search.");
+                                    return session;
+                                })
+                                .exec(session -> {
+                                    Object getextractedCaseId = session.get("extractedCaseId");
+                                    String email = session.getString("Email");
+
+                                    if (getextractedCaseId != null) {
+                                        log.info("getCaseId: " + getextractedCaseId + " for user: " + email);
+                                    } else {
+                                        log.info("No Case Id value saved using saveAs.");
+                                    }
+                                    return session;
+                                })
+                );
     }
 
 }

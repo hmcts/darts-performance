@@ -1,17 +1,16 @@
 package simulations.Scripts.DartsSoap;
 
+import io.gatling.javaapi.core.ScenarioBuilder;
+import io.gatling.javaapi.core.Simulation;
+import io.gatling.javaapi.http.HttpProtocolBuilder;
 import lombok.extern.slf4j.Slf4j;
-import simulations.Scripts.Utilities.AppConfig;
-import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
 import simulations.Scripts.Scenario.DartsSoap.AddDocumentEventTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithTokenScenario;
 import simulations.Scripts.Scenario.DartsSoap.RegisterWithUsernameScenario;
-import io.gatling.javaapi.core.*;
-import io.gatling.javaapi.http.*;
+import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
+import simulations.Scripts.Utilities.HttpUtil;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
-import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
 
 @Slf4j
 public class AddDocumentEventTokenSimulation extends Simulation {
@@ -21,36 +20,36 @@ public class AddDocumentEventTokenSimulation extends Simulation {
 
     @Override
     public void before() {
-      log.info("Simulation is about to start!");
+        log.info("Simulation is about to start!");
     }
 
     public AddDocumentEventTokenSimulation() {
         HttpProtocolBuilder httpProtocol =
-            HttpUtil.getHttpProtocol()
-            .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
-            .inferHtmlResources()
-            .acceptEncodingHeader("gzip,deflate")
-            .contentTypeHeader("text/xml;charset=UTF-8")
-            .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
+                HttpUtil.getHttpProtocol()
+                        .baseUrl(EnvironmentURL.GATEWAY_BASE_URL.getUrl())
+                        .inferHtmlResources()
+                        .acceptEncodingHeader("gzip,deflate")
+                        .contentTypeHeader("text/xml;charset=UTF-8")
+                        .userAgentHeader("Apache-HttpClient/4.5.5 (Java/16.0.2)");
 
         setUpScenarios(httpProtocol);
     }
-      
+
     private void setUpScenarios(HttpProtocolBuilder httpProtocol) {
         // Set up scenarios with configurable parameters
         ScenarioBuilder baselineScenario = setUpScenario(BASELINE_SCENARIO_NAME);
 
         // Call setUp once with all scenarios
         setUp(
-            baselineScenario.injectOpen(rampUsers(1).during(1))).protocols(httpProtocol);    
+                baselineScenario.injectOpen(rampUsers(1).during(1))).protocols(httpProtocol);
     }
 
     private ScenarioBuilder setUpScenario(String scenarioName) {
         return scenario(scenarioName)
-            .group(scenarioName)
-            .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
-            .repeat(1)
-            .on(exec(AddDocumentEventTokenScenario.AddDocumentEventToken())));
+                .group(scenarioName)
+                .on(exec(RegisterWithUsernameScenario.RegisterWithUsername(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
+                        .exec(RegisterWithTokenScenario.registerWithToken(EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME.getUrl(), EnvironmentURL.DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD.getUrl()))
+                        .repeat(1)
+                        .on(exec(AddDocumentEventTokenScenario.AddDocumentEventToken())));
     }
 }

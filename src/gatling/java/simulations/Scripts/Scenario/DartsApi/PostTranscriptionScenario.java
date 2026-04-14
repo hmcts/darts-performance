@@ -1,17 +1,19 @@
 package simulations.Scripts.Scenario.DartsApi;
 
+import io.gatling.javaapi.core.ChainBuilder;
 import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Headers.Headers;
-import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
-import io.gatling.javaapi.core.*;
-import static io.gatling.javaapi.core.CoreDsl.*;
-import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.Utilities.HttpUtil;
 import simulations.Scripts.RequestBodyBuilder.RequestBodyBuilder;
+import simulations.Scripts.Utilities.AppConfig.EnvironmentURL;
+
+import static io.gatling.javaapi.core.CoreDsl.*;
+import static io.gatling.javaapi.http.HttpDsl.http;
+import static io.gatling.javaapi.http.HttpDsl.status;
 
 @Slf4j
 public final class PostTranscriptionScenario {
-    private PostTranscriptionScenario() {}   
+    private PostTranscriptionScenario() {
+    }
 
     public static ChainBuilder PostTranscription() {
         return group("Transcription Request Group")
@@ -19,25 +21,25 @@ public final class PostTranscriptionScenario {
                     // Dynamically build the request body
                     String xmlPayload = RequestBodyBuilder.buildTranscriptionRequestBody(session);
                     return session.set("xmlPayload", xmlPayload);
-                })   
-                .exec(
-                    http("DARTS - Api - Transcription:POST")
-                        .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/transcriptions")
-                        .headers(Headers.getHeaders(24))
-                        .body(StringBody(session ->
-                            RequestBodyBuilder.buildTranscriptionRequestBody(session)
-                        )).asJson()
-                        .check(status().saveAs("statusCode"))
-                        .check(jsonPath("$.transcription_id").saveAs("transcriptionId")) 
-                )
-                .exec(session -> {
-                    Object transcriptionId = session.get("transcriptionId");
-                    if (transcriptionId != null) {
-                        log.info("Created Transcription Id: " + transcriptionId.toString());
-                    } else {
-                        log.info("No transcription Id value saved.");
-                    }
-                    return session;
-                }));
-    }  
+                })
+                        .exec(
+                                http("DARTS - Api - Transcription:POST")
+                                        .post(EnvironmentURL.DARTS_BASE_URL.getUrl() + "/transcriptions")
+                                        .headers(Headers.getHeaders(24))
+                                        .body(StringBody(session ->
+                                                RequestBodyBuilder.buildTranscriptionRequestBody(session)
+                                        )).asJson()
+                                        .check(status().saveAs("statusCode"))
+                                        .check(jsonPath("$.transcription_id").saveAs("transcriptionId"))
+                        )
+                        .exec(session -> {
+                            Object transcriptionId = session.get("transcriptionId");
+                            if (transcriptionId != null) {
+                                log.info("Created Transcription Id: " + transcriptionId);
+                            } else {
+                                log.info("No transcription Id value saved.");
+                            }
+                            return session;
+                        }));
+    }
 }

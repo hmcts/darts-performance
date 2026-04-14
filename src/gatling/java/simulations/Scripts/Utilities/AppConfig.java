@@ -1,8 +1,8 @@
 package simulations.Scripts.Utilities;
 
 import java.nio.file.Paths;
-import java.util.Random;
 import java.util.Optional;
+import java.util.Random;
 
 public class AppConfig {
 
@@ -13,15 +13,15 @@ public class AppConfig {
     public static final String PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID = getProperty("PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID", null);
     public static final String TENANT_NAME = getProperty("TENANT_NAME", null);
     public static final String INTERNAL_TENANT_NAME = getProperty("INTERNAL_TENANT_NAME", null);
- 
+
     //INTERNAL Tenant
     public static final String PERFORMANCE_INTERNAL_CLIENT_ID = getProperty("PERFORMANCE_INTERNAL_CLIENT_ID", null);
     public static final String PERFORMANCE_INTERNAL_CLIENT_SECRET = getProperty("PERFORMANCE_INTERNAL_CLIENT_SECRET", null);
     public static final String PERFORMANCE_INTERNAL_TENANT_ID = getProperty("PERFORMANCE_INTERNAL_TENANT_ID", null);
-    
+
     public static final String PERFORMANCE_INTERNAL_SCOPE = getProperty("PERFORMANCE_INTERNAL_SCOPE", null);
-    public static final String PERFORMANCE_INTERNAL_B2B_Token = "https://login.microsoftonline.com/"+ PERFORMANCE_INTERNAL_TENANT_ID +"/oauth2/v2.0/token";
- 
+    public static final String PERFORMANCE_INTERNAL_B2B_Token = "https://login.microsoftonline.com/" + PERFORMANCE_INTERNAL_TENANT_ID + "/oauth2/v2.0/token";
+
     // Performance Users
     public static final String PERFORMANCE_API_USERNAME = getProperty("DARTS_TRANSCRIBER_TEST_USERNAME", null);
     public static final String PERFORMANCE_DARTS_API_GLOBAL_USERNAME = getProperty("DARTS_API_GLOBAL_USERNAME", null);
@@ -40,12 +40,12 @@ public class AppConfig {
     public static final String PERFORMANCE_PROXY_BASE_URL = "http://darts-proxy.test.platform.hmcts.net";
     public static final String PERFORMANCE_DARTS_API_BASE_URL = "https://darts-api.test.platform.hmcts.net";
     public static final String PERFORMANCE_DARTS_BASE_URL = "https://darts.test.apps.hmcts.net";
-    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/" + TENANT_NAME+".onmicrosoft.com/B2C_1_darts_externaluser_signin/";
+    public static final String PERFORMANCE_DARTS_PORTAL_SIGNIN = "/" + TENANT_NAME + ".onmicrosoft.com/B2C_1_darts_externaluser_signin/";
     public static final String PERFORMANCE_DARTS_PORTAL_Auth_LOGIN = PERFORMANCE_DARTS_PORTAL_SIGNIN + "oauth2/v2.0/authorize";
-    public static final String PERFORMANCE_B2B_Login = "https://"+TENANT_NAME+".b2clogin.com";
-    public static final String PERFORMANCE_B2B_Token = "/"+TENANT_NAME+".onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
+    public static final String PERFORMANCE_B2B_Login = "https://" + TENANT_NAME + ".b2clogin.com";
+    public static final String PERFORMANCE_B2B_Token = "/" + TENANT_NAME + ".onmicrosoft.com/B2C_1_ropc_darts_signin/oauth2/v2.0/token";
 
-    public static final String PERFORMANCE_SCOPE = "https://"+TENANT_NAME+".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "/Darts.ExternalService";
+    public static final String PERFORMANCE_SCOPE = "https://" + TENANT_NAME + ".onmicrosoft.com/" + PERFORMANCE_EXTERNAL_CLIENT_ID + "/Darts.ExternalService";
 
     public static final String PERFORMANCE_GRANT_TYPE = "password";
     public static final long RANK_UP_TIME_SECONDS;
@@ -200,7 +200,7 @@ public class AppConfig {
         COURT_MANAGER_RAMP_UP_USERS = Integer.parseInt(getProperty("COURT_MANAGER_RAMP_UP_USERS", "5"));
         TRANSCRIBER_RAMP_UP_USERS = Integer.parseInt(getProperty("TRANSCRIBER_RAMP_UP_USERS", "2"));
         LANGUAGE_SHOP_RAMP_UP_USERS = Integer.parseInt(getProperty("LANGUAGE_SHOP_RAMP_UP_USERS", "1"));
-        
+
         //Portal Users for baseline Normal test 
         JUDGE_RAMP_UP_USERS_NORMAL = Integer.parseInt(getProperty("JUDGE_RAMP_UP_USERS", "9"));
         COURT_CLERK_RAMP_UP_USERS_NORMAL = Integer.parseInt(getProperty("COURT_CLERK_RAMP_UP_USERS", "50"));
@@ -237,13 +237,13 @@ public class AppConfig {
         PIPELINE_USERS_PER_SECOND = Integer.parseInt(getProperty("PIPELINE_USERS_PER_SECOND", "95"));
         if (hasProperty("USERS_PER_HOUR")) {
             USERS_PER_SECOND = Integer.parseInt((Double.parseDouble(getProperty("USERS_PER_HOUR", "3600")) / 3600.0) +
-                "");
+                    "");
         } else {
             USERS_PER_SECOND = Integer.parseInt(getProperty("USERS_PER_SECOND", "1"));
         }
         if (hasProperty("REQUESTS_PER_HOUR_PER_USER")) {
             REQUESTS_PER_SECOND_PER_USER =
-                Double.parseDouble(getProperty("REQUESTS_PER_HOUR_PER_USER", "3600")) / 3600.0;
+                    Double.parseDouble(getProperty("REQUESTS_PER_HOUR_PER_USER", "3600")) / 3600.0;
         } else {
             REQUESTS_PER_SECOND_PER_USER = Double.parseDouble(getProperty("REQUESTS_PER_SECOND_PER_USER", "1"));
         }
@@ -266,17 +266,17 @@ public class AppConfig {
 
         CPP_DailyList_SMOKE_REPEATS = Integer.parseInt(getProperty("CPP_DailyList_SMOKE_REPEATS", "1"));
         CPP_DailyList_BASELINE_NORMAL_REPEATS =
-            Integer.parseInt(getProperty("CPP_DailyList_BASELINE_NORMAL_REPEATS", "2"));
+                Integer.parseInt(getProperty("CPP_DailyList_BASELINE_NORMAL_REPEATS", "2"));
         CPP_DailyList_PEAK_REPEATS = Integer.parseInt(getProperty("CPP_DailyList_PEAK_REPEATS", "3"));
 
         XHIBIT_EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("XHIBIT_EVENTS_SMOKE_REPEATS", "4"));
         XHIBIT_EVENTS_BASELINE_NORMAL_REPEATS =
-            Integer.parseInt(getProperty("XHIBIT_EVENTS_BASELINE_NORMAL_REPEATS", "154"));
+                Integer.parseInt(getProperty("XHIBIT_EVENTS_BASELINE_NORMAL_REPEATS", "154"));
         XHIBIT_EVENTS_PEAK_REPEATS = Integer.parseInt(getProperty("XHIBIT_EVENTS_PEAK_REPEATS", "308"));
 
         XHIBIT_DailyList_SMOKE_REPEATS = Integer.parseInt(getProperty("XHIBIT_DailyList_SMOKE_REPEATS", "1"));
         XHIBIT_DailyList_BASELINE_NORMAL_REPEATS =
-            Integer.parseInt(getProperty("XHIBIT_DailyList_BASELINE_NORMAL_REPEATS", "2"));
+                Integer.parseInt(getProperty("XHIBIT_DailyList_BASELINE_NORMAL_REPEATS", "2"));
         XHIBIT_DailyList_PEAK_REPEATS = Integer.parseInt(getProperty("XHIBIT_DailyList_PEAK_REPEATS", "3"));
 
         EVENTS_SMOKE_REPEATS = Integer.parseInt(getProperty("EVENTS_SMOKE_REPEATS", "538"));
@@ -286,50 +286,50 @@ public class AppConfig {
         //POST Audio Requests
         POST_AUDIO_REQUEST_SMOKE_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_REQUEST_SMOKE_REPEATS", "9"));
         POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS =
-            Integer.parseInt(getProperty("POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "15"));
+                Integer.parseInt(getProperty("POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "15"));
         POST_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_REQUEST_PEAK_REPEATS", "32"));
 
         //GET Audio Requests
         GET_AUDIO_REQUEST_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_AUDIO_REQUEST_SMOKE_REPEATS", "9"));
         GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS =
-            Integer.parseInt(getProperty("GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "15"));
+                Integer.parseInt(getProperty("GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "15"));
         GET_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("GET_AUDIO_REQUEST_PEAK_REPEATS", "32"));
 
         //Delete Audio Requests
         DELETE_AUDIO_REQUEST_SMOKE_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_SMOKE_REPEATS", "9"));
         DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS =
-            Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "15"));
+                Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS", "15"));
         DELETE_AUDIO_REQUEST_PEAK_REPEATS = Integer.parseInt(getProperty("DELETE_AUDIO_REQUEST_PEAK_REPEATS", "32"));
 
         //Add Cases Requests
         ADD_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_CASES_SMOKE_REPEATS", "8"));
         ADD_CASES_BASELINE_NORMAL_REPEATS =
-            Integer.parseInt(getProperty("ADD_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "37"));
+                Integer.parseInt(getProperty("ADD_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "37"));
         ADD_CASES_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_CASES_REQUEST_PEAK_REPEATS", "74"));
 
         //Get Cases Requests
         GET_CASES_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_CASES_SMOKE_REPEATS", "2"));
         GET_CASES_BASELINE_NORMAL_REPEATS =
-            Integer.parseInt(getProperty("GET_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "9"));
+                Integer.parseInt(getProperty("GET_CASES_REQUEST_BASELINE_NORMAL_REPEATS", "9"));
         GET_CASES_PEAK_REPEATS = Integer.parseInt(getProperty("GET_CASES_REQUEST_PEAK_REPEATS", "17"));
 
         //Add Log Entry Requests
         ADD_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_SMOKE_REPEATS", "25"));
         ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS =
-            Integer.parseInt(getProperty("ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "112"));
+                Integer.parseInt(getProperty("ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "112"));
         ADD_LOG_ENTRY_PEAK_REPEATS = Integer.parseInt(getProperty("ADD_LOG_ENTRY_PEAK_REPEATS", "225"));
 
         //Get Log Entry Requests
         GET_LOG_ENTRY_SMOKE_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_SMOKE_REPEATS", "6"));
         GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS =
-            Integer.parseInt(getProperty("GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "10571"));
+                Integer.parseInt(getProperty("GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS", "10571"));
         GET_LOG_ENTRY_PEAK_REPEATS = Integer.parseInt(getProperty("GET_LOG_ENTRY_PEAK_REPEATS", "21142"));
 
 
         //POST Audio (Api)
         POST_AUDIO_SMOKE_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_SMOKE_REPEATS", "2114"));
         POST_AUDIO_BASELINE_NORMAL_REPEATS =
-            Integer.parseInt(getProperty("POST_AUDIO_BASELINE_NORMAL_REPEATS", "10571"));
+                Integer.parseInt(getProperty("POST_AUDIO_BASELINE_NORMAL_REPEATS", "10571"));
         POST_AUDIO_PEAK_REPEATS = Integer.parseInt(getProperty("POST_AUDIO_PEAK_REPEATS", "21142"));
 
         //Add Audio (Soap)
@@ -346,7 +346,7 @@ public class AppConfig {
         DB_URL = getProperty("DB_URL", null);
         DB_USERNAME = getProperty("DB_USERNAME", null);
         DB_PASSWORD = getProperty("DB_PASSWORD", null);
- 
+
         //Fixed Data for CSV files or none fixed for db query within test.
         isFixed = Boolean.parseBoolean(System.getProperty("isFixed", "false"));
 
@@ -370,7 +370,7 @@ public class AppConfig {
     private static String getProperty(String name) {
         String value = getProperty(name, null);
         return Optional.ofNullable(value)
-            .orElseThrow(() -> new IllegalArgumentException("Property " + name + " is not set"));
+                .orElseThrow(() -> new IllegalArgumentException("Property " + name + " is not set"));
     }
 
     // Base URL
@@ -462,7 +462,7 @@ public class AppConfig {
     public static final String TRANSFORMED_MEDIA_DELETE_IDS_FILE_PATH_CSV = "Transformed_Media_To_Delete.csv";
     public static final String CASE_ID_RETENTIONS_FILE_PATH_CSV = "Cas_id_Retentions.csv";
     public static final String EVENTS_TO_UPDATE_CSV = "EventsToUpdate.csv";
- 
+
     // Specific CSV file for Users
     public static final String DARTS_PORTAL_USERS_CSV = "Users.csv";
     public static final String DARTS_PORTAL_COURTCLERK_USERS_CSV = "UsersCourtClerks.csv";
@@ -478,7 +478,7 @@ public class AppConfig {
     public static final String COURT_HOUSE_AND_COURT_ROOMS_FILE_PATH = Paths.get(COURT_HOUSE_AND_COURT_ROOMS_CSV).toString();
     public static final String TRANSCRIPTION_POST_FILE_PATH = Paths.get(TRANSCRIPTION_POST_CSV).toString();
     public static final String TRANSCRIPTION_PATCH_ACCEPT_FILE_PATH = Paths.get(TRANSCRIPTION_PATCH_ACCEPT_CSV).toString();
-    public static final String CASE_ID_RETENTIONS_FILE_PATH = Paths.get(CASE_ID_RETENTIONS_FILE_PATH_CSV).toString();   
+    public static final String CASE_ID_RETENTIONS_FILE_PATH = Paths.get(CASE_ID_RETENTIONS_FILE_PATH_CSV).toString();
     public static final String AUDIO_REQUEST_POST_FILE_PATH = Paths.get(AUDIO_REQUEST_POST_CSV).toString();
     public static final String DARTS_PORTAL_USERS1_FILE_PATH = Paths.get(DARTS_PORTAL_USERS_CSV).toString();
     public static final String DARTS_PORTAL_COURTCLERK_USERS_FILE_PATH = Paths.get(DARTS_PORTAL_COURTCLERK_USERS_CSV).toString();
@@ -503,9 +503,9 @@ public class AppConfig {
         int index = random.nextInt(DOCUMENT_FILES.length);
         return DOCUMENT_FILES[index];
     }
- 
+
     public static final String TEST_TYPE = System.getProperty("testType", "normal"); // Default to "normal" if not provided
- 
+
     // Methods to get dynamic user values for each request type
     public static int getJudgeUsers() {
         return switch (TEST_TYPE) {
@@ -514,7 +514,7 @@ public class AppConfig {
             default -> JUDGE_RAMP_UP_USERS_PEAK;
         };
     }
-   
+
     public static int getCourtClerkUsers() {
         return switch (TEST_TYPE) {
             case "normal" -> COURT_CLERK_RAMP_UP_USERS_NORMAL;
@@ -522,15 +522,15 @@ public class AppConfig {
             default -> COURT_CLERK_RAMP_UP_USERS_PEAK;
         };
     }
-   
+
     public static int getCourtManagerUsers() {
         return switch (TEST_TYPE) {
-            case "normal"  -> COURT_MANAGER_RAMP_UP_USERS_NORMAL;
+            case "normal" -> COURT_MANAGER_RAMP_UP_USERS_NORMAL;
             case "smoke" -> COURT_MANAGER_RAMP_UP_USERS;
-            default      -> COURT_MANAGER_RAMP_UP_USERS_PEAK;
+            default -> COURT_MANAGER_RAMP_UP_USERS_PEAK;
         };
     }
-   
+
     public static int getTranscriberUsers() {
         return switch (TEST_TYPE) {
             case "normal" -> TRANSCRIBER_RAMP_UP_USERS_NORMAL;
@@ -538,7 +538,7 @@ public class AppConfig {
             default -> TRANSCRIBER_RAMP_UP_USERS_PEAK;
         };
     }
-   
+
     public static int getLanguageShopUsers() {
         return switch (TEST_TYPE) {
             case "normal" -> LANGUAGE_SHOP_RAMP_UP_USERS_NORMAL;
@@ -550,15 +550,15 @@ public class AppConfig {
     public static int getSoapUsers() {
         return SOAP_USERS_COUNT;
     }
-    
+
     public static int getPostAudioUsers() {
         return POST_AUDIO_USERS_COUNT;
     }
-    
+
     public static int getGetAudioUsers() {
         return GET_AUDIO_USERS_COUNT;
     }
-    
+
     public static int getDeleteAudioUsers() {
         return DELETE_AUDIO_USERS_COUNT;
     }
@@ -572,7 +572,7 @@ public class AppConfig {
             default -> CPP_EVENTS_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getCppDailyListRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> CPP_DailyList_PEAK_REPEATS;
@@ -580,7 +580,7 @@ public class AppConfig {
             default -> CPP_DailyList_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getXhibitEventsRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> XHIBIT_EVENTS_PEAK_REPEATS;
@@ -588,7 +588,7 @@ public class AppConfig {
             default -> XHIBIT_EVENTS_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getXhibitDailyListRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> XHIBIT_DailyList_PEAK_REPEATS;
@@ -596,7 +596,7 @@ public class AppConfig {
             default -> XHIBIT_DailyList_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getEventsRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> EVENTS_PEAK_REPEATS;
@@ -604,7 +604,7 @@ public class AppConfig {
             default -> EVENTS_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getPostAudioRequestRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> POST_AUDIO_REQUEST_PEAK_REPEATS;
@@ -612,7 +612,7 @@ public class AppConfig {
             default -> POST_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getGetAudioRequestRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> GET_AUDIO_REQUEST_PEAK_REPEATS;
@@ -620,7 +620,7 @@ public class AppConfig {
             default -> GET_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getDeleteAudioRequestRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> DELETE_AUDIO_REQUEST_PEAK_REPEATS;
@@ -628,7 +628,7 @@ public class AppConfig {
             default -> DELETE_AUDIO_REQUEST_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getAddCasesRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> ADD_CASES_PEAK_REPEATS;
@@ -636,7 +636,7 @@ public class AppConfig {
             default -> ADD_CASES_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getGetCasesRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> GET_CASES_PEAK_REPEATS;
@@ -644,7 +644,7 @@ public class AppConfig {
             default -> GET_CASES_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getAddLogEntryRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> ADD_LOG_ENTRY_PEAK_REPEATS;
@@ -652,7 +652,7 @@ public class AppConfig {
             default -> ADD_LOG_ENTRY_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getGetLogEntryRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> GET_LOG_ENTRY_PEAK_REPEATS;
@@ -660,7 +660,7 @@ public class AppConfig {
             default -> GET_LOG_ENTRY_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getPostAudioRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> POST_AUDIO_PEAK_REPEATS;
@@ -668,12 +668,12 @@ public class AppConfig {
             default -> POST_AUDIO_BASELINE_NORMAL_REPEATS;
         };
     }
-    
+
     public static int getAddAudioRepeats() {
         return switch (TEST_TYPE) {
             case "peak" -> ADD_AUDIO_PEAK_REPEATS;
             case "smoke" -> ADD_AUDIO_SMOKE_REPEATS;
             default -> ADD_AUDIO_BASELINE_NORMAL_REPEATS;
         };
-    }    
+    }
 }
