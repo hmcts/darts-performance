@@ -508,8 +508,8 @@
           <elementProp name="SystemSampler.environment" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="SystemSampler.directory">C:\Users\cmago\source\repos\ViqAddAudioTestHarness2019_2\ViqAddAudioTestHarness2019_2\bin\Release</stringProp>
-          <stringProp name="SystemSampler.stdout">C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\OS_LOG\jmeter_output_${__jmeter.U_T__}.log</stringProp>
+          <stringProp name="SystemSampler.directory">${__P(user.home)}/Desktop/Performance.Testing/source/repos/ViqAddAudioTestHarness2019_2/ViqAddAudioTestHarness2019_2/bin/Release</stringProp>
+          <stringProp name="SystemSampler.stdout">${__P(user.home)}/Desktop/Performance.Testing/DARTS/OS_LOG/jmeter_output_${__jmeter.U_T__}.log</stringProp>
         </SystemSampler>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">

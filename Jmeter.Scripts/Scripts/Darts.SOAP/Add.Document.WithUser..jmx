@@ -323,7 +323,7 @@
             <stringProp name="script">import org.apache.commons.io.FileUtils
 
 // Path to your audio file
-String filePath = &quot;C:/Users/a.cooper/Desktop/Performance.Testing/DARTS/Performance.Scripts/Data/sample.mp2&quot;
+String filePath = vars.get("TEST_DATA") + "sample.mp2";
 
 // Print the file path for debugging
 log.info(&quot;File Path: &quot; + filePath)
@@ -363,7 +363,7 @@ try {
 import java.util.Base64;
 
 // Path to your audio file
-String filePath = &quot;C:/Users/a.cooper/Desktop/Performance.Testing/DARTS/Performance.Scripts/Data/sample.mp2&quot;;
+String filePath = vars.get("TEST_DATA") + "sample.mp2";
 
 // Print the file path for debugging
 log.info(&quot;File Path: &quot; + filePath);

@@ -469,8 +469,8 @@ import java.util.Random;
 
 try {
     // Load CSV file into a string
-    String csvContent = FileUtils.readFileToString(new File(&quot;C:\\Users\\a.cooper\\Desktop\\Performance.Testing\\DARTS\\Performance.Scripts\\Data\\CourtHouseId.csv&quot;));
-
+    String csvContent = FileUtils.readFileToString(new File(vars.get("TEST_DATA") + "CourtHouseId.csv"));
+    
     // Split CSV content by lines
     String[] lines = csvContent.split(&quot;\\r?\\n&quot;);
 

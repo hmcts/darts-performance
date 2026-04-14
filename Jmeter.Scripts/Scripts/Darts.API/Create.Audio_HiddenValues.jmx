@@ -30,7 +30,7 @@
           </elementProp>
           <elementProp name="TEST_DATA" elementType="Argument">
             <stringProp name="Argument.name">TEST_DATA</stringProp>
-            <stringProp name="Argument.value">${__P(TEST_DATA, C:\Users\a.cooper\Desktop\Performance.Docs\DARTS\Performance.Scripts\Data\\)}</stringProp>
+            <stringProp name="Argument.value">${__P(TEST_DATA, Jmeter.Scripts/Data/)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="USER_COUNT" elementType="Argument">

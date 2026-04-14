@@ -708,7 +708,7 @@ import java.util.List;
 import java.util.Random;
 
 // Read the CSV file
-File file = new File(&quot;C:/Users/a.cooper/Desktop/Performance.Testing/DARTS/Performance.Scripts/Data/GetAllCourtroomsAndCourthouses2.csv&quot;);
+File file = new File(vars.get("TEST_DATA") + "GetAllCourtroomsAndCourthouses2.csv");
 List&lt;String&gt; lines = FileUtils.readLines(file, StandardCharsets.UTF_8);
 
 // Remove the header line
