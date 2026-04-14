@@ -182,13 +182,13 @@ $user = "test"
 $password = "test"
 
 # Output file path
-$outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\UsersTranscribers.csv"
+$outputFile = "$env:USERPROFILE\Desktop\UsersTranscribers.csv"
 
 # Ensure PGPASSWORD environment variable is set
 $env:PGPASSWORD = $password
 
 # Full path to psql executable
-$psqlPath = "C:\Program Files\PostgreSQL\16\bin\psql.exe"
+$psqlPath = "psql"
 
 # Check if the output file exists
 if (Test-Path -Path $outputFile) {
