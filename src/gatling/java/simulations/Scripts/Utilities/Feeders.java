@@ -286,7 +286,7 @@ public class Feeders {
 
     // This method can be used for SELECT queries
     public static FeederBuilder<Object> jdbcFeeder(String sql) {
-        log.info("Creating jdbcFeeder: " + AppConfig.DB_URL + ", " + AppConfig.DB_USERNAME + ", " + AppConfig.DB_PASSWORD + ", " + sql);
+        log.info("Creating jdbcFeeder: " + AppConfig.DB_URL + ", " + AppConfig.DB_USERNAME + ", " + sql);
         return JdbcDsl.jdbcFeeder(AppConfig.DB_URL, AppConfig.DB_USERNAME, AppConfig.DB_PASSWORD, sql);
     }
 
