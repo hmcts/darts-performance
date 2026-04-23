@@ -24,8 +24,8 @@ ext {
 dependencies {
     gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.10'
     gatling 'com.github.hmcts:juror-generation-support-library:1.5.4'
-    gatlingCompileOnly 'org.projectlombok:lombok:1.18.42'
-    gatlingAnnotationProcessor 'org.projectlombok:lombok:1.18.42'
+    gatlingCompileOnly 'org.projectlombok:lombok:1.18.46'
+    gatlingAnnotationProcessor 'org.projectlombok:lombok:1.18.46'
 
 
     gatling group: 'com.github.hmcts.java-logging', name: 'logging', version: '6.1.9'
