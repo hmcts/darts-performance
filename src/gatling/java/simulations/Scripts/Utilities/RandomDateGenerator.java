@@ -1,7 +1,11 @@
 package simulations.Scripts.Utilities;
+
+import lombok.extern.slf4j.Slf4j;
+
 import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;
 
+@Slf4j
 public class RandomDateGenerator {
 
     public static void main(String[] args) {
@@ -29,8 +33,8 @@ public class RandomDateGenerator {
         randomDateTo = randomDateTo.isAfter(currentDate) ? currentDate : randomDateTo;
 
         // Print the random dates
-        System.out.println("Random Date From: " + randomDateFrom);
-        System.out.println("Random Date To: " + randomDateTo);
+        log.info("Random Date From: " + randomDateFrom);
+        log.info("Random Date To: " + randomDateTo);
     }
 
     public static LocalDate getRandomDate(LocalDate startDate, LocalDate endDate) {

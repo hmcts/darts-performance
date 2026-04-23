@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# To set the secrets in your shell, source this file ie. source ./RunScripts/secrets-test.sh
+
+echo "Exporting secrets from Azure keyvault (darts-test), please ensure you have \"az\" installed and you have logged in, using \"az login\"."
+
+export AAD_B2C_TENANT_ID="$(az keyvault secret show --vault-name darts-test --name AzureAdB2CTenantId | jq .value -r)"
+export AAD_B2C_CLIENT_ID="$(az keyvault secret show --vault-name darts-test --name AzureAdB2CClientId | jq .value -r)"
+export PERFORMANCE_EXTERNAL_CLIENT_SECRET="$(az keyvault secret show --vault-name darts-test --name PERFORMANCE-EXTERNAL-CLIENT-SECRET | jq .value -r)"
+export PERFORMANCE_EXTERNAL_CLIENT_ID="$(az keyvault secret show --vault-name darts-test --name PERFORMANCE-EXTERNAL-CLIENT-ID | jq .value -r)"
+export PERFORMANCE_EXTERNAL_AZURE_AD_B2C_CLIENT_ID="$(az keyvault secret show --vault-name darts-test --name PERFORMANCE-EXTERNAL-AZURE-AD-B2C-CLIENT-ID | jq .value -r)"
+export TENANT_NAME="$(az keyvault secret show --vault-name darts-test --name TENANT-NAME | jq .value -r)"
+export INTERNAL_TENANT_NAME="$(az keyvault secret show --vault-name darts-test --name INTERNAL-TENANT-NAME | jq .value -r)"
+export PERFORMANCE_INTERNAL_CLIENT_ID="$(az keyvault secret show --vault-name darts-test --name PERFORMANCE-INTERNAL-CLIENT-ID | jq .value -r)"
+export PERFORMANCE_INTERNAL_CLIENT_SECRET="$(az keyvault secret show --vault-name darts-test --name PERFORMANCE-INTERNAL-CLIENT-SECRET | jq .value -r)"
+export PERFORMANCE_INTERNAL_TENANT_ID="$(az keyvault secret show --vault-name darts-test --name PERFORMANCE-INTERNAL-TENANT-ID | jq .value -r)"
+export PERFORMANCE_INTERNAL_SCOPE="$(az keyvault secret show --vault-name darts-test --name PERFORMANCE-INTERNAL-SCOPE | jq .value -r)"
+export DB_URL="$(az keyvault secret show --vault-name darts-test --name api-POSTGRES-URL | jq .value -r)"
+export DB_USERNAME="$(az keyvault secret show --vault-name darts-test --name api-POSTGRES-USER | jq .value -r)"
+export DB_PASSWORD="$(az keyvault secret show --vault-name darts-test --name api-POSTGRES-PASS | jq .value -r)"
+export DARTS_TRANSCRIBER_TEST_USERNAME="$(az keyvault secret show --vault-name darts-test --name DartsTranscriberTestUsername | jq .value -r)"
+export DARTS_API_GLOBAL_USERNAME="$(az keyvault secret show --vault-name darts-test --name DARTS-API-GLOBAL-USERNAME | jq .value -r)"
+export DARTS_API_PASSWORD="$(az keyvault secret show --vault-name darts-test --name DARTS-API-PASSWORD | jq .value -r)"
+export DARTS_SOAP_XHIBIT_EXTERNAL_USERNAME="$(az keyvault secret show --vault-name darts-test --name DARTS-SOAP-XHIBIT-EXTERNAL-USERNAME | jq .value -r)"
+export DARTS_SOAP_XHIBIT_EXTERNAL_PASSWORD="$(az keyvault secret show --vault-name darts-test --name DARTS-SOAP-XHIBIT-EXTERNAL-PASSWORD | jq .value -r)"
+export DARTS_API_USERNAME2="$(az keyvault secret show --vault-name darts-test --name DARTS-API-USERNAME2 | jq .value -r)"
+export DARTS_API_PASSWORD2="$(az keyvault secret show --vault-name darts-test --name DARTS-API-PASSWORD2 | jq .value -r)"
+export DARTS_SOAP_VIQ_EXTERNAL_USERNAME="$(az keyvault secret show --vault-name darts-test --name DARTS-SOAP-VIQ-EXTERNAL-USERNAME | jq .value -r)"
+export DARTS_SOAP_VIQ_EXTERNAL_PASSWORD="$(az keyvault secret show --vault-name darts-test --name DARTS-SOAP-VIQ-EXTERNAL-PASSWORD | jq .value -r)"
+export DARTS_SOAP_CPP_EXTERNAL_USERNAME="$(az keyvault secret show --vault-name darts-test --name DARTS-SOAP-CPP-EXTERNAL-USERNAME | jq .value -r)"
+export DARTS_SOAP_CPP_EXTERNAL_PASSWORD="$(az keyvault secret show --vault-name darts-test --name DARTS-SOAP-CPP-EXTERNAL-PASSWORD | jq .value -r)"

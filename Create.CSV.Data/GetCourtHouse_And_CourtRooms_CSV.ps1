@@ -1,12 +1,12 @@
 ﻿# SQL query to be executed
 $query = @"
 SELECT 
-    '\"' || darts.courtroom.cth_id || '\"' AS cth_id,
-    '\"' || darts.courtroom.courtroom_name || '\"' AS courtroom_name,
-    '\"' || darts.courtroom.ctr_id || '\"' AS ctr_id,
-    '\"' || REPLACE(darts.courthouse.courthouse_name, '\"', '\"\"') || '\"' AS courthouse_name,
-    '\"' || darts.courthouse.display_name || '\"' AS display_name,
-    '\"' || darts.courthouse.courthouse_code || '\"' AS courthouse_code
+    darts.courtroom.cth_id AS cth_id,
+    darts.courtroom.courtroom_name AS courtroom_name,
+    darts.courtroom.ctr_id AS ctr_id,
+    REPLACE(darts.courthouse.courthouse_name, '\"', '\"\"') AS courthouse_name,
+    darts.courthouse.display_name AS display_name,
+    darts.courthouse.courthouse_code AS courthouse_code
 FROM 
     darts.courtroom
 INNER JOIN 
@@ -25,13 +25,13 @@ $user = "test"
 $password = "test"
 
 # Output file path
-$outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\GetAllCourtroomsAndCourthouses.csv"
+$outputFile = "$env:USERPROFILE\Desktop\GetAllCourtroomsAndCourthouses.csv"
 
 # Ensure PGPASSWORD environment variable is set
 $env:PGPASSWORD = $password
 
 # Full path to psql executable
-$psqlPath = "C:\Program Files\PostgreSQL\16\bin\psql.exe"
+$psqlPath = "psql"
 
 # Check if the output file exists and remove it to ensure overwrite
 if (Test-Path -Path $outputFile) {

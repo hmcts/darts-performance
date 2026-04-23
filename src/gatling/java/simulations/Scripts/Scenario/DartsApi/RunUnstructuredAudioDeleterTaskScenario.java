@@ -1,29 +1,35 @@
 package simulations.Scripts.Scenario.DartsApi;
 
+import io.gatling.javaapi.core.ChainBuilder;
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Headers.Headers;
 import simulations.Scripts.Utilities.AppConfig;
 
-import io.gatling.javaapi.core.*;
-import static io.gatling.javaapi.core.CoreDsl.*;
-import static io.gatling.javaapi.http.HttpDsl.*;
+import static io.gatling.javaapi.core.CoreDsl.exec;
+import static io.gatling.javaapi.core.CoreDsl.group;
+import static io.gatling.javaapi.http.HttpDsl.http;
+import static io.gatling.javaapi.http.HttpDsl.status;
 
+@Slf4j
 public final class RunUnstructuredAudioDeleterTaskScenario {
 
-    
-    private RunUnstructuredAudioDeleterTaskScenario() {}
+
+    private RunUnstructuredAudioDeleterTaskScenario() {
+    }
+
     public static ChainBuilder RunUnstructuredAudioDeleterTask() {
 
-     
+
         return group("Unstructured Audio Deleter")
-        .on(exec(http("DARTS - Api - AutomatedTasksRequest:POST")
-                .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/7/run") 
-                .headers(Headers.getHeaders(24))
-                .check(status().saveAs("statusCode"))
-                .check(status().is(202))
-        ))
-        .exec(session -> {
-                System.out.println("Automated Tasks 7 has been ran for Unstructured Audio Deleter");
-            return session;
-        });       
-    }       
+                .on(exec(http("DARTS - Api - AutomatedTasksRequest:POST")
+                        .post(AppConfig.EnvironmentURL.DARTS_BASE_URL.getUrl() + "/admin/automated-tasks/7/run")
+                        .headers(Headers.getHeaders(24))
+                        .check(status().saveAs("statusCode"))
+                        .check(status().is(202))
+                ))
+                .exec(session -> {
+                    log.info("Automated Tasks 7 has been ran for Unstructured Audio Deleter");
+                    return session;
+                });
+    }
 }

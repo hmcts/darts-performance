@@ -1,38 +1,45 @@
 package simulations.Scripts.Scenario.DartsSoap;
 
+import io.gatling.javaapi.core.ChainBuilder;
+import lombok.extern.slf4j.Slf4j;
 import simulations.Scripts.Headers.Headers;
+import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
 import simulations.Scripts.Utilities.AppConfig.SoapServiceEndpoint;
 import simulations.Scripts.Utilities.Feeders;
 import simulations.Scripts.Utilities.NumberGenerator;
-import io.gatling.javaapi.core.*;
-import static io.gatling.javaapi.core.CoreDsl.*;
-import static io.gatling.javaapi.http.HttpDsl.*;
-import simulations.Scripts.SOAPRequestBuilder.SOAPRequestBuilder;
+import simulations.Scripts.Utilities.Util;
 
+import static io.gatling.javaapi.core.CoreDsl.*;
+import static io.gatling.javaapi.http.HttpDsl.http;
+import static io.gatling.javaapi.http.HttpDsl.status;
+
+@Slf4j
 public final class AddDocumentCPPDailyListTokenScenario {
 
     private static final NumberGenerator generator = new NumberGenerator(11);
 
-    private AddDocumentCPPDailyListTokenScenario() {}
+    private AddDocumentCPPDailyListTokenScenario() {
+    }
+
     public static ChainBuilder AddDocumentCPPDailyListToken() {
         return
-        // group("AddDocument - CPP DailyList SOAP Requests")
-            //.on(
-            feed(Feeders.createCourtHouseAndCourtRooms())   
-            .pause(1)
-            .exec(session -> {
-                    String xmlPayload = SOAPRequestBuilder.addDocumentCPPDailyListTokenRequest(session, generator);  
-                    return session.set("xmlPayload", xmlPayload);  
-                })
-                .exec(http("DARTS - GateWay - Soap - AddDocument - CPP DailyList - Token")
-                        .post(SoapServiceEndpoint.DARTSService.getEndpoint())
-                        .headers(Headers.SoapHeaders)
-                        .body(StringBody(session -> session.get("xmlPayload")))
-                        .check(status().is(200))
-                        .check(xpath("//messageId/text()").find().optional().saveAs("messageId"))
-                        .check(xpath("//return/code").saveAs("statusCode"))
-                        .check(xpath("//return/message").saveAs("message"))
-                        .check(bodyString().saveAs("responseBody")) // Capture the entire response body
+                // group("AddDocument - CPP DailyList SOAP Requests")
+                //.on(
+                feed(Feeders.createCourtHouseAndCourtRooms())
+                        .pause(Util.getDurationFromSeconds(1))
+                        .exec(session -> {
+                            String xmlPayload = SOAPRequestBuilder.addDocumentCPPDailyListTokenRequest(session, generator);
+                            return session.set("xmlPayload", xmlPayload);
+                        })
+                        .exec(http("DARTS - GateWay - Soap - AddDocument - CPP DailyList - Token")
+                                .post(SoapServiceEndpoint.DARTSService.getEndpoint())
+                                .headers(Headers.SoapHeaders)
+                                .body(StringBody(session -> session.get("xmlPayload")))
+                                .check(status().is(200))
+                                .check(xpath("//messageId/text()").find().optional().saveAs("messageId"))
+                                .check(xpath("//return/code").saveAs("statusCode"))
+                                .check(xpath("//return/message").saveAs("message"))
+                                .check(bodyString().saveAs("responseBody")) // Capture the entire response body
                         )
                         .exec(session -> {
                             String statusCode = session.getString("statusCode");
@@ -41,20 +48,20 @@ public final class AddDocumentCPPDailyListTokenScenario {
                             if (statusCode.equals("ERROR") || (message != null && message.toLowerCase().contains("error"))) {
                                 // Mark the request as failed if there's an error message
                                 session.markAsFailed();
-                                System.out.println("Error detected for CPP DailyList: " + message);
+                                log.info("Error detected for CPP DailyList: " + message);
                             }
                             return session;
                         })
                         .exec(session -> {
                             Object messageId = session.get("messageId");
                             if (messageId != null) {
-                                System.out.println("messageId for AddDocument - CPP DailyList request: " + messageId.toString());
+                                log.info("messageId for AddDocument - CPP DailyList request: " + messageId);
                             } else {
-                                System.out.println("Created AddDocument - CPP DailyList request.");
+                                log.info("Created AddDocument - CPP DailyList request.");
                             }
                             return session;
                         })
-                    //)
-                    ;
-            } 
-        }
+                //)
+                ;
+    }
+}

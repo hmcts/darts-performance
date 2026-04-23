@@ -64,7 +64,7 @@ withNightlyPipeline(type, product, component) {
     loadVaultSecrets(secrets)
     env.simulationClassName = params.simulationClassName
     env.SOAP_USERS_COUNT = params.Users
-    enablePerformanceTest()
+    enablePerformanceTest(90)
     afterFailure('test') {
         publishPerformanceReports()
     }

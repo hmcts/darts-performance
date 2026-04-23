@@ -1,9 +1,12 @@
 package simulations.Scripts.Utilities;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ThreadLocalRandom;
 
+@Slf4j
 public class TimestampGenerator {
 
     // Method to generate a timestamp representing the current time
@@ -24,7 +27,7 @@ public class TimestampGenerator {
         }
 
         public static void main(String[] args) {
-            System.out.println(getCurrentTimestamp());
+            log.info(getCurrentTimestamp());
         }
     }
 
@@ -45,7 +48,7 @@ public class TimestampGenerator {
         LocalDateTime endTime = getRandomTime(startTime, minHoursDifference, maxHoursDifference);
 
         // Output the results
-        System.out.println("Start Time: " + startTime);
-        System.out.println("End Time: " + endTime);
+        log.info("Start Time: " + startTime);
+        log.info("End Time: " + endTime);
     }
 }

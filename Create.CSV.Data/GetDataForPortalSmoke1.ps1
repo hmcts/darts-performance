@@ -1,5 +1,5 @@
 ﻿# Define the path to the directory containing the scripts
-$scriptDirectory = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\Create.CSV.Data"
+$scriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # Define the scripts to run
 $scripts = @(

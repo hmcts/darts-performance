@@ -7,7 +7,7 @@ WITH UserDetails AS (
         'PerfTester@01'               AS Password,
         ua.user_name, 
         sgch.cth_id,
-        '\"' || REPLACE(ch.display_name, '\"', '\"\"') || '\"' AS courthouse_name,
+        ch.display_name AS courthouse_name,
         ch.courthouse_code,
         'CourtClerk'                 AS Type,
         ROW_NUMBER() OVER (PARTITION BY ua.usr_id ORDER BY RANDOM()) AS courthouse_rn
@@ -161,13 +161,17 @@ $user = "test"
 $password = "test"
 
 # Output file path
-$outputFile = "C:\Users\a.cooper\Desktop\Performance.Testing\DARTS\darts-performance\src\gatling\resources\UsersCourtClerks.csv"
+
+$scriptDir = $PSScriptRoot
+$repoRoot  = Split-Path -Parent $scriptDir
+$outputDir = Join-Path $repoRoot "bin/gatling"
+$outputFile = Join-Path $outputDir "UsersCourtClerks.csv"
 
 # Ensure PGPASSWORD environment variable is set
 $env:PGPASSWORD = $password
 
 # Full path to psql executable (update this to the actual path if needed)
-$psqlPath = "C:\Program Files\PostgreSQL\16\bin\psql.exe"
+$psqlPath = "psql"
 
 # Log start time
 $startTime = Get-Date
