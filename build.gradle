@@ -19,7 +19,7 @@ dependencyCheck {
     suppressionFile = 'config/owasp/suppressions.xml'
 }
 ext {
-    log4JVersion = "2.25.2"
+    log4JVersion = "2.25.4"
 }
 dependencies {
     gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.10'
