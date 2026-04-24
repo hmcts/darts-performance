@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'uk.gov.hmcts.java' version '0.12.68'
-    id 'io.gatling.gradle' version '3.11.5.2'
+    id 'io.gatling.gradle' version '3.15.0.1'
 }
 
 group = 'uk.gov.hmcts'
