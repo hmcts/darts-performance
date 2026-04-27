@@ -36,7 +36,7 @@ dependencies {
 
 // Default gatlingRun configuration
 gatlingRun {
-    jvmArgs = ['-Xms4G', '-Xmx8G']
+    jvmArgs = ['-Xms4G', '-Xmx8G','--add-opens', 'java.base/java.lang=ALL-UNNAMED']
     simulationClassName = System.getenv("SimulationBlock")
     doFirst {
         println "Running simulation: " + simulationClassName
