@@ -22,7 +22,7 @@ ext {
     log4JVersion = "2.25.4"
 }
 dependencies {
-    gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.10'
+    gatling group: 'org.postgresql', name: 'postgresql', version: '42.7.11'
     gatling 'com.github.hmcts:juror-generation-support-library:1.6.1'
     gatlingCompileOnly 'org.projectlombok:lombok:1.18.46'
     gatlingAnnotationProcessor 'org.projectlombok:lombok:1.18.46'
