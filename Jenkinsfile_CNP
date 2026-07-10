@@ -59,15 +59,27 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
     ]
 }
 
-withPipeline(type, product, component) {
-    nonServiceApp()
-    nonDeployableApp()
+// withPipeline(type, product, component) {
+//     nonServiceApp()
+//     nonDeployableApp()
+//     enableSlackNotifications('#darts-builds')
+//     loadVaultSecrets(secrets)
+//     env.simulationClassName = params.simulationClassName
+//     env.SOAP_USERS_COUNT = params.Users
+//     enablePerformanceTest(90)
+// //     afterFailure('test') {
+// //         publishPerformanceReports()
+// //     }
+// }
+
+withNightlyPipeline(type, product, component) {
     enableSlackNotifications('#darts-builds')
     loadVaultSecrets(secrets)
     env.simulationClassName = params.simulationClassName
     env.SOAP_USERS_COUNT = params.Users
-    enablePerformanceTest(90)
-//     afterFailure('test') {
-//         publishPerformanceReports()
-//     }
+   // enablePerformanceTest()
+
+    afterFailure('test') {
+        publishPerformanceReports()
+    }
 }
