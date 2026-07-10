@@ -61,6 +61,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 
 withPipeline(type, product, component) {
     nonServiceApp()
+    nonDeployableApp()
     enableSlackNotifications('#darts-builds')
     loadVaultSecrets(secrets)
     env.simulationClassName = params.simulationClassName
