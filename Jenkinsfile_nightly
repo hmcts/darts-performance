@@ -14,7 +14,7 @@ parameters([
 
  ])
 ])
-@Library("Infrastructure@2.4.2") _
+@Library("Infrastructure") _
 
 def product = "darts"
 def type = "java"

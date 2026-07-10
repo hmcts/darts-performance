@@ -14,7 +14,7 @@ properties([
 
  ])
 ])
-@Library("Infrastructure@2.4.2") _
+@Library("Infrastructure")
 
 def product = "darts"
 def type = "java"
@@ -59,7 +59,7 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
     ]
 }
 
-withNightlyPipeline(type, product, component) {
+withPipeline(type, product, component) {
     enableSlackNotifications('#darts-builds')
     loadVaultSecrets(secrets)
     env.simulationClassName = params.simulationClassName
