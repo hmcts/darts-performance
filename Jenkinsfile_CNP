@@ -65,7 +65,6 @@ withNightlyPipeline(type, product, component) {
     env.simulationClassName = params.simulationClassName
     env.SOAP_USERS_COUNT = params.Users
    enablePerformanceTest(90)
-
     afterFailure('test') {
         publishPerformanceReports()
     }
