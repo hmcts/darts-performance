@@ -169,5 +169,5 @@ tasks.register('runAllStyleChecks') {
 }
 
 tasks.register('printVersionInit') {
-  doLast { println project. Version }
+    doLast { println project.version }
 }
