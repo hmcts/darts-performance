@@ -1,13 +1,6 @@
 #!groovy
 
-@NonCPS
-def isTriggeredByBranchScan() {
-  return currentBuild.rawBuild.getCauses().any {
-    it.getClass().getName().contains('BranchEventCause')
-  }
-}
-
-if (isTriggeredByBranchScan()) {
+if (currentBuild.getBuildCauses('jenkins.branch.BranchEventCause')) {
   currentBuild.result = 'NOT_BUILT'
   return
 }
