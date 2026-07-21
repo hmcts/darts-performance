@@ -1,4 +1,17 @@
 #!groovy
+
+@NonCPS
+def isTriggeredByBranchScan() {
+  return currentBuild.rawBuild.getCauses().any {
+    it.getClass().getName().contains('BranchEventCause')
+  }
+}
+
+if (isTriggeredByBranchScan()) {
+  currentBuild.result = 'NOT_BUILT'
+  return
+}
+
 properties([
         pipelineTriggers([cron('00 17 * * *')]),
  parameters([
