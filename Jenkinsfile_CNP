@@ -14,7 +14,7 @@ properties([
 
  ])
 ])
-@Library("Infrastructure")
+@Library("Infrastructure@DTSPO-33498-fix-cause-serialization")
 
 def product = "darts"
 def type = "java"
