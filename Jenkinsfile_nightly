@@ -14,7 +14,7 @@ parameters([
 
  ])
 ])
-@Library("Infrastructure@DTSPO-33498-fix-cause-serialization") _
+@Library("Infrastructure@DTSPO-30107-jenkins-agents") _
 
 def product = "darts"
 def type = "java"

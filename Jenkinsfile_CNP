@@ -14,7 +14,7 @@ properties([
 
  ])
 ])
-@Library("Infrastructure@DTSPO-33498-fix-cause-serialization")
+@Library("Infrastructure@DTSPO-30107-jenkins-agents")
 
 def product = "darts"
 def type = "java"
