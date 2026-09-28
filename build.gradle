@@ -167,7 +167,3 @@ tasks.register('runAllStyleChecks') {
     dependsOn 'checkstyleTest'
     dependsOn 'checkstyleGatling'
 }
-
-tasks.register('printVersionInit') {
-    doLast { println project.version }
-}
